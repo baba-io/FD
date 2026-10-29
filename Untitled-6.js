@@ -1,1764 +1,1519 @@
-(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push(["object" == typeof document ? document.currentScript : void 0, 981140, 820783, 30030, e => {
+(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push(["object" == typeof document ? document.currentScript : void 0, 419519, e => {
     "use strict";
-    var t = Object.defineProperty
-      , n = (e, n) => t(e, "name", {
-        value: n,
-        configurable: !0
-    })
-      , r = !!("u" > typeof window && window.document && window.document.createElement);
-    function o(e, t, {checkForDefaultPrevented: r=!0}={}) {
-        return n(function(n) {
-            if (e?.(n),
-            !1 === r || !n || !n.defaultPrevented)
-                return t?.(n)
-        }, "handleEvent")
+    var t = e.i(843476)
+      , i = e.i(271645)
+      , r = e.i(94800)
+      , s = e.i(848546)
+      , o = e.i(223490)
+      , a = e.i(225228)
+      , n = e.i(284996)
+      , l = e.i(630438)
+      , f = e.i(521068);
+    let u = {
+        model: null,
+        failed: !1
     }
-    function i(e) {
-        if (!r)
-            throw Error("Cannot access document outside of the DOM");
-        return e?.ownerDocument ?? document
-    }
-    function u(e) {
-        return "IFRAME" === e.tagName
-    }
-    n(o, "composeEventHandlers"),
-    n(function(e) {
-        if (!r)
-            throw Error("Cannot access window outside of the DOM");
-        return e?.ownerDocument?.defaultView ?? window
-    }, "getOwnerWindow"),
-    n(i, "getOwnerDocument"),
-    n(function e(t, n=!1) {
-        let {activeElement: r} = i(t);
-        if (!r?.nodeName)
-            return null;
-        if (u(r) && r.contentDocument)
-            return e(r.contentDocument.body, n);
-        if (n) {
-            let e = r.getAttribute("aria-activedescendant");
-            if (e) {
-                let t = i(r).getElementById(e);
-                if (t)
-                    return t
-            }
-        }
-        return r
-    }, "getActiveElement"),
-    n(u, "isFrame"),
-    e.s(["composeEventHandlers", 0, o], 981140);
-    var a = e.i(271645)
-      , c = Object.defineProperty
-      , s = (e, t) => c(e, "name", {
-        value: t,
-        configurable: !0
-    });
-    function l(e, t) {
-        if ("function" == typeof e)
-            return e(t);
-        null != e && (e.current = t)
-    }
-    function d(...e) {
-        return t => {
-            let n = !1
-              , r = e.map(e => {
-                let r = l(e, t);
-                return n || "function" != typeof r || (n = !0),
-                r
-            }
-            );
-            if (n)
-                return () => {
-                    for (let t = 0; t < r.length; t++) {
-                        let n = r[t];
-                        "function" == typeof n ? n() : l(e[t], null)
-                    }
-                }
-        }
-    }
-    function f(...e) {
-        return a.useCallback(d(...e), e)
-    }
-    s(l, "setRef"),
-    s(d, "composeRefs"),
-    s(f, "useComposedRefs"),
-    e.s(["useComposedRefs", 0, f], 820783);
-    var m = e.i(843476)
-      , p = Object.defineProperty
-      , v = (e, t) => p(e, "name", {
-        value: t,
-        configurable: !0
-    });
-    function h(e, t=[]) {
-        let n = [];
-        function r(t, r) {
-            let o = a.createContext(r);
-            o.displayName = t + "Context";
-            let i = n.length;
-            n = [...n, r];
-            let u = v(t => {
-                let {scope: n, children: r, ...u} = t
-                  , c = n?.[e]?.[i] || o
-                  , s = a.useMemo( () => u, Object.values(u));
-                return (0,
-                m.jsx)(c.Provider, {
-                    value: s,
-                    children: r
-                })
-            }
-            , "Provider");
-            function c(n, u, s={}) {
-                let {optional: l=!1} = s
-                  , d = u?.[e]?.[i] || o
-                  , f = a.useContext(d);
-                if (f)
-                    return f;
-                if (void 0 !== r)
-                    return r;
-                if (!l)
-                    throw Error(`\`${n}\` must be used within \`${t}\``)
-            }
-            return u.displayName = t + "Provider",
-            v(c, "useContext"),
-            [u, c]
-        }
-        v(r, "createContext");
-        let o = v( () => {
-            let t = n.map(e => a.createContext(e));
-            return v(function(n) {
-                let r = n?.[e] || t;
-                return a.useMemo( () => ({
-                    [`__scope${e}`]: {
-                        ...n,
-                        [e]: r
-                    }
-                }), [n, r])
-            }, "useScope")
-        }
-        , "createScope");
-        return o.scopeName = e,
-        [r, y(o, ...t)]
-    }
-    function y(...e) {
-        let t = e[0];
-        if (1 === e.length)
-            return t;
-        let n = v( () => {
-            let n = e.map(e => ({
-                useScope: e(),
-                scopeName: e.scopeName
-            }));
-            return v(function(e) {
-                let r = n.reduce( (t, {useScope: n, scopeName: r}) => {
-                    let o = n(e)[`__scope${r}`];
-                    return {
-                        ...t,
-                        ...o
-                    }
-                }
-                , {});
-                return a.useMemo( () => ({
-                    [`__scope${t.scopeName}`]: r
-                }), [r])
-            }, "useComposedScopes")
-        }
-        , "createScope");
-        return n.scopeName = t.scopeName,
-        n
-    }
-    v(function(e, t) {
-        let n = a.createContext(t);
-        n.displayName = e + "Context";
-        let r = v(e => {
-            let {children: t, ...r} = e
-              , o = a.useMemo( () => r, Object.values(r));
-            return (0,
-            m.jsx)(n.Provider, {
-                value: o,
-                children: t
-            })
-        }
-        , "Provider");
-        function o(r, i={}) {
-            let {optional: u=!1} = i
-              , c = a.useContext(n);
-            if (c)
-                return c;
-            if (void 0 !== t)
-                return t;
-            if (!u)
-                throw Error(`\`${r}\` must be used within \`${e}\``)
-        }
-        return r.displayName = e + "Provider",
-        v(o, "useContext"),
-        [r, o]
-    }, "createContext"),
-    v(h, "createContextScope"),
-    v(y, "composeContextScopes"),
-    e.s(["createContextScope", 0, h], 30030)
-}
-, 726330, 248425, 30207, e => {
-    "use strict";
-    var t, n = e.i(271645), r = e.i(981140), o = e.i(174080), i = e.i(820783), u = Object.defineProperty, a = (e, t) => u(e, "name", {
-        value: t,
-        configurable: !0
-    });
+      , h = !1
+      , d = new Set;
     function c(e) {
-        let t = n.forwardRef( (t, r) => {
-            let {children: o, ...u} = t
-              , a = null
-              , c = !1
-              , s = [];
-            v(o) && "function" == typeof E && (o = E(o._payload)),
-            n.Children.forEach(o, e => {
-                if (m(e)) {
-                    c = !0;
-                    let t = "child" in e.props ? e.props.child : e.props.children;
-                    v(t) && "function" == typeof E && (t = E(t._payload)),
-                    a = l(e, t),
-                    s.push(a?.props?.children)
-                } else
-                    s.push(e)
-            }
-            ),
-            a ? a = n.cloneElement(a, void 0, s) : !c && 1 === n.Children.count(o) && n.isValidElement(o) && (a = o);
-            let p = a ? f(a) : void 0
-              , h = (0,
-            i.useComposedRefs)(r, p);
-            if (!a) {
-                if (o || 0 === o)
-                    throw Error(c ? b(e) : y(e));
-                return o
-            }
-            let g = d(u, a.props ?? {});
-            return a.type !== n.Fragment && (g.ref = r ? h : p),
-            n.cloneElement(a, g)
+        u = e,
+        d.forEach(e => e())
+    }
+    function p() {
+        if (h)
+            return;
+        h = !0;
+        let e = t => new o.GLTFLoader().loadAsync(n.DRIFT_CAR_URL).then(e => {
+            let t = (0,
+            n.driftCarModel)(e);
+            return e.scene.traverse(e => e.geometry?.dispose()),
+            t
+        }
+        ).then(e => c({
+            model: e,
+            failed: !1
+        }), i => {
+            console.error("drift car model failed to load", i),
+            u.failed || c({
+                model: null,
+                failed: !0
+            }),
+            t + 1 < 8 ? setTimeout( () => void e(t + 1), Math.min(6e4, 2e3 * 2 ** t)) : h = !1
         }
         );
-        return t.displayName = `${e}.Slot`,
-        t
+        e(0)
     }
-    a(c, "createSlot");
-    var s = Symbol.for("radix.slottable");
-    a(function(e) {
-        let t = a(e => "child" in e ? e.children(e.child) : e.children, "Slottable");
-        return t.displayName = `${e}.Slottable`,
-        t.__radixId = s,
-        t
-    }, "createSlottable");
-    var l = a( (e, t) => {
-        if ("child" in e.props) {
-            let t = e.props.child;
-            return n.isValidElement(t) ? n.cloneElement(t, void 0, e.props.children(t.props.children)) : null
-        }
-        return n.isValidElement(t) ? t : null
+    function m() {
+        return u
     }
-    , "getSlottableElementFromSlottable");
-    function d(e, t) {
-        let n = {
-            ...t
-        };
-        for (let r in t) {
-            let o = e[r]
-              , i = t[r];
-            /^on[A-Z]/.test(r) ? o && i ? n[r] = (...e) => {
-                let t = i(...e);
-                return o(...e),
-                t
-            }
-            : o && (n[r] = o) : "style" === r ? n[r] = {
-                ...o,
-                ...i
-            } : "className" === r && (n[r] = [o, i].filter(Boolean).join(" "))
-        }
-        return {
-            ...e,
-            ...n
+    function g(e) {
+        return d.add(e),
+        () => {
+            d.delete(e)
         }
     }
-    function f(e) {
-        let t = Object.getOwnPropertyDescriptor(e.props, "ref")?.get
-          , n = t && "isReactWarning" in t && t.isReactWarning;
-        return n ? e.ref : (n = (t = Object.getOwnPropertyDescriptor(e, "ref")?.get) && "isReactWarning" in t && t.isReactWarning) ? e.props.ref : e.props.ref || e.ref
-    }
-    function m(e) {
-        return n.isValidElement(e) && "function" == typeof e.type && "__radixId" in e.type && e.type.__radixId === s
-    }
-    a(d, "mergeProps"),
-    a(f, "getElementRef"),
-    a(m, "isSlottable");
-    var p = Symbol.for("react.lazy");
-    function v(e) {
-        return null != e && "object" == typeof e && "$$typeof" in e && e.$$typeof === p && "_payload" in e && h(e._payload)
-    }
-    function h(e) {
-        return "object" == typeof e && null !== e && "then" in e
-    }
-    a(v, "isLazyComponent"),
-    a(h, "isPromiseLike");
-    var y = a(e => `${e} failed to slot onto its children. Expected a single React element child or \`Slottable\`.`, "createSlotError")
-      , b = a(e => `${e} failed to slot onto its \`Slottable\`. Expected \`Slottable\` to receive a single React element child.`, "createSlottableError")
-      , E = n[" use ".trim().toString()]
-      , g = e.i(843476)
-      , w = Object.defineProperty
-      , S = ["a", "button", "div", "form", "h2", "h3", "img", "input", "label", "li", "nav", "ol", "p", "select", "span", "svg", "ul"].reduce( (e, t) => {
-        let r = c(`Primitive.${t}`)
-          , o = n.forwardRef( (e, n) => {
-            let {asChild: o, ...i} = e;
-            return "u" > typeof window && (window[Symbol.for("radix-ui")] = !0),
-            (0,
-            g.jsx)(o ? r : t, {
-                ...i,
-                ref: n
-            })
-        }
-        );
-        return o.displayName = `Primitive.${t}`,
-        {
-            ...e,
-            [t]: o
-        }
-    }
-    , {});
-    function C(e, t) {
-        e && o.flushSync( () => e.dispatchEvent(t))
-    }
-    function R(e) {
-        let t = n.useRef(e);
-        return n.useEffect( () => {
-            t.current = e
-        }
-        ),
-        n.useMemo( () => (...e) => t.current?.(...e), [])
-    }
-    w(C, "name", {
-        value: "dispatchDiscreteCustomEvent",
-        configurable: !0
-    }),
-    e.s(["Primitive", 0, S, "dispatchDiscreteCustomEvent", 0, C], 248425),
-    (0,
-    Object.defineProperty)(R, "name", {
-        value: "useCallbackRef",
-        configurable: !0
-    }),
-    e.s(["useCallbackRef", 0, R], 30207);
-    var P = Object.defineProperty
-      , N = (e, t) => P(e, "name", {
-        value: t,
-        configurable: !0
-    })
-      , O = "dismissableLayer.update"
-      , L = n.createContext({
-        layers: new Set,
-        layersWithOutsidePointerEventsDisabled: new Set,
-        branches: new Set,
-        dismissableSurfaces: new Set
-    })
-      , T = n.forwardRef(N(function(e, o) {
-        let {disableOutsidePointerEvents: u=!1, deferPointerDownOutside: a=!1, onEscapeKeyDown: c, onPointerDownOutside: s, onFocusOutside: l, onInteractOutside: d, onDismiss: f, ...m} = e
-          , p = n.useContext(L)
-          , [v,h] = n.useState(null)
-          , y = v?.ownerDocument ?? globalThis?.document
-          , [,b] = n.useState({})
-          , E = (0,
-        i.useComposedRefs)(o, h)
-          , w = Array.from(p.layers)
-          , [C] = [...p.layersWithOutsidePointerEventsDisabled].slice(-1)
-          , P = C ? w.indexOf(C) : -1
-          , T = v ? w.indexOf(v) : -1
-          , M = p.layersWithOutsidePointerEventsDisabled.size > 0
-          , k = T >= P
-          , D = n.useRef(!1)
-          , I = _(e => {
-            s?.(e),
-            d?.(e),
-            e.defaultPrevented || f?.()
-        }
-        , {
-            ownerDocument: y,
-            deferPointerDownOutside: a,
-            isDeferredPointerDownOutsideRef: D,
-            dismissableSurfaces: p.dismissableSurfaces,
-            shouldHandlePointerDownOutside: n.useCallback(e => {
-                if (!(e instanceof Node))
-                    return !1;
-                let t = [...p.branches].some(t => t.contains(e));
-                return k && !t
-            }
-            , [p.branches, k])
-        })
-          , F = A(e => {
-            if (a && D.current)
-                return;
-            let t = e.target;
-            ![...p.branches].some(e => e.contains(t)) && (l?.(e),
-            d?.(e),
-            e.defaultPrevented || f?.())
-        }
-        , y)
-          , j = !!v && T === w.length - 1
-          , W = R(e => {
-            "Escape" === e.key && (c?.(e),
-            !e.defaultPrevented && f && (e.preventDefault(),
-            f()))
-        }
-        );
-        return n.useEffect( () => {
-            if (j)
-                return y.addEventListener("keydown", W, {
-                    capture: !0
-                }),
-                () => y.removeEventListener("keydown", W, {
-                    capture: !0
-                })
-        }
-        , [y, j, W]),
-        n.useEffect( () => {
-            if (v)
-                return u && (0 === p.layersWithOutsidePointerEventsDisabled.size && (t = y.body.style.pointerEvents,
-                y.body.style.pointerEvents = "none"),
-                p.layersWithOutsidePointerEventsDisabled.add(v)),
-                p.layers.add(v),
-                x(),
-                () => {
-                    u && (p.layersWithOutsidePointerEventsDisabled.delete(v),
-                    0 === p.layersWithOutsidePointerEventsDisabled.size && (y.body.style.pointerEvents = t))
-                }
-        }
-        , [v, y, u, p]),
-        n.useEffect( () => () => {
-            v && (p.layers.delete(v),
-            p.layersWithOutsidePointerEventsDisabled.delete(v),
-            x())
-        }
-        , [v, p]),
-        n.useEffect( () => {
-            let e = N( () => b({}), "handleUpdate");
-            return document.addEventListener(O, e),
-            () => document.removeEventListener(O, e)
-        }
-        , []),
-        (0,
-        g.jsx)(S.div, {
-            ...m,
-            ref: E,
-            style: {
-                pointerEvents: M ? k ? "auto" : "none" : void 0,
-                ...e.style
-            },
-            onFocusCapture: (0,
-            r.composeEventHandlers)(e.onFocusCapture, F.onFocusCapture),
-            onBlurCapture: (0,
-            r.composeEventHandlers)(e.onBlurCapture, F.onBlurCapture),
-            onPointerDownCapture: (0,
-            r.composeEventHandlers)(e.onPointerDownCapture, I.onPointerDownCapture)
-        })
-    }, "DismissableLayer"));
-    function M() {
-        let e = n.useContext(L)
-          , [t,r] = n.useState(null);
-        return n.useEffect( () => {
-            if (t)
-                return e.dismissableSurfaces.add(t),
-                () => {
-                    e.dismissableSurfaces.delete(t)
-                }
-        }
-        , [t, e.dismissableSurfaces]),
-        r
-    }
-    N(M, "useDismissableLayerSurface");
-    var k = N( () => !0, "IS_TRUE");
-    function _(e, t) {
-        let {ownerDocument: r=globalThis?.document, deferPointerDownOutside: o=!1, isDeferredPointerDownOutsideRef: i, dismissableSurfaces: u, shouldHandlePointerDownOutside: a=k} = t
-          , c = R(e)
-          , s = n.useRef(!1)
-          , l = n.useRef(!1)
-          , d = n.useRef(new Map)
-          , f = n.useRef( () => {}
-        );
-        return n.useEffect( () => {
-            function e() {
-                l.current = !1,
-                i.current = !1,
-                d.current.clear()
-            }
-            function t() {
-                return Array.from(d.current.values()).some(Boolean)
-            }
-            function n(e) {
-                if (!l.current)
-                    return;
-                let t = e.target;
-                t instanceof Node && [...u].some(e => e.contains(t)) || d.current.set(e.type, !0),
-                "click" === e.type && window.setTimeout( () => {
-                    l.current && f.current()
-                }
-                , 0)
-            }
-            function m(e) {
-                l.current && d.current.set(e.type, !1)
-            }
-            N(e, "resetOutsideInteraction"),
-            N(t, "isOutsideInteractionIntercepted"),
-            N(n, "handleInteractionCapture"),
-            N(m, "handleInteractionBubble");
-            let p = N(n => {
-                if (n.target && !s.current) {
-                    let u = function() {
-                        r.removeEventListener("click", f.current);
-                        let n = t();
-                        e(),
-                        n || D("dismissableLayer.pointerDownOutside", c, m, {
-                            discrete: !0
-                        })
-                    };
-                    if (N(u, "handleAndDispatchPointerDownOutsideEvent"),
-                    !a(n.target)) {
-                        r.removeEventListener("click", f.current),
-                        e(),
-                        s.current = !1;
-                        return
-                    }
-                    let m = {
-                        originalEvent: n
-                    };
-                    l.current = !0,
-                    i.current = o && 0 === n.button,
-                    d.current.clear(),
-                    o && 0 === n.button ? (r.removeEventListener("click", f.current),
-                    f.current = u,
-                    r.addEventListener("click", f.current, {
-                        once: !0
-                    })) : u()
-                } else
-                    r.removeEventListener("click", f.current),
-                    e();
-                s.current = !1
-            }
-            , "handlePointerDown")
-              , v = ["pointerup", "mousedown", "mouseup", "touchstart", "touchend", "click"];
-            for (let e of v)
-                r.addEventListener(e, n, !0),
-                r.addEventListener(e, m);
-            let h = window.setTimeout( () => {
-                r.addEventListener("pointerdown", p)
-            }
-            , 0);
-            return () => {
-                for (let e of (window.clearTimeout(h),
-                r.removeEventListener("pointerdown", p),
-                r.removeEventListener("click", f.current),
-                v))
-                    r.removeEventListener(e, n, !0),
-                    r.removeEventListener(e, m)
-            }
-        }
-        , [r, c, o, i, u, a]),
-        {
-            onPointerDownCapture: N( () => s.current = !0, "onPointerDownCapture")
-        }
-    }
-    function A(e, t=globalThis?.document) {
-        let r = R(e)
-          , o = n.useRef(!1);
-        return n.useEffect( () => {
-            let e = N(e => {
-                e.target && !o.current && D("dismissableLayer.focusOutside", r, {
-                    originalEvent: e
-                }, {
-                    discrete: !1
-                })
-            }
-            , "handleFocus");
-            return t.addEventListener("focusin", e),
-            () => t.removeEventListener("focusin", e)
-        }
-        , [t, r]),
-        {
-            onFocusCapture: N( () => o.current = !0, "onFocusCapture"),
-            onBlurCapture: N( () => o.current = !1, "onBlurCapture")
-        }
-    }
-    function x() {
-        let e = new CustomEvent(O);
-        document.dispatchEvent(e)
-    }
-    function D(e, t, n, {discrete: r}) {
-        let o = n.originalEvent.target
-          , i = new CustomEvent(e,{
-            bubbles: !1,
-            cancelable: !0,
-            detail: n
-        });
-        t && o.addEventListener(e, t, {
-            once: !0
-        }),
-        r ? C(o, i) : o.dispatchEvent(i)
-    }
-    N(_, "usePointerDownOutside"),
-    N(A, "useFocusOutside"),
-    N(x, "dispatchUpdate"),
-    N(D, "handleAndDispatchCustomEvent"),
-    e.s(["DismissableLayer", 0, T, "useDismissableLayerSurface", 0, M], 726330)
-}
-, 303536, e => {
-    "use strict";
-    var t = e.i(271645)
-      , n = Object.defineProperty
-      , r = (e, t) => n(e, "name", {
-        value: t,
-        configurable: !0
-    })
-      , o = 0
-      , i = null;
-    function u() {
-        t.useEffect( () => {
-            i || (i = {
-                start: a(),
-                end: a()
-            });
-            let {start: e, end: t} = i;
-            return document.body.firstElementChild !== e && document.body.insertAdjacentElement("afterbegin", e),
-            document.body.lastElementChild !== t && document.body.insertAdjacentElement("beforeend", t),
-            o++,
-            () => {
-                1 === o && (i?.start.remove(),
-                i?.end.remove(),
-                i = null),
-                o = Math.max(0, o - 1)
-            }
-        }
-        , [])
-    }
-    function a() {
-        let e = document.createElement("span");
-        return e.setAttribute("data-radix-focus-guard", ""),
-        e.tabIndex = 0,
-        e.style.outline = "none",
-        e.style.opacity = "0",
-        e.style.position = "fixed",
-        e.style.pointerEvents = "none",
-        e
-    }
-    r(function(e) {
-        return u(),
-        e.children
-    }, "FocusGuards"),
-    r(u, "useFocusGuards"),
-    r(a, "createFocusGuard"),
-    e.s(["useFocusGuards", 0, u])
-}
-, 765491, e => {
-    "use strict";
-    var t = e.i(271645)
-      , n = e.i(820783)
-      , r = e.i(248425)
-      , o = e.i(30207)
-      , i = e.i(843476)
-      , u = Object.defineProperty
-      , a = (e, t) => u(e, "name", {
-        value: t,
-        configurable: !0
-    })
-      , c = "focusScope.autoFocusOnMount"
-      , s = "focusScope.autoFocusOnUnmount"
-      , l = {
-        bubbles: !1,
-        cancelable: !0
-    }
-      , d = t.forwardRef(a(function(e, u) {
-        let {loop: d=!1, trapped: v=!1, onMountAutoFocus: h, onUnmountAutoFocus: y, ...g} = e
-          , [w,C] = t.useState(null)
-          , R = (0,
-        o.useCallbackRef)(h)
-          , P = (0,
-        o.useCallbackRef)(y)
-          , N = t.useRef(null)
-          , O = (0,
-        n.useComposedRefs)(u, C)
-          , L = t.useRef({
-            paused: !1,
-            pause() {
-                this.paused = !0
-            },
-            resume() {
-                this.paused = !1
-            }
-        }).current;
-        t.useEffect( () => {
-            if (v) {
-                let e = function(e) {
-                    if (L.paused || !w)
-                        return;
-                    let t = e.target;
-                    w.contains(t) ? N.current = t : b(N.current, {
-                        select: !0
-                    })
-                }
-                  , t = function(e) {
-                    if (L.paused || !w)
-                        return;
-                    let t = e.relatedTarget;
-                    null !== t && (w.contains(t) || b(N.current, {
-                        select: !0
-                    }))
-                }
-                  , n = function(e) {
-                    if (document.activeElement === document.body)
-                        for (let t of e)
-                            t.removedNodes.length > 0 && b(w)
-                };
-                a(e, "handleFocusIn"),
-                a(t, "handleFocusOut"),
-                a(n, "handleMutations"),
-                document.addEventListener("focusin", e),
-                document.addEventListener("focusout", t);
-                let r = new MutationObserver(n);
-                return w && r.observe(w, {
-                    childList: !0,
-                    subtree: !0
-                }),
-                () => {
-                    document.removeEventListener("focusin", e),
-                    document.removeEventListener("focusout", t),
-                    r.disconnect()
-                }
-            }
-        }
-        , [v, w, L.paused]),
-        t.useEffect( () => {
-            if (w) {
-                E.add(L);
-                let e = document.activeElement;
-                if (!w.contains(e)) {
-                    let t = new CustomEvent(c,l);
-                    w.addEventListener(c, R),
-                    w.dispatchEvent(t),
-                    t.defaultPrevented || (f(S(p(w)), {
-                        select: !0
-                    }),
-                    document.activeElement === e && b(w))
-                }
-                return () => {
-                    w.removeEventListener(c, R),
-                    setTimeout( () => {
-                        let t = new CustomEvent(s,l);
-                        w.addEventListener(s, P),
-                        w.dispatchEvent(t),
-                        t.defaultPrevented || b(e ?? document.body, {
-                            select: !0
-                        }),
-                        w.removeEventListener(s, P),
-                        E.remove(L)
-                    }
-                    , 0)
-                }
-            }
-        }
-        , [w, R, P, L]);
-        let T = t.useCallback(e => {
-            if (!d && !v || L.paused)
-                return;
-            let t = "Tab" === e.key && !e.altKey && !e.ctrlKey && !e.metaKey
-              , n = document.activeElement;
-            if (t && n) {
-                let t = e.currentTarget
-                  , [r,o] = m(t);
-                r && o ? e.shiftKey || n !== o ? e.shiftKey && n === r && (e.preventDefault(),
-                d && b(o, {
-                    select: !0
-                })) : (e.preventDefault(),
-                d && b(r, {
-                    select: !0
-                })) : n === t && e.preventDefault()
-            }
-        }
-        , [d, v, L.paused]);
+    function v({model: e, cars: o, quality: a, shadows: n, forcedDetail: u}) {
+        let h = (0,
+        s.useThree)(e => e.gl)
+          , d = (0,
+        f.useFleetMaterials)(h)
+          , c = (0,
+        i.useMemo)( () => new l.FleetBatches(e,d.cars,Math.max(1, o.length)), [e, d, o.length]);
         return (0,
-        i.jsx)(r.Primitive.div, {
-            tabIndex: -1,
-            ...g,
-            ref: O,
-            onKeyDown: T
-        })
-    }, "FocusScope"));
-    function f(e, {select: t=!1}={}) {
-        let n = document.activeElement;
-        for (let r of e)
-            if (b(r, {
-                select: t
-            }),
-            document.activeElement !== n)
-                return
-    }
-    function m(e) {
-        let t = p(e);
-        return [v(t, e), v(t.reverse(), e)]
-    }
-    function p(e) {
-        let t = []
-          , n = document.createTreeWalker(e, NodeFilter.SHOW_ELEMENT, {
-            acceptNode: a(e => {
-                let t = "INPUT" === e.tagName && "hidden" === e.type;
-                return e.disabled || e.hidden || t ? NodeFilter.FILTER_SKIP : e.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP
-            }
-            , "acceptNode")
-        });
-        for (; n.nextNode(); )
-            t.push(n.currentNode);
-        return t
-    }
-    function v(e, t) {
-        let n = "function" == typeof t.checkVisibility && t.checkVisibility({
-            checkVisibilityCSS: !0
-        });
-        for (let r of e)
-            if (!(n ? !r.checkVisibility({
-                checkVisibilityCSS: !0
-            }) : h(r, {
-                upTo: t
-            })))
-                return r
-    }
-    function h(e, {upTo: t}) {
-        if ("hidden" === getComputedStyle(e).visibility)
-            return !0;
-        for (; e && (void 0 === t || e !== t); ) {
-            if ("none" === getComputedStyle(e).display)
-                return !0;
-            e = e.parentElement
-        }
-        return !1
-    }
-    function y(e) {
-        return e instanceof HTMLInputElement && "select" in e
-    }
-    function b(e, {select: t=!1}={}) {
-        if (e && e.focus) {
-            let n = document.activeElement;
-            e.focus({
-                preventScroll: !0
-            }),
-            e !== n && y(e) && t && e.select()
-        }
-    }
-    a(f, "focusFirst"),
-    a(m, "getTabbableEdges"),
-    a(p, "getTabbableCandidates"),
-    a(v, "findVisible"),
-    a(h, "isHidden"),
-    a(y, "isSelectableInput"),
-    a(b, "focus");
-    var E = g();
-    function g() {
-        let e = [];
-        return {
-            add(t) {
-                let n = e[0];
-                t !== n && n?.pause(),
-                (e = w(e, t)).unshift(t)
-            },
-            remove(t) {
-                e = w(e, t),
-                e[0]?.resume()
-            }
-        }
-    }
-    function w(e, t) {
-        let n = [...e]
-          , r = n.indexOf(t);
-        return -1 !== r && n.splice(r, 1),
-        n
-    }
-    function S(e) {
-        return e.filter(e => "A" !== e.tagName)
-    }
-    a(g, "createFocusScopesStack"),
-    a(w, "arrayRemove"),
-    a(S, "removeLinks"),
-    e.s(["FocusScope", 0, d])
-}
-, 610772, 934620, e => {
-    "use strict";
-    var t = e.i(271645)
-      , n = globalThis?.document ? t.useLayoutEffect : () => {}
-    ;
-    e.s(["useLayoutEffect", 0, n], 934620);
-    var r = Object.defineProperty
-      , o = t[" useId ".trim().toString()] || ( () => void 0)
-      , i = 0;
-    function u(e) {
-        let[r,u] = t.useState(o());
-        return n( () => {
-            e || u(e => e ?? String(i++))
-        }
-        , [e]),
-        e || (r ? `radix-${r}` : "")
-    }
-    r(u, "name", {
-        value: "useId",
-        configurable: !0
-    }),
-    e.s(["useId", 0, u], 610772)
-}
-, 774606, 296626, e => {
-    "use strict";
-    var t = e.i(271645)
-      , n = e.i(174080)
-      , r = e.i(248425)
-      , o = e.i(934620)
-      , i = e.i(843476)
-      , u = Object.defineProperty
-      , a = t.forwardRef(u(function(e, u) {
-        let {container: a, ...c} = e
-          , [s,l] = t.useState(!1);
+        i.useEffect)( () => (c.attach(),
+        () => c.dispose()), [c]),
         (0,
-        o.useLayoutEffect)( () => l(!0), []);
-        let d = a || s && globalThis?.document?.body;
-        return d ? n.createPortal((0,
-        i.jsx)(r.Primitive.div, {
-            ...c,
-            ref: u
-        }), d) : null
-    }, "name", {
-        value: "Portal",
-        configurable: !0
-    }));
-    e.s(["Portal", 0, a], 774606);
-    var c = Object.defineProperty
-      , s = (e, t) => c(e, "name", {
-        value: t,
-        configurable: !0
-    });
-    function l(e, n) {
-        return t.useReducer( (e, t) => n[e][t] ?? e, e)
+        i.useEffect)( () => c.setShadows(n), [c, n]),
+        (0,
+        r.useFrame)( ({camera: e, size: t}) => c.update(o, e, t.height, a, u)),
+        (0,
+        t.jsx)("primitive", {
+            object: c.root,
+            dispose: null
+        })
     }
-    s(l, "useStateMachine");
-    var d = s(e => {
-        let {present: n, children: r} = e
-          , o = f(n)
-          , i = "function" == typeof r ? r({
-            present: o.isPresent
-        }) : t.Children.only(r)
-          , u = p(o.ref, h(i));
-        return "function" == typeof r || o.isPresent ? t.cloneElement(i, {
-            ref: u
+    e.s(["DriftFleet", 0, function(e) {
+        let r, s, o, l = (r = (0,
+        i.useSyncExternalStore)(g, m, m),
+        s = (0,
+        i.useContext)(a.SceneAssetReadiness),
+        o = (0,
+        i.useContext)(a.SceneAssetFailures),
+        (0,
+        i.useEffect)( () => p(), []),
+        (0,
+        i.useLayoutEffect)( () => {
+            if (!s || r.model || r.failed)
+                return;
+            let e = Symbol("drift car model");
+            return s.add(e),
+            () => {
+                s.delete(e)
+            }
+        }
+        , [s, r]),
+        (0,
+        i.useLayoutEffect)( () => {
+            r.failed && o?.add(n.DRIFT_CAR_URL)
+        }
+        , [r, o]),
+        r.model);
+        return l ? (0,
+        t.jsx)(v, {
+            model: l,
+            ...e
         }) : null
     }
-    , "Presence");
-    function f(e) {
-        let[n,r] = t.useState()
-          , i = t.useRef(null)
-          , u = t.useRef(e)
-          , a = t.useRef("none")
-          , c = t.useRef(void 0)
-          , [d,f] = l(e ? "mounted" : "unmounted", {
-            mounted: {
-                UNMOUNT: "unmounted",
-                ANIMATION_OUT: "unmountSuspended"
+    , "loadDriftCarModel", 0, p])
+}
+, 702217, 841558, 94297, e => {
+    "use strict";
+    var t = e.i(843476)
+      , i = e.i(271645)
+      , r = e.i(94800)
+      , s = e.i(190072)
+      , o = e.i(579832)
+      , a = e.i(212236)
+      , n = e.i(37155)
+      , l = e.i(983040)
+      , f = e.i(504786)
+      , u = e.i(106258)
+      , h = e.i(260095)
+      , d = e.i(419519)
+      , c = e.i(408560)
+      , p = e.i(130327)
+      , m = e.i(315213)
+      , g = e.i(85058)
+      , v = e.i(70967)
+      , y = e.i(1792);
+    let x = NaN;
+    class w {
+        traffic;
+        slots;
+        window;
+        slotK;
+        points;
+        changed;
+        tyres;
+        newest;
+        states;
+        tyre;
+        slip;
+        constructor(e, t=2048, i=2044) {
+            this.traffic = e,
+            this.slots = t,
+            this.window = i,
+            this.changed = [],
+            this.newest = NaN,
+            this.tyre = {
+                x: 0,
+                z: 0
             },
-            unmountSuspended: {
-                MOUNT: "mounted",
-                ANIMATION_END: "unmounted"
+            this.slip = {
+                strength: 0,
+                heading: 0
             },
-            unmounted: {
-                MOUNT: "mounted"
+            this.tyres = 2 * e.cars.length,
+            this.slotK = new Float64Array(t).fill(x),
+            this.points = new Float64Array(t * this.tyres * 6),
+            this.states = e.cars.map( () => (0,
+            a.createDriftCarState)())
+        }
+        slot(e) {
+            return (e % this.slots + this.slots) % this.slots
+        }
+        holds(e) {
+            return this.slotK[this.slot(e)] === e
+        }
+        update(e, t) {
+            this.changed.length = 0;
+            let i = Math.ceil(32 * e) + 1
+              , r = i - this.window + 1;
+            this.newest = i;
+            for (let e = 0; e < this.slots; e++) {
+                let t = this.slotK[e];
+                Number.isNaN(t) || t >= r && t <= i || (this.slotK[e] = x,
+                this.changed.push(e))
             }
-        });
-        return t.useEffect( () => {
-            "mounted" === d ? (a.current = c.current ?? v(i.current),
-            c.current = void 0) : a.current = "none"
+            let s = 0;
+            for (let e = i; e >= r; e--) {
+                let i = this.slot(e);
+                if (this.slotK[i] !== e) {
+                    if (t <= 0) {
+                        s++;
+                        continue
+                    }
+                    t--,
+                    this.fill(e, i),
+                    this.changed.push(i)
+                }
+            }
+            return s
+        }
+        offset(e, t) {
+            return (this.slot(e) * this.tyres + t) * 6
+        }
+        fill(e, t) {
+            this.traffic.sample(e / 32, this.states);
+            let {tyre: i, slip: r} = this;
+            this.states.forEach( (e, s) => {
+                for (let o = 0; o < 2; o++) {
+                    (0,
+                    m.driftLocalToWorld)(e, (o ? 1 : -1) * m.DRIFT_WHEEL_X, -m.DRIFT_AXLE_Z, i),
+                    function(e, t, i) {
+                        if (!e.wheelSlipRatios || !e.wheelSlipAngles) {
+                            i.heading = e.yaw - e.slip,
+                            i.strength = Math.min(1, 3 * Math.abs(e.slip));
+                            return
+                        }
+                        let r = t ? 2 : 3;
+                        i.heading = e.yaw + e.wheelSlipAngles[r],
+                        i.strength = Math.max(0, Math.min(1, ((0,
+                        y.tyreSlideSpeed)(e.speed, e.wheelSlipRatios[r], e.wheelSlipAngles[r]) - 1.5) / 5))
+                    }(e, o, r);
+                    let a = (t * this.tyres + 2 * s + o) * 6;
+                    this.points[a] = i.x,
+                    this.points[a + 1] = i.z,
+                    this.points[a + 2] = Math.sin(r.heading),
+                    this.points[a + 3] = Math.cos(r.heading),
+                    this.points[a + 4] = r.strength,
+                    this.points[a + 5] = e.distance
+                }
+            }
+            ),
+            this.slotK[t] = e
+        }
+    }
+    let b = {
+        low: 48,
+        medium: 80,
+        high: 180,
+        ultra: 180
+    }
+      , F = {
+        low: [35, 65],
+        medium: [55, 95],
+        high: [80, 110],
+        ultra: [80, 110]
+    }
+      , M = e => 3.6 * (e + 1) + 6
+      , A = M(v.GRIDWORKS_DRIFT.speed);
+    function R() {
+        return {
+            camera: new s.Vector3,
+            sphere: new s.Sphere,
+            frustum: new s.Frustum,
+            projection: new s.Matrix4
+        }
+    }
+    function S(e, t, i, r, s, o=A) {
+        return e.getWorldPosition(s.camera),
+        s.sphere.center.set(i.x, 0, i.z),
+        s.sphere.radius = o,
+        s.sphere.applyMatrix4(t),
+        s.sphere.radius += 3,
+        s.frustum.setFromProjectionMatrix(s.projection.multiplyMatrices(e.projectionMatrix, e.matrixWorldInverse), e.coordinateSystem, e.reversedDepth),
+        s.sphere.distanceToPoint(s.camera) < F[r][1] && s.frustum.intersectsSphere(s.sphere)
+    }
+    let _ = {
+        low: .32,
+        medium: .22,
+        high: .2,
+        ultra: .18
+    };
+    function E(e) {
+        return e - 4096 * Math.floor(e / 4096)
+    }
+    let D = [void 0]
+      , T = `        // Asphalt and paint already use depth layers 1 and 2.
+        #ifdef USE_LOGARITHMIC_DEPTH_BUFFER
+          gl_FragDepth = max(0.0, gl_FragDepth - ${(3 * g.DEPTH_LAYER_STEP).toPrecision(12)});
+        #endif
+`
+      , k = 3 * g.DEPTH_LAYER_STEP
+      , I = `        float edge = smoothstep(0.0, 0.13, vUv.x) * smoothstep(0.0, 0.13, 1.0 - vUv.x);
+        float grain = 0.85 + 0.1 * sin(vUv.y * 31.0) * sin(vUv.x * 91.0);
+        float alpha = 0.58 * edge * grain * vStrength * freshness;
+        gl_FragColor = vec4(0.008, 0.009, 0.01, alpha);
+        #include <tonemapping_fragment>
+        #include <colorspace_fragment>
+        #include <fog_fragment>
+`
+      , L = [0]
+      , P = new Map;
+    function U({elapsed: e, offsets: o=L, variations: a=D, circuit: n=v.GRIDWORKS_DRIFT}) {
+        let l = `${n.id}:${a.join()}`
+          , f = (0,
+        i.useMemo)( () => {
+            let e;
+            return (e = P.get(l)) || (e = {
+                geometry: function(e, t=v.GRIDWORKS_DRIFT) {
+                    let i = Math.max(768, Math.ceil(t.line.length / .42))
+                      , r = []
+                      , o = []
+                      , a = []
+                      , n = []
+                      , l = []
+                      , f = []
+                      , u = (0,
+                    m.createDriftPose)()
+                      , h = {
+                        x: 0,
+                        z: 0
+                    }
+                      , d = {
+                        x: 0,
+                        z: 0
+                    };
+                    for (let s = 0; s < e.length; s++)
+                        for (let c of [-1, 1]) {
+                            let g = r.length / 3;
+                            for (let v = 0; v <= i; v++) {
+                                let y = v / i * t.lapSeconds;
+                                (0,
+                                m.driftLocalToWorld)((0,
+                                p.sampleDriftPose)(y, u, e[s], t), c * m.DRIFT_WHEEL_X, -m.DRIFT_AXLE_Z, h);
+                                let x = Math.min(1, 3 * Math.abs(u.slip));
+                                (0,
+                                m.driftLocalToWorld)((0,
+                                p.sampleDriftPose)(y + .001, u, e[s], t), c * m.DRIFT_WHEEL_X, -m.DRIFT_AXLE_Z, d);
+                                let w = d.x - h.x
+                                  , b = d.z - h.z
+                                  , F = Math.hypot(w, b);
+                                for (let e of [-1, 1]) {
+                                    let t = .5 * m.DRIFT_WHEEL_WIDTH;
+                                    r.push(h.x - b / F * e * t, .045, h.z + w / F * e * t),
+                                    o.push((e + 1) / 2, 12 * y),
+                                    a.push(y),
+                                    n.push(x),
+                                    l.push(s)
+                                }
+                                if (v > 0 && Math.max(x, n[n.length - 3]) >= .02) {
+                                    let e = g + (v - 1) * 2;
+                                    f.push(e, e + 1, e + 2, e + 1, e + 3, e + 2)
+                                }
+                            }
+                        }
+                    let c = new s.BufferGeometry;
+                    return c.setAttribute("position", new s.Float32BufferAttribute(r,3)),
+                    c.setAttribute("uv", new s.Float32BufferAttribute(o,2)),
+                    c.setAttribute("birth", new s.Float32BufferAttribute(a,1)),
+                    c.setAttribute("strength", new s.Float32BufferAttribute(n,1)),
+                    c.setAttribute("carIndex", new s.Float32BufferAttribute(l,1)),
+                    c.setIndex(f),
+                    c.computeBoundingSphere(),
+                    c
+                }(a, n),
+                users: 0
+            },
+            P.set(l, e)),
+            e
+        }
+        , [l, a, n])
+          , u = (0,
+        i.useMemo)( () => ({
+            ribbons: f.geometry,
+            tire: (0,
+            g.pullUnderReversedDepth)(function(e, t=v.GRIDWORKS_DRIFT.lapSeconds) {
+                return new s.ShaderMaterial({
+                    transparent: !0,
+                    depthWrite: !1,
+                    fog: !0,
+                    polygonOffset: !0,
+                    polygonOffsetFactor: 0,
+                    polygonOffsetUnits: -192,
+                    uniforms: s.UniformsUtils.merge([c.UniformsLib.fog, {
+                        times: {
+                            value: new Float32Array(e)
+                        },
+                        lap: {
+                            value: t
+                        }
+                    }]),
+                    vertexShader: `
+      #include <common>
+      #include <logdepthbuf_pars_vertex>
+      attribute float birth;
+      attribute float strength;
+      attribute float carIndex;
+      uniform float times[${e}];
+      varying float vTime;
+      varying float vBirth;
+      varying float vStrength;
+      varying vec2 vUv;
+      #include <fog_pars_vertex>
+      void main() {
+        // Select this ribbon's car once per vertex, not in a loop per fragment.
+        vTime = times[int(carIndex + 0.5)];
+        vBirth = birth; vUv = uv; vStrength = strength;
+        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+        gl_Position = projectionMatrix * mvPosition;
+        #include <logdepthbuf_vertex>
+        #include <fog_vertex>
+      }`,
+                    fragmentShader: `
+      #include <logdepthbuf_pars_fragment>
+      uniform float lap;
+      varying float vTime;
+      varying float vBirth;
+      varying float vStrength;
+      varying vec2 vUv;
+      #include <fog_pars_fragment>
+      void main() {
+        #include <logdepthbuf_fragment>
+${T}        // Every vertex of a ribbon carries the same time, so the lap cut stays per fragment.
+        float age = mod(vTime - vBirth + lap, lap);
+        float freshness = (1.0 - smoothstep(12.0, max(60.0, lap), age)) * step(vBirth, vTime);
+${I}      }`
+                })
+            }(o.length, n.lapSeconds), k)
+        }), [o.length, f, n]);
+        return (0,
+        i.useEffect)( () => (f.users++,
+        () => {
+            f.users--,
+            queueMicrotask( () => {
+                f.users || P.get(l) !== f || (P.delete(l),
+                f.geometry.dispose())
+            }
+            )
+        }
+        ), [l, f]),
+        (0,
+        i.useEffect)( () => () => u.tire.dispose(), [u]),
+        (0,
+        r.useFrame)( () => {
+            let t = u.tire.uniforms.times.value;
+            for (let i = 0; i < o.length; i++)
+                t[i] = e.current + o[i]
+        }
+        ),
+        (0,
+        t.jsx)("mesh", {
+            geometry: u.ribbons,
+            material: u.tire,
+            renderOrder: g.GROUND_DECAL_RENDER_ORDER
+        })
+    }
+    let C = new Map;
+    function O({cars: e, variations: o, quality: a, circuit: n=v.GRIDWORKS_DRIFT}) {
+        let l = b[a]
+          , f = `${n.id}:${o.join()}`
+          , u = (0,
+        i.useMemo)( () => (function(e, t, i) {
+            let r = C.get(e);
+            if (!r) {
+                let o = function(e, t=v.GRIDWORKS_DRIFT) {
+                    let i = 2 * e.length
+                      , r = new Float32Array(2048 * i * 4)
+                      , s = (0,
+                    m.createDriftPose)()
+                      , o = {
+                        x: 0,
+                        z: 0
+                    };
+                    return e.forEach( (e, i) => {
+                        for (let a = 0; a < 2048; a++) {
+                            (0,
+                            p.sampleDriftPose)(a / 2048 * t.lapSeconds, s, e, t);
+                            let n = Math.min(1, 3 * Math.abs(s.slip));
+                            for (let e = 0; e < 2; e++) {
+                                (0,
+                                m.driftLocalToWorld)(s, (e ? 1 : -1) * m.DRIFT_WHEEL_X, -m.DRIFT_AXLE_Z, o);
+                                let t = ((2 * i + e) * 2048 + a) * 4;
+                                r[t] = o.x,
+                                r[t + 1] = o.z,
+                                r[t + 2] = n
+                            }
+                        }
+                    }
+                    ),
+                    {
+                        data: r,
+                        samples: 2048,
+                        rows: i
+                    }
+                }(t, i)
+                  , a = new s.DataTexture(o.data,o.samples,o.rows,s.RGBAFormat,s.FloatType);
+                a.minFilter = a.magFilter = s.NearestFilter,
+                a.generateMipmaps = !1,
+                a.needsUpdate = !0,
+                r = {
+                    texture: a,
+                    users: 0
+                },
+                C.set(e, r)
+            }
+            return r
+        }
+        )(f, o, n), [f, o, n]);
+        (0,
+        i.useEffect)( () => (u.users++,
+        () => {
+            u.users--,
+            queueMicrotask( () => {
+                u.users || C.get(f) !== u || (C.delete(f),
+                u.texture.dispose())
+            }
+            )
+        }
+        ), [f, u]);
+        let h = (0,
+        i.useMemo)( () => (function() {
+            let e = new Uint8Array(65536);
+            for (let t = 0; t < 128; t++)
+                for (let i = 0; i < 128; i++) {
+                    let r = (i + .5) / 128 * 2 - 1
+                      , s = (t + .5) / 128 * 2 - 1
+                      , o = Math.hypot(r, s)
+                      , a = Math.sin(9 * r + Math.sin(7 * s)) * Math.cos(8 * s - 3 * r)
+                      , n = Math.max(0, Math.min(1, (1 - o) / .42))
+                      , l = n * n * (3 - 2 * n) * Math.max(0, 1 - o * o) * (.7 + .22 * a + Math.sin(23 * r + 11 * s) * Math.cos(19 * s - 7 * r) * .08)
+                      , f = (128 * t + i) * 4;
+                    e[f] = e[f + 1] = e[f + 2] = Math.round(205 + 24 * a),
+                    e[f + 3] = Math.round(255 * l)
+                }
+            let t = new s.DataTexture(e,128,128);
+            return t.magFilter = s.LinearFilter,
+            t.minFilter = s.LinearMipmapLinearFilter,
+            t.generateMipmaps = !0,
+            t.needsUpdate = !0,
+            t
+        }
+        )(), []);
+        (0,
+        i.useEffect)( () => () => h.dispose(), [h]);
+        let d = (0,
+        i.useMemo)( () => {
+            var t, i, r, o;
+            let a = (t = u.texture,
+            i = e.length,
+            r = n.lapSeconds,
+            o = u.texture.image.width,
+            new s.ShaderMaterial({
+                transparent: !0,
+                depthWrite: !1,
+                fog: !0,
+                uniforms: {
+                    ...s.UniformsUtils.merge([c.UniformsLib.fog]),
+                    smokeMap: {
+                        value: h
+                    },
+                    births: {
+                        value: t
+                    },
+                    clocks: {
+                        value: Array.from({
+                            length: i
+                        }, () => new s.Vector4)
+                    },
+                    shown: {
+                        value: new Float32Array(i)
+                    },
+                    fadeRange: {
+                        value: new s.Vector2(...F.high)
+                    }
+                },
+                defines: {
+                    CARS: i,
+                    PUFFS: l.toFixed(1),
+                    LIFE: "3.6000",
+                    LAP: r.toFixed(6),
+                    SAMPLES: o
+                },
+                vertexShader: `
+      #include <common>
+      #include <logdepthbuf_pars_vertex>
+      attribute float puff;
+      uniform vec4 clocks[CARS];
+      uniform float shown[CARS];
+      uniform sampler2D births;
+      uniform vec2 fadeRange;
+      varying vec2 vUv;
+      varying float vOpacity;
+      #include <fog_pars_vertex>
+      void main() {
+        float car = floor((puff + 0.5) / PUFFS);
+        float i = puff - car * PUFFS;
+        int c = int(car + 0.5);
+        // clocks: generation time, lap phase, seed offset, generation start.
+        vec4 clock = clocks[c];
+        float slot = floor(i * 0.5) * (LIFE / (PUFFS * 0.5));
+        float older = clock.x < slot ? 1.0 : 0.0;
+        float age = clock.x - slot + older * LIFE;
+        float born = clock.w + slot - older * LIFE;
+        float seed = i * 7.13 + clock.z - older * 1.71;
+        float phase = mod(clock.y + slot - older * LIFE, LAP) / LAP * float(SAMPLES);
+        int k = int(floor(phase)) % SAMPLES;
+        int row = c * 2 + int(mod(i, 2.0) + 0.5);
+        vec3 birth = mix(texelFetch(births, ivec2(k, row), 0).xyz, texelFetch(births, ivec2((k + 1) % SAMPLES, row), 0).xyz, fract(phase));
+
+        float spread = age * 0.32;
+        float size = 0.48 + age * (0.85 + sin(seed) * 0.12);
+        vec3 center = vec3(birth.x + sin(seed) * spread + age * 0.28, 0.19 + age * 0.48 + sin(seed * 2.0) * spread * 0.2, birth.y + cos(seed) * spread);
+        float rotation = seed + age * 0.16;
+        float c0 = cos(rotation), s0 = sin(rotation);
+        vUv = mat2(c0, -s0, s0, c0) * (uv - 0.5) + 0.5;
+        vOpacity = born < 0.0 ? 0.0 : 0.34 * birth.z * min(age / 0.1, 1.0) * pow(1.0 - age / LIFE, 1.4) * shown[c];
+
+        vec4 mvPosition = modelViewMatrix * vec4(center, 1.0);
+        // Fade before a puff covers a large part of the view. Collapse invisible
+        // puffs in the vertex shader so they generate NO fragments.
+        float depth = -mvPosition.z;
+        float coverage = size * projectionMatrix[1][1] / max(depth, 0.001);
+        vOpacity *= smoothstep(0.35, 1.4, depth) * (1.0 - smoothstep(0.45, 1.1, coverage));
+        vOpacity *= 1.0 - smoothstep(fadeRange.x, fadeRange.y, length(mvPosition.xyz));
+        if (vOpacity < 0.002) {
+          gl_Position = vec4(2.0, 2.0, 2.0, 1.0);
+          return;
+        }
+        // View-facing puffs retain their shape through drone roll and their
+        // world size even on a scaled-down track.
+        mvPosition.xy += position.xy * size;
+        gl_Position = projectionMatrix * mvPosition;
+        #include <logdepthbuf_vertex>
+        #include <fog_vertex>
+      }`,
+                fragmentShader: `
+      #include <logdepthbuf_pars_fragment>
+      uniform sampler2D smokeMap;
+      varying vec2 vUv;
+      varying float vOpacity;
+      #include <fog_pars_fragment>
+      void main() {
+        vec4 puff = texture2D(smokeMap, vUv);
+        float alpha = puff.a * vOpacity;
+        if (alpha < 0.002) discard;
+        #include <logdepthbuf_fragment>
+        gl_FragColor = vec4(puff.rgb, alpha);
+        #include <tonemapping_fragment>
+        #include <colorspace_fragment>
+        #include <fog_fragment>
+      }`
+            }))
+              , f = new s.PlaneGeometry(1,1)
+              , d = new s.InstancedBufferGeometry;
+            d.index = f.index,
+            d.setAttribute("position", f.getAttribute("position")),
+            d.setAttribute("uv", f.getAttribute("uv")),
+            d.setAttribute("puff", new s.InstancedBufferAttribute(Float32Array.from({
+                length: e.length * l
+            }, (e, t) => t),1)),
+            d.instanceCount = e.length * l;
+            let p = new s.Mesh(d,a);
+            return p.frustumCulled = !1,
+            p.renderOrder = 2,
+            p.name = "Drift smoke",
+            {
+                mesh: p,
+                material: a,
+                geometry: d
+            }
+        }
+        , [h, u, e.length, l, n.lapSeconds]);
+        (0,
+        i.useEffect)( () => () => {
+            d.material.dispose(),
+            d.geometry.dispose()
         }
         , [d]),
         (0,
-        o.useLayoutEffect)( () => {
-            let t = i.current
-              , n = u.current;
-            if (n !== e) {
-                let r = a.current
-                  , o = v(t);
-                e ? (c.current = o,
-                f("MOUNT")) : "none" === o || t?.display === "none" ? f("UNMOUNT") : n && r !== o ? f("ANIMATION_OUT") : f("UNMOUNT"),
-                u.current = e
+        i.useEffect)( () => {
+            d.material.uniforms.fadeRange.value.set(...F[a])
+        }
+        , [a, d]);
+        let g = (0,
+        i.useMemo)( () => R(), []);
+        return (0,
+        r.useFrame)( ({camera: t}) => {
+            let {mesh: i, material: r} = d
+              , s = r.uniforms.clocks.value
+              , o = r.uniforms.shown.value;
+            i.updateWorldMatrix(!0, !1);
+            let l = !1;
+            e.forEach( (e, r) => {
+                var f;
+                let u, h, d, c = e.pose.clock, p = S(t, i.matrixWorld, e.pose, a, g, M(n.speed));
+                o[r] = +!!p,
+                l ||= p;
+                let m = (f = n.lapSeconds,
+                h = 3.6 * (u = Math.floor(c / 3.6)),
+                {
+                    frac: c - h,
+                    lapPhase: (h % f + f) % f,
+                    seed: (1.71 * u % (d = 2 * Math.PI) + d) % d,
+                    base: h
+                });
+                s[r].set(m.frac, m.lapPhase, m.seed, m.base)
             }
-        }
-        , [e, f]),
-        (0,
-        o.useLayoutEffect)( () => {
-            if (n) {
-                let e, t = n.ownerDocument.defaultView ?? window, r = s(r => {
-                    let o = v(i.current).includes(CSS.escape(r.animationName));
-                    if (r.target === n && o && (f("ANIMATION_END"),
-                    !u.current)) {
-                        let r = n.style.animationFillMode;
-                        n.style.animationFillMode = "forwards",
-                        e = t.setTimeout( () => {
-                            "forwards" === n.style.animationFillMode && (n.style.animationFillMode = r)
-                        }
-                        )
-                    }
-                }
-                , "handleAnimationEnd"), o = s(e => {
-                    e.target === n && (a.current = v(i.current))
-                }
-                , "handleAnimationStart");
-                return n.addEventListener("animationstart", o),
-                n.addEventListener("animationcancel", r),
-                n.addEventListener("animationend", r),
-                () => {
-                    t.clearTimeout(e),
-                    n.removeEventListener("animationstart", o),
-                    n.removeEventListener("animationcancel", r),
-                    n.removeEventListener("animationend", r)
-                }
-            }
-            f("ANIMATION_END")
-        }
-        , [n, f]),
-        {
-            isPresent: ["mounted", "unmountSuspended"].includes(d),
-            ref: t.useCallback(e => {
-                if (e) {
-                    let t = getComputedStyle(e);
-                    i.current = t,
-                    c.current = v(t)
-                } else
-                    i.current = null;
-                r(e)
-            }
-            , [])
-        }
-    }
-    function m(e, t) {
-        if ("function" == typeof e)
-            return e(t);
-        null != e && (e.current = t)
-    }
-    function p(...e) {
-        let n = t.useRef(e);
-        return n.current = e,
-        t.useCallback(e => {
-            let t = n.current
-              , r = !1
-              , o = t.map(t => {
-                let n = m(t, e);
-                return r || "function" != typeof n || (r = !0),
-                n
-            }
-            );
-            if (r)
-                return () => {
-                    for (let e = 0; e < o.length; e++) {
-                        let n = o[e];
-                        "function" == typeof n ? n() : m(t[e], null)
-                    }
-                }
-        }
-        , [])
-    }
-    function v(e) {
-        return e?.animationName || "none"
-    }
-    function h(e) {
-        let t = Object.getOwnPropertyDescriptor(e.props, "ref")?.get
-          , n = t && "isReactWarning" in t && t.isReactWarning;
-        return n ? e.ref : (n = (t = Object.getOwnPropertyDescriptor(e, "ref")?.get) && "isReactWarning" in t && t.isReactWarning) ? e.props.ref : e.props.ref || e.ref
-    }
-    s(f, "usePresence"),
-    s(m, "setRef"),
-    s(p, "useStableComposedRefs"),
-    s(v, "getAnimationName"),
-    s(h, "getElementRef"),
-    e.s(["Presence", 0, d], 296626)
-}
-, 369340, e => {
-    "use strict";
-    var t = e.i(271645)
-      , n = e.i(934620)
-      , r = Object.defineProperty
-      , o = t[" useEffectEvent ".trim().toString()]
-      , i = t[" useInsertionEffect ".trim().toString()];
-    function u(e) {
-        if ("function" == typeof o)
-            return o(e);
-        let r = t.useRef( () => {
-            throw Error("Cannot call an event handler while rendering.")
-        }
-        );
-        return "function" == typeof i ? i( () => {
-            r.current = e
-        }
-        ) : (0,
-        n.useLayoutEffect)( () => {
-            r.current = e
+            ),
+            i.visible = l
         }
         ),
-        t.useMemo( () => (...e) => r.current?.(...e), [])
-    }
-    r(u, "name", {
-        value: "useEffectEvent",
-        configurable: !0
-    });
-    var a = Object.defineProperty
-      , c = (e, t) => a(e, "name", {
-        value: t,
-        configurable: !0
-    })
-      , s = t[" useInsertionEffect ".trim().toString()] || n.useLayoutEffect;
-    function l({prop: e, defaultProp: n, onChange: r=c( () => {}
-    , "onChange"), caller: o}) {
-        let[i,u,a] = d({
-            defaultProp: n,
-            onChange: r
+        (0,
+        t.jsx)("primitive", {
+            object: d.mesh
         })
-          , s = void 0 !== e
-          , m = s ? e : i;
-        return [m, t.useCallback(t => {
-            if (s) {
-                let n = f(t) ? t(e) : t;
-                n !== e && a.current?.(n)
-            } else
-                u(t)
-        }
-        , [s, e, u, a])]
     }
-    function d({defaultProp: e, onChange: n}) {
-        let[r,o] = t.useState(e)
-          , i = t.useRef(r)
-          , u = t.useRef(n);
-        return s( () => {
-            u.current = n
+    let N = null
+      , j = !1
+      , z = new Set;
+    function W() {
+        if (N)
+            return N;
+        let e = new s.TextureLoader().load("/sim/drift-smoke/puffs.webp", () => {
+            j = !0,
+            z.forEach(e => e())
         }
-        , [n]),
-        t.useEffect( () => {
-            i.current !== r && (u.current?.(r),
-            i.current = r)
+        , void 0, t => {
+            console.error("drift smoke sprites failed to load", t),
+            N === e && (N = null)
         }
-        , [r, i]),
-        [r, o, u]
+        );
+        return e.minFilter = s.LinearMipmapLinearFilter,
+        e.magFilter = s.LinearFilter,
+        e.generateMipmaps = !0,
+        e.premultiplyAlpha = !1,
+        N = e
     }
-    function f(e) {
-        return "function" == typeof e
+    function B() {
+        return j
     }
-    c(l, "useControllableState"),
-    c(d, "useUncontrolledState"),
-    c(f, "isFunction");
-    var m = Symbol("RADIX:SYNC_STATE");
-    c(function(e, n, r, o) {
-        let {prop: i, defaultProp: a, onChange: c, caller: s} = n
-          , l = void 0 !== i
-          , d = u(c)
-          , f = [{
-            ...r,
-            state: a
-        }];
-        o && f.push(o);
-        let[p,v] = t.useReducer( (t, n) => {
-            if (n.type === m)
-                return {
-                    ...t,
-                    state: n.state
-                };
-            let r = e(t, n);
-            return l && !Object.is(r.state, t.state) && d(r.state),
-            r
-        }
-        , ...f)
-          , h = p.state
-          , y = t.useRef(h);
-        t.useEffect( () => {
-            y.current !== h && (y.current = h,
-            l || d(h))
-        }
-        , [h, y, l]);
-        let b = t.useMemo( () => void 0 !== i ? {
-            ...p,
-            state: i
-        } : p, [p, i]);
-        return t.useEffect( () => {
-            l && !Object.is(i, p.state) && v({
-                type: m,
-                state: i
-            })
-        }
-        , [i, p.state, l]),
-        [b, v]
-    }, "useControllableStateReducer"),
-    e.s(["useControllableState", 0, l], 369340)
-}
-, 186312, e => {
-    "use strict";
-    var t = new WeakMap
-      , n = new WeakMap
-      , r = {}
-      , o = 0
-      , i = function(e) {
-        return e && (e.host || i(e.parentNode))
-    }
-      , u = function(e, u, a, c) {
-        var s = (Array.isArray(e) ? e : [e]).map(function(e) {
-            if (u.contains(e))
-                return e;
-            var t = i(e);
-            return t && u.contains(t) ? t : (console.error("aria-hidden", e, "in not contained inside", u, ". Doing nothing"),
-            null)
-        }).filter(function(e) {
-            return !!e
-        });
-        r[a] || (r[a] = new WeakMap);
-        var l = r[a]
-          , d = []
-          , f = new Set
-          , m = new Set(s)
-          , p = function(e) {
-            !e || f.has(e) || (f.add(e),
-            p(e.parentNode))
-        };
-        s.forEach(p);
-        var v = function(e) {
-            !e || m.has(e) || Array.prototype.forEach.call(e.children, function(e) {
-                if (f.has(e))
-                    v(e);
-                else
-                    try {
-                        var r = e.getAttribute(c)
-                          , o = null !== r && "false" !== r
-                          , i = (t.get(e) || 0) + 1
-                          , u = (l.get(e) || 0) + 1;
-                        t.set(e, i),
-                        l.set(e, u),
-                        d.push(e),
-                        1 === i && o && n.set(e, !0),
-                        1 === u && e.setAttribute(a, "true"),
-                        o || e.setAttribute(c, "true")
-                    } catch (t) {
-                        console.error("aria-hidden: cannot operate on ", e, t)
-                    }
-            })
-        };
-        return v(u),
-        f.clear(),
-        o++,
-        function() {
-            d.forEach(function(e) {
-                var r = t.get(e) - 1
-                  , o = l.get(e) - 1;
-                t.set(e, r),
-                l.set(e, o),
-                r || (n.has(e) || e.removeAttribute(c),
-                n.delete(e)),
-                o || e.removeAttribute(a)
-            }),
-            --o || (t = new WeakMap,
-            t = new WeakMap,
-            n = new WeakMap,
-            r = {})
-        }
-    };
-    e.s(["hideOthers", 0, function(e, t, n) {
-        void 0 === n && (n = "data-aria-hidden");
-        var r = Array.from(Array.isArray(e) ? e : [e])
-          , o = t || ("u" < typeof document ? null : (Array.isArray(e) ? e[0] : e).ownerDocument.body);
-        return o ? (r.push.apply(r, Array.from(o.querySelectorAll("[aria-live], script"))),
-        u(r, o, n, "aria-hidden")) : function() {
-            return null
+    function V(e) {
+        return z.add(e),
+        () => {
+            z.delete(e)
         }
     }
-    ])
-}
-, 985369, e => {
-    "use strict";
-    var t, n, r, o, i, u, a, c = e.i(290571), s = e.i(271645), l = "right-scroll-bar-position", d = "width-before-scroll-bar";
-    function f(e, t) {
-        return "function" == typeof e ? e(t) : e && (e.current = t),
-        e
-    }
-    var m = "u" > typeof window ? s.useLayoutEffect : s.useEffect
-      , p = new WeakMap
-      , v = (void 0 === t && (t = {}),
-    (void 0 === n && (n = function(e) {
-        return e
-    }
-    ),
-    r = [],
-    o = !1,
-    i = {
-        read: function() {
-            if (o)
-                throw Error("Sidecar: could not `read` from an `assigned` medium. `read` could be used only with `useMedium`.");
-            return r.length ? r[r.length - 1] : null
-        },
-        useMedium: function(e) {
-            var t = n(e, o);
-            return r.push(t),
-            function() {
-                r = r.filter(function(e) {
-                    return e !== t
-                })
-            }
-        },
-        assignSyncMedium: function(e) {
-            for (o = !0; r.length; ) {
-                var t = r;
-                r = [],
-                t.forEach(e)
-            }
-            r = {
-                push: function(t) {
-                    return e(t)
+    let G = new s.Vector3(1.15,1.09,1)
+      , H = new s.Vector3(.5,.49,.66);
+    function K(e, t, i, r, o, a) {
+        return new s.ShaderMaterial({
+            transparent: !0,
+            depthTest: !0,
+            depthWrite: !1,
+            fog: !0,
+            uniforms: {
+                ...s.UniformsUtils.merge([c.UniformsLib.fog]),
+                smokeMap: {
+                    value: e
                 },
-                filter: function() {
-                    return r
-                }
-            }
-        },
-        assignMedium: function(e) {
-            o = !0;
-            var t = [];
-            if (r.length) {
-                var n = r;
-                r = [],
-                n.forEach(e),
-                t = r
-            }
-            var i = function() {
-                var n = t;
-                t = [],
-                n.forEach(e)
-            }
-              , u = function() {
-                return Promise.resolve().then(i)
-            };
-            u(),
-            r = {
-                push: function(e) {
-                    t.push(e),
-                    u()
+                births: {
+                    value: t
                 },
-                filter: function(e) {
-                    return t = t.filter(e),
-                    r
+                slideClock: {
+                    value: new s.Vector2
+                },
+                slides: {
+                    value: Array.from({
+                        length: 2 * i
+                    }, () => new s.Vector4)
+                },
+                order: {
+                    value: new Float32Array(i)
+                },
+                shown: {
+                    value: new Float32Array(i)
+                },
+                fadeRange: {
+                    value: new s.Vector2(...F.high)
+                },
+                sunView: {
+                    value: new s.Vector3(0,1,0)
+                },
+                lit: {
+                    value: G.clone()
+                },
+                shade: {
+                    value: H.clone()
                 }
-            }
-        }
-    }).options = (0,
-    c.__assign)({
-        async: !0,
-        ssr: !1
-    }, t),
-    i)
-      , h = function() {}
-      , y = s.forwardRef(function(e, t) {
-        var n, r, o, i, u = s.useRef(null), a = s.useState({
-            onScrollCapture: h,
-            onWheelCapture: h,
-            onTouchMoveCapture: h
-        }), l = a[0], d = a[1], y = e.forwardProps, b = e.children, E = e.className, g = e.removeScrollBar, w = e.enabled, S = e.shards, C = e.sideCar, R = e.noRelative, P = e.noIsolation, N = e.inert, O = e.allowPinchZoom, L = e.as, T = e.gapMode, M = (0,
-        c.__rest)(e, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noRelative", "noIsolation", "inert", "allowPinchZoom", "as", "gapMode"]), k = (n = [u, t],
-        r = function(e) {
-            return n.forEach(function(t) {
-                return f(t, e)
-            })
-        }
-        ,
-        (o = (0,
-        s.useState)(function() {
-            return {
-                value: null,
-                callback: r,
-                facade: {
-                    get current() {
-                        return o.value
-                    },
-                    set current(value) {
-                        var e = o.value;
-                        e !== value && (o.value = value,
-                        o.callback(value, e))
-                    }
-                }
-            }
-        })[0]).callback = r,
-        i = o.facade,
-        m(function() {
-            var e = p.get(i);
-            if (e) {
-                var t = new Set(e)
-                  , r = new Set(n)
-                  , o = i.current;
-                t.forEach(function(e) {
-                    r.has(e) || f(e, null)
-                }),
-                r.forEach(function(e) {
-                    t.has(e) || f(e, o)
-                })
-            }
-            p.set(i, n)
-        }, [n]),
-        i), _ = (0,
-        c.__assign)((0,
-        c.__assign)({}, M), l);
-        return s.createElement(s.Fragment, null, w && s.createElement(C, {
-            sideCar: v,
-            removeScrollBar: g,
-            shards: S,
-            noRelative: R,
-            noIsolation: P,
-            inert: N,
-            setCallbacks: d,
-            allowPinchZoom: !!O,
-            lockRef: u,
-            gapMode: T
-        }), y ? s.cloneElement(s.Children.only(b), (0,
-        c.__assign)((0,
-        c.__assign)({}, _), {
-            ref: k
-        })) : s.createElement(void 0 === L ? "div" : L, (0,
-        c.__assign)({}, _, {
-            className: E,
-            ref: k
-        }), b))
-    });
-    y.defaultProps = {
-        enabled: !0,
-        removeScrollBar: !0,
-        inert: !1
-    },
-    y.classNames = {
-        fullWidth: d,
-        zeroRight: l
-    };
-    var b = function(e) {
-        var t = e.sideCar
-          , n = (0,
-        c.__rest)(e, ["sideCar"]);
-        if (!t)
-            throw Error("Sidecar: please provide `sideCar` property to import the right car");
-        var r = t.read();
-        if (!r)
-            throw Error("Sidecar medium not found");
-        return s.createElement(r, (0,
-        c.__assign)({}, n))
-    };
-    b.isSideCarExport = !0;
-    var E = function() {
-        var e = 0
-          , t = null;
-        return {
-            add: function(n) {
-                if (0 == e && (t = function() {
-                    if (!document)
-                        return null;
-                    var e = document.createElement("style");
-                    e.type = "text/css";
-                    var t = a || ("u" > typeof __webpack_nonce__ ? __webpack_nonce__ : void 0);
-                    return t && e.setAttribute("nonce", t),
-                    e
-                }())) {
-                    var r, o;
-                    (r = t).styleSheet ? r.styleSheet.cssText = n : r.appendChild(document.createTextNode(n)),
-                    o = t,
-                    (document.head || document.getElementsByTagName("head")[0]).appendChild(o)
-                }
-                e++
             },
-            remove: function() {
-                --e || !t || (t.parentNode && t.parentNode.removeChild(t),
-                t = null)
-            }
-        }
-    }
-      , g = function() {
-        var e = E();
-        return function(t, n) {
-            s.useEffect(function() {
-                return e.add(t),
-                function() {
-                    e.remove()
+            defines: {
+                CARS: i,
+                TYRES: 2 * i,
+                PUFFS: r.toFixed(1),
+                LIFE: "2.2000",
+                SAMPLES: a,
+                SPACING: o.toFixed(4),
+                BIRTH: Math.max(.64, 2.5 * o).toFixed(4),
+                OPACITY: (function(e, t=0) {
+                    let i = Math.min(1, Math.max(0, (t / 2.2 - .7) / .3));
+                    return (1 - Math.pow(.13, e / .55)) * (1 - i * i * (3 - 2 * i))
                 }
-            }, [t && n])
+                )(o).toFixed(4),
+                RATE: "32.0",
+                LAST: 254,
+                PERIOD: "4096.0",
+                FINAL_SIZE: "3.0000",
+                SPREAD: "0.4500",
+                JITTER: "0.0600",
+                BIRTH_LIFT: "0.1000",
+                LIFT: "0.1600",
+                RISE: "0.1600"
+            },
+            vertexShader: `
+      #include <common>
+      #include <logdepthbuf_pars_vertex>
+      attribute float puff;
+      uniform sampler2D births;
+      uniform vec2 slideClock;
+      uniform vec4 slides[TYRES];
+      uniform float order[CARS];
+      uniform float shown[CARS];
+      uniform vec2 fadeRange;
+      varying vec2 vUv;
+      varying vec2 vCell;
+      varying vec2 vTurn;
+      varying float vOpacity;
+      varying float vHeight;
+      varying float vErode;
+      #include <fog_pars_vertex>
+
+      // Tyre row's table point m columns after the search's oldest.
+      vec4 point(int row, int m) {
+        return texelFetch(births, ivec2((int(slideClock.x) + m) % SAMPLES, row), 0);
+      }
+      // Slide distance at column m relative to now, unwrapped: never decreasing in m.
+      float rel(int row, int m, float now) {
+        float d = point(row, m).w - now;
+        return d - PERIOD * floor(d / PERIOD + 0.5);
+      }
+
+      void hide() {
+        gl_Position = vec4(2.0, 2.0, 2.0, 1.0);
+      }
+
+      void main() {
+        float car = floor((puff + 0.5) / (PUFFS * 2.0));
+        float j = puff - car * PUFFS * 2.0;
+        int c = int(car + 0.5);
+        float side = mod(j, 2.0);
+        float rank = floor(j * 0.5);
+        rank = order[c] > 0.5 ? PUFFS - 1.0 - rank : rank;
+        int row = c * 2 + int(side + 0.5);
+        vec4 slide = slides[row];
+        // This puff's slide distance, relative to now.
+        float target = -slide.y - rank * SPACING;
+
+        // Where the tyre's slide reached it: the last column at or before it, then the step's fraction.
+        if (shown[c] < 0.5 || rel(row, 0, slide.x) > target) { hide(); return; }
+        int lo = 0, hi = LAST;
+        for (int step = 0; step < 8; step++) {
+          if (hi - lo <= 1) break;
+          int mid = (lo + hi) / 2;
+          if (rel(row, mid, slide.x) <= target) lo = mid; else hi = mid;
         }
-    }
-      , w = function() {
-        var e = g();
-        return function(t) {
-            return e(t.styles, t.dynamic),
-            null
-        }
-    }
-      , S = {
-        left: 0,
-        top: 0,
-        right: 0,
-        gap: 0
-    }
-      , C = function(e) {
-        return parseInt(e || "", 10) || 0
-    }
-      , R = function(e) {
-        var t = window.getComputedStyle(document.body)
-          , n = t["padding" === e ? "paddingLeft" : "marginLeft"]
-          , r = t["padding" === e ? "paddingTop" : "marginTop"]
-          , o = t["padding" === e ? "paddingRight" : "marginRight"];
-        return [C(n), C(r), C(o)]
-    }
-      , P = function(e) {
-        if (void 0 === e && (e = "margin"),
-        "u" < typeof window)
-            return S;
-        var t = R(e)
-          , n = document.documentElement.clientWidth
-          , r = window.innerWidth;
-        return {
-            left: t[0],
-            top: t[1],
-            right: t[2],
-            gap: Math.max(0, r - n + t[2] - t[0])
-        }
-    }
-      , N = w()
-      , O = "data-scroll-locked"
-      , L = function(e, t, n, r) {
-        var o = e.left
-          , i = e.top
-          , u = e.right
-          , a = e.gap;
-        return void 0 === n && (n = "margin"),
-        "\n  .".concat("with-scroll-bars-hidden", " {\n   overflow: hidden ").concat(r, ";\n   padding-right: ").concat(a, "px ").concat(r, ";\n  }\n  body[").concat(O, "] {\n    overflow: hidden ").concat(r, ";\n    overscroll-behavior: contain;\n    ").concat([t && "position: relative ".concat(r, ";"), "margin" === n && "\n    padding-left: ".concat(o, "px;\n    padding-top: ").concat(i, "px;\n    padding-right: ").concat(u, "px;\n    margin-left:0;\n    margin-top:0;\n    margin-right: ").concat(a, "px ").concat(r, ";\n    "), "padding" === n && "padding-right: ".concat(a, "px ").concat(r, ";")].filter(Boolean).join(""), "\n  }\n  \n  .").concat(l, " {\n    right: ").concat(a, "px ").concat(r, ";\n  }\n  \n  .").concat(d, " {\n    margin-right: ").concat(a, "px ").concat(r, ";\n  }\n  \n  .").concat(l, " .").concat(l, " {\n    right: 0 ").concat(r, ";\n  }\n  \n  .").concat(d, " .").concat(d, " {\n    margin-right: 0 ").concat(r, ";\n  }\n  \n  body[").concat(O, "] {\n    ").concat("--removed-body-scroll-bar-size", ": ").concat(a, "px;\n  }\n")
-    }
-      , T = function() {
-        var e = parseInt(document.body.getAttribute(O) || "0", 10);
-        return isFinite(e) ? e : 0
-    }
-      , M = function() {
-        s.useEffect(function() {
-            return document.body.setAttribute(O, (T() + 1).toString()),
-            function() {
-                var e = T() - 1;
-                e <= 0 ? document.body.removeAttribute(O) : document.body.setAttribute(O, e.toString())
-            }
-        }, [])
-    }
-      , k = function(e) {
-        var t = e.noRelative
-          , n = e.noImportant
-          , r = e.gapMode
-          , o = void 0 === r ? "margin" : r;
-        M();
-        var i = s.useMemo(function() {
-            return P(o)
-        }, [o]);
-        return s.createElement(N, {
-            styles: L(i, !t, o, n ? "" : "!important")
+        float a = rel(row, lo, slide.x), b = rel(row, lo + 1, slide.x);
+        if (b <= a) { hide(); return; }
+        float f = min(1.0, (target - a) / (b - a));
+        float age = (slideClock.y - float(lo) - f) / RATE;
+        if (age < 0.0 || age >= LIFE) { hide(); return; }
+        vec3 birth = mix(point(row, lo).xyz, point(row, lo + 1).xyz, f);
+
+        float number = mod(slide.z - rank, 4096.0) + side * 1013.0;
+        float seed = number * 2.39996;
+        float life = age / LIFE;
+        // Dense and low at the tyre, swelling and rising behind the car over its life.
+        float grow = life;
+        float birthSize = BIRTH * (1.0 + sin(seed) * 0.04);
+        float size = mix(birthSize, FINAL_SIZE, grow);
+        float spread = mix(JITTER, SPREAD, grow);
+        float height = mix(birthSize * BIRTH_LIFT, FINAL_SIZE * LIFT + RISE, grow);
+        vec3 center = vec3(birth.x + sin(seed) * spread, height, birth.y + cos(seed) * spread);
+        float rotation = seed + life * 0.5;
+        float c0 = cos(rotation), s0 = sin(rotation);
+        vUv = mat2(c0, -s0, s0, c0) * (uv - 0.5) + 0.5;
+        vTurn = vec2(c0, s0);
+        float cell = floor(fract(seed * 0.618) * 4.0);
+        vCell = vec2(mod(cell, 2.0), floor(cell * 0.5)) * 0.5;
+        vErode = smoothstep(0.5, 1.0, life);
+        vOpacity = OPACITY * birth.z * min(age / 0.04, 1.0) * (1.0 - smoothstep(0.7, 1.0, life));
+
+        vec4 mvPosition = modelViewMatrix * vec4(center, 1.0);
+        vec4 ground = modelViewMatrix * vec4(center.x, 0.0, center.z, 1.0);
+        vec3 up = normalize(mat3(modelViewMatrix) * vec3(0.0, 1.0, 0.0));
+        // Soften, never vanish, as the camera passes through a puff.
+        float depth = -mvPosition.z;
+        vOpacity *= mix(0.3, 1.0, smoothstep(0.2, 0.9 + size * 0.2, depth));
+        vOpacity *= 1.0 - smoothstep(fadeRange.x, fadeRange.y, length(mvPosition.xyz));
+        if (vOpacity < 0.002) { hide(); return; }
+        mvPosition.xy += position.xy * size;
+        vHeight = dot(mvPosition.xyz - ground.xyz, up);
+        // Use the billboard's real depth. Pulling it towards the camera let smoke behind
+        // an opaque car win its depth test and show through the opposite body panel (#774).
+        gl_Position = projectionMatrix * mvPosition;
+        #include <logdepthbuf_vertex>
+        #include <fog_vertex>
+      }`,
+            fragmentShader: `
+      #include <logdepthbuf_pars_fragment>
+      uniform sampler2D smokeMap;
+      uniform vec3 sunView;
+      uniform vec3 lit;
+      uniform vec3 shade;
+      varying vec2 vUv;
+      varying vec2 vCell;
+      varying vec2 vTurn;
+      varying float vOpacity;
+      varying float vHeight;
+      varying float vErode;
+      #include <fog_pars_fragment>
+      void main() {
+        vec2 uv = clamp(vUv, 0.0, 1.0) * 0.5 + vCell;
+        vec4 puff = texture2D(smokeMap, uv);
+        // Old puffs lose their thin parts first: they break into wisps.
+        float density = smoothstep(vErode * 0.7, vErode * 0.7 + 0.35, puff.a);
+        // Where the puff meets the asphalt it fades instead of cutting a line.
+        float alpha = density * vOpacity * smoothstep(0.0, 0.3, vHeight);
+        if (alpha < 0.004) discard;
+        #include <logdepthbuf_fragment>
+        vec2 n2 = puff.rg * 2.0 - 1.0;
+        // The sprite turns by vTurn: turn its normal back into the view.
+        n2 = vec2(n2.x * vTurn.x - n2.y * vTurn.y, n2.x * vTurn.y + n2.y * vTurn.x);
+        vec3 normal = vec3(n2, sqrt(max(0.0, 1.0 - dot(n2, n2))));
+        float light = clamp(dot(normal, sunView) * 0.7 + 0.45, 0.0, 1.0);
+        vec3 color = mix(shade, lit, smoothstep(0.0, 1.0, light)) * (0.8 + 0.2 * puff.b);
+        gl_FragColor = vec4(color, alpha);
+        #include <tonemapping_fragment>
+        #include <colorspace_fragment>
+        #include <fog_fragment>
+      }`
         })
     }
-      , _ = !1;
-    if ("u" > typeof window)
-        try {
-            var A = Object.defineProperty({}, "passive", {
-                get: function() {
-                    return _ = !0,
-                    !0
-                }
-            });
-            window.addEventListener("test", A, A),
-            window.removeEventListener("test", A, A)
-        } catch (e) {
-            _ = !1
+    e.s(["onRacingSmokeAtlas", 0, V, "racingSmokeAtlas", 0, W, "racingSmokeAtlasReady", 0, B, "racingSmokeMaterial", 0, K], 841558);
+    var q = e.i(225228);
+    let $ = 200 * Math.PI / 31;
+    class X {
+        history;
+        geometry;
+        position;
+        mark;
+        drawn;
+        dirty;
+        whole;
+        constructor(e) {
+            this.history = e,
+            this.geometry = new s.BufferGeometry,
+            this.dirty = new Uint8Array(2048),
+            this.whole = !1;
+            const t = e.slots * e.tyres;
+            this.position = new s.BufferAttribute(new Float32Array(4 * t * 3),3).setUsage(s.DynamicDrawUsage),
+            this.mark = new s.BufferAttribute(new Float32Array(4 * t * 4),4).setUsage(s.DynamicDrawUsage);
+            const i = new Uint32Array(6 * t);
+            for (let e = 0; e < t; e++) {
+                const t = 4 * e;
+                i.set([t, t + 1, t + 2, t + 1, t + 3, t + 2], 6 * e)
+            }
+            this.geometry.setAttribute("position", this.position),
+            this.geometry.setAttribute("mark", this.mark),
+            this.geometry.setIndex(new s.BufferAttribute(i,1)),
+            this.drawn = new Float64Array(e.slots).fill(NaN),
+            this.position.onUpload( () => {
+                this.whole = !1
+            }
+            )
         }
-    var x = !!_ && {
-        passive: !1
-    }
-      , D = function(e, t) {
-        if (!(e instanceof Element))
-            return !1;
-        var n = window.getComputedStyle(e);
-        return "hidden" !== n[t] && (n.overflowY !== n.overflowX || "TEXTAREA" === e.tagName || "visible" !== n[t])
-    }
-      , I = function(e, t) {
-        var n = t.ownerDocument
-          , r = t;
-        do {
-            if ("u" > typeof ShadowRoot && r instanceof ShadowRoot && (r = r.host),
-            F(e, r)) {
-                var o = j(e, r);
-                if (o[1] > o[2])
-                    return !0
+        sync() {
+            let {history: e} = this;
+            for (let t of e.changed)
+                this.dirty[t] = 1,
+                this.dirty[(t + e.slots - 1) % e.slots] = 1;
+            let t = -1;
+            for (let i = 0; i <= e.slots; i++) {
+                let r = i < e.slots && 1 === this.dirty[i] && this.draw(i);
+                i < e.slots && (this.dirty[i] = 0),
+                r && t < 0 && (t = i),
+                !r && t >= 0 && (this.upload(t, i),
+                t = -1)
             }
-            r = r.parentNode
-        } while (r && r !== n.body) return !1
-    }
-      , F = function(e, t) {
-        return "v" === e ? D(t, "overflowY") : D(t, "overflowX")
-    }
-      , j = function(e, t) {
-        return "v" === e ? [t.scrollTop, t.scrollHeight, t.clientHeight] : [t.scrollLeft, t.scrollWidth, t.clientWidth]
-    }
-      , W = function(e, t, n, r, o) {
-        var i, u = (i = window.getComputedStyle(t).direction,
-        "h" === e && "rtl" === i ? -1 : 1), a = u * r, c = n.target, s = t.contains(c), l = !1, d = a > 0, f = 0, m = 0;
-        do {
-            if (!c)
-                break;
-            var p = j(e, c)
-              , v = p[0]
-              , h = p[1] - p[2] - u * v;
-            (v || h) && F(e, c) && (f += h,
-            m += v);
-            var y = c.parentNode;
-            c = y && y.nodeType === Node.DOCUMENT_FRAGMENT_NODE ? y.host : y
-        } while (!s && c !== document.body || s && (t.contains(c) || t === c)) return d && (o && 1 > Math.abs(f) || !o && a > f) ? l = !0 : !d && (o && 1 > Math.abs(m) || !o && -a > m) && (l = !0),
-        l
-    }
-      , U = function(e) {
-        return "changedTouches" in e ? [e.changedTouches[0].clientX, e.changedTouches[0].clientY] : [0, 0]
-    }
-      , B = function(e) {
-        return [e.deltaX, e.deltaY]
-    }
-      , $ = function(e) {
-        return e && "current" in e ? e.current : e
-    }
-      , V = 0
-      , H = [];
-    let K = (u = function(e) {
-        var t = s.useRef([])
-          , n = s.useRef([0, 0])
-          , r = s.useRef()
-          , o = s.useState(V++)[0]
-          , i = s.useState(w)[0]
-          , u = s.useRef(e);
-        s.useEffect(function() {
-            u.current = e
-        }, [e]),
-        s.useEffect(function() {
-            if (e.inert) {
-                document.body.classList.add("block-interactivity-".concat(o));
-                var t = (0,
-                c.__spreadArray)([e.lockRef.current], (e.shards || []).map($), !0).filter(Boolean);
-                return t.forEach(function(e) {
-                    return e.classList.add("allow-interactivity-".concat(o))
-                }),
-                function() {
-                    document.body.classList.remove("block-interactivity-".concat(o)),
-                    t.forEach(function(e) {
-                        return e.classList.remove("allow-interactivity-".concat(o))
-                    })
+        }
+        draw(e) {
+            let {history: t} = this
+              , i = t.slotK[e]
+              , r = !Number.isNaN(i) && t.holds(i + 1)
+              , s = r ? i : NaN;
+            if (Object.is(s, this.drawn[e]))
+                return !1;
+            this.drawn[e] = s;
+            let o = this.position.array
+              , a = this.mark.array;
+            for (let s = 0; s < t.tyres; s++) {
+                let n = e * t.tyres + s
+                  , l = 4 * n * 3
+                  , f = 4 * n * 4
+                  , u = r ? t.offset(i, s) : 0
+                  , h = r ? t.offset(i + 1, s) : 0;
+                if (!r || .02 > Math.max(t.points[u + 4], t.points[h + 4])) {
+                    o.fill(0, l, l + 12),
+                    a.fill(0, f, f + 16);
+                    continue
+                }
+                let d = e / 32
+                  , c = t.points[u + 5] % $
+                  , p = 0;
+                for (let[e,i] of [[0, u], [1, h]]) {
+                    let r = t.points[i]
+                      , s = t.points[i + 1]
+                      , n = t.points[i + 2]
+                      , h = t.points[i + 3]
+                      , g = c + t.points[i + 5] - t.points[u + 5];
+                    for (let u of [-1, 1]) {
+                        let c = .5 * m.DRIFT_WHEEL_WIDTH * u;
+                        o[l + 3 * p] = r - h * c,
+                        o[l + 3 * p + 1] = .045,
+                        o[l + 3 * p + 2] = s + n * c,
+                        a[f + 4 * p] = (u + 1) / 2,
+                        a[f + 4 * p + 1] = g,
+                        a[f + 4 * p + 2] = d + e / 32,
+                        a[f + 4 * p + 3] = t.points[i + 4],
+                        p++
+                    }
                 }
             }
-        }, [e.inert, e.lockRef.current, e.shards]);
-        var a = s.useCallback(function(e, t) {
-            if ("touches" in e && 2 === e.touches.length || "wheel" === e.type && e.ctrlKey)
-                return !u.current.allowPinchZoom;
-            var o, i = U(e), a = n.current, c = "deltaX" in e ? e.deltaX : a[0] - i[0], s = "deltaY" in e ? e.deltaY : a[1] - i[1], l = e.target, d = Math.abs(c) > Math.abs(s) ? "h" : "v";
-            if ("touches" in e && "h" === d && "range" === l.type)
-                return !1;
-            var f = window.getSelection()
-              , m = f && f.anchorNode;
-            if (m && (m === l || m.contains(l)))
-                return !1;
-            var p = I(d, l);
-            if (!p)
-                return !0;
-            if (p ? o = d : (o = "v" === d ? "h" : "v",
-            p = I(d, l)),
-            !p)
-                return !1;
-            if (!r.current && "changedTouches" in e && (c || s) && (r.current = o),
-            !o)
-                return !0;
-            var v = r.current || o;
-            return W(v, t, e, "h" === v ? c : s, !0)
-        }, [])
-          , l = s.useCallback(function(e) {
-            if (H.length && H[H.length - 1] === i) {
-                var n = "deltaY" in e ? B(e) : U(e)
-                  , r = t.current.filter(function(t) {
-                    var r;
-                    return t.name === e.type && (t.target === e.target || e.target === t.shadowParent) && (r = t.delta,
-                    r[0] === n[0] && r[1] === n[1])
-                })[0];
-                if (r && r.should) {
-                    e.cancelable && e.preventDefault();
-                    return
-                }
-                if (!r) {
-                    var o = (u.current.shards || []).map($).filter(Boolean).filter(function(t) {
-                        return t.contains(e.target)
-                    });
-                    (o.length > 0 ? a(e, o[0]) : !u.current.noIsolation) && e.cancelable && e.preventDefault()
+            return !0
+        }
+        upload(e, t) {
+            if (!this.whole && this.position.updateRanges.length > 256 && (this.position.clearUpdateRanges(),
+            this.mark.clearUpdateRanges(),
+            this.whole = !0),
+            this.position.needsUpdate = this.mark.needsUpdate = !0,
+            this.whole)
+                return;
+            let i = this.history.tyres;
+            this.position.addUpdateRange(e * i * 12, (t - e) * i * 12),
+            this.mark.addUpdateRange(e * i * 16, (t - e) * i * 16)
+        }
+        dispose() {
+            this.geometry.dispose()
+        }
+    }
+    let Z = -1 / 0;
+    class Y {
+        history;
+        texture;
+        data;
+        column;
+        filled;
+        slide;
+        first;
+        last;
+        constructor(e) {
+            this.history = e,
+            this.first = NaN,
+            this.last = NaN,
+            this.data = new Float32Array(256 * e.tyres * 4),
+            this.texture = new s.DataTexture(this.data,256,e.tyres,s.RGBAFormat,s.FloatType),
+            this.texture.minFilter = this.texture.magFilter = s.NearestFilter,
+            this.texture.generateMipmaps = !1,
+            this.texture.needsUpdate = !0,
+            this.column = new Float64Array(256).fill(NaN),
+            this.filled = new Float64Array(256).fill(NaN),
+            this.slide = new Float64Array(256 * e.tyres)
+        }
+        sync() {
+            let {history: e} = this
+              , t = e.newest
+              , i = t + 1;
+            for (; i > t - 256 + 1 && e.holds(i - 1); )
+                i--;
+            if (i > t)
+                return;
+            let r = Math.max(this.first, i)
+              , s = Math.min(this.last, t);
+            r <= s ? (this.first = r,
+            this.last = s) : (this.first = this.last = t,
+            this.slide.fill(0, this.at(t, 0), this.at(t, 0) + e.tyres));
+            for (let e = this.last + 1; e <= t; e++)
+                this.step(e - 1, e, 1);
+            for (let e = this.first - 1; e >= i; e--)
+                this.step(e + 1, e, -1);
+            this.first = i,
+            this.last = t;
+            let o = !1;
+            for (let r = t - 256 + 1; r <= t; r++) {
+                let t = this.at(r, 0) / e.tyres
+                  , s = r >= i;
+                if (s ? this.column[t] !== r : this.column[t] !== Z || this.filled[t] !== i) {
+                    this.column[t] = s ? r : Z,
+                    this.filled[t] = s ? NaN : i;
+                    for (let o = 0; o < e.tyres; o++) {
+                        let a = (256 * o + t) * 4
+                          , n = e.offset(r, o);
+                        this.data[a] = s ? e.points[n] : 0,
+                        this.data[a + 1] = s ? e.points[n + 1] : 0,
+                        this.data[a + 2] = s ? Math.min(1, e.points[n + 4]) : 0,
+                        this.data[a + 3] = E(this.slide[this.at(s ? r : i, o)]),
+                        this.texture.addUpdateRange(a, 4)
+                    }
+                    o = !0
                 }
             }
-        }, [])
-          , d = s.useCallback(function(e, n, r, o) {
-            var i = {
-                name: e,
-                delta: n,
-                target: r,
-                should: o,
-                shadowParent: function(e) {
-                    for (var t = null; null !== e; )
-                        e instanceof ShadowRoot && (t = e.host,
-                        e = e.host),
-                        e = e.parentNode;
-                    return t
-                }(r)
+            this.texture.updateRanges.length > 1024 && this.texture.clearUpdateRanges(),
+            o && (this.texture.needsUpdate = !0)
+        }
+        slideAt(e, t) {
+            let i = 32 * e
+              , r = Math.floor(i);
+            if (!(r >= this.first && r + 1 <= this.last))
+                return NaN;
+            let s = this.slide[this.at(r, t)];
+            return s + (this.slide[this.at(r + 1, t)] - s) * (i - r)
+        }
+        step(e, t, i) {
+            let {history: r} = this;
+            for (let s = 0; s < r.tyres; s++) {
+                let o = r.offset(e, s)
+                  , a = r.offset(t, s)
+                  , n = Math.max(r.points[o + 4], r.points[a + 4]) >= .02 ? Math.hypot(r.points[a] - r.points[o], r.points[a + 1] - r.points[o + 1]) : 0;
+                this.slide[this.at(t, s)] = this.slide[this.at(e, s)] + i * n
+            }
+        }
+        at(e, t) {
+            return (e % 256 + 256) % 256 * this.history.tyres + t
+        }
+        dispose() {
+            this.texture.dispose()
+        }
+    }
+    function J({traffic: e, states: o, clock: a, quality: n}) {
+        let l = Math.ceil(48.400000000000006 / _[n])
+          , f = _[n]
+          , u = (0,
+        i.useMemo)( () => {
+            let t = new w(e,2048,2044)
+              , i = new X(t)
+              , r = (0,
+            g.pullUnderReversedDepth)(new s.ShaderMaterial({
+                transparent: !0,
+                depthWrite: !1,
+                fog: !0,
+                polygonOffset: !0,
+                polygonOffsetFactor: 0,
+                polygonOffsetUnits: -192,
+                uniforms: s.UniformsUtils.merge([c.UniformsLib.fog, {
+                    clock: {
+                        value: 0
+                    }
+                }]),
+                defines: {
+                    RING: "64.000000",
+                    LEAD: "0.093750",
+                    FADE: "60.0"
+                },
+                vertexShader: `
+      #include <common>
+      #include <logdepthbuf_pars_vertex>
+      attribute vec4 mark;
+      uniform float clock;
+      varying float vAge;
+      varying float vStrength;
+      varying vec2 vUv;
+      #include <fog_pars_vertex>
+      void main() {
+        // Ring time on both sides: every point in the window ages within (-LEAD, RING - LEAD).
+        vAge = mod(clock - mark.z + LEAD, RING) - LEAD;
+        vUv = mark.xy; vStrength = mark.w;
+        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+        gl_Position = projectionMatrix * mvPosition;
+        #include <logdepthbuf_vertex>
+        #include <fog_vertex>
+      }`,
+                fragmentShader: `
+      #include <logdepthbuf_pars_fragment>
+      varying float vAge;
+      varying float vStrength;
+      varying vec2 vUv;
+      #include <fog_pars_fragment>
+      void main() {
+        #include <logdepthbuf_fragment>
+${T}        // The newest quad reaches just past the tyre: cut it where the tyre is now.
+        float freshness = (1.0 - smoothstep(12.0, FADE, vAge)) * step(0.0, vAge);
+${I}      }`
+            }), k)
+              , o = new s.Mesh(i.geometry,r);
+            o.frustumCulled = !1,
+            o.renderOrder = g.GROUND_DECAL_RENDER_ORDER,
+            o.name = "Drift tire marks";
+            let a = new Y(t);
+            return {
+                history: t,
+                marks: i,
+                tire: r,
+                markMesh: o,
+                table: a
+            }
+        }
+        , [e]);
+        (0,
+        i.useEffect)( () => () => {
+            u.marks.dispose(),
+            u.tire.dispose(),
+            u.table.dispose()
+        }
+        , [u]);
+        let h = (0,
+        i.useSyncExternalStore)(V, B, B)
+          , d = (0,
+        i.useContext)(q.SceneAssetReadiness);
+        (0,
+        i.useLayoutEffect)( () => {
+            if (!d || h)
+                return;
+            let e = Symbol("drift smoke sprites");
+            return d.add(e),
+            () => {
+                d.delete(e)
+            }
+        }
+        , [d, h]);
+        let p = (0,
+        i.useMemo)( () => {
+            let t = e.cars.length
+              , i = K(W(), u.table.texture, t, l, f, 256)
+              , r = new s.PlaneGeometry(1,1)
+              , o = new s.InstancedBufferGeometry;
+            o.index = r.index,
+            o.setAttribute("position", r.getAttribute("position")),
+            o.setAttribute("uv", r.getAttribute("uv"));
+            let a = t * l * 2;
+            o.setAttribute("puff", new s.InstancedBufferAttribute(Float32Array.from({
+                length: a
+            }, (e, t) => t),1)),
+            o.instanceCount = a;
+            let n = new s.Mesh(o,i);
+            return n.frustumCulled = !1,
+            n.renderOrder = 2,
+            n.name = "Drift smoke",
+            {
+                mesh: n,
+                material: i,
+                geometry: o
+            }
+        }
+        , [e, u, l, f]);
+        (0,
+        i.useEffect)( () => () => {
+            p.material.dispose(),
+            p.geometry.dispose()
+        }
+        , [p]),
+        (0,
+        i.useEffect)( () => {
+            p.material.uniforms.fadeRange.value.set(...F[n])
+        }
+        , [n, p]);
+        let m = (0,
+        i.useMemo)( () => R(), [])
+          , v = (0,
+        i.useMemo)( () => ({
+            light: null,
+            world: new s.Vector3
+        }), [])
+          , y = (0,
+        i.useMemo)( () => new s.Vector3, [])
+          , x = 2.2 * (e.maxSpeed + 1) + 9;
+        return (0,
+        r.useFrame)( ({camera: e, scene: t}) => {
+            let i, r;
+            v.light?.parent || (v.light = null,
+            t.traverse(e => {
+                !v.light && e instanceof s.DirectionalLight && e.intensity > 0 && (v.light = e)
+            }
+            )),
+            v.light ? v.world.copy(v.light.position).sub(v.light.target.position) : v.world.set(-.6, .8, .5),
+            p.material.uniforms.sunView.value.copy(v.world).transformDirection(e.matrixWorldInverse);
+            let l = a.current
+              , {history: d, marks: c, table: g, tire: w} = u;
+            d.update(l, 128),
+            c.sync(),
+            g.sync(),
+            w.uniforms.clock.value = (l % 64 + 64) % 64;
+            let {uniforms: b} = p.material
+              , F = b.slides.value
+              , M = b.shown.value
+              , A = b.order.value
+              , R = {
+                first: ((r = Math.floor(i = 32 * l) - 254 + 1) % 256 + 256) % 256,
+                now: i - r
             };
-            t.current.push(i),
-            setTimeout(function() {
-                t.current = t.current.filter(function(e) {
-                    return e !== i
-                })
-            }, 1)
-        }, [])
-          , f = s.useCallback(function(e) {
-            n.current = U(e),
-            r.current = void 0
-        }, [])
-          , m = s.useCallback(function(t) {
-            d(t.type, B(t), t.target, a(t, e.lockRef.current))
-        }, [])
-          , p = s.useCallback(function(t) {
-            d(t.type, U(t), t.target, a(t, e.lockRef.current))
-        }, []);
-        s.useEffect(function() {
-            return H.push(i),
-            e.setCallbacks({
-                onScrollCapture: m,
-                onWheelCapture: m,
-                onTouchMoveCapture: p
-            }),
-            document.addEventListener("wheel", l, x),
-            document.addEventListener("touchmove", l, x),
-            document.addEventListener("touchstart", f, x),
-            function() {
-                H = H.filter(function(e) {
-                    return e !== i
-                }),
-                document.removeEventListener("wheel", l, x),
-                document.removeEventListener("touchmove", l, x),
-                document.removeEventListener("touchstart", f, x)
+            b.slideClock.value.set(R.first, R.now),
+            p.mesh.updateWorldMatrix(!0, !1),
+            e.getWorldPosition(y),
+            p.mesh.worldToLocal(y);
+            let _ = !1;
+            o.forEach( (t, i) => {
+                let r = S(e, p.mesh.matrixWorld, t, n, m, x);
+                for (let e = 0; e < 2; e++) {
+                    let t = g.slideAt(l, 2 * i + e);
+                    if (Number.isNaN(t)) {
+                        r = !1;
+                        continue
+                    }
+                    let s = function(e, t) {
+                        let i = Math.floor(e / t);
+                        return {
+                            wrapped: E(e),
+                            lead: e - i * t,
+                            number: (i % 4096 + 4096) % 4096
+                        }
+                    }(t, f);
+                    F[2 * i + e].set(s.wrapped, s.lead, s.number, 0)
+                }
+                M[i] = +!!r,
+                _ ||= r;
+                let s = t.yaw - t.slip;
+                A[i] = +((y.x - t.x) * Math.sin(s) + (y.z - t.z) * Math.cos(s) > 0)
             }
-        }, []);
-        var v = e.removeScrollBar
-          , h = e.inert;
-        return s.createElement(s.Fragment, null, h ? s.createElement(i, {
-            styles: "\n  .block-interactivity-".concat(o, " {pointer-events: none;}\n  .allow-interactivity-").concat(o, " {pointer-events: all;}\n")
-        }) : null, v ? s.createElement(k, {
-            noRelative: e.noRelative,
-            gapMode: e.gapMode
-        }) : null)
+            ),
+            p.mesh.visible = _ && h
+        }
+        , -2.3),
+        (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)("primitive", {
+                object: u.markMesh
+            }), (0,
+            t.jsx)("primitive", {
+                object: p.mesh
+            })]
+        })
     }
-    ,
-    v.useMedium(u),
-    b);
-    var X = s.forwardRef(function(e, t) {
-        return s.createElement(y, (0,
-        c.__assign)({}, e, {
-            ref: t,
-            sideCar: K
-        }))
-    });
-    X.classNames = y.classNames,
-    e.s(["RemoveScroll", 0, X], 985369)
+    function Q({track: e, clock: l, quality: f, shadows: h, leadColor: c, audible: p}) {
+        let {traffic: m} = e
+          , g = (0,
+        u.useSimStore)(e => "reduced" === e.settings.graphics.trafficDetail)
+          , v = (0,
+        i.useRef)(null)
+          , y = (0,
+        i.useMemo)( () => m.cars.map( (e, t) => ({
+            pose: (0,
+            a.createDriftCarState)(),
+            color: 0 === t && c ? c : e.color,
+            livery: (0,
+            n.driftLivery)(e.id),
+            motion: void 0
+        })), [m, c])
+          , x = (0,
+        i.useMemo)( () => y.map(e => e.pose), [y])
+          , w = (0,
+        i.useRef)([])
+          , b = (0,
+        i.useMemo)( () => ({
+            car: new s.Vector3,
+            listener: new s.Vector3
+        }), []);
+        return (0,
+        i.useEffect)( () => () => {
+            for (let e of w.current)
+                e?.dispose();
+            w.current = []
+        }
+        , [m]),
+        (0,
+        r.useFrame)( ({camera: e}, t) => {
+            m.sample(l.current, x),
+            y.forEach(e => {
+                let t = e.pose;
+                if (void 0 !== t.height) {
+                    let i = e.motion ??= {
+                        height: 0,
+                        roll: 0,
+                        pitch: 0,
+                        steer: 0,
+                        spins: t.spins,
+                        rates: t.spinRates
+                    };
+                    i.height = t.height,
+                    i.roll = t.roll,
+                    i.pitch = t.pitch,
+                    i.steer = t.steer
+                }
+            }
+            );
+            let i = p ? (0,
+            o.getDroneAudio)() : null;
+            if (!i || !v.current)
+                return;
+            v.current.updateWorldMatrix(!0, !1),
+            e.getWorldPosition(b.listener);
+            let r = "racing" === m.kind;
+            x.forEach( (e, s) => {
+                let o = w.current[s] ??= i.createCarVoice(s, r);
+                b.car.set(e.x, 0, e.z).applyMatrix4(v.current.matrixWorld);
+                let a = b.car.distanceTo(b.listener)
+                  , n = !!p?.current;
+                r ? o.updateRacing(b.car, a, e, t, s, n) : o.update(b.car, a, e.slip, e.speed, e.clock, t, s, n)
+            }
+            )
+        }
+        , -2.4),
+        (0,
+        t.jsxs)("group", {
+            ref: v,
+            matrix: e.matrix,
+            matrixAutoUpdate: !1,
+            children: [(0,
+            t.jsx)(d.DriftFleet, {
+                cars: y,
+                quality: g ? "low" : f,
+                shadows: h && !g
+            }), !g && ("classic-lap" === m.kind ? (0,
+            t.jsx)(ee, {
+                traffic: m,
+                cars: y,
+                clock: l,
+                quality: f
+            }) : (0,
+            t.jsx)(J, {
+                traffic: m,
+                states: x,
+                clock: l,
+                quality: f
+            }))]
+        })
+    }
+    function ee({traffic: e, cars: i, clock: r, quality: s}) {
+        return (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)(O, {
+                cars: i,
+                variations: e.variations,
+                quality: s,
+                circuit: e.circuit
+            }), (0,
+            t.jsx)(U, {
+                elapsed: r,
+                offsets: e.offsets,
+                variations: e.variations,
+                circuit: e.circuit
+            })]
+        })
+    }
+    e.s(["DriftHistoryEffects", 0, J], 94297),
+    e.s(["CinematicDriftFleet", 0, function({quality: e, shadows: s}) {
+        let o = (0,
+        i.useRef)(0)
+          , a = (0,
+        i.useContext)(h.TrackWorldContext)
+          , n = (0,
+        i.useMemo)( () => (0,
+        f.trackInstances)(a), [a]);
+        return (0,
+        r.useFrame)( (e, t) => {
+            o.current += Math.min(t, .1)
+        }
+        , -2.5),
+        (0,
+        t.jsx)("group", {
+            children: n.map(i => (0,
+            t.jsx)(Q, {
+                track: i,
+                clock: o,
+                quality: e,
+                shadows: s
+            }, i.id))
+        })
+    }
+    , "ClockedDriftFleet", 0, function({clock: e, quality: r, shadows: s, leadColor: o, audible: a}) {
+        let n = (0,
+        i.useContext)(h.TrackWorldContext)
+          , l = (0,
+        i.useMemo)( () => (0,
+        f.trackInstances)(n), [n]);
+        return (0,
+        t.jsx)("group", {
+            children: l.map(i => (0,
+            t.jsx)(Q, {
+                track: i,
+                clock: e,
+                quality: r,
+                shadows: s,
+                leadColor: o,
+                audible: a
+            }, i.id))
+        })
+    }
+    , "ReplayDriftFleet", 0, function({frames: e, time: s, quality: o, shadows: a}) {
+        let n = (0,
+        i.useRef)(null)
+          , u = (0,
+        i.useRef)(0)
+          , d = (0,
+        i.useRef)(0)
+          , c = (0,
+        i.useContext)(h.TrackWorldContext)
+          , p = (0,
+        i.useMemo)( () => (0,
+        f.trackInstances)(c), [c])
+          , m = (0,
+        i.useMemo)( () => e.some(e => void 0 !== e.driftTime), [e]);
+        return ((0,
+        r.useFrame)( () => {
+            if (!n.current)
+                return;
+            d.current = (0,
+            l.findReplayIndex)(e, s.current, d.current);
+            let t = (0,
+            l.sampleReplayDriftTime)(e, s.current, d.current);
+            n.current.visible = void 0 !== t,
+            void 0 !== t && (u.current = t)
+        }
+        , -2.5),
+        m) ? (0,
+        t.jsx)("group", {
+            ref: n,
+            visible: !1,
+            children: p.map(e => (0,
+            t.jsx)(Q, {
+                track: e,
+                clock: u,
+                quality: o,
+                shadows: a
+            }, e.id))
+        }) : null
+    }
+    ], 702217)
 }
 ]);
