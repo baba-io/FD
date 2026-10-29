@@ -1,0 +1,7 @@
+.fd-username-gate-keys {
+    display: contents
+}
+
+.fd-username-gate.fdk-dialog {
+    pointer-events: auto
+}

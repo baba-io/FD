@@ -1,0 +1,308 @@
+.fd-boosters {
+    width: 100%;
+    color: var(--fdk-ink);
+    padding: 8px 0 24px
+}
+
+.fd-boosters--inventory {
+    padding: 0
+}
+
+.fd-boosters-heading {
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 18px;
+    display: flex
+}
+
+.fd-boosters-heading h2 {
+    font: 400 clamp(28px,3vw,48px)/1 var(--fdk-font-display);
+    letter-spacing: -.025em;
+    text-transform: uppercase;
+    margin: 8px 0 10px
+}
+
+.fd-boosters--shop .fd-boosters-heading h2 {
+    margin-top: 10px;
+    font-size: clamp(42px,5.4vw,78px);
+    line-height: .95
+}
+
+.fd-boosters-heading h2>span {
+    color: var(--fdk-orange)
+}
+
+.fd-booster-art {
+    object-fit: cover;
+    object-position: center
+}
+
+.fd-booster-card .fdk-row-card-art {
+    background: var(--fdk-ink)
+}
+
+.fd-booster-stock {
+    font: 400 clamp(40px, 3.6vw, 64px)/.9 var(--fdk-font-display);
+    font-variant-numeric: tabular-nums
+}
+
+.fd-booster-card[data-muted] .fd-booster-stock {
+    color: var(--fdk-muted)
+}
+
+.fd-booster-running {
+    margin-top: var(--fdk-space-2)
+}
+
+.fd-booster-footnote {
+    color: var(--fdk-muted);
+    font-size: var(--fdk-type-label);
+    margin-top: 9px;
+    line-height: 1.5;
+    display: block
+}
+
+.fd-booster-toast {
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 14px
+}
+
+.fd-boosters-state {
+    background: var(--fdk-chalk);
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 14px;
+    padding: 12px 16px
+}
+
+.fd-booster-notice {
+    border: 1px solid var(--fdk-ink-line);
+    background: var(--fdk-paper);
+    font-size: var(--fdk-type-ui);
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 12px 14px;
+    display: flex
+}
+
+.fd-booster-notice--error {
+    border-color: var(--fdk-brick);
+    color: var(--fdk-brick);
+    font-weight: 700
+}
+
+.fd-booster-modal-art {
+    aspect-ratio: 1.8;
+    background: var(--fdk-ink);
+    flex: none;
+    position: relative
+}
+
+.fd-booster-modal .fd-booster-modal-rules,.fd-booster-modal .fd-booster-modal-balance {
+    color: var(--fdk-muted);
+    font-size: var(--fdk-type-label);
+    margin: 0;
+    line-height: 1.5
+}
+
+.fd-booster-options {
+    border: 0;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    display: grid
+}
+
+.fd-booster-options legend {
+    font: 700 var(--fdk-type-label)/1.2 var(--fdk-font-body);
+    letter-spacing: var(--fdk-tracking-label);
+    text-transform: uppercase;
+    margin-bottom: 8px
+}
+
+.fd-booster-options label {
+    border-bottom: 1px solid var(--fdk-ink-line);
+    cursor: pointer;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    display: flex
+}
+
+.fd-booster-options input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--fdk-ink)
+}
+
+.fd-booster-modal .fd-booster-options input:focus-visible {
+    outline: var(--fdk-rim) solid var(--fdk-focus);
+    outline-offset: 2px
+}
+
+.fd-booster-options label>span {
+    flex-direction: column;
+    gap: 5px;
+    display: flex
+}
+
+.fd-booster-options strong {
+    font-size: var(--fdk-type-ui);
+    font-weight: 700
+}
+
+.fd-booster-options .fd-booster-saving {
+    color: var(--fdk-online-text);
+    font-size: var(--fdk-type-label);
+    font-weight: 700
+}
+
+.fd-booster-options .fd-booster-option-price {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto
+}
+
+.fd-booster-option-price s {
+    color: var(--fdk-muted);
+    font-size: var(--fdk-type-label)
+}
+
+.fd-booster-option-price b {
+    font-size: var(--fdk-type-small)
+}
+
+.fd-booster-option-price b small {
+    font-size: var(--fdk-type-label);
+    font-weight: 400
+}
+
+.fd-booster-modal .fd-booster-footnote {
+    margin-top: 0
+}
+
+.fd-active-boosters {
+    flex-shrink: 0;
+    align-items: center;
+    gap: 4px;
+    display: flex
+}
+
+.fd-active-booster [role=timer] {
+    font-variant-numeric: tabular-nums
+}
+
+.fd-booster-popover {
+    z-index: 110;
+    width: min(320px,100vw - 24px);
+    max-height: var(--radix-popover-content-available-height);
+    border: 1px solid var(--fdk-ink-edge);
+    background: var(--fdk-chalk);
+    color: var(--fdk-ink);
+    font: var(--fdk-type-ui)/1.5 var(--fdk-font-body);
+    padding: 16px 18px 18px;
+    overflow-y: auto
+}
+
+.fd-booster-popover-heading {
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    display: flex
+}
+
+.fd-booster-popover-close {
+    margin: -6px -8px 0 0
+}
+
+.fd-booster-popover h2 {
+    font: 700 18px/1.2 var(--fdk-font-body);
+    margin: 10px 0 0
+}
+
+.fd-booster-popover-effect {
+    font-size: var(--fdk-type-small);
+    margin-top: 8px;
+    display: block
+}
+
+.fd-booster-popover p {
+    color: var(--fdk-muted);
+    margin: 6px 0 0
+}
+
+.fd-booster-popover-stats {
+    border-block:1px solid var(--fdk-ink-line);gap: 8px;
+    margin: 16px 0 12px;
+    padding-block:12px;display: grid
+}
+
+.fd-booster-popover-stats>div {
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    display: flex
+}
+
+.fd-booster-popover-stats dt {
+    color: var(--fdk-muted)
+}
+
+.fd-booster-popover-stats dd {
+    font-variant-numeric: tabular-nums;
+    margin: 0;
+    font-weight: 700
+}
+
+.fd-booster-popover-stats [role=timer] {
+    font-size: 18px
+}
+
+.fd-booster-popover .fd-booster-popover-rules {
+    font-size: var(--fdk-type-label);
+    line-height: 1.6
+}
+
+.fd-booster-popover-link {
+    margin-top: 16px
+}
+
+.fd-booster-reward {
+    font-size: var(--fdk-type-label);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 7px;
+    font-weight: 700;
+    display: inline-flex
+}
+
+.fd-booster-reward-item {
+    background: var(--fdk-orange);
+    color: var(--fdk-ink);
+    align-items: center;
+    gap: 5px;
+    padding: 6px 8px;
+    display: inline-flex
+}
+
+.fd-booster-reward-item--double-xp {
+    background: var(--fdk-acid)
+}
+
+.fd-loadout--consumables .fd-boosters {
+    align-items: flex-start;
+    gap: var(--fdk-space-4);
+    flex-direction: column-reverse;
+    padding: 0;
+    display: flex
+}
+
+.fd-loadout--consumables .fd-booster-row {
+    width: 100%
+}

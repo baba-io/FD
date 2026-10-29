@@ -1,0 +1,505 @@
+.fd-pilot-dialog {
+    pointer-events: auto;
+    background: var(--fdk-clear);
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    color: var(--fdk-ink);
+    font: var(--fdk-type-small)/1.45 var(--fdk-font-body);
+    border: 0;
+    margin: 0;
+    padding: clamp(16px,2.5vw,36px);
+    position: fixed;
+    inset: 0;
+    overflow: hidden
+}
+
+.fd-pilot-dialog[open] {
+    justify-content: center;
+    align-items: center;
+    display: flex
+}
+
+.fd-pilot-dialog::backdrop {
+    background: var(--fdk-scrim);
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px)
+}
+
+.fd-pilot-frame {
+    flex-direction: column;
+    width: min(1240px,100%);
+    max-height: 100%;
+    display: flex;
+    position: relative
+}
+
+.fd-pilot-sheet.fdk-panel {
+    scrollbar-width: thin;
+    scrollbar-color: var(--fdk-ink-rule) var(--fdk-clear);
+    min-height: 0;
+    padding: clamp(20px,2.3vw,32px);
+    display: block;
+    overflow: auto
+}
+
+.fd-pilot-close {
+    z-index: 3;
+    top: var(--fdk-space-7);
+    right: var(--fdk-space-7);
+    position: absolute
+}
+
+.fd-pilot-hero {
+    align-items: center;
+    gap: 17px;
+    padding: 0 60px 24px 0;
+    display: flex
+}
+
+.fd-pilot-avatar {
+    width: 64px;
+    height: 64px;
+    color: var(--fdk-ink);
+    background: var(--fdk-orange);
+    border: var(--fdk-rim) solid var(--fdk-ink);
+    border-radius: var(--fdk-round);
+    flex-shrink: 0;
+    place-items: center;
+    display: grid
+}
+
+.fd-pilot-avatar svg {
+    stroke-width: 1.5px;
+    width: 51px;
+    height: 51px
+}
+
+.fd-pilot-heading {
+    flex: 1;
+    min-width: 0
+}
+
+.fd-pilot-eyebrow {
+    align-items: center;
+    gap: var(--fdk-space-3) var(--fdk-space-5);
+    color: var(--fdk-muted);
+    font: 700 var(--fdk-type-label)/1.4 var(--fdk-font-body);
+    letter-spacing: var(--fdk-tracking-label);
+    text-transform: uppercase;
+    flex-wrap: wrap;
+    display: flex
+}
+
+.fd-pilot-heading h2 {
+    margin: var(--fdk-space-2) 0 var(--fdk-space-1);
+    overflow-wrap: anywhere;
+    font: 400 clamp(28px, 3.6vw, 46px)/1.1 var(--fdk-font-display);
+    text-transform: uppercase
+}
+
+.fd-pilot-heading p {
+    margin: var(--fdk-space-2) 0 0;
+    color: var(--fdk-muted);
+    font-size: var(--fdk-type-label)
+}
+
+.fd-pilot-badges {
+    gap: var(--fdk-space-3);
+    flex-wrap: wrap;
+    display: inline-flex
+}
+
+.fd-pilot-progression {
+    align-items: center;
+    gap: var(--fdk-space-6);
+    display: flex
+}
+
+.fd-pilot-xp {
+    width: clamp(150px,14vw,220px)
+}
+
+.fd-pilot-body {
+    gap: var(--fdk-space-8);
+    grid-template-columns: minmax(0,.93fr) minmax(0,1.15fr);
+    display: grid
+}
+
+.fd-pilot-hangar,.fd-pilot-record-column {
+    min-width: 0
+}
+
+.fd-pilot-drone {
+    position: relative;
+    overflow: hidden
+}
+
+.fd-pilot-drone-status {
+    min-height: 44px;
+    padding: var(--fdk-space-6) 17px 0;
+    color: var(--fdk-chalk);
+    font: 700 var(--fdk-type-label)/1 var(--fdk-font-body);
+    letter-spacing: var(--fdk-tracking-label);
+    text-transform: uppercase;
+    justify-content: space-between;
+    align-items: center;
+    display: flex
+}
+
+.fd-pilot-drone-stage {
+    height: clamp(205px,100dvh - 500px,300px);
+    position: relative
+}
+
+.fd-pilot-drone-word {
+    text-align: center;
+    color: var(--fdk-chalk-rule);
+    font: 400 clamp(42px, 6.1vw, 83px)/1 var(--fdk-font-display);
+    text-transform: uppercase;
+    white-space: nowrap;
+    letter-spacing: -.03em;
+    position: absolute;
+    inset: 9px 4px auto
+}
+
+.fd-pilot-drone-render {
+    position: absolute;
+    inset: 0 -8px -30px
+}
+
+.fd-pilot-drone-loading {
+    text-align: center;
+    width: 100%;
+    font-size: var(--fdk-type-label);
+    position: absolute;
+    top: 55%
+}
+
+.fd-pilot-drone-caption {
+    padding: var(--fdk-space-3) 19px 19px;
+    color: var(--fdk-chalk);
+    pointer-events: none;
+    position: relative
+}
+
+.fd-pilot-drone-caption h3 {
+    font: 400 39px/1.1 var(--fdk-font-display);
+    text-transform: uppercase;
+    margin: 0
+}
+
+.fd-pilot-drone-caption p {
+    font-size: var(--fdk-type-label);
+    margin: 5px 0 0;
+    font-weight: 700
+}
+
+.fd-pilot-drone-caption p span {
+    color: var(--rarity-muted);
+    text-transform: capitalize
+}
+
+.fd-pilot-drone-caption .fd-pilot-drone-source {
+    color: var(--rarity-muted,var(--fdk-chalk-soft));
+    font-weight: 400
+}
+
+.fd-pilot-drone-caption .fd-pilot-drone-source span {
+    color: inherit;
+    text-transform: none;
+    font-weight: 700
+}
+
+.fd-pilot-drone-caption .fd-pilot-drone-view {
+    margin-top: var(--fdk-space-5);
+    align-items: center;
+    gap: var(--fdk-space-5);
+    pointer-events: auto;
+    display: flex
+}
+
+.fd-pilot-drone-caption .fd-pilot-drone-view span {
+    color: var(--fdk-chalk);
+    text-transform: none
+}
+
+.fd-pilot-fleet {
+    gap: var(--fdk-space-3);
+    grid-template-columns: repeat(5,minmax(0,1fr));
+    margin-top: 9px;
+    display: grid
+}
+
+.fd-pilot-fleet .fdk-tile {
+    min-height: 108px;
+    padding: 7px 7px var(--fdk-space-4);
+    gap: var(--fdk-space-1)
+}
+
+.fd-pilot-fleet .fdk-tile-art {
+    width: 100%;
+    height: 57px
+}
+
+.fd-pilot-fleet .fdk-tile-title {
+    font-size: clamp(13px,1.13vw,16px);
+    line-height: 1.2
+}
+
+.fd-pilot-fleet .fdk-tile-corner {
+    top: var(--fdk-space-2);
+    right: var(--fdk-space-2)
+}
+
+.fd-pilot-stats {
+    padding: var(--fdk-space-7) 0 var(--fdk-space-8);
+    border-bottom: var(--fdk-line) solid var(--fdk-ink-line);
+    grid-template-columns: 1.2fr 1.3fr 1fr 1fr;
+    margin: 0 0 23px;
+    display: grid
+}
+
+.fd-pilot-stats>.fdk-big {
+    padding: 0 var(--fdk-space-6);
+    border-right: var(--fdk-line) solid var(--fdk-ink-line)
+}
+
+.fd-pilot-stats>.fdk-big:first-child {
+    padding-left: 0
+}
+
+.fd-pilot-stats>.fdk-big:last-child {
+    border-right: 0
+}
+
+.fd-pilot-stats .fdk-big-value {
+    font-size: clamp(26px,2.4vw,38px)
+}
+
+.fd-pilot-stats small {
+    font-size: .53em
+}
+
+.fd-pilot-section-heading {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    display: flex
+}
+
+.fd-pilot-section-heading h3 {
+    font: 400 clamp(25px, 2.65vw, 34px)/1.1 var(--fdk-font-display);
+    text-transform: uppercase;
+    margin: 0
+}
+
+.fd-pilot-record-summary {
+    font-size: var(--fdk-type-ui);
+    margin: 9px 0 14px;
+    font-weight: 700
+}
+
+.fd-pilot-record-summary span {
+    color: var(--fdk-muted);
+    font-weight: 400
+}
+
+.fd-pilot-records ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid
+}
+
+.fd-pilot-records li {
+    align-items: center;
+    gap: var(--fdk-space-4) 12px;
+    padding: var(--fdk-space-6) 0;
+    border-top: var(--fdk-line) solid var(--fdk-ink-line);
+    grid-template-columns: 32px minmax(0,1fr) auto auto;
+    display: grid
+}
+
+.fd-pilot-records li:last-child {
+    border-bottom: var(--fdk-line) solid var(--fdk-ink-line)
+}
+
+.fd-pilot-race-icon {
+    width: 31px;
+    height: 38px;
+    color: var(--fdk-muted);
+    place-items: center;
+    display: grid
+}
+
+.fd-pilot-race-name {
+    min-width: 0
+}
+
+.fd-pilot-race-name strong {
+    font: 400 18px/1.2 var(--fdk-font-display);
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    display: block
+}
+
+.fd-pilot-race-name span {
+    margin-top: var(--fdk-space-2);
+    color: var(--fdk-muted);
+    font-size: var(--fdk-type-label);
+    display: block
+}
+
+.fd-pilot-time {
+    font: 400 26px/1 var(--fdk-font-display);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap
+}
+
+.fd-pilot-record-actions {
+    gap: var(--fdk-space-3);
+    justify-content: flex-end;
+    display: flex
+}
+
+.fd-pilot-challenge-hint {
+    color: var(--fdk-muted);
+    font-size: var(--fdk-type-label);
+    align-items: center;
+    gap: 9px;
+    margin: 15px 0 0;
+    display: flex
+}
+
+.fd-pilot-challenge-hint svg {
+    flex-shrink: 0
+}
+
+.fd-pilot-share-fallback {
+    grid-column: 2/-1
+}
+
+.fd-pilot-empty.fdk-empty,.fd-pilot-empty.fdk-loading {
+    padding: var(--fdk-space-8) var(--fdk-space-7);
+    border-block:var(--fdk-line) solid var(--fdk-ink-line)}
+
+.fd-pilot-legacy {
+    margin-top: 14px
+}
+
+.fd-pilot-account {
+    border-top: var(--fdk-line) solid var(--fdk-ink-line);
+    margin-top: 23px;
+    padding-top: 15px
+}
+
+.fd-pilot-account summary {
+    cursor: pointer;
+    width: fit-content;
+    color: var(--fdk-muted);
+    font-size: var(--fdk-type-label);
+    font-weight: 700
+}
+
+.fd-pilot-account summary:focus-visible {
+    outline: var(--fdk-rim) solid var(--fdk-focus);
+    outline-offset: 3px
+}
+
+.fd-pilot-account-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 16px 0 3px;
+    display: grid
+}
+
+.fd-pilot-account-content h3 {
+    font-size: var(--fdk-type-ui);
+    margin: 0 0 9px;
+    font-weight: 700
+}
+
+.fd-pilot-account-content p {
+    color: var(--fdk-muted);
+    font-size: var(--fdk-type-label);
+    overflow-wrap: anywhere
+}
+
+.fd-pilot-moderation {
+    border-top: var(--fdk-line) solid var(--fdk-ink-line);
+    margin-top: 24px;
+    padding-top: 18px
+}
+
+.fd-pilot-moderation h3 {
+    font-size: var(--fdk-type-ui);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin: 0 0 12px
+}
+
+.fd-pilot-loading {
+    gap: var(--fdk-space-6);
+    padding: 48px 20px;
+    display: grid
+}
+
+.fd-pilot-loading h2 {
+    font: 400 36px/1 var(--fdk-font-display);
+    text-transform: uppercase;
+    margin: 0
+}
+
+.fd-pilot-loading p {
+    color: var(--fdk-muted);
+    margin: 0;
+    font-weight: 700
+}
+
+.fd-pilot-error {
+    align-items: center;
+    gap: var(--fdk-space-4);
+    padding: var(--fdk-space-4) var(--fdk-space-5);
+    border-left: var(--fdk-space-3) solid var(--fdk-brick);
+    background: var(--fdk-paper);
+    color: var(--fdk-brick);
+    font-size: var(--fdk-type-label);
+    flex-wrap: wrap;
+    margin-top: 12px;
+    font-weight: 700;
+    display: flex
+}
+
+.fd-pilot-action-status {
+    font-size: var(--fdk-type-label);
+    margin-top: 10px
+}
+
+.fd-pilot-dialog--replay .fd-pilot-frame {
+    width: min(1120px,100%)
+}
+
+.fd-pilot-replay-heading {
+    padding: 0 48px 16px 0
+}
+
+.fd-pilot-replay-heading h2 {
+    font: 400 30px/1.1 var(--fdk-font-display);
+    text-transform: uppercase;
+    margin: 12px 0 0
+}
+
+.fd-pilot-replay {
+    background: var(--fdk-ink);
+    border: 0;
+    width: 100%;
+    height: min(65vh,660px);
+    display: block
+}
+
+.fd-pilot-badges .fdk-badge {
+    --fdk-badge-face: var(--fdk-founder-gold)
+}

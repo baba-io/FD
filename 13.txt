@@ -1,0 +1,52 @@
+.fd-race-finish-beat {
+    z-index: 55;
+    color: var(--fdk-chalk);
+    background: linear-gradient(var(--fdk-clear) 15%, color-mix(in srgb, var(--fdk-ink) 46.7%, var(--fdk-clear)) 75%);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    animation: .4s ease-out both race-finish-in;
+    display: flex;
+    position: absolute;
+    inset: 0
+}
+
+.fd-race-finish-beat strong {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.065em;
+    font-size: clamp(4rem,9vw,9rem);
+    font-weight: 700;
+    line-height: 1
+}
+
+.fd-race-finish-beat button {
+    pointer-events: auto;
+    color: var(--fdk-chalk);
+    border: 1px solid color-mix(in srgb, var(--fdk-chalk) 36%, var(--fdk-clear));
+    background: color-mix(in srgb, var(--fdk-ink) 60%, var(--fdk-clear));
+    cursor: pointer;
+    border-radius: .2rem;
+    padding: .75rem 1.5rem
+}
+
+.fd-race-finish-beat button:focus-visible {
+    outline: 3px solid var(--fdk-orange);
+    outline-offset: 4px
+}
+
+@keyframes race-finish-in {
+    0% {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .fd-race-finish-beat {
+        animation: none
+    }
+}

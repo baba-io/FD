@@ -1,0 +1,292 @@
+.fd-pilot-progress {
+    z-index: 20;
+    right: var(--hud-edge-x,48px);
+    pointer-events: none;
+    font: 700 12px/1.35 Arial,Helvetica,sans-serif;
+    position: absolute;
+    bottom: 108px
+}
+
+.fd-next-ride__track {
+    border-radius: var(--fdk-radius-slab);
+    background: color-mix(in srgb, var(--fdk-ink) 12.5%, var(--fdk-clear));
+    height: 6px;
+    margin-top: 6px;
+    overflow: hidden
+}
+
+.fd-next-ride__track i {
+    background: var(--fdk-orange);
+    transform-origin: 0;
+    height: 100%;
+    transition: transform .65s cubic-bezier(.18,.8,.22,1);
+    display: block
+}
+
+.fd-pilot-progress__gain {
+    border: 1px solid color-mix(in srgb, var(--fdk-ink) 40%, var(--fdk-clear));
+    border-radius: var(--fdk-radius-slab);
+    background: var(--hud-acid);
+    color: var(--hud-ink);
+    font: 400 17px/1.15 var(--font-sim-display),Impact,sans-serif;
+    white-space: nowrap;
+    opacity: 0;
+    padding: 7px 11px;
+    position: absolute;
+    bottom: 0;
+    right: 4px;
+    transform: translateY(6px)
+}
+
+.fd-pilot-progress[data-reward] .fd-pilot-progress__gain {
+    animation: 2.2s both fd-flight-gain
+}
+
+.fd-pilot-progress[data-reward=level] {
+    animation: .32s both fd-level-pop
+}
+
+.fd-pilot-progress[data-reward=level] .fd-pilot-progress__gain {
+    background: var(--fdk-orange);
+    animation-duration: 4s
+}
+
+.fd-next-ride {
+    color: var(--fdk-ink);
+    font: 700 13px/1.4 Arial,Helvetica,sans-serif
+}
+
+.fd-next-ride>div:first-child {
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    display: flex
+}
+
+.fd-next-ride strong {
+    font-size: 15px
+}
+
+.fd-next-ride strong small {
+    font-size: 11px;
+    font-weight: 400
+}
+
+.fd-next-ride p {
+    font-variant-numeric: tabular-nums;
+    margin: 6px 0 0;
+    font-size: 12px
+}
+
+.fd-next-ride p span {
+    color: var(--fdk-muted);
+    font-weight: 400
+}
+
+.fd-next-ride__track {
+    height: 4px
+}
+
+.fd-session-xp {
+    border: 1px solid var(--fdk-ink-edge);
+    background: var(--fdk-chalk);
+    color: var(--fdk-ink);
+    border-radius: 10px;
+    margin: 16px 0;
+    padding: 14px 16px
+}
+
+.fd-session-xp>p {
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0 0 12px;
+    font: 700 13px/1.4 Arial,Helvetica,sans-serif;
+    display: flex
+}
+
+.fd-session-xp>p strong {
+    font-family: var(--font-sim-display),Impact,sans-serif;
+    font-size: 24px;
+    font-weight: 400
+}
+
+.fd-session-xp>p small {
+    color: var(--fdk-muted);
+    font-size: 12px
+}
+
+.fd-drone-unlock {
+    z-index: 70;
+    right: var(--hud-edge-x,48px);
+    border: 1px solid var(--hud-line);
+    border-radius: var(--fdk-radius-slab);
+    background: var(--hud-panel);
+    width: 290px;
+    color: var(--hud-chalk);
+    padding: 26px 18px 18px;
+    font: 700 13px/1.4 Arial,Helvetica,sans-serif;
+    animation: .42s both fd-unlock-arrive;
+    position: absolute;
+    bottom: 320px
+}
+
+.fd-drone-unlock__sticker {
+    border: 1px solid color-mix(in srgb, var(--fdk-ink) 40%, var(--fdk-clear));
+    border-radius: var(--fdk-radius-slab);
+    background: var(--hud-acid);
+    color: var(--hud-ink);
+    font: 400 18px/1.1 var(--font-sim-display),Impact,sans-serif;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    position: absolute;
+    top: -13px;
+    left: 14px
+}
+
+.fd-drone-unlock__size {
+    font-family: var(--font-sim-display),Impact,sans-serif;
+    opacity: .6;
+    font-size: 26px;
+    position: absolute;
+    top: 12px;
+    right: 14px
+}
+
+.fd-drone-unlock>strong {
+    font-family: var(--font-sim-display),Impact,sans-serif;
+    margin-bottom: 10px;
+    padding-right: 42px;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.15;
+    display: block
+}
+
+.fd-drone-unlock__confetti {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    right: 24px
+}
+
+.fd-drone-unlock__confetti i {
+    border: 1px solid var(--fdk-ink);
+    background: var(--fdk-acid);
+    width: 5px;
+    height: 12px;
+    rotate: calc(var(--piece)*45deg);
+    animation: .65s .15s both fd-unlock-spark;
+    position: absolute
+}
+
+@keyframes fd-flight-gain {
+    0% {
+        opacity: 0;
+        transform: translateY(6px)scale(.94)
+    }
+
+    10%,80% {
+        opacity: 1;
+        transform: translateY(0)scale(1)
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-8px)
+    }
+}
+
+@keyframes fd-level-pop {
+    0% {
+        transform: scale(.97)
+    }
+
+    45% {
+        transform: scale(1.035)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+@keyframes fd-unlock-arrive {
+    0% {
+        opacity: 0;
+        transform: translate(24px)rotate(3deg)scale(.92)
+    }
+
+    65% {
+        opacity: 1;
+        transform: translate(-4px)rotate(-1deg)scale(1.02)
+    }
+
+    to {
+        transform: none
+    }
+}
+
+@keyframes fd-unlock-spark {
+    0% {
+        opacity: 1;
+        transform: translateY(-8px)
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-52px)rotate(35deg)
+    }
+}
+
+@media (max-width: 700px),(max-height:600px) {
+    .fd-pilot-progress {
+        right:var(--hud-edge-x,16px);
+        bottom: 76px
+    }
+
+    .fd-drone-unlock {
+        right: var(--hud-edge-x,16px);
+        width: 240px;
+        padding: 22px 16px 16px;
+        bottom: 260px
+    }
+
+    .fd-drone-unlock>strong {
+        font-size: 30px
+    }
+
+    .fd-pilot-progress[data-race-result=true] .fd-pilot-progress__gain {
+        display: none
+    }
+}
+
+:root[data-motion=reduce] :is(.fd-pilot-progress,.fd-pilot-progress *,.fd-drone-unlock,.fd-drone-unlock *,.fd-next-ride__track i) {
+    transition: none!important;
+    animation: none!important
+}
+
+:root[data-motion=reduce] .fd-pilot-progress[data-reward] .fd-pilot-progress__gain {
+    opacity: 1;
+    transform: none
+}
+
+:root[data-motion=reduce] .fd-drone-unlock__confetti {
+    display: none
+}
+
+@media (prefers-reduced-motion:reduce) {
+    :root:not([data-motion=full]) :is(.fd-pilot-progress,.fd-pilot-progress *,.fd-drone-unlock,.fd-drone-unlock *,.fd-next-ride__track i) {
+        transition: none!important;
+        animation: none!important
+    }
+
+    :root:not([data-motion=full]) .fd-pilot-progress[data-reward] .fd-pilot-progress__gain {
+        opacity: 1;
+        transform: none
+    }
+
+    :root:not([data-motion=full]) .fd-drone-unlock__confetti {
+        display: none
+    }
+}

@@ -1,0 +1,639 @@
+.fd-credit-page {
+    width: 100%;
+    color: var(--fdk-ink)
+}
+
+.fd-credit-page .fd-credit-back {
+    gap: var(--fdk-space-4);
+    margin-bottom: var(--fdk-space-4)
+}
+
+.fd-credit-store {
+    container-type: inline-size
+}
+
+.fd-credit-heading {
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--fdk-space-9);
+    margin-bottom: var(--fdk-space-7);
+    display: flex
+}
+
+.fd-credit-heading h1 {
+    font: 400 clamp(42px, 5.6vw, 64px)/1.05 var(--fdk-font-display);
+    text-transform: uppercase;
+    margin: 0
+}
+
+.fd-credit-heading h1 span {
+    color: var(--fdk-orange-text)
+}
+
+.fd-credit-heading p {
+    margin: var(--fdk-space-3) 0 0;
+    color: var(--fdk-muted);
+    font: 400 var(--fdk-type-ui)/1.4 var(--fdk-font-body)
+}
+
+.fd-credit-balance {
+    gap: var(--fdk-space-3);
+    padding: var(--fdk-space-6) 0 var(--fdk-space-6) var(--fdk-space-9);
+    border-left: var(--fdk-line) solid var(--fdk-ink-track);
+    display: grid
+}
+
+.fd-credit-balance>span {
+    color: var(--fdk-muted);
+    font: 700 var(--fdk-type-label)/1.2 var(--fdk-font-body);
+    letter-spacing: var(--fdk-tracking-label);
+    text-transform: uppercase
+}
+
+.fd-credit-balance strong {
+    align-items: center;
+    gap: var(--fdk-space-5);
+    font: 400 38px/1 var(--fdk-font-display);
+    display: flex
+}
+
+.fd-credit-balance i {
+    border: var(--fdk-rim) solid var(--fdk-ink);
+    border-radius: var(--fdk-round);
+    background: var(--fdk-acid);
+    width: 32px;
+    height: 32px;
+    font: normal 800 17px/1 var(--fdk-font-body);
+    place-items: center;
+    display: grid
+}
+
+.fd-credit-goal {
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--fdk-space-7);
+    margin-bottom: var(--fdk-space-8);
+    padding: var(--fdk-space-7) var(--fdk-space-8);
+    border: var(--fdk-line) solid var(--fdk-ink-edge);
+    border-left: var(--fdk-edge) solid var(--fdk-acid);
+    background: var(--fdk-paper);
+    display: flex
+}
+
+.fd-credit-goal span {
+    gap: var(--fdk-space-3);
+    font: 400 var(--fdk-type-small)/1.3 var(--fdk-font-body);
+    display: grid
+}
+
+.fd-credit-goal small {
+    color: var(--fdk-muted);
+    font-size: var(--fdk-type-label)
+}
+
+.fd-credit-goal>svg {
+    flex-shrink: 0
+}
+
+.fd-credit-notice {
+    margin: 0 0 var(--fdk-space-8);
+    padding: var(--fdk-space-6) var(--fdk-space-7);
+    border: var(--fdk-line) solid var(--fdk-ink-edge);
+    background: var(--fdk-paper);
+    font: 700 var(--fdk-type-ui)/1.4 var(--fdk-font-body)
+}
+
+.fd-credit-welcome {
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--fdk-space-9);
+    margin-bottom: var(--fdk-space-7);
+    background: var(--fdk-ink);
+    color: var(--fdk-chalk);
+    padding: 20px 26px;
+    display: flex
+}
+
+.fd-credit-welcome h2 {
+    margin: var(--fdk-space-4) 0 var(--fdk-space-3);
+    font: 400 clamp(26px, 3.8cqi, 46px)/1.08 var(--fdk-font-display);
+    text-transform: uppercase
+}
+
+.fd-credit-welcome h2>span {
+    color: var(--fdk-acid)
+}
+
+.fd-credit-welcome p {
+    color: var(--fdk-chalk-soft);
+    font: 700 var(--fdk-type-ui)/1.5 var(--fdk-font-body);
+    margin: 0
+}
+
+.fd-credit-scribble {
+    align-items: end;
+    gap: var(--fdk-space-6);
+    padding: 0 var(--fdk-space-7);
+    color: var(--fdk-acid);
+    font: 400 29px/.95 var(--fdk-font-display);
+    text-transform: uppercase;
+    flex-shrink: 0;
+    display: flex
+}
+
+.fd-credit-scribble svg {
+    margin-bottom: -6px
+}
+
+.fd-credit-offers {
+    gap: var(--fdk-space-6);
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    display: grid
+}
+
+.fd-credit-offer {
+    border: var(--fdk-line) solid var(--fdk-ink);
+    background: var(--fdk-ink);
+    min-width: 0;
+    color: var(--fdk-chalk);
+    flex-direction: column;
+    display: flex;
+    position: relative;
+    overflow: hidden
+}
+
+.fd-credit-offer.is-selected {
+    outline: var(--fdk-select-line) solid var(--fdk-orange);
+    outline-offset: 0
+}
+
+.fd-credit-offer-heading {
+    z-index: 1;
+    align-items: center;
+    gap: var(--fdk-space-5);
+    min-height: 50px;
+    padding: var(--fdk-space-7) var(--fdk-space-7) 0;
+    display: flex;
+    position: relative
+}
+
+.fd-credit-offer-heading h2 {
+    font: 400 clamp(18px, 2cqi, 23px)/1.1 var(--fdk-font-display);
+    text-transform: uppercase;
+    margin: 0
+}
+
+.fd-credit-offer-heading>span {
+    background: var(--fdk-chalk-faint);
+    width: 22px;
+    height: 1px
+}
+
+.fd-credit-offer-heading>svg {
+    color: var(--fdk-acid);
+    flex-shrink: 0;
+    margin-left: auto
+}
+
+.fd-credit-art {
+    aspect-ratio: 1;
+    width: 100%;
+    max-width: 200px;
+    -webkit-mask-image: linear-gradient(var(--fdk-clear), var(--fdk-ink) 10%, var(--fdk-ink) 86%, var(--fdk-clear));
+    mask-image: linear-gradient(var(--fdk-clear), var(--fdk-ink) 10%, var(--fdk-ink) 86%, var(--fdk-clear));
+    background-image: url(/images/shop/credit-bundles.webp);
+    background-position-y: 38%;
+    background-repeat: no-repeat;
+    background-size: 400%;
+    margin: -8px auto -18px
+}
+
+.fd-credit-amount {
+    padding: 0 var(--fdk-space-7) var(--fdk-space-6);
+    position: relative
+}
+
+.fd-credit-amount>strong {
+    font: 400 clamp(38px, 4.6cqi, 54px)/1 var(--fdk-font-display);
+    display: block
+}
+
+.fd-credit-amount>span {
+    margin-top: var(--fdk-space-3);
+    font: 700 var(--fdk-type-label)/1.2 var(--fdk-font-body);
+    letter-spacing: var(--fdk-tracking-label);
+    text-transform: uppercase;
+    display: block
+}
+
+.fd-credit-breakdown,.fd-credit-value {
+    min-height: 18px;
+    margin: var(--fdk-space-3) 0 0;
+    font: 400 var(--fdk-type-label)/1.5 var(--fdk-font-body)
+}
+
+.fd-credit-breakdown {
+    font-weight: 700
+}
+
+.fd-credit-breakdown>span {
+    color: var(--fdk-chalk-faint);
+    padding: 0 3px
+}
+
+.fd-credit-breakdown b,.fd-credit-value b {
+    color: var(--fdk-acid);
+    white-space: nowrap
+}
+
+.fd-credit-value {
+    color: var(--fdk-chalk-dim)
+}
+
+.fd-credit-offer-action {
+    padding: 0 var(--fdk-space-6) var(--fdk-space-6);
+    margin-top: auto
+}
+
+.fd-credit-fit {
+    justify-content: center;
+    align-items: center;
+    gap: var(--fdk-space-2);
+    margin: 0 0 var(--fdk-space-5);
+    color: var(--fdk-acid);
+    font: 700 var(--fdk-type-label)/1.4 var(--fdk-font-body);
+    display: flex
+}
+
+.fd-credit-pricing {
+    gap: var(--fdk-space-2) var(--fdk-space-8);
+    padding: var(--fdk-space-6) var(--fdk-space-1) var(--fdk-space-7);
+    color: var(--fdk-muted);
+    font: 400 var(--fdk-type-label)/1.6 var(--fdk-font-body);
+    flex-wrap: wrap;
+    display: flex
+}
+
+.fd-credit-pricing p {
+    margin: 0
+}
+
+.fd-credit-exact,.fd-credit-custom {
+    align-items: center;
+    gap: var(--fdk-space-7);
+    margin-bottom: var(--fdk-space-8);
+    padding: var(--fdk-space-7) var(--fdk-space-8);
+    border: var(--fdk-line) solid var(--fdk-ink-edge);
+    background: var(--fdk-paper);
+    flex-wrap: wrap;
+    display: flex
+}
+
+.fd-credit-exact {
+    justify-content: space-between
+}
+
+.fd-credit-exact strong {
+    font: 700 var(--fdk-type-small)/1.3 var(--fdk-font-body)
+}
+
+.fd-credit-exact p,.fd-credit-custom p {
+    margin: var(--fdk-space-3) 0 0;
+    color: var(--fdk-muted);
+    font: 400 var(--fdk-type-label)/1.5 var(--fdk-font-body)
+}
+
+.fd-credit-custom {
+    margin-bottom: 0
+}
+
+.fd-credit-custom>div {
+    flex: 1;
+    min-width: 200px
+}
+
+.fd-credit-custom strong {
+    font: 400 22px/1.1 var(--fdk-font-display);
+    text-transform: uppercase
+}
+
+.fd-credit-custom p>span {
+    display: block
+}
+
+.fd-credit-custom label {
+    gap: var(--fdk-space-2);
+    width: 130px;
+    font: 700 var(--fdk-type-label)/1.2 var(--fdk-font-body);
+    display: grid
+}
+
+.fd-credit-custom>button {
+    align-self: flex-end
+}
+
+.fd-credit-trust {
+    gap: var(--fdk-space-5) var(--fdk-space-9);
+    padding: var(--fdk-space-7) var(--fdk-space-1) 0;
+    color: var(--fdk-muted);
+    font: 400 var(--fdk-type-label)/1.4 var(--fdk-font-body);
+    flex-wrap: wrap;
+    display: flex
+}
+
+.fd-credit-trust>span {
+    align-items: center;
+    gap: var(--fdk-space-3);
+    display: inline-flex
+}
+
+.fd-credit-store .fd-cash-confirm {
+    scroll-margin: var(--fdk-space-7)
+}
+
+@media (max-height: 850px) {
+    .fd-credit-heading {
+        margin-bottom:var(--fdk-space-6)
+    }
+
+    .fd-credit-heading h1 {
+        font-size: 48px
+    }
+
+    .fd-credit-balance {
+        padding-block:var(--fdk-space-2)}
+
+    .fd-credit-balance strong {
+        font-size: 30px
+    }
+
+    .fd-credit-welcome {
+        margin-bottom: var(--fdk-space-6);
+        padding: var(--fdk-space-6) var(--fdk-space-8)
+    }
+
+    .fd-credit-welcome h2 {
+        font-size: 32px
+    }
+
+    .fd-credit-offer-heading {
+        min-height: 36px;
+        padding-top: var(--fdk-space-6)
+    }
+
+    .fd-credit-offer-heading h2 {
+        font-size: 20px
+    }
+
+    .fd-credit-art {
+        max-width: 155px;
+        margin: -5px auto -18px
+    }
+
+    .fd-credit-amount>strong {
+        font-size: 42px
+    }
+}
+
+.fd-purchase-history {
+    min-height: 360px;
+    padding: var(--fdk-space-10);
+    border: var(--fdk-line) solid var(--fdk-ink-edge);
+    background: var(--fdk-chalk);
+    color: var(--fdk-ink)
+}
+
+.fd-purchase-history>header {
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--fdk-space-8);
+    flex-wrap: wrap;
+    display: flex
+}
+
+.fd-purchase-history a,.fd-withdrawal-dialog a {
+    color: inherit;
+    text-underline-offset: 3px;
+    text-decoration: underline
+}
+
+.fd-purchase-history>p {
+    color: var(--fdk-muted);
+    font: 400 var(--fdk-type-small)/1.6 var(--fdk-font-body)
+}
+
+.fd-purchase-history [role=alert],.fd-withdrawal-dialog [role=alert] {
+    color: var(--fdk-brick);
+    font-weight: 700
+}
+
+.fd-purchase-orders {
+    margin: var(--fdk-space-9) 0 0;
+    padding: 0;
+    list-style: none
+}
+
+.fd-purchase-orders>li {
+    padding: var(--fdk-space-8) 0;
+    border-top: var(--fdk-line) solid var(--fdk-ink-line)
+}
+
+.fd-purchase-order-heading {
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--fdk-space-6);
+    flex-wrap: wrap;
+    display: flex
+}
+
+.fd-purchase-order-heading strong {
+    font: 700 var(--fdk-type-body)/1.3 var(--fdk-font-body)
+}
+
+.fd-purchase-orders p {
+    margin: var(--fdk-space-5) 0;
+    font: 400 var(--fdk-type-ui)/1.6 var(--fdk-font-body)
+}
+
+.fd-purchase-orders small {
+    margin-bottom: var(--fdk-space-4);
+    color: var(--fdk-muted);
+    font: 400 var(--fdk-type-label)/1.4 var(--fdk-font-body);
+    overflow-wrap: anywhere;
+    display: block
+}
+
+.fd-withdrawal-action {
+    margin-top: var(--fdk-space-7)
+}
+
+.fd-withdrawal-other {
+    margin: var(--fdk-space-8) 0
+}
+
+.fd-withdrawal-action summary,.fd-withdrawal-other summary {
+    width: fit-content;
+    padding: var(--fdk-space-3) 0;
+    color: var(--fdk-muted);
+    font: 400 var(--fdk-type-label)/1.4 var(--fdk-font-body);
+    cursor: pointer
+}
+
+.fd-withdrawal-action summary:hover,.fd-withdrawal-other summary:hover {
+    color: var(--fdk-ink)
+}
+
+.fd-withdrawal-action summary:focus-visible,.fd-withdrawal-other summary:focus-visible {
+    outline: var(--fdk-rim) solid var(--fdk-focus);
+    outline-offset: 2px
+}
+
+.fd-purchase-history .fd-withdrawal-link {
+    margin-top: var(--fdk-space-3);
+    color: var(--fdk-muted);
+    text-underline-offset: 3px;
+    font-weight: 400;
+    text-decoration: underline
+}
+
+.fd-purchase-history .fd-withdrawal-link:not(:disabled):hover {
+    color: var(--fdk-ink)
+}
+
+.fd-purchase-history .fd-withdrawal-link:disabled {
+    cursor: default;
+    opacity: .45
+}
+
+.fd-withdrawal-other p,.fd-other-withdrawals>p {
+    color: var(--fdk-muted);
+    font: 400 var(--fdk-type-ui)/1.6 var(--fdk-font-body)
+}
+
+.fd-other-withdrawals {
+    margin-top: var(--fdk-space-10)
+}
+
+.fd-other-withdrawals h3 {
+    font: 400 var(--fdk-type-heading)/1 var(--fdk-font-display);
+    text-transform: uppercase;
+    margin: 0
+}
+
+.fd-withdrawal-status {
+    margin-top: var(--fdk-space-7);
+    padding: var(--fdk-space-7);
+    border: var(--fdk-line) solid var(--fdk-ink-edge);
+    border-left: var(--fdk-edge) solid var(--fdk-acid);
+    background: var(--fdk-paper);
+    overflow-wrap: anywhere
+}
+
+.fd-withdrawal-status>strong {
+    font: 700 var(--fdk-type-small)/1.3 var(--fdk-font-body)
+}
+
+.fd-withdrawal-overlay {
+    z-index: 310;
+    background: var(--fdk-scrim);
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
+    position: fixed;
+    inset: 0
+}
+
+.fd-withdrawal-frame {
+    z-index: 311;
+    width: min(560px,100vw - 32px);
+    font-family: var(--fdk-font-body);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%)
+}
+
+.fd-withdrawal-frame:focus-visible {
+    outline: none
+}
+
+.fd-withdrawal-frame>.fd-withdrawal-dialog {
+    max-height: calc(100dvh - 32px);
+    padding: var(--fdk-space-9) var(--fdk-space-10) var(--fdk-space-10);
+    overflow-y: auto
+}
+
+.fd-withdrawal-dialog h2 {
+    font: 400 clamp(30px, 2.6vw, 40px)/.95 var(--fdk-font-display);
+    text-transform: uppercase;
+    margin: 0
+}
+
+.fd-withdrawal-dialog p {
+    font: 400 var(--fdk-type-small)/1.6 var(--fdk-font-body);
+    margin: 0
+}
+
+.fd-withdrawal-dialog form {
+    gap: var(--fdk-space-6);
+    display: grid
+}
+
+.fd-withdrawal-dialog dl {
+    margin: var(--fdk-space-4) 0;
+    font: 400 var(--fdk-type-ui)/1.4 var(--fdk-font-body)
+}
+
+.fd-withdrawal-dialog dl>div {
+    gap: var(--fdk-space-6);
+    margin: var(--fdk-space-6) 0;
+    grid-template-columns: 130px minmax(0,1fr);
+    display: grid
+}
+
+.fd-withdrawal-dialog dt {
+    color: var(--fdk-muted)
+}
+
+.fd-withdrawal-dialog dd {
+    overflow-wrap: anywhere;
+    margin: 0
+}
+
+.fd-withdrawal-dialog label {
+    gap: var(--fdk-space-4);
+    font: 700 var(--fdk-type-ui)/1.3 var(--fdk-font-body);
+    display: grid
+}
+
+.fd-withdrawal-dialog textarea {
+    width: 100%;
+    padding: var(--fdk-space-5) var(--fdk-space-6);
+    border: var(--fdk-line) solid var(--fdk-field-line);
+    background: var(--fdk-field-face);
+    color: inherit;
+    font: 400 var(--fdk-type-body)/1.4 var(--fdk-font-body);
+    resize: vertical
+}
+
+.fd-withdrawal-dialog textarea:focus-visible {
+    outline: var(--fdk-rim) solid var(--fdk-focus);
+    outline-offset: 2px
+}
+
+.fd-withdrawal-dialog small {
+    color: var(--fdk-muted);
+    font: 400 var(--fdk-type-label)/1.5 var(--fdk-font-body)
+}
+
+.fd-withdrawal-declaration {
+    padding: var(--fdk-space-7);
+    border-left: var(--fdk-select-line) solid var(--fdk-ink);
+    background: var(--fdk-paper)
+}
+
+.fd-withdrawal-buttons {
+    gap: var(--fdk-space-5);
+    margin-top: var(--fdk-space-4);
+    flex-wrap: wrap;
+    display: flex
+}

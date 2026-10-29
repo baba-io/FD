@@ -1,0 +1,79 @@
+.fd-controls-onboarding {
+    z-index: 40;
+    pointer-events: auto;
+    outline: none;
+    position: absolute;
+    inset: 0
+}
+
+.fd-controls-onboarding .fd-wheel-tutorial {
+    background: linear-gradient(to top, var(--fdk-ink-half), var(--fdk-clear) 62%)
+}
+
+.fd-controls-onboarding .sim-instructor-lesson__speech {
+    flex-basis: 580px
+}
+
+.fd-controls-onboarding .fd-wheel-tutorial .sim-instructor-lesson__row {
+    bottom: 0
+}
+
+.fd-controls-onboarding .fd-wheel-tutorial .sim-instructor-lesson__portrait {
+    max-width: 32vw;
+    height: min(62vh,620px)
+}
+
+.fd-controls-choices {
+    gap: var(--fdk-space-6);
+    padding-top: var(--fdk-space-3);
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    display: grid
+}
+
+.fd-controls-choice.fdk-btn {
+    gap: var(--fdk-space-4);
+    padding-inline:var(--fdk-space-4);position: relative
+}
+
+.fd-controls-plugged.fdk-badge {
+    position: absolute;
+    top: -14px;
+    right: -4px
+}
+
+.fd-controls-keys {
+    gap: var(--fdk-space-3);
+    padding: var(--fdk-space-6) var(--fdk-space-7);
+    border: var(--fdk-rim) solid var(--fdk-ink);
+    background: var(--fdk-chalk);
+    color: var(--fdk-ink);
+    font: 700 var(--fdk-type-small)/1.2 var(--fdk-font-body);
+    margin: 0;
+    display: grid
+}
+
+.fd-controls-keys>div {
+    align-items: center;
+    gap: var(--fdk-space-6);
+    grid-template-columns: 112px auto;
+    display: grid
+}
+
+.fd-controls-keys dt {
+    gap: var(--fdk-space-3);
+    display: flex
+}
+
+.fd-controls-keys dd {
+    margin: 0
+}
+
+.fd-wheel-tutorial .fd-controls-keys kbd.fd-wheel-tutorial-key {
+    min-width: 32px;
+    padding: 2px var(--fdk-space-4);
+    border-radius: var(--fdk-radius);
+    text-align: center;
+    font-size: var(--fdk-type-ui);
+    border-bottom-width: 3px;
+    margin: 0
+}

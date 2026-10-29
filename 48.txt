@@ -1,0 +1,269 @@
+.fd-race-leave {
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+    --leave: 0;
+    --leave-pulse: 0;
+    --leave-shake: 0px;
+    color: var(--fdk-chalk);
+    font-family: var(--fdk-font-body);
+    position: absolute;
+    inset: 0;
+    overflow: hidden
+}
+
+.fd-race-leave>div {
+    position: absolute
+}
+
+.fd-race-leave__grade {
+    -webkit-backdrop-filter: saturate(.7);
+    opacity: calc(var(--leave) * .65);
+    inset: 0
+}
+
+.fd-race-leave__edge {
+    opacity: calc(min(1, var(--leave) * 4) * (.2 + .4 * var(--leave)) * (.76 + .24 * var(--leave-pulse)));
+    inset: 0
+}
+
+.fd-race-leave__edge:before {
+    content: "";
+    background: radial-gradient(ellipse at center, var(--fdk-clear) 52%, color-mix(in srgb, var(--fdk-orange) 45%, var(--fdk-clear)) 86%, var(--fdk-ink-dim) 100%);
+    position: absolute;
+    inset: 0
+}
+
+.fd-race-leave__card {
+    isolation: isolate;
+    width: max-content;
+    min-width: 228px;
+    max-width: calc(100% - 32px);
+    padding: var(--fdk-space-6) var(--fdk-space-9) var(--fdk-space-6);
+    text-align: center;
+    transform: translate(-50%);
+    translate: var(--leave-shake) 0;
+    opacity: 0;
+    transition: opacity var(--fdk-motion) var(--fdk-ease);
+    top: 30%;
+    left: 50%
+}
+
+.fd-race-leave__card:before,.fd-race-leave__gone:before {
+    content: "";
+    z-index: -1;
+    border: var(--fdk-line) solid var(--fdk-chalk-line);
+    background: var(--fdk-ink-plate);
+    position: absolute;
+    inset: 0
+}
+
+.fd-race-leave[data-state=warning] .fd-race-leave__card {
+    opacity: 1;
+    animation: fd-leave-stamp .22s var(--fdk-ease) both
+}
+
+.fd-race-leave[data-state=poof] .fd-race-leave__card {
+    animation: fd-leave-dismiss .22s var(--fdk-ease) both
+}
+
+.fd-race-leave__banner {
+    color: var(--fdk-orange);
+    font: 400 23px/1.2 var(--fdk-font-display);
+    text-transform: uppercase;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 6px;
+    display: inline-flex
+}
+
+.fd-race-leave__count {
+    font: 400 68px/1 var(--fdk-font-display);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.025em;
+    display: block
+}
+
+.fd-race-leave[data-final=true] .fd-race-leave__count {
+    color: var(--fdk-orange)
+}
+
+.fd-race-leave__hint {
+    color: var(--fdk-chalk-soft);
+    font: 700 var(--fdk-type-label)/1.4 var(--fdk-font-body);
+    margin: 6px 0 0
+}
+
+.fd-race-leave__arrow {
+    will-change: transform;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0
+}
+
+.fd-race-leave__chevron {
+    border: var(--fdk-line) solid var(--fdk-ink);
+    background: var(--fdk-orange);
+    fill: none;
+    width: 40px;
+    height: 40px;
+    stroke: var(--fdk-ink);
+    stroke-width: 4px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    scale: calc(1 + .06 * var(--leave-pulse));
+    padding: 4px;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    overflow: visible
+}
+
+.fd-race-leave__chevron path {
+    transform-origin: 20px 20px;
+    transform: rotate(var(--bearing))
+}
+
+.fd-race-leave__arrow[data-edge=false] .fd-race-leave__chevron {
+    top: -62px
+}
+
+.fd-race-leave__tag {
+    border: var(--fdk-line) solid var(--fdk-chalk-line);
+    background: var(--fdk-ink-plate);
+    width: max-content;
+    color: var(--fdk-chalk);
+    font: 400 14px/1.1 var(--fdk-font-display);
+    text-transform: uppercase;
+    align-items: baseline;
+    gap: 7px;
+    padding: 5px 8px;
+    display: flex;
+    position: absolute;
+    top: 27px;
+    left: 0;
+    transform: translate(-50%)
+}
+
+.fd-race-leave__arrow[data-edge=false] .fd-race-leave__tag {
+    top: -15px
+}
+
+.fd-race-leave__tag b {
+    color: var(--fdk-chalk-soft);
+    font: 700 11px/1 var(--fdk-font-body);
+    font-variant-numeric: tabular-nums;
+    text-transform: none
+}
+
+.fd-race-leave__poof {
+    width: 0;
+    height: 0;
+    display: none;
+    top: calc(30% + 58px);
+    left: 50%
+}
+
+.fd-race-leave[data-state=poof] .fd-race-leave__poof {
+    display: block
+}
+
+.fd-race-leave__gone {
+    isolation: isolate;
+    width: max-content;
+    padding: var(--fdk-space-5) var(--fdk-space-8);
+    color: var(--fdk-chalk);
+    font: 400 20px/1.2 var(--fdk-font-display);
+    animation: fd-leave-gone 1.6s var(--fdk-ease) both;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%)
+}
+
+@keyframes fd-leave-stamp {
+    0% {
+        opacity: 0;
+        translate: 0 5px
+    }
+
+    to {
+        opacity: 1;
+        translate: 0
+    }
+}
+
+@keyframes fd-leave-dismiss {
+    to {
+        opacity: 0;
+        scale: .97
+    }
+}
+
+@keyframes fd-leave-gone {
+    0%,12% {
+        opacity: 0;
+        translate: 0 4px
+    }
+
+    24%,78% {
+        opacity: 1;
+        translate: 0
+    }
+
+    to {
+        opacity: 0;
+        translate: 0 -4px
+    }
+}
+
+@keyframes fd-leave-fade {
+    to {
+        opacity: 0
+    }
+}
+
+@keyframes fd-leave-fade-in-out {
+    0% {
+        opacity: 0
+    }
+
+    20%,80% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+.fd-race-leave[data-motion=reduce] .fd-race-leave__card {
+    transition: none;
+    animation: none
+}
+
+.fd-race-leave[data-motion=reduce][data-state=poof] .fd-race-leave__card {
+    animation: fd-leave-fade .2s var(--fdk-ease) both
+}
+
+.fd-race-leave[data-motion=reduce] .fd-race-leave__gone {
+    animation-name: fd-leave-fade-in-out
+}
+
+.fd-race-leave[data-motion=reduce] .fd-race-leave__chevron {
+    scale: 1
+}
+
+.fd-race-leave[data-kind=map] .fd-race-leave__card {
+    top: 18%
+}
+
+.fd-race-leave[data-kind=map] .fd-race-leave__arrow[data-edge=false] .fd-race-leave__chevron {
+    top: 20px
+}
+
+.fd-race-leave[data-kind=map] .fd-race-leave__arrow[data-edge=false] .fd-race-leave__tag {
+    top: 68px
+}

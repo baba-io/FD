@@ -1,0 +1,342 @@
+@property --chat-veil {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 1
+}
+
+.fd-chat {
+    --chat-veil: 0;
+    z-index: 25;
+    left: var(--hud-edge-x,48px);
+    bottom: calc(var(--hud-edge-y,32px) + var(--admin-bar-h,0px));
+    pointer-events: auto;
+    width: min(440px,50vw - 72px);
+    color: var(--hud-chalk);
+    font: 13px/1.65 var(--fdk-font-body);
+    transition: --chat-veil .9s ease-out;
+    position: absolute
+}
+
+.fd-chat:is([data-awake=true],:hover,:focus-within) {
+    --chat-veil: 1;
+    transition-duration: 0s
+}
+
+.fd-chat button {
+    cursor: pointer;
+    font: inherit
+}
+
+.fd-chat :focus-visible {
+    outline: 2px solid var(--hud-sky);
+    outline-offset: 2px
+}
+
+.fd-chat__content {
+    opacity: calc(.12 + .88 * var(--chat-veil))
+}
+
+.fd-chat__header {
+    isolation: isolate;
+    width: max-content;
+    height: 22px;
+    color: var(--hud-chalk);
+    font: 400 14px/1 var(--font-sim-display), Impact, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 6px 4px;
+    padding: 0 10px 0 9px;
+    display: flex;
+    position: relative
+}
+
+.fd-chat__header:before {
+    content: "";
+    z-index: -1;
+    background: var(--hud-ink);
+    position: absolute;
+    inset: 0
+}
+
+.fd-chat__header button {
+    background: var(--fdk-clear);
+    color: var(--hud-sky);
+    border: 0;
+    padding: 0 0 1px;
+    font: 700 13px/1 var(--fdk-font-body)!important
+}
+
+.fd-chat__header button:hover {
+    color: var(--hud-chalk)
+}
+
+.fd-chat[data-collapsed] .fd-chat__log {
+    display: none
+}
+
+.fd-chat__expand {
+    margin-left: 2px
+}
+
+.fd-chat__log {
+    overflow-wrap: anywhere;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--fdk-chalk) 56%, var(--fdk-clear)) var(--fdk-clear);
+    border: 1px solid color-mix(in srgb, var(--hud-line) calc(100% * var(--chat-veil)), var(--fdk-clear));
+    background: color-mix(in srgb, var(--hud-panel) calc(100% * var(--chat-veil)), var(--fdk-clear));
+    max-height: min(210px,25vh);
+    padding: 6px 8px;
+    overflow: hidden auto
+}
+
+.fd-chat__message {
+    padding: 4px 18px 4px 0;
+    position: relative
+}
+
+.fd-chat__message:hover {
+    background: color-mix(in srgb, var(--fdk-paper) 2.4%, var(--fdk-clear))
+}
+
+.fd-chat__message time {
+    color: var(--fdk-stone);
+    font-variant-numeric: tabular-nums;
+    opacity: .7;
+    margin-right: 2px;
+    font-size: 10px
+}
+
+.fd-chat__identity {
+    color: var(--pilot-color)
+}
+
+.fd-chat__level {
+    color: var(--fdk-chalk-dim);
+    font-variant-numeric: tabular-nums;
+    margin-right: 1px;
+    font-size: 10px;
+    font-weight: 600
+}
+
+.fd-chat__name {
+    background: var(--fdk-clear);
+    color: inherit;
+    border: 0;
+    margin-right: 3px;
+    padding: 0;
+    font-weight: 800!important
+}
+
+.fd-chat__name:hover:not(:disabled) {
+    color: var(--fdk-paper);
+    text-underline-offset: 3px;
+    text-decoration: underline
+}
+
+.fd-chat__name:disabled {
+    cursor: default
+}
+
+.fd-chat .fd-pilot-badge {
+    vertical-align: 1px;
+    height: 16px;
+    margin-right: 3px;
+    padding: 0 5px;
+    font-size: 10px
+}
+
+.fd-chat__system,.fd-chat__dummy {
+    color: var(--hud-acid);
+    font-size: 12px
+}
+
+.fd-chat__dummy strong {
+    color: var(--hud-orange)
+}
+
+.fd-chat__remove {
+    background: var(--fdk-clear);
+    color: var(--fdk-stone);
+    opacity: 0;
+    border: 0;
+    place-items: center;
+    padding: 3px;
+    transition: opacity .16s;
+    display: grid;
+    position: absolute;
+    top: 7px;
+    right: 0
+}
+
+.fd-chat__message:hover .fd-chat__remove,.fd-chat__remove:focus-visible {
+    opacity: 1
+}
+
+.fd-chat__remove:hover {
+    color: color-mix(in srgb, var(--fdk-chalk) 60%, var(--fdk-team-red))
+}
+
+.fd-chat__form {
+    border-bottom: 2px solid color-mix(in srgb, var(--fdk-chalk) calc(20% * var(--chat-veil)), var(--fdk-clear));
+    background: color-mix(in srgb, var(--fdk-ink) calc(44% + 46% * var(--chat-veil)), var(--fdk-clear));
+    opacity: calc(.34 + .66 * var(--chat-veil));
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    padding: 4px 4px 4px 8px;
+    display: flex
+}
+
+.fd-chat__form:focus-within {
+    border-bottom-color: var(--hud-orange)
+}
+
+.fd-chat__form input {
+    background: var(--fdk-clear);
+    min-width: 0;
+    color: var(--hud-chalk);
+    font: inherit;
+    border: 0;
+    outline: 0;
+    flex: 1;
+    padding: 5px 0;
+    font-size: 12px
+}
+
+.fd-chat__form input::placeholder {
+    color: var(--fdk-chalk-dim)
+}
+
+.fd-chat .fd-chat__form input:focus-visible {
+    outline: none
+}
+
+.fd-chat__form button {
+    border-radius: var(--fdk-radius);
+    background: var(--hud-orange);
+    min-width: 30px;
+    height: 28px;
+    color: var(--hud-ink);
+    border: 0;
+    place-items: center;
+    padding: 0 7px;
+    display: grid
+}
+
+.fd-chat__form button:hover:not(:disabled) {
+    background: var(--fdk-orange-hover)
+}
+
+.fd-chat__form button:disabled {
+    cursor: default;
+    opacity: .4
+}
+
+.fd-chat>.fd-mod-trigger {
+    margin-bottom: 6px
+}
+
+.fd-chat__latest {
+    background: var(--hud-ink);
+    color: var(--hud-sky);
+    border: 0;
+    padding: 2px 8px;
+    position: absolute;
+    bottom: 52px;
+    right: 8px;
+    font-size: 11px!important
+}
+
+.fd-chat__error,.fd-chat__muted {
+    background: var(--fdk-ink-dim);
+    color: color-mix(in srgb, var(--fdk-chalk) 80%, var(--fdk-team-red));
+    margin: 6px 0 0;
+    padding: 5px 10px;
+    font-size: 12px
+}
+
+@media (hover: none) {
+    .fd-chat__remove {
+        opacity:1
+    }
+}
+
+.fd-chat-markdown a {
+    color: inherit;
+    text-underline-offset: 3px;
+    text-decoration: underline
+}
+
+.fd-chat-markdown p {
+    margin: 0
+}
+
+.fd-chat-markdown>p:first-child {
+    display: inline
+}
+
+.fd-chat-markdown>p+p {
+    margin-top: 4px
+}
+
+.fd-chat-markdown ul,.fd-chat-markdown ol {
+    margin: 4px 0;
+    padding-left: 20px
+}
+
+.fd-chat-markdown ul {
+    list-style: outside
+}
+
+.fd-chat-markdown ol {
+    list-style: decimal
+}
+
+.fd-chat-markdown pre {
+    white-space: pre-wrap
+}
+
+.fd-chat-markdown blockquote {
+    border-left: 2px solid;
+    margin: 4px 0;
+    padding-left: 8px
+}
+
+.fd-chat-markdown__heading {
+    display: block
+}
+
+.fd-chat-markdown td {
+    border: 1px solid;
+    padding: 2px 5px
+}
+
+@media (prefers-reduced-motion:reduce) {
+    :root:not([data-motion=full]) .fd-chat,:root:not([data-motion=full]) .fd-chat * {
+        transition: none!important
+    }
+}
+
+:root[data-motion=reduce] .fd-chat,:root[data-motion=reduce] .fd-chat * {
+    transition: none!important
+}
+
+:where(body):has(.fd-end,.fd-match-host,.fd-pick-host,.fd-after-host) .fd-chat {
+    z-index: 5
+}
+
+:where(body):has(.fd-chat) .fd-pick-host .fd-pick:not([data-compact]) {
+    left: calc(var(--hud-edge-x,48px) + min(440px, calc(50vw - 72px)) + 16px)
+}
+
+:where(body):has(.sim-flight-ui:not([data-combat]) .sim-hud-sticks .sim-stick-field) .fd-chat {
+    width: min(440px,50vw - 180px)
+}
+
+@media (max-width: 1491px) {
+    :where(body):has(.fd-combat:not([hidden]) .fd-combat-hp) .fd-chat {
+        bottom:calc(var(--hud-edge-y,32px) + 56px + 12px + var(--admin-bar-h,0px))
+    }
+}

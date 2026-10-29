@@ -1,0 +1,106 @@
+.fd-preview-loading {
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    gap: var(--fdk-space-5);
+    padding: var(--fdk-space-6);
+    background: var(--fdk-ink);
+    color: var(--fdk-chalk);
+    font: 700 var(--fdk-type-label)/1.4 var(--fdk-font-body);
+    text-align: center;
+    pointer-events: none;
+    flex-direction: column;
+    display: flex;
+    position: absolute;
+    inset: 0
+}
+
+.fd-preview-loading.is-transparent {
+    background: var(--fdk-clear)
+}
+
+.fd-preview-loading-ring {
+    border: var(--fdk-rim) solid var(--fdk-chalk-line);
+    border-top-color: var(--fdk-orange);
+    border-radius: var(--fdk-round);
+    flex: none;
+    width: 22px;
+    height: 22px;
+    animation: .85s linear infinite fd-preview-loading-spin;
+    display: block
+}
+
+@keyframes fd-preview-loading-spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    :root:not([data-motion=full]) .fd-preview-loading-ring {
+        animation: none
+    }
+}
+
+:root[data-motion=reduce] .fd-preview-loading-ring {
+    animation: none
+}
+
+.drone-photo-finish-module__tmNL_G__frame {
+    isolation: isolate;
+    position: absolute;
+    inset: 0;
+    overflow: hidden
+}
+
+.drone-photo-finish-module__tmNL_G__image {
+    position: absolute;
+    inset: 0
+}
+
+.drone-photo-finish-module__tmNL_G__emulsion {
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% 42%, var(--fdk-clear) 60%, var(--fdk-ink-hover) 100%);
+    position: absolute;
+    inset: 0
+}
+
+.pack-card-art-module__i7qIeq__art {
+    display: block;
+    position: absolute;
+    inset: 0
+}
+
+.pack-card-art-module__i7qIeq__drone {
+    position: absolute;
+    inset: 0 0 24px
+}
+
+.pack-card-art-module__i7qIeq__preload {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    inset: 0 0 24px
+}
+
+.pack-card-art-module__i7qIeq__dots {
+    justify-content: center;
+    gap: var(--fdk-space-3);
+    flex-wrap: wrap;
+    display: flex;
+    position: absolute;
+    inset: auto 0 2px
+}
+
+.pack-card-art-module__i7qIeq__dots>span {
+    border: var(--fdk-line) solid var(--fdk-ink);
+    border-radius: var(--fdk-round);
+    background: var(--skin-colour);
+    width: 14px;
+    height: 14px
+}
+
+.pack-card-art-module__i7qIeq__dots>span[data-current] {
+    outline: 2px solid var(--fdk-chalk);
+    outline-offset: 2px
+}
