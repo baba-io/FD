@@ -1,0 +1,13 @@
+.fd-lesson-loading {
+    pointer-events: auto
+}
+
+.fd-lesson-loading .fdk-loading {
+    width: 100%
+}
+
+.fd-lesson-loading-error {
+    color: var(--fdk-brick);
+    font-size: var(--fdk-type-small);
+    margin: 0
+}

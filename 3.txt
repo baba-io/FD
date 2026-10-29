@@ -1,0 +1,434 @@
+.fd-badges {
+    align-items: flex-start;
+    gap: var(--fdk-space-4);
+    flex-direction: column;
+    min-width: 0;
+    display: flex
+}
+
+.fd-badges-row {
+    width: 100%
+}
+
+.fd-badge-label {
+    isolation: isolate;
+    max-width: 100%;
+    color: var(--fdk-ink);
+    font: 400 52px/1 var(--fdk-font-display);
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    justify-content: center;
+    align-items: center;
+    padding: .1em .38em;
+    display: inline-flex;
+    position: relative
+}
+
+.fd-badge-label:before {
+    content: "";
+    z-index: -1;
+    background: var(--fdk-founder-gold);
+    position: absolute;
+    inset: 0
+}
+
+.fd-badge-nameplate {
+    z-index: 1;
+    align-items: center;
+    gap: var(--fdk-space-4);
+    padding: var(--fdk-space-4) var(--fdk-space-8);
+    color: var(--fdk-chalk);
+    isolation: isolate;
+    pointer-events: none;
+    display: flex;
+    position: absolute;
+    top: 28%;
+    left: 34%;
+    translate: -50%
+}
+
+.fd-badge-nameplate:before {
+    content: "";
+    z-index: -1;
+    background: var(--fdk-ink-plate);
+    position: absolute;
+    inset: 0
+}
+
+.fd-badge-nameplate>svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--fdk-orange);
+    stroke: var(--fdk-ink);
+    flex-shrink: 0
+}
+
+.fd-badge-nameplate>strong {
+    font: 400 clamp(24px, 2vw, 34px)/1 var(--fdk-font-display)
+}
+
+.fd-badges .fd-gear-footer,.fd-badges .fd-gear-catalog {
+    width: 100%
+}
+
+.fd-loadout {
+    z-index: 30;
+    min-height: 0;
+    color: var(--fdk-ink);
+    font-family: var(--fdk-font-body);
+    pointer-events: auto;
+    grid-template-rows: auto minmax(0,1fr);
+    grid-template-columns: minmax(0,1fr) clamp(380px,33vw,530px);
+    gap: 24px;
+    display: grid;
+    position: absolute;
+    inset: 24px
+}
+
+.fd-loadout--embedded {
+    flex: 1;
+    margin: 24px;
+    position: relative;
+    inset: auto
+}
+
+.fd-loadout [hidden] {
+    display: none!important
+}
+
+.fd-loadout-tabs {
+    max-width: 100%;
+    padding: var(--fdk-space-2);
+    background: var(--fdk-chalk);
+    flex-wrap: nowrap;
+    grid-column: 1;
+    place-self: start
+}
+
+.fd-loadout-tabs .fdk-tab {
+    min-height: 54px;
+    font: 400 clamp(19px, 1.65vw, 26px)/1 var(--fdk-font-display);
+    text-transform: uppercase;
+    padding-inline:clamp(12px,1.6vw,26px)}
+
+.fd-gear-stage {
+    grid-area: 2/1;
+    min-height: 0;
+    position: relative
+}
+
+.fd-drone-canvas {
+    cursor: grab;
+    touch-action: none;
+    position: absolute;
+    inset: 0 0 0 18%
+}
+
+.fd-drone-canvas:active {
+    cursor: grabbing
+}
+
+.fd-drone-loading {
+    width: min(320px,80%);
+    padding: var(--fdk-space-6);
+    background: var(--fdk-chalk-plate);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%
+}
+
+.fd-drone-brief {
+    align-items: flex-start;
+    gap: var(--fdk-space-3);
+    pointer-events: none;
+    flex-direction: column;
+    display: flex;
+    position: absolute;
+    top: 32%;
+    left: 0
+}
+
+.fd-drone-brief h2 {
+    padding: var(--fdk-space-3) var(--fdk-space-5);
+    background: var(--fdk-chalk-plate);
+    font: 400 clamp(28px, 3vw, 46px)/1.1 var(--fdk-font-display);
+    text-transform: uppercase;
+    margin: 0
+}
+
+.fd-drone-specs {
+    gap: var(--fdk-space-6);
+    padding: var(--fdk-space-4) var(--fdk-space-5);
+    background: var(--fdk-ink);
+    display: flex
+}
+
+.fd-drone-specs .fdk-big-value {
+    font-size: 27px
+}
+
+.fd-gear-change-skin {
+    pointer-events: auto;
+    min-height: 52px;
+    font: 400 26px/1 var(--fdk-font-display);
+    text-transform: uppercase;
+    align-self: stretch;
+    margin-top: 4px
+}
+
+.fd-gear-panel {
+    background: var(--fdk-chalk);
+    border-radius: var(--fdk-radius-slab);
+    flex-direction: column;
+    grid-area: 1/2/-1;
+    min-width: 0;
+    min-height: 0;
+    padding: 14px;
+    display: flex
+}
+
+.fd-gear-panel:focus-visible {
+    outline: var(--fdk-rim) solid var(--fdk-focus);
+    outline-offset: 4px
+}
+
+.fd-gear-catalog {
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    flex: 1;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    align-content: start;
+    gap: 12px;
+    min-height: 0;
+    padding: 4px;
+    display: grid;
+    overflow: hidden auto
+}
+
+.fd-gear-catalog--rows {
+    grid-template-columns: minmax(0,1fr)
+}
+
+.fd-gear-footer {
+    border-top: 1px solid var(--fdk-hairline);
+    flex-direction: column;
+    flex: none;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 14px 4px 0;
+    display: flex
+}
+
+.fd-gear-selected {
+    grid-template-columns: minmax(0,1fr) minmax(150px,.9fr);
+    align-items: center;
+    gap: 12px;
+    display: grid
+}
+
+.fd-gear-selected h2 {
+    font: 400 clamp(23px, 2vw, 32px)/1.1 var(--fdk-font-display);
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    margin: 0
+}
+
+.fd-gear-selected-state {
+    margin-top: 6px;
+    font-size: 15px
+}
+
+.fd-gear-action {
+    width: 100%;
+    min-height: 72px
+}
+
+.fd-gear-action .fdk-play-label {
+    font-size: 28px
+}
+
+.fd-gear-action .fdk-play-detail {
+    text-align: center;
+    font-size: 12px
+}
+
+.fd-gear-action-lock {
+    align-items: center;
+    gap: var(--fdk-space-3);
+    display: inline-flex
+}
+
+.fd-gear-buy {
+    min-height: 72px;
+    font: 400 32px/1 var(--fdk-font-display);
+    text-transform: uppercase
+}
+
+.fd-gear-shop-link {
+    border-top: 1px solid var(--fdk-hairline);
+    justify-content: center;
+    padding-top: 12px
+}
+
+.fd-gear-note {
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;
+    margin: 0;
+    font-size: 14px;
+    display: flex
+}
+
+.fd-gear-state {
+    grid-column: 1/-1;
+    min-width: 0;
+    padding: 20px
+}
+
+.fd-loadout-error {
+    color: var(--fdk-brick);
+    margin: 0;
+    font-size: 14px
+}
+
+.fd-gear-panel>:is(.fd-badges,.fd-boosters--inventory) {
+    flex: 1;
+    width: 100%;
+    min-height: 0
+}
+
+@media (max-height: 760px) {
+    .fd-loadout--embedded {
+        margin:16px 24px
+    }
+
+    .fd-loadout-tabs .fdk-tab {
+        min-height: 46px
+    }
+}
+
+.fd-loadout--consumables .fd-boosters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0
+}
+
+.fd-gear-catalog .fd-booster-card .fdk-row-card-meta {
+    gap: 14px;
+    font-weight: 400;
+    display: grid
+}
+
+.fd-gear-preview-art {
+    position: absolute;
+    inset: 0
+}
+
+.fd-gear-item {
+    --gear-rarity: var(--fdk-rarity-common)
+}
+
+.fd-gear-item--uncommon {
+    --gear-rarity: var(--fdk-rarity-uncommon);
+    --gear-rarity-text: var(--fdk-rarity-uncommon-text)
+}
+
+.fd-gear-item--rare {
+    --gear-rarity: var(--fdk-rarity-rare);
+    --gear-rarity-text: var(--fdk-rarity-rare-text)
+}
+
+.fd-gear-item--epic {
+    --gear-rarity: var(--fdk-rarity-epic);
+    --gear-rarity-text: var(--fdk-rarity-epic-text)
+}
+
+.fd-gear-item--legendary {
+    --gear-rarity: var(--fdk-rarity-legendary);
+    --gear-rarity-text: var(--fdk-rarity-legendary-text)
+}
+
+.fd-gear-footer-rarity {
+    color: var(--gear-rarity-text,var(--fdk-rarity-common-text));
+    font: 700 11px/1.2 var(--fdk-font-body);
+    text-transform: uppercase;
+    letter-spacing: var(--fdk-tracking-label);
+    margin-top: 6px;
+    display: block
+}
+
+.fd-gear-catalog .fdk-rarity-card {
+    min-height: 212px
+}
+
+.fd-gear-catalog .fdk-rarity-card-picture {
+    flex: 1;
+    min-height: 152px;
+    padding-top: 0
+}
+
+.fd-gear-catalog--rows .fdk-rarity-card {
+    min-height: 194px
+}
+
+.fd-gear-catalog--rows .fdk-rarity-card-picture {
+    min-height: 146px
+}
+
+.fd-gear-catalog .fdk-row-card {
+    border: 1px solid var(--fdk-hairline);
+    border-radius: var(--fdk-radius-slab);
+    width: 100%;
+    height: clamp(172px,22vh,210px);
+    padding: 12px
+}
+
+.fd-gear-catalog .fdk-row-card--side {
+    grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+    gap: 14px;
+    height: 154px
+}
+
+.fd-gear-catalog .fdk-row-card-art>img {
+    padding: 4px
+}
+
+.fd-gear-catalog .fdk-row-card-name {
+    font-size: clamp(19px,1.5vw,25px);
+    line-height: 1.12
+}
+
+.fd-gear-catalog .fdk-row-card-meta {
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--fdk-ink);
+    font-size: 14px
+}
+
+.fd-gear-catalog .fdk-row-card-check {
+    width: 24px;
+    height: 24px;
+    top: 10px;
+    left: 10px
+}
+
+.fd-gear-catalog .fdk-row-card-lock {
+    top: 8px;
+    right: 8px
+}
+
+.fd-gear-catalog .fdk-row-card[data-locked] .fdk-row-card-art {
+    opacity: 1
+}
+
+@media (max-height: 760px) {
+    .fd-gear-catalog .fdk-row-card {
+        height:176px
+    }
+
+    .fd-gear-catalog .fdk-row-card--side {
+        height: 138px
+    }
+}

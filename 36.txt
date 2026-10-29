@@ -1,0 +1,242 @@
+.fd-drone-wheel {
+    z-index: 80;
+    pointer-events: auto;
+    background: radial-gradient(ellipse at center, color-mix(in srgb, var(--fdk-ink) 71%, var(--fdk-clear)), color-mix(in srgb, var(--fdk-ink) 93%, var(--fdk-clear)));
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
+    color: var(--fdk-chalk);
+    -webkit-user-select: none;
+    user-select: none;
+    font-family: var(--font-barlow-condensed), Arial, sans-serif;
+    outline: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    inset: 0
+}
+
+.fd-wheel-close {
+    background: color-mix(in srgb, var(--fdk-paper) 7%, var(--fdk-clear));
+    cursor: pointer;
+    border-radius: 50px;
+    align-items: center;
+    gap: 9px;
+    padding: 10px;
+    display: flex;
+    position: absolute;
+    top: 24px;
+    right: 24px
+}
+
+.fd-wheel-disc {
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    width: min(68vh,88vw,680px);
+    position: relative
+}
+
+.fd-wheel-sectors {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    overflow: visible
+}
+
+.fd-wheel-sectors path {
+    fill: color-mix(in srgb, var(--fdk-chalk) 6%, var(--fdk-clear));
+    stroke: color-mix(in srgb, var(--fdk-chalk) 17%, var(--fdk-clear));
+    stroke-width: 1px;
+    transition: fill .15s,stroke .15s
+}
+
+.fd-wheel-sectors path.is-hovered {
+    fill: color-mix(in srgb, var(--fdk-acid) 17.3%, var(--fdk-clear));
+    stroke: var(--fdk-acid);
+    stroke-width: 2px
+}
+
+.fd-wheel-sectors path.is-locked {
+    fill: color-mix(in srgb, var(--fdk-ink) 43%, var(--fdk-clear));
+    stroke: color-mix(in srgb, var(--fdk-paper) 8%, var(--fdk-clear))
+}
+
+.fd-wheel-sectors path.is-locked.is-hovered {
+    fill: color-mix(in srgb, var(--fdk-paper) 4.3%, var(--fdk-clear));
+    stroke: color-mix(in srgb, var(--fdk-chalk) 60%, var(--fdk-ink))
+}
+
+.fd-wheel-slot {
+    width: 27%;
+    min-height: 18%;
+    color: var(--fdk-chalk);
+    cursor: pointer;
+    z-index: 3;
+    background: 0 0;
+    border: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    padding: 6px 0;
+    display: flex;
+    position: absolute;
+    transform: translate(-50%,-50%)
+}
+
+.fd-wheel-slot strong {
+    font-size: clamp(12px,1.9vh,18px);
+    font-weight: 800
+}
+
+.fd-wheel-slot>span:not(.fd-wheel-slot-status) {
+    color: color-mix(in srgb, var(--fdk-chalk) 80%, var(--fdk-ink));
+    font-size: clamp(10px,1.5vh,13px)
+}
+
+.fd-wheel-slot small {
+    letter-spacing: .08em;
+    margin-top: 3px;
+    font-size: clamp(8px,1.1vh,10px);
+    font-weight: 700
+}
+
+.fd-wheel-slot-status {
+    height: 18px;
+    color: color-mix(in srgb, var(--fdk-chalk) 80%, var(--fdk-ink));
+    place-items: center;
+    display: grid
+}
+
+.fd-wheel-slot.is-hovered,.fd-wheel-slot.is-hovered .fd-wheel-slot-status {
+    color: var(--fdk-acid)
+}
+
+.fd-wheel-slot.is-locked {
+    color: color-mix(in srgb, var(--fdk-chalk) 60%, var(--fdk-ink));
+    cursor: not-allowed
+}
+
+.fd-wheel-center {
+    pointer-events: none;
+    background: radial-gradient(circle, color-mix(in srgb, var(--fdk-chalk) 8%, var(--fdk-clear)), var(--fdk-clear) 70%);
+    border-radius: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    inset: 24%
+}
+
+.fd-wheel-preview {
+    flex-shrink: 0;
+    width: 125%;
+    height: 68%;
+    margin-top: -9%
+}
+
+.fd-wheel-description {
+    text-align: center;
+    margin-top: -5%
+}
+
+.fd-wheel-description h2 {
+    font-size: clamp(17px,2.8vh,28px);
+    font-weight: 800;
+    line-height: 1.5
+}
+
+.fd-wheel-confirm {
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 50%;
+    position: absolute;
+    inset: 24%
+}
+
+.fd-wheel-confirm:disabled {
+    cursor: default
+}
+
+.fd-wheel-loading {
+    place-items: center;
+    height: 100%;
+    font-size: 11px;
+    display: grid
+}
+
+.fd-wheel-footer {
+    text-align: center;
+    margin-top: 12px
+}
+
+.fd-wheel-footer p {
+    min-height: 20px;
+    color: var(--fdk-acid);
+    margin-bottom: 8px;
+    font-size: 12px
+}
+
+.fd-drone-wheel kbd {
+    font: inherit;
+    border: 1px solid color-mix(in srgb, var(--fdk-chalk) 40%, var(--fdk-clear));
+    border-radius: 4px;
+    padding: 2px 5px;
+    font-size: 11px
+}
+
+.fd-wheel-tutorial {
+    z-index: 5;
+    background: var(--fdk-ink-edge);
+    position: absolute;
+    inset: 0
+}
+
+.fd-wheel-dismiss {
+    cursor: pointer;
+    position: absolute;
+    inset: 0
+}
+
+.fd-wheel-tutorial .sim-instructor-lesson__row {
+    bottom: clamp(24px,4vh,48px)
+}
+
+.fd-wheel-tutorial .sim-instructor-lesson__portrait {
+    height: min(49vh,460px)
+}
+
+.fd-wheel-tutorial .sim-instructor-lesson__speech {
+    flex-basis: 470px
+}
+
+.fd-wheel-tutorial kbd.fd-wheel-tutorial-key {
+    font: inherit;
+    color: var(--fdk-ink);
+    background: var(--fdk-acid);
+    border: 2px solid var(--fdk-ink);
+    border-bottom-width: 5px;
+    border-radius: 6px;
+    margin-inline:3px;padding: 3px 10px;
+    font-weight: 900;
+    display: inline-block
+}
+
+@media (max-height: 580px) {
+    .fd-wheel-disc {
+        width:min(72vh,80vw)
+    }
+
+    .fd-wheel-footer {
+        margin-top: 2px
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .fd-wheel-sectors path {
+        transition: none
+    }
+}

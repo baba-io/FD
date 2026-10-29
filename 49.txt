@@ -1,0 +1,67 @@
+.site-shell.sign-in-screen {
+    color: #17191d;
+    background-color: #f7f5ef;
+    background-image: radial-gradient(#17191d26 1px,#0000 1px);
+    background-size: 20px 20px;
+    place-items: center;
+    height: 100%;
+    min-height: 100dvh;
+    padding: 32px 20px;
+    display: grid;
+    overflow: auto
+}
+
+.sign-in-screen__content {
+    width: min(100%,460px)
+}
+
+.sign-in-screen__content>.sign-in-screen__logo {
+    width: min(100%,340px);
+    height: auto;
+    margin: 0 auto 40px
+}
+
+.sign-in-screen__form {
+    margin-top: 36px
+}
+
+.sign-in-screen__email {
+    overflow-wrap: anywhere
+}
+
+.sign-in-screen__actions {
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    display: flex
+}
+
+.sign-in-screen button:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+    transform: none
+}
+
+.sign-in-screen__updates {
+    color: #17191d;
+    cursor: pointer;
+    align-items: flex-start;
+    gap: 12px;
+    min-height: 44px;
+    font-size: 14px;
+    line-height: 1.45;
+    display: flex
+}
+
+.sign-in-screen__updates input {
+    accent-color: #17191d;
+    cursor: pointer;
+    flex: none;
+    width: 20px;
+    height: 20px;
+    margin-top: 1px
+}
+
+.sign-in-screen__updates input:focus-visible {
+    outline-offset: 3px;
+    outline: 2px solid #ff7900
+}

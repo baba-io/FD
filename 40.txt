@@ -1,0 +1,569 @@
+.fd-record {
+    width: 100%;
+    color: var(--fdk-ink);
+    font: var(--fdk-type-small)/1.45 var(--fdk-font-body);
+    container-type: inline-size
+}
+
+.fd-record h1,.fd-record h2,.fd-record h3 {
+    font-family: var(--fdk-font-display);
+    text-transform: uppercase;
+    font-weight: 400
+}
+
+.fd-record-back {
+    color: var(--fdk-muted);
+    font-size: var(--fdk-type-label);
+    margin: 0 0 10px
+}
+
+.fd-record-hero {
+    margin-bottom: 24px;
+    display: flex
+}
+
+.fd-record-hero-copy {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    display: flex
+}
+
+.fd-record h1 {
+    letter-spacing: -.027em;
+    margin: 0 0 9px;
+    font-size: clamp(48px,6.5cqw,92px);
+    line-height: .96
+}
+
+.fd-record h1>span {
+    color: var(--fdk-orange)
+}
+
+.fd-record-hero-actions {
+    align-items: center;
+    gap: 24px;
+    display: flex
+}
+
+.fd-record-total {
+    width: clamp(180px,18cqw,260px)
+}
+
+.fd-record-total .fdk-progress-value {
+    font: 400 28px/1 var(--fdk-font-display)
+}
+
+.fd-record-pages {
+    border-bottom: var(--fdk-line) solid var(--fdk-ink-line);
+    margin-bottom: 20px;
+    padding-bottom: 14px
+}
+
+.fd-record [hidden] {
+    display: none
+}
+
+.fd-record-status {
+    padding: var(--fdk-space-4) var(--fdk-space-5);
+    border-left: var(--fdk-space-3) solid var(--fdk-brick);
+    background: var(--fdk-paper);
+    font-size: var(--fdk-type-small);
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 16px;
+    font-weight: 700;
+    display: flex
+}
+
+.fd-record-loading {
+    padding: 16px 0
+}
+
+.fd-record-unlock {
+    background: var(--fdk-acid);
+    color: var(--fdk-ink);
+    align-items: center;
+    gap: 14px;
+    margin-top: 9px;
+    padding: 12px 18px;
+    display: flex
+}
+
+.fd-record-unlock>svg {
+    flex-shrink: 0;
+    width: 21px;
+    height: 21px
+}
+
+.fd-record-unlock p {
+    font-size: var(--fdk-type-label);
+    flex: 1;
+    margin: 0;
+    line-height: 1.5
+}
+
+.fd-record-unlock strong {
+    font: 400 21px/1.1 var(--fdk-font-display);
+    text-transform: uppercase;
+    vertical-align: middle;
+    margin-right: 12px;
+    display: inline-block
+}
+
+.fd-record-reward {
+    white-space: nowrap;
+    align-items: center;
+    gap: 6px;
+    display: inline-flex
+}
+
+.fd-record-parts {
+    width: 22px;
+    height: 22px
+}
+
+.fd-record-coin {
+    border: var(--fdk-line) solid var(--fdk-ink);
+    border-radius: var(--fdk-round);
+    background: var(--fdk-acid);
+    width: 22px;
+    height: 22px;
+    color: var(--fdk-ink);
+    font: 900 13px var(--fdk-font-body);
+    flex: none;
+    place-items: center;
+    display: inline-grid
+}
+
+.fd-record-amount {
+    font: 400 17px/1 var(--fdk-font-display)
+}
+
+.fd-record-section-heading {
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin: 22px 0 12px;
+    display: flex
+}
+
+.fd-record h2 {
+    letter-spacing: -.015em;
+    margin: 0;
+    font-size: clamp(28px,3.7cqw,46px);
+    line-height: 1.05
+}
+
+.fd-record-section-heading p {
+    color: var(--fdk-muted);
+    font-size: var(--fdk-type-ui);
+    margin: 0
+}
+
+.fd-record-challenge {
+    padding-top: 1px
+}
+
+.fd-record-tiers {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 14px;
+    margin: 18px 0;
+    display: grid
+}
+
+.fd-record-tiers article {
+    border: var(--fdk-line) solid var(--fdk-ink-edge);
+    border-top: 4px solid var(--fdk-ink);
+    background: var(--fdk-paper);
+    padding: clamp(18px,2vw,30px)
+}
+
+.fd-record-tiers article.is-complete {
+    background: linear-gradient(to top, var(--fdk-acid) 0 var(--fdk-space-3), var(--fdk-ink-edge) var(--fdk-space-3) calc(var(--fdk-space-3) + 1px), var(--fdk-paper) 0)
+}
+
+.fd-record-tier-heading {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    display: flex
+}
+
+.fd-record-tier-heading h3 {
+    flex: 1;
+    margin: 0;
+    font-size: clamp(24px,2.7vw,38px);
+    line-height: 1.1
+}
+
+.fd-record-tier-heading>.fd-booster-reward {
+    margin-top: 5px
+}
+
+.fd-record-tier-medal {
+    border: var(--fdk-rim) solid var(--fdk-ink);
+    border-radius: var(--fdk-round);
+    background: var(--fdk-medal-bronze);
+    width: 45px;
+    height: 45px;
+    color: var(--fdk-ink);
+    place-items: center;
+    display: grid
+}
+
+.fd-record-tier-medal svg {
+    stroke-width: 1.7px;
+    width: 27px;
+    height: 27px
+}
+
+.fd-record-tier--c02 .fd-record-tier-medal {
+    background: var(--fdk-medal-silver)
+}
+
+.fd-record-tier--c03 .fd-record-tier-medal {
+    background: var(--fdk-medal-gold)
+}
+
+.fd-record-tier.is-complete .fd-record-tier-medal {
+    background: var(--fdk-acid)
+}
+
+.fd-record-tier-done {
+    font-size: var(--fdk-type-small);
+    align-items: center;
+    gap: 10px;
+    margin: 28px 0;
+    display: flex
+}
+
+.fd-record-tiers ul {
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none
+}
+
+.fd-record-tiers li {
+    gap: var(--fdk-space-3);
+    font-size: var(--fdk-type-ui);
+    margin-top: 22px;
+    display: grid
+}
+
+.fd-record-tiers .fdk-progress {
+    grid-column: 1/-1
+}
+
+.fd-record-tiers .fdk-progress-value {
+    text-align: right;
+    min-width: 5em
+}
+
+.fd-record-collections {
+    margin-bottom: 16px
+}
+
+.fd-record-browser {
+    grid-template-columns: minmax(235px,.9fr) minmax(0,2.6fr);
+    align-items: start;
+    gap: 15px;
+    display: grid
+}
+
+.fd-record-detail {
+    background: var(--fdk-ink);
+    padding: 24px;
+    position: sticky;
+    top: 4px
+}
+
+.fd-record-detail-heading {
+    align-items: center;
+    gap: 23px;
+    margin: 7px 0 20px;
+    display: flex
+}
+
+.fd-record-detail-emblem {
+    border: var(--fdk-rim) solid var(--fdk-chalk);
+    border-radius: var(--fdk-round);
+    background: var(--fdk-orange);
+    width: 78px;
+    height: 78px;
+    color: var(--fdk-ink);
+    flex-shrink: 0;
+    place-items: center;
+    display: grid;
+    position: relative
+}
+
+.fd-record-detail-emblem>svg {
+    stroke-width: 1.5px;
+    width: 43px;
+    height: 43px
+}
+
+.fd-record-detail-emblem>span {
+    border: var(--fdk-rim) solid var(--fdk-ink);
+    border-radius: var(--fdk-round);
+    background: var(--fdk-acid);
+    color: var(--fdk-ink);
+    padding: 4px;
+    display: none;
+    position: absolute;
+    bottom: -7px;
+    right: -10px
+}
+
+.fd-record-detail-emblem>span svg {
+    width: 18px;
+    height: 18px
+}
+
+.fd-record-detail.is-complete .fd-record-detail-emblem {
+    background: var(--fdk-acid)
+}
+
+.fd-record-detail.is-complete .fd-record-detail-emblem>span {
+    display: flex
+}
+
+.fd-record-detail h3 {
+    overflow-wrap: anywhere;
+    margin: 0;
+    font-size: clamp(24px,2.7cqw,35px);
+    line-height: 1.07
+}
+
+.fd-record-detail>p {
+    min-height: 44px;
+    color: var(--fdk-chalk-soft);
+    font-size: var(--fdk-type-ui);
+    margin: 0 0 24px;
+    line-height: 1.55
+}
+
+.fd-record-detail-progress {
+    gap: 9px;
+    display: grid
+}
+
+.fd-record-detail-progress>span {
+    color: var(--fdk-chalk-soft);
+    font-size: var(--fdk-type-label)
+}
+
+.fd-record-detail-reward {
+    border-top: var(--fdk-line) solid var(--fdk-chalk-line);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 17px;
+    display: flex
+}
+
+.fd-record-detail-reward>span:last-child {
+    max-width: 85px;
+    color: var(--fdk-chalk-soft);
+    font-size: var(--fdk-type-label);
+    line-height: 1.4
+}
+
+.fd-record-detail-reward .fd-record-parts {
+    width: 32px;
+    height: 32px
+}
+
+.fd-record-detail-reward .fd-record-coin {
+    width: 32px;
+    height: 32px;
+    font-size: 20px
+}
+
+.fd-record-detail-reward .fd-record-amount {
+    font-size: 30px
+}
+
+.fd-record-detail .fd-booster-reward-item {
+    background: var(--fdk-chalk);
+    color: var(--fdk-ink)
+}
+
+.fd-record-achievements {
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 10px;
+    display: grid
+}
+
+.fd-record-achievement.fdk-tile {
+    gap: 9px;
+    min-height: 155px;
+    padding: 13px 13px 12px
+}
+
+.fd-record-achievement .fdk-tile-corner {
+    max-width: calc(100% - 80px);
+    font-size: var(--fdk-type-label);
+    font-weight: 700;
+    top: 10px;
+    right: 11px
+}
+
+.fd-record-achievement .fd-booster-reward {
+    justify-content: flex-end
+}
+
+.fd-record-achievement .fd-booster-reward-item {
+    font-size: var(--fdk-type-label);
+    gap: 3px;
+    padding: 3px 4px
+}
+
+.fd-record-achievement .fd-booster-reward-item svg {
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px
+}
+
+.fd-record-achievement .fdk-tile-title {
+    font-size: 19px;
+    line-height: 1.1
+}
+
+.fd-record-badge {
+    border: var(--fdk-rim) solid var(--fdk-stone);
+    border-radius: var(--fdk-round);
+    background: var(--fdk-chalk);
+    width: 62px;
+    height: 62px;
+    color: var(--fdk-muted);
+    place-items: center;
+    display: grid;
+    position: relative
+}
+
+.fd-record-badge>svg {
+    stroke-width: 1.8px;
+    width: 34px;
+    height: 34px
+}
+
+.fd-record-badge>span {
+    border: var(--fdk-rim) solid var(--fdk-ink);
+    border-radius: var(--fdk-round);
+    background: var(--fdk-acid);
+    width: 24px;
+    height: 24px;
+    color: var(--fdk-ink);
+    place-items: center;
+    display: grid;
+    position: absolute;
+    top: -5px;
+    right: -7px
+}
+
+.fd-record-badge>span>svg {
+    stroke-width: 3px;
+    width: 16px;
+    height: 16px
+}
+
+.fd-record-achievement[data-done] .fd-record-badge {
+    border-color: var(--fdk-ink);
+    color: var(--fdk-ink)
+}
+
+.fd-record-achievement[data-selected] .fd-record-badge {
+    border-color: var(--fdk-ink);
+    background: var(--fdk-ink);
+    color: var(--fdk-chalk)
+}
+
+.fd-record-achievement[data-selected][data-done] .fd-record-badge {
+    background: var(--fdk-acid);
+    color: var(--fdk-ink)
+}
+
+.fd-record-goal {
+    background: var(--fdk-acid);
+    color: var(--fdk-ink);
+    align-items: center;
+    gap: 16px;
+    margin: 24px 0;
+    padding: 18px;
+    display: flex
+}
+
+.fd-record-goal>div {
+    flex: 1
+}
+
+.fd-record-goal p {
+    font-size: var(--fdk-type-small);
+    margin: 5px 0 0
+}
+
+.fd-record-pack-badge {
+    margin-top: var(--fdk-space-4)
+}
+
+@container (max-width:1120px) {
+    .fd-record-detail {
+        padding: 21px
+    }
+
+    .fd-record-detail-heading {
+        gap: 18px
+    }
+
+    .fd-record-detail-emblem {
+        width: 66px;
+        height: 66px
+    }
+
+    .fd-record-detail-emblem>svg {
+        width: 38px;
+        height: 38px
+    }
+
+    .fd-record-detail h3 {
+        font-size: 27px
+    }
+
+    .fd-record-achievements {
+        grid-template-columns: repeat(3,minmax(0,1fr))
+    }
+}
+
+@media (max-height: 800px) {
+    @container (min-width:720px) {
+        .fd-record-total .fdk-progress-value {
+            font-size:25px
+        }
+
+        .fd-record-unlock {
+            margin-top: 8px;
+            padding-top: 9px;
+            padding-bottom: 9px
+        }
+
+        .fd-record-section-heading {
+            margin-top: 16px;
+            margin-bottom: 10px
+        }
+
+        .fd-record h2 {
+            font-size: 32px
+        }
+
+        .fd-record-collections {
+            margin-bottom: 12px
+        }
+    }
+}

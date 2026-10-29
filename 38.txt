@@ -1,0 +1,207 @@
+.fd-mod-trigger {
+    color: var(--fdk-sky);
+    background: var(--fdk-ink-dim);
+    border: 1px solid color-mix(in srgb, var(--fdk-sky) 37.6%, var(--fdk-clear));
+    border-radius: 4px;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 8px;
+    padding: 3px 8px;
+    display: flex;
+    font-size: 11px!important
+}
+
+.fd-mod-popover {
+    z-index: 80;
+    width: min(420px,100vw - 32px);
+    max-height: min(720px, var(--radix-popover-content-available-height));
+    background: var(--fdk-ink-raised);
+    color: var(--fdk-chalk);
+    border: 1px solid var(--fdk-muted);
+    box-shadow: 0 12px 40px color-mix(in srgb, var(--fdk-ink) 60%, var(--fdk-clear));
+    pointer-events: auto;
+    border-radius: 10px;
+    padding: 14px;
+    font: 12px/1.5 Arial,sans-serif;
+    overflow-y: auto
+}
+
+.fd-mod-popover header,.fd-mod-popover header strong,.fd-mod-popover nav,.fd-mod-popover footer {
+    align-items: center;
+    gap: 8px;
+    display: flex
+}
+
+.fd-mod-popover header,.fd-mod-popover footer {
+    justify-content: space-between
+}
+
+.fd-mod-popover header {
+    margin-bottom: 12px;
+    font-size: 14px
+}
+
+.fd-mod-popover button,.fd-mod-action button {
+    cursor: pointer;
+    border: 1px solid var(--fdk-muted);
+    background: var(--fdk-graphite);
+    color: var(--fdk-chalk);
+    font: inherit;
+    border-radius: 4px;
+    padding: 4px 8px
+}
+
+.fd-mod-popover button:disabled,.fd-mod-action button:disabled {
+    opacity: .45;
+    cursor: default
+}
+
+.fd-mod-popover :focus-visible,.fd-mod-action :focus-visible {
+    outline: 2px solid var(--fdk-sky);
+    outline-offset: 2px
+}
+
+.fd-mod-popover button[aria-pressed=true] {
+    color: var(--fdk-ink);
+    background: var(--fdk-sky)
+}
+
+.fd-mod-search {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0;
+    display: flex
+}
+
+.fd-mod-search span,.fd-mod-popover small,.fd-mod-popover time {
+    color: var(--fdk-stone);
+    font-size: 11px
+}
+
+.fd-mod-search input[type=search],.fd-mod-action input,.fd-mod-action select,.fd-mod-action textarea {
+    border: 1px solid var(--fdk-muted);
+    background: var(--fdk-ink);
+    width: 100%;
+    color: var(--fdk-paper);
+    font: inherit;
+    border-radius: 4px;
+    padding: 7px
+}
+
+.fd-mod-search label {
+    align-items: center;
+    gap: 6px;
+    display: flex
+}
+
+.fd-mod-scroll {
+    scrollbar-width: thin;
+    max-height: 220px;
+    overflow-y: auto
+}
+
+.fd-mod-scroll ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.fd-mod-scroll li {
+    border-bottom: 1px solid color-mix(in srgb, var(--fdk-paper) 9.4%, var(--fdk-clear));
+    overflow-wrap: anywhere;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 0;
+    display: flex
+}
+
+.fd-mod-scroll li>div {
+    min-width: 0
+}
+
+.fd-mod-scroll small {
+    display: block
+}
+
+.fd-mod-popover .fd-mod-name {
+    background: var(--fdk-clear);
+    color: var(--fdk-sky);
+    text-align: left;
+    border: none;
+    padding: 0
+}
+
+.fd-mod-name:hover {
+    text-decoration: underline
+}
+
+.fd-mod-popover footer {
+    margin-top: 10px
+}
+
+.fd-mod-selection {
+    border-top: 1px solid var(--fdk-muted);
+    margin-top: 12px;
+    padding-top: 10px
+}
+
+.fd-mod-selection>button {
+    float: right
+}
+
+.fd-mod-action {
+    color: var(--fdk-chalk);
+    gap: 8px;
+    font: 12px/1.5 Arial,sans-serif;
+    display: grid
+}
+
+.fd-mod-action label {
+    gap: 3px;
+    display: grid
+}
+
+.fd-mod-action p {
+    color: var(--fdk-stone);
+    margin: 0
+}
+
+.fd-mod-duration {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    display: grid
+}
+
+.fd-mod-action .fd-mod-submit {
+    background: var(--fdk-sky);
+    color: var(--fdk-ink);
+    font-weight: 700
+}
+
+.fd-mod-error {
+    color: color-mix(in srgb, var(--fdk-chalk) 60%, var(--fdk-team-red))
+}
+
+.fd-mod-history {
+    max-height: 420px;
+    margin-top: 12px
+}
+
+.fd-mod-history li {
+    gap: 3px;
+    display: grid
+}
+
+.fd-mod-history p {
+    white-space: pre-wrap;
+    margin: 0
+}
+
+.fd-pilot-moderation .fd-mod-action {
+    background: var(--fdk-ink-raised);
+    border-radius: 8px;
+    padding: 16px
+}

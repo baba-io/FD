@@ -1,0 +1,8 @@
+.fd-connection-toast.fdk-toast {
+    z-index: 50;
+    top: var(--fdk-space-6);
+    pointer-events: auto;
+    margin-inline:auto;position: absolute;
+    left: 0;
+    right: 0
+}

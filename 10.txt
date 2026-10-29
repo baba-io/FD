@@ -1,0 +1,39 @@
+.fd-slowmo {
+    pointer-events: none;
+    --slowmo: 0;
+    position: absolute;
+    inset: 0;
+    overflow: hidden
+}
+
+.fd-slowmo>div {
+    position: absolute;
+    inset: 0
+}
+
+.fd-slowmo-grade {
+    -webkit-backdrop-filter: saturate(.3)contrast(1.12)brightness(.92);
+    background: color-mix(in srgb, var(--fdk-sky-edge) 12%, var(--fdk-clear));
+    opacity: var(--slowmo)
+}
+
+.fd-slowmo-streaks {
+    background: repeating-conic-gradient(from 0deg at 50% 50%, var(--fdk-clear) 0deg 5.2deg, var(--fdk-chalk-line) 5.6deg, var(--fdk-clear) 6deg 11.3deg);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, var(--fdk-clear) 30%, var(--fdk-ink) 58%);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, var(--fdk-clear) 30%, var(--fdk-ink) 58%);
+    mask-image: radial-gradient(circle at 50% 50%, var(--fdk-clear) 30%, var(--fdk-ink) 58%);
+    opacity: calc(var(--slowmo) * .9);
+    transform: scale(calc(1.35 - var(--slowmo) * .35));
+    inset: -30%
+}
+
+.fd-slowmo-vignette {
+    background: radial-gradient(ellipse at center, var(--fdk-clear) 38%, color-mix(in srgb, var(--fdk-ink) 65%, var(--fdk-clear)) 78%, color-mix(in srgb, var(--fdk-ink) 88%, var(--fdk-clear)) 100%);
+    opacity: var(--slowmo)
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .fd-slowmo-streaks {
+        display: none
+    }
+}
