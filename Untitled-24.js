@@ -1,1480 +1,827 @@
-(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push(["object" == typeof document ? document.currentScript : void 0, 543689, t => {
+(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push(["object" == typeof document ? document.currentScript : void 0, 846696, t => {
     "use strict";
-    t.s(["isReplayId", 0, function(t) {
-        return "string" == typeof t && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(t)
-    }
-    ])
-}
-, 937769, t => {
-    "use strict";
-    var e = t.i(738073)
-      , r = t.i(998494)
-      , i = t.i(593922)
-      , n = t.i(543689)
-      , a = t.i(284853);
-    function o(t) {
-        return t?.code === "42703"
-    }
-    async function s(t) {
-        let e = await t("id, name, lesson_ids, is_draft, sort_order, try_it");
-        return o(e.error) ? await t("id, name, lesson_ids, is_draft, sort_order") : e
-    }
-    async function l(t) {
-        return await t("id,name,map_id,spawn,gates,sort_order,competitive_revision,race_marker,race_exit_spawn")
-    }
-    function u(t) {
-        if (!(0,
-        n.isReplayId)(t.id) || !(0,
-        e.isMapId)(t.map_id) || !Array.isArray(t.frames) || 0 === t.frames.length || !t.frames.every(e.isReplayFrame) || !(0,
-        e.isCamera)(t.camera))
-            return null;
-        let r = Number(t.duration);
-        return !Number.isFinite(r) || r <= 0 ? null : {
-            id: t.id,
-            mapId: t.map_id,
-            duration: r,
-            frames: (0,
-            a.transformMapReplayFrames)(t.map_id, t.frames, "from-storage"),
-            camera: (0,
-            a.transformMapCamera)(t.map_id, t.camera, "from-storage"),
-            name: "string" == typeof t.name ? t.name : "",
-            ownerId: t.owner_id
-        }
-    }
-    let c = /^user:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
-    function d(t) {
-        if (!(0,
-        e.isMapId)(t.map_id) && !c.test(t.map_id) || "string" != typeof t.id || "string" != typeof t.name)
-            return null;
-        let r = (0,
-        e.parseSpawn)(t.spawn)
-          , n = (0,
-        e.parseGateObjectives)(t.gates);
-        if (!r || !n)
-            return null;
-        let o = t.race_marker
-          , s = null == t.race_exit_spawn ? void 0 : (0,
-        e.parseSpawn)(t.race_exit_spawn);
-        return null !== s && (null == o || (0,
-        i.isRaceMarker)(o)) ? (0,
-        a.transformMapTimeAttack)({
-            id: t.id,
-            name: t.name,
-            mapId: t.map_id,
-            spawn: r,
-            gates: n,
-            competitiveRevision: Math.max(1, t.competitive_revision ?? 1),
-            ...o ? {
-                raceMarker: o
-            } : {},
-            ...s ? {
-                raceExitSpawn: s
-            } : {}
-        }, "from-storage") : null
-    }
-    t.s(["assemblePayload", 0, function(t) {
-        let i = t.courseRows.slice().sort( (t, e) => (t.sort_order ?? 0) - (e.sort_order ?? 0)).map(t => {
-            let e = function(t) {
-                var e;
-                if ("string" != typeof t.id || "string" != typeof t.name)
-                    return null;
-                let r = Array.isArray(t.lesson_ids) ? t.lesson_ids.filter(t => "string" == typeof t) : [];
-                return {
-                    id: t.id,
-                    name: t.name,
-                    lessonIds: r,
-                    isDraft: !0 === t.is_draft,
-                    tryIt: (e = t.try_it) && "object" == typeof e ? "race" === e.kind && "string" == typeof e.timeAttackId && e.timeAttackId ? {
-                        kind: "race",
-                        timeAttackId: e.timeAttackId
-                    } : "place" === e.kind && "string" == typeof e.mapId && e.mapId ? "string" == typeof e.spawnId && e.spawnId ? {
-                        kind: "place",
-                        mapId: e.mapId,
-                        spawnId: e.spawnId
-                    } : {
-                        kind: "place",
-                        mapId: e.mapId
-                    } : null : null
-                }
-            }(t);
-            if (!e)
-                throw Error(`Invalid course row "${t.id}".`);
-            return e
-        }
-        )
-          , o = t.lessonRows.slice().sort( (t, e) => (t.sort_order ?? 0) - (e.sort_order ?? 0)).map(t => {
-            let i = function(t) {
-                var i;
-                if (!(0,
-                e.isMapId)(t.map_id))
-                    return null;
-                let n = (0,
-                e.parseSpawn)(t.spawn)
-                  , o = (0,
-                e.parseSteps)(t.steps)
-                  , s = (0,
-                e.parsePractice)(t.practice);
-                return n && o && s && "string" == typeof t.id && "string" == typeof t.name ? (0,
-                a.transformMapLesson)({
-                    id: t.id,
-                    name: t.name,
-                    mapId: "gridworks" === (i = t.map_id) ? r.LESSON_MAP_ID : i,
-                    spawn: n,
-                    steps: o,
-                    practice: s,
-                    hideMapGates: !1 !== t.hide_map_gates,
-                    isDraft: !0 === t.is_draft
-                }, "from-storage") : null
-            }(t);
-            if (!i)
-                throw Error(`Invalid lesson row "${t.id}".`);
-            return i
-        }
-        )
-          , s = t.replayRows.flatMap(t => {
-            if (!(0,
-            e.isMapId)(t.map_id))
-                return [];
-            let r = u(t);
-            if (!r)
-                throw Error(`Invalid replay row "${t.id}".`);
-            return [r]
-        }
-        );
-        return {
-            courses: i,
-            lessons: o,
-            timeAttacks: (t.timeAttackRows ?? []).slice().sort( (t, e) => (t.sort_order ?? 0) - (e.sort_order ?? 0)).flatMap(t => {
-                if (!(0,
-                e.isMapId)(t.map_id))
-                    return [];
-                let r = d(t);
-                if (!r)
-                    throw Error(`Invalid time attack row "${t.id}".`);
-                return [r]
+    var e = t.i(271645)
+      , a = t.i(174080)
+      , o = Array(12).fill(0)
+      , r = ({visible: t, className: a}) => e.default.createElement("div", {
+        className: ["sonner-loading-wrapper", a].filter(Boolean).join(" "),
+        "data-visible": t
+    }, e.default.createElement("div", {
+        className: "sonner-spinner"
+    }, o.map( (t, a) => e.default.createElement("div", {
+        className: "sonner-loading-bar",
+        key: `spinner-bar-${a}`
+    }))))
+      , n = e.default.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 20 20",
+        fill: "currentColor",
+        height: "20",
+        width: "20"
+    }, e.default.createElement("path", {
+        fillRule: "evenodd",
+        d: "M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z",
+        clipRule: "evenodd"
+    }))
+      , s = e.default.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 24 24",
+        fill: "currentColor",
+        height: "20",
+        width: "20"
+    }, e.default.createElement("path", {
+        fillRule: "evenodd",
+        d: "M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z",
+        clipRule: "evenodd"
+    }))
+      , i = e.default.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 20 20",
+        fill: "currentColor",
+        height: "20",
+        width: "20"
+    }, e.default.createElement("path", {
+        fillRule: "evenodd",
+        d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z",
+        clipRule: "evenodd"
+    }))
+      , l = e.default.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 20 20",
+        fill: "currentColor",
+        height: "20",
+        width: "20"
+    }, e.default.createElement("path", {
+        fillRule: "evenodd",
+        d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z",
+        clipRule: "evenodd"
+    }))
+      , d = e.default.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "12",
+        height: "12",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: "1.5",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+    }, e.default.createElement("line", {
+        x1: "18",
+        y1: "6",
+        x2: "6",
+        y2: "18"
+    }), e.default.createElement("line", {
+        x1: "6",
+        y1: "6",
+        x2: "18",
+        y2: "18"
+    }))
+      , u = 1
+      , c = new class {
+        constructor() {
+            this.subscribe = t => (this.subscribers.push(t),
+            () => {
+                let e = this.subscribers.indexOf(t);
+                this.subscribers.splice(e, 1)
             }
             ),
-            replays: s,
-            menuReplayId: (0,
-            n.isReplayId)(t.config?.menu_replay_id) ? t.config.menu_replay_id : null
-        }
-    }
-    , "missingColumn", 0, o, "parseMapSpawnRow", 0, function(t) {
-        if (!(0,
-        e.isMapId)(t.map_id))
-            return null;
-        let r = (0,
-        e.parseMapSpawns)(t.spawns);
-        return r ? {
-            mapId: t.map_id,
-            spawns: r.map(e => (0,
-            a.transformMapSpawn)(t.map_id, e, "from-storage"))
-        } : null
-    }
-    , "parseReplayRow", 0, u, "parseTimeAttackRow", 0, d, "selectCourses", 0, s, "selectRaces", 0, l])
-}
-, 738073, t => {
-    "use strict";
-    var e = t.i(998494)
-      , r = t.i(353198)
-      , i = t.i(826845)
-      , n = t.i(202010)
-      , a = t.i(543689)
-      , o = t.i(483359);
-    function s(t) {
-        return !!t && "object" == typeof t && ("fpv" === t.view || ("chase" === t.view || void 0 === t.view) && Array.isArray(t.offset) && 3 === t.offset.length)
-    }
-    function l(t) {
-        return !!t && "object" == typeof t && "number" == typeof t.seconds
-    }
-    function u(t) {
-        return Array.isArray(t) && 3 === t.length && t.every(t => "number" == typeof t)
-    }
-    function c(t) {
-        return !!t && "object" == typeof t && "string" == typeof t.id && "string" == typeof t.label && u(t.position) && "number" == typeof t.yaw
-    }
-    function d(t) {
-        if (!t || "object" != typeof t || "string" != typeof t.id || !(0,
-        i.isSafeId)(t.id) || "string" != typeof t.color)
-            return null;
-        if ("gate" === t.kind) {
-            if (!u(t.position) || !Array.isArray(t.size) || 2 !== t.size.length || "number" != typeof t.size[0] || "number" != typeof t.size[1])
-                return null;
-            let e = void 0 !== t.rotation ? u(t.rotation) ? t.rotation : null : "number" == typeof t.rotationY && Number.isFinite(t.rotationY) && ("vertical" === t.axis || "horizontal" === t.axis) && (void 0 === t.incoming || "top" === t.incoming || "bottom" === t.incoming) ? (0,
-            o.legacyGateRotation)({
-                rotationY: t.rotationY,
-                axis: t.axis,
-                incoming: t.incoming
-            }) : null;
-            return e ? {
-                kind: "gate",
-                id: t.id,
-                color: t.color,
-                position: t.position,
-                rotation: e,
-                size: t.size
-            } : null
-        }
-        return "land" === t.kind ? u(t.position) && "number" == typeof t.radius ? {
-            kind: "land",
-            id: t.id,
-            color: t.color,
-            position: t.position,
-            radius: t.radius
-        } : null : null
-    }
-    function p(t) {
-        return c(t) ? {
-            ...t,
-            position: [t.position[0], t.position[1], t.position[2]],
-            pad: !1 !== t.pad
-        } : null
-    }
-    t.s(["isCamera", 0, s, "isMapId", 0, function(t) {
-        return "string" == typeof t && (e.MAP_IDS.includes(t) || (0,
-        e.isOfficialMapId)(t))
-    }
-    , "isReplayFrame", 0, function(t) {
-        return !!t && "object" == typeof t && (void 0 !== t.droneId && !r.DRONE_IDS.includes(t.droneId) && (0,
-        r.replayCraft)(t.droneId) && (t.droneId = "freestyle",
-        t.droneSkin = "factory"),
-        (void 0 === t.droneId || r.DRONE_IDS.includes(t.droneId)) && (void 0 === t.droneSkin || r.DRONE_SKIN_IDS.some(e => e === t.droneSkin) || /^shop:[0-9a-f-]{36}$/i.test(t.droneSkin)) && (void 0 === t.voltageFactor || Number.isFinite(t.voltageFactor) && t.voltageFactor >= 0 && t.voltageFactor <= 2) && "number" == typeof t.t && (void 0 === t.segment || Number.isSafeInteger(t.segment) && t.segment >= 0) && (void 0 === t.crowdTime || Number.isFinite(t.crowdTime) && t.crowdTime >= 0) && (void 0 === t.crowdRoutes || Array.isArray(t.crowdRoutes) && t.crowdRoutes.length <= 40 && t.crowdRoutes.every(t => t && Number.isSafeInteger(t.id) && t.id >= 0 && Number.isFinite(t.offset) && u(t.a) && t.a.every(Number.isFinite) && u(t.b) && t.b.every(Number.isFinite) && Math.hypot(t.b[0] - t.a[0], t.b[2] - t.a[2]) > .01)) && (void 0 === t.driftTime || "number" == typeof t.driftTime && Number.isFinite(t.driftTime) && t.driftTime >= 0) && (void 0 === t.prefabTime || "number" == typeof t.prefabTime && Number.isFinite(t.prefabTime) && t.prefabTime >= 0) && Array.isArray(t.position) && 3 === t.position.length && t.position.every(t => "number" == typeof t) && Array.isArray(t.rotation) && 4 === t.rotation.length && t.rotation.every(t => "number" == typeof t))
-    }
-    , "parseGateObjectives", 0, function(t) {
-        if (!Array.isArray(t))
-            return null;
-        let e = []
-          , r = new Set;
-        for (let i of t) {
-            let t = d(i);
-            if (!t || "gate" !== t.kind || r.has(t.id))
-                return null;
-            r.add(t.id),
-            e.push(t)
-        }
-        return e
-    }
-    , "parseMapSpawns", 0, function(t) {
-        if (!Array.isArray(t))
-            return null;
-        let e = []
-          , r = new Set;
-        for (let i of t) {
-            let t = p(i);
-            if (!t || r.has(t.id))
-                return null;
-            r.add(t.id),
-            e.push(t)
-        }
-        return e
-    }
-    , "parsePractice", 0, function(t) {
-        if (!t || "object" != typeof t || "string" != typeof t.instruction || !Array.isArray(t.objectives) || 0 === t.objectives.length)
-            return null;
-        let e = [];
-        for (let r of t.objectives) {
-            let t = d(r);
-            if (!t)
-                return null;
-            e.push(t)
-        }
-        return {
-            instruction: t.instruction,
-            objectives: e
-        }
-    }
-    , "parseSpawn", 0, p, "parseSteps", 0, function(t) {
-        if (!Array.isArray(t))
-            return null;
-        let e = []
-          , r = new Set;
-        for (let o of t) {
-            let t = function(t) {
-                if (!t || "object" != typeof t || "string" != typeof t.id || !(0,
-                i.isSafeId)(t.id))
-                    return null;
-                let e = function(t) {
-                    if (!Array.isArray(t))
-                        return null;
-                    let e = [];
-                    for (let r of t) {
-                        if (!r || "object" != typeof r)
-                            return null;
-                        let t = "string" == typeof r.text ? r.text.trim() : "";
-                        if (!t)
-                            continue;
-                        let i = r.sprite
-                          , a = (0,
-                        n.isInstructorSprite)(i) ? i : n.DEFAULT_INSTRUCTOR_SPRITE;
-                        e.push({
-                            text: t,
-                            sprite: a
-                        })
-                    }
-                    return e
-                }(t.dialog);
-                if (!e || 0 === e.length || !t.demo || "object" != typeof t.demo || !c(t.demo.spawn) || !Array.isArray(t.demo.segments) || 0 === t.demo.segments.length || !t.demo.segments.every(l) || !s(t.demo.camera))
-                    return null;
-                let r = (0,
-                a.isReplayId)(t.replayId) ? t.replayId : void 0;
-                return {
-                    id: t.id,
-                    dialog: e,
-                    demo: {
-                        spawn: t.demo.spawn,
-                        segments: t.demo.segments,
-                        restMs: t.demo.restMs,
-                        camera: t.demo.camera
-                    },
-                    ...r ? {
-                        replayId: r
-                    } : {}
-                }
-            }(o);
-            if (!t || r.has(t.id))
-                return null;
-            r.add(t.id),
-            e.push(t)
-        }
-        return e
-    }
-    ])
-}
-, 483359, t => {
-    "use strict";
-    var e = t.i(475127);
-    function r(t, e) {
-        return t[0] * e[0] + t[1] * e[1] + t[2] * e[2]
-    }
-    function i(t) {
-        let r = e.cos(t)
-          , i = e.sin(t);
-        return [1e-15 > Math.abs(r) ? 0 : r, 1e-15 > Math.abs(i) ? 0 : i]
-    }
-    function n([t,e,r]) {
-        let[a,o] = i(t)
-          , [s,l] = i(e)
-          , [u,c] = i(r);
-        return [s * u, -s * c, l, a * c + o * l * u, a * u - o * l * c, -o * s, o * c - a * l * u, o * u + a * l * c, a * s]
-    }
-    function a(t) {
-        let e = n(t.rotation);
-        return {
-            right: [e[0], e[3], e[6]],
-            up: [e[1], e[4], e[7]],
-            normal: [e[2], e[5], e[8]],
-            euler: t.rotation
-        }
-    }
-    function o(t, e) {
-        return t + Math.round((e - t) / (2 * Math.PI)) * Math.PI * 2
-    }
-    function s(t, r) {
-        let i = e.asin(Math.max(-1, Math.min(1, t[2])));
-        if (Math.abs(t[2]) > .9999999)
-            return [o(e.atan2(t[7], t[4]), r[0]), o(i, r[1]), 0];
-        let n = e.atan2(-t[5], t[8])
-          , a = e.atan2(-t[1], t[0])
-          , s = [[n, i, a], [n + Math.PI, Math.PI - i, a + Math.PI]].map(t => t.map( (t, e) => o(t, r[e])))
-          , l = t => t.reduce( (t, e, i) => t + Math.abs(e - r[i]), 0);
-        return l(s[0]) <= l(s[1]) ? s[0] : s[1]
-    }
-    function l(t) {
-        let e = Math.round(t / (Math.PI / 2));
-        return 1e-12 > Math.abs(t - Math.PI / 2 * e) ? Math.PI / 2 * e || 0 : t
-    }
-    function u(t, r, a) {
-        if (0 === t[0] && 0 === t[2] && 0 === r[0] && 0 === r[2])
-            return [0, t[1] + a * Math.sign(r[1]), 0];
-        let o = e.hypot(...r)
-          , [l,u,c] = r.map(t => t / o)
-          , [d,p] = i(a)
-          , m = 1 - d
-          , f = [m * l * l + d, m * l * u - p * c, m * l * c + p * u, m * l * u + p * c, m * u * u + d, m * u * c - p * l, m * l * c - p * u, m * u * c + p * l, m * c * c + d]
-          , h = n(t);
-        return s(Array.from({
-            length: 9
-        }, (t, e) => {
-            let r = Math.floor(e / 3)
-              , i = e % 3;
-            return f[3 * r] * h[i] + f[3 * r + 1] * h[3 + i] + f[3 * r + 2] * h[6 + i]
-        }
-        ), t)
-    }
-    function c(t, e, i) {
-        let {right: n, up: o, normal: s} = a(t)
-          , [l,u,c] = t.position
-          , d = [e.x - l, e.y - u, e.z - c]
-          , p = [i.x - l, i.y - u, i.z - c]
-          , m = r(d, s)
-          , f = r(p, s);
-        if (m <= 0 || f > 0)
-            return null;
-        let h = m / (m - f)
-          , y = [e.x + (i.x - e.x) * h - l, e.y + (i.y - e.y) * h - u, e.z + (i.z - e.z) * h - c]
-          , g = r(y, n)
-          , w = r(y, o)
-          , [b,v] = t.size;
-        return Math.abs(g) <= b / 2 && Math.abs(w) <= v / 2 ? h : null
-    }
-    t.s(["crossedGate", 0, function(t, e, r) {
-        return null !== c(t, e, r)
-    }
-    , "eulerMatrix", 0, n, "flipGate", 0, function(t) {
-        return u(t, a({
-            rotation: t
-        }).up, Math.PI)
-    }
-    , "gateBasis", 0, a, "gateCrossingFraction", 0, c, "gateMountYaw", 0, function({right: t, normal: r}) {
-        return .999 > Math.abs(t[1]) ? e.atan2(-t[2], t[0]) : e.atan2(r[0], r[2])
-    }
-    , "gateRotationFromBasis", 0, function(t, e, r, i=[0, 0, 0]) {
-        return s([t[0], e[0], r[0], t[1], e[1], r[1], t[2], e[2], r[2]], i).map(l)
-    }
-    , "legacyGateRotation", 0, function(t) {
-        return "vertical" === t.axis ? [0, t.rotationY, 0] : "bottom" === t.incoming ? [Math.PI / 2, 0, -t.rotationY] : [-Math.PI / 2, 0, t.rotationY]
-    }
-    , "rotateGate", 0, u])
-}
-, 826845, t => {
-    "use strict";
-    t.s(["isSafeId", 0, function(t) {
-        return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(t)
-    }
-    ])
-}
-, 202010, t => {
-    "use strict";
-    let e = ["LeadInstructor1", "LeadInstructor2", "LeadInstructor3", "LeadInstructor4"];
-    t.s(["DEFAULT_INSTRUCTOR_SPRITE", 0, "LeadInstructor1", "INSTRUCTOR_SPRITES", 0, e, "instructorSpriteSrc", 0, function(t) {
-        return `/sim/characters/lead-instructor/${t}.webp`
-    }
-    , "isInstructorSprite", 0, function(t) {
-        return "string" == typeof t && e.includes(t)
-    }
-    ])
-}
-, 284853, t => {
-    "use strict";
-    let e = new Set(["gridworks", "flight-school"]);
-    function r(t, r) {
-        return e.has(t) ? "from-storage" === r ? .6 : 1.6666666666666667 : 1
-    }
-    function i(t, e, r=!1) {
-        let n = .2 * !!r
-          , a = r && t[1] <= n ? t[1] : n + (t[1] - n) * e;
-        return [t[0] * e, a, t[2] * e]
-    }
-    function n(t, e, n) {
-        let a = r(t, n);
-        return 1 === a ? e : {
-            ...e,
-            position: i(e.position, a, !0)
-        }
-    }
-    function a(t, e, n) {
-        let a = r(t, n);
-        return 1 === a || "fpv" === e.view ? e : {
-            ...e,
-            offset: i(e.offset, a)
-        }
-    }
-    function o(t, e) {
-        return {
-            ...t,
-            position: i(t.position, e),
-            size: [t.size[0] * e, t.size[1] * e]
-        }
-    }
-    t.s(["GRIDWORKS_WORLD_SCALE", 0, .6, "transformMapCamera", 0, a, "transformMapLesson", 0, function(t, e) {
-        let s = r(t.mapId, e);
-        return 1 === s ? t : {
-            ...t,
-            spawn: n(t.mapId, t.spawn, e),
-            steps: t.steps.map(r => ({
-                ...r,
-                demo: {
-                    ...r.demo,
-                    spawn: n(t.mapId, r.demo.spawn, e),
-                    camera: a(t.mapId, r.demo.camera, e)
-                }
-            })),
-            practice: {
-                ...t.practice,
-                objectives: t.practice.objectives.map(t => "gate" === t.kind ? o(t, s) : {
-                    ...t,
-                    position: i(t.position, s),
-                    radius: t.radius * s
-                })
-            }
-        }
-    }
-    , "transformMapPathSamples", 0, function(t, e, n) {
-        let a = r(t, n);
-        return 1 === a ? e : e.map(t => {
-            let[e,r,n] = i([t.x, t.y, t.z], a, !0);
-            return {
-                ...t,
-                x: e,
-                y: r,
-                z: n
-            }
-        }
-        )
-    }
-    , "transformMapReplayFrames", 0, function(t, e, n) {
-        let a = r(t, n);
-        return 1 === a ? e : e.map(t => ({
-            ...t,
-            position: i(t.position, a, !0),
-            ...t.crowdRoutes ? {
-                crowdRoutes: t.crowdRoutes.map(t => ({
-                    ...t,
-                    a: i(t.a, a),
-                    b: i(t.b, a)
-                }))
-            } : {}
-        }))
-    }
-    , "transformMapSpawn", 0, n, "transformMapTimeAttack", 0, function(t, e) {
-        let a = r(t.mapId, e);
-        return 1 === a ? t : {
-            ...t,
-            spawn: n(t.mapId, t.spawn, e),
-            gates: t.gates.map(t => o(t, a)),
-            ...t.raceExitSpawn ? {
-                raceExitSpawn: n(t.mapId, t.raceExitSpawn, e)
-            } : {},
-            ...t.raceMarker ? {
-                raceMarker: {
-                    position: i(t.raceMarker.position, a),
-                    radius: t.raceMarker.radius * a,
-                    height: t.raceMarker.height * a
-                }
-            } : {}
-        }
-    }
-    ])
-}
-, 998494, t => {
-    "use strict";
-    let e = ["gridworks", "drift-park", "whoop-world", "flight-school"]
-      , r = t => "gridworks" === t || /^official:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(t ?? "")
-      , i = "official:fd000000-0000-4000-8000-000000000302"
-      , n = "official:fd000000-0000-4000-8000-000000000301"
-      , a = /^user:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
-      , o = {
-        "whoop-world": i,
-        "drift-park": n
-    };
-    function s(t) {
-        let e = t.size / 2;
-        return t.walls ?? {
-            negativeX: e,
-            positiveX: e,
-            negativeZ: e,
-            positiveZ: e
-        }
-    }
-    t.s(["DEFAULT_MAP_ID", 0, i, "DRIFT_PARK_MAP_ID", 0, n, "LESSON_MAP_ID", 0, "flight-school", "MAP_IDS", 0, e, "WHOOP_WORLD_MAP_ID", 0, i, "isOfficialMapId", 0, r, "isPersonalMapId", 0, t => !!t?.startsWith("user:"), "parseLayoutRevision", 0, function(t) {
-        return Number.isSafeInteger(t) && t > 0 ? t : null
-    }
-    , "recordingMapId", 0, function(t) {
-        return "string" != typeof t ? null : o[t] ? o[t] : e.includes(t) || r(t) || a.test(t) ? t : null
-    }
-    , "wallDistances", 0, s, "worldBound", 0, function(t) {
-        return Math.max(...Object.values(s(t)))
-    }
-    ])
-}
-, 381842, t => {
-    "use strict";
-    t.s(["REPLAY_BUCKET", 0, "sim-replay-payloads", "REPLAY_OBJECT_LIMIT", 0, 2e7, "replayStoragePayloads", 0, function(t) {
-        let e = (t, e) => Number(t.toFixed(e))
-          , r = t.map(t => [e(t.t, 6), t.segment ?? 0, ...t.position.map(t => e(t, 4)), ...t.rotation.map(t => e(t, 6)), void 0 === t.throttle ? null : [t.throttle, t.roll ?? 0, t.pitch ?? 0, t.yaw ?? 0].map(t => e(t, 4)), t.motors ? t.motors.map(t => e(t, 4)) : null, ...t.droneId ? [t.droneId, t.droneSkin ?? "factory"] : []])
-          , i = [];
-        for (let e of t)
-            (!i.length || e.t - i[i.length - 1].t >= 2) && i.push({
-                t: e.t,
-                x: e.position[0],
-                y: e.position[1],
-                z: e.position[2]
-            });
-        let n = t.at(-1);
-        return n && (!i.length || i.at(-1).t < n.t) && i.push({
-            t: n.t,
-            x: n.position[0],
-            y: n.position[1],
-            z: n.position[2]
-        }),
-        {
-            original: JSON.stringify({
-                format: 1,
-                frames: t
-            }),
-            ambient: JSON.stringify({
-                format: 1,
-                frames: r
-            }),
-            samples: i
-        }
-    }
-    ])
-}
-, 290840, 840390, 502478, t => {
-    "use strict";
-    let e, r;
-    var i = t.i(920755)
-      , n = t.i(738073)
-      , a = t.i(543689)
-      , o = t.i(381842);
-    let s = new WeakMap;
-    function l(t, e) {
-        return t && "object" == typeof t && s.set(t, e),
-        t
-    }
-    function u(t) {
-        return t && "object" == typeof t ? s.get(t) : void 0
-    }
-    function c() {
-        return e ??= new Promise( (t, e) => {
-            let r = indexedDB.open("flightdivision-replays-v1", 1);
-            r.onupgradeneeded = () => {
-                let t = r.result.createObjectStore("clips", {
-                    keyPath: "key"
-                });
-                t.createIndex("used", "used"),
-                t.createIndex("id", "id")
+            this.publish = t => {
+                this.subscribers.forEach(e => e(t))
             }
             ,
-            r.onsuccess = () => t(r.result),
-            r.onerror = () => e(r.error),
-            r.onblocked = () => e(Error("Replay cache unavailable"))
-        }
-        )
-    }
-    let d = {
-        async read(t) {
-            let e = await c();
-            return new Promise( (r, i) => {
-                let n = e.transaction("clips", "readonly").objectStore("clips").get(t);
-                n.onsuccess = () => r(n.result),
-                n.onerror = () => i(n.error)
+            this.addToast = t => {
+                this.publish(t),
+                this.toasts = [...this.toasts, t]
             }
-            )
-        },
-        async write(t) {
-            if (t.bytes > 0x4000000)
-                return;
-            let e = await c();
-            await new Promise( (r, i) => {
-                let n = e.transaction("clips", "readwrite")
-                  , a = n.objectStore("clips");
-                a.put(t);
-                let o = 0
-                  , s = a.index("used").openCursor(null, "prev");
-                s.onsuccess = () => {
-                    let t = s.result;
-                    t && ((o += t.value.bytes) > 0x4000000 && t.delete(),
-                    t.continue())
-                }
-                ,
-                n.oncomplete = () => r(),
-                n.onerror = () => i(n.error),
-                n.onabort = () => i(n.error)
-            }
-            )
-        },
-        async remove(t) {
-            let e = await c();
-            await new Promise( (r, i) => {
-                let n = e.transaction("clips", "readwrite")
-                  , a = n.objectStore("clips").index("id").openCursor(t);
-                a.onsuccess = () => {
-                    let t = a.result;
-                    t && (t.delete(),
-                    t.continue())
-                }
-                ,
-                n.oncomplete = () => r(),
-                n.onerror = () => i(n.error),
-                n.onabort = () => i(n.error)
-            }
-            )
-        }
-    }
-      , p = new class {
-        persistence;
-        maxBytes;
-        listeners;
-        memory;
-        pending;
-        epochs;
-        writes;
-        constructor(t=d, e=0x1000000) {
-            this.persistence = t,
-            this.maxBytes = e,
-            this.listeners = new Set,
-            this.memory = new Map,
-            this.pending = new Map,
-            this.epochs = new Map,
-            this.writes = Promise.resolve()
-        }
-        onInvalidate(t) {
-            this.listeners.add(t)
-        }
-        remember(t) {
-            this.memory.delete(t.key),
-            this.memory.set(t.key, t);
-            let e = [...this.memory.values()].reduce( (t, e) => t + e.bytes, 0);
-            for (let[t,r] of this.memory) {
-                if (e <= this.maxBytes)
-                    break;
-                this.memory.delete(t),
-                e -= r.bytes
-            }
-        }
-        persist(t) {
-            this.writes = this.writes.then(t, t).catch( () => {}
-            )
-        }
-        invalidate(t) {
-            for (let e of this.listeners)
-                e(t);
-            for (let[e,r] of (this.epochs.set(t, (this.epochs.get(t) ?? 0) + 1),
-            this.memory))
-                r.id === t && this.memory.delete(e);
-            for (let e of this.pending.keys())
-                JSON.parse(e)[1] === t && this.pending.delete(e);
-            this.persist( () => this.persistence.remove(t))
-        }
-        async load(t, e, r, i, n) {
-            let a = JSON.stringify([t, e, r])
-              , o = this.pending.get(a);
-            if (o)
-                return o;
-            let s = this.epochs.get(e) ?? 0
-              , l = (async () => {
-                await this.writes;
-                let t = this.memory.get(a);
-                if (!t)
-                    try {
-                        t = await this.persistence.read(a)
-                    } catch {}
-                let r = null;
-                if (t)
-                    try {
-                        r = i(JSON.parse(t.json), t.bytes)
-                    } catch {}
-                if (!r) {
-                    let o = await n()
-                      , s = JSON.stringify(o)
-                      , l = u(o) ?? new TextEncoder().encode(s).length;
-                    if (!(r = i(o, l)))
-                        throw Error("Recording is unavailable or invalid. Please retry.");
-                    t = {
-                        key: a,
-                        id: e,
-                        json: s,
-                        bytes: l,
-                        used: Date.now()
-                    }
-                }
-                if ((this.epochs.get(e) ?? 0) !== s)
-                    throw Error("Recording changed. Please retry.");
-                return t = {
+            ,
+            this.create = t => {
+                var e;
+                let {message: a, ...o} = t
+                  , r = "number" == typeof (null == t ? void 0 : t.id) || (null == (e = t.id) ? void 0 : e.length) > 0 ? t.id : u++
+                  , n = this.toasts.find(t => t.id === r)
+                  , s = void 0 === t.dismissible || t.dismissible;
+                return this.dismissedToasts.has(r) && this.dismissedToasts.delete(r),
+                n ? this.toasts = this.toasts.map(e => e.id === r ? (this.publish({
+                    ...e,
                     ...t,
-                    used: Date.now()
-                },
-                this.remember(t),
-                this.persist( () => this.persistence.write(t)),
+                    id: r,
+                    title: a
+                }),
+                {
+                    ...e,
+                    ...t,
+                    id: r,
+                    dismissible: s,
+                    title: a
+                }) : e) : this.addToast({
+                    title: a,
+                    ...o,
+                    dismissible: s,
+                    id: r
+                }),
                 r
             }
-            )();
-            this.pending.set(a, l);
-            try {
-                return await l
-            } finally {
-                this.pending.get(a) === l && this.pending.delete(a)
-            }
-        }
-    }
-    ;
-    t.s(["downloadedBytes", 0, u, "markDownloadedBytes", 0, l, "replayCache", 0, p], 840390);
-    let m = "fd.ambient-download-budget.v1";
-    class f extends Error {
-        constructor() {
-            super("Ambient recording download budget reached")
-        }
-    }
-    class h {
-        now;
-        persistence;
-        bytes;
-        at;
-        constructor(t=Date.now, e) {
-            this.now = t,
-            this.persistence = e,
-            this.bytes = 8388608,
-            this.at = t();
-            try {
-                const t = JSON.parse(e?.getItem(m) ?? "null");
-                t && Number.isFinite(t.bytes) && Number.isFinite(t.at) && (this.bytes = Math.max(0, Math.min(8388608, t.bytes)),
-                this.at = Math.min(this.at, t.at))
-            } catch {}
-        }
-        remaining() {
-            let t = this.now();
-            return this.bytes = Math.min(8388608, this.bytes + 2097152 * Math.max(0, t - this.at) / 36e5),
-            this.at = t,
-            this.bytes
-        }
-        consume(t) {
-            let e = this.remaining();
-            this.bytes = Math.max(0, e - t);
-            try {
-                this.persistence?.setItem(m, JSON.stringify({
-                    bytes: this.bytes,
-                    at: this.at
+            ,
+            this.dismiss = t => (this.dismissedToasts.add(t),
+            t || this.toasts.forEach(t => {
+                this.subscribers.forEach(e => e({
+                    id: t.id,
+                    dismiss: !0
                 }))
-            } catch {}
-            if (t > e)
-                throw new f
-        }
-    }
-    function y() {
-        if (!r) {
-            let t;
-            try {
-                t = "u" < typeof sessionStorage ? void 0 : sessionStorage
-            } catch {}
-            r = new h(Date.now,t)
-        }
-        return r
-    }
-    let g = () => y().remaining() >= 262144;
-    async function w(t, e) {
-        if (!(0,
-        a.isReplayId)(t) || !e.length || !e.every(n.isReplayFrame))
-            throw Error("Invalid replay.");
-        let r = (0,
-        i.createClient)()
-          , {data: {user: s}, error: l} = await r.auth.getUser();
-        if (l || !s)
-            throw Error("Not signed in.");
-        let u = (0,
-        o.replayStoragePayloads)(e)
-          , c = `${t}/${crypto.randomUUID()}`
-          , d = `${c}.json`
-          , p = `${c}.ambient.json`
-          , m = r.storage.from(o.REPLAY_BUCKET);
-        for (let[t,e] of [[d, u.original], [p, u.ambient]]) {
-            let r = new Blob([e],{
-                type: "application/json"
-            });
-            if (r.size > o.REPLAY_OBJECT_LIMIT)
-                throw Error("This clip is too long to save. Trim it shorter.");
-            let {error: i} = await m.upload(t, r, {
-                contentType: "application/json",
-                cacheControl: "3600",
-                upsert: !1
-            });
-            if (i)
-                throw i
-        }
-        return {
-            frames: null,
-            storage_path: d,
-            ambient_storage_path: p,
-            path_samples: u.samples
-        }
-    }
-    async function b(t, e, r) {
-        let i;
-        if ("ambient" === e && !g())
-            throw new f;
-        let n = new URLSearchParams({
-            kind: e,
-            ...r ? {
-                revision: r
-            } : {}
-        })
-          , a = await fetch(`/api/sim/replays/${encodeURIComponent(t)}?${n}`, {
-            cache: "no-store",
-            signal: AbortSignal.timeout(15e3)
-        });
-        if (404 === a.status)
-            return null;
-        if (!a.ok)
-            throw Error("Recording is unavailable. Please retry.");
-        let o = await a.json()
-          , s = t => t && "object" == typeof t && 1 === t.format && Array.isArray(t.frames) ? {
-            format: 1,
-            frames: t.frames
-        } : null
-          , c = async () => {
-            if ("ambient" === e && !g())
-                throw new f;
-            let t = await fetch(o.url, {
-                signal: AbortSignal.timeout(3e4)
-            });
-            if (!t.ok)
-                throw Error("Recording download failed. Please retry.");
-            let r = await v(t, "ambient" === e);
-            return i = u(r),
-            r
-        }
-          , d = o.metadata?.updated_at
-          , m = r || "string" != typeof d ? s(await c()) : await p.load(`payload-${e}-v1`, t, d, s, c);
-        if (!m)
-            throw Error("Invalid recording.");
-        let h = {
-            ...o.metadata,
-            frames: m.frames,
-            format: 1
-        };
-        return void 0 === i ? h : l(h, i)
-    }
-    async function v(t, e) {
-        let r = e ? y() : void 0
-          , i = Number(t.headers.get("content-length"))
-          , n = t.body?.getReader();
-        if (!n)
-            throw Error("Invalid recording.");
-        let a = !1;
-        try {
-            if (i > o.REPLAY_OBJECT_LIMIT)
-                throw Error("Recording exceeds the download limit.");
-            r && i > r.remaining() && r.consume(i);
-            let t = []
-              , e = 0;
-            for (; ; ) {
-                let i = await n.read();
-                if (i.done)
-                    break;
-                if (e += i.value.byteLength,
-                r?.consume(i.value.byteLength),
-                e > o.REPLAY_OBJECT_LIMIT)
-                    throw Error("Recording exceeds the download limit.");
-                t.push(i.value)
             }
-            a = !0;
-            let s = new Uint8Array(e)
-              , u = 0;
-            for (let e of t)
-                s.set(e, u),
-                u += e.byteLength;
-            return l(JSON.parse(new TextDecoder().decode(s)), e)
-        } finally {
-            a || await n.cancel().catch( () => {}
             ),
-            n.releaseLock()
+            this.subscribers.forEach(e => e({
+                id: t,
+                dismiss: !0
+            })),
+            t),
+            this.message = (t, e) => this.create({
+                ...e,
+                message: t
+            }),
+            this.error = (t, e) => this.create({
+                ...e,
+                message: t,
+                type: "error"
+            }),
+            this.success = (t, e) => this.create({
+                ...e,
+                type: "success",
+                message: t
+            }),
+            this.info = (t, e) => this.create({
+                ...e,
+                type: "info",
+                message: t
+            }),
+            this.warning = (t, e) => this.create({
+                ...e,
+                type: "warning",
+                message: t
+            }),
+            this.loading = (t, e) => this.create({
+                ...e,
+                type: "loading",
+                message: t
+            }),
+            this.promise = (t, a) => {
+                let o;
+                if (!a)
+                    return;
+                void 0 !== a.loading && (o = this.create({
+                    ...a,
+                    promise: t,
+                    type: "loading",
+                    message: a.loading,
+                    description: "function" != typeof a.description ? a.description : void 0
+                }));
+                let r = t instanceof Promise ? t : t(), n = void 0 !== o, s, i = r.then(async t => {
+                    if (s = ["resolve", t],
+                    e.default.isValidElement(t))
+                        n = !1,
+                        this.create({
+                            id: o,
+                            type: "default",
+                            message: t
+                        });
+                    else if (f(t) && !t.ok) {
+                        n = !1;
+                        let e = "function" == typeof a.error ? await a.error(`HTTP error! status: ${t.status}`) : a.error
+                          , r = "function" == typeof a.description ? await a.description(`HTTP error! status: ${t.status}`) : a.description;
+                        this.create({
+                            id: o,
+                            type: "error",
+                            message: e,
+                            description: r
+                        })
+                    } else if (void 0 !== a.success) {
+                        n = !1;
+                        let e = "function" == typeof a.success ? await a.success(t) : a.success
+                          , r = "function" == typeof a.description ? await a.description(t) : a.description;
+                        this.create({
+                            id: o,
+                            type: "success",
+                            message: e,
+                            description: r
+                        })
+                    }
+                }
+                ).catch(async t => {
+                    if (s = ["reject", t],
+                    void 0 !== a.error) {
+                        n = !1;
+                        let e = "function" == typeof a.error ? await a.error(t) : a.error
+                          , r = "function" == typeof a.description ? await a.description(t) : a.description;
+                        this.create({
+                            id: o,
+                            type: "error",
+                            message: e,
+                            description: r
+                        })
+                    }
+                }
+                ).finally( () => {
+                    var t;
+                    n && (this.dismiss(o),
+                    o = void 0),
+                    null == (t = a.finally) || t.call(a)
+                }
+                ), l = () => new Promise( (t, e) => i.then( () => "reject" === s[0] ? e(s[1]) : t(s[1])).catch(e));
+                return "string" != typeof o && "number" != typeof o ? {
+                    unwrap: l
+                } : Object.assign(o, {
+                    unwrap: l
+                })
+            }
+            ,
+            this.custom = (t, e) => {
+                let a = (null == e ? void 0 : e.id) || u++;
+                return this.create({
+                    jsx: t(a),
+                    id: a,
+                    ...e
+                }),
+                a
+            }
+            ,
+            this.getActiveToasts = () => this.toasts.filter(t => !this.dismissedToasts.has(t.id)),
+            this.subscribers = [],
+            this.toasts = [],
+            this.dismissedToasts = new Set
         }
     }
-    t.s(["AmbientDownloadBudgetError", 0, f, "ambientDownloadBudget", 0, y, "canDownloadAmbientReplay", 0, g], 502478),
-    t.s(["downloadReplayPayload", 0, b, "uploadReplayPayloads", 0, w], 290840)
-}
-, 983040, t => {
-    "use strict";
-    let e, r;
-    class i {
-        capacity;
-        items;
-        start;
-        length;
-        constructor(t) {
-            if (this.capacity = t,
-            this.start = 0,
-            this.length = 0,
-            !Number.isInteger(t) || t < 1)
-                throw Error("Invalid ring capacity");
-            this.items = Array(t)
+      , f = t => t && "object" == typeof t && "ok" in t && "boolean" == typeof t.ok && "status" in t && "number" == typeof t.status
+      , m = Object.assign( (t, e) => {
+        let a = (null == e ? void 0 : e.id) || u++;
+        return c.addToast({
+            title: t,
+            ...e,
+            id: a
+        }),
+        a
+    }
+    , {
+        success: c.success,
+        info: c.info,
+        warning: c.warning,
+        error: c.error,
+        custom: c.custom,
+        message: c.message,
+        promise: c.promise,
+        dismiss: c.dismiss,
+        loading: c.loading
+    }, {
+        getHistory: () => c.toasts,
+        getToasts: () => c.getActiveToasts()
+    });
+    function h(t) {
+        return void 0 !== t.label
+    }
+    function p(...t) {
+        return t.filter(Boolean).join(" ")
+    }
+    !function(t, {insertAt: e}={}) {
+        if (!t || "u" < typeof document)
+            return;
+        let a = document.head || document.getElementsByTagName("head")[0]
+          , o = document.createElement("style");
+        o.type = "text/css",
+        "top" === e && a.firstChild ? a.insertBefore(o, a.firstChild) : a.appendChild(o),
+        o.styleSheet ? o.styleSheet.cssText = t : o.appendChild(document.createTextNode(t))
+    }(`:where(html[dir="ltr"]),:where([data-sonner-toaster][dir="ltr"]){--toast-icon-margin-start: -3px;--toast-icon-margin-end: 4px;--toast-svg-margin-start: -1px;--toast-svg-margin-end: 0px;--toast-button-margin-start: auto;--toast-button-margin-end: 0;--toast-close-button-start: 0;--toast-close-button-end: unset;--toast-close-button-transform: translate(-35%, -35%)}:where(html[dir="rtl"]),:where([data-sonner-toaster][dir="rtl"]){--toast-icon-margin-start: 4px;--toast-icon-margin-end: -3px;--toast-svg-margin-start: 0px;--toast-svg-margin-end: -1px;--toast-button-margin-start: 0;--toast-button-margin-end: auto;--toast-close-button-start: unset;--toast-close-button-end: 0;--toast-close-button-transform: translate(35%, -35%)}:where([data-sonner-toaster]){position:fixed;width:var(--width);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;--gray1: hsl(0, 0%, 99%);--gray2: hsl(0, 0%, 97.3%);--gray3: hsl(0, 0%, 95.1%);--gray4: hsl(0, 0%, 93%);--gray5: hsl(0, 0%, 90.9%);--gray6: hsl(0, 0%, 88.7%);--gray7: hsl(0, 0%, 85.8%);--gray8: hsl(0, 0%, 78%);--gray9: hsl(0, 0%, 56.1%);--gray10: hsl(0, 0%, 52.3%);--gray11: hsl(0, 0%, 43.5%);--gray12: hsl(0, 0%, 9%);--border-radius: 8px;box-sizing:border-box;padding:0;margin:0;list-style:none;outline:none;z-index:999999999;transition:transform .4s ease}:where([data-sonner-toaster][data-lifted="true"]){transform:translateY(-10px)}@media (hover: none) and (pointer: coarse){:where([data-sonner-toaster][data-lifted="true"]){transform:none}}:where([data-sonner-toaster][data-x-position="right"]){right:var(--offset-right)}:where([data-sonner-toaster][data-x-position="left"]){left:var(--offset-left)}:where([data-sonner-toaster][data-x-position="center"]){left:50%;transform:translate(-50%)}:where([data-sonner-toaster][data-y-position="top"]){top:var(--offset-top)}:where([data-sonner-toaster][data-y-position="bottom"]){bottom:var(--offset-bottom)}:where([data-sonner-toast]){--y: translateY(100%);--lift-amount: calc(var(--lift) * var(--gap));z-index:var(--z-index);position:absolute;opacity:0;transform:var(--y);filter:blur(0);touch-action:none;transition:transform .4s,opacity .4s,height .4s,box-shadow .2s;box-sizing:border-box;outline:none;overflow-wrap:anywhere}:where([data-sonner-toast][data-styled="true"]){padding:16px;background:var(--normal-bg);border:1px solid var(--normal-border);color:var(--normal-text);border-radius:var(--border-radius);box-shadow:0 4px 12px #0000001a;width:var(--width);font-size:13px;display:flex;align-items:center;gap:6px}:where([data-sonner-toast]:focus-visible){box-shadow:0 4px 12px #0000001a,0 0 0 2px #0003}:where([data-sonner-toast][data-y-position="top"]){top:0;--y: translateY(-100%);--lift: 1;--lift-amount: calc(1 * var(--gap))}:where([data-sonner-toast][data-y-position="bottom"]){bottom:0;--y: translateY(100%);--lift: -1;--lift-amount: calc(var(--lift) * var(--gap))}:where([data-sonner-toast]) :where([data-description]){font-weight:400;line-height:1.4;color:inherit}:where([data-sonner-toast]) :where([data-title]){font-weight:500;line-height:1.5;color:inherit}:where([data-sonner-toast]) :where([data-icon]){display:flex;height:16px;width:16px;position:relative;justify-content:flex-start;align-items:center;flex-shrink:0;margin-left:var(--toast-icon-margin-start);margin-right:var(--toast-icon-margin-end)}:where([data-sonner-toast][data-promise="true"]) :where([data-icon])>svg{opacity:0;transform:scale(.8);transform-origin:center;animation:sonner-fade-in .3s ease forwards}:where([data-sonner-toast]) :where([data-icon])>*{flex-shrink:0}:where([data-sonner-toast]) :where([data-icon]) svg{margin-left:var(--toast-svg-margin-start);margin-right:var(--toast-svg-margin-end)}:where([data-sonner-toast]) :where([data-content]){display:flex;flex-direction:column;gap:2px}[data-sonner-toast][data-styled=true] [data-button]{border-radius:4px;padding-left:8px;padding-right:8px;height:24px;font-size:12px;color:var(--normal-bg);background:var(--normal-text);margin-left:var(--toast-button-margin-start);margin-right:var(--toast-button-margin-end);border:none;cursor:pointer;outline:none;display:flex;align-items:center;flex-shrink:0;transition:opacity .4s,box-shadow .2s}:where([data-sonner-toast]) :where([data-button]):focus-visible{box-shadow:0 0 0 2px #0006}:where([data-sonner-toast]) :where([data-button]):first-of-type{margin-left:var(--toast-button-margin-start);margin-right:var(--toast-button-margin-end)}:where([data-sonner-toast]) :where([data-cancel]){color:var(--normal-text);background:rgba(0,0,0,.08)}:where([data-sonner-toast][data-theme="dark"]) :where([data-cancel]){background:rgba(255,255,255,.3)}:where([data-sonner-toast]) :where([data-close-button]){position:absolute;left:var(--toast-close-button-start);right:var(--toast-close-button-end);top:0;height:20px;width:20px;display:flex;justify-content:center;align-items:center;padding:0;color:var(--gray12);border:1px solid var(--gray4);transform:var(--toast-close-button-transform);border-radius:50%;cursor:pointer;z-index:1;transition:opacity .1s,background .2s,border-color .2s}[data-sonner-toast] [data-close-button]{background:var(--gray1)}:where([data-sonner-toast]) :where([data-close-button]):focus-visible{box-shadow:0 4px 12px #0000001a,0 0 0 2px #0003}:where([data-sonner-toast]) :where([data-disabled="true"]){cursor:not-allowed}:where([data-sonner-toast]):hover :where([data-close-button]):hover{background:var(--gray2);border-color:var(--gray5)}:where([data-sonner-toast][data-swiping="true"]):before{content:"";position:absolute;left:-50%;right:-50%;height:100%;z-index:-1}:where([data-sonner-toast][data-y-position="top"][data-swiping="true"]):before{bottom:50%;transform:scaleY(3) translateY(50%)}:where([data-sonner-toast][data-y-position="bottom"][data-swiping="true"]):before{top:50%;transform:scaleY(3) translateY(-50%)}:where([data-sonner-toast][data-swiping="false"][data-removed="true"]):before{content:"";position:absolute;inset:0;transform:scaleY(2)}:where([data-sonner-toast]):after{content:"";position:absolute;left:0;height:calc(var(--gap) + 1px);bottom:100%;width:100%}:where([data-sonner-toast][data-mounted="true"]){--y: translateY(0);opacity:1}:where([data-sonner-toast][data-expanded="false"][data-front="false"]){--scale: var(--toasts-before) * .05 + 1;--y: translateY(calc(var(--lift-amount) * var(--toasts-before))) scale(calc(-1 * var(--scale)));height:var(--front-toast-height)}:where([data-sonner-toast])>*{transition:opacity .4s}:where([data-sonner-toast][data-expanded="false"][data-front="false"][data-styled="true"])>*{opacity:0}:where([data-sonner-toast][data-visible="false"]){opacity:0;pointer-events:none}:where([data-sonner-toast][data-mounted="true"][data-expanded="true"]){--y: translateY(calc(var(--lift) * var(--offset)));height:var(--initial-height)}:where([data-sonner-toast][data-removed="true"][data-front="true"][data-swipe-out="false"]){--y: translateY(calc(var(--lift) * -100%));opacity:0}:where([data-sonner-toast][data-removed="true"][data-front="false"][data-swipe-out="false"][data-expanded="true"]){--y: translateY(calc(var(--lift) * var(--offset) + var(--lift) * -100%));opacity:0}:where([data-sonner-toast][data-removed="true"][data-front="false"][data-swipe-out="false"][data-expanded="false"]){--y: translateY(40%);opacity:0;transition:transform .5s,opacity .2s}:where([data-sonner-toast][data-removed="true"][data-front="false"]):before{height:calc(var(--initial-height) + 20%)}[data-sonner-toast][data-swiping=true]{transform:var(--y) translateY(var(--swipe-amount-y, 0px)) translate(var(--swipe-amount-x, 0px));transition:none}[data-sonner-toast][data-swiped=true]{user-select:none}[data-sonner-toast][data-swipe-out=true][data-y-position=bottom],[data-sonner-toast][data-swipe-out=true][data-y-position=top]{animation-duration:.2s;animation-timing-function:ease-out;animation-fill-mode:forwards}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=left]{animation-name:swipe-out-left}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=right]{animation-name:swipe-out-right}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=up]{animation-name:swipe-out-up}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=down]{animation-name:swipe-out-down}@keyframes swipe-out-left{0%{transform:var(--y) translate(var(--swipe-amount-x));opacity:1}to{transform:var(--y) translate(calc(var(--swipe-amount-x) - 100%));opacity:0}}@keyframes swipe-out-right{0%{transform:var(--y) translate(var(--swipe-amount-x));opacity:1}to{transform:var(--y) translate(calc(var(--swipe-amount-x) + 100%));opacity:0}}@keyframes swipe-out-up{0%{transform:var(--y) translateY(var(--swipe-amount-y));opacity:1}to{transform:var(--y) translateY(calc(var(--swipe-amount-y) - 100%));opacity:0}}@keyframes swipe-out-down{0%{transform:var(--y) translateY(var(--swipe-amount-y));opacity:1}to{transform:var(--y) translateY(calc(var(--swipe-amount-y) + 100%));opacity:0}}@media (max-width: 600px){[data-sonner-toaster]{position:fixed;right:var(--mobile-offset-right);left:var(--mobile-offset-left);width:100%}[data-sonner-toaster][dir=rtl]{left:calc(var(--mobile-offset-left) * -1)}[data-sonner-toaster] [data-sonner-toast]{left:0;right:0;width:calc(100% - var(--mobile-offset-left) * 2)}[data-sonner-toaster][data-x-position=left]{left:var(--mobile-offset-left)}[data-sonner-toaster][data-y-position=bottom]{bottom:var(--mobile-offset-bottom)}[data-sonner-toaster][data-y-position=top]{top:var(--mobile-offset-top)}[data-sonner-toaster][data-x-position=center]{left:var(--mobile-offset-left);right:var(--mobile-offset-right);transform:none}}[data-sonner-toaster][data-theme=light]{--normal-bg: #fff;--normal-border: var(--gray4);--normal-text: var(--gray12);--success-bg: hsl(143, 85%, 96%);--success-border: hsl(145, 92%, 91%);--success-text: hsl(140, 100%, 27%);--info-bg: hsl(208, 100%, 97%);--info-border: hsl(221, 91%, 91%);--info-text: hsl(210, 92%, 45%);--warning-bg: hsl(49, 100%, 97%);--warning-border: hsl(49, 91%, 91%);--warning-text: hsl(31, 92%, 45%);--error-bg: hsl(359, 100%, 97%);--error-border: hsl(359, 100%, 94%);--error-text: hsl(360, 100%, 45%)}[data-sonner-toaster][data-theme=light] [data-sonner-toast][data-invert=true]{--normal-bg: #000;--normal-border: hsl(0, 0%, 20%);--normal-text: var(--gray1)}[data-sonner-toaster][data-theme=dark] [data-sonner-toast][data-invert=true]{--normal-bg: #fff;--normal-border: var(--gray3);--normal-text: var(--gray12)}[data-sonner-toaster][data-theme=dark]{--normal-bg: #000;--normal-bg-hover: hsl(0, 0%, 12%);--normal-border: hsl(0, 0%, 20%);--normal-border-hover: hsl(0, 0%, 25%);--normal-text: var(--gray1);--success-bg: hsl(150, 100%, 6%);--success-border: hsl(147, 100%, 12%);--success-text: hsl(150, 86%, 65%);--info-bg: hsl(215, 100%, 6%);--info-border: hsl(223, 100%, 12%);--info-text: hsl(216, 87%, 65%);--warning-bg: hsl(64, 100%, 6%);--warning-border: hsl(60, 100%, 12%);--warning-text: hsl(46, 87%, 65%);--error-bg: hsl(358, 76%, 10%);--error-border: hsl(357, 89%, 16%);--error-text: hsl(358, 100%, 81%)}[data-sonner-toaster][data-theme=dark] [data-sonner-toast] [data-close-button]{background:var(--normal-bg);border-color:var(--normal-border);color:var(--normal-text)}[data-sonner-toaster][data-theme=dark] [data-sonner-toast] [data-close-button]:hover{background:var(--normal-bg-hover);border-color:var(--normal-border-hover)}[data-rich-colors=true][data-sonner-toast][data-type=success],[data-rich-colors=true][data-sonner-toast][data-type=success] [data-close-button]{background:var(--success-bg);border-color:var(--success-border);color:var(--success-text)}[data-rich-colors=true][data-sonner-toast][data-type=info],[data-rich-colors=true][data-sonner-toast][data-type=info] [data-close-button]{background:var(--info-bg);border-color:var(--info-border);color:var(--info-text)}[data-rich-colors=true][data-sonner-toast][data-type=warning],[data-rich-colors=true][data-sonner-toast][data-type=warning] [data-close-button]{background:var(--warning-bg);border-color:var(--warning-border);color:var(--warning-text)}[data-rich-colors=true][data-sonner-toast][data-type=error],[data-rich-colors=true][data-sonner-toast][data-type=error] [data-close-button]{background:var(--error-bg);border-color:var(--error-border);color:var(--error-text)}.sonner-loading-wrapper{--size: 16px;height:var(--size);width:var(--size);position:absolute;inset:0;z-index:10}.sonner-loading-wrapper[data-visible=false]{transform-origin:center;animation:sonner-fade-out .2s ease forwards}.sonner-spinner{position:relative;top:50%;left:50%;height:var(--size);width:var(--size)}.sonner-loading-bar{animation:sonner-spin 1.2s linear infinite;background:var(--gray11);border-radius:6px;height:8%;left:-10%;position:absolute;top:-3.9%;width:24%}.sonner-loading-bar:nth-child(1){animation-delay:-1.2s;transform:rotate(.0001deg) translate(146%)}.sonner-loading-bar:nth-child(2){animation-delay:-1.1s;transform:rotate(30deg) translate(146%)}.sonner-loading-bar:nth-child(3){animation-delay:-1s;transform:rotate(60deg) translate(146%)}.sonner-loading-bar:nth-child(4){animation-delay:-.9s;transform:rotate(90deg) translate(146%)}.sonner-loading-bar:nth-child(5){animation-delay:-.8s;transform:rotate(120deg) translate(146%)}.sonner-loading-bar:nth-child(6){animation-delay:-.7s;transform:rotate(150deg) translate(146%)}.sonner-loading-bar:nth-child(7){animation-delay:-.6s;transform:rotate(180deg) translate(146%)}.sonner-loading-bar:nth-child(8){animation-delay:-.5s;transform:rotate(210deg) translate(146%)}.sonner-loading-bar:nth-child(9){animation-delay:-.4s;transform:rotate(240deg) translate(146%)}.sonner-loading-bar:nth-child(10){animation-delay:-.3s;transform:rotate(270deg) translate(146%)}.sonner-loading-bar:nth-child(11){animation-delay:-.2s;transform:rotate(300deg) translate(146%)}.sonner-loading-bar:nth-child(12){animation-delay:-.1s;transform:rotate(330deg) translate(146%)}@keyframes sonner-fade-in{0%{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}@keyframes sonner-fade-out{0%{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(.8)}}@keyframes sonner-spin{0%{opacity:1}to{opacity:.15}}@media (prefers-reduced-motion){[data-sonner-toast],[data-sonner-toast]>*,.sonner-loading-bar{transition:none!important;animation:none!important}}.sonner-loader{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transform-origin:center;transition:opacity .2s,transform .2s}.sonner-loader[data-visible=false]{opacity:0;transform:scale(.8) translate(-50%,-50%)}
+`);
+    var g = t => {
+        var a, o, u, c, f, m, g, v, b, y, w, x, E, k;
+        let {invert: N, toast: T, unstyled: S, interacting: B, setHeights: C, visibleToasts: M, heights: z, index: R, toasts: I, expanded: j, removeToast: Y, defaultRichColors: P, closeButton: $, style: D, cancelButtonStyle: A, actionButtonStyle: H, className: L="", descriptionClassName: O="", duration: U, position: V, gap: K, loadingIcon: W, expandByDefault: F, classNames: X, icons: q, closeButtonAriaLabel: G="Close toast", pauseWhenPageIsHidden: J} = t
+          , [Q,Z] = e.default.useState(null)
+          , [_,tt] = e.default.useState(null)
+          , [te,ta] = e.default.useState(!1)
+          , [to,tr] = e.default.useState(!1)
+          , [tn,ts] = e.default.useState(!1)
+          , [ti,tl] = e.default.useState(!1)
+          , [td,tu] = e.default.useState(!1)
+          , [tc,tf] = e.default.useState(0)
+          , [tm,th] = e.default.useState(0)
+          , tp = e.default.useRef(T.duration || U || 4e3)
+          , tg = e.default.useRef(null)
+          , tv = e.default.useRef(null)
+          , tb = 0 === R
+          , ty = R + 1 <= M
+          , tw = T.type
+          , tx = !1 !== T.dismissible
+          , tE = T.className || ""
+          , tk = T.descriptionClassName || ""
+          , tN = e.default.useMemo( () => z.findIndex(t => t.toastId === T.id) || 0, [z, T.id])
+          , tT = e.default.useMemo( () => {
+            var t;
+            return null != (t = T.closeButton) ? t : $
         }
-        at(t) {
-            return t < 0 && (t += this.length),
-            t < 0 || t >= this.length ? void 0 : this.items[(this.start + t) % this.capacity]
-        }
-        shift() {
-            if (!this.length)
-                return;
-            let t = this.items[this.start];
-            return this.items[this.start] = void 0,
-            this.start = (this.start + 1) % this.capacity,
-            this.length--,
+        , [T.closeButton, $])
+          , tS = e.default.useMemo( () => T.duration || U || 4e3, [T.duration, U])
+          , tB = e.default.useRef(0)
+          , tC = e.default.useRef(0)
+          , tM = e.default.useRef(0)
+          , tz = e.default.useRef(null)
+          , [tR,tI] = V.split("-")
+          , tj = e.default.useMemo( () => z.reduce( (t, e, a) => a >= tN ? t : t + e.height, 0), [z, tN])
+          , tY = ( () => {
+            let[t,a] = e.default.useState(document.hidden);
+            return e.default.useEffect( () => {
+                let t = () => {
+                    a(document.hidden)
+                }
+                ;
+                return document.addEventListener("visibilitychange", t),
+                () => window.removeEventListener("visibilitychange", t)
+            }
+            , []),
             t
         }
-        push(t) {
-            let e = this.length === this.capacity ? this.shift() : void 0;
-            return this.items[(this.start + this.length) % this.capacity] = t,
-            this.length++,
-            e
+        )()
+          , tP = T.invert || N
+          , t$ = "loading" === tw;
+        tC.current = e.default.useMemo( () => tN * K + tj, [tN, tj]),
+        e.default.useEffect( () => {
+            tp.current = tS
         }
-        toArray() {
-            return Array.from({
-                length: this.length
-            }, (t, e) => this.at(e))
+        , [tS]),
+        e.default.useEffect( () => {
+            ta(!0)
         }
-    }
-    var n = t.i(190072)
-      , a = t.i(12746);
-    function o(t, e, r, i) {
-        return [t - e + r - i, t + e + r + i, t - e - r + i, t + e - r - i]
-    }
-    let s = 1 / 30
-      , l = {
-        current: void 0
-    }
-      , u = {
-        current: void 0
-    }
-      , c = new i(2e4)
-      , d = 0
-      , p = !1
-      , m = s
-      , f = 0
-      , h = 0
-      , y = 0
-      , g = new i(512)
-      , w = 0
-      , b = {
-        current: void 0
-    };
-    function v(t, e, r) {
-        if (0 === t.length)
-            return {
-                frames: [],
-                duration: 0
-            };
-        let i = Math.max(0, Math.min(e, r))
-          , a = Math.max(i, r)
-          , o = a - i
-          , s = 0;
-        for (; s < t.length - 1 && t[s + 1].t < i; )
-            s++;
-        let l = t.length - 1;
-        for (; l > s && t[l - 1].t > a; )
-            l--;
-        let u = e => {
-            let r = I(t, e, 0)
-              , i = t[r]
-              , a = t[r + 1] ?? i
-              , o = R(t, e, r)
-              , s = M(i);
-            s.t = e,
-            s.crowdRoutes = (function(t, e) {
-                for (let r = e; r >= 0; r--)
-                    if (void 0 !== t[r].crowdRoutes)
-                        return t[r].crowdRoutes
+        , []),
+        e.default.useEffect( () => {
+            let t = tv.current;
+            if (t) {
+                let e = t.getBoundingClientRect().height;
+                return th(e),
+                C(t => [{
+                    toastId: T.id,
+                    height: e,
+                    position: T.position
+                }, ...t]),
+                () => C(t => t.filter(t => t.toastId !== T.id))
             }
-            )(t, r)?.map(t => ({
+        }
+        , [C, T.id]),
+        e.default.useLayoutEffect( () => {
+            if (!te)
+                return;
+            let t = tv.current
+              , e = t.style.height;
+            t.style.height = "auto";
+            let a = t.getBoundingClientRect().height;
+            t.style.height = e,
+            th(a),
+            C(t => t.find(t => t.toastId === T.id) ? t.map(t => t.toastId === T.id ? {
                 ...t,
-                a: [...t.a],
-                b: [...t.b]
-            })),
-            void 0 !== i.crowdTime && (s.crowdTime = i.crowdTime + ((a.crowdTime ?? i.crowdTime) - i.crowdTime) * o),
-            s.position = i.position.map( (t, e) => t + (a.position[e] - t) * o),
-            s.rotation = new n.Quaternion(...i.rotation).slerp(new n.Quaternion(...a.rotation), o).toArray();
-            let l = _(t, e, r);
-            l && Object.assign(s, l),
-            i.motors && (s.motors = S(t, e, r, 0));
-            let u = A(t, e, r);
-            void 0 !== u && (s.driftTime = u);
-            let c = k(t, e, r);
-            return void 0 !== c && (s.prefabTime = c),
-            s
+                height: a
+            } : t) : [{
+                toastId: T.id,
+                height: a,
+                position: T.position
+            }, ...t])
         }
-          , c = [u(i), ...t.slice(s, l + 1).filter(t => t.t > i && t.t < a).map(M)];
-        a > i && c.push(u(a));
-        let d = c.map(t => ({
-            ...t,
-            t: t.t - i
-        }));
-        return 0 === d.length ? {
-            frames: [],
-            duration: 0
-        } : {
-            frames: d,
-            duration: o
+        , [te, T.title, T.description, C, T.id]);
+        let tD = e.default.useCallback( () => {
+            tr(!0),
+            tf(tC.current),
+            C(t => t.filter(t => t.toastId !== T.id)),
+            setTimeout( () => {
+                Y(T)
+            }
+            , 200)
         }
-    }
-    function M(t) {
-        return {
-            ...t.droneId ? {
-                droneId: t.droneId,
-                droneSkin: t.droneSkin,
-                voltageFactor: t.voltageFactor
-            } : {},
-            t: t.t,
-            ...void 0 !== t.segment ? {
-                segment: t.segment
-            } : {},
-            ...void 0 !== t.crowdTime ? {
-                crowdTime: t.crowdTime
-            } : {},
-            ...void 0 !== t.crowdRoutes ? {
-                crowdRoutes: t.crowdRoutes.map(t => ({
-                    ...t,
-                    a: [...t.a],
-                    b: [...t.b]
-                }))
-            } : {},
-            ...void 0 !== t.driftTime ? {
-                driftTime: t.driftTime
-            } : {},
-            ...void 0 !== t.prefabTime ? {
-                prefabTime: t.prefabTime
-            } : {},
-            position: [t.position[0], t.position[1], t.position[2]],
-            rotation: [t.rotation[0], t.rotation[1], t.rotation[2], t.rotation[3]],
-            ...void 0 !== t.throttle ? {
-                throttle: t.throttle,
-                roll: t.roll,
-                pitch: t.pitch,
-                yaw: t.yaw
-            } : {},
-            ...t.motors ? {
-                motors: [t.motors[0], t.motors[1], t.motors[2], t.motors[3]]
-            } : {}
-        }
-    }
-    function I(t, e, r) {
-        if (t.length < 2)
-            return 0;
-        let i = Math.min(Math.max(r, 0), t.length - 2);
-        for (; i > 0 && t[i].t > e; )
-            i--;
-        for (; i < t.length - 2 && t[i + 1].t <= e; )
-            i++;
-        return i
-    }
-    function R(t, e, r) {
-        let i = t[r]
-          , n = t[r + 1] ?? i;
-        if (!i || i.segment !== n.segment)
-            return 0;
-        let a = n.t - i.t;
-        return a > 0 ? Math.min(1, Math.max(0, (e - i.t) / a)) : 0
-    }
-    function _(t, e, r) {
-        let i = t[r];
-        if (!i || void 0 === i.throttle)
-            return null;
-        let n = t[r + 1] ?? i
-          , a = n.t - i.t
-          , o = a > 0 ? Math.min(1, Math.max(0, (e - i.t) / a)) : 0
-          , s = (t, e) => (t ?? 0) + ((e ?? t ?? 0) - (t ?? 0)) * o;
-        return {
-            throttle: s(i.throttle, n.throttle),
-            roll: s(i.roll, n.roll),
-            pitch: s(i.pitch, n.pitch),
-            yaw: s(i.yaw, n.yaw)
-        }
-    }
-    function S(t, e, r, i) {
-        let n = t[r]
-          , s = t[r + 1] ?? n;
-        if (!n)
-            return [i, i, i, i];
-        let l = s.t - n.t
-          , u = l > 0 ? Math.min(1, Math.max(0, (e - n.t) / l)) : 0;
-        if (n.motors && s.motors) {
-            var c, d, p, m;
-            return [(c = n.motors[0],
-            c + (s.motors[0] - c) * u), (d = n.motors[1],
-            d + (s.motors[1] - d) * u), (p = n.motors[2],
-            p + (s.motors[2] - p) * u), (m = n.motors[3],
-            m + (s.motors[3] - m) * u)]
-        }
-        if (n.motors)
-            return [n.motors[0], n.motors[1], n.motors[2], n.motors[3]];
-        let f = _(t, e, r);
-        return f ? function(t) {
-            let e = (0,
-            a.clamp01)(t.throttle)
-              , r = t.roll
-              , i = t.pitch
-              , n = t.yaw;
-            if (t.airMode) {
-                let t = o(0, r, i, n)
-                  , s = Math.max(t[0], t[1], t[2], t[3])
-                  , l = Math.min(t[0], t[1], t[2], t[3])
-                  , u = s - l;
-                if (u > 1) {
-                    let e = 1 / u;
-                    r *= e,
-                    i *= e,
-                    n *= e,
-                    s = Math.max((t = o(0, r, i, n))[0], t[1], t[2], t[3]),
-                    l = Math.min(t[0], t[1], t[2], t[3])
+        , [T, Y, C, tC]);
+        return e.default.useEffect( () => {
+            let t;
+            if ((!T.promise || "loading" !== tw) && T.duration !== 1 / 0 && "loading" !== T.type)
+                return j || B || J && tY ? ( () => {
+                    if (tM.current < tB.current) {
+                        let t = new Date().getTime() - tB.current;
+                        tp.current = tp.current - t
+                    }
+                    tM.current = new Date().getTime()
                 }
-                let c = (0,
-                a.clamp)(e, -l, 1 - s);
-                return [(0,
-                a.clamp01)(c + t[0]), (0,
-                a.clamp01)(c + t[1]), (0,
-                a.clamp01)(c + t[2]), (0,
-                a.clamp01)(c + t[3])]
-            }
-            let s = Math.min(e, 1 - .12 * Math.max(Math.abs(r), Math.abs(i), Math.abs(n)))
-              , l = o(s, r, i, n)
-              , u = Math.max(l[0], l[1], l[2], l[3])
-              , c = Math.min(l[0], l[1], l[2], l[3]);
-            if (u > 1 && u > s + 1e-6) {
-                let t = (1 - s) / (u - s);
-                r *= t,
-                i *= t,
-                n *= t,
-                u = Math.max((l = o(s, r, i, n))[0], l[1], l[2], l[3]),
-                c = Math.min(l[0], l[1], l[2], l[3])
-            }
-            if (c < 0 && s > 1e-6) {
-                let t = s / (s - c);
-                r *= t,
-                i *= t,
-                n *= t,
-                l = o(s, r, i, n)
-            }
-            return [(0,
-            a.clamp01)(l[0]), (0,
-            a.clamp01)(l[1]), (0,
-            a.clamp01)(l[2]), (0,
-            a.clamp01)(l[3])]
-        }({
-            ...f,
-            airMode: !0
-        }) : [i, i, i, i]
-    }
-    let T = {
-        t: 0,
-        trimStart: 0,
-        trimEnd: 0,
-        playing: !0,
-        scrubbing: !1
-    };
-    function A(t, e, r) {
-        let i = t[r]
-          , n = t[r + 1] ?? i;
-        if (i?.driftTime !== void 0)
-            return void 0 === n.driftTime || n.driftTime < i.driftTime ? i.driftTime : i.driftTime + (n.driftTime - i.driftTime) * R(t, e, r)
-    }
-    function k(t, e, r) {
-        let i = t[r]
-          , n = t[r + 1] ?? i;
-        if (i?.prefabTime !== void 0)
-            return void 0 === n.prefabTime || n.prefabTime < i.prefabTime ? i.prefabTime : i.prefabTime + (n.prefabTime - i.prefabTime) * R(t, e, r)
-    }
-    t.s(["SESSION_REPLAY_MAX_DURATION", 0, 300, "advanceReplayClock", 0, function(t) {
-        p && Number.isFinite(t) && !(t <= 0) && (!(h <= 0) || !(c.length >= 2e4)) && (f += t,
-        m += t,
-        w += t)
-    }
-    , "clearReplay", 0, function() {
-        c = new i(2e4),
-        d = 0,
-        e = void 0,
-        p = !1,
-        f = 0,
-        h = 0,
-        g = new i(512),
-        w = 0,
-        y = 0,
-        r = void 0,
-        m = s
-    }
-    , "cloneFrames", 0, function(t) {
-        return t.map(M)
-    }
-    , "findReplayIndex", 0, I, "getImpactApproach", 0, function(t, e=1.5) {
-        let r = g.length ? g.toArray() : c.toArray().filter(t => t.segment === y)
-          , i = r.at(-1)?.t ?? f
-          , n = {
-            ...r.at(-1),
-            ...t,
-            t: i + 1 / 240,
-            segment: y,
-            crowdRoutes: b.current?.routes
+                )() : tp.current !== 1 / 0 && (tB.current = new Date().getTime(),
+                t = setTimeout( () => {
+                    var t;
+                    null == (t = T.onAutoClose) || t.call(T, T),
+                    tD()
+                }
+                , tp.current)),
+                () => clearTimeout(t)
         }
-          , a = [...r, n]
-          , o = v(a, Math.max(a[0]?.t ?? 0, n.t - e), n.t);
-        return o.frames[0] && (o.frames[0].crowdRoutes = b.current?.routes.map(t => ({
-            ...t,
-            a: [...t.a],
-            b: [...t.b]
-        }))),
-        o
+        , [j, B, T, tw, J, tY, tD]),
+        e.default.useEffect( () => {
+            T.delete && tD()
+        }
+        , [tD, T.delete]),
+        e.default.createElement("li", {
+            tabIndex: 0,
+            ref: tv,
+            className: p(L, tE, null == X ? void 0 : X.toast, null == (a = null == T ? void 0 : T.classNames) ? void 0 : a.toast, null == X ? void 0 : X.default, null == X ? void 0 : X[tw], null == (o = null == T ? void 0 : T.classNames) ? void 0 : o[tw]),
+            "data-sonner-toast": "",
+            "data-rich-colors": null != (u = T.richColors) ? u : P,
+            "data-styled": !(T.jsx || T.unstyled || S),
+            "data-mounted": te,
+            "data-promise": !!T.promise,
+            "data-swiped": td,
+            "data-removed": to,
+            "data-visible": ty,
+            "data-y-position": tR,
+            "data-x-position": tI,
+            "data-index": R,
+            "data-front": tb,
+            "data-swiping": tn,
+            "data-dismissible": tx,
+            "data-type": tw,
+            "data-invert": tP,
+            "data-swipe-out": ti,
+            "data-swipe-direction": _,
+            "data-expanded": !!(j || F && te),
+            style: {
+                "--index": R,
+                "--toasts-before": R,
+                "--z-index": I.length - R,
+                "--offset": `${to ? tc : tC.current}px`,
+                "--initial-height": F ? "auto" : `${tm}px`,
+                ...D,
+                ...T.style
+            },
+            onDragEnd: () => {
+                ts(!1),
+                Z(null),
+                tz.current = null
+            }
+            ,
+            onPointerDown: t => {
+                t$ || !tx || (tg.current = new Date,
+                tf(tC.current),
+                t.target.setPointerCapture(t.pointerId),
+                "BUTTON" !== t.target.tagName && (ts(!0),
+                tz.current = {
+                    x: t.clientX,
+                    y: t.clientY
+                }))
+            }
+            ,
+            onPointerUp: () => {
+                var t, e, a, o;
+                if (ti || !tx)
+                    return;
+                tz.current = null;
+                let r = Number((null == (t = tv.current) ? void 0 : t.style.getPropertyValue("--swipe-amount-x").replace("px", "")) || 0)
+                  , n = Number((null == (e = tv.current) ? void 0 : e.style.getPropertyValue("--swipe-amount-y").replace("px", "")) || 0)
+                  , s = new Date().getTime() - (null == (a = tg.current) ? void 0 : a.getTime())
+                  , i = "x" === Q ? r : n
+                  , l = Math.abs(i) / s;
+                if (Math.abs(i) >= 20 || l > .11) {
+                    tf(tC.current),
+                    null == (o = T.onDismiss) || o.call(T, T),
+                    tt("x" === Q ? r > 0 ? "right" : "left" : n > 0 ? "down" : "up"),
+                    tD(),
+                    tl(!0),
+                    tu(!1);
+                    return
+                }
+                ts(!1),
+                Z(null)
+            }
+            ,
+            onPointerMove: e => {
+                var a, o, r, n;
+                if (!tz.current || !tx || (null == (a = window.getSelection()) ? void 0 : a.toString().length) > 0)
+                    return;
+                let s = e.clientY - tz.current.y
+                  , i = e.clientX - tz.current.x
+                  , l = null != (o = t.swipeDirections) ? o : function(t) {
+                    let[e,a] = t.split("-")
+                      , o = [];
+                    return e && o.push(e),
+                    a && o.push(a),
+                    o
+                }(V);
+                !Q && (Math.abs(i) > 1 || Math.abs(s) > 1) && Z(Math.abs(i) > Math.abs(s) ? "x" : "y");
+                let d = {
+                    x: 0,
+                    y: 0
+                };
+                "y" === Q ? (l.includes("top") || l.includes("bottom")) && (l.includes("top") && s < 0 || l.includes("bottom") && s > 0) && (d.y = s) : "x" === Q && (l.includes("left") || l.includes("right")) && (l.includes("left") && i < 0 || l.includes("right") && i > 0) && (d.x = i),
+                (Math.abs(d.x) > 0 || Math.abs(d.y) > 0) && tu(!0),
+                null == (r = tv.current) || r.style.setProperty("--swipe-amount-x", `${d.x}px`),
+                null == (n = tv.current) || n.style.setProperty("--swipe-amount-y", `${d.y}px`)
+            }
+        }, tT && !T.jsx ? e.default.createElement("button", {
+            "aria-label": G,
+            "data-disabled": t$,
+            "data-close-button": !0,
+            onClick: t$ || !tx ? () => {}
+            : () => {
+                var t;
+                tD(),
+                null == (t = T.onDismiss) || t.call(T, T)
+            }
+            ,
+            className: p(null == X ? void 0 : X.closeButton, null == (c = null == T ? void 0 : T.classNames) ? void 0 : c.closeButton)
+        }, null != (f = null == q ? void 0 : q.close) ? f : d) : null, T.jsx || (0,
+        e.isValidElement)(T.title) ? T.jsx ? T.jsx : "function" == typeof T.title ? T.title() : T.title : e.default.createElement(e.default.Fragment, null, tw || T.icon || T.promise ? e.default.createElement("div", {
+            "data-icon": "",
+            className: p(null == X ? void 0 : X.icon, null == (m = null == T ? void 0 : T.classNames) ? void 0 : m.icon)
+        }, T.promise || "loading" === T.type && !T.icon ? T.icon || (null != q && q.loading ? e.default.createElement("div", {
+            className: p(null == X ? void 0 : X.loader, null == (x = null == T ? void 0 : T.classNames) ? void 0 : x.loader, "sonner-loader"),
+            "data-visible": "loading" === tw
+        }, q.loading) : W ? e.default.createElement("div", {
+            className: p(null == X ? void 0 : X.loader, null == (E = null == T ? void 0 : T.classNames) ? void 0 : E.loader, "sonner-loader"),
+            "data-visible": "loading" === tw
+        }, W) : e.default.createElement(r, {
+            className: p(null == X ? void 0 : X.loader, null == (k = null == T ? void 0 : T.classNames) ? void 0 : k.loader),
+            visible: "loading" === tw
+        })) : null, "loading" !== T.type ? T.icon || (null == q ? void 0 : q[tw]) || (t => {
+            switch (t) {
+            case "success":
+                return n;
+            case "info":
+                return i;
+            case "warning":
+                return s;
+            case "error":
+                return l;
+            default:
+                return null
+            }
+        }
+        )(tw) : null) : null, e.default.createElement("div", {
+            "data-content": "",
+            className: p(null == X ? void 0 : X.content, null == (g = null == T ? void 0 : T.classNames) ? void 0 : g.content)
+        }, e.default.createElement("div", {
+            "data-title": "",
+            className: p(null == X ? void 0 : X.title, null == (v = null == T ? void 0 : T.classNames) ? void 0 : v.title)
+        }, "function" == typeof T.title ? T.title() : T.title), T.description ? e.default.createElement("div", {
+            "data-description": "",
+            className: p(O, tk, null == X ? void 0 : X.description, null == (b = null == T ? void 0 : T.classNames) ? void 0 : b.description)
+        }, "function" == typeof T.description ? T.description() : T.description) : null), (0,
+        e.isValidElement)(T.cancel) ? T.cancel : T.cancel && h(T.cancel) ? e.default.createElement("button", {
+            "data-button": !0,
+            "data-cancel": !0,
+            style: T.cancelButtonStyle || A,
+            onClick: t => {
+                var e, a;
+                h(T.cancel) && tx && (null == (a = (e = T.cancel).onClick) || a.call(e, t),
+                tD())
+            }
+            ,
+            className: p(null == X ? void 0 : X.cancelButton, null == (y = null == T ? void 0 : T.classNames) ? void 0 : y.cancelButton)
+        }, T.cancel.label) : null, (0,
+        e.isValidElement)(T.action) ? T.action : T.action && h(T.action) ? e.default.createElement("button", {
+            "data-button": !0,
+            "data-action": !0,
+            style: T.actionButtonStyle || H,
+            onClick: t => {
+                var e, a;
+                h(T.action) && (null == (a = (e = T.action).onClick) || a.call(e, t),
+                t.defaultPrevented || tD())
+            }
+            ,
+            className: p(null == X ? void 0 : X.actionButton, null == (w = null == T ? void 0 : T.classNames) ? void 0 : w.actionButton)
+        }, T.action.label) : null))
     }
-    , "getReplay", 0, function() {
-        let t = c.toArray().map(t => ({
-            ...M(t),
-            t: t.t - d
-        }));
-        return t[0] && void 0 === t[0].crowdRoutes && void 0 !== e && (t[0].crowdRoutes = e.map(t => ({
-            ...t,
-            a: [...t.a],
-            b: [...t.b]
-        }))),
+    ;
+    function v() {
+        if ("u" < typeof window || "u" < typeof document)
+            return "ltr";
+        let t = document.documentElement.getAttribute("dir");
+        return "auto" !== t && t ? t : window.getComputedStyle(document.documentElement).direction
+    }
+    var b = (0,
+    e.forwardRef)(function(t, o) {
+        let {invert: r, position: n="bottom-right", hotkey: s=["altKey", "KeyT"], expand: i, closeButton: l, className: d, offset: u, mobileOffset: f, theme: m="light", richColors: h, duration: p, style: b, visibleToasts: y=3, toastOptions: w, dir: x=v(), gap: E=14, loadingIcon: k, icons: N, containerAriaLabel: T="Notifications", pauseWhenPageIsHidden: S} = t
+          , [B,C] = e.default.useState([])
+          , M = e.default.useMemo( () => Array.from(new Set([n].concat(B.filter(t => t.position).map(t => t.position)))), [B, n])
+          , [z,R] = e.default.useState([])
+          , [I,j] = e.default.useState(!1)
+          , [Y,P] = e.default.useState(!1)
+          , [$,D] = e.default.useState("system" !== m ? m : "u" > typeof window && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+          , A = e.default.useRef(null)
+          , H = s.join("+").replace(/Key/g, "").replace(/Digit/g, "")
+          , L = e.default.useRef(null)
+          , O = e.default.useRef(!1)
+          , U = e.default.useCallback(t => {
+            C(e => {
+                var a;
+                return null != (a = e.find(e => e.id === t.id)) && a.delete || c.dismiss(t.id),
+                e.filter( ({id: e}) => e !== t.id)
+            }
+            )
+        }
+        , []);
+        return e.default.useEffect( () => c.subscribe(t => {
+            t.dismiss ? C(e => e.map(e => e.id === t.id ? {
+                ...e,
+                delete: !0
+            } : e)) : setTimeout( () => {
+                a.default.flushSync( () => {
+                    C(e => {
+                        let a = e.findIndex(e => e.id === t.id);
+                        return -1 !== a ? [...e.slice(0, a), {
+                            ...e[a],
+                            ...t
+                        }, ...e.slice(a + 1)] : [t, ...e]
+                    }
+                    )
+                }
+                )
+            }
+            )
+        }
+        ), []),
+        e.default.useEffect( () => {
+            if ("system" !== m)
+                return void D(m);
+            if ("system" === m && (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? D("dark") : D("light")),
+            "u" < typeof window)
+                return;
+            let t = window.matchMedia("(prefers-color-scheme: dark)");
+            try {
+                t.addEventListener("change", ({matches: t}) => {
+                    D(t ? "dark" : "light")
+                }
+                )
+            } catch (e) {
+                t.addListener( ({matches: t}) => {
+                    try {
+                        D(t ? "dark" : "light")
+                    } catch (t) {
+                        console.error(t)
+                    }
+                }
+                )
+            }
+        }
+        , [m]),
+        e.default.useEffect( () => {
+            B.length <= 1 && j(!1)
+        }
+        , [B]),
+        e.default.useEffect( () => {
+            let t = t => {
+                var e, a;
+                s.every(e => t[e] || t.code === e) && (j(!0),
+                null == (e = A.current) || e.focus()),
+                "Escape" === t.code && (document.activeElement === A.current || null != (a = A.current) && a.contains(document.activeElement)) && j(!1)
+            }
+            ;
+            return document.addEventListener("keydown", t),
+            () => document.removeEventListener("keydown", t)
+        }
+        , [s]),
+        e.default.useEffect( () => {
+            if (A.current)
+                return () => {
+                    L.current && (L.current.focus({
+                        preventScroll: !0
+                    }),
+                    L.current = null,
+                    O.current = !1)
+                }
+        }
+        , [A.current]),
+        e.default.createElement("section", {
+            ref: o,
+            "aria-label": `${T} ${H}`,
+            tabIndex: -1,
+            "aria-live": "polite",
+            "aria-relevant": "additions text",
+            "aria-atomic": "false",
+            suppressHydrationWarning: !0
+        }, M.map( (a, o) => {
+            var n;
+            let s, [c,m] = a.split("-");
+            return B.length ? e.default.createElement("ol", {
+                key: a,
+                dir: "auto" === x ? v() : x,
+                tabIndex: -1,
+                ref: A,
+                className: d,
+                "data-sonner-toaster": !0,
+                "data-theme": $,
+                "data-y-position": c,
+                "data-lifted": I && B.length > 1 && !i,
+                "data-x-position": m,
+                style: {
+                    "--front-toast-height": `${(null == (n = z[0]) ? void 0 : n.height) || 0}px`,
+                    "--width": "356px",
+                    "--gap": `${E}px`,
+                    ...b,
+                    ...(s = {},
+                    [u, f].forEach( (t, e) => {
+                        let a = 1 === e
+                          , o = a ? "--mobile-offset" : "--offset"
+                          , r = a ? "16px" : "32px";
+                        function n(t) {
+                            ["top", "right", "bottom", "left"].forEach(e => {
+                                s[`${o}-${e}`] = "number" == typeof t ? `${t}px` : t
+                            }
+                            )
+                        }
+                        "number" == typeof t || "string" == typeof t ? n(t) : "object" == typeof t ? ["top", "right", "bottom", "left"].forEach(e => {
+                            void 0 === t[e] ? s[`${o}-${e}`] = r : s[`${o}-${e}`] = "number" == typeof t[e] ? `${t[e]}px` : t[e]
+                        }
+                        ) : n(r)
+                    }
+                    ),
+                    s)
+                },
+                onBlur: t => {
+                    O.current && !t.currentTarget.contains(t.relatedTarget) && (O.current = !1,
+                    L.current && (L.current.focus({
+                        preventScroll: !0
+                    }),
+                    L.current = null))
+                }
+                ,
+                onFocus: t => {
+                    t.target instanceof HTMLElement && "false" === t.target.dataset.dismissible || O.current || (O.current = !0,
+                    L.current = t.relatedTarget)
+                }
+                ,
+                onMouseEnter: () => j(!0),
+                onMouseMove: () => j(!0),
+                onMouseLeave: () => {
+                    Y || j(!1)
+                }
+                ,
+                onDragEnd: () => j(!1),
+                onPointerDown: t => {
+                    t.target instanceof HTMLElement && "false" === t.target.dataset.dismissible || P(!0)
+                }
+                ,
+                onPointerUp: () => P(!1)
+            }, B.filter(t => !t.position && 0 === o || t.position === a).map( (o, n) => {
+                var s, d;
+                return e.default.createElement(g, {
+                    key: o.id,
+                    icons: N,
+                    index: n,
+                    toast: o,
+                    defaultRichColors: h,
+                    duration: null != (s = null == w ? void 0 : w.duration) ? s : p,
+                    className: null == w ? void 0 : w.className,
+                    descriptionClassName: null == w ? void 0 : w.descriptionClassName,
+                    invert: r,
+                    visibleToasts: y,
+                    closeButton: null != (d = null == w ? void 0 : w.closeButton) ? d : l,
+                    interacting: Y,
+                    position: a,
+                    style: null == w ? void 0 : w.style,
+                    unstyled: null == w ? void 0 : w.unstyled,
+                    classNames: null == w ? void 0 : w.classNames,
+                    cancelButtonStyle: null == w ? void 0 : w.cancelButtonStyle,
+                    actionButtonStyle: null == w ? void 0 : w.actionButtonStyle,
+                    removeToast: U,
+                    toasts: B.filter(t => t.position == o.position),
+                    heights: z.filter(t => t.position == o.position),
+                    setHeights: R,
+                    expandByDefault: i,
+                    gap: E,
+                    loadingIcon: k,
+                    expanded: I,
+                    pauseWhenPageIsHidden: S,
+                    swipeDirections: t.swipeDirections
+                })
+            }
+            )) : null
+        }
+        ))
+    });
+    t.s(["Toaster", 0, b, "toast", 0, m, "useSonner", 0, function() {
+        let[t,o] = e.default.useState([]);
+        return e.default.useEffect( () => c.subscribe(t => {
+            t.dismiss ? setTimeout( () => {
+                a.default.flushSync( () => {
+                    o(e => e.filter(e => e.id !== t.id))
+                }
+                )
+            }
+            ) : setTimeout( () => {
+                a.default.flushSync( () => {
+                    o(e => {
+                        let a = e.findIndex(e => e.id === t.id);
+                        return -1 !== a ? [...e.slice(0, a), {
+                            ...e[a],
+                            ...t
+                        }, ...e.slice(a + 1)] : [t, ...e]
+                    }
+                    )
+                }
+                )
+            }
+            )
+        }
+        ), []),
         {
-            frames: t,
-            duration: t.at(-1)?.t ?? 0
+            toasts: t
         }
-    }
-    , "liveCrowdTrack", 0, b, "liveDriftClock", 0, l, "livePrefabClock", 0, u, "markReplayDiscontinuity", 0, function() {
-        y++,
-        g = new i(512),
-        w = 0,
-        r = void 0
-    }
-    , "recordReplayFrame", 0, function(t, i, n, a, o, v, M) {
-        if (!p)
-            return;
-        let I = h <= 0 && c.length >= 2e4;
-        I || (f += i,
-        m += i,
-        w += i);
-        let R = {
-            ...M,
-            t: f,
-            segment: y,
-            ...b.current ? {
-                crowdTime: b.current.time
-            } : {},
-            ...void 0 !== l.current ? {
-                driftTime: l.current
-            } : {},
-            ...void 0 !== u.current ? {
-                prefabTime: u.current
-            } : {},
-            position: [n.x, n.y, n.z],
-            rotation: [a.x, a.y, a.z, a.w],
-            ...o ? {
-                throttle: o.throttle,
-                roll: o.roll,
-                pitch: o.pitch,
-                yaw: o.yaw
-            } : {},
-            ...v ? {
-                motors: [v[0], v[1], v[2], v[3]]
-            } : {}
-        };
-        if (I)
-            return;
-        if (w + 1e-9 >= 1 / 120)
-            for (w = 0,
-            g.push(R); g.length && g.at(0).t < f - 2.5; )
-                g.shift();
-        if (m + 1e-9 < s)
-            return;
-        m = 0;
-        let _ = b.current?.routes;
-        _ !== r && (R.crowdRoutes = _ ?? [],
-        r = _);
-        let S = c.push(R);
-        if (S && (e = S.crowdRoutes ?? e,
-        d = c.at(0).t),
-        h > 0) {
-            let t = f - h;
-            for (; c.length > 1 && c.at(0).t < t; )
-                e = c.shift().crowdRoutes ?? e,
-                d = c.at(0).t
-        }
-    }
-    , "replayEquipment", 0, function(t) {
-        return {
-            id: t?.droneId ?? "freestyle",
-            skin: t?.droneSkin ?? "factory",
-            voltageFactor: t?.voltageFactor ?? 1
-        }
-    }
-    , "replayFlightEnd", 0, function(t, e) {
-        let r = Math.min(Math.max(e, 0), t.length - 1);
-        for (; r + 1 < t.length && !function(t, e) {
-            if (t.segment !== e.segment)
-                return !0;
-            let[r,i,n] = t.position
-              , [a,o,s] = e.position;
-            return Math.hypot(a - r, o - i, s - n) > 20
-        }(t[r], t[r + 1]); )
-            r++;
-        return r
-    }
-    , "replayPlayback", 0, T, "replaySampleBlend", 0, R, "resetReplayPlayback", 0, function(t) {
-        T.t = t.t ?? t.trimStart,
-        T.trimStart = t.trimStart,
-        T.trimEnd = t.trimEnd,
-        T.playing = t.playing ?? !0,
-        T.scrubbing = !1
-    }
-    , "resolveReplayMotors", 0, S, "sampleReplayDriftTime", 0, A, "sampleReplayPrefabTime", 0, k, "sampleReplaySticks", 0, _, "startReplayRecording", 0, function(t) {
-        t?.clear !== !1 && (c = new i(2e4),
-        d = 0,
-        e = void 0,
-        f = 0,
-        y = 0,
-        g = new i(512),
-        w = 0,
-        r = void 0),
-        h = t?.maxDuration ?? 0,
-        p = !0,
-        m = s
-    }
-    , "stopReplayRecording", 0, function() {
-        p = !1
-    }
-    , "trimReplay", 0, v], 983040)
-}
-, 593922, t => {
-    "use strict";
-    var e = t.i(11871)
-      , r = t.i(475127);
-    t.s(["droneEntryRadius", 0, function(t) {
-        let i = e.DRONE_PROFILES[t];
-        return Math.max(r.hypot(i.reachX, i.reachZ) + i.propRadius, r.hypot(...i.halfExtents)) + .015
-    }
-    , "entersRaceMarker", 0, function(t, e, r, i) {
-        let n = t.radius - i
-          , a = t.position[1] + i
-          , o = t.position[1] + t.height - i;
-        if (n <= 1e-9 || o - a <= 1e-9)
-            return !1;
-        let s = 0
-          , l = 1
-          , u = r.y - e.y;
-        if (1e-9 > Math.abs(u)) {
-            if (e.y < a || e.y > o)
-                return !1
-        } else {
-            let t = (a - e.y) / u
-              , r = (o - e.y) / u;
-            if ((s = Math.max(s, Math.min(t, r))) > (l = Math.min(l, Math.max(t, r))))
-                return !1
-        }
-        let c = e.x - t.position[0]
-          , d = e.z - t.position[2]
-          , p = r.x - e.x
-          , m = r.z - e.z
-          , f = p * p + m * m
-          , h = f > 1e-12 ? Math.max(s, Math.min(l, -(c * p + d * m) / f)) : s
-          , y = c + p * h
-          , g = d + m * h;
-        return y * y + g * g <= n * n
-    }
-    , "isRaceMarker", 0, function(t) {
-        return !(!t || "object" != typeof t || Array.isArray(t)) && Object.keys(t).every(t => ["position", "radius", "height"].includes(t)) && Array.isArray(t.position) && 3 === t.position.length && t.position.every(t => Number.isFinite(t) && 1e5 >= Math.abs(t)) && Number.isFinite(t.radius) && t.radius >= .8 && t.radius <= 1e4 && Number.isFinite(t.height) && t.height >= .8 && t.height <= 1e4
-    }
-    , "markerForCourse", 0, function(t) {
-        if (t.raceMarker)
-            return t.raceMarker;
-        let[e,i,n] = t.spawn.position
-          , a = t.spawn.yaw ?? 0;
-        return {
-            position: [e + 5 * r.cos(a), Math.max(0, i - .2), n - 5 * r.sin(a)],
-            radius: 3.5,
-            height: 3
-        }
-    }
-    , "outsideRaceMarker", 0, function(t, e, i, n=.5) {
-        let a = i + n;
-        return r.hypot(e.x - t.position[0], e.z - t.position[2]) > t.radius + a + 1e-9 || e.y < t.position[1] - a - 1e-9 || e.y > t.position[1] + t.height + a + 1e-9
     }
     ])
 }

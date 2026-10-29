@@ -1,1681 +1,1403 @@
-(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push(["object" == typeof document ? document.currentScript : void 0, 552581, e => {
-    e.v({
-        back: "default-ghost-library-module__CoKRXq__back",
-        dialogName: "default-ghost-library-module__CoKRXq__dialogName",
-        drone: "default-ghost-library-module__CoKRXq__drone",
-        duration: "default-ghost-library-module__CoKRXq__duration",
-        empty: "default-ghost-library-module__CoKRXq__empty",
-        error: "default-ghost-library-module__CoKRXq__error",
-        head: "default-ghost-library-module__CoKRXq__head",
-        library: "default-ghost-library-module__CoKRXq__library",
-        list: "default-ghost-library-module__CoKRXq__list",
-        loading: "default-ghost-library-module__CoKRXq__loading",
-        notice: "default-ghost-library-module__CoKRXq__notice",
-        player: "default-ghost-library-module__CoKRXq__player",
-        playerState: "default-ghost-library-module__CoKRXq__playerState",
-        retry: "default-ghost-library-module__CoKRXq__retry",
-        row: "default-ghost-library-module__CoKRXq__row",
-        rowActions: "default-ghost-library-module__CoKRXq__rowActions",
-        rowTitle: "default-ghost-library-module__CoKRXq__rowTitle",
-        save: "default-ghost-library-module__CoKRXq__save",
-        saveStatus: "default-ghost-library-module__CoKRXq__saveStatus",
-        scroll: "default-ghost-library-module__CoKRXq__scroll",
-        times: "default-ghost-library-module__CoKRXq__times",
-        watch: "default-ghost-library-module__CoKRXq__watch",
-        watchHead: "default-ghost-library-module__CoKRXq__watchHead",
-        watchTimes: "default-ghost-library-module__CoKRXq__watchTimes"
-    })
-}
-, 386521, 843369, e => {
+(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push(["object" == typeof document ? document.currentScript : void 0, 828045, e => {
     "use strict";
-    let t;
-    var a = e.i(843476)
-      , s = e.i(870895)
-      , l = e.i(271645)
-      , n = e.i(466465)
-      , r = e.i(13784)
-      , i = e.i(157430)
-      , o = e.i(353198)
-      , d = e.i(353937)
-      , c = e.i(894969)
-      , u = e.i(673378)
-      , h = e.i(245433)
-      , m = e.i(905289)
-      , f = e.i(544383)
-      , p = e.i(392436)
-      , _ = e.i(388365)
-      , g = e.i(869488)
-      , y = e.i(396091)
-      , x = e.i(184866)
-      , b = e.i(793273);
-    let j = y.ARRIVAL_MS - y.TOUCHDOWN_MS + 20
-      , v = {
-        1: [[.6, 1]],
-        2: [[-.65, 1], [.65, 1]],
-        3: [[-1, 1], [1, 1], [0, 1.45]]
-    };
-    function k(e) {
-        let t = e.map( (e, t) => ({
-            entry: e,
-            index: t
-        })).sort( (e, t) => e.entry.timeMs - t.entry.timeMs || Number(!!t.entry.player) - Number(!!e.entry.player) || e.index - t.index).slice(0, b.MAX_HERO_SLOTS).map( ({entry: e}) => e)
-          , {right: a, back: s} = (0,
-        x.studioGroundAxes)()
-          , l = v[t.length - 1] ?? []
-          , n = t.length;
-        return t.map( (e, t) => {
-            let r = 0 === t
-              , [i,o] = r ? [0, 0] : [.36 * l[t - 1][0], .36 * l[t - 1][1]];
-            return {
-                key: e.id,
-                rank: t + 1,
-                entry: e,
-                archetype: e.appearance.droneId,
-                skin: e.appearance.skinId,
-                skinOverride: e.appearance.skin,
-                position: [S(a[0] * i + s[0] * o), S(a[1] * i + s[1] * o)],
-                scale: r ? 1 : .72,
-                delayMs: (r ? n - 1 : n - 1 - t) * j,
-                labelAt: r ? "front" : "above",
-                emphasis: !!e.player
-            }
-        }
-        )
-    }
-    let S = e => Math.round(1e4 * e) / 1e4 || 0;
-    e.s(["PODIUM_LANDING_GAP_MS", 0, j, "podiumSlots", 0, k], 843369);
-    var R = e.i(125392);
-    e.i(573798);
-    var I = e.i(568204)
-      , w = e.i(498475)
-      , G = e.i(624834)
-      , N = e.i(516560)
-      , D = e.i(509381)
-      , C = e.i(244144)
-      , T = e.i(401778)
-      , A = e.i(331919)
-      , M = e.i(920755)
-      , E = e.i(613105)
-      , L = e.i(940072)
-      , K = e.i(937769)
-      , $ = e.i(330374)
-      , J = e.i(94891);
-    let q = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-    function B(e) {
-        if (!e || "object" != typeof e)
-            return null;
-        let t = (0,
-        $.parseRaceAppearance)(e.appearance)
-          , a = (e, t) => Number.isSafeInteger(e) && e >= t;
-        return "string" == typeof e.defaultId && q.test(e.defaultId) && "string" == typeof e.resultId && "string" == typeof e.userId && (null === e.attemptId || "string" == typeof e.attemptId && q.test(e.attemptId)) && "string" == typeof e.timeAttackId && e.timeAttackId && a(e.courseRevision, 1) && a(e.timeMs, 1) && a(e.launchSteps, 1) && a(e.tailSteps, 0) && o.DRONE_IDS.includes(e.droneId) && t && t.droneId === e.droneId && "string" == typeof e.storagePath && e.storagePath && "string" == typeof e.sha256 && "string" == typeof e.createdAt && "string" == typeof e.replayRevision && (null === e.replayId || "string" == typeof e.replayId) ? {
-            defaultId: e.defaultId,
-            attemptId: e.attemptId,
-            resultId: e.resultId,
-            userId: e.userId,
-            name: "string" == typeof e.name && e.name ? e.name : "Pilot",
-            timeAttackId: e.timeAttackId,
-            courseRevision: e.courseRevision,
-            droneId: e.droneId,
-            timeMs: e.timeMs,
-            launchSteps: e.launchSteps,
-            tailSteps: e.tailSteps,
-            appearance: t,
-            replayId: e.replayId,
-            replayRevision: e.replayRevision,
-            storagePath: e.storagePath,
-            sha256: e.sha256,
-            createdAt: e.createdAt
-        } : null
-    }
-    function O(e) {
-        return Math.round(e.launchSteps * L.FLIGHT_TIMESTEP * 1e3) + e.timeMs
-    }
-    class P extends Error {
-        forbidden;
-        constructor(e, t=!1) {
-            super(e),
-            this.forbidden = t
-        }
-    }
-    let z = "Admin access required"
-      , X = e => !!e && /42501|Admin access required/.test(`${e.code} ${e.message}`);
-    async function U(e, t, a) {
-        let {data: s, error: l} = await (0,
-        M.createClient)().rpc("default_ghosts_for_course", {
-            p_time_attack_id: e,
-            p_drone_id: t
-        }).abortSignal((0,
-        E.withDeadline)(a, 1e4));
-        if (l)
-            throw new P(X(l) ? z : "Default Ghosts unavailable",X(l));
-        let n = "string" == typeof s ? JSON.parse(s) : s;
-        return Array.isArray(n) ? n.flatMap(e => {
-            let t = B(e);
-            return t ? [t] : []
-        }
-        ) : []
-    }
-    async function F(e, t) {
-        let {data: a, error: s} = await (0,
-        M.createClient)().rpc("delete_default_ghost", {
-            p_default_id: e
-        }).abortSignal((0,
-        E.withDeadline)(t, 1e4));
-        if (s)
-            throw new P(X(s) ? z : "Could not delete. Try again",X(s));
-        let l = "string" == typeof a ? JSON.parse(a) : a
-          , n = l && "object" == typeof l ? l.status : void 0;
-        if ("deleted" === n || "not_found" === n)
-            return n;
-        throw new P("Could not delete. Try again")
-    }
-    async function W(e, t) {
-        let {data: a, error: s} = await (0,
-        M.createClient)().rpc("get_default_ghost_descriptor", {
-            p_default_id: e
-        }).abortSignal((0,
-        E.withDeadline)(t, 1e4));
-        if (s)
-            throw new P(X(s) ? z : "Default Ghost unavailable",X(s));
-        let l = "string" == typeof a ? JSON.parse(a) : a;
-        return l ? B(l) : null
-    }
-    async function H(e, t) {
-        let a = fetch(`/api/sim/races/defaults/${encodeURIComponent(e.defaultId)}`, {
-            cache: "no-store",
-            signal: (0,
-            E.withDeadline)(t, 15e3)
-        })
-          , s = (0,
-        M.createClient)().from("race_course_versions").select("map_id, spawn, gates").eq("time_attack_id", e.timeAttackId).eq("revision", e.courseRevision).abortSignal((0,
-        E.withDeadline)(t, 1e4)).maybeSingle()
-          , [l,{data: n, error: r}] = await Promise.all([a, s]);
-        if (r)
-            throw new P("Course version unavailable. Try again");
-        if (!n)
-            throw new P("This course version no longer exists, so the recording cannot play on it");
-        let i = (0,
-        K.parseTimeAttackRow)({
-            ...n,
-            id: e.timeAttackId,
-            name: "Default Ghost",
-            sort_order: 0,
-            competitive_revision: e.courseRevision
-        });
-        if (!i)
-            throw new P("This course version cannot be read");
-        if (403 === l.status)
-            throw new P(z,!0);
-        if (404 === l.status)
-            throw new P("This Default Ghost was deleted");
-        if (!l.ok)
-            throw new P("Recording unavailable. Try again");
-        let o = await l.json()
-          , d = B(o.metadata);
-        if (!d || "string" != typeof o.url || d.defaultId !== e.defaultId || d.sha256 !== e.sha256 || d.timeMs !== e.timeMs || d.launchSteps !== e.launchSteps || d.tailSteps !== e.tailSteps || d.droneId !== e.droneId)
-            throw new P("Recording no longer matches this Default Ghost");
-        let c = await (0,
-        h.downloadRaceRecording)(o.url, t)
-          , u = (0,
-        J.defaultRecordingProblem)(c, {
-            timeMs: e.timeMs,
-            droneId: e.droneId,
-            skinId: e.appearance.skinId,
-            launchSteps: e.launchSteps,
-            tailSteps: e.tailSteps
-        });
-        if ("launch" === u)
-            throw new P("This recording has no verified launch, so it cannot play as a Default Ghost");
-        if (u)
-            throw new P("This recording is not the saved default's");
-        let m = (0,
-        J.fullLaunchTimeline)(c);
-        if (!m)
-            throw new P("This recording has no verified launch, so it cannot play as a Default Ghost");
+    e.s(["CHASE_MAX_POLAR_ANGLE", 0, 1.05, "CHASE_MIN_POLAR_ANGLE", 0, .35, "CINEMATIC_CHASE_HEIGHT", 0, 2.2, "demoChaseLensPosition", 0, function(e, t, a, r) {
+        let n = Math.max(r[1], 2.2)
+          , o = t.x + (e.x - t.x) * a + r[0]
+          , i = t.z + (e.z - t.z) * a + r[2];
         return {
-            entry: e,
-            marks: {
-                firstGate: m.firstGate,
-                finish: m.finish,
-                end: m.end
-            },
-            replay: {
-                id: e.defaultId,
-                name: i.name,
-                mapId: i.mapId,
-                duration: m.end,
-                frames: m.frames,
-                timeAttack: i,
-                appearance: e.appearance
-            }
+            x: o,
+            y: Math.max(t.y + (e.y - t.y) * a + n, e.y + .8),
+            z: i
         }
     }
-    var Y = e.i(883620)
-      , V = e.i(762447)
-      , Z = e.i(552581);
-    function Q(e) {
-        let t = new Date(e);
-        if (Number.isNaN(t.getTime()))
-            return "";
-        let a = t.toLocaleDateString("en-GB", {
-            timeZone: "UTC",
-            day: "2-digit",
-            month: "short",
-            year: "numeric"
-        })
-          , s = t.toLocaleTimeString("en-GB", {
-            timeZone: "UTC",
-            hour: "2-digit",
-            minute: "2-digit"
-        });
-        return `${a} \xb7 ${s} UTC`
+    , "replayChaseLensPosition", 0, function(e, t, a, r, n) {
+        var o;
+        let i, l, s, c, u, h = (i = 2 * (-1 * (o = t).y - 0 * o.z),
+        l = 2 * (0 * o.z - -1 * o.x),
+        s = 2 * (0 * o.x - 0 * o.y),
+        (u = Math.hypot((c = {
+            x: 0 + o.w * i + (o.y * s - o.z * l),
+            y: 0 + o.w * l + (o.z * i - o.x * s),
+            z: -1 + o.w * s + (o.x * l - o.y * i)
+        }).x, c.z)) < 1e-4 ? {
+            x: 0,
+            z: -1
+        } : {
+            x: c.x / u,
+            z: c.z / u
+        }), d = h.z, m = -h.x;
+        return {
+            x: e.x - h.x * a + d * r,
+            y: Math.max(e.y + n, e.y + .8),
+            z: e.z - h.z * a + m * r
+        }
     }
-    let ee = e => e instanceof Error ? e.message : "Something went wrong";
-    function et({state: e, canSave: t, onSave: s, loadEntry: n=W}) {
-        let[r,i] = (0,
-        l.useState)(null)
-          , o = e && ("saved" === e.status || "exists" === e.status) ? e.defaultId : null;
-        (0,
-        l.useEffect)( () => {
-            if (!o)
-                return;
-            let e = new AbortController;
-            return n(o, e.signal).then(t => {
-                e.signal.aborted || i(t)
-            }
-            ).catch( () => {}
-            ),
-            () => e.abort()
+    , "resolveOrbitCameraCollision", 0, function(e, t, a, r) {
+        let n = e.x - t.x
+          , o = e.y - t.y
+          , i = e.z - t.z
+          , l = Math.hypot(n, o, i);
+        if (l < 1e-4) {
+            e.y = Math.max(e.y, t.y + .8);
+            return
         }
-        , [o, n]);
-        let d = r && r.defaultId === o ? r : null
-          , c = e?.status === "saving"
-          , h = !!o
-          , m = e && ("pending" === e.status || "error" === e.status);
-        return (0,
-        a.jsxs)("div", {
-            className: Z.default.save,
-            "data-default-ghost-save": !0,
-            children: [!h && (0,
-            a.jsx)(w.Button, {
-                tone: "primary",
-                size: "sm",
-                busy: c,
-                disabled: !t || c,
-                onClick: s,
-                children: c ? "Saving…" : "Save as Default Ghost"
-            }), e && "saving" !== e.status && (0,
-            a.jsxs)("p", {
-                className: Z.default.saveStatus,
-                role: "error" === e.status || "pending" === e.status ? "alert" : "status",
-                "data-tone": h ? "saved" : "note",
-                children: [h && (0,
-                a.jsx)(C.Icon, {
-                    name: "check-circle",
-                    size: 18
-                }), (0,
-                A.defaultGhostMessage)(e), m && (0,
-                a.jsx)(D.TextLink, {
-                    className: Z.default.retry,
-                    onClick: s,
-                    children: "Retry"
-                })]
-            }), h && d && (0,
-            a.jsxs)("p", {
-                className: Z.default.duration,
-                children: ["Release to finish ", (0,
-                a.jsx)("time", {
-                    children: (0,
-                    u.formatRaceTime)(O(d))
-                })]
-            })]
-        })
+        if (a && a.toi < l - .2) {
+            let s = 1 / l
+              , c = o * s;
+            if (a.normalY > .5) {
+                let r = t.y + c * a.toi;
+                e.y = Math.max(e.y, r + .2)
+            } else {
+                let o = Math.max(r, a.toi - .2);
+                e.x = t.x + n * s * o,
+                e.y = t.y + c * o,
+                e.z = t.z + i * s * o
+            }
+        }
+        e.y < t.y + .8 && (e.y = t.y + .8)
     }
-    function ea({timeAttackId: e, courseName: t, currentRevision: s, droneId: n, onDroneChange: r, onBack: i, onWatch: d, loaders: c={}}) {
-        let h = c.list ?? U
-          , m = c.remove ?? F
-          , [f,p] = (0,
-        l.useState)(n)
-          , [g,y] = (0,
-        l.useState)(0)
-          , [x,b] = (0,
-        l.useState)([])
-          , [j,v] = (0,
-        l.useState)(null)
-          , [k,S] = (0,
-        l.useState)(!1)
-          , [R,I] = (0,
-        l.useState)(null)
-          , [w,N] = (0,
-        l.useState)(null)
-          , T = (0,
-        l.useRef)(null);
-        async function A() {
-            if (j) {
-                S(!0),
-                I(null);
-                try {
-                    let e = await m(j.defaultId);
-                    b(e => [...e, j.defaultId]),
-                    N("deleted" === e ? `Deleted the ${(0,
-                    u.formatRaceTime)(j.timeMs)} Default Ghost. Its original result and best stay.` : "That Default Ghost was already deleted."),
-                    v(null)
-                } catch (e) {
-                    I(e instanceof P ? e.message : "Could not delete. Try again")
-                } finally {
-                    S(!1)
-                }
-            }
-        }
-        return (0,
-        l.useEffect)( () => {
-            T.current?.focus()
-        }
-        , []),
-        (0,
-        a.jsxs)("section", {
-            className: Z.default.library,
-            "aria-labelledby": "default-ghosts-heading",
-            "data-default-ghost-library": !0,
-            children: [(0,
-            a.jsxs)("header", {
-                className: Z.default.head,
-                children: [(0,
-                a.jsxs)(D.TextLink, {
-                    className: Z.default.back,
-                    onClick: i,
-                    children: [(0,
-                    a.jsx)(C.Icon, {
-                        name: "chevron-left",
-                        size: 24
-                    }), " Back"]
-                }), (0,
-                a.jsxs)("h2", {
-                    id: "default-ghosts-heading",
-                    ref: T,
-                    tabIndex: -1,
-                    children: ["Default Ghosts ", (0,
-                    a.jsx)("span", {
-                        children: t
-                    })]
-                })]
-            }), (0,
-            a.jsx)(Y.Select, {
-                label: "Drone",
-                className: Z.default.drone,
-                value: f,
-                onChange: e => {
-                    N(null),
-                    p(e),
-                    r?.(e)
-                }
-                ,
-                options: o.DRONE_IDS.map(e => ({
-                    value: e,
-                    label: _.RACE_DRONE_NAMES[e]
-                }))
-            }), (0,
-            a.jsx)(es, {
-                timeAttackId: e,
-                droneId: f,
-                currentRevision: s,
-                list: h,
-                gone: x,
-                onRetry: () => y(e => e + 1),
-                onWatch: d,
-                onDelete: e => {
-                    I(null),
-                    v(e)
-                }
-            }, `${f}:${g}`), w && (0,
-            a.jsx)("p", {
-                className: Z.default.notice,
-                role: "status",
-                children: w
-            }), (0,
-            a.jsx)(G.ConfirmDialog, {
-                open: !!j,
-                destructive: !0,
-                title: "Delete Default Ghost?",
-                confirmLabel: "Delete",
-                cancelLabel: "Cancel",
-                busy: k,
-                busyLabel: "Deleting…",
-                error: R,
-                closeOnBackdrop: !1,
-                description: j && (0,
-                a.jsxs)(a.Fragment, {
-                    children: [(0,
-                    a.jsx)("p", {
-                        className: Z.default.dialogName,
-                        children: (0,
-                        a.jsxs)("b", {
-                            children: [t, " · ", _.RACE_DRONE_NAMES[j.droneId]]
-                        })
-                    }), (0,
-                    a.jsxs)("p", {
-                        children: ["Time Attack score ", (0,
-                        a.jsx)("time", {
-                            children: (0,
-                            u.formatRaceTime)(j.timeMs)
-                        }), (0,
-                        a.jsx)("br", {}), "Release to finish ", (0,
-                        a.jsx)("time", {
-                            children: (0,
-                            u.formatRaceTime)(O(j))
-                        }), (0,
-                        a.jsx)("br", {}), (0,
-                        a.jsx)("small", {
-                            children: Q(j.createdAt)
-                        })]
-                    }), (0,
-                    a.jsx)("p", {
-                        children: "This recording will no longer fill new races. Races already using it can finish."
-                    }), (0,
-                    a.jsx)("p", {
-                        children: "The original result and personal best stay."
-                    })]
-                }),
-                onConfirm: () => void A(),
-                onCancel: () => {
-                    k || v(null)
-                }
-            })]
-        })
+    ])
+}
+, 883380, e => {
+    "use strict";
+    e.s(["COSMETIC_IDS", 0, ["original", "glacier", "voltage"]])
+}
+, 166636, e => {
+    "use strict";
+    let t = {
+        low: 1,
+        medium: 1.5,
+        high: 2,
+        ultra: 2
     }
-    function es({timeAttackId: e, droneId: t, currentRevision: s, list: n, gone: r, onRetry: i, onWatch: o, onDelete: d}) {
-        let[c,h] = (0,
-        l.useState)(null);
-        (0,
-        l.useEffect)( () => {
-            let a = new AbortController;
-            return n(e, t, a.signal).then(e => {
-                a.signal.aborted || h({
-                    entries: e
-                })
-            }
-            ).catch(e => {
-                a.signal.aborted || h({
-                    error: ee(e)
-                })
-            }
-            ),
-            () => a.abort()
+      , a = {
+        low: 2073600,
+        medium: 2073600,
+        high: 3686400,
+        ultra: 8294400
+    }
+      , r = ["low", "medium", "high", "ultra"];
+    function n(e, t) {
+        return r.indexOf(e) >= r.indexOf(t)
+    }
+    function o(e) {
+        let t = "ultra" === e;
+        return {
+            quality: e,
+            shadows: "low" !== e,
+            postProcessing: "low" !== e,
+            bloom: n(e, "high"),
+            msaa: t,
+            renderScale: "low" === e ? .75 : 1
         }
-        , [e, t, n]);
-        let m = c && "error" in c ? c.error : null
-          , f = c && "entries" in c ? c.entries.filter(e => !r.includes(e.defaultId)) : null;
-        return (0,
-        a.jsxs)("div", {
-            className: Z.default.scroll,
-            "aria-busy": null === c,
-            children: [null === c && (0,
-            a.jsx)(G.LoadingState, {
-                className: Z.default.loading,
-                title: "Loading Default Ghosts"
-            }), m && (0,
-            a.jsxs)("div", {
-                className: Z.default.error,
-                role: "alert",
-                children: [m, " ", !/Admin access/.test(m) && (0,
-                a.jsx)(D.TextLink, {
-                    onClick: i,
-                    children: "Retry"
-                })]
-            }), f && !f.length && (0,
-            a.jsx)(G.EmptyState, {
-                icon: "trophy",
-                className: Z.default.empty,
-                title: "No Default Ghosts on this drone",
-                children: "Save a completed Time Attack run to add one."
-            }), f && f.length > 0 && (0,
-            a.jsx)(D.List, {
-                label: "Default Ghosts",
-                className: Z.default.list,
-                children: f.map(e => {
-                    let t = e.courseRevision === s ? "compatible" : "changed";
-                    return (0,
-                    a.jsx)(D.ListRow, {
-                        className: Z.default.row,
-                        title: (0,
-                        a.jsxs)("span", {
-                            className: Z.default.rowTitle,
-                            children: [(0,
-                            a.jsx)("b", {
-                                children: _.RACE_DRONE_NAMES[e.droneId]
-                            }), (0,
-                            a.jsx)("small", {
-                                children: Q(e.createdAt)
-                            }), "compatible" === t ? (0,
-                            a.jsx)(I.Badge, {
-                                tone: "acid",
-                                icon: (0,
-                                a.jsx)(C.Icon, {
-                                    name: "check-circle",
-                                    size: 14
-                                }),
-                                children: "Compatible"
-                            }) : (0,
-                            a.jsx)(I.Badge, {
-                                tone: "brick",
-                                icon: (0,
-                                a.jsx)(C.Icon, {
-                                    name: "circle-alert",
-                                    size: 14
-                                }),
-                                children: "Course changed"
-                            })]
-                        }),
-                        meta: (0,
-                        a.jsxs)("span", {
-                            className: Z.default.times,
-                            children: [(0,
-                            a.jsxs)("span", {
-                                children: [(0,
-                                a.jsx)("small", {
-                                    children: "Time Attack score"
-                                }), (0,
-                                a.jsx)("time", {
-                                    children: (0,
-                                    u.formatRaceTime)(e.timeMs)
-                                })]
-                            }), (0,
-                            a.jsxs)("span", {
-                                children: [(0,
-                                a.jsx)("small", {
-                                    children: "Release to finish"
-                                }), (0,
-                                a.jsx)("time", {
-                                    children: (0,
-                                    u.formatRaceTime)(O(e))
-                                })]
-                            })]
-                        }),
-                        trail: (0,
-                        a.jsxs)("span", {
-                            className: Z.default.rowActions,
-                            children: [(0,
-                            a.jsx)(w.Button, {
-                                tone: "primary",
-                                size: "sm",
-                                onClick: () => o(e),
-                                "aria-label": `Watch the ${(0,
-                                u.formatRaceTime)(e.timeMs)} Default Ghost`,
-                                children: "Watch"
-                            }), (0,
-                            a.jsx)(w.Button, {
-                                size: "sm",
-                                onClick: () => d(e),
-                                "aria-label": `Delete the ${(0,
-                                u.formatRaceTime)(e.timeMs)} Default Ghost`,
-                                children: "Delete"
-                            })]
-                        })
-                    }, e.defaultId)
+    }
+    function i(e) {
+        let t = o(e.quality);
+        return Object.keys(t).some(a => (("postProcessing" === a ? e.postProcessing ?? "low" !== e.quality : e[a]) ?? ("renderScale" === a && 1)) !== t[a])
+    }
+    e.s(["atLeast", 0, n, "graphicsPreset", 0, o, "isCustomGraphics", 0, i, "renderPixelRatio", 0, function(e, r, n, o) {
+        let i = Math.max(1, r * n)
+          , l = Math.min(e || 1, t[o.quality], Math.sqrt(a[o.quality] / i));
+        return o.msaa && (o.postProcessing ?? "low" !== o.quality) && (l = Math.min(l, Math.sqrt(3686400 / i))),
+        l * (o.renderScale ?? 1)
+    }
+    , "withoutUltra", 0, function(e) {
+        return "ultra" !== e.quality ? e : i(e) ? {
+            ...e,
+            quality: "high"
+        } : {
+            ...e,
+            ...o("high")
+        }
+    }
+    ])
+}
+, 514236, e => {
+    "use strict";
+    let t = /standard gamepad|xbox|x-box|playstation|dualsense|dualshock|wireless controller|pro controller|8bitdo|\b045e\b|\b054c\b|\b057e\b|vendor: 045e|vendor: 054c|vendor: 057e/i
+      , a = /radiomaster|frsky|taranis|horus|jumper|tx16|tx12|boxer|zorro|pocket|edgetx|opentx|expresslrs|literadio|flysky|betafpv|tbs|tango|mambo|\bfpv\b|\b1209\b|vendor: 1209|\b0483\b|vendor: 0483/i;
+    e.s(["PLAYSTATION_PATTERN", 0, /playstation|dualsense|dualshock|\b054c\b|vendor: 054c/i, "classifyDevice", 0, function(e) {
+        return e ? a.test(e) ? "radio" : t.test(e) ? "gamepad" : null : null
+    }
+    , "defaultArmBehavior", 0, function(e) {
+        return "gamepad" === e ? "toggle" : "follow"
+    }
+    , "deviceProfileOf", 0, function(e) {
+        let {deviceId: t, keyboard: a, keyboardOnly: r, ...n} = e;
+        return structuredClone(n)
+    }
+    ])
+}
+, 133968, e => {
+    "use strict";
+    let t, a = /\bArc(?:\(TM\)|™)?\s+(?:Pro\s+)?[AB]\d{2,3}/i, r = /\bRadeon(?:\(TM\)|™)?\s+(?:Graphics|Vega\s+\d+|\d{3}M\b|R[4-7]\s+Graphics)|\bVega\s+\d+\s+Graphics/i;
+    function n(e) {
+        return !!e && (/\bIntel\b/i.test(e) ? !a.test(e) : r.test(e))
+    }
+    let o = /^(?:WebKit WebGL|Mozilla|)$/;
+    function i() {
+        if (void 0 !== t || (t = null,
+        "u" < typeof document))
+            return t;
+        try {
+            let e = document.createElement("canvas")
+              , a = {
+                powerPreference: "high-performance"
+            }
+              , r = e.getContext("webgl2", a) ?? e.getContext("webgl", a);
+            if (!r)
+                return t;
+            let n = String(r.getParameter(r.RENDERER) ?? "");
+            if (o.test(n)) {
+                let e = r.getExtension("WEBGL_debug_renderer_info");
+                e && (n = String(r.getParameter(e.UNMASKED_RENDERER_WEBGL) ?? ""))
+            }
+            r.getExtension("WEBGL_lose_context")?.loseContext(),
+            t = n || null
+        } catch {
+            t = null
+        }
+        return t
+    }
+    function l() {
+        return n(i())
+    }
+    e.s(["gpuRenderer", 0, i, "integratedGpu", 0, l, "isIntegratedGpu", 0, n, "overrideGpuRenderer", 0, function(e) {
+        t = e
+    }
+    , "ultraAvailable", 0, function() {
+        return !l()
+    }
+    ])
+}
+, 269176, e => {
+    "use strict";
+    let t = {
+        offset: [2, e.i(828045).CINEMATIC_CHASE_HEIGHT, 2.6],
+        follow: .6,
+        fov: 55
+    };
+    e.s(["DEFAULT_CHASE_CAMERA", 0, t, "DEFAULT_FPV_CAMERA", 0, {
+        view: "fpv"
+    }])
+}
+, 466348, 223371, 100660, e => {
+    "use strict";
+    var t = e.i(190072)
+      , a = e.i(569638)
+      , r = e.i(723601)
+      , n = e.i(70967);
+    function o(e) {
+        let a = new t.BufferGeometry;
+        a.setAttribute("position", new t.Float32BufferAttribute(e.positions,3)),
+        a.setAttribute("color", new t.Float32BufferAttribute(e.colors,3));
+        let r = [];
+        for (let t = 0; t < e.positions.length; t += 3)
+            r.push(e.positions[t], e.positions[t + 2]);
+        return a.setAttribute("uv", new t.Float32BufferAttribute(r,2)),
+        a.computeVertexNormals(),
+        a.computeBoundingSphere(),
+        a
+    }
+    function i(e="classic", l=n.GRIDWORKS_DRIFT.track) {
+        let s = l.sample
+          , c = l.length
+          , u = {
+            positions: [],
+            colors: []
+        }
+          , h = {
+            positions: [],
+            colors: []
+        }
+          , d = new t.Color((0,
+        a.environmentColor)("#474a50", e))
+          , m = new t.Color((0,
+        a.environmentColor)("#eeeae2", e))
+          , f = new t.Color((0,
+        a.environmentColor)("#c74436", e))
+          , p = new t.Color((0,
+        a.environmentColor)("#262b30", e))
+          , b = (0,
+        r.createTrackSample)()
+          , g = (0,
+        r.createTrackSample)()
+          , y = (0,
+        r.createTrackSample)()
+          , x = l.width / 2
+          , z = (e, t, a) => [e.x - e.tangentZ * t, a, e.z + e.tangentX * t];
+        function w(e, t, a, r, n, o, i) {
+            s(t, b),
+            s(a, g),
+            function(e, t, a, r, n, o) {
+                for (let i of [t, a, r, a, n, r])
+                    e.positions.push(...i),
+                    e.colors.push(o.r, o.g, o.b)
+            }(e, z(b, r, o), z(b, n, o), z(g, r, o), z(g, n, o), i)
+        }
+        let S = Math.ceil(c / .4);
+        for (let e = 0; e < S; e++) {
+            let t = e / S * c
+              , a = (e + 1) / S * c;
+            w(u, t, a, -x, x, .02, d);
+            let r = Math.max(t, .96);
+            for (let e of [-1, 1]) {
+                let t = e * (x - .1);
+                r < a && w(h, r, a, t - .055, t + .055, .03, m)
+            }
+            if (s((t + a) / 2, y),
+            Math.abs(y.curvature) > l.curbCurvature) {
+                let r = Math.floor(e / 4) % 2 ? m : f;
+                w(h, t, a, -x - l.curbWidth, -x, .03, r),
+                w(h, t, a, x, x + l.curbWidth, .03, r)
+            }
+        }
+        let v = Math.round(l.width / .5)
+          , M = l.width / v;
+        for (let e = 0; e < 2; e++)
+            for (let t = 0; t < v; t++)
+                w(h, .48 * e, (e + 1) * .48, -x + t * M, -x + (t + 1) * M, .03, (e + t) % 2 ? m : p);
+        for (let e = 0; e < 3; e++)
+            for (let t of [-1, 1]) {
+                let a = -7 - 7 * e - 2 * (1 === t)
+                  , r = t * x * .5;
+                w(h, a, a + .1, r - 1.4, r + 1.4, .03, m),
+                w(h, a + .1, a + 5, r - 1.4, r - 1.3, .03, m),
+                w(h, a + .1, a + 5, r + 1.3, r + 1.4, .03, m)
+            }
+        return {
+            road: o(u),
+            paint: o(h)
+        }
+    }
+    e.s(["buildTrack", 0, i], 223371);
+    var l = e.i(552260)
+      , s = e.i(526241)
+      , c = e.i(475127);
+    let u = new Map;
+    function h(e, a, r, n, o="gridworks", i=8, l=r, u=0) {
+        let d = []
+          , m = []
+          , f = []
+          , p = new t.Matrix4
+          , b = new t.Vector3
+          , g = (0,
+        s.trackPath)(o).length
+          , [y,x] = "gridworks" === o ? [Math.cos, Math.sin] : [c.cos, c.sin];
+        for (let t = 0; t < n; t++) {
+            (0,
+            s.coasterFrame)(t * g / n, p, o);
+            for (let o = 0; o < i; o++) {
+                let s = o / i * Math.PI * 2 + u;
+                b.set(e + r * y(s), a + l * x(s), 0).applyMatrix4(p),
+                d.push(b.x, b.y, b.z),
+                m.push(t / n, o / i);
+                let c = t * i + o
+                  , h = (t + 1) % n * i + o
+                  , g = (t + 1) % n * i + (o + 1) % i
+                  , z = t * i + (o + 1) % i;
+                f.push(c, z, h, h, z, g)
+            }
+        }
+        let z = new t.BufferGeometry;
+        return z.setAttribute("position", new t.Float32BufferAttribute(d,3)),
+        z.setAttribute("uv", new t.Float32BufferAttribute(m,2)),
+        z.setIndex(f),
+        z.computeVertexNormals(),
+        z
+    }
+    function d(e, a=!1, r="gridworks") {
+        let n = `${r}:${e}:${a}`;
+        if (!u.has(n)) {
+            let o = (0,
+            s.trackPath)(r)
+              , i = a ? 192 : "gridworks" === r ? s.COASTER_SAMPLES : o.positions.length
+              , c = [];
+            if ("whoop-monorail" === r)
+                "spine" === e && c.push(h(0, -.95, .42 * Math.SQRT2, i, r, 4, .62 * Math.SQRT2, Math.PI / 4));
+            else if ("rails" === e && c.push(h(-s.COASTER_GAUGE / 2, 0, .15, i, r), h(s.COASTER_GAUGE / 2, 0, .15, i, r)),
+            "spine" === e && c.push(h(0, -.8, .25, i, r)),
+            "ties" === e) {
+                let e = Math.ceil(o.length / (a ? 8 : 1.8));
+                for (let a = 0; a < e; a++) {
+                    let n = (0,
+                    s.coasterFrame)(a / e * o.length, void 0, r);
+                    c.push(new t.BoxGeometry(2.65,.18,.22).translate(0, -.2, 0).applyMatrix4(n)),
+                    c.push(new t.BoxGeometry(.18,.6,.18).translate(0, -.5, 0).applyMatrix4(n))
+                }
+            }
+            let d = c.length ? (0,
+            l.mergeGeometries)(c) : new t.BufferGeometry;
+            c.forEach(e => e.dispose()),
+            u.set(n, d)
+        }
+        return u.get(n).clone()
+    }
+    e.s(["coasterGeometry", 0, d], 100660);
+    var m = e.i(884079)
+      , f = e.i(31620);
+    function p(e, a="classic") {
+        switch (e.kind) {
+        case "coaster":
+            return d(e.layer, !1, e.layout);
+        case "drift-track":
+            {
+                let t = (0,
+                n.driftCircuitById)(e.circuit)
+                  , r = i(a, t.track);
+                return r["road" === e.layer ? "paint" : "road"].dispose(),
+                r[e.layer].translate(...t.editorOffset)
+            }
+        case "box":
+            return new t.BoxGeometry(1,1,1);
+        case "sphere":
+            return new t.SphereGeometry(.5,24,16);
+        case "cylinder":
+            return new t.CylinderGeometry(.5,.5,1,24);
+        case "cone":
+            return new t.ConeGeometry(.5,1,24);
+        case "pyramid":
+            return new t.ConeGeometry(.5,1,4);
+        case "torus":
+            return new t.TorusGeometry(.38,.12,12,32);
+        case "prism":
+            {
+                let a = new t.Shape;
+                return e.points.forEach( ([e,t], r) => r ? a.lineTo(e, t) : a.moveTo(e, t)),
+                a.closePath(),
+                new t.ExtrudeGeometry(a,{
+                    depth: e.depth,
+                    bevelEnabled: !1,
+                    steps: 1
+                }).translate(0, 0, -e.depth / 2)
+            }
+        case "lathe":
+            return e.bark ? (0,
+            f.barkGeometry)((0,
+            m.latheGeometry)(e), e.profile, e.bark) : (0,
+            m.latheGeometry)(e);
+        case "plant":
+            return (0,
+            f.plantGeometry)(e)
+        }
+    }
+    let b = e => "plant" !== e.kind;
+    e.s(["collides", 0, b, "collisionMesh", 0, function(e, t) {
+        if (!b(e))
+            return {
+                vertices: new Float32Array(0),
+                indices: new Uint32Array(0)
+            };
+        let a = ("lathe" === e.kind ? (0,
+        m.latheGeometry)(e) : p(e)).applyMatrix4(t)
+          , r = new Float32Array(a.attributes.position.array)
+          , n = a.index ? new Uint32Array(a.index.array) : Uint32Array.from({
+            length: r.length / 3
+        }, (e, t) => t);
+        return a.dispose(),
+        {
+            vertices: r,
+            indices: n
+        }
+    }
+    , "objectGeometry", 0, p], 466348)
+}
+, 930215, e => {
+    "use strict";
+    var t = e.i(872128);
+    let a = new WeakMap
+      , r = new WeakMap;
+    e.s(["resolveDocument", 0, function(e) {
+        if (!e.nodes.some(e => e.prefab))
+            return e;
+        let n = r.get(e);
+        if (n)
+            return n;
+        let o = new Set(e.nodes.map(e => e.id))
+          , i = {
+            ...e,
+            nodes: e.nodes.flatMap(r => {
+                if (!r.prefab)
+                    return [r];
+                let n = a.get(r);
+                if (n && n.every( (e, t) => 0 === t || !o.has(e.id)))
+                    return n.forEach( (e, t) => t && o.add(e.id)),
+                    n;
+                let i = (0,
+                t.presetFor)(r.prefab.id, e.mapId);
+                if (!i)
+                    throw Error(`Unknown prefab: ${r.prefab.id}`);
+                let {prefab: l, ...s} = r
+                  , c = !1
+                  , u = [s, ...(0,
+                t.variantPreset)(i, l.variant).parts.map( (e, t) => {
+                    let a = `${r.id}/part/${t}`;
+                    for (; o.has(a); )
+                        a += "/",
+                        c = !0;
+                    return o.add(a),
+                    {
+                        ...e,
+                        id: a,
+                        parentId: r.id,
+                        ...e.billboard ? {
+                            billboard: {
+                                media: l.media,
+                                fit: l.fit
+                            }
+                        } : {}
+                    }
+                }
+                )];
+                return c || a.set(r, u),
+                u
+            }
+            )
+        };
+        return r.set(e, i),
+        i
+    }
+    ])
+}
+, 632526, 373636, e => {
+    "use strict";
+    let t = (0,
+    e.i(768834).create)( () => ({
+        document: null,
+        revision: 0,
+        draftRevision: null
+    }));
+    e.s(["usePublishedGridworks", 0, t], 373636);
+    var a = e.i(425723)
+      , r = e.i(471646)
+      , n = e.i(475127);
+    let o = new Map;
+    function i(e) {
+        let t = []
+          , o = []
+          , i = []
+          , l = (0,
+        r.createHeightSampler)(e.terrain)
+          , {procedural: s} = e.layout
+          , c = "function" == typeof e.layout.authored ? e.layout.authored(l) : e.layout.authored;
+        if (s) {
+            let c = function(e, t, o, i, l=r.FLAT_GROUND) {
+                let s = (0,
+                a.mulberry32)(e.seed)
+                  , c = e => e[Math.floor(s() * e.length)]
+                  , u = (e, t) => e + s() * (t - e)
+                  , h = (e, t) => Math.sqrt(e * e + s() * (t * t - e * e))
+                  , d = (a, r, o) => {
+                    var i;
+                    return i = e.spawnClearance,
+                    t.every(e => n.hypot(a - e.position[0], r - e.position[2]) > i + o)
+                }
+                  , m = (t, a) => (e.exclude ?? []).some(e => {
+                    let r, o, i, l, s;
+                    return r = t - e.at[0],
+                    o = a - e.at[1],
+                    l = 0 === (i = e.rotationY ?? 0) ? r : r * n.cos(i) - o * n.sin(i),
+                    s = 0 === i ? o : r * n.sin(i) + o * n.cos(i),
+                    Math.abs(l) <= e.halfExtents[0] && Math.abs(s) <= e.halfExtents[1]
                 }
                 )
-            })]
-        })
-    }
-    function el({entry: e, courseName: t, onBack: s, load: n=H}) {
-        let[r,i] = (0,
-        l.useState)(0)
-          , o = (0,
-        l.useRef)(null);
-        return (0,
-        l.useEffect)( () => {
-            o.current?.focus()
-        }
-        , []),
-        (0,
-        a.jsxs)("section", {
-            className: Z.default.watch,
-            "aria-labelledby": "default-ghost-watch-heading",
-            "data-default-ghost-watch": !0,
-            children: [(0,
-            a.jsxs)("header", {
-                className: Z.default.watchHead,
-                children: [(0,
-                a.jsxs)("div", {
-                    children: [(0,
-                    a.jsx)("h2", {
-                        id: "default-ghost-watch-heading",
-                        children: t
-                    }), (0,
-                    a.jsxs)("p", {
-                        children: [_.RACE_DRONE_NAMES[e.droneId], " · ", Q(e.createdAt)]
-                    })]
-                }), (0,
-                a.jsxs)("dl", {
-                    className: Z.default.watchTimes,
-                    children: [(0,
-                    a.jsxs)("div", {
-                        children: [(0,
-                        a.jsx)("dt", {
-                            children: "Time Attack score"
-                        }), (0,
-                        a.jsxs)("dd", {
-                            children: [(0,
-                            a.jsx)("time", {
-                                children: (0,
-                                u.formatRaceTime)(e.timeMs)
-                            }), (0,
-                            a.jsx)("small", {
-                                children: "First gate to finish"
-                            })]
-                        })]
-                    }), (0,
-                    a.jsxs)("div", {
-                        children: [(0,
-                        a.jsx)("dt", {
-                            children: "Release to finish"
-                        }), (0,
-                        a.jsxs)("dd", {
-                            children: [(0,
-                            a.jsx)("time", {
-                                children: (0,
-                                u.formatRaceTime)(O(e))
-                            }), (0,
-                            a.jsx)("small", {
-                                children: "Online duration"
-                            })]
-                        })]
-                    })]
-                }), (0,
-                a.jsx)(w.Button, {
-                    ref: o,
-                    icon: (0,
-                    a.jsx)(C.Icon, {
-                        name: "chevron-left",
-                        size: 24
-                    }),
-                    onClick: s,
-                    children: "Back to Default Ghosts"
-                })]
-            }), (0,
-            a.jsx)(en, {
-                entry: e,
-                load: n,
-                onRetry: () => i(e => e + 1)
-            }, `${e.defaultId}:${r}`)]
-        })
-    }
-    function en({entry: e, load: t, onRetry: s}) {
-        let[n,r] = (0,
-        l.useState)(null);
-        (0,
-        l.useEffect)( () => {
-            let a = new AbortController;
-            return t(e, a.signal).then(e => {
-                a.signal.aborted || r({
-                    clip: e
-                })
-            }
-            ).catch(e => {
-                a.signal.aborted || r({
-                    error: ee(e)
-                })
-            }
-            ),
-            () => a.abort()
-        }
-        , [e, t]);
-        let i = n && "clip" in n ? n.clip : null
-          , o = n && "error" in n ? n.error : null
-          , d = i ? [{
-            t: 0,
-            label: "Throttle release"
-        }, {
-            t: i.marks.firstGate,
-            label: "First gate"
-        }, {
-            t: i.marks.finish,
-            label: "Finish"
-        }, ...i.marks.end > i.marks.finish ? [{
-            t: i.marks.end,
-            label: "Clip end"
-        }] : []] : [];
-        return (0,
-        a.jsxs)("div", {
-            className: Z.default.player,
-            children: [i && (0,
-            a.jsx)(V.ReplayPlayer, {
-                clip: i.replay,
-                embedded: !0,
-                marks: d,
-                note: i.marks.end > i.marks.finish ? "The clip includes the post-finish tail. The tail adds no scoring time." : "This recording ends at the finish line."
-            }), !i && (0,
-            a.jsx)("div", {
-                className: Z.default.playerState,
-                role: o ? "alert" : "status",
-                children: o ? (0,
-                a.jsxs)(a.Fragment, {
-                    children: [(0,
-                    a.jsx)("p", {
-                        children: o
-                    }), !/Admin access|deleted|no longer exists|no verified launch|not the saved/.test(o) && (0,
-                    a.jsx)(D.TextLink, {
-                        onClick: s,
-                        children: "Retry"
-                    })]
-                }) : (0,
-                a.jsx)(G.LoadingState, {
-                    title: "Loading recording"
-                })
-            })]
-        })
-    }
-    let er = new Map
-      , ei = f.ghostLabel
-      , eo = e => e instanceof Error ? e.message : "Could not load ghost";
-    function ed({droneId: e, skins: t, result: s, onReady: n, save: r}) {
-        let i = (0,
-        d.equippedDroneSkin)(t, e)
-          , c = (0,
-        o.droneSkin)(e, i)
-          , h = (0,
-        l.useMemo)( () => {
-            var e;
-            let t, l, n;
-            return s ? (e = s,
-            t = new Map,
-            l = [{
-                id: "player",
-                appearance: e.appearance,
-                timeMs: e.timeMs,
-                player: !0
-            }],
-            n = new Map([["player", "You"]]),
-            e.ghosts.forEach( (a, s) => {
-                if (!a.entry.appearance)
-                    return;
-                let r = (0,
-                f.raceGhostKey)(a.entry);
-                l.push({
-                    id: r,
-                    appearance: a.entry.appearance,
-                    timeMs: a.entry.timeMs
-                }),
-                t.set(r, (0,
-                m.racerColor)(s)),
-                n.set(r, a.entry.you ? "saved" === e.saveStatus && e.timeMs < a.entry.timeMs ? "You · previous PB" : "You · PB" : ei(a.entry))
-            }
-            ),
-            k(l).map(e => ({
-                ...e,
-                label: (0,
-                a.jsxs)("div", {
-                    className: `${T.default.lineupLabel} fd-activity-result-label`,
-                    "data-player": e.entry.player || void 0,
-                    style: {
-                        "--ghost-color": t.get(e.key)
-                    },
-                    children: [(0,
-                    a.jsx)("span", {
-                        children: e.rank
-                    }), (0,
-                    a.jsxs)("div", {
-                        children: [(0,
-                        a.jsx)("b", {
-                            children: (0,
-                            a.jsx)("span", {
-                                children: n.get(e.key)
-                            })
-                        }), (0,
-                        a.jsx)("time", {
-                            children: (0,
-                            u.formatRaceTime)(e.entry.timeMs)
-                        })]
-                    })]
-                })
-            }))) : null
-        }
-        , [s])
-          , p = (0,
-        l.useRef)(null)
-          , y = (0,
-        l.useRef)(n);
-        (0,
-        l.useLayoutEffect)( () => {
-            y.current = n
-        }
-        , [n]);
-        let x = (0,
-        l.useMemo)( () => h ? h.map(e => ({
-            key: e.key,
-            drone: e.archetype,
-            skin: e.skin,
-            skinOverride: e.skinOverride,
-            self: e.emphasis,
-            tag: e.label
-        })) : [{
-            key: "player",
-            drone: e,
-            skin: i,
-            self: !0
-        }], [h, e, i]);
-        return (0,
-        l.useLayoutEffect)( () => {
-            let e, t = p.current;
-            if (!t)
-                return;
-            let a = () => {
-                let a = t.getBoundingClientRect();
-                e = {
-                    entries: x,
-                    layout: "results",
-                    bounds: {
-                        left: a.left / window.innerWidth,
-                        top: a.top / window.innerHeight,
-                        width: a.width / window.innerWidth,
-                        height: a.height / window.innerHeight
-                    },
-                    onReady: () => y.current()
-                },
-                g.useActivityDisplay.setState({
-                    display: e
-                })
-            }
-            ;
-            a();
-            let s = new ResizeObserver(a);
-            return s.observe(t),
-            window.addEventListener("resize", a),
-            () => {
-                s.disconnect(),
-                window.removeEventListener("resize", a),
-                g.useActivityDisplay.getState().display === e && g.useActivityDisplay.setState({
-                    display: null
-                })
-            }
-        }
-        , [x]),
-        (0,
-        a.jsxs)("div", {
-            className: T.default.stage,
-            children: [!s && (0,
-            a.jsx)("span", {
-                className: T.default.stageWord,
-                "aria-hidden": "true",
-                children: _.RACE_DRONE_NAMES[e]
-            }), s && (0,
-            a.jsxs)("div", {
-                className: T.default.finish,
-                children: [(0,
-                a.jsxs)("h2", {
-                    children: [(0,
-                    a.jsx)("span", {
-                        className: "sr-only",
-                        children: "Finish time "
-                    }), (0,
-                    u.formatRaceTime)(s.timeMs)]
-                }), "rejected" === s.saveStatus ? (0,
-                a.jsxs)("p", {
-                    role: "alert",
-                    children: ["Result not saved", s.rejectReason ? `: ${s.rejectReason}` : ""]
-                }) : "offline" === s.saveStatus ? (0,
-                a.jsx)("p", {
-                    role: "status",
-                    children: (0,
-                    a.jsx)(R.OfflineTag, {})
-                }) : "excluded" === s.saveStatus ? null != s.priorPbMs && (0,
-                a.jsxs)("p", {
-                    children: ["Best ", (0,
-                    u.formatRaceTime)(s.priorPbMs)]
-                }) : "unconfirmed" === s.saveStatus ? (0,
-                a.jsx)("p", {
-                    role: "status",
-                    children: "Save not confirmed. Your progress may update later."
-                }) : "saving" === s.saveStatus ? (0,
-                a.jsx)("p", {
-                    role: "status",
-                    children: s.slowSave ? "Waiting for save confirmation. You can keep flying." : "Saving…"
-                }) : "saved" === s.saveStatus && s.beatPr ? (0,
-                a.jsx)("p", {
-                    children: (0,
-                    a.jsxs)(I.Badge, {
-                        tone: "acid",
-                        display: !0,
-                        children: ["New best", s.priorPbMs ? ` −${((s.priorPbMs - s.timeMs) / 1e3).toFixed(3)}` : ""]
-                    })
-                }) : (0,
-                a.jsxs)("p", {
-                    children: ["Best ", (0,
-                    u.formatRaceTime)(s.prMs)]
-                }), r]
-            }), (0,
-            a.jsx)("div", {
-                ref: p,
-                className: T.default.stageCanvas,
-                "data-results": !!s || void 0
-            }), !s && (0,
-            a.jsxs)("p", {
-                className: T.default.appearanceLabel,
-                children: [_.RACE_DRONE_NAMES[e], c.name ? ` \xb7 ${c.name}` : ""]
-            })]
-        })
-    }
-    function ec({scope: e, results: n, skins: r, xp: i, droneGifts: c, onStart: u, onRetry: p, onChangeGhosts: g, onBackToResults: y, onDefaultGhosts: x, tab: b, setTab: j, stageReady: v, initialSelection: k, onSelectionChange: S, loadBoards: R=h.fetchRaceBoards, loadGhost: I=h.fetchRaceGhost, result: A}) {
-        let M = `${(0,
-        f.raceSelectionKey)(e)}:${new Date().toISOString().slice(0, 10)}`
-          , [E,L] = (0,
-        l.useState)( () => t === e.accountId ? er.get(M) ?? null : null)
-          , [K,$] = (0,
-        l.useState)(!0)
-          , [J,q] = (0,
-        l.useState)(!1)
-          , [B,O] = (0,
-        l.useState)(0)
-          , [P,z] = (0,
-        l.useState)(k ?? [])
-          , [X,U] = (0,
-        l.useState)(n)
-          , [F,W] = (0,
-        l.useState)({})
-          , [H,Y] = (0,
-        l.useState)({})
-          , [V,Z] = (0,
-        l.useState)(0)
-          , [Q,ee] = (0,
-        l.useState)(!1)
-          , [et,ea] = (0,
-        l.useState)(!1)
-          , es = (0,
-        l.useRef)(!1)
-          , el = (0,
-        l.useRef)({})
-          , [en] = (0,
-        l.useState)( () => k?.map(e => ({
-            kind: "attempt",
-            entry: e
-        })) ?? (0,
-        f.readGhostIntents)(e))
-          , [ed] = (0,
-        l.useState)(void 0 !== k)
-          , eh = (0,
-        d.equippedDroneSkin)(r, e.droneId)
-          , em = (0,
-        s.racesUnlocked)(i)
-          , ef = em && (0,
-        o.isDroneUnlocked)(e.droneId, i, c);
-        function ep(t) {
-            es.current = !0,
-            U(!0),
-            ee(!1),
-            z(t),
-            S(t),
-            (0,
-            f.writeGhostIntents)(e, (0,
-            f.ghostSelectionIntents)(t, E?.allTime.own ?? null))
-        }
-        (0,
-        l.useEffect)( () => {
-            let a = new AbortController;
-            return t !== e.accountId && (er.clear(),
-            t = e.accountId),
-            R({
-                timeAttackId: e.timeAttackId,
-                courseRevision: e.courseRevision,
-                droneId: e.droneId,
-                signal: a.signal
-            }).then(t => {
-                if (!a.signal.aborted && (er.size > 40 && er.delete(er.keys().next().value),
-                er.set(M, t),
-                L(t),
-                $(!1),
-                q(!1),
-                !es.current && !n)) {
-                    let a = (0,
-                    f.resolveGhostSelection)(en, t, e.droneId, e.courseRevision, e.timeAttackId);
-                    es.current = !0,
-                    z(a),
-                    U(!0),
-                    ed && (0,
-                    f.writeGhostIntents)(e, (0,
-                    f.ghostSelectionIntents)(a, t.allTime.own))
-                }
-            }
-            ).catch( () => {
-                !a.signal.aborted && ($(!1),
-                q(!0),
-                es.current || n || (es.current = !0,
-                U(!0)))
-            }
-            ),
-            () => a.abort()
-        }
-        , [e, M, B, n, en, ed, A?.saveStatus, A?.ghostSaveStatus, R]),
-        (0,
-        l.useEffect)( () => {
-            let e = !1;
-            for (let t of P) {
-                let a = (0,
-                f.raceGhostKey)(t);
-                if (!el.current[a]) {
-                    if (!(0,
-                    f.usableRaceGhost)(t)) {
-                        Promise.resolve().then( () => {
-                            e || Y(e => ({
-                                ...e,
-                                [a]: t.ghostUnavailableReason || "Recording unavailable"
-                            }))
-                        }
-                        );
-                        continue
-                    }
-                    I(t).then(t => {
-                        e || (el.current[a] = t,
-                        W(e => ({
-                            ...e,
-                            [a]: t
-                        })),
-                        Y(e => {
-                            let t = {
-                                ...e
-                            };
-                            return delete t[a],
-                            t
-                        }
-                        ))
-                    }
-                    ).catch(t => {
-                        e || Y(e => ({
-                            ...e,
-                            [a]: eo(t)
+                  , f = []
+                  , p = []
+                  , b = []
+                  , g = o.size / 2 - 4;
+                for (let e of t)
+                    e.pad && f.push(...(0,
+                    a.launchPadBoxes)(e, i));
+                let y = e.buildings;
+                if (y)
+                    for (let t = 0; t < y.count; t++) {
+                        let r = t / y.count * Math.PI * 2 + u(-.14, .14)
+                          , o = u(y.radius[0], y.radius[1])
+                          , i = u(y.footprint[0], y.footprint[1])
+                          , h = u(y.footprint[0], y.footprint[1])
+                          , m = u(y.height[0], y.height[1])
+                          , p = n.cos(r) * o
+                          , b = n.sin(r) * o;
+                        if (Math.abs(p) > g || Math.abs(b) > g || !d(p, b, Math.max(i, h)))
+                            continue;
+                        let x = s() < y.glassChance
+                          , z = !x && .35 > s()
+                          , w = x ? "windows" : z ? "brick" : "concrete"
+                          , S = x ? e.palette.glass : z ? e.palette.brick : e.palette.concrete
+                          , v = Math.max(1, Math.round(m / y.storeyHeight));
+                        f.push(...(0,
+                        a.buildingBoxes)({
+                            position: [p, l(p, b), b],
+                            rotationY: r + u(-.45, .45),
+                            width: i,
+                            depth: h,
+                            height: v * y.storeyHeight,
+                            surface: w,
+                            color: c(S),
+                            trimColor: c(e.palette.concrete),
+                            storeyHeight: y.storeyHeight,
+                            clutter: Math.round(u(y.clutter[0], y.clutter[1])),
+                            random: s
                         }))
                     }
-                    )
-                }
-            }
-            return () => {
-                e = !0
-            }
-        }
-        , [P, V, I]);
-        let e_ = E?.[b]
-          , eg = e_ ? [...e_.rows, ...e_.own && !e_.rows.some(e => e.attemptId === e_.own.attemptId) ? [e_.own] : []] : []
-          , ey = X && P.every(e => !!F[(0,
-        f.raceGhostKey)(e)]);
-        return (0,
-        a.jsxs)("aside", {
-            className: T.default.sidebar,
-            children: [(0,
-            a.jsxs)("section", {
-                className: T.default.board,
-                "aria-labelledby": "race-board-heading",
-                children: [(0,
-                a.jsxs)("h2", {
-                    id: "race-board-heading",
-                    children: [_.RACE_DRONE_NAMES[e.droneId], " ", (0,
-                    a.jsx)("span", {
-                        children: "leaderboard"
-                    })]
-                }), (0,
-                a.jsx)(N.Segmented, {
-                    label: "Leaderboard period",
-                    size: "sm",
-                    className: T.default.tabs,
-                    value: b,
-                    onChange: j,
-                    options: [{
-                        value: "allTime",
-                        label: "All time"
-                    }, {
-                        value: "daily",
-                        label: "Today"
-                    }]
-                }), !n && (0,
-                a.jsxs)("div", {
-                    className: T.default.ghostCount,
-                    children: [(0,
-                    a.jsxs)("span", {
-                        children: ["Ghosts ", (0,
-                        a.jsxs)("b", {
-                            children: [P.length, "/3"]
-                        })]
-                    }), (0,
-                    a.jsx)(D.TextLink, {
-                        className: T.default.clear,
-                        onClick: () => ep([]),
-                        children: P.length ? "Clear" : "None"
-                    })]
-                }), (0,
-                a.jsxs)("div", {
-                    className: T.default.boardScroll,
-                    "aria-busy": K,
-                    children: [K && !E ? (0,
-                    a.jsx)(G.LoadingState, {
-                        className: T.default.loading,
-                        title: "Loading leaderboard"
-                    }) : null, J && (0,
-                    a.jsxs)("div", {
-                        className: T.default.boardError,
-                        role: "status",
-                        children: ["Leaderboard unavailable ", (0,
-                        a.jsx)(D.TextLink, {
-                            onClick: () => {
-                                $(!0),
-                                O(e => e + 1)
-                            }
-                            ,
-                            children: "Retry"
-                        })]
-                    }), e_ && !eg.length && (0,
-                    a.jsx)(G.EmptyState, {
-                        icon: "trophy",
-                        className: T.default.empty,
-                        title: "No times yet"
-                    }), !!eg.length && (0,
-                    a.jsxs)("table", {
-                        className: T.default.table,
-                        children: [(0,
-                        a.jsx)("thead", {
-                            children: (0,
-                            a.jsxs)("tr", {
-                                children: [(0,
-                                a.jsx)("th", {
-                                    scope: "col",
-                                    children: "#"
-                                }), (0,
-                                a.jsx)("th", {
-                                    scope: "col",
-                                    children: "Pilot"
-                                }), (0,
-                                a.jsx)("th", {
-                                    scope: "col",
-                                    children: "Time"
-                                }), !n && (0,
-                                a.jsx)("th", {
-                                    scope: "col",
-                                    children: "Ghost"
-                                })]
-                            })
-                        }), (0,
-                        a.jsx)("tbody", {
-                            children: eg.map( (e, t) => {
-                                let s = (0,
-                                f.raceGhostKey)(e)
-                                  , l = P.findIndex(e => (0,
-                                f.raceGhostKey)(e) === s)
-                                  , r = l >= 0
-                                  , i = !(0,
-                                f.usableRaceGhost)(e);
-                                return (0,
-                                a.jsx)(eu, {
-                                    entry: e,
-                                    results: n,
-                                    checked: r,
-                                    color: (0,
-                                    m.racerColor)(l),
-                                    unavailable: i,
-                                    pending: r && !F[s] && !H[s],
-                                    onToggle: () => {
-                                        let t;
-                                        return t = (0,
-                                        f.raceGhostKey)(e),
-                                        void (P.some(e => (0,
-                                        f.raceGhostKey)(e) === t) ? ep(P.filter(e => (0,
-                                        f.raceGhostKey)(e) !== t)) : P.length >= 3 ? ee(!0) : ep([...P, e]))
-                                    }
-                                    ,
-                                    gap: t > 0 && e.rank > eg[t - 1].rank + 1
-                                }, `${s}:${t}`)
-                            }
-                            )
-                        })]
-                    }), e_?.nextOffset != null && (0,
-                    a.jsx)(D.TextLink, {
-                        className: T.default.more,
-                        disabled: K,
-                        trailingIcon: (0,
-                        a.jsx)(C.Icon, {
-                            name: "chevron-down",
-                            size: 24
+                let x = e.shells;
+                if (x)
+                    for (let t = 0; t < x.count; t++) {
+                        let r = t / x.count * Math.PI * 2 + u(-.5, .5)
+                          , o = u(x.radius[0], x.radius[1])
+                          , i = u(x.width[0], x.width[1])
+                          , h = u(x.depth[0], x.depth[1])
+                          , m = n.cos(r) * o
+                          , p = n.sin(r) * o;
+                        if (Math.abs(m) > g || Math.abs(p) > g || !d(m, p, .7 * Math.max(i, h)))
+                            continue;
+                        let y = (0,
+                        a.shellBoxes)({
+                            position: [m, l(m, p), p],
+                            rotationY: r + u(-.6, .6),
+                            width: i,
+                            depth: h,
+                            height: u(x.height[0], x.height[1]),
+                            color: c(e.palette.brick),
+                            trimColor: c(e.palette.concrete),
+                            random: s
+                        });
+                        f.push(...y.boxes),
+                        b.push(...y.props)
+                    }
+                let z = e.containers;
+                if (z)
+                    for (let t = 0; t < z.count; t++) {
+                        let t = s() * Math.PI * 2
+                          , r = u(z.radius[0], z.radius[1])
+                          , o = n.cos(t) * r
+                          , i = n.sin(t) * r;
+                        if (!d(o, i, a.CONTAINER_HALF[0]))
+                            continue;
+                        let h = s() * Math.PI
+                          , m = 1 + Math.floor(s() * z.maxLevels)
+                          , p = l(o, i);
+                        for (let t = 0; t < m; t++)
+                            f.push(...(0,
+                            a.containerBoxes)({
+                                position: [o + u(-.7, .7) * t, p + a.CONTAINER_HALF[1] + t * a.CONTAINER_HALF[1] * 2, i + u(-.7, .7) * t],
+                                rotationY: h + u(-.15, .15) * t,
+                                color: c(e.palette.container)
+                            }))
+                    }
+                let w = e.ramps;
+                if (w)
+                    for (let t = 0; t < w.count; t++) {
+                        let t = s() * Math.PI * 2
+                          , r = u(w.radius[0], w.radius[1])
+                          , o = n.cos(t) * r
+                          , i = n.sin(t) * r;
+                        if (!d(o, i, 6))
+                            continue;
+                        let h = u(w.tilt[0], w.tilt[1])
+                          , m = u(3, 6)
+                          , p = u(2.5, 5)
+                          , b = [o, l(o, i) + u(1.4, 3.2), i]
+                          , g = [0, t, h];
+                        f.push({
+                            position: b,
+                            halfExtents: [m, .22, p],
+                            rotation: g,
+                            color: c(e.palette.concrete),
+                            surface: "concrete",
+                            kind: "ramp"
                         }),
-                        onClick: () => {
-                            $(!0),
-                            R({
-                                timeAttackId: e.timeAttackId,
-                                courseRevision: e.courseRevision,
-                                droneId: e.droneId,
-                                offset: e_.nextOffset
-                            }).then(e => L(t => t ? {
-                                ...t,
-                                [b]: {
-                                    ...e[b],
-                                    rows: [...t[b].rows, ...e[b].rows.filter(e => !t[b].rows.some(t => t.attemptId === e.attemptId))]
-                                }
-                            } : e)).catch( () => q(!0)).finally( () => $(!1))
-                        }
-                        ,
-                        children: "More pilots"
-                    })]
-                }), !n && P.length > 0 && (0,
-                a.jsx)("div", {
-                    className: T.default.selections,
-                    "aria-label": "Selected ghosts",
-                    children: P.map( (e, t) => {
-                        let s = (0,
-                        f.raceGhostKey)(e)
-                          , l = H[s];
-                        return (0,
-                        a.jsxs)("div", {
-                            className: T.default.selection,
-                            "data-error": !!l || void 0,
-                            style: {
-                                "--ghost-color": (0,
-                                m.racerColor)(t)
-                            },
-                            children: [(0,
-                            a.jsxs)("span", {
-                                title: l || ei(e),
-                                children: [ei(e), F[s] || l ? "" : " …"]
-                            }), l && (0,
-                            a.jsx)(w.IconButton, {
-                                label: `Retry ${ei(e)} ghost`,
-                                icon: (0,
-                                a.jsx)(C.Icon, {
-                                    name: "rotate",
-                                    size: 24
-                                }),
-                                title: l,
-                                onClick: () => {
-                                    Y(e => {
-                                        let t = {
-                                            ...e
-                                        };
-                                        return delete t[s],
-                                        t
-                                    }
-                                    ),
-                                    Z(e => e + 1)
-                                }
-                            }), (0,
-                            a.jsx)(w.IconButton, {
-                                label: `Remove ${ei(e)} ghost`,
-                                icon: (0,
-                                a.jsx)(C.Icon, {
-                                    name: "close",
-                                    size: 24
-                                }),
-                                onClick: () => ep(P.filter(e => (0,
-                                f.raceGhostKey)(e) !== s))
-                            }), l && (0,
-                            a.jsx)("small", {
-                                children: l
-                            })]
-                        }, s)
+                        f.push({
+                            position: (0,
+                            a.localToWorld)(b, t, [0, .3, p - .12]),
+                            halfExtents: [m, .12, .12],
+                            rotation: g,
+                            color: "#cfd4d8",
+                            surface: "plastic",
+                            kind: "trim",
+                            ghost: !0
+                        })
                     }
-                    )
-                }), Q && (0,
-                a.jsx)("p", {
-                    className: T.default.controlMessage,
-                    role: "status",
-                    children: "3 ghosts maximum"
-                }), et && (0,
-                a.jsx)("p", {
-                    className: T.default.controlMessage,
-                    role: "alert",
-                    children: "Race setup changed. Please re-enter the race."
-                }), n && (0,
-                a.jsxs)(D.TextLink, {
-                    className: T.default.changeGhosts,
-                    onClick: g,
-                    children: [(0,
-                    a.jsx)(C.Icon, {
-                        name: "settings-2",
-                        size: 24
-                    }), " Change ghosts"]
-                }), x && (0,
-                a.jsxs)(D.TextLink, {
-                    className: T.default.changeGhosts,
-                    "data-default-ghosts": !0,
-                    onClick: x,
-                    children: [(0,
-                    a.jsx)(C.Icon, {
-                        name: "folder-open",
-                        size: 24
-                    }), " Default Ghosts"]
-                })]
-            }), (0,
-            a.jsxs)("div", {
-                className: T.default.actions,
-                children: [y && (0,
-                a.jsxs)(D.TextLink, {
-                    className: T.default.back,
-                    onClick: y,
-                    children: [(0,
-                    a.jsx)(C.Icon, {
-                        name: "arrow-left",
-                        size: 24
-                    }), " Back to results"]
-                }), !n && J && !X && (0,
-                a.jsx)(D.TextLink, {
-                    className: T.default.back,
-                    onClick: () => ep([]),
-                    children: "Race without ghosts"
-                }), (0,
-                a.jsx)(w.Button, {
-                    tone: "primary",
-                    size: "lg",
-                    block: !0,
-                    className: T.default.start,
-                    "data-race-primary": !0,
-                    disabled: !n && (!ef || !ey || !v),
-                    trailingIcon: (0,
-                    a.jsx)(C.Icon, {
-                        name: "arrow-right",
-                        size: 24
-                    }),
-                    onClick: () => {
-                        n ? p() : !1 === u({
-                            droneId: e.droneId,
-                            skinId: eh,
-                            ghosts: P.map(e => F[(0,
-                            f.raceGhostKey)(e)]),
-                            priorPbMs: E?.allTime.own?.timeMs ?? null
-                        }) && ea(!0)
+                let S = e.pillars;
+                if (S)
+                    for (let e = 0; e < S.count; e++) {
+                        let e = s() * Math.PI * 2
+                          , t = u(S.radius[0], S.radius[1])
+                          , a = n.cos(e) * t
+                          , r = n.sin(e) * t;
+                        if (!d(a, r, .6))
+                            continue;
+                        let o = u(S.height[0], S.height[1])
+                          , i = l(a, r);
+                        f.push({
+                            position: [a, i + o / 2, r],
+                            halfExtents: [.16, o / 2, .16],
+                            rotation: [0, s() * Math.PI, 0],
+                            color: "#5c6167",
+                            surface: "metal",
+                            kind: "pillar"
+                        }),
+                        f.push({
+                            position: [a, i + .09, r],
+                            halfExtents: [.5, .09, .5],
+                            rotation: [0, 0, 0],
+                            color: "#4d5257",
+                            surface: "concrete",
+                            kind: "trim",
+                            ghost: !0
+                        })
                     }
-                    ,
-                    children: n ? "Try again" : em ? ef ? "Start race" : `Unlocks at level ${o.DRONES[e.droneId].unlockLevel}` : `Unlocks at level ${s.RACE_UNLOCK_LEVEL}`
-                })]
-            })]
-        })
-    }
-    function eu({entry: e, results: t, checked: s, color: l, unavailable: n, pending: r, gap: i, onToggle: o}) {
-        return (0,
-        a.jsxs)(a.Fragment, {
-            children: [i && (0,
-            a.jsx)("tr", {
-                className: T.default.gap,
-                "aria-hidden": "true",
-                children: (0,
-                a.jsx)("td", {
-                    colSpan: t ? 3 : 4,
-                    children: "···"
-                })
-            }), (0,
-            a.jsxs)("tr", {
-                "data-you": e.you || void 0,
-                "data-selected": s || void 0,
-                className: e.you ? "fdk-on-ink" : void 0,
-                children: [(0,
-                a.jsx)("td", {
-                    children: e.rank
-                }), (0,
-                a.jsx)("td", {
-                    children: e.you ? t ? "You" : "You · PB" : ei(e)
-                }), (0,
-                a.jsx)("td", {
-                    children: (0,
-                    a.jsx)("time", {
-                        children: (0,
-                        u.formatRaceTime)(e.timeMs)
-                    })
-                }), !t && (0,
-                a.jsx)("td", {
-                    children: (0,
-                    a.jsxs)("label", {
-                        className: T.default.checkbox,
-                        title: n ? e.ghostUnavailableReason || "Recording unavailable" : void 0,
-                        style: {
-                            "--ghost-color": l
-                        },
-                        tabIndex: n && !s ? 0 : void 0,
-                        "aria-label": n ? `${ei(e)}: ${e.ghostUnavailableReason || "Recording unavailable"}` : void 0,
-                        children: [(0,
-                        a.jsx)("input", {
-                            type: "checkbox",
-                            checked: s,
-                            disabled: n && !s,
-                            onChange: o,
-                            "aria-label": `Race ${e.you ? "your personal best" : `${ei(e)}’s`} ghost, ${(e.timeMs / 1e3).toFixed(3)} seconds${n ? ", recording unavailable" : ""}`
-                        }), (0,
-                        a.jsx)("span", {
-                            "aria-hidden": "true",
-                            children: r ? (0,
-                            a.jsx)("i", {}) : s ? (0,
-                            a.jsx)(C.Icon, {
-                                name: "check",
-                                size: 22
-                            }) : n ? (0,
-                            a.jsx)(C.Icon, {
-                                name: "minus",
-                                size: 16
-                            }) : null
-                        })]
-                    })
-                })]
-            })]
-        })
-    }
-    e.s(["TimeAttackScreen", 0, function(e) {
-        let {course: t, skins: s, result: o, onExit: d} = e;
-        (0,
-        c.useInventory)(e => e.items);
-        let u = t.droneId ?? e.initialDroneId
-          , [m,_] = (0,
-        l.useState)(o ? "results" : "setup")
-          , [g,y] = (0,
-        l.useState)(null)
-          , [x,b] = (0,
-        l.useState)(null)
-          , j = o ? "results" : "setup"
-          , [v,k] = (0,
-        l.useState)( () => {
-            let a = e.initialGhosts?.filter(a => a.timeAttackId === t.id && a.courseRevision === (e.courseRevision ?? t.competitiveRevision ?? 1) && a.droneId === u && (0,
-            f.usableRaceGhost)(a));
-            return a?.length ? a.slice(0, 3) : void 0
-        }
-        )
-          , [S,R] = (0,
-        l.useState)("allTime")
-          , [I,G] = (0,
-        l.useState)(!1)
-          , N = (0,
-        l.useRef)(null)
-          , D = (0,
-        l.useRef)(null);
-        (0,
-        p.useRaceMenuInput)(D, d);
-        let A = "results" === m && !!o
-          , M = !!e.admin
-          , E = A ? o.appearance.droneId : u
-          , L = e.courseRevision ?? t.competitiveRevision ?? 1
-          , K = (0,
-        l.useMemo)( () => ({
-            accountId: e.accountId,
-            timeAttackId: t.id,
-            courseRevision: L,
-            droneId: E
-        }), [e.accountId, t.id, L, E])
-          , $ = (0,
-        l.useMemo)( () => {
-            var t, a;
-            let s;
-            return t = e.accountId,
-            a = e.loadGhost ?? h.fetchRaceGhost,
-            s = new Map,
-            e => {
-                let l = `${t ?? "guest"}:${(0,
-                f.raceGhostKey)(e)}`
-                  , n = s.get(l);
-                if (n)
-                    return n;
-                s.size >= 15 && s.delete(s.keys().next().value);
-                let r = a(e).catch(e => {
-                    throw s.delete(l),
-                    e
-                }
-                );
-                return s.set(l, r),
-                r
-            }
-        }
-        , [e.accountId, e.loadGhost]);
-        return (0,
-        l.useEffect)( () => {
-            let e = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-            return document.pointerLockElement && document.exitPointerLock(),
-            N.current?.focus(),
-            () => e?.focus()
-        }
-        , []),
-        (0,
-        l.useEffect)( () => {
-            D.current?.contains(document.activeElement) || D.current?.querySelector('nav button[aria-pressed="true"]')?.focus()
-        }
-        , [m]),
-        (0,
-        a.jsxs)("section", {
-            ref: D,
-            className: `fd-menu fdk-screen fdk-on-chalk ${T.default.screen}`,
-            role: "dialog",
-            "aria-modal": "true",
-            "aria-labelledby": "race-screen-title",
-            onKeyDown: e => {
-                if (e.stopPropagation(),
-                "Escape" === e.key && (e.preventDefault(),
-                d()),
-                "Tab" !== e.key)
-                    return;
-                let t = D.current?.querySelectorAll('button:not(:disabled), input:not(:disabled), select:not(:disabled), [tabindex="0"]');
-                if (!t?.length)
-                    return;
-                let a = t[0]
-                  , s = t[t.length - 1];
-                e.shiftKey && document.activeElement === a ? (e.preventDefault(),
-                s.focus()) : e.shiftKey || document.activeElement !== s || (e.preventDefault(),
-                a.focus())
-            }
-            ,
-            children: [(0,
-            a.jsxs)("header", {
-                className: `fd-menu-header ${T.default.header}`,
-                children: [(0,
-                a.jsxs)("div", {
-                    className: `fd-menu-brand ${i.default.lockup}`,
-                    children: [(0,
-                    a.jsx)(n.BrandLogo, {
-                        on: "light",
-                        priority: !0
-                    }), (0,
-                    a.jsx)(r.EarlyAccessBadge, {})]
-                }), (0,
-                a.jsx)("h1", {
-                    id: "race-screen-title",
-                    children: t.name
-                }), (0,
-                a.jsx)(w.Button, {
-                    ref: N,
-                    tone: "ghost",
-                    className: T.default.exit,
-                    icon: (0,
-                    a.jsx)(C.Icon, {
-                        name: "log-out",
-                        size: 24
-                    }),
-                    onClick: d,
-                    children: "Exit"
-                })]
-            }), (0,
-            a.jsx)("div", {
-                className: `fd-menu-content ${T.default.body}`,
-                children: (0,
-                a.jsx)("div", {
-                    className: T.default.content,
-                    children: "watch" === m && g ? (0,
-                    a.jsx)(el, {
-                        entry: g,
-                        courseName: t.name,
-                        load: e.defaultGhosts?.clip,
-                        onBack: () => _("library")
-                    }) : (0,
-                    a.jsxs)(a.Fragment, {
-                        children: [(0,
-                        a.jsx)(ed, {
-                            droneId: K.droneId,
-                            skins: s,
-                            result: A ? o : null,
-                            onReady: () => G(!0),
-                            save: M && A && e.onSaveDefaultGhost ? (0,
-                            a.jsx)(et, {
-                                state: o.defaultGhost,
-                                canSave: "saved" === o.saveStatus && !!o.attemptId,
-                                onSave: e.onSaveDefaultGhost,
-                                loadEntry: e.defaultGhosts?.entry
-                            }) : null
-                        }), "library" === m ? (0,
-                        a.jsx)(ea, {
-                            timeAttackId: t.id,
-                            courseName: t.name,
-                            currentRevision: L,
-                            droneId: x ?? K.droneId,
-                            loaders: e.defaultGhosts,
-                            onDroneChange: b,
-                            onBack: () => _(j),
-                            onWatch: e => {
-                                y(e),
-                                _("watch")
+                let v = e.gateLoop;
+                if (v)
+                    for (let t = 0; t < v.count; t++) {
+                        let a = t / v.count * Math.PI * 2
+                          , r = u(v.opening.height[0], v.opening.height[1])
+                          , o = Math.max(r / 2 + 1.1, u(v.height[0], v.height[1]))
+                          , i = n.cos(a) * v.radius
+                          , s = n.sin(a) * v.radius;
+                        p.push({
+                            id: `${v.idPrefix}-${t + 1}`,
+                            position: [i, l(i, s) + o, s],
+                            rotationY: -a,
+                            size: [u(v.opening.width[0], v.opening.width[1]), r],
+                            color: e.palette.gate[t % e.palette.gate.length],
+                            role: 0 === t ? "startFinish" : "gate"
+                        })
+                    }
+                let M = (e, t) => {
+                    let[a,o] = e.scale ?? [.8, 1.4]
+                      , i = () => {
+                        let t = s() * Math.PI * 2
+                          , a = e.areaUniform ? h(e.radius[0], e.radius[1]) : u(e.radius[0], e.radius[1]);
+                        return [n.cos(t) * a, n.sin(t) * a]
+                    }
+                      , f = (n, i) => {
+                        let h = c(e.kinds)
+                          , f = s() * Math.PI * 2
+                          , p = u(a, o);
+                        if (!d(n, i, t) || m(n, i))
+                            return;
+                        let g = l(n, i);
+                        if (!e.heightRange || !(g < e.heightRange[0]) && !(g > e.heightRange[1])) {
+                            if (void 0 !== e.maxSlope || void 0 !== e.minSlope) {
+                                let t = (0,
+                                r.terrainSlope)(l, n, i);
+                                if (void 0 !== e.maxSlope && t > e.maxSlope || void 0 !== e.minSlope && t < e.minSlope)
+                                    return
                             }
-                        }) : (0,
-                        a.jsx)(ec, {
-                            ...e,
-                            scope: K,
-                            results: A,
-                            tab: S,
-                            setTab: R,
-                            loadGhost: $,
-                            initialSelection: v,
-                            onSelectionChange: k,
-                            stageReady: I,
-                            onChangeGhosts: () => _("setup"),
-                            onDefaultGhosts: M ? () => _("library") : void 0,
-                            onBackToResults: o && !A ? () => _("results") : void 0
-                        }, `${(0,
-                        f.raceSelectionKey)(K)}:${m}`)]
-                    })
-                })
-            })]
-        })
+                            b.push({
+                                kind: h,
+                                position: [n, g, i],
+                                rotationY: f,
+                                scale: p,
+                                ...e.lod ? {
+                                    lod: e.lod
+                                } : {}
+                            })
+                        }
+                    }
+                    ;
+                    for (let t = 0; t < e.count; t++) {
+                        let[t,a] = i()
+                          , r = e.clump;
+                        if (!r) {
+                            f(t, a);
+                            continue
+                        }
+                        let o = Math.round(u(r.count[0], r.count[1]));
+                        for (let e = 0; e < o; e++) {
+                            let e = s() * Math.PI * 2
+                              , o = Math.sqrt(s()) * r.spread;
+                            f(t + n.cos(e) * o, a + n.sin(e) * o)
+                        }
+                    }
+                }
+                ;
+                for (let t of (e.scatter && M(e.scatter, 1.5),
+                e.scatters ?? []))
+                    M(t, 1.5);
+                let A = e.grass;
+                if (A)
+                    for (let e = 0; e < A.count; e++) {
+                        let e = s() * Math.PI * 2
+                          , t = A.areaUniform ? h(A.radius[0], A.radius[1]) : u(A.radius[0], A.radius[1])
+                          , a = n.cos(e) * t
+                          , o = n.sin(e) * t
+                          , i = s() * Math.PI
+                          , c = .7 + .9 * s();
+                        !(!d(a, o, 2) || m(a, o)) && (void 0 !== A.maxSlope && (0,
+                        r.terrainSlope)(l, a, o) > A.maxSlope || b.push({
+                            kind: "grass",
+                            position: [a, l(a, o), o],
+                            rotationY: i,
+                            scale: c
+                        }))
+                    }
+                for (let e of p)
+                    f.push(...(0,
+                    a.gateBoxes)(e, l));
+                return {
+                    boxes: f,
+                    gates: p,
+                    props: b
+                }
+            }(s, e.spawns, e.bounds, e.accent, l);
+            t.push(...c.boxes),
+            o.push(...c.gates),
+            i.push(...c.props)
+        }
+        if (c)
+            for (let e of (c.boxes && t.push(...c.boxes),
+            c.props && i.push(...c.props),
+            c.gates ?? []))
+                o.push(e),
+                t.push(...(0,
+                a.gateBoxes)(e, l));
+        return {
+            mapId: e.id,
+            prisms: c?.prisms,
+            boxes: t,
+            gates: o,
+            props: i,
+            spawns: e.spawns,
+            bounds: e.bounds,
+            environment: e.environment,
+            terrain: e.terrain,
+            ...e.pedestrians ? {
+                pedestrians: e.pedestrians
+            } : {},
+            ...e.horizon ? {
+                horizon: e.horizon
+            } : {}
+        }
     }
-    ], 386521)
+    function l(e, t) {
+        let a = i(e);
+        return t ? {
+            ...a,
+            bounds: t.bounds ?? a.bounds,
+            boxes: [],
+            prisms: [],
+            editorDocument: t,
+            ...t.horizon ? {
+                horizon: t.horizon
+            } : {}
+        } : a
+    }
+    e.s(["buildWorld", 0, i, "collidableBoxes", 0, function(e) {
+        return e.boxes.filter(e => !e.ghost)
+    }
+    , "worldForMap", 0, function(e) {
+        let a = "gridworks" === e.id ? t.getState().document : e.editorDocument ?? null
+          , r = o.get(e.id);
+        if (r && (r.editorDocument ?? null) === a)
+            return r;
+        let n = l(e, a);
+        return o.set(e.id, n),
+        n
+    }
+    , "worldWithDocument", 0, l], 632526)
 }
-, 401778, e => {
-    e.v({
-        actions: "time-attack-screen-module__u2DJSG__actions",
-        appearanceLabel: "time-attack-screen-module__u2DJSG__appearanceLabel",
-        back: "time-attack-screen-module__u2DJSG__back",
-        board: "time-attack-screen-module__u2DJSG__board",
-        boardError: "time-attack-screen-module__u2DJSG__boardError",
-        boardScroll: "time-attack-screen-module__u2DJSG__boardScroll",
-        body: "time-attack-screen-module__u2DJSG__body",
-        changeGhosts: "time-attack-screen-module__u2DJSG__changeGhosts",
-        checkbox: "time-attack-screen-module__u2DJSG__checkbox",
-        clear: "time-attack-screen-module__u2DJSG__clear",
-        content: "time-attack-screen-module__u2DJSG__content",
-        controlMessage: "time-attack-screen-module__u2DJSG__controlMessage",
-        empty: "time-attack-screen-module__u2DJSG__empty",
-        exit: "time-attack-screen-module__u2DJSG__exit",
-        finish: "time-attack-screen-module__u2DJSG__finish",
-        gap: "time-attack-screen-module__u2DJSG__gap",
-        ghostCount: "time-attack-screen-module__u2DJSG__ghostCount",
-        header: "time-attack-screen-module__u2DJSG__header",
-        lineupLabel: "time-attack-screen-module__u2DJSG__lineupLabel",
-        loading: "time-attack-screen-module__u2DJSG__loading",
-        more: "time-attack-screen-module__u2DJSG__more",
-        screen: "time-attack-screen-module__u2DJSG__screen",
-        selection: "time-attack-screen-module__u2DJSG__selection",
-        selections: "time-attack-screen-module__u2DJSG__selections",
-        sidebar: "time-attack-screen-module__u2DJSG__sidebar",
-        spin: "time-attack-screen-module__u2DJSG__spin",
-        stage: "time-attack-screen-module__u2DJSG__stage",
-        stageCanvas: "time-attack-screen-module__u2DJSG__stageCanvas",
-        stageLoading: "time-attack-screen-module__u2DJSG__stageLoading",
-        stageWord: "time-attack-screen-module__u2DJSG__stageWord",
-        start: "time-attack-screen-module__u2DJSG__start",
-        table: "time-attack-screen-module__u2DJSG__table",
-        tabs: "time-attack-screen-module__u2DJSG__tabs"
+, 304661, e => {
+    "use strict";
+    let t = new Set(["drift-park", "whoop-world"])
+      , a = new Set(["flight-school"]);
+    e.s(["LESSON_MAP_IDS", 0, a, "UNPUBLISHED_MAP_IDS", 0, t])
+}
+, 811113, 55807, e => {
+    "use strict";
+    var t = e.i(883380)
+      , a = e.i(569638)
+      , r = e.i(50270)
+      , n = e.i(353198)
+      , o = e.i(166636)
+      , i = e.i(133968)
+      , l = e.i(778534)
+      , s = e.i(235199)
+      , c = e.i(632997)
+      , u = e.i(514236)
+      , h = e.i(998494)
+      , d = e.i(304661);
+    let m = {
+        centerSensitivity: {
+            min: 10,
+            max: 2e3
+        },
+        maxRate: {
+            min: 50,
+            max: 2e3
+        },
+        expo: {
+            min: 0,
+            max: 1
+        }
+    }
+      , f = r.z.object({
+        centerSensitivity: r.z.number().finite().min(m.centerSensitivity.min).max(m.centerSensitivity.max),
+        maxRate: r.z.number().finite().min(m.maxRate.min).max(m.maxRate.max),
+        expo: r.z.number().finite().min(m.expo.min).max(m.expo.max)
+    }).strict().refine(e => e.centerSensitivity <= e.maxRate, {
+        message: "Center cannot exceed Max.",
+        path: ["centerSensitivity"]
+    });
+    function p(e) {
+        let t = (e, t) => Math.min(m[t].max, Math.max(m[t].min, e))
+          , a = t(e.centerSensitivity, "centerSensitivity")
+          , r = Math.max(t(e.maxRate, "maxRate"), a);
+        return {
+            centerSensitivity: a,
+            maxRate: r,
+            expo: t(e.expo, "expo")
+        }
+    }
+    e.s(["RATE_LIMITS", 0, m, "axisRatesSchema", 0, f, "normalizeLegacyAxisRates", 0, p, "rateFieldError", 0, function(e, t, a) {
+        if (!Number.isFinite(t))
+            return "Enter a number.";
+        let {min: r, max: n} = m[e];
+        return t < r || t > n ? "expo" === e ? `Expo is ${r.toFixed(2)} to ${n.toFixed(2)}.` : `Use ${r} to ${n} \xb0/s.` : "centerSensitivity" === e && t > a.maxRate ? "Center cannot exceed Max." : "maxRate" === e && t < a.centerSensitivity ? "Max cannot be below Center." : null
+    }
+    ], 55807);
+    var b = e.i(12746);
+    let g = r.z.string().regex(/^shop:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i).transform(e => e)
+      , y = "fd-sim-settings-v5"
+      , x = r.z.object({
+        axisIndex: r.z.number().int().min(0).max(31),
+        invert: r.z.boolean(),
+        min: r.z.number().min(-1).max(1),
+        center: r.z.number().min(-1).max(1),
+        max: r.z.number().min(-1).max(1)
     })
+      , z = r.z.union([r.z.object({
+        kind: r.z.literal("none")
+    }), r.z.object({
+        kind: r.z.literal("button"),
+        buttonIndex: r.z.number().int().min(0).max(31)
+    }), r.z.object({
+        kind: r.z.literal("axis"),
+        axisIndex: r.z.number().int().min(0).max(31),
+        threshold: r.z.number().min(-1).max(1),
+        invert: r.z.boolean()
+    })])
+      , w = r.z.object({
+        arm: r.z.string().min(1),
+        respawn: r.z.string().min(1),
+        droneWheel: r.z.string().min(1).catch("Tab").default("Tab"),
+        interact: r.z.string().min(1).catch("KeyE").default("KeyE")
+    }).transform(e => {
+        let t = new Set([e.arm, e.respawn, e.droneWheel]);
+        return t.has(e.interact) ? {
+            ...e,
+            interact: ["KeyE", "KeyF", "KeyQ", "KeyG"].find(e => !t.has(e)) ?? "KeyT"
+        } : e
+    }
+    ).catch(s.DEFAULT_KEYBOARD_BINDS).default(s.DEFAULT_KEYBOARD_BINDS)
+      , S = r.z.object({
+        throttle: r.z.boolean().catch(!1).default(!1),
+        roll: r.z.boolean().catch(!1).default(!1),
+        pitch: r.z.boolean().catch(!1).default(!1),
+        yaw: r.z.boolean().catch(!1).default(!1)
+    }).catch({
+        throttle: !1,
+        roll: !1,
+        pitch: !1,
+        yaw: !1
+    }).default({
+        throttle: !1,
+        roll: !1,
+        pitch: !1,
+        yaw: !1
+    })
+      , v = r.z.object({
+        deviceId: r.z.string().nullable(),
+        channels: r.z.object({
+            throttle: x.nullable(),
+            roll: x.nullable(),
+            pitch: x.nullable(),
+            yaw: x.nullable()
+        }),
+        swappedAxes: S,
+        deadband: r.z.number().min(0).max(.4),
+        throttleSelfCentering: r.z.boolean(),
+        halfThrottle: r.z.boolean().catch(!1).default(!1),
+        arm: z,
+        respawn: z.catch(s.UNBOUND_SWITCH).default(s.UNBOUND_SWITCH),
+        droneWheel: z.catch(s.UNBOUND_SWITCH).default(s.UNBOUND_SWITCH),
+        interact: z.catch(s.UNBOUND_SWITCH).default(s.UNBOUND_SWITCH),
+        keyboard: w
+    })
+      , M = r.z.enum(["gamepad", "radio"]).nullable()
+      , A = r.z.enum(["toggle", "follow"])
+      , E = {
+        channels: r.z.object({
+            throttle: x.nullable().catch(null),
+            roll: x.nullable().catch(null),
+            pitch: x.nullable().catch(null),
+            yaw: x.nullable().catch(null)
+        }),
+        swappedAxes: S,
+        deadband: r.z.number().min(0).max(.4).catch(.03),
+        throttleSelfCentering: r.z.boolean().catch(!1),
+        halfThrottle: r.z.boolean().catch(!1).default(!1),
+        arm: z.catch(s.UNBOUND_SWITCH),
+        armBehavior: A.catch("follow"),
+        deviceKind: M.catch(null).default(null),
+        stickMode: r.z.enum(["mode1", "mode2", "mode3", "mode4"]).nullable().catch(null).default(null),
+        respawn: z.catch(s.UNBOUND_SWITCH).default(s.UNBOUND_SWITCH),
+        droneWheel: z.catch(s.UNBOUND_SWITCH).default(s.UNBOUND_SWITCH),
+        interact: z.catch(s.UNBOUND_SWITCH).default(s.UNBOUND_SWITCH)
+    }
+      , I = r.z.object({
+        deviceId: r.z.string().max(256).nullable().catch(null),
+        ...E,
+        keyboardOnly: r.z.boolean().catch(!1).default(!1),
+        keyboard: w
+    })
+      , _ = r.z.object(E)
+      , D = r.z.record(r.z.unknown()).transform(e => {
+        let t = {};
+        for (let[a,r] of Object.entries(e).slice(-12)) {
+            if (!a || a.length > 256)
+                continue;
+            let e = _.safeParse(r);
+            e.success && (t[a] = e.data)
+        }
+        return t
+    }
+    ).catch({}).default({})
+      , C = r.z.object({
+        centerSensitivity: r.z.number().min(10).max(400),
+        maxRate: r.z.number().min(50).max(1800),
+        expo: r.z.number().min(0).max(1)
+    })
+      , P = r.z.object({
+        centerSensitivity: r.z.number().finite(),
+        maxRate: r.z.number().finite(),
+        expo: r.z.number().finite()
+    }).transform(p)
+      , T = r.z.object({
+        archetype: r.z.enum(n.DRONE_IDS).catch(n.DEFAULT_DRONE),
+        skins: r.z.object({
+            freestyle: r.z.union([r.z.enum(n.DRONE_SKIN_IDS), g]).catch("factory"),
+            whoop: r.z.union([r.z.enum(n.DRONE_SKIN_IDS), g]).catch("factory"),
+            cinewhoop: r.z.union([r.z.enum(n.DRONE_SKIN_IDS), g]).catch("factory"),
+            "long-range": r.z.union([r.z.enum(n.DRONE_SKIN_IDS), g]).catch("factory"),
+            racer: r.z.union([r.z.enum(n.DRONE_SKIN_IDS), g]).catch("factory")
+        }).catch((0,
+        n.defaultDroneLoadout)().skins)
+    }).catch((0,
+    n.defaultDroneLoadout)()).default((0,
+    n.defaultDroneLoadout)())
+      , k = r.z.object({
+        trail: r.z.union([r.z.enum(t.COSMETIC_IDS), g]).catch("original")
+    }).catch({
+        trail: "original"
+    }).default({
+        trail: "original"
+    })
+      , N = r.z.union([r.z.enum(a.ENVIRONMENT_PALETTE_IDS), g]).catch("classic").default("classic")
+      , R = r.z.object({
+        mid: r.z.number().min(0).max(1).catch(0).default(0),
+        expo: r.z.number().min(0).max(1).catch(.1).default(.1)
+    }).catch({
+        mid: 0,
+        expo: .1
+    }).default({
+        mid: 0,
+        expo: .1
+    })
+      , O = r.z.object({
+        fov: r.z.number().min(50).max(150),
+        tiltDeg: r.z.number().min(0).max(60),
+        shake: r.z.number().min(0).max(1),
+        speedLines: r.z.number().min(0).max(1).catch(.45).default(.45),
+        fisheye: r.z.number().min(0).max(1).optional().catch(void 0)
+    });
+    function B(e) {
+        let t;
+        if (!e || "object" != typeof e || !("resolutionMode" in e))
+            return e;
+        let {resolutionMode: a, ...r} = e
+          , n = r.quality;
+        if ("low" !== n && "medium" !== n && "high" !== n && "ultra" !== n)
+            return r;
+        let i = (t = "ultra" === n,
+        {
+            shadows: "low" !== n,
+            postProcessing: "low" !== n,
+            ambientOcclusion: t,
+            bloom: t,
+            msaa: t,
+            renderScale: "low" === n ? .75 : 1
+        })
+          , l = {
+            shadows: r.shadows,
+            postProcessing: r.postProcessing ?? "low" !== n,
+            ambientOcclusion: r.ambientOcclusion ?? !1,
+            bloom: r.bloom ?? !1,
+            msaa: r.msaa ?? !1,
+            renderScale: r.renderScale ?? 1
+        };
+        return Object.keys(i).every(e => l[e] === i[e]) ? {
+            ...r,
+            ...(0,
+            o.graphicsPreset)(n)
+        } : r
+    }
+    let U = {
+        postProcessing: r.z.boolean().optional(),
+        renderScale: r.z.number().min(.5).max(1).catch(1).default(1),
+        quality: r.z.enum(["low", "medium", "high", "ultra"]),
+        shadows: r.z.boolean(),
+        motionBlur: r.z.boolean().catch(!0).default(!0),
+        bloom: r.z.boolean().catch(!1).default(!1),
+        msaa: r.z.boolean().catch(!1).default(!1),
+        drawDistance: r.z.number().min(100).max(1200),
+        showSticks: r.z.boolean(),
+        showRacingLine: r.z.boolean().catch(!0).default(!0),
+        showPlayerOverlays: r.z.boolean().catch(!0).default(!0),
+        showActivityOverlays: r.z.boolean().catch(!0).default(!0),
+        showSkillChainHud: r.z.boolean().catch(!0).default(!0),
+        showChat: r.z.boolean().catch(!0).default(!0)
+    }
+      , L = r.z.object({
+        mapId: r.z.union([r.z.enum(h.MAP_IDS), r.z.string().regex(/^official:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/).transform(e => e)]).refine(e => !d.LESSON_MAP_IDS.has(e)).catch(h.DEFAULT_MAP_ID)
+    }).default({
+        mapId: h.DEFAULT_MAP_ID
+    })
+      , G = r.z.object({
+        drone: T,
+        gearCosmetics: k,
+        environmentPalette: N,
+        version: r.z.number().max(4),
+        bindings: v,
+        rates: r.z.object({
+            roll: C,
+            pitch: C,
+            yaw: C
+        }),
+        throttle: R,
+        camera: O,
+        graphics: r.z.preprocess(B, r.z.object({
+            carsEnabled: r.z.boolean().catch(!0).default(!0),
+            ...U
+        })),
+        audio: r.z.object({
+            volume: r.z.number().min(0).max(1)
+        }).catch({
+            volume: .7
+        }).default({
+            volume: .7
+        }),
+        map: L
+    })
+      , j = r.z.object({
+        fov: O.shape.fov.catch($().fov),
+        tiltDeg: O.shape.tiltDeg.catch($().tiltDeg),
+        shake: O.shape.shake.catch($().shake),
+        speedLines: O.shape.speedLines,
+        fisheye: O.shape.fisheye
+    }).catch($())
+      , F = r.z.preprocess(B, r.z.object({
+        trafficDetail: r.z.enum(["full", "reduced"]).catch("full").default("full"),
+        ...U,
+        quality: U.quality.catch(Y().quality),
+        shadows: U.shadows.catch(Y().shadows),
+        drawDistance: U.drawDistance.catch(Y().drawDistance),
+        showSticks: U.showSticks.catch(Y().showSticks),
+        postProcessing: U.postProcessing.catch(void 0)
+    })).catch(Y())
+      , H = r.z.object({
+        gain: r.z.number().finite().min(0).max(1),
+        muted: r.z.boolean().catch(!1)
+    })
+      , W = r.z.object({
+        master: H.catch({
+            gain: .7,
+            muted: !1
+        }),
+        categories: r.z.object(Object.fromEntries(l.AUDIO_CATEGORIES.map(e => [e, H.catch({
+            gain: 1,
+            muted: !1
+        })]))).catch(V().categories),
+        muteInBackground: r.z.boolean().catch(!0)
+    }).catch(V()).default(V())
+      , q = r.z.object({
+        version: r.z.literal(5),
+        drone: T,
+        gearCosmetics: k,
+        environmentPalette: N,
+        bindings: I.catch((0,
+        c.defaultBindings)()),
+        deviceProfiles: D,
+        rates: r.z.object({
+            roll: P,
+            pitch: P,
+            yaw: P
+        }).catch(K()),
+        throttle: R,
+        camera: j,
+        graphics: F,
+        audio: W,
+        flight: r.z.object({
+            autoArm: r.z.boolean().catch(!0),
+            rumble: r.z.boolean().catch(!0).default(!0)
+        }).catch({
+            autoArm: !0,
+            rumble: !0
+        }).default({
+            autoArm: !0,
+            rumble: !0
+        }),
+        accessibility: r.z.object({
+            motion: r.z.enum(["system", "reduce", "full"]).catch("system")
+        }).catch({
+            motion: "system"
+        }).default({
+            motion: "system"
+        }),
+        map: L
+    });
+    function K() {
+        return {
+            roll: {
+                ...b.RATE_PRESETS.freestyle.roll
+            },
+            pitch: {
+                ...b.RATE_PRESETS.freestyle.pitch
+            },
+            yaw: {
+                ...b.RATE_PRESETS.freestyle.yaw
+            }
+        }
+    }
+    function $() {
+        return {
+            fov: 100,
+            tiltDeg: 30,
+            shake: .6,
+            speedLines: .45
+        }
+    }
+    function Y() {
+        return {
+            trafficDetail: "full",
+            postProcessing: !0,
+            renderScale: 1,
+            quality: "medium",
+            shadows: !0,
+            motionBlur: !1,
+            bloom: !1,
+            msaa: !1,
+            drawDistance: 500,
+            showSticks: !0,
+            showRacingLine: !0,
+            showPlayerOverlays: !0,
+            showActivityOverlays: !0,
+            showSkillChainHud: !0,
+            showChat: !0
+        }
+    }
+    function V() {
+        return {
+            master: {
+                gain: .7,
+                muted: !1
+            },
+            categories: {
+                motors: {
+                    gain: 1,
+                    muted: !1
+                },
+                wind: {
+                    gain: 1,
+                    muted: !1
+                },
+                world: {
+                    gain: 1,
+                    muted: !1
+                },
+                interface: {
+                    gain: 1,
+                    muted: !1
+                },
+                race: {
+                    gain: 1,
+                    muted: !1
+                }
+            },
+            muteInBackground: !0
+        }
+    }
+    function J() {
+        return {
+            version: 5,
+            drone: (0,
+            n.defaultDroneLoadout)(),
+            environmentPalette: "classic",
+            gearCosmetics: {
+                trail: "original"
+            },
+            bindings: (0,
+            c.defaultBindings)(),
+            deviceProfiles: {},
+            rates: K(),
+            throttle: {
+                mid: 0,
+                expo: .1
+            },
+            camera: $(),
+            graphics: Y(),
+            audio: V(),
+            flight: {
+                autoArm: !0,
+                rumble: !0
+            },
+            accessibility: {
+                motion: "system"
+            },
+            map: {
+                mapId: h.DEFAULT_MAP_ID
+            }
+        }
+    }
+    function Q(e) {
+        try {
+            let t = window.localStorage.getItem(e);
+            return t ? function(e) {
+                let t = "object" == typeof e && null !== e ? e.version : void 0;
+                if (5 === t) {
+                    let t = q.safeParse(e);
+                    return t.success ? t.data : null
+                }
+                if ("number" == typeof t && t <= 4) {
+                    let t = G.safeParse(e);
+                    return t.success ? function(e) {
+                        let {quad: t, drone: a, version: r, bindings: n, rates: o, graphics: i, audio: l, ...s} = e
+                          , {tuning: c, ...h} = a
+                          , {carsEnabled: d, ...m} = i
+                          , f = (0,
+                        u.classifyDevice)(n.deviceId)
+                          , b = {
+                            ...n,
+                            armBehavior: (0,
+                            u.defaultArmBehavior)(f),
+                            deviceKind: f,
+                            stickMode: null,
+                            keyboardOnly: !1
+                        }
+                          , g = V();
+                        return {
+                            ...s,
+                            version: 5,
+                            drone: h,
+                            bindings: b,
+                            deviceProfiles: {},
+                            rates: {
+                                roll: p(o.roll),
+                                pitch: p(o.pitch),
+                                yaw: p(o.yaw)
+                            },
+                            graphics: {
+                                ...m,
+                                trafficDetail: !1 === d ? "reduced" : "full"
+                            },
+                            audio: {
+                                ...g,
+                                master: {
+                                    gain: l.volume,
+                                    muted: !1
+                                }
+                            },
+                            flight: {
+                                autoArm: !0,
+                                rumble: !0
+                            },
+                            accessibility: {
+                                motion: "system"
+                            }
+                        }
+                    }(t.data) : null
+                }
+                return null
+            }(JSON.parse(t)) : null
+        } catch {
+            return null
+        }
+    }
+    function X(e) {
+        return "ultra" !== e.graphics.quality || (0,
+        i.ultraAvailable)() ? e : {
+            ...e,
+            graphics: (0,
+            o.withoutUltra)(e.graphics)
+        }
+    }
+    function Z(e) {
+        try {
+            return window.localStorage.setItem(y, JSON.stringify(e)),
+            !0
+        } catch {
+            return !1
+        }
+    }
+    e.s(["DEFAULT_LENS", 0, .3, "defaultAudio", 0, V, "defaultRates", 0, K, "defaultSettings", 0, J, "lensStrength", 0, function(e) {
+        return e.camera.fisheye ?? .3 * ("low" !== e.graphics.quality)
+    }
+    , "loadSettingsWithSource", 0, function() {
+        let e = Q(y);
+        if (e) {
+            let t = X(e);
+            return t !== e && Z(t),
+            {
+                settings: t,
+                source: "current"
+            }
+        }
+        let t = Q("fpv-sim-settings");
+        if (t) {
+            let e = X(t);
+            return Z(e),
+            {
+                settings: e,
+                source: "legacy"
+            }
+        }
+        return {
+            settings: J(),
+            source: "default"
+        }
+    }
+    , "saveSettings", 0, Z, "settingsBackup", 0, function(e) {
+        return JSON.stringify({
+            format: "flight-division-settings",
+            exportedAt: new Date().toISOString(),
+            settings: e
+        }, null, 2)
+    }
+    ], 811113)
+}
+, 633643, e => {
+    "use strict";
+    var t = e.i(738073)
+      , a = e.i(269176)
+      , r = e.i(998494);
+    e.s(["parseMenuShowcase", 0, function(e) {
+        var n;
+        if (!e || "object" != typeof e || !("string" == typeof (n = e.mapId) && r.MAP_IDS.includes(n)) || !Array.isArray(e.frames))
+            return null;
+        let o = e.frames.filter(t.isReplayFrame);
+        if (0 === o.length)
+            return null;
+        let i = "number" == typeof e.duration && e.duration > 0 ? e.duration : o[o.length - 1].t
+          , l = (0,
+        t.isCamera)(e.camera) ? e.camera : a.DEFAULT_CHASE_CAMERA;
+        return {
+            mapId: e.mapId,
+            frames: o,
+            duration: i,
+            camera: l
+        }
+    }
+    ])
 }
 ]);

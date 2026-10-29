@@ -1,0 +1,130 @@
+
+}
+
+.fd-pilot-destination :is(.fd-.fd-profile-page {
+    width: 100%;
+    min-height: 0;
+    color: var(--fdk-ink);
+    flex-direction: column;
+    display: flex
+}
+
+.fd-pilot-destination {
+    min-width: 0;
+    font: var(--fdk-type-small)/1.45 var(--fdk-font-body)
+}
+
+.fd-pilot-destination .fd-pilot-hero {
+    gap: 24px;
+    max-width: 100%;
+    padding: 6px 0 24px
+}
+
+.fd-pilot-destination .fd-pilot-avatar {
+    display: none
+}
+
+.fd-pilot-destination .fd-pilot-heading {
+    flex: initial
+}
+
+.fd-pilot-destination .fd-pilot-heading h2 {
+    letter-spacing: -.025em;
+    font-size: clamp(44px,5.5vw,90px);
+    line-height: 1
+}
+
+.fd-pilot-destination .fd-pilot-heading p {
+    font-size: var(--fdk-type-ui)
+}
+
+.fd-pilot-destination .fd-pilot-body {
+    grid-template-columns: minmax(0,1.2fr) minmax(380px,1fr);
+    gap: clamp(24px,4vw,70px)
+}
+
+.fd-pilot-destination .fd-pilot-drone {
+    color: var(--fdk-ink)
+}
+
+.fd-pilot-destination :is(.fd-pilot-drone-status,.fd-pilot-drone-caption) {
+    color: inherit
+}
+
+.fd-pilot-destination .fd-pilot-drone-stage {
+    height: clamp(220px,100dvh - 590px,480px)
+}
+
+.fd-pilot-destination .fd-pilot-drone-caption {
+    text-align: center;
+    background: var(--fdk-chalk-plate);
+    width: fit-content;
+    margin: 0 auto;
+    padding: 12px 24px
+}
+
+.fd-pilot-destination .fd-pilot-drone-caption p span {
+    color: var(--fdk-muted)
+}
+
+.fd-pilot-destination .fd-pilot-fleet {
+    gap: var(--fdk-space-4);
+    margin-top: 22px
+}
+
+.fd-pilot-destination .fd-pilot-fleet .fdk-tile {
+    min-height: 115px
+}
+
+.fd-pilot-destination .fd-pilot-fleet .fdk-tile-title {
+    font-size: clamp(13px,1.4vw,18px)
+}
+
+.fd-pilot-destination .fd-pilot-record-column {
+    border: var(--fdk-line) solid var(--fdk-ink-edge);
+    background: var(--fdk-chalk-plate);
+    align-self: start;
+    padding: 22px
+}
+
+.fd-pilot-destination .fd-pilot-stats {
+    padding-top: var(--fdk-space-4);
+    margin-bottom: 24px
+}
+
+.fd-pilot-destination .fd-pilot-stats .fdk-big-value {
+    font-size: clamp(26px,3vw,42px)
+}
+
+.fd-pilot-destination .fd-pilot-section-heading h3 {
+    font-size: clamp(28px,3vw,42px)
+}
+
+.fd-pilot-destination .fd-pilot-records li {
+    padding: 18px 0
+}
+
+.fd-pilot-destination .fd-pilot-race-name strong {
+    font-size: 20px
+}
+
+.fd-pilot-destination .fd-pilot-time {
+    font-size: 27px
+}
+
+.fd-pilot-destination .fd-pilot-account {
+    padding-top: 18px
+}
+
+.fd-profile-page-footer {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-top: 22px;
+    padding-block:10px;display: flex
+}
+
+.fd-pilot-destination--replay {
+    background: var(--fdk-chalk-plate);
+    padding: 24px
+}

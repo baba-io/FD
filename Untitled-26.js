@@ -1,1628 +1,3845 @@
-(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push(["object" == typeof document ? document.currentScript : void 0, 770241, e => {
-    e.v({
-        amount: "currency-module__4Hxmgq__amount",
-        credits: "currency-module__4Hxmgq__credits",
-        parts: "currency-module__4Hxmgq__parts"
-    })
-}
-, 33156, e => {
+(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push(["object" == typeof document ? document.currentScript : void 0, 243257, 520381, e => {
     "use strict";
-    var t = e.i(843476);
-    let i = (0,
-    e.i(475254).default)("cog", [["path", {
-        d: "M11 10.27 7 3.34",
-        key: "16pf9h"
-    }], ["path", {
-        d: "m11 13.73-4 6.93",
-        key: "794ttg"
-    }], ["path", {
-        d: "M12 22v-2",
-        key: "1osdcq"
-    }], ["path", {
-        d: "M12 2v2",
-        key: "tus03m"
-    }], ["path", {
-        d: "M14 12h8",
-        key: "4f43i9"
-    }], ["path", {
-        d: "m17 20.66-1-1.73",
-        key: "eq3orb"
-    }], ["path", {
-        d: "m17 3.34-1 1.73",
-        key: "2wel8s"
-    }], ["path", {
-        d: "M2 12h2",
-        key: "1t8f8n"
-    }], ["path", {
-        d: "m20.66 17-1.73-1",
-        key: "sg0v6f"
-    }], ["path", {
-        d: "m20.66 7-1.73 1",
-        key: "1ow05n"
-    }], ["path", {
-        d: "m3.34 17 1.73-1",
-        key: "nuk764"
-    }], ["path", {
-        d: "m3.34 7 1.73 1",
-        key: "1ulond"
-    }], ["circle", {
-        cx: "12",
-        cy: "12",
-        r: "2",
-        key: "1c9p78"
-    }], ["circle", {
-        cx: "12",
-        cy: "12",
-        r: "8",
-        key: "46899m"
-    }]]);
-    e.i(671112);
-    var a = e.i(770241);
-    e.s(["CreditsGlyph", 0, function({className: e, size: i=20}) {
-        return (0,
-        t.jsx)("span", {
-            className: `${a.default.credits}${e ? ` ${e}` : ""}`,
-            style: 20 === i ? void 0 : {
-                "--coin": `${i}px`
-            },
-            "aria-hidden": "true",
-            children: (0,
-            t.jsx)("svg", {
-                viewBox: "0 0 20 20",
-                focusable: "false",
-                children: (0,
-                t.jsx)("path", {
-                    d: "M14.8 7.1 A5.1 5.1 0 1 0 14.8 12.9",
-                    fill: "none",
-                    stroke: "currentColor",
-                    strokeWidth: "3.1",
-                    strokeLinecap: "butt"
-                })
-            })
-        })
-    }
-    , "PartsGlyph", 0, function({className: e, size: s=18}) {
-        return (0,
-        t.jsx)(i, {
-            className: `${a.default.parts}${e ? ` ${e}` : ""}`,
-            width: s,
-            height: s,
-            strokeWidth: 2.6,
-            "aria-hidden": "true"
-        })
-    }
-    ], 33156)
-}
-, 526810, 694539, e => {
-    "use strict";
-    var t = e.i(843476)
-      , i = e.i(196121)
-      , a = e.i(410351)
-      , s = e.i(413873)
-      , n = e.i(899257)
-      , r = e.i(33156);
-    e.i(573798);
-    var l = e.i(568204)
-      , o = e.i(244144);
-    function d({kind: e, size: i="md"}) {
-        return "parts" === e ? (0,
-        t.jsx)(r.PartsGlyph, {
-            size: "sm" === i ? 19 : 48,
-            className: `fd-reward-token-parts fd-reward-token--${i}`
-        }) : (0,
-        t.jsx)("span", {
-            className: `fd-reward-token fd-reward-token--${e} fd-reward-token--${i}`,
-            "aria-hidden": "true",
-            children: "C"
-        })
-    }
-    function c({reward: e}) {
-        let i = e.display.image
-          , a = i ? (0,
-        n.previewUrl)(i) : null;
-        return (0,
-        t.jsx)("span", {
-            className: "fd-reward-thumb",
-            "aria-hidden": "true",
-            children: a ? (0,
-            t.jsx)("img", {
-                src: a,
-                alt: "",
-                width: i.width,
-                height: i.height,
-                loading: "lazy"
-            }) : (0,
-            t.jsx)(o.Icon, {
-                name: "sparkles",
-                size: 22
-            })
-        })
-    }
-    function u({rewards: e, claimed: i=!1}) {
-        return (0,
-        t.jsx)("ul", {
-            className: "fd-gift-rows",
-            children: e.map(e => (0,
-            t.jsxs)("li", {
-                className: "fd-gift-row",
-                children: ["item" === e.kind ? (0,
-                t.jsx)(c, {
-                    reward: e
-                }) : (0,
-                t.jsx)(d, {
-                    kind: e.kind
-                }), (0,
-                t.jsxs)("span", {
-                    className: "fd-gift-row__name",
-                    children: [(0,
-                    t.jsx)("strong", {
-                        children: (0,
-                        s.rewardLabel)(e, e.display.name)
-                    }), "item" === e.kind && (0,
-                    t.jsx)("span", {
-                        children: "1 item"
-                    })]
-                }), i && (0,
-                t.jsx)("span", {
-                    className: "fd-gift-row__check",
-                    children: (0,
-                    t.jsx)(o.Icon, {
-                        name: "check",
-                        size: 16,
-                        strokeWidth: 3,
-                        label: "Claimed"
-                    })
-                })]
-            }, e.id))
-        })
-    }
-    e.s(["GiftRows", 0, u, "RewardChips", 0, function({rewards: e}) {
-        let i = e.filter(e => "item" === e.kind).length;
-        return (0,
-        t.jsxs)(t.Fragment, {
-            children: [e.filter(e => "item" !== e.kind).map(e => (0,
-            t.jsx)(l.Badge, {
-                className: `fd-reward-chip fd-reward-chip--${e.kind}`,
-                tone: "credits" === e.kind ? "ink" : "sky",
-                icon: (0,
-                t.jsx)(d, {
-                    kind: e.kind,
-                    size: "sm"
-                }),
-                children: (0,
-                s.currencyLabel)(e.kind, e.amount ?? 0)
-            }, e.kind)), i > 0 && (0,
-            t.jsxs)(l.Badge, {
-                className: "fd-reward-chip",
-                tone: "chalk",
-                icon: (0,
-                t.jsx)(o.Icon, {
-                    name: "package",
-                    size: 24
-                }),
-                children: [i, " ", 1 === i ? "item" : "items"]
-            })]
-        })
-    }
-    ], 694539);
-    var m = e.i(498475);
-    function f({onBack: e, close: i}) {
-        return (0,
-        t.jsxs)("div", {
-            className: "fd-inbox-detail__nav fdk-on-ink",
-            children: [(0,
-            t.jsx)(m.Button, {
-                className: "fd-inbox-back",
-                tone: "ghost",
-                size: "md",
-                icon: (0,
-                t.jsx)(o.Icon, {
-                    name: "arrow-left",
-                    size: 24
-                }),
-                onClick: e,
-                tabIndex: e ? void 0 : -1,
-                children: "Notifications"
-            }), i ?? (0,
-            t.jsx)("span", {
-                className: "fd-inbox-close",
-                "aria-hidden": "true",
-                children: (0,
-                t.jsx)(o.Icon, {
-                    name: "close",
-                    size: 20
-                })
-            })]
-        })
-    }
-    e.s(["InboxDetailNav", 0, f, "NotificationArticle", 0, function({title: e, sentAt: n, body: r, rewards: l, claimed: o, footer: d, onBack: c, close: m, titleRef: h}) {
-        return (0,
-        t.jsxs)("div", {
-            className: "fd-inbox-detail fdk-screen fdk-on-chalk",
-            children: [(0,
-            t.jsx)(f, {
-                onBack: c,
-                close: m
-            }), (0,
-            t.jsxs)("div", {
-                className: "fd-inbox-detail__scroll",
-                children: [(0,
-                t.jsx)("h2", {
-                    className: "fd-inbox-detail__title",
-                    ref: h,
-                    tabIndex: -1,
-                    children: e || "Untitled"
-                }), (0,
-                t.jsxs)("p", {
-                    className: "fd-inbox-meta",
-                    children: [a.NOTIFICATION_SENDER, n ? (0,
-                    t.jsxs)(t.Fragment, {
-                        children: [" · ", (0,
-                        t.jsx)("time", {
-                            dateTime: n,
-                            children: (0,
-                            s.relativeTime)(n)
-                        })]
-                    }) : (0,
-                    t.jsx)(t.Fragment, {
-                        children: " · Just now"
-                    })]
-                }), (0,
-                t.jsx)(i.SafeMarkdown, {
-                    text: r,
-                    variant: "document",
-                    className: "fd-inbox-markdown"
-                }), l.length > 0 && (0,
-                t.jsxs)("section", {
-                    className: "fd-inbox-gift",
-                    "aria-label": "Your gift",
-                    children: [(0,
-                    t.jsx)("h3", {
-                        className: "fd-inbox-gift__heading",
-                        "aria-hidden": "true",
-                        children: "Your gift"
-                    }), (0,
-                    t.jsx)(u, {
-                        rewards: l,
-                        claimed: o
-                    })]
-                })]
-            }), d && (0,
-            t.jsx)("div", {
-                className: "fd-inbox-detail__footer",
-                children: d
-            })]
-        })
-    }
-    ], 526810)
-}
-, 850321, 795058, e => {
-    "use strict";
-    var t = e.i(843476)
-      , i = e.i(271645)
-      , a = e.i(127923)
-      , s = e.i(37220)
-      , n = e.i(263783)
-      , r = e.i(413873)
-      , l = e.i(410351)
-      , o = e.i(526810)
-      , d = e.i(106258)
-      , c = e.i(694539);
-    e.i(573798);
-    var u = e.i(568204)
-      , m = e.i(498475)
-      , f = e.i(883620)
-      , h = e.i(624834)
-      , g = e.i(516560)
-      , p = e.i(509381)
-      , x = e.i(244144);
-    let b = {
-        all: "All",
-        unread: "Unread",
-        gifts: "Gifts"
-    }
-      , j = {
-        all: "No notifications yet",
-        unread: "No unread notifications",
-        gifts: "No gifts waiting"
-    };
-    function y() {
-        return (0,
-        t.jsx)(a.Popover.Close, {
-            asChild: !0,
-            children: (0,
-            t.jsx)(m.IconButton, {
-                className: "fd-inbox-close",
-                label: "Close notifications",
-                icon: (0,
-                t.jsx)(x.Icon, {
-                    name: "close",
-                    size: 24
-                })
-            })
-        })
-    }
-    function k({item: e, onOpen: i}) {
-        let a = e.gift && !e.gift.claimed;
-        return (0,
-        t.jsx)("li", {
-            children: (0,
-            t.jsxs)("button", {
-                type: "button",
-                className: "fd-inbox-row",
-                "data-id": e.id,
-                "data-unread": !e.read || void 0,
-                "data-gift-ready": a || void 0,
-                onClick: () => i(e.id),
-                children: [(0,
-                t.jsx)("span", {
-                    className: "fd-inbox-row__dot",
-                    "aria-hidden": "true"
-                }), (0,
-                t.jsx)("span", {
-                    className: `fd-inbox-row__icon${e.gift ? " fd-inbox-row__icon--gift" : ""}`,
-                    "aria-hidden": "true",
-                    children: e.gift ? (0,
-                    t.jsx)(x.Icon, {
-                        name: "gift",
-                        size: 24
-                    }) : (0,
-                    t.jsx)(x.Icon, {
-                        name: "info",
-                        size: 24
-                    })
-                }), (0,
-                t.jsxs)("span", {
-                    className: "fd-inbox-row__text",
-                    children: [(0,
-                    t.jsxs)("span", {
-                        className: "fd-inbox-row__title",
-                        children: [!e.read && (0,
-                        t.jsx)("span", {
-                            className: "sr-only",
-                            children: "Unread. "
-                        }), e.title]
-                    }), (0,
-                    t.jsxs)("span", {
-                        className: "fd-inbox-meta",
-                        children: [l.NOTIFICATION_SENDER, " · ", (0,
-                        t.jsx)("time", {
-                            dateTime: e.sent_at,
-                            children: (0,
-                            r.relativeTime)(e.sent_at)
-                        })]
-                    }), e.excerpt && (0,
-                    t.jsx)("span", {
-                        className: "fd-inbox-row__excerpt",
-                        children: e.excerpt
-                    }), e.gift && (0,
-                    t.jsxs)("span", {
-                        className: "fd-inbox-row__rewards",
-                        children: [(0,
-                        t.jsx)(c.RewardChips, {
-                            rewards: e.gift.rewards
-                        }), a ? (0,
-                        t.jsx)(u.Badge, {
-                            tone: "acid",
-                            icon: (0,
-                            t.jsx)(x.Icon, {
-                                name: "gift",
-                                size: 24
-                            }),
-                            children: "Gift ready"
-                        }) : (0,
-                        t.jsx)(u.Badge, {
-                            tone: "chalk",
-                            className: "fd-gift-received",
-                            children: "Received"
-                        })]
-                    })]
-                }), (0,
-                t.jsx)(x.Icon, {
-                    name: "chevron-right",
-                    className: "fd-inbox-row__chevron",
-                    size: 20
-                })]
-            })
-        })
-    }
-    function _({saved: e, claim: a, askEmailUpdates: s=!1, onClaim: n, onRetryRefresh: l}) {
-        let[o,d] = (0,
-        i.useState)(!1)
-          , c = a?.status === "claimed" ? a.receipt : e;
-        if (c) {
-            let e = a?.status === "claimed" ? a.refresh : "ok";
-            return (0,
-            t.jsxs)(t.Fragment, {
-                children: [(0,
-                t.jsxs)("div", {
-                    className: "fd-claim-done",
-                    role: "status",
-                    children: [(0,
-                    t.jsx)("span", {
-                        className: "fd-claim-done__icon",
-                        "aria-hidden": "true",
-                        children: (0,
-                        t.jsx)("svg", {
-                            viewBox: "0 0 24 24",
-                            children: (0,
-                            t.jsx)("path", {
-                                d: "M6 12.5l4 4 8-9"
-                            })
-                        })
-                    }), (0,
-                    t.jsxs)("span", {
-                        children: [(0,
-                        t.jsx)("strong", {
-                            children: c.automatic ? "Gift added automatically" : "Gift claimed"
-                        }), "pending" === e ? (0,
-                        t.jsx)("span", {
-                            children: "Refreshing your collection…"
-                        }) : "failed" === e ? (0,
-                        t.jsxs)("span", {
-                            children: ["Your collection didn’t refresh. ", (0,
-                            t.jsx)(p.TextLink, {
-                                className: "fd-inbox-link-button",
-                                onClick: l,
-                                children: "Retry refresh"
-                            })]
-                        }) : (0,
-                        t.jsx)("span", {
-                            children: c.automatic ? "These Credits were already added to your wallet. No claim is needed." : (0,
-                            r.claimedSentence)(c.rewards)
-                        })]
-                    })]
-                }), (0,
-                t.jsx)(m.Button, {
-                    className: "fd-claim-button",
-                    tone: "primary",
-                    size: "lg",
-                    block: !0,
-                    disabled: !0,
-                    children: c.automatic ? "Added to wallet" : "Claimed"
-                })]
-            })
+    let t;
+    var r = e.i(931067)
+      , n = e.i(271645)
+      , a = e.i(848546)
+      , i = e.i(94800)
+      , o = e.i(733088)
+      , s = e.i(270950);
+    e.s(["applyProps", () => s.s], 520381);
+    var s = s
+      , l = s
+      , h = e.i(190072)
+      , u = e.i(408560)
+      , f = h
+      , c = e.i(131497);
+    class p extends f.Mesh {
+        constructor(e, t) {
+            var r, n;
+            const a = (e => e && e.isCubeTexture)(e)
+              , i = Math.floor(Math.log2((null != (n = a ? null == (r = e.image[0]) ? void 0 : r.width : e.image.width) ? n : 1024) / 4))
+              , o = Math.pow(2, i)
+              , s = 3 * Math.max(o, 112)
+              , l = `
+        varying vec3 vWorldPosition;
+        void main() 
+        {
+            vec4 worldPosition = ( modelMatrix * vec4( position, 1.0 ) );
+            vWorldPosition = worldPosition.xyz;
+            
+            gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
         }
-        let u = a?.status === "pending" || a?.status === "checking"
-          , h = a?.status === "error" && "UNCONFIRMED" === a.code;
-        return (0,
-        t.jsxs)(t.Fragment, {
-            children: [s && (0,
-            t.jsx)(f.Checkbox, {
-                className: "fd-claim-consent",
-                label: "Yes, email me game updates",
-                checked: o,
-                disabled: u,
-                onChange: d
-            }), a?.status === "error" && (0,
-            t.jsx)("p", {
-                className: "fd-claim-error",
-                role: "alert",
-                children: a.message
-            }), a?.status === "checking" && (0,
-            t.jsx)("p", {
-                className: "fd-claim-note",
-                role: "status",
-                children: "Checking your claim…"
-            }), (0,
-            t.jsx)(m.Button, {
-                className: "fd-claim-button",
-                tone: "primary",
-                size: "lg",
-                block: !0,
-                trailingIcon: (0,
-                t.jsx)(x.Icon, {
-                    name: "arrow-up-right",
-                    size: 24
-                }),
-                busy: u,
-                disabled: !u && s && !o,
-                onClick: () => n(s && o),
-                children: a?.status === "pending" ? "Claiming…" : u ? "Checking…" : h ? "Check claim" : "Claim gift"
-            })]
-        })
-    }
-    function N({id: e}) {
-        let a = (0,
-        d.useSimStore)(e => "menu" === e.phase)
-          , r = (0,
-        n.useNotifications)(t => t.details[e])
-          , l = (0,
-        n.useNotifications)(t => t.claims[e])
-          , c = (0,
-        n.useNotifications)(e => e.back)
-          , u = (0,
-        i.useRef)(null)
-          , f = r?.status === "ready";
-        if ((0,
-        i.useEffect)( () => {
-            f && u.current?.focus({
-                preventScroll: !0
-            })
+        `
+              , h = [a ? "#define ENVMAP_TYPE_CUBE" : "", `#define CUBEUV_TEXEL_WIDTH ${1 / s}`, `#define CUBEUV_TEXEL_HEIGHT ${1 / (4 * o)}`, `#define CUBEUV_MAX_MIP ${i}.0`].join("\n") + `
+        #define ENVMAP_TYPE_CUBE_UV
+        varying vec3 vWorldPosition;
+        uniform float radius;
+        uniform float height;
+        uniform float angle;
+        #ifdef ENVMAP_TYPE_CUBE
+            uniform samplerCube map;
+        #else
+            uniform sampler2D map;
+        #endif
+        // From: https://www.shadertoy.com/view/4tsBD7
+        float diskIntersectWithBackFaceCulling( vec3 ro, vec3 rd, vec3 c, vec3 n, float r ) 
+        {
+            float d = dot ( rd, n );
+            
+            if( d > 0.0 ) { return 1e6; }
+            
+            vec3  o = ro - c;
+            float t = - dot( n, o ) / d;
+            vec3  q = o + rd * t;
+            
+            return ( dot( q, q ) < r * r ) ? t : 1e6;
         }
-        , [f]),
-        !r || "loading" === r.status)
-            return (0,
-            t.jsxs)("div", {
-                className: "fd-inbox-detail",
-                children: [(0,
-                t.jsx)(o.InboxDetailNav, {
-                    onBack: c,
-                    close: (0,
-                    t.jsx)(y, {})
-                }), (0,
-                t.jsx)("div", {
-                    className: "fd-inbox-detail__scroll",
-                    "aria-busy": "true",
-                    children: (0,
-                    t.jsx)(h.LoadingState, {
-                        title: "Loading notification…"
-                    })
-                })]
-            });
-        if ("error" === r.status || !r.data)
-            return (0,
-            t.jsxs)("div", {
-                className: "fd-inbox-detail",
-                children: [(0,
-                t.jsx)(o.InboxDetailNav, {
-                    onBack: c,
-                    close: (0,
-                    t.jsx)(y, {})
-                }), (0,
-                t.jsxs)("div", {
-                    className: "fd-inbox-state",
-                    role: "alert",
-                    children: [(0,
-                    t.jsx)("p", {
-                        children: "Couldn’t open this notification."
-                    }), (0,
-                    t.jsx)(m.Button, {
-                        tone: "ghost",
-                        size: "sm",
-                        icon: (0,
-                        t.jsx)(x.Icon, {
-                            name: "rotate",
-                            size: 24
-                        }),
-                        onClick: () => void n.useNotifications.getState().openDetail(e),
-                        children: "Retry"
-                    })]
-                })]
-            });
-        let g = r.data
-          , p = !!g.receipt || l?.status === "claimed";
-        return (0,
-        t.jsx)(o.NotificationArticle, {
-            title: g.title,
-            sentAt: g.sent_at,
-            body: g.body,
-            rewards: g.rewards,
-            claimed: p,
-            titleRef: u,
-            onBack: c,
-            close: (0,
-            t.jsx)(y, {}),
-            footer: g.rewards.length > 0 ? (0,
-            t.jsx)(_, {
-                saved: g.receipt,
-                claim: l,
-                askEmailUpdates: "email_updates" === g.claim_requires && !g.email_updates,
-                onClaim: t => void n.useNotifications.getState().claim(e, {
-                    acceptEmailUpdates: t
-                }),
-                onRetryRefresh: () => void n.useNotifications.getState().retryRefresh(e)
-            }, e) : "friends" === g.action && a ? (0,
-            t.jsx)(m.Button, {
-                className: "fd-claim-button",
-                tone: "primary",
-                size: "lg",
-                block: !0,
-                trailingIcon: (0,
-                t.jsx)(x.Icon, {
-                    name: "arrow-up-right",
-                    size: 24
-                }),
-                onClick: () => {
-                    n.useNotifications.getState().setOpen(!1),
-                    s.useMenuScene.getState().setSocialOpen(!0)
-                }
-                ,
-                children: "Review request"
-            }) : void 0
-        })
-    }
-    function w({returnTo: e}) {
-        let a = (0,
-        n.useNotifications)(e => e.filter)
-          , s = (0,
-        n.useNotifications)(e => e.lists[e.filter])
-          , l = (0,
-        n.useNotifications)(e => e.summary)
-          , o = (0,
-        n.useNotifications)(e => e.markingAll)
-          , d = (0,
-        n.useNotifications)(e => e.scrollTop[e.filter])
-          , c = (0,
-        i.useRef)(null)
-          , [f,_] = (0,
-        i.useState)(null)
-          , N = n.useNotifications.getState;
-        (0,
-        i.useLayoutEffect)( () => {
-            c.current && (c.current.scrollTop = d),
-            e && c.current?.querySelector(`[data-id="${e}"]`)?.focus({
-                preventScroll: !0
-            })
+        // From: https://www.iquilezles.org/www/articles/intersectors/intersectors.htm
+        float sphereIntersect( vec3 ro, vec3 rd, vec3 ce, float ra ) 
+        {
+            vec3 oc = ro - ce;
+            float b = dot( oc, rd );
+            float c = dot( oc, oc ) - ra * ra;
+            float h = b * b - c;
+            
+            if( h < 0.0 ) { return -1.0; }
+            
+            h = sqrt( h );
+            
+            return - b + h;
         }
-        , [a, e]);
-        let v = e => {
-            N().rememberScroll(a, c.current?.scrollTop ?? 0),
-            N().openDetail(e)
-        }
-          , z = l?.unread ?? 0;
-        return (0,
-        t.jsxs)(t.Fragment, {
-            children: [(0,
-            t.jsxs)("div", {
-                className: "fd-inbox__header fdk-on-ink",
-                children: [(0,
-                t.jsx)("span", {
-                    className: "fd-inbox__insignia",
-                    "aria-hidden": "true",
-                    children: (0,
-                    t.jsx)(x.Icon, {
-                        name: "bell",
-                        size: 24
-                    })
-                }), (0,
-                t.jsx)("h2", {
-                    className: "fd-inbox__title",
-                    children: "Inbox"
-                }), z > 0 && (0,
-                t.jsx)("span", {
-                    className: "fd-inbox__count",
-                    "aria-label": `${z} unread`,
-                    children: (0,
-                    t.jsx)(u.Badge, {
-                        tone: "orange",
-                        display: !0,
-                        children: (0,
-                        r.badgeCount)(z)
-                    })
-                }), (0,
-                t.jsx)(y, {})]
-            }), (0,
-            t.jsxs)("div", {
-                className: "fd-inbox__toolbar",
-                children: [(0,
-                t.jsx)(g.Segmented, {
-                    className: "fd-inbox__filters",
-                    label: "Show",
-                    size: "sm",
-                    value: a,
-                    options: n.NOTIFICATION_FILTERS.map(e => ({
-                        value: e,
-                        label: b[e],
-                        count: "gifts" === e && (l?.unclaimed ?? 0) > 0 ? l.unclaimed : void 0
-                    })),
-                    onChange: e => {
-                        _(null),
-                        N().setFilter(e)
-                    }
-                }), (0,
-                t.jsx)(p.TextLink, {
-                    className: "fd-inbox__mark",
-                    disabled: !z || o,
-                    onClick: async () => _(await N().markAllRead()),
-                    children: o ? "Marking…" : "Mark all read"
-                })]
-            }), f && (0,
-            t.jsx)("p", {
-                className: "fd-claim-error fd-inbox__error",
-                role: "alert",
-                children: f
-            }), (0,
-            t.jsxs)("div", {
-                className: "fd-inbox__body",
-                ref: c,
-                children: ["error" === s.status && (0,
-                t.jsxs)("div", {
-                    className: `fd-inbox-state${s.items.length ? " fd-inbox-state--inline" : ""}`,
-                    role: "alert",
-                    children: [(0,
-                    t.jsx)("p", {
-                        children: s.items.length ? "Couldn’t refresh. These may be out of date." : "Couldn’t load notifications."
-                    }), (0,
-                    t.jsx)(m.Button, {
-                        tone: "ghost",
-                        size: "sm",
-                        icon: (0,
-                        t.jsx)(x.Icon, {
-                            name: "rotate",
-                            size: 24
-                        }),
-                        onClick: () => void N().loadList(a),
-                        children: "Retry"
-                    })]
-                }), ("idle" === s.status || "loading" === s.status && !s.items.length) && (0,
-                t.jsx)(h.LoadingState, {
-                    className: "fd-inbox-loading",
-                    title: "Loading notifications…"
-                }), "ready" === s.status && !s.items.length && (0,
-                t.jsx)(h.EmptyState, {
-                    className: "fd-inbox-empty",
-                    icon: "gifts" === a ? "gift" : "bell",
-                    title: j[a]
-                }), s.items.length > 0 && (0,
-                t.jsx)("ul", {
-                    className: "fd-inbox-list",
-                    children: s.items.map(e => (0,
-                    t.jsx)(k, {
-                        item: e,
-                        onOpen: v
-                    }, e.id))
-                }), s.more && (0,
-                t.jsx)(m.Button, {
-                    className: "fd-inbox-more",
-                    tone: "ghost",
-                    size: "sm",
-                    block: !0,
-                    disabled: s.loadingMore,
-                    onClick: () => void N().loadList(a, !0),
-                    children: s.loadingMore ? "Loading…" : "Show older"
-                })]
-            }), l && l.total > 0 && (0,
-            t.jsxs)("p", {
-                className: "fd-inbox__footer",
-                children: [(0,
-                t.jsx)(x.Icon, {
-                    name: "bell",
-                    size: 16
-                }), l.total.toLocaleString("en-US"), " ", 1 === l.total ? "notification" : "notifications"]
-            })]
-        })
-    }
-    function v() {
-        let e = (0,
-        n.useNotifications)(e => e.view)
-          , i = (0,
-        n.useNotifications)(e => e.lastOpened);
-        return (0,
-        t.jsx)("div", {
-            className: "fd-inbox fdk-screen fdk-on-chalk",
-            children: "detail" === e.kind ? (0,
-            t.jsx)(N, {
-                id: e.id
-            }) : (0,
-            t.jsx)(w, {
-                returnTo: i
-            })
-        })
-    }
-    function z() {
-        let e = (0,
-        n.useNotifications)(e => e.summary)
-          , t = e?.unread ?? 0
-          , i = e?.unclaimed ?? 0
-          , a = e ? `Notifications, ${t} unread${i ? `, ${i} ${1 === i ? "gift" : "gifts"} to claim` : ""}` : "Notifications";
-        return {
-            summary: e,
-            unread: t,
-            gifts: i,
-            label: a
-        }
-    }
-    function S({unread: e, gifts: i}) {
-        return (0,
-        t.jsxs)(t.Fragment, {
-            children: [(0,
-            t.jsx)(x.Icon, {
-                name: "bell",
-                size: 22,
-                strokeWidth: 2.2
-            }), e > 0 && (0,
-            t.jsx)("span", {
-                className: "fd-bell__count",
-                "aria-hidden": "true",
-                children: (0,
-                t.jsx)(u.Badge, {
-                    tone: "orange",
-                    children: (0,
-                    r.badgeCount)(e)
-                })
-            }), i > 0 && 0 === e && (0,
-            t.jsx)("span", {
-                className: "fd-bell__gift",
-                "aria-hidden": "true",
-                children: (0,
-                t.jsx)(x.Icon, {
-                    name: "gift",
-                    size: 11,
-                    strokeWidth: 2.6
-                })
-            })]
-        })
-    }
-    e.s(["NotificationPanel", 0, v], 795058),
-    e.s(["FlightNotificationBadge", 0, function() {
-        let {unread: e, gifts: i} = z();
-        return e || i ? (0,
-        t.jsx)("div", {
-            className: "fd-flight-bell",
-            "aria-hidden": "true",
-            children: (0,
-            t.jsx)(S, {
-                unread: e,
-                gifts: i
-            })
-        }) : null
-    }
-    , "NotificationBell", 0, function({placement: e}) {
-        let {summary: r, unread: l, gifts: o, label: d} = z()
-          , c = (0,
-        n.useNotifications)(e => e.open)
-          , u = (0,
-        i.useRef)(null)
-          , [m,f] = (0,
-        i.useState)(null);
-        return (0,
-        i.useEffect)( () => () => n.useNotifications.getState().setOpen(!1), []),
-        (0,
-        i.useEffect)( () => {
-            if (!c)
-                return;
-            let {lists: e, filter: t, loadList: i, view: a} = n.useNotifications.getState();
-            "list" === a.kind && e[t].stale && i(t)
-        }
-        , [c, r]),
-        (0,
-        t.jsxs)(a.Popover.Root, {
-            open: c,
-            onOpenChange: e => {
-                e && f(u.current?.closest(".sim-shell") ?? null);
-                let t = n.useNotifications.getState();
-                if (t.setOpen(e),
-                !e)
-                    return;
-                t.refreshSummary();
-                let i = t.lists[t.filter];
-                ("idle" === i.status || i.stale || "error" === i.status) && t.loadList(t.filter)
+        vec3 project() 
+        {
+            vec3 p = normalize( vWorldPosition );
+            vec3 camPos = cameraPosition;
+            camPos.y -= height;
+            float intersection = sphereIntersect( camPos, p, vec3( 0.0 ), radius );
+            if( intersection > 0.0 ) {
+                
+                vec3 h = vec3( 0.0, - height, 0.0 );
+                float intersection2 = diskIntersectWithBackFaceCulling( camPos, p, h, vec3( 0.0, 1.0, 0.0 ), radius );
+                p = ( camPos + min( intersection, intersection2 ) * p ) / radius;
+            } else {
+                p = vec3( 0.0, 1.0, 0.0 );
             }
-            ,
-            modal: !0,
-            children: [(0,
-            t.jsx)(a.Popover.Trigger, {
-                asChild: !0,
-                children: (0,
-                t.jsx)("button", {
-                    ref: u,
-                    type: "button",
-                    className: `fd-bell fd-bell--${e}`,
-                    "aria-label": d,
-                    children: (0,
-                    t.jsx)(S, {
-                        unread: l,
-                        gifts: o
-                    })
-                })
-            }), (0,
-            t.jsx)(a.Popover.Anchor, {
-                className: "fd-bell-anchor"
-            }), (0,
-            t.jsx)(a.Popover.Portal, {
-                container: m,
-                children: (0,
-                t.jsx)(a.Popover.Content, {
-                    className: "fd-inbox-popover fdk-screen fdk-on-chalk",
-                    side: "bottom",
-                    align: "end",
-                    sideOffset: 10,
-                    collisionPadding: 12,
-                    "aria-label": "Notifications",
-                    onOpenAutoFocus: e => {
-                        let t = e.currentTarget?.querySelector(".fd-inbox__filters [aria-checked=true]");
-                        t && (e.preventDefault(),
-                        t.focus())
-                    }
-                    ,
-                    onCloseAutoFocus: e => {
-                        s.useMenuScene.getState().socialOpen && e.preventDefault()
-                    }
-                    ,
-                    onEscapeKeyDown: e => e.stopPropagation(),
-                    onKeyDown: e => e.stopPropagation(),
-                    children: (0,
-                    t.jsx)(v, {})
-                })
-            })]
-        })
-    }
-    ], 850321)
-}
-, 413873, e => {
-    "use strict";
-    function t(e, t) {
-        let i = "credits" === e ? "Credit" : "Part";
-        return `${t.toLocaleString("en-US")} ${1 === t ? i : `${i}s`}`
-    }
-    function i(e, i) {
-        return "item" === e.kind ? i : t(e.kind, e.amount ?? 0)
-    }
-    e.s(["badgeCount", 0, function(e) {
-        return e > 99 ? "99+" : String(e)
-    }
-    , "claimedSentence", 0, function(e) {
-        let t = e.map(e => i(e, e.name));
-        if (!t.length)
-            return "Your gift is in your account.";
-        let a = 1 === t.length ? t[0] : `${t.slice(0, -1).join(", ")} and ${t[t.length - 1]}`
-          , s = 1 === t.length && ("item" === e[0].kind || 1 === e[0].amount)
-          , n = e.reduce( (e, t) => e + ("parts" === t.kind ? t.balance?.pending ?? 0 : 0), 0);
-        return `${a} ${s ? "is" : "are"} now in your account.${n > 0 ? ` ${n.toLocaleString("en-US")} Parts wait past your cap until you claim them.` : ""}`
-    }
-    , "currencyLabel", 0, t, "relativeTime", 0, function(e, t=Date.now()) {
-        let i = Date.parse(e.replace(/(\.\d{3})\d+/, "$1"));
-        if (!Number.isFinite(i))
-            return "";
-        let a = Math.floor((t - i) / 6e4);
-        if (a < 1)
-            return "Just now";
-        if (a < 60)
-            return `${a} min ago`;
-        let s = Math.floor(a / 60);
-        if (s < 24)
-            return `${s} ${1 === s ? "hour" : "hours"} ago`;
-        let n = new Date(i)
-          , r = new Date(t)
-          , l = Math.round((Date.UTC(r.getFullYear(), r.getMonth(), r.getDate()) - Date.UTC(n.getFullYear(), n.getMonth(), n.getDate())) / 864e5);
-        return l <= 1 ? "Yesterday" : l < 7 ? `${l} days ago` : new Intl.DateTimeFormat("en-GB",{
-            day: "numeric",
-            month: "short",
-            ...n.getFullYear() !== r.getFullYear() ? {
-                year: "numeric"
-            } : {}
-        }).format(n)
-    }
-    , "rewardLabel", 0, i])
-}
-, 410351, e => {
-    "use strict";
-    e.s(["NOTIFICATION_LIMITS", 0, {
-        title: 120,
-        body: 2e4,
-        excerpt: 140,
-        rewards: 10,
-        selected: 100,
-        credits: 1e5,
-        parts: 1e4
-    }, "NOTIFICATION_SENDER", 0, "Flight Division"])
-}
-, 658342, e => {
-    "use strict";
-    var t = e.i(50270);
-    let i = t.z.enum(["credits", "parts", "item"])
-      , a = t.z.object({
-        path: t.z.string(),
-        width: t.z.number(),
-        height: t.z.number(),
-        smallPath: t.z.string().optional(),
-        smallWidth: t.z.number().optional()
-    })
-      , s = t.z.object({
-        name: t.z.string(),
-        category: t.z.string().nullish(),
-        rarity: t.z.string().nullish(),
-        drone: t.z.string().nullish(),
-        image: a.nullish()
-    })
-      , n = t.z.object({
-        id: t.z.string().uuid(),
-        kind: i,
-        amount: t.z.number().int().nullable(),
-        item_id: t.z.string().uuid().nullable(),
-        display: s
-    })
-      , r = t.z.object({
-        kind: i,
-        amount: t.z.number().int().nullable(),
-        name: t.z.string()
-    })
-      , l = t.z.object({
-        unread: t.z.number().int().nonnegative(),
-        unclaimed: t.z.number().int().nonnegative(),
-        total: t.z.number().int().nonnegative(),
-        boundary: t.z.string()
-    })
-      , o = t.z.object({
-        id: t.z.string().uuid(),
-        title: t.z.string(),
-        excerpt: t.z.string(),
-        sent_at: t.z.string(),
-        read: t.z.boolean(),
-        gift: t.z.object({
-            claimed: t.z.boolean(),
-            rewards: t.z.array(r)
-        }).nullable()
-    })
-      , d = t.z.object({
-        items: t.z.array(o),
-        more: t.z.boolean(),
-        summary: l
-    })
-      , c = t.z.object({
-        claimed_at: t.z.string(),
-        automatic: t.z.boolean().optional(),
-        rewards: t.z.array(t.z.object({
-            id: t.z.string().uuid(),
-            kind: i,
-            name: t.z.string(),
-            amount: t.z.number().int().optional(),
-            item_id: t.z.string().uuid().optional(),
-            already_owned: t.z.boolean().optional(),
-            balance: t.z.object({
-                applied: t.z.number().int().optional(),
-                pending: t.z.number().int().optional()
-            }).passthrough().optional()
-        })),
-        credits: t.z.object({
-            before: t.z.number().int(),
-            after: t.z.number().int()
-        }).nullish()
-    })
-      , u = t.z.object({
-        action: t.z.literal("friends").nullish(),
-        claim_requires: t.z.literal("email_updates").nullish(),
-        email_updates: t.z.boolean().nullish(),
-        id: t.z.string().uuid(),
-        title: t.z.string(),
-        body: t.z.string(),
-        sent_at: t.z.string(),
-        read_at: t.z.string().nullable(),
-        claimed_at: t.z.string().nullable(),
-        receipt: c.nullable(),
-        rewards: t.z.array(n)
-    })
-      , m = t.z.object({
-        receipt: c,
-        inventory: t.z.object({
-            balance: t.z.number(),
-            items: t.z.array(t.z.unknown())
-        }).passthrough(),
-        repeat: t.z.boolean()
-    });
-    e.s(["claimResponseSchema", 0, m, "detailSchema", 0, u, "inboxPageSchema", 0, d, "rewardDisplaySchema", 0, s, "rewardSchema", 0, n, "summarySchema", 0, l])
-}
-, 263783, e => {
-    "use strict";
-    var t = e.i(768834)
-      , i = e.i(920755)
-      , a = e.i(894969)
-      , s = e.i(451598)
-      , n = e.i(658342);
-    let r = () => ({
-        items: [],
-        more: !1,
-        status: "idle",
-        loadingMore: !1,
-        stale: !1
-    })
-      , l = () => ({
-        all: r(),
-        unread: r(),
-        gifts: r()
-    })
-      , o = 0
-      , d = null
-      , c = 0
-      , u = 0
-      , m = e => new Promise(t => setTimeout(t, e));
-    async function f(e, t) {
-        try {
-            return await (0,
-            i.createClient)().rpc(e, t).abortSignal(AbortSignal.timeout(15e3))
-        } catch (e) {
-            return {
-                data: null,
-                error: {
-                    message: e instanceof Error ? e.message : "Network error"
+            return p;
+        }
+        #include <common>
+        #include <cube_uv_reflection_fragment>
+        void main() 
+        {
+            vec3 projectedWorldPosition = project();
+            
+            #ifdef ENVMAP_TYPE_CUBE
+                vec3 outcolor = textureCube( map, projectedWorldPosition ).rgb;
+            #else
+                vec3 direction = normalize( projectedWorldPosition );
+                vec2 uv = equirectUv( direction );
+                vec3 outcolor = texture2D( map, uv ).rgb;
+            #endif
+            gl_FragColor = vec4( outcolor, 1.0 );
+            #include <tonemapping_fragment>
+            #include <${c.version >= 154 ? "colorspace_fragment" : "encodings_fragment"}>
+        }
+        `
+              , u = {
+                map: {
+                    value: e
+                },
+                height: {
+                    value: (null == t ? void 0 : t.height) || 15
+                },
+                radius: {
+                    value: (null == t ? void 0 : t.radius) || 100
                 }
-            }
-        }
-    }
-    let h = new Set(["P0001", "P0002", "42501"]);
-    function g(e, t) {
-        return e?.code === "P0002" ? {
-            message: "This notification isn’t available."
-        } : e && h.has(e.code ?? "") ? {
-            message: e.message,
-            code: e.hint || void 0
-        } : {
-            message: t
-        }
-    }
-    let p = (0,
-    t.create)( (e, t) => {
-        let i = (i, a) => {
-            if (a < u)
-                return;
-            u = a;
-            let {boundary: s, ...n} = i
-              , r = t().summary;
-            r && r.total === n.total && r.unread === n.unread && r.unclaimed === n.unclaimed ? e({
-                boundary: s
-            }) : e(e => ({
-                summary: n,
-                boundary: s,
-                lists: Object.fromEntries(Object.entries(e.lists).map( ([e,t]) => [e, {
-                    ...t,
-                    stale: "idle" !== t.status
-                }]))
+            };
+            super(new f.IcosahedronGeometry(1,16), new f.ShaderMaterial({
+                uniforms: u,
+                fragmentShader: h,
+                vertexShader: l,
+                side: f.DoubleSide
             }))
         }
-          , r = (t, i) => e(e => ({
-            lists: Object.fromEntries(Object.entries(e.lists).map( ([e,a]) => [e, {
-                ...a,
-                items: a.items.flatMap(a => a.id === t ? i(a, e) ?? [] : [a])
-            }]))
-        }))
-          , p = (t, i) => e(e => ({
-            claims: {
-                ...e.claims,
-                [t]: i
-            }
-        }));
-        async function x(e, i) {
-            let n = o;
-            if (i && a.useInventory.getState().adopt(i) || await a.useInventory.getState().refresh(),
-            s.useCreditRecord.getState().refresh(),
-            n !== o)
-                return;
-            let r = t().claims[e];
-            r?.status === "claimed" && p(e, {
-                ...r,
-                refresh: "error" === a.useInventory.getState().status ? "failed" : "ok"
-            })
+        set radius(e) {
+            this.material.uniforms.radius.value = e
         }
-        return {
-            open: !1,
-            view: {
-                kind: "list"
-            },
-            lastOpened: null,
-            filter: "all",
-            scrollTop: {
-                all: 0,
-                unread: 0,
-                gifts: 0
-            },
-            summary: null,
-            boundary: null,
-            lists: l(),
-            details: {},
-            claims: {},
-            markingAll: !1,
-            setOpen: t => e(t ? {
-                open: t,
-                lastOpened: null
-            } : {
-                open: t,
-                view: {
-                    kind: "list"
+        get radius() {
+            return this.material.uniforms.radius.value
+        }
+        set height(e) {
+            this.material.uniforms.height.value = e
+        }
+        get height() {
+            return this.material.uniforms.height.value
+        }
+    }
+    var d = s
+      , g = h;
+    class v extends g.DataTextureLoader {
+        constructor(e) {
+            super(e),
+            this.type = g.HalfFloatType
+        }
+        parse(e) {
+            let t, r, n, a = function(e, t) {
+                switch (e) {
+                case 1:
+                    throw Error("THREE.RGBELoader: Read Error: " + (t || ""));
+                case 2:
+                    throw Error("THREE.RGBELoader: Write Error: " + (t || ""));
+                case 3:
+                    throw Error("THREE.RGBELoader: Bad File Format: " + (t || ""));
+                default:
+                    throw Error("THREE.RGBELoader: Memory Error: " + (t || ""))
                 }
-            }),
-            setFilter: i => {
-                e({
-                    filter: i,
-                    view: {
-                        kind: "list"
-                    }
-                });
-                let a = t().lists[i];
-                ("idle" === a.status || a.stale) && t().loadList(i)
-            }
-            ,
-            rememberScroll: (t, i) => e(e => ({
-                scrollTop: {
-                    ...e.scrollTop,
-                    [t]: i
-                }
-            })),
-            back: () => e({
-                view: {
-                    kind: "list"
-                }
-            }),
-            reset: t => {
-                o++,
-                d = t,
-                c = 0,
-                u = 0,
-                e({
-                    open: !1,
-                    view: {
-                        kind: "list"
-                    },
-                    lastOpened: null,
-                    filter: "all",
-                    scrollTop: {
-                        all: 0,
-                        unread: 0,
-                        gifts: 0
-                    },
-                    summary: null,
-                    boundary: null,
-                    lists: l(),
-                    details: {},
-                    claims: {},
-                    markingAll: !1
-                })
-            }
-            ,
-            refreshSummary: async e => {
-                if (!d)
-                    return;
-                let t = o
-                  , a = ++c
-                  , s = e ? await Promise.resolve(e).catch( () => null) : await f("notification_summary").then( ({data: e, error: t}) => t ? null : e);
-                if (t !== o)
-                    return;
-                let r = n.summarySchema.safeParse(s);
-                r.success && i(r.data, a)
-            }
-            ,
-            loadList: async (a, s=!1) => {
-                let r = t().lists[a];
-                if (!d || r.loadingMore || "loading" === r.status && !s)
-                    return;
-                let l = o
-                  , u = ++c
-                  , m = s ? r.items[r.items.length - 1] : void 0;
-                if (s && !m)
-                    return;
-                e(e => ({
-                    lists: {
-                        ...e.lists,
-                        [a]: s ? {
-                            ...r,
-                            loadingMore: !0
-                        } : {
-                            ...r,
-                            status: "loading"
-                        }
-                    }
-                }));
-                let {data: h, error: g} = await f("notification_inbox", {
-                    p_filter: a,
-                    p_before_sent: m?.sent_at ?? null,
-                    p_before_id: m?.id ?? null
-                });
-                if (l !== o)
-                    return;
-                let p = n.inboxPageSchema.safeParse(h);
-                g || !p.success ? e(e => ({
-                    lists: {
-                        ...e.lists,
-                        [a]: {
-                            ...e.lists[a],
-                            status: "error",
-                            loadingMore: !1
-                        }
-                    }
-                })) : (e(e => ({
-                    lists: {
-                        ...e.lists,
-                        [a]: {
-                            items: s ? [...e.lists[a].items, ...p.data.items.filter(t => !e.lists[a].items.some(e => e.id === t.id))] : p.data.items,
-                            more: p.data.more,
-                            status: "ready",
-                            loadingMore: !1,
-                            stale: !1
-                        }
-                    }
-                })),
-                i(p.data.summary, u))
-            }
-            ,
-            openDetail: async a => {
-                if (e({
-                    view: {
-                        kind: "detail",
-                        id: a
-                    },
-                    lastOpened: a
-                }),
-                t().details[a]?.status === "ready")
-                    return;
-                let s = o;
-                e(e => ({
-                    details: {
-                        ...e.details,
-                        [a]: {
-                            status: "loading"
-                        }
-                    }
-                }));
-                let {data: l, error: d} = await f("notification_detail", {
-                    p_id: a
-                });
-                if (s !== o)
-                    return;
-                let u = n.detailSchema.safeParse(l);
-                if (d || !u.success)
-                    return void e(e => ({
-                        details: {
-                            ...e.details,
-                            [a]: {
-                                status: "error"
-                            }
-                        }
-                    }));
-                if (e(e => ({
-                    details: {
-                        ...e.details,
-                        [a]: {
-                            status: "ready",
-                            data: u.data
-                        }
-                    }
-                })),
-                u.data.read_at)
-                    return;
-                let m = ++c
-                  , h = await f("notification_mark_read", {
-                    p_id: a
-                });
-                if (s !== o || h.error)
-                    return;
-                r(a, e => ({
-                    ...e,
-                    read: !0
-                }));
-                let g = n.summarySchema.safeParse(h.data);
-                g.success && i(g.data, m)
-            }
-            ,
-            markAllRead: async () => {
-                let a = t().boundary;
-                if (!a || t().markingAll)
-                    return null;
-                let s = o
-                  , r = ++c;
-                e({
-                    markingAll: !0
-                });
-                try {
-                    let {data: e, error: l} = await f("notification_mark_all_read", {
-                        p_boundary: a
-                    });
-                    if (s !== o)
-                        return null;
-                    let d = n.summarySchema.safeParse(e);
-                    if (l || !d.success)
-                        return g(l, "Couldn’t mark notifications read. Try again.").message;
-                    return i(d.data, r),
-                    t().loadList(t().filter),
-                    null
-                } finally {
-                    s === o && e({
-                        markingAll: !1
-                    })
-                }
-            }
-            ,
-            claim: async (i, a) => {
-                let s = t().claims[i];
-                if (s && "error" !== s.status)
-                    return;
-                let l = o;
-                p(i, {
-                    status: "pending"
-                });
-                let d = t().details[i]?.data;
-                if (d?.claim_requires === "email_updates" && !d.email_updates) {
-                    if (!a?.acceptEmailUpdates)
-                        return void p(i, {
-                            status: "error",
-                            code: "EMAIL_UPDATES_REQUIRED",
-                            message: "Tick the email updates box to claim this gift."
-                        });
-                    let {error: t} = await f("email_updates_subscribe", {
-                        p_source: "gift"
-                    });
-                    if (l !== o)
-                        return;
-                    if (t)
-                        return void p(i, {
-                            status: "error",
-                            ...g(t, "Couldn’t turn on email updates. Try again.")
-                        });
-                    e(e => {
-                        let t = e.details[i];
-                        return {
-                            details: t?.data ? {
-                                ...e.details,
-                                [i]: {
-                                    ...t,
-                                    data: {
-                                        ...t.data,
-                                        email_updates: !0
-                                    }
-                                }
-                            } : e.details
-                        }
-                    }
-                    )
-                }
-                for (let a = 0; a < 4; a++) {
-                    if (a && await m(800 * 2 ** a),
-                    l !== o)
-                        return;
-                    let {data: s, error: d} = await f("notification_claim", {
-                        p_id: i
-                    });
-                    if (l !== o)
-                        return;
-                    if (d && !h.has(d.code ?? "")) {
-                        p(i, {
-                            status: "checking"
-                        });
+            }, i = function(e, t, r) {
+                t = t || 1024;
+                let n = e.pos
+                  , a = -1
+                  , i = 0
+                  , o = ""
+                  , s = String.fromCharCode.apply(null, new Uint16Array(e.subarray(n, n + 128)));
+                for (; 0 > (a = s.indexOf("\n")) && i < t && n < e.byteLength; )
+                    o += s,
+                    i += s.length,
+                    n += 128,
+                    s += String.fromCharCode.apply(null, new Uint16Array(e.subarray(n, n + 128)));
+                return -1 < a && (!1 !== r && (e.pos += i + a + 1),
+                o + s.slice(0, a))
+            }, o = new Uint8Array(e);
+            o.pos = 0;
+            let s = function(e) {
+                let t, r, n = /^\s*GAMMA\s*=\s*(\d+(\.\d+)?)\s*$/, o = /^\s*EXPOSURE\s*=\s*(\d+(\.\d+)?)\s*$/, s = /^\s*FORMAT=(\S+)\s*$/, l = /^\s*\-Y\s+(\d+)\s+\+X\s+(\d+)\s*$/, h = {
+                    valid: 0,
+                    string: "",
+                    comments: "",
+                    programtype: "RGBE",
+                    format: "",
+                    gamma: 1,
+                    exposure: 1,
+                    width: 0,
+                    height: 0
+                };
+                for (!(e.pos >= e.byteLength) && (t = i(e)) || a(1, "no header found"),
+                (r = t.match(/^#\?(\S+)/)) || a(3, "bad initial token"),
+                h.valid |= 1,
+                h.programtype = r[1],
+                h.string += t + "\n"; !1 !== (t = i(e)); ) {
+                    if (h.string += t + "\n",
+                    "#" === t.charAt(0)) {
+                        h.comments += t + "\n";
                         continue
                     }
-                    let c = n.claimResponseSchema.safeParse(s);
-                    if (d || !c.success) {
-                        let t = g(d, "Couldn’t claim this gift. Try again.");
-                        "EMAIL_UPDATES_REQUIRED" === t.code && e(e => {
-                            let t = e.details[i];
-                            return {
-                                details: t?.data ? {
-                                    ...e.details,
-                                    [i]: {
-                                        ...t,
-                                        data: {
-                                            ...t.data,
-                                            email_updates: !1
-                                        }
-                                    }
-                                } : e.details
+                    if ((r = t.match(n)) && (h.gamma = parseFloat(r[1])),
+                    (r = t.match(o)) && (h.exposure = parseFloat(r[1])),
+                    (r = t.match(s)) && (h.valid |= 2,
+                    h.format = r[1]),
+                    (r = t.match(l)) && (h.valid |= 4,
+                    h.height = parseInt(r[1], 10),
+                    h.width = parseInt(r[2], 10)),
+                    2 & h.valid && 4 & h.valid)
+                        break
+                }
+                return 2 & h.valid || a(3, "missing format specifier"),
+                4 & h.valid || a(3, "missing image size specifier"),
+                h
+            }(o)
+              , l = s.width
+              , h = s.height
+              , u = function(e, t, r) {
+                if (t < 8 || t > 32767 || 2 !== e[0] || 2 !== e[1] || 128 & e[2])
+                    return new Uint8Array(e);
+                t !== (e[2] << 8 | e[3]) && a(3, "wrong scanline width");
+                let n = new Uint8Array(4 * t * r);
+                n.length || a(4, "unable to allocate buffer space");
+                let i = 0
+                  , o = 0
+                  , s = 4 * t
+                  , l = new Uint8Array(4)
+                  , h = new Uint8Array(s)
+                  , u = r;
+                for (; u > 0 && o < e.byteLength; ) {
+                    o + 4 > e.byteLength && a(1),
+                    l[0] = e[o++],
+                    l[1] = e[o++],
+                    l[2] = e[o++],
+                    l[3] = e[o++],
+                    (2 != l[0] || 2 != l[1] || (l[2] << 8 | l[3]) != t) && a(3, "bad rgbe scanline format");
+                    let r = 0, f;
+                    for (; r < s && o < e.byteLength; ) {
+                        let t = (f = e[o++]) > 128;
+                        if (t && (f -= 128),
+                        (0 === f || r + f > s) && a(3, "bad scanline data"),
+                        t) {
+                            let t = e[o++];
+                            for (let e = 0; e < f; e++)
+                                h[r++] = t
+                        } else
+                            h.set(e.subarray(o, o + f), r),
+                            r += f,
+                            o += f
+                    }
+                    for (let e = 0; e < t; e++) {
+                        let r = 0;
+                        n[i] = h[e + r],
+                        r += t,
+                        n[i + 1] = h[e + r],
+                        r += t,
+                        n[i + 2] = h[e + r],
+                        r += t,
+                        n[i + 3] = h[e + r],
+                        i += 4
+                    }
+                    u--
+                }
+                return n
+            }(o.subarray(o.pos), l, h);
+            switch (this.type) {
+            case g.FloatType:
+                let f = new Float32Array(4 * (n = u.length / 4));
+                for (let e = 0; e < n; e++)
+                    !function(e, t, r, n) {
+                        let a = Math.pow(2, e[t + 3] - 128) / 255;
+                        r[n + 0] = e[t + 0] * a,
+                        r[n + 1] = e[t + 1] * a,
+                        r[n + 2] = e[t + 2] * a,
+                        r[n + 3] = 1
+                    }(u, 4 * e, f, 4 * e);
+                t = f,
+                r = g.FloatType;
+                break;
+            case g.HalfFloatType:
+                let c = new Uint16Array(4 * (n = u.length / 4));
+                for (let e = 0; e < n; e++)
+                    !function(e, t, r, n) {
+                        let a = Math.pow(2, e[t + 3] - 128) / 255;
+                        r[n + 0] = g.DataUtils.toHalfFloat(Math.min(e[t + 0] * a, 65504)),
+                        r[n + 1] = g.DataUtils.toHalfFloat(Math.min(e[t + 1] * a, 65504)),
+                        r[n + 2] = g.DataUtils.toHalfFloat(Math.min(e[t + 2] * a, 65504)),
+                        r[n + 3] = g.DataUtils.toHalfFloat(1)
+                    }(u, 4 * e, c, 4 * e);
+                t = c,
+                r = g.HalfFloatType;
+                break;
+            default:
+                throw Error("THREE.RGBELoader: Unsupported type: " + this.type)
+            }
+            return {
+                width: l,
+                height: h,
+                data: t,
+                header: s.string,
+                gamma: s.gamma,
+                exposure: s.exposure,
+                type: r
+            }
+        }
+        setDataType(e) {
+            return this.type = e,
+            this
+        }
+        load(e, t, r, n) {
+            return super.load(e, function(e, r) {
+                switch (e.type) {
+                case g.FloatType:
+                case g.HalfFloatType:
+                    "colorSpace" in e ? e.colorSpace = "srgb-linear" : e.encoding = 3e3,
+                    e.minFilter = g.LinearFilter,
+                    e.magFilter = g.LinearFilter,
+                    e.generateMipmaps = !1,
+                    e.flipY = !0
+                }
+                t && t(e, r)
+            }, r, n)
+        }
+    }
+    var m = h
+      , w = {}
+      , y = function(e, t, r, n, a) {
+        var i = new Worker(w[t] || (w[t] = URL.createObjectURL(new Blob([e],{
+            type: "text/javascript"
+        }))));
+        return i.onerror = function(e) {
+            return a(e.error, null)
+        }
+        ,
+        i.onmessage = function(e) {
+            return a(null, e.data)
+        }
+        ,
+        i.postMessage(r, n),
+        i
+    }
+      , b = Uint8Array
+      , M = Uint16Array
+      , x = Uint32Array
+      , _ = new b([0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0, 0, 0, 0])
+      , E = new b([0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 0, 0])
+      , T = new b([16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15])
+      , S = function(e, t) {
+        for (var r = new M(31), n = 0; n < 31; ++n)
+            r[n] = t += 1 << e[n - 1];
+        for (var a = new x(r[30]), n = 1; n < 30; ++n)
+            for (var i = r[n]; i < r[n + 1]; ++i)
+                a[i] = i - r[n] << 5 | n;
+        return [r, a]
+    }
+      , C = S(_, 2)
+      , A = C[0]
+      , F = C[1];
+    A[28] = 258,
+    F[258] = 28;
+    for (var U = S(E, 0), R = U[0], I = U[1], k = new M(32768), O = 0; O < 32768; ++O) {
+        var P = (43690 & O) >>> 1 | (21845 & O) << 1;
+        P = (61680 & (P = (52428 & P) >>> 2 | (13107 & P) << 2)) >>> 4 | (3855 & P) << 4,
+        k[O] = ((65280 & P) >>> 8 | (255 & P) << 8) >>> 1
+    }
+    for (var L = function(e, t, r) {
+        for (var n, a = e.length, i = 0, o = new M(t); i < a; ++i)
+            ++o[e[i] - 1];
+        var s = new M(t);
+        for (i = 0; i < t; ++i)
+            s[i] = s[i - 1] + o[i - 1] << 1;
+        if (r) {
+            n = new M(1 << t);
+            var l = 15 - t;
+            for (i = 0; i < a; ++i)
+                if (e[i])
+                    for (var h = i << 4 | e[i], u = t - e[i], f = s[e[i] - 1]++ << u, c = f | (1 << u) - 1; f <= c; ++f)
+                        n[k[f] >>> l] = h
+        } else
+            for (n = new M(a),
+            i = 0; i < a; ++i)
+                e[i] && (n[i] = k[s[e[i] - 1]++] >>> 15 - e[i]);
+        return n
+    }, D = new b(288), O = 0; O < 144; ++O)
+        D[O] = 8;
+    for (var O = 144; O < 256; ++O)
+        D[O] = 9;
+    for (var O = 256; O < 280; ++O)
+        D[O] = 7;
+    for (var O = 280; O < 288; ++O)
+        D[O] = 8;
+    for (var z = new b(32), O = 0; O < 32; ++O)
+        z[O] = 5;
+    var B = L(D, 9, 0)
+      , H = L(D, 9, 1)
+      , N = L(z, 5, 0)
+      , W = L(z, 5, 1)
+      , G = function(e) {
+        for (var t = e[0], r = 1; r < e.length; ++r)
+            e[r] > t && (t = e[r]);
+        return t
+    }
+      , j = function(e, t, r) {
+        var n = t / 8 | 0;
+        return (e[n] | e[n + 1] << 8) >> (7 & t) & r
+    }
+      , V = function(e, t) {
+        var r = t / 8 | 0;
+        return (e[r] | e[r + 1] << 8 | e[r + 2] << 16) >> (7 & t)
+    }
+      , X = function(e) {
+        return (e / 8 | 0) + (7 & e && 1)
+    }
+      , q = function(e, t, r) {
+        (null == t || t < 0) && (t = 0),
+        (null == r || r > e.length) && (r = e.length);
+        var n = new (e instanceof M ? M : e instanceof x ? x : b)(r - t);
+        return n.set(e.subarray(t, r)),
+        n
+    }
+      , $ = function(e, t, r) {
+        var n = e.length;
+        if (!n || r && !r.l && n < 5)
+            return t || new b(0);
+        var a = !t || r
+          , i = !r || r.i;
+        r || (r = {}),
+        t || (t = new b(3 * n));
+        var o = function(e) {
+            var r = t.length;
+            if (e > r) {
+                var n = new b(Math.max(2 * r, e));
+                n.set(t),
+                t = n
+            }
+        }
+          , s = r.f || 0
+          , l = r.p || 0
+          , h = r.b || 0
+          , u = r.l
+          , f = r.d
+          , c = r.m
+          , p = r.n
+          , d = 8 * n;
+        do {
+            if (!u) {
+                r.f = s = j(e, l, 1);
+                var g = j(e, l + 1, 3);
+                if (l += 3,
+                g)
+                    if (1 == g)
+                        u = H,
+                        f = W,
+                        c = 9,
+                        p = 5;
+                    else if (2 == g) {
+                        var v = j(e, l, 31) + 257
+                          , m = j(e, l + 10, 15) + 4
+                          , w = v + j(e, l + 5, 31) + 1;
+                        l += 14;
+                        for (var y = new b(w), M = new b(19), x = 0; x < m; ++x)
+                            M[T[x]] = j(e, l + 3 * x, 7);
+                        l += 3 * m;
+                        for (var S = G(M), C = (1 << S) - 1, F = L(M, S, 1), x = 0; x < w; ) {
+                            var U = F[j(e, l, C)];
+                            l += 15 & U;
+                            var I = U >>> 4;
+                            if (I < 16)
+                                y[x++] = I;
+                            else {
+                                var k = 0
+                                  , O = 0;
+                                for (16 == I ? (O = 3 + j(e, l, 3),
+                                l += 2,
+                                k = y[x - 1]) : 17 == I ? (O = 3 + j(e, l, 7),
+                                l += 3) : 18 == I && (O = 11 + j(e, l, 127),
+                                l += 7); O--; )
+                                    y[x++] = k
                             }
                         }
-                        ),
-                        p(i, {
-                            status: "error",
-                            ...t
-                        });
-                        return
+                        var P = y.subarray(0, v)
+                          , D = y.subarray(v);
+                        c = G(P),
+                        p = G(D),
+                        u = L(P, c, 1),
+                        f = L(D, p, 1)
+                    } else
+                        throw "invalid block type";
+                else {
+                    var I = X(l) + 4
+                      , z = e[I - 4] | e[I - 3] << 8
+                      , B = I + z;
+                    if (B > n) {
+                        if (i)
+                            throw "unexpected EOF";
+                        break
                     }
-                    let {receipt: u, inventory: b} = c.data;
-                    e(e => {
-                        let t = e.details[i];
-                        return {
-                            details: t?.data ? {
-                                ...e.details,
-                                [i]: {
-                                    ...t,
-                                    data: {
-                                        ...t.data,
-                                        claimed_at: u.claimed_at,
-                                        receipt: u,
-                                        read_at: t.data.read_at ?? u.claimed_at
+                    a && o(h + z),
+                    t.set(e.subarray(I, B), h),
+                    r.b = h += z,
+                    r.p = l = 8 * B;
+                    continue
+                }
+                if (l > d) {
+                    if (i)
+                        throw "unexpected EOF";
+                    break
+                }
+            }
+            a && o(h + 131072);
+            for (var N = (1 << c) - 1, $ = (1 << p) - 1, Y = l; ; Y = l) {
+                var k = u[V(e, l) & N]
+                  , Z = k >>> 4;
+                if ((l += 15 & k) > d) {
+                    if (i)
+                        throw "unexpected EOF";
+                    break
+                }
+                if (!k)
+                    throw "invalid length/literal";
+                if (Z < 256)
+                    t[h++] = Z;
+                else if (256 == Z) {
+                    Y = l,
+                    u = null;
+                    break
+                } else {
+                    var Q = Z - 254;
+                    if (Z > 264) {
+                        var x = Z - 257
+                          , J = _[x];
+                        Q = j(e, l, (1 << J) - 1) + A[x],
+                        l += J
+                    }
+                    var K = f[V(e, l) & $]
+                      , ee = K >>> 4;
+                    if (!K)
+                        throw "invalid distance";
+                    l += 15 & K;
+                    var D = R[ee];
+                    if (ee > 3) {
+                        var J = E[ee];
+                        D += V(e, l) & (1 << J) - 1,
+                        l += J
+                    }
+                    if (l > d) {
+                        if (i)
+                            throw "unexpected EOF";
+                        break
+                    }
+                    a && o(h + 131072);
+                    for (var et = h + Q; h < et; h += 4)
+                        t[h] = t[h - D],
+                        t[h + 1] = t[h + 1 - D],
+                        t[h + 2] = t[h + 2 - D],
+                        t[h + 3] = t[h + 3 - D];
+                    h = et
+                }
+            }
+            r.l = u,
+            r.p = Y,
+            r.b = h,
+            u && (s = 1,
+            r.m = c,
+            r.d = f,
+            r.n = p)
+        } while (!s) return h == t.length ? t : q(t, 0, h)
+    }
+      , Y = function(e, t, r) {
+        r <<= 7 & t;
+        var n = t / 8 | 0;
+        e[n] |= r,
+        e[n + 1] |= r >>> 8
+    }
+      , Z = function(e, t, r) {
+        r <<= 7 & t;
+        var n = t / 8 | 0;
+        e[n] |= r,
+        e[n + 1] |= r >>> 8,
+        e[n + 2] |= r >>> 16
+    }
+      , Q = function(e, t) {
+        for (var r = [], n = 0; n < e.length; ++n)
+            e[n] && r.push({
+                s: n,
+                f: e[n]
+            });
+        var a = r.length
+          , i = r.slice();
+        if (!a)
+            return [ea, 0];
+        if (1 == a) {
+            var o = new b(r[0].s + 1);
+            return o[r[0].s] = 1,
+            [o, 1]
+        }
+        r.sort(function(e, t) {
+            return e.f - t.f
+        }),
+        r.push({
+            s: -1,
+            f: 25001
+        });
+        var s = r[0]
+          , l = r[1]
+          , h = 0
+          , u = 1
+          , f = 2;
+        for (r[0] = {
+            s: -1,
+            f: s.f + l.f,
+            l: s,
+            r: l
+        }; u != a - 1; )
+            s = r[r[h].f < r[f].f ? h++ : f++],
+            l = r[h != u && r[h].f < r[f].f ? h++ : f++],
+            r[u++] = {
+                s: -1,
+                f: s.f + l.f,
+                l: s,
+                r: l
+            };
+        for (var c = i[0].s, n = 1; n < a; ++n)
+            i[n].s > c && (c = i[n].s);
+        var p = new M(c + 1)
+          , d = J(r[u - 1], p, 0);
+        if (d > t) {
+            var n = 0
+              , g = 0
+              , v = d - t
+              , m = 1 << v;
+            for (i.sort(function(e, t) {
+                return p[t.s] - p[e.s] || e.f - t.f
+            }); n < a; ++n) {
+                var w = i[n].s;
+                if (p[w] > t)
+                    g += m - (1 << d - p[w]),
+                    p[w] = t;
+                else
+                    break
+            }
+            for (g >>>= v; g > 0; ) {
+                var y = i[n].s;
+                p[y] < t ? g -= 1 << t - p[y]++ - 1 : ++n
+            }
+            for (; n >= 0 && g; --n) {
+                var x = i[n].s;
+                p[x] == t && (--p[x],
+                ++g)
+            }
+            d = t
+        }
+        return [new b(p), d]
+    }
+      , J = function(e, t, r) {
+        return -1 == e.s ? Math.max(J(e.l, t, r + 1), J(e.r, t, r + 1)) : t[e.s] = r
+    }
+      , K = function(e) {
+        for (var t = e.length; t && !e[--t]; )
+            ;
+        for (var r = new M(++t), n = 0, a = e[0], i = 1, o = function(e) {
+            r[n++] = e
+        }, s = 1; s <= t; ++s)
+            if (e[s] == a && s != t)
+                ++i;
+            else {
+                if (!a && i > 2) {
+                    for (; i > 138; i -= 138)
+                        o(32754);
+                    i > 2 && (o(i > 10 ? i - 11 << 5 | 28690 : i - 3 << 5 | 12305),
+                    i = 0)
+                } else if (i > 3) {
+                    for (o(a),
+                    --i; i > 6; i -= 6)
+                        o(8304);
+                    i > 2 && (o(i - 3 << 5 | 8208),
+                    i = 0)
+                }
+                for (; i--; )
+                    o(a);
+                i = 1,
+                a = e[s]
+            }
+        return [r.subarray(0, n), t]
+    }
+      , ee = function(e, t) {
+        for (var r = 0, n = 0; n < t.length; ++n)
+            r += e[n] * t[n];
+        return r
+    }
+      , et = function(e, t, r) {
+        var n = r.length
+          , a = X(t + 2);
+        e[a] = 255 & n,
+        e[a + 1] = n >>> 8,
+        e[a + 2] = 255 ^ e[a],
+        e[a + 3] = 255 ^ e[a + 1];
+        for (var i = 0; i < n; ++i)
+            e[a + i + 4] = r[i];
+        return (a + 4 + n) * 8
+    }
+      , er = function(e, t, r, n, a, i, o, s, l, h, u) {
+        Y(t, u++, r),
+        ++a[256];
+        for (var f, c, p, d, g = Q(a, 15), v = g[0], m = g[1], w = Q(i, 15), y = w[0], b = w[1], x = K(v), S = x[0], C = x[1], A = K(y), F = A[0], U = A[1], R = new M(19), I = 0; I < S.length; ++I)
+            R[31 & S[I]]++;
+        for (var I = 0; I < F.length; ++I)
+            R[31 & F[I]]++;
+        for (var k = Q(R, 7), O = k[0], P = k[1], H = 19; H > 4 && !O[T[H - 1]]; --H)
+            ;
+        var W = h + 5 << 3
+          , G = ee(a, D) + ee(i, z) + o
+          , j = ee(a, v) + ee(i, y) + o + 14 + 3 * H + ee(R, O) + (2 * R[16] + 3 * R[17] + 7 * R[18]);
+        if (W <= G && W <= j)
+            return et(t, u, e.subarray(l, l + h));
+        if (Y(t, u, 1 + (j < G)),
+        u += 2,
+        j < G) {
+            f = L(v, m, 0),
+            c = v,
+            p = L(y, b, 0),
+            d = y;
+            var V = L(O, P, 0);
+            Y(t, u, C - 257),
+            Y(t, u + 5, U - 1),
+            Y(t, u + 10, H - 4),
+            u += 14;
+            for (var I = 0; I < H; ++I)
+                Y(t, u + 3 * I, O[T[I]]);
+            u += 3 * H;
+            for (var X = [S, F], q = 0; q < 2; ++q)
+                for (var $ = X[q], I = 0; I < $.length; ++I) {
+                    var J = 31 & $[I];
+                    Y(t, u, V[J]),
+                    u += O[J],
+                    J > 15 && (Y(t, u, $[I] >>> 5 & 127),
+                    u += $[I] >>> 12)
+                }
+        } else
+            f = B,
+            c = D,
+            p = N,
+            d = z;
+        for (var I = 0; I < s; ++I)
+            if (n[I] > 255) {
+                var J = n[I] >>> 18 & 31;
+                Z(t, u, f[J + 257]),
+                u += c[J + 257],
+                J > 7 && (Y(t, u, n[I] >>> 23 & 31),
+                u += _[J]);
+                var er = 31 & n[I];
+                Z(t, u, p[er]),
+                u += d[er],
+                er > 3 && (Z(t, u, n[I] >>> 5 & 8191),
+                u += E[er])
+            } else
+                Z(t, u, f[n[I]]),
+                u += c[n[I]];
+        return Z(t, u, f[256]),
+        u + c[256]
+    }
+      , en = new x([65540, 131080, 131088, 131104, 262176, 1048704, 1048832, 2114560, 2117632])
+      , ea = new b(0)
+      , ei = function(e, t, r, n, a, i) {
+        var o = e.length
+          , s = new b(n + o + 5 * (1 + Math.ceil(o / 7e3)) + a)
+          , l = s.subarray(n, s.length - a)
+          , h = 0;
+        if (!t || o < 8)
+            for (var u = 0; u <= o; u += 65535) {
+                var f = u + 65535;
+                f < o ? h = et(l, h, e.subarray(u, f)) : (l[u] = i,
+                h = et(l, h, e.subarray(u, o)))
+            }
+        else {
+            for (var c = en[t - 1], p = c >>> 13, d = 8191 & c, g = (1 << r) - 1, v = new M(32768), m = new M(g + 1), w = Math.ceil(r / 3), y = 2 * w, T = function(t) {
+                return (e[t] ^ e[t + 1] << w ^ e[t + 2] << y) & g
+            }, S = new x(25e3), C = new M(288), A = new M(32), U = 0, R = 0, u = 0, k = 0, O = 0, P = 0; u < o; ++u) {
+                var L = T(u)
+                  , D = 32767 & u
+                  , z = m[L];
+                if (v[D] = z,
+                m[L] = D,
+                O <= u) {
+                    var B = o - u;
+                    if ((U > 7e3 || k > 24576) && B > 423) {
+                        h = er(e, l, 0, S, C, A, R, k, P, u - P, h),
+                        k = U = R = 0,
+                        P = u;
+                        for (var H = 0; H < 286; ++H)
+                            C[H] = 0;
+                        for (var H = 0; H < 30; ++H)
+                            A[H] = 0
+                    }
+                    var N = 2
+                      , W = 0
+                      , G = d
+                      , j = D - z & 32767;
+                    if (B > 2 && L == T(u - j))
+                        for (var V = Math.min(p, B) - 1, $ = Math.min(32767, u), Y = Math.min(258, B); j <= $ && --G && D != z; ) {
+                            if (e[u + N] == e[u + N - j]) {
+                                for (var Z = 0; Z < Y && e[u + Z] == e[u + Z - j]; ++Z)
+                                    ;
+                                if (Z > N) {
+                                    if (N = Z,
+                                    W = j,
+                                    Z > V)
+                                        break;
+                                    for (var Q = Math.min(j, Z - 2), J = 0, H = 0; H < Q; ++H) {
+                                        var K = u - j + H + 32768 & 32767
+                                          , ee = v[K]
+                                          , ei = K - ee + 32768 & 32767;
+                                        ei > J && (J = ei,
+                                        z = K)
                                     }
                                 }
-                            } : e.details
+                            }
+                            z = v[D = z],
+                            j += D - z + 32768 & 32767
                         }
-                    }
-                    ),
-                    r(i, (e, t) => "gifts" === t ? null : {
-                        ...e,
-                        read: !0,
-                        gift: e.gift ? {
-                            ...e.gift,
-                            claimed: !0
-                        } : null
-                    }),
-                    p(i, {
-                        status: "claimed",
-                        receipt: u,
-                        refresh: "pending"
-                    }),
-                    t().refreshSummary(),
-                    await x(i, b);
-                    return
+                    if (W) {
+                        S[k++] = 0x10000000 | F[N] << 18 | I[W];
+                        var eo = 31 & F[N]
+                          , es = 31 & I[W];
+                        R += _[eo] + E[es],
+                        ++C[257 + eo],
+                        ++A[es],
+                        O = u + N,
+                        ++U
+                    } else
+                        S[k++] = e[u],
+                        ++C[e[u]]
                 }
-                l === o && p(i, {
-                    status: "error",
-                    code: "UNCONFIRMED",
-                    message: "We couldn’t confirm your claim. Check your connection, then check again."
-                })
             }
-            ,
-            retryRefresh: async e => {
-                let i = t().claims[e];
-                i?.status === "claimed" && (p(e, {
-                    ...i,
-                    refresh: "pending"
-                }),
-                await x(e, null))
+            h = er(e, l, i, S, C, A, R, k, P, u - P, h),
+            !i && 7 & h && (h = et(l, h + 1, ea))
+        }
+        return q(s, 0, n + X(h) + a)
+    }
+      , eo = function() {
+        for (var e = new Int32Array(256), t = 0; t < 256; ++t) {
+            for (var r = t, n = 9; --n; )
+                r = (1 & r && -0x12477ce0) ^ r >>> 1;
+            e[t] = r
+        }
+        return e
+    }()
+      , es = function() {
+        var e = -1;
+        return {
+            p: function(t) {
+                for (var r = e, n = 0; n < t.length; ++n)
+                    r = eo[255 & r ^ t[n]] ^ r >>> 8;
+                e = r
+            },
+            d: function() {
+                return ~e
             }
         }
     }
+      , el = function() {
+        var e = 1
+          , t = 0;
+        return {
+            p: function(r) {
+                for (var n = e, a = t, i = r.length, o = 0; o != i; ) {
+                    for (var s = Math.min(o + 2655, i); o < s; ++o)
+                        a += n += r[o];
+                    n = (65535 & n) + 15 * (n >> 16),
+                    a = (65535 & a) + 15 * (a >> 16)
+                }
+                e = n,
+                t = a
+            },
+            d: function() {
+                return e %= 65521,
+                t %= 65521,
+                (255 & e) << 24 | e >>> 8 << 16 | (255 & t) << 8 | t >>> 8
+            }
+        }
+    }
+      , eh = function(e, t, r, n, a) {
+        return ei(e, null == t.level ? 6 : t.level, null == t.mem ? Math.ceil(1.5 * Math.max(8, Math.min(13, Math.log(e.length)))) : 12 + t.mem, r, n, !a)
+    }
+      , eu = function(e, t) {
+        var r = {};
+        for (var n in e)
+            r[n] = e[n];
+        for (var n in t)
+            r[n] = t[n];
+        return r
+    }
+      , ef = function(e, t, r) {
+        for (var n = e(), a = e.toString(), i = a.slice(a.indexOf("[") + 1, a.lastIndexOf("]")).replace(/ /g, "").split(","), o = 0; o < n.length; ++o) {
+            var s = n[o]
+              , l = i[o];
+            if ("function" == typeof s) {
+                t += ";" + l + "=";
+                var h = s.toString();
+                if (s.prototype)
+                    if (-1 != h.indexOf("[native code]")) {
+                        var u = h.indexOf(" ", 8) + 1;
+                        t += h.slice(u, h.indexOf("(", u))
+                    } else
+                        for (var f in t += h,
+                        s.prototype)
+                            t += ";" + l + ".prototype." + f + "=" + s.prototype[f].toString();
+                else
+                    t += h
+            } else
+                r[l] = s
+        }
+        return [t, r]
+    }
+      , ec = []
+      , ep = function(e) {
+        var t = [];
+        for (var r in e)
+            (e[r] instanceof b || e[r] instanceof M || e[r] instanceof x) && t.push((e[r] = new e[r].constructor(e[r])).buffer);
+        return t
+    }
+      , ed = function(e, t, r, n) {
+        if (!ec[r]) {
+            for (var a, i = "", o = {}, s = e.length - 1, l = 0; l < s; ++l)
+                i = (a = ef(e[l], i, o))[0],
+                o = a[1];
+            ec[r] = ef(e[s], i, o)
+        }
+        var h = eu({}, ec[r][1]);
+        return y(ec[r][0] + ";onmessage=function(e){for(var k in e.data)self[k]=e.data[k];onmessage=" + t.toString() + "}", r, h, ep(h), n)
+    }
+      , eg = function() {
+        return [b, M, x, _, E, T, A, R, H, W, k, L, G, j, V, X, q, $, eB, ey, eb]
+    }
+      , ev = function() {
+        return [b, M, x, _, E, T, F, I, B, D, N, z, k, en, ea, L, Y, Z, Q, J, K, ee, et, er, X, q, ei, eh, eL, ey]
+    }
+      , em = function() {
+        return [eA, eF]
+    }
+      , ew = function() {
+        return [eI]
+    }
+      , ey = function(e) {
+        return postMessage(e, [e.buffer])
+    }
+      , eb = function(e) {
+        return e && e.size && new b(e.size)
+    }
+      , eM = function(e) {
+        return e.ondata = function(e, t) {
+            return postMessage([e, t], [e.buffer])
+        }
+        ,
+        function(t) {
+            return e.push(t.data[0], t.data[1])
+        }
+    }
+      , ex = function(e, t, r, n, a) {
+        var i, o = ed(e, n, a, function(e, r) {
+            e ? (o.terminate(),
+            t.ondata.call(t, e)) : (r[1] && o.terminate(),
+            t.ondata.call(t, e, r[0], r[1]))
+        });
+        o.postMessage(r),
+        t.push = function(e, r) {
+            if (i)
+                throw "stream finished";
+            if (!t.ondata)
+                throw "no stream handler";
+            o.postMessage([e, i = r], [e.buffer])
+        }
+        ,
+        t.terminate = function() {
+            o.terminate()
+        }
+    }
+      , e_ = function(e, t) {
+        return e[t] | e[t + 1] << 8
+    }
+      , eE = function(e, t) {
+        return (e[t] | e[t + 1] << 8 | e[t + 2] << 16 | e[t + 3] << 24) >>> 0
+    }
+      , eT = function(e, t) {
+        return eE(e, t) + 0x100000000 * eE(e, t + 4)
+    }
+      , eS = function(e, t, r) {
+        for (; r; ++t)
+            e[t] = r,
+            r >>>= 8
+    }
+      , eC = function(e, t) {
+        var r = t.filename;
+        if (e[0] = 31,
+        e[1] = 139,
+        e[2] = 8,
+        e[8] = t.level < 2 ? 4 : 2 * (9 == t.level),
+        e[9] = 3,
+        0 != t.mtime && eS(e, 4, Math.floor(new Date(t.mtime || Date.now()) / 1e3)),
+        r) {
+            e[3] = 8;
+            for (var n = 0; n <= r.length; ++n)
+                e[n + 10] = r.charCodeAt(n)
+        }
+    }
+      , eA = function(e) {
+        if (31 != e[0] || 139 != e[1] || 8 != e[2])
+            throw "invalid gzip data";
+        var t = e[3]
+          , r = 10;
+        4 & t && (r += e[10] | (e[11] << 8) + 2);
+        for (var n = (t >> 3 & 1) + (t >> 4 & 1); n > 0; n -= !e[r++])
+            ;
+        return r + (2 & t)
+    }
+      , eF = function(e) {
+        var t = e.length;
+        return (e[t - 4] | e[t - 3] << 8 | e[t - 2] << 16 | e[t - 1] << 24) >>> 0
+    }
+      , eU = function(e) {
+        return 10 + (e.filename && e.filename.length + 1 || 0)
+    }
+      , eR = function(e, t) {
+        var r = t.level
+          , n = 0 == r ? 0 : r < 6 ? 1 : 9 == r ? 3 : 2;
+        e[0] = 120,
+        e[1] = n << 6 | (n ? 32 - 2 * n : 1)
+    }
+      , eI = function(e) {
+        if ((15 & e[0]) != 8 || e[0] >>> 4 > 7 || (e[0] << 8 | e[1]) % 31)
+            throw "invalid zlib data";
+        if (32 & e[1])
+            throw "invalid zlib data: preset dictionaries not supported"
+    };
+    function ek(e, t) {
+        return t || "function" != typeof e || (t = e,
+        e = {}),
+        this.ondata = t,
+        e
+    }
+    var eO = function() {
+        function e(e, t) {
+            t || "function" != typeof e || (t = e,
+            e = {}),
+            this.ondata = t,
+            this.o = e || {}
+        }
+        return e.prototype.p = function(e, t) {
+            this.ondata(eh(e, this.o, 0, 0, !t), t)
+        }
+        ,
+        e.prototype.push = function(e, t) {
+            if (this.d)
+                throw "stream finished";
+            if (!this.ondata)
+                throw "no stream handler";
+            this.d = t,
+            this.p(e, t || !1)
+        }
+        ,
+        e
+    }()
+      , eP = function(e, t) {
+        ex([ev, function() {
+            return [eM, eO]
+        }
+        ], this, ek.call(this, e, t), function(e) {
+            onmessage = eM(new eO(e.data))
+        }, 6)
+    };
+    function eL(e, t) {
+        return eh(e, t || {}, 0, 0)
+    }
+    var eD = function() {
+        function e(e) {
+            this.s = {},
+            this.p = new b(0),
+            this.ondata = e
+        }
+        return e.prototype.e = function(e) {
+            if (this.d)
+                throw "stream finished";
+            if (!this.ondata)
+                throw "no stream handler";
+            var t = this.p.length
+              , r = new b(t + e.length);
+            r.set(this.p),
+            r.set(e, t),
+            this.p = r
+        }
+        ,
+        e.prototype.c = function(e) {
+            this.d = this.s.i = e || !1;
+            var t = this.s.b
+              , r = $(this.p, this.o, this.s);
+            this.ondata(q(r, t, this.s.b), this.d),
+            this.o = q(r, this.s.b - 32768),
+            this.s.b = this.o.length,
+            this.p = q(this.p, this.s.p / 8 | 0),
+            this.s.p &= 7
+        }
+        ,
+        e.prototype.push = function(e, t) {
+            this.e(e),
+            this.c(t)
+        }
+        ,
+        e
+    }()
+      , ez = function(e) {
+        this.ondata = e,
+        ex([eg, function() {
+            return [eM, eD]
+        }
+        ], this, 0, function() {
+            onmessage = eM(new eD)
+        }, 7)
+    };
+    function eB(e, t) {
+        return $(e, t)
+    }
+    (function() {
+        function e(e, t) {
+            this.c = es(),
+            this.l = 0,
+            this.v = 1,
+            eO.call(this, e, t)
+        }
+        e.prototype.push = function(e, t) {
+            eO.prototype.push.call(this, e, t)
+        }
+        ,
+        e.prototype.p = function(e, t) {
+            this.c.p(e),
+            this.l += e.length;
+            var r = eh(e, this.o, this.v && eU(this.o), t && 8, !t);
+            this.v && (eC(r, this.o),
+            this.v = 0),
+            t && (eS(r, r.length - 8, this.c.d()),
+            eS(r, r.length - 4, this.l)),
+            this.ondata(r, t)
+        }
+    }
+    )();
+    var eH = function() {
+        function e(e) {
+            this.v = 1,
+            eD.call(this, e)
+        }
+        return e.prototype.push = function(e, t) {
+            if (eD.prototype.e.call(this, e),
+            this.v) {
+                var r = this.p.length > 3 ? eA(this.p) : 4;
+                if (r >= this.p.length && !t)
+                    return;
+                this.p = this.p.subarray(r),
+                this.v = 0
+            }
+            if (t) {
+                if (this.p.length < 8)
+                    throw "invalid gzip stream";
+                this.p = this.p.subarray(0, -8)
+            }
+            eD.prototype.c.call(this, t)
+        }
+        ,
+        e
+    }()
+      , eN = function(e) {
+        this.ondata = e,
+        ex([eg, em, function() {
+            return [eM, eD, eH]
+        }
+        ], this, 0, function() {
+            onmessage = eM(new eH)
+        }, 9)
+    }
+      , eW = (function() {
+        function e(e, t) {
+            this.c = el(),
+            this.v = 1,
+            eO.call(this, e, t)
+        }
+        e.prototype.push = function(e, t) {
+            eO.prototype.push.call(this, e, t)
+        }
+        ,
+        e.prototype.p = function(e, t) {
+            this.c.p(e);
+            var r = eh(e, this.o, this.v && 2, t && 4, !t);
+            this.v && (eR(r, this.o),
+            this.v = 0),
+            t && eS(r, r.length - 4, this.c.d()),
+            this.ondata(r, t)
+        }
+    }(),
+    function() {
+        function e(e) {
+            this.v = 1,
+            eD.call(this, e)
+        }
+        return e.prototype.push = function(e, t) {
+            if (eD.prototype.e.call(this, e),
+            this.v) {
+                if (this.p.length < 2 && !t)
+                    return;
+                this.p = this.p.subarray(2),
+                this.v = 0
+            }
+            if (t) {
+                if (this.p.length < 4)
+                    throw "invalid zlib stream";
+                this.p = this.p.subarray(0, -4)
+            }
+            eD.prototype.c.call(this, t)
+        }
+        ,
+        e
+    }())
+      , eG = function(e) {
+        this.ondata = e,
+        ex([eg, ew, function() {
+            return [eM, eD, eW]
+        }
+        ], this, 0, function() {
+            onmessage = eM(new eW)
+        }, 11)
+    };
+    function ej(e, t) {
+        return $((eI(e),
+        e.subarray(2, -4)), t)
+    }
+    var eV = function() {
+        function e(e) {
+            this.G = eH,
+            this.I = eD,
+            this.Z = eW,
+            this.ondata = e
+        }
+        return e.prototype.push = function(e, t) {
+            if (!this.ondata)
+                throw "no stream handler";
+            if (this.s)
+                this.s.push(e, t);
+            else {
+                if (this.p && this.p.length) {
+                    var r = new b(this.p.length + e.length);
+                    r.set(this.p),
+                    r.set(e, this.p.length)
+                } else
+                    this.p = e;
+                if (this.p.length > 2) {
+                    var n = this
+                      , a = function() {
+                        n.ondata.apply(n, arguments)
+                    };
+                    this.s = 31 == this.p[0] && 139 == this.p[1] && 8 == this.p[2] ? new this.G(a) : (15 & this.p[0]) != 8 || this.p[0] >> 4 > 7 || (this.p[0] << 8 | this.p[1]) % 31 ? new this.I(a) : new this.Z(a),
+                    this.s.push(this.p, t),
+                    this.p = null
+                }
+            }
+        }
+        ,
+        e
+    }();
+    (function(e) {
+        this.G = eN,
+        this.I = ez,
+        this.Z = eG,
+        this.ondata = e
+    }
+    ).prototype.push = function(e, t) {
+        eV.prototype.push.call(this, e, t)
+    }
+    ;
+    var eX = "u" > typeof TextEncoder && new TextEncoder
+      , eq = "u" > typeof TextDecoder && new TextDecoder
+      , e$ = 0;
+    try {
+        eq.decode(ea, {
+            stream: !0
+        }),
+        e$ = 1
+    } catch (e) {}
+    var eY = function(e) {
+        for (var t = "", r = 0; ; ) {
+            var n = e[r++]
+              , a = (n > 127) + (n > 223) + (n > 239);
+            if (r + a > e.length)
+                return [t, q(e, r - 1)];
+            a ? 3 == a ? t += String.fromCharCode(55296 | (n = ((15 & n) << 18 | (63 & e[r++]) << 12 | (63 & e[r++]) << 6 | 63 & e[r++]) - 65536) >> 10, 56320 | 1023 & n) : 1 & a ? t += String.fromCharCode((31 & n) << 6 | 63 & e[r++]) : t += String.fromCharCode((15 & n) << 12 | (63 & e[r++]) << 6 | 63 & e[r++]) : t += String.fromCharCode(n)
+        }
+    };
+    function eZ(e, t) {
+        if (t) {
+            for (var r = new b(e.length), n = 0; n < e.length; ++n)
+                r[n] = e.charCodeAt(n);
+            return r
+        }
+        if (eX)
+            return eX.encode(e);
+        for (var a = e.length, i = new b(e.length + (e.length >> 1)), o = 0, s = function(e) {
+            i[o++] = e
+        }, n = 0; n < a; ++n) {
+            if (o + 5 > i.length) {
+                var l = new b(o + 8 + (a - n << 1));
+                l.set(i),
+                i = l
+            }
+            var h = e.charCodeAt(n);
+            h < 128 || t ? s(h) : (h < 2048 ? s(192 | h >> 6) : (h > 55295 && h < 57344 ? (s(240 | (h = 65536 + (1047552 & h) | 1023 & e.charCodeAt(++n)) >> 18),
+            s(128 | h >> 12 & 63)) : s(224 | h >> 12),
+            s(128 | h >> 6 & 63)),
+            s(128 | 63 & h))
+        }
+        return q(i, 0, o)
+    }
+    (function(e) {
+        this.ondata = e,
+        e$ ? this.t = new TextDecoder : this.p = ea
+    }
+    ).prototype.push = function(e, t) {
+        if (!this.ondata)
+            throw "no callback";
+        if (t = !!t,
+        this.t) {
+            if (this.ondata(this.t.decode(e, {
+                stream: !0
+            }), t),
+            t) {
+                if (this.t.decode().length)
+                    throw "invalid utf-8 data";
+                this.t = null
+            }
+            return
+        }
+        if (!this.p)
+            throw "stream finished";
+        var r = new b(this.p.length + e.length);
+        r.set(this.p),
+        r.set(e, this.p.length);
+        var n = eY(r)
+          , a = n[0]
+          , i = n[1];
+        if (t) {
+            if (i.length)
+                throw "invalid utf-8 data";
+            this.p = null
+        } else
+            this.p = i;
+        this.ondata(a, t)
+    }
+    ,
+    (function(e) {
+        this.ondata = e
+    }
+    ).prototype.push = function(e, t) {
+        if (!this.ondata)
+            throw "no callback";
+        if (this.d)
+            throw "stream finished";
+        this.ondata(eZ(e), this.d = t || !1)
+    }
+    ;
+    var eQ = function(e) {
+        return 1 == e ? 3 : e < 6 ? 2 : +(9 == e)
+    }
+      , eJ = function(e, t, r) {
+        for (var n = t + r; 1 != e_(e, t); t += 4 + e_(e, t + 2))
+            if (t + 4 > n)
+                throw "invalid zip file";
+        return [eT(e, t + 12), eT(e, t + 4), eT(e, t + 20)]
+    }
+      , eK = function(e) {
+        var t = 0;
+        if (e)
+            for (var r in e) {
+                var n = e[r].length;
+                if (n > 65535)
+                    throw "extra field too long";
+                t += n + 4
+            }
+        return t
+    }
+      , e1 = function(e, t, r, n, a, i, o, s) {
+        var l = n.length
+          , h = r.extra
+          , u = s && s.length
+          , f = eK(h);
+        eS(e, t, null != o ? 0x2014b50 : 0x4034b50),
+        t += 4,
+        null != o && (e[t++] = 20,
+        e[t++] = r.os),
+        e[t] = 20,
+        t += 2,
+        e[t++] = r.flag << 1 | (null == i && 8),
+        e[t++] = a && 8,
+        e[t++] = 255 & r.compression,
+        e[t++] = r.compression >> 8;
+        var c = new Date(null == r.mtime ? Date.now() : r.mtime)
+          , p = c.getFullYear() - 1980;
+        if (p < 0 || p > 119)
+            throw "date not in range 1980-2099";
+        if (eS(e, t, p << 25 | c.getMonth() + 1 << 21 | c.getDate() << 16 | c.getHours() << 11 | c.getMinutes() << 5 | c.getSeconds() >>> 1),
+        t += 4,
+        null != i && (eS(e, t, r.crc),
+        eS(e, t + 4, i),
+        eS(e, t + 8, r.size)),
+        eS(e, t + 12, l),
+        eS(e, t + 14, f),
+        t += 16,
+        null != o && (eS(e, t, u),
+        eS(e, t + 6, r.attrs),
+        eS(e, t + 10, o),
+        t += 14),
+        e.set(n, t),
+        t += l,
+        f)
+            for (var d in h) {
+                var g = h[d]
+                  , v = g.length;
+                eS(e, t, +d),
+                eS(e, t + 2, v),
+                e.set(g, t + 4),
+                t += 4 + v
+            }
+        return u && (e.set(s, t),
+        t += u),
+        t
+    }
+      , e0 = function(e, t, r, n, a) {
+        eS(e, t, 0x6054b50),
+        eS(e, t + 8, r),
+        eS(e, t + 10, r),
+        eS(e, t + 12, n),
+        eS(e, t + 16, a)
+    }
+      , e2 = function() {
+        function e(e) {
+            this.filename = e,
+            this.c = es(),
+            this.size = 0,
+            this.compression = 0
+        }
+        return e.prototype.process = function(e, t) {
+            this.ondata(null, e, t)
+        }
+        ,
+        e.prototype.push = function(e, t) {
+            if (!this.ondata)
+                throw "no callback - add to ZIP archive before pushing";
+            this.c.p(e),
+            this.size += e.length,
+            t && (this.crc = this.c.d()),
+            this.process(e, t || !1)
+        }
+        ,
+        e
+    }();
+    function e3(e, t) {
+        var r = this;
+        t || (t = {}),
+        e2.call(this, e),
+        this.d = new eO(t,function(e, t) {
+            r.ondata(null, e, t)
+        }
+        ),
+        this.compression = 8,
+        this.flag = eQ(t.level)
+    }
+    function e5(e, t) {
+        var r = this;
+        t || (t = {}),
+        e2.call(this, e),
+        this.d = new eP(t,function(e, t, n) {
+            r.ondata(e, t, n)
+        }
+        ),
+        this.compression = 8,
+        this.flag = eQ(t.level),
+        this.terminate = this.d.terminate
+    }
+    function e4(e) {
+        this.ondata = e,
+        this.u = [],
+        this.d = 1
+    }
+    e3.prototype.process = function(e, t) {
+        try {
+            this.d.push(e, t)
+        } catch (e) {
+            this.ondata(e, null, t)
+        }
+    }
+    ,
+    e3.prototype.push = function(e, t) {
+        e2.prototype.push.call(this, e, t)
+    }
+    ,
+    e5.prototype.process = function(e, t) {
+        this.d.push(e, t)
+    }
+    ,
+    e5.prototype.push = function(e, t) {
+        e2.prototype.push.call(this, e, t)
+    }
+    ,
+    e4.prototype.add = function(e) {
+        var t = this;
+        if (2 & this.d)
+            throw "stream finished";
+        var r = eZ(e.filename)
+          , n = r.length
+          , a = e.comment
+          , i = a && eZ(a)
+          , o = n != e.filename.length || i && a.length != i.length
+          , s = n + eK(e.extra) + 30;
+        if (n > 65535)
+            throw "filename too long";
+        var l = new b(s);
+        e1(l, 0, e, r, o);
+        var h = [l]
+          , u = function() {
+            for (var e = 0, r = h; e < r.length; e++) {
+                var n = r[e];
+                t.ondata(null, n, !1)
+            }
+            h = []
+        }
+          , f = this.d;
+        this.d = 0;
+        var c = this.u.length
+          , p = eu(e, {
+            f: r,
+            u: o,
+            o: i,
+            t: function() {
+                e.terminate && e.terminate()
+            },
+            r: function() {
+                if (u(),
+                f) {
+                    var e = t.u[c + 1];
+                    e ? e.r() : t.d = 1
+                }
+                f = 1
+            }
+        })
+          , d = 0;
+        e.ondata = function(r, n, a) {
+            if (r)
+                t.ondata(r, n, a),
+                t.terminate();
+            else if (d += n.length,
+            h.push(n),
+            a) {
+                var i = new b(16);
+                eS(i, 0, 0x8074b50),
+                eS(i, 4, e.crc),
+                eS(i, 8, d),
+                eS(i, 12, e.size),
+                h.push(i),
+                p.c = d,
+                p.b = s + d + 16,
+                p.crc = e.crc,
+                p.size = e.size,
+                f && p.r(),
+                f = 1
+            } else
+                f && u()
+        }
+        ,
+        this.u.push(p)
+    }
+    ,
+    e4.prototype.end = function() {
+        var e = this;
+        if (2 & this.d) {
+            if (1 & this.d)
+                throw "stream finishing";
+            throw "stream finished"
+        }
+        this.d ? this.e() : this.u.push({
+            r: function() {
+                1 & e.d && (e.u.splice(-1, 1),
+                e.e())
+            },
+            t: function() {}
+        }),
+        this.d = 3
+    }
+    ,
+    e4.prototype.e = function() {
+        for (var e = 0, t = 0, r = 0, n = 0, a = this.u; n < a.length; n++) {
+            var i = a[n];
+            r += 46 + i.f.length + eK(i.extra) + (i.o ? i.o.length : 0)
+        }
+        for (var o = new b(r + 22), s = 0, l = this.u; s < l.length; s++) {
+            var i = l[s];
+            e1(o, e, i, i.f, i.u, i.c, t, i.o),
+            e += 46 + i.f.length + eK(i.extra) + (i.o ? i.o.length : 0),
+            t += i.b
+        }
+        e0(o, e, this.u.length, r, t),
+        this.ondata(null, o, !0),
+        this.d = 2
+    }
+    ,
+    e4.prototype.terminate = function() {
+        for (var e = 0, t = this.u; e < t.length; e++)
+            t[e].t();
+        this.d = 2
+    }
+    ;
+    var e6 = function() {
+        function e() {}
+        return e.prototype.push = function(e, t) {
+            this.ondata(null, e, t)
+        }
+        ,
+        e.compression = 0,
+        e
+    }();
+    function e8() {
+        var e = this;
+        this.i = new eD(function(t, r) {
+            e.ondata(null, t, r)
+        }
+        )
+    }
+    function e7(e, t) {
+        var r = this;
+        t < 32e4 ? this.i = new eD(function(e, t) {
+            r.ondata(null, e, t)
+        }
+        ) : (this.i = new ez(function(e, t, n) {
+            r.ondata(e, t, n)
+        }
+        ),
+        this.terminate = this.i.terminate)
+    }
+    function e9(e) {
+        this.onfile = e,
+        this.k = [],
+        this.o = {
+            0: e6
+        },
+        this.p = ea
+    }
+    e8.prototype.push = function(e, t) {
+        try {
+            this.i.push(e, t)
+        } catch (r) {
+            this.ondata(r, e, t)
+        }
+    }
+    ,
+    e8.compression = 8,
+    e7.prototype.push = function(e, t) {
+        this.i.terminate && (e = q(e, 0)),
+        this.i.push(e, t)
+    }
+    ,
+    e7.compression = 8,
+    e9.prototype.push = function(e, t) {
+        var r = this;
+        if (!this.onfile)
+            throw "no callback";
+        if (!this.p)
+            throw "stream finished";
+        if (this.c > 0) {
+            var n = Math.min(this.c, e.length)
+              , a = e.subarray(0, n);
+            if (this.c -= n,
+            this.d ? this.d.push(a, !this.c) : this.k[0].push(a),
+            (e = e.subarray(n)).length)
+                return this.push(e, t)
+        } else {
+            var i = 0
+              , o = 0
+              , s = void 0
+              , l = void 0;
+            this.p.length ? e.length ? ((l = new b(this.p.length + e.length)).set(this.p),
+            l.set(e, this.p.length)) : l = this.p : l = e;
+            for (var h = l.length, u = this.c, f = u && this.d, c = this; o < h - 4 && "break" !== function() {
+                var e = eE(l, o);
+                if (0x4034b50 == e) {
+                    i = 1,
+                    s = o,
+                    c.d = null,
+                    c.c = 0;
+                    var t = e_(l, o + 6)
+                      , n = e_(l, o + 8)
+                      , a = 8 & t
+                      , f = e_(l, o + 26)
+                      , p = e_(l, o + 28);
+                    if (h > o + 30 + f + p) {
+                        var d, g, v = [];
+                        c.k.unshift(v),
+                        i = 2;
+                        var m = eE(l, o + 18)
+                          , w = eE(l, o + 22)
+                          , y = function(e, t) {
+                            if (t) {
+                                for (var r = "", n = 0; n < e.length; n += 16384)
+                                    r += String.fromCharCode.apply(null, e.subarray(n, n + 16384));
+                                return r
+                            }
+                            if (eq)
+                                return eq.decode(e);
+                            var a = eY(e)
+                              , i = a[0];
+                            if (a[1].length)
+                                throw "invalid utf-8 data";
+                            return i
+                        }(l.subarray(o + 30, o += 30 + f), !(2048 & t));
+                        0xffffffff == m ? (m = (d = a ? [-2] : eJ(l, o, p))[0],
+                        w = d[1]) : a && (m = -1),
+                        o += p,
+                        c.c = m;
+                        var b = {
+                            name: y,
+                            compression: n,
+                            start: function() {
+                                if (!b.ondata)
+                                    throw "no callback";
+                                if (m) {
+                                    var e = r.o[n];
+                                    if (!e)
+                                        throw "unknown compression type " + n;
+                                    (g = m < 0 ? new e(y) : new e(y,m,w)).ondata = function(e, t, r) {
+                                        b.ondata(e, t, r)
+                                    }
+                                    ;
+                                    for (var t = 0; t < v.length; t++) {
+                                        var a = v[t];
+                                        g.push(a, !1)
+                                    }
+                                    r.k[0] == v && r.c ? r.d = g : g.push(ea, !0)
+                                } else
+                                    b.ondata(null, ea, !0)
+                            },
+                            terminate: function() {
+                                g && g.terminate && g.terminate()
+                            }
+                        };
+                        m >= 0 && (b.size = m,
+                        b.originalSize = w),
+                        c.onfile(b)
+                    }
+                    return "break"
+                }
+                if (u) {
+                    if (0x8074b50 == e)
+                        return s = o += 12 + (-2 == u && 8),
+                        i = 3,
+                        c.c = 0,
+                        "break";
+                    else if (0x2014b50 == e)
+                        return s = o -= 4,
+                        i = 3,
+                        c.c = 0,
+                        "break"
+                }
+            }(); ++o)
+                ;
+            if (this.p = ea,
+            u < 0) {
+                var p = i ? l.subarray(0, s - 12 - (-2 == u && 8) - (0x8074b50 == eE(l, s - 16) && 4)) : l.subarray(0, o);
+                f ? f.push(p, !!i) : this.k[+(2 == i)].push(p)
+            }
+            if (2 & i)
+                return this.push(l.subarray(o), t);
+            this.p = l.subarray(o)
+        }
+        if (t) {
+            if (this.c)
+                throw "invalid zip file";
+            this.p = null
+        }
+    }
+    ,
+    e9.prototype.register = function(e) {
+        this.o[e.compression] = e
+    }
+    ;
+    let te = c.version >= 152;
+    class tt extends m.DataTextureLoader {
+        constructor(e) {
+            super(e),
+            this.type = m.HalfFloatType
+        }
+        parse(e) {
+            let t = {
+                l: 0,
+                c: 0,
+                lc: 0
+            };
+            function r(e, r, n, a, i) {
+                for (; n < e; )
+                    r = r << 8 | S(a, i),
+                    n += 8;
+                t.l = r >> (n -= e) & (1 << e) - 1,
+                t.c = r,
+                t.lc = n
+            }
+            let n = Array(59)
+              , a = {
+                c: 0,
+                lc: 0
+            };
+            function i(e, t, r, n) {
+                e = e << 8 | S(r, n),
+                t += 8,
+                a.c = e,
+                a.lc = t
+            }
+            let o = {
+                c: 0,
+                lc: 0
+            };
+            function s(e, t, r, n, s, l, h, u, f, c) {
+                if (e == t) {
+                    n < 8 && (i(r, n, s, h),
+                    r = a.c,
+                    n = a.lc);
+                    var p = r >> (n -= 8)
+                      , p = new Uint8Array([p])[0];
+                    if (f.value + p > c)
+                        return !1;
+                    for (var d = u[f.value - 1]; p-- > 0; )
+                        u[f.value++] = d
+                } else {
+                    if (!(f.value < c))
+                        return !1;
+                    u[f.value++] = e
+                }
+                o.c = r,
+                o.lc = n
+            }
+            function l(e) {
+                var t = 65535 & e;
+                return t > 32767 ? t - 65536 : t
+            }
+            let h = {
+                a: 0,
+                b: 0
+            };
+            function u(e, t) {
+                var r = l(e)
+                  , n = l(t)
+                  , a = r + (1 & n) + (n >> 1)
+                  , i = a - n;
+                h.a = a,
+                h.b = i
+            }
+            function f(e, t) {
+                var r = 65535 & t
+                  , n = (65535 & e) - (r >> 1) & 65535;
+                h.a = r + n - 32768 & 65535,
+                h.b = n
+            }
+            function c(e, l, h, u, f, c) {
+                var p = h.value
+                  , d = T(l, h)
+                  , g = T(l, h);
+                h.value += 4;
+                var v = T(l, h);
+                if (h.value += 4,
+                d < 0 || d >= 65537 || g < 0 || g >= 65537)
+                    throw "Something wrong with HUF_ENCSIZE";
+                for (var m = Array(65537), w = Array(16384), y = 0; y < 16384; y++)
+                    w[y] = {},
+                    w[y].len = 0,
+                    w[y].lit = 0,
+                    w[y].p = null;
+                var b = u - (h.value - p);
+                if (!function(e, a, i, o, s, l) {
+                    for (var h = 0, u = 0; o <= s; o++) {
+                        if (a.value - a.value > i)
+                            return !1;
+                        r(6, h, u, e, a);
+                        var f = t.l;
+                        if (h = t.c,
+                        u = t.lc,
+                        l[o] = f,
+                        63 == f) {
+                            if (a.value - a.value > i)
+                                throw "Something wrong with hufUnpackEncTable";
+                            r(8, h, u, e, a);
+                            var c = t.l + 6;
+                            if (h = t.c,
+                            u = t.lc,
+                            o + c > s + 1)
+                                throw "Something wrong with hufUnpackEncTable";
+                            for (; c--; )
+                                l[o++] = 0;
+                            o--
+                        } else if (f >= 59) {
+                            var c = f - 59 + 2;
+                            if (o + c > s + 1)
+                                throw "Something wrong with hufUnpackEncTable";
+                            for (; c--; )
+                                l[o++] = 0;
+                            o--
+                        }
+                    }
+                    !function(e) {
+                        for (var t = 0; t <= 58; ++t)
+                            n[t] = 0;
+                        for (var t = 0; t < 65537; ++t)
+                            n[e[t]] += 1;
+                        for (var r = 0, t = 58; t > 0; --t) {
+                            var a = r + n[t] >> 1;
+                            n[t] = r,
+                            r = a
+                        }
+                        for (var t = 0; t < 65537; ++t) {
+                            var i = e[t];
+                            i > 0 && (e[t] = i | n[i]++ << 6)
+                        }
+                    }(l)
+                }(e, h, b, d, g, m),
+                v > 8 * (u - (h.value - p)))
+                    throw "Something wrong with hufUncompress";
+                !function(e, t, r, n) {
+                    for (; t <= r; t++) {
+                        var a = e[t] >> 6
+                          , i = 63 & e[t];
+                        if (a >> i)
+                            throw "Invalid table entry";
+                        if (i > 14) {
+                            var o = n[a >> i - 14];
+                            if (o.len)
+                                throw "Invalid table entry";
+                            if (o.lit++,
+                            o.p) {
+                                var s = o.p;
+                                o.p = Array(o.lit);
+                                for (var l = 0; l < o.lit - 1; ++l)
+                                    o.p[l] = s[l]
+                            } else
+                                o.p = [, ];
+                            o.p[o.lit - 1] = t
+                        } else if (i)
+                            for (var h = 0, l = 1 << 14 - i; l > 0; l--) {
+                                var o = n[(a << 14 - i) + h];
+                                if (o.len || o.p)
+                                    throw "Invalid table entry";
+                                o.len = i,
+                                o.lit = t,
+                                h++
+                            }
+                    }
+                }(m, d, g, w),
+                function(e, t, r, n, l, h, u, f, c, p) {
+                    for (var d = 0, g = 0, v = Math.trunc(l.value + (h + 7) / 8); l.value < v; )
+                        for (i(d, g, r, l),
+                        d = a.c,
+                        g = a.lc; g >= 14; ) {
+                            var m = t[d >> g - 14 & 16383];
+                            if (m.len)
+                                g -= m.len,
+                                s(m.lit, u, d, g, r, n, l, c, p, f),
+                                d = o.c,
+                                g = o.lc;
+                            else {
+                                if (!m.p)
+                                    throw "hufDecode issues";
+                                for (w = 0; w < m.lit; w++) {
+                                    for (var w, y = 63 & e[m.p[w]]; g < y && l.value < v; )
+                                        i(d, g, r, l),
+                                        d = a.c,
+                                        g = a.lc;
+                                    if (g >= y && e[m.p[w]] >> 6 == (d >> g - y & (1 << y) - 1)) {
+                                        g -= y,
+                                        s(m.p[w], u, d, g, r, n, l, c, p, f),
+                                        d = o.c,
+                                        g = o.lc;
+                                        break
+                                    }
+                                }
+                                if (w == m.lit)
+                                    throw "hufDecode issues"
+                            }
+                        }
+                    var b = 8 - h & 7;
+                    for (d >>= b,
+                    g -= b; g > 0; ) {
+                        var m = t[d << 14 - g & 16383];
+                        if (m.len)
+                            g -= m.len,
+                            s(m.lit, u, d, g, r, n, l, c, p, f),
+                            d = o.c,
+                            g = o.lc;
+                        else
+                            throw "hufDecode issues"
+                    }
+                }(m, w, e, l, h, v, g, c, f, {
+                    value: 0
+                })
+            }
+            function p(e) {
+                for (var t = 1; t < e.length; t++) {
+                    var r = e[t - 1] + e[t] - 128;
+                    e[t] = r
+                }
+            }
+            function d(e, t) {
+                for (var r = 0, n = Math.floor((e.length + 1) / 2), a = 0, i = e.length - 1; !(a > i) && (t[a++] = e[r++],
+                !(a > i)); ) {
+                    ;t[a++] = e[n++]
+                }
+            }
+            function g(e) {
+                for (var t = e.byteLength, r = [], n = 0, a = new DataView(e); t > 0; ) {
+                    var i = a.getInt8(n++);
+                    if (i < 0) {
+                        var o = -i;
+                        t -= o + 1;
+                        for (var s = 0; s < o; s++)
+                            r.push(a.getUint8(n++))
+                    } else {
+                        var o = i;
+                        t -= 2;
+                        for (var l = a.getUint8(n++), s = 0; s < o + 1; s++)
+                            r.push(l)
+                    }
+                }
+                return r
+            }
+            function v(e) {
+                return new DataView(e.array.buffer,e.offset.value,e.size)
+            }
+            function w(e) {
+                var t = new Uint8Array(g(e.viewer.buffer.slice(e.offset.value, e.offset.value + e.size)))
+                  , r = new Uint8Array(t.length);
+                return p(t),
+                d(t, r),
+                new DataView(r.buffer)
+            }
+            function y(e) {
+                var t = ej(e.array.slice(e.offset.value, e.offset.value + e.size))
+                  , r = new Uint8Array(t.length);
+                return p(t),
+                d(t, r),
+                new DataView(r.buffer)
+            }
+            function b(e) {
+                for (var t = e.viewer, r = {
+                    value: e.offset.value
+                }, n = new Uint16Array(e.width * e.scanlineBlockSize * (e.channels * e.type)), a = new Uint8Array(8192), i = 0, o = Array(e.channels), s = 0; s < e.channels; s++)
+                    o[s] = {},
+                    o[s].start = i,
+                    o[s].end = o[s].start,
+                    o[s].nx = e.width,
+                    o[s].ny = e.lines,
+                    o[s].size = e.type,
+                    i += o[s].nx * o[s].ny * o[s].size;
+                var l = I(t, r)
+                  , p = I(t, r);
+                if (p >= 8192)
+                    throw "Something is wrong with PIZ_COMPRESSION BITMAP_SIZE";
+                if (l <= p)
+                    for (var s = 0; s < p - l + 1; s++)
+                        a[s + l] = C(t, r);
+                var d = new Uint16Array(65536)
+                  , g = function(e, t) {
+                    for (var r = 0, n = 0; n < 65536; ++n)
+                        (0 == n || e[n >> 3] & 1 << (7 & n)) && (t[r++] = n);
+                    for (var a = r - 1; r < 65536; )
+                        t[r++] = 0;
+                    return a
+                }(a, d)
+                  , v = T(t, r);
+                c(e.array, t, r, v, n, i);
+                for (var s = 0; s < e.channels; ++s)
+                    for (var m = o[s], w = 0; w < o[s].size; ++w)
+                        !function(e, t, r, n, a, i, o) {
+                            for (var s = o < 16384, l = r > a ? a : r, c = 1; c <= l; )
+                                c <<= 1;
+                            for (c >>= 1,
+                            p = c,
+                            c >>= 1; c >= 1; ) {
+                                for (var p, d, g, v, m, w = 0, y = 0 + i * (a - p), b = i * c, M = i * p, x = n * c, _ = n * p; w <= y; w += M) {
+                                    for (var E = w, T = w + n * (r - p); E <= T; E += _) {
+                                        var S = E + x
+                                          , C = E + b
+                                          , A = C + x;
+                                        s ? (u(e[E + t], e[C + t]),
+                                        d = h.a,
+                                        v = h.b,
+                                        u(e[S + t], e[A + t]),
+                                        g = h.a,
+                                        m = h.b,
+                                        u(d, g),
+                                        e[E + t] = h.a,
+                                        e[S + t] = h.b,
+                                        u(v, m)) : (f(e[E + t], e[C + t]),
+                                        d = h.a,
+                                        v = h.b,
+                                        f(e[S + t], e[A + t]),
+                                        g = h.a,
+                                        m = h.b,
+                                        f(d, g),
+                                        e[E + t] = h.a,
+                                        e[S + t] = h.b,
+                                        f(v, m)),
+                                        e[C + t] = h.a,
+                                        e[A + t] = h.b
+                                    }
+                                    if (r & c) {
+                                        var C = E + b;
+                                        s ? u(e[E + t], e[C + t]) : f(e[E + t], e[C + t]),
+                                        d = h.a,
+                                        e[C + t] = h.b,
+                                        e[E + t] = d
+                                    }
+                                }
+                                if (a & c)
+                                    for (var E = w, T = w + n * (r - p); E <= T; E += _) {
+                                        var S = E + x;
+                                        s ? u(e[E + t], e[S + t]) : f(e[E + t], e[S + t]),
+                                        d = h.a,
+                                        e[S + t] = h.b,
+                                        e[E + t] = d
+                                    }
+                                p = c,
+                                c >>= 1
+                            }
+                        }(n, m.start + w, m.nx, m.size, m.ny, m.nx * m.size, g);
+                for (var y = i, b = 0; b < y; ++b)
+                    n[b] = d[n[b]];
+                for (var M = 0, x = new Uint8Array(n.buffer.byteLength), _ = 0; _ < e.lines; _++)
+                    for (var E = 0; E < e.channels; E++) {
+                        var m = o[E]
+                          , S = m.nx * m.size
+                          , A = new Uint8Array(n.buffer,2 * m.end,2 * S);
+                        x.set(A, M),
+                        M += 2 * S,
+                        m.end += S
+                    }
+                return new DataView(x.buffer)
+            }
+            function M(e) {
+                var t = ej(e.array.slice(e.offset.value, e.offset.value + e.size));
+                let r = e.lines * e.channels * e.width
+                  , n = 1 == e.type ? new Uint16Array(r) : new Uint32Array(r)
+                  , a = 0
+                  , i = 0
+                  , o = [, , , , ];
+                for (let r = 0; r < e.lines; r++)
+                    for (let r = 0; r < e.channels; r++) {
+                        let r = 0;
+                        switch (e.type) {
+                        case 1:
+                            o[0] = a,
+                            o[1] = o[0] + e.width,
+                            a = o[1] + e.width;
+                            for (let a = 0; a < e.width; ++a)
+                                r += t[o[0]++] << 8 | t[o[1]++],
+                                n[i] = r,
+                                i++;
+                            break;
+                        case 2:
+                            o[0] = a,
+                            o[1] = o[0] + e.width,
+                            o[2] = o[1] + e.width,
+                            a = o[2] + e.width;
+                            for (let a = 0; a < e.width; ++a)
+                                r += t[o[0]++] << 24 | t[o[1]++] << 16 | t[o[2]++] << 8,
+                                n[i] = r,
+                                i++
+                        }
+                    }
+                return new DataView(n.buffer)
+            }
+            function x(e) {
+                var t = e.viewer
+                  , r = {
+                    value: e.offset.value
+                }
+                  , n = new Uint8Array(e.width * e.lines * (e.channels * e.type * 2))
+                  , a = {
+                    version: A(t, r),
+                    unknownUncompressedSize: A(t, r),
+                    unknownCompressedSize: A(t, r),
+                    acCompressedSize: A(t, r),
+                    dcCompressedSize: A(t, r),
+                    rleCompressedSize: A(t, r),
+                    rleUncompressedSize: A(t, r),
+                    rleRawSize: A(t, r),
+                    totalAcUncompressedCount: A(t, r),
+                    totalDcUncompressedCount: A(t, r),
+                    acCompression: A(t, r)
+                };
+                if (a.version < 2)
+                    throw "EXRLoader.parse: " + D.compression + " version " + a.version + " is unsupported";
+                for (var i = [], o = I(t, r) - 2; o > 0; ) {
+                    var s = _(t.buffer, r)
+                      , l = C(t, r)
+                      , h = l >> 2 & 3
+                      , u = new Int8Array([(l >> 4) - 1])[0]
+                      , f = C(t, r);
+                    i.push({
+                        name: s,
+                        index: u,
+                        type: f,
+                        compression: h
+                    }),
+                    o -= s.length + 3
+                }
+                for (var p = D.channels, d = Array(e.channels), v = 0; v < e.channels; ++v) {
+                    var w = d[v] = {}
+                      , b = p[v];
+                    w.name = b.name,
+                    w.compression = 0,
+                    w.decoded = !1,
+                    w.type = b.pixelType,
+                    w.pLinear = b.pLinear,
+                    w.width = e.width,
+                    w.height = e.lines
+                }
+                for (var M = {
+                    idx: [, , , ]
+                }, x = 0; x < e.channels; ++x)
+                    for (var w = d[x], v = 0; v < i.length; ++v) {
+                        var E = i[v];
+                        w.name == E.name && (w.compression = E.compression,
+                        E.index >= 0 && (M.idx[E.index] = x),
+                        w.offset = x)
+                    }
+                if (a.acCompressedSize > 0)
+                    switch (a.acCompression) {
+                    case 0:
+                        var T = new Uint16Array(a.totalAcUncompressedCount);
+                        c(e.array, t, r, a.acCompressedSize, T, a.totalAcUncompressedCount);
+                        break;
+                    case 1:
+                        var S = e.array.slice(r.value, r.value + a.totalAcUncompressedCount)
+                          , F = ej(S)
+                          , T = new Uint16Array(F.buffer);
+                        r.value += a.totalAcUncompressedCount
+                    }
+                if (a.dcCompressedSize > 0) {
+                    var U = new Uint16Array(y({
+                        array: e.array,
+                        offset: r,
+                        size: a.dcCompressedSize
+                    }).buffer);
+                    r.value += a.dcCompressedSize
+                }
+                if (a.rleRawSize > 0) {
+                    var S = e.array.slice(r.value, r.value + a.rleCompressedSize)
+                      , F = ej(S)
+                      , k = g(F.buffer);
+                    r.value += a.rleCompressedSize
+                }
+                for (var O = 0, P = Array(d.length), v = 0; v < P.length; ++v)
+                    P[v] = [];
+                for (var L = 0; L < e.lines; ++L)
+                    for (var z = 0; z < d.length; ++z)
+                        P[z].push(O),
+                        O += d[z].width * e.type * 2;
+                !function(e, t, r, n, a, i) {
+                    var o = new DataView(i.buffer)
+                      , s = r[e.idx[0]].width
+                      , l = r[e.idx[0]].height
+                      , h = Math.floor(s / 8)
+                      , u = Math.ceil(s / 8)
+                      , f = Math.ceil(l / 8)
+                      , c = s - (u - 1) * 8
+                      , p = l - (f - 1) * 8
+                      , d = {
+                        value: 0
+                    }
+                      , g = [, , , ]
+                      , v = [, , , ]
+                      , w = [, , , ]
+                      , y = [, , , ]
+                      , b = [, , , ];
+                    for (let r = 0; r < 3; ++r)
+                        b[r] = t[e.idx[r]],
+                        g[r] = r < 1 ? 0 : g[r - 1] + u * f,
+                        v[r] = new Float32Array(64),
+                        w[r] = new Uint16Array(64),
+                        y[r] = new Uint16Array(64 * u);
+                    for (let t = 0; t < f; ++t) {
+                        var M, x, _ = 8;
+                        t == f - 1 && (_ = p);
+                        var E = 8;
+                        for (let e = 0; e < u; ++e) {
+                            e == u - 1 && (E = c);
+                            for (let e = 0; e < 3; ++e) {
+                                w[e].fill(0),
+                                w[e][0] = a[g[e]++],
+                                function(e, t, r) {
+                                    for (var n, a = 1; a < 64; )
+                                        65280 == (n = t[e.value]) ? a = 64 : n >> 8 == 255 ? a += 255 & n : (r[a] = n,
+                                        a++),
+                                        e.value++
+                                }(d, n, w[e]),
+                                M = w[e],
+                                (x = v[e])[0] = R(M[0]),
+                                x[1] = R(M[1]),
+                                x[2] = R(M[5]),
+                                x[3] = R(M[6]),
+                                x[4] = R(M[14]),
+                                x[5] = R(M[15]),
+                                x[6] = R(M[27]),
+                                x[7] = R(M[28]),
+                                x[8] = R(M[2]),
+                                x[9] = R(M[4]),
+                                x[10] = R(M[7]),
+                                x[11] = R(M[13]),
+                                x[12] = R(M[16]),
+                                x[13] = R(M[26]),
+                                x[14] = R(M[29]),
+                                x[15] = R(M[42]),
+                                x[16] = R(M[3]),
+                                x[17] = R(M[8]),
+                                x[18] = R(M[12]),
+                                x[19] = R(M[17]),
+                                x[20] = R(M[25]),
+                                x[21] = R(M[30]),
+                                x[22] = R(M[41]),
+                                x[23] = R(M[43]),
+                                x[24] = R(M[9]),
+                                x[25] = R(M[11]),
+                                x[26] = R(M[18]),
+                                x[27] = R(M[24]),
+                                x[28] = R(M[31]),
+                                x[29] = R(M[40]),
+                                x[30] = R(M[44]),
+                                x[31] = R(M[53]),
+                                x[32] = R(M[10]),
+                                x[33] = R(M[19]),
+                                x[34] = R(M[23]),
+                                x[35] = R(M[32]),
+                                x[36] = R(M[39]),
+                                x[37] = R(M[45]),
+                                x[38] = R(M[52]),
+                                x[39] = R(M[54]),
+                                x[40] = R(M[20]),
+                                x[41] = R(M[22]),
+                                x[42] = R(M[33]),
+                                x[43] = R(M[38]),
+                                x[44] = R(M[46]),
+                                x[45] = R(M[51]),
+                                x[46] = R(M[55]),
+                                x[47] = R(M[60]),
+                                x[48] = R(M[21]),
+                                x[49] = R(M[34]),
+                                x[50] = R(M[37]),
+                                x[51] = R(M[47]),
+                                x[52] = R(M[50]),
+                                x[53] = R(M[56]),
+                                x[54] = R(M[59]),
+                                x[55] = R(M[61]),
+                                x[56] = R(M[35]),
+                                x[57] = R(M[36]),
+                                x[58] = R(M[48]),
+                                x[59] = R(M[49]),
+                                x[60] = R(M[57]),
+                                x[61] = R(M[58]),
+                                x[62] = R(M[62]),
+                                x[63] = R(M[63]),
+                                function(e) {
+                                    let t = .5 * Math.cos(3.14159 / 16)
+                                      , r = .5 * Math.cos(3.14159 / 8)
+                                      , n = .5 * Math.cos(3 * 3.14159 / 16)
+                                      , a = .5 * Math.cos(3 * 3.14159 / 8);
+                                    for (var i = [, , , , ], o = [, , , , ], s = [, , , , ], l = [, , , , ], h = 0; h < 8; ++h) {
+                                        var u = 8 * h;
+                                        i[0] = r * e[u + 2],
+                                        i[1] = a * e[u + 2],
+                                        i[2] = r * e[u + 6],
+                                        i[3] = a * e[u + 6],
+                                        o[0] = t * e[u + 1] + n * e[u + 3] + .2777854612564676 * e[u + 5] + .09754573032714427 * e[u + 7],
+                                        o[1] = n * e[u + 1] - .09754573032714427 * e[u + 3] - t * e[u + 5] - .2777854612564676 * e[u + 7],
+                                        o[2] = .2777854612564676 * e[u + 1] - t * e[u + 3] + .09754573032714427 * e[u + 5] + n * e[u + 7],
+                                        o[3] = .09754573032714427 * e[u + 1] - .2777854612564676 * e[u + 3] + n * e[u + 5] - t * e[u + 7],
+                                        s[0] = .35355362513961314 * (e[u + 0] + e[u + 4]),
+                                        s[3] = .35355362513961314 * (e[u + 0] - e[u + 4]),
+                                        s[1] = i[0] + i[3],
+                                        s[2] = i[1] - i[2],
+                                        l[0] = s[0] + s[1],
+                                        l[1] = s[3] + s[2],
+                                        l[2] = s[3] - s[2],
+                                        l[3] = s[0] - s[1],
+                                        e[u + 0] = l[0] + o[0],
+                                        e[u + 1] = l[1] + o[1],
+                                        e[u + 2] = l[2] + o[2],
+                                        e[u + 3] = l[3] + o[3],
+                                        e[u + 4] = l[3] - o[3],
+                                        e[u + 5] = l[2] - o[2],
+                                        e[u + 6] = l[1] - o[1],
+                                        e[u + 7] = l[0] - o[0]
+                                    }
+                                    for (var f = 0; f < 8; ++f)
+                                        i[0] = r * e[16 + f],
+                                        i[1] = a * e[16 + f],
+                                        i[2] = r * e[48 + f],
+                                        i[3] = a * e[48 + f],
+                                        o[0] = t * e[8 + f] + n * e[24 + f] + .2777854612564676 * e[40 + f] + .09754573032714427 * e[56 + f],
+                                        o[1] = n * e[8 + f] - .09754573032714427 * e[24 + f] - t * e[40 + f] - .2777854612564676 * e[56 + f],
+                                        o[2] = .2777854612564676 * e[8 + f] - t * e[24 + f] + .09754573032714427 * e[40 + f] + n * e[56 + f],
+                                        o[3] = .09754573032714427 * e[8 + f] - .2777854612564676 * e[24 + f] + n * e[40 + f] - t * e[56 + f],
+                                        s[0] = .35355362513961314 * (e[f] + e[32 + f]),
+                                        s[3] = .35355362513961314 * (e[f] - e[32 + f]),
+                                        s[1] = i[0] + i[3],
+                                        s[2] = i[1] - i[2],
+                                        l[0] = s[0] + s[1],
+                                        l[1] = s[3] + s[2],
+                                        l[2] = s[3] - s[2],
+                                        l[3] = s[0] - s[1],
+                                        e[0 + f] = l[0] + o[0],
+                                        e[8 + f] = l[1] + o[1],
+                                        e[16 + f] = l[2] + o[2],
+                                        e[24 + f] = l[3] + o[3],
+                                        e[32 + f] = l[3] - o[3],
+                                        e[40 + f] = l[2] - o[2],
+                                        e[48 + f] = l[1] - o[1],
+                                        e[56 + f] = l[0] - o[0]
+                                }(v[e])
+                            }
+                            for (var T = v, S = 0; S < 64; ++S) {
+                                var C = T[0][S]
+                                  , A = T[1][S]
+                                  , F = T[2][S];
+                                T[0][S] = C + 1.5747 * F,
+                                T[1][S] = C - .1873 * A - .4682 * F,
+                                T[2][S] = C + 1.8556 * A
+                            }
+                            for (let t = 0; t < 3; ++t)
+                                !function(e, t, r) {
+                                    for (var n, a = 0; a < 64; ++a) {
+                                        t[r + a] = m.DataUtils.toHalfFloat((n = e[a]) <= 1 ? Math.sign(n) * Math.pow(Math.abs(n), 2.2) : Math.sign(n) * Math.pow(9.025013291561939, Math.abs(n) - 1))
+                                    }
+                                }(v[t], y[t], 64 * e)
+                        }
+                        let i = 0;
+                        for (let n = 0; n < 3; ++n) {
+                            let a = r[e.idx[n]].type;
+                            for (let e = 8 * t; e < 8 * t + _; ++e) {
+                                i = b[n][e];
+                                for (let t = 0; t < h; ++t) {
+                                    let r = 64 * t + (7 & e) * 8;
+                                    o.setUint16(i + 0 * a, y[n][r + 0], !0),
+                                    o.setUint16(i + 2 * a, y[n][r + 1], !0),
+                                    o.setUint16(i + 4 * a, y[n][r + 2], !0),
+                                    o.setUint16(i + 6 * a, y[n][r + 3], !0),
+                                    o.setUint16(i + 8 * a, y[n][r + 4], !0),
+                                    o.setUint16(i + 10 * a, y[n][r + 5], !0),
+                                    o.setUint16(i + 12 * a, y[n][r + 6], !0),
+                                    o.setUint16(i + 14 * a, y[n][r + 7], !0),
+                                    i += 16 * a
+                                }
+                            }
+                            if (h != u)
+                                for (let e = 8 * t; e < 8 * t + _; ++e) {
+                                    let t = b[n][e] + 8 * h * 2 * a
+                                      , r = 64 * h + (7 & e) * 8;
+                                    for (let e = 0; e < E; ++e)
+                                        o.setUint16(t + 2 * e * a, y[n][r + e], !0)
+                                }
+                        }
+                    }
+                    for (var U = new Uint16Array(s), o = new DataView(i.buffer), I = 0; I < 3; ++I) {
+                        r[e.idx[I]].decoded = !0;
+                        var k = r[e.idx[I]].type;
+                        if (2 == r[I].type)
+                            for (var O = 0; O < l; ++O) {
+                                let e = b[I][O];
+                                for (var P = 0; P < s; ++P)
+                                    U[P] = o.getUint16(e + 2 * P * k, !0);
+                                for (var P = 0; P < s; ++P)
+                                    o.setFloat32(e + 2 * P * k, R(U[P]), !0)
+                            }
+                    }
+                }(M, P, d, T, U, n);
+                for (var v = 0; v < d.length; ++v) {
+                    var w = d[v];
+                    if (!w.decoded)
+                        if (2 === w.compression)
+                            for (var B = 0, H = 0, L = 0; L < e.lines; ++L) {
+                                for (var N = P[v][B], W = 0; W < w.width; ++W) {
+                                    for (var G = 0; G < 2 * w.type; ++G)
+                                        n[N++] = k[H + G * w.width * w.height];
+                                    H++
+                                }
+                                B++
+                            }
+                        else
+                            throw "EXRLoader.parse: unsupported channel compression"
+                }
+                return new DataView(n.buffer)
+            }
+            function _(e, t) {
+                for (var r = new Uint8Array(e), n = 0; 0 != r[t.value + n]; )
+                    n += 1;
+                var a = new TextDecoder().decode(r.slice(t.value, t.value + n));
+                return t.value = t.value + n + 1,
+                a
+            }
+            function E(e, t) {
+                var r = e.getInt32(t.value, !0);
+                return t.value = t.value + 4,
+                r
+            }
+            function T(e, t) {
+                var r = e.getUint32(t.value, !0);
+                return t.value = t.value + 4,
+                r
+            }
+            function S(e, t) {
+                var r = e[t.value];
+                return t.value = t.value + 1,
+                r
+            }
+            function C(e, t) {
+                var r = e.getUint8(t.value);
+                return t.value = t.value + 1,
+                r
+            }
+            let A = function(e, t) {
+                let r;
+                return r = "getBigInt64" in DataView.prototype ? Number(e.getBigInt64(t.value, !0)) : e.getUint32(t.value + 4, !0) + Number(e.getUint32(t.value, !0) << 32),
+                t.value += 8,
+                r
+            };
+            function F(e, t) {
+                var r = e.getFloat32(t.value, !0);
+                return t.value += 4,
+                r
+            }
+            function U(e, t) {
+                return m.DataUtils.toHalfFloat(F(e, t))
+            }
+            function R(e) {
+                var t = (31744 & e) >> 10
+                  , r = 1023 & e;
+                return (e >> 15 ? -1 : 1) * (t ? 31 === t ? r ? NaN : 1 / 0 : Math.pow(2, t - 15) * (1 + r / 1024) : r / 1024 * 6103515625e-14)
+            }
+            function I(e, t) {
+                var r = e.getUint16(t.value, !0);
+                return t.value += 2,
+                r
+            }
+            function k(e, t) {
+                return R(I(e, t))
+            }
+            let O = new DataView(e)
+              , P = new Uint8Array(e)
+              , L = {
+                value: 0
+            }
+              , D = function(e, t, r) {
+                let n = {};
+                if (0x1312f76 != e.getUint32(0, !0))
+                    throw "THREE.EXRLoader: provided file doesn't appear to be in OpenEXR format.";
+                n.version = e.getUint8(4);
+                let a = e.getUint8(5);
+                n.spec = {
+                    singleTile: !!(2 & a),
+                    longName: !!(4 & a),
+                    deepFormat: !!(8 & a),
+                    multiPart: !!(16 & a)
+                },
+                r.value = 8;
+                for (var i = !0; i; ) {
+                    var o = _(t, r);
+                    if (0 == o)
+                        i = !1;
+                    else {
+                        var s = _(t, r)
+                          , l = T(e, r)
+                          , h = function(e, t, r, n, a) {
+                            var i, o, s, l, h, u, f;
+                            if ("string" === n || "stringvector" === n || "iccProfile" === n)
+                                return i = new TextDecoder().decode(new Uint8Array(t).slice(r.value, r.value + a)),
+                                r.value = r.value + a,
+                                i;
+                            if ("chlist" === n)
+                                return function(e, t, r, n) {
+                                    for (var a = r.value, i = []; r.value < a + n - 1; ) {
+                                        var o = _(t, r)
+                                          , s = E(e, r)
+                                          , l = C(e, r);
+                                        r.value += 3;
+                                        var h = E(e, r)
+                                          , u = E(e, r);
+                                        i.push({
+                                            name: o,
+                                            pixelType: s,
+                                            pLinear: l,
+                                            xSampling: h,
+                                            ySampling: u
+                                        })
+                                    }
+                                    return r.value += 1,
+                                    i
+                                }(e, t, r, a);
+                            if ("chromaticities" === n)
+                                return o = F(e, r),
+                                s = F(e, r),
+                                l = F(e, r),
+                                h = F(e, r),
+                                u = F(e, r),
+                                {
+                                    redX: o,
+                                    redY: s,
+                                    greenX: l,
+                                    greenY: h,
+                                    blueX: u,
+                                    blueY: F(e, r),
+                                    whiteX: F(e, r),
+                                    whiteY: F(e, r)
+                                };
+                            if ("compression" === n)
+                                return ["NO_COMPRESSION", "RLE_COMPRESSION", "ZIPS_COMPRESSION", "ZIP_COMPRESSION", "PIZ_COMPRESSION", "PXR24_COMPRESSION", "B44_COMPRESSION", "B44A_COMPRESSION", "DWAA_COMPRESSION", "DWAB_COMPRESSION"][C(e, r)];
+                            if ("box2i" === n)
+                                return f = T(e, r),
+                                {
+                                    xMin: f,
+                                    yMin: T(e, r),
+                                    xMax: T(e, r),
+                                    yMax: T(e, r)
+                                };
+                            else if ("lineOrder" === n)
+                                return ["INCREASING_Y"][C(e, r)];
+                            else if ("float" === n)
+                                return F(e, r);
+                            else if ("v2f" === n)
+                                return [F(e, r), F(e, r)];
+                            else if ("v3f" === n)
+                                return [F(e, r), F(e, r), F(e, r)];
+                            else if ("int" === n)
+                                return E(e, r);
+                            else if ("rational" === n)
+                                return [E(e, r), T(e, r)];
+                            else if ("timecode" === n)
+                                return [T(e, r), T(e, r)];
+                            else
+                                return "preview" === n ? (r.value += a,
+                                "skipped") : (r.value += a,
+                                void 0)
+                        }(e, t, r, s, l);
+                        void 0 === h ? console.warn(`EXRLoader.parse: skipped unknown header attribute type '${s}'.`) : n[o] = h
+                    }
+                }
+                if ((-5 & a) != 0)
+                    throw console.error("EXRHeader:", n),
+                    "THREE.EXRLoader: provided file is currently unsupported.";
+                return n
+            }(O, e, L)
+              , z = function(e, t, r, n, a) {
+                let i = {
+                    size: 0,
+                    viewer: t,
+                    array: r,
+                    offset: n,
+                    width: e.dataWindow.xMax - e.dataWindow.xMin + 1,
+                    height: e.dataWindow.yMax - e.dataWindow.yMin + 1,
+                    channels: e.channels.length,
+                    bytesPerLine: null,
+                    lines: null,
+                    inputSize: null,
+                    type: e.channels[0].pixelType,
+                    uncompress: null,
+                    getter: null,
+                    format: null,
+                    [te ? "colorSpace" : "encoding"]: null
+                };
+                switch (e.compression) {
+                case "NO_COMPRESSION":
+                    i.lines = 1,
+                    i.uncompress = v;
+                    break;
+                case "RLE_COMPRESSION":
+                    i.lines = 1,
+                    i.uncompress = w;
+                    break;
+                case "ZIPS_COMPRESSION":
+                    i.lines = 1,
+                    i.uncompress = y;
+                    break;
+                case "ZIP_COMPRESSION":
+                    i.lines = 16,
+                    i.uncompress = y;
+                    break;
+                case "PIZ_COMPRESSION":
+                    i.lines = 32,
+                    i.uncompress = b;
+                    break;
+                case "PXR24_COMPRESSION":
+                    i.lines = 16,
+                    i.uncompress = M;
+                    break;
+                case "DWAA_COMPRESSION":
+                    i.lines = 32,
+                    i.uncompress = x;
+                    break;
+                case "DWAB_COMPRESSION":
+                    i.lines = 256,
+                    i.uncompress = x;
+                    break;
+                default:
+                    throw "EXRLoader.parse: " + e.compression + " is unsupported"
+                }
+                if (i.scanlineBlockSize = i.lines,
+                1 == i.type)
+                    switch (a) {
+                    case m.FloatType:
+                        i.getter = k,
+                        i.inputSize = 2;
+                        break;
+                    case m.HalfFloatType:
+                        i.getter = I,
+                        i.inputSize = 2
+                    }
+                else if (2 == i.type)
+                    switch (a) {
+                    case m.FloatType:
+                        i.getter = F,
+                        i.inputSize = 4;
+                        break;
+                    case m.HalfFloatType:
+                        i.getter = U,
+                        i.inputSize = 4
+                    }
+                else
+                    throw "EXRLoader.parse: unsupported pixelType " + i.type + " for " + e.compression + ".";
+                i.blockCount = (e.dataWindow.yMax + 1) / i.scanlineBlockSize;
+                for (var o = 0; o < i.blockCount; o++)
+                    A(t, n);
+                i.outputChannels = 3 == i.channels ? 4 : i.channels;
+                let s = i.width * i.height * i.outputChannels;
+                switch (a) {
+                case m.FloatType:
+                    i.byteArray = new Float32Array(s),
+                    i.channels < i.outputChannels && i.byteArray.fill(1, 0, s);
+                    break;
+                case m.HalfFloatType:
+                    i.byteArray = new Uint16Array(s),
+                    i.channels < i.outputChannels && i.byteArray.fill(15360, 0, s);
+                    break;
+                default:
+                    console.error("THREE.EXRLoader: unsupported type: ", a)
+                }
+                return i.bytesPerLine = i.width * i.inputSize * i.channels,
+                4 == i.outputChannels ? i.format = m.RGBAFormat : i.format = m.RedFormat,
+                te ? i.colorSpace = "srgb-linear" : i.encoding = 3e3,
+                i
+            }(D, O, P, L, this.type)
+              , B = {
+                value: 0
+            }
+              , H = {
+                R: 0,
+                G: 1,
+                B: 2,
+                A: 3,
+                Y: 0
+            };
+            for (let e = 0; e < z.height / z.scanlineBlockSize; e++) {
+                let t = T(O, L);
+                z.size = T(O, L),
+                z.lines = t + z.scanlineBlockSize > z.height ? z.height - t : z.scanlineBlockSize;
+                let r = z.size < z.lines * z.bytesPerLine ? z.uncompress(z) : v(z);
+                L.value += z.size;
+                for (let t = 0; t < z.scanlineBlockSize; t++) {
+                    let n = t + e * z.scanlineBlockSize;
+                    if (n >= z.height)
+                        break;
+                    for (let e = 0; e < z.channels; e++) {
+                        let a = H[D.channels[e].name];
+                        for (let i = 0; i < z.width; i++) {
+                            B.value = (t * (z.channels * z.width) + e * z.width + i) * z.inputSize;
+                            let o = (z.height - 1 - n) * (z.width * z.outputChannels) + i * z.outputChannels + a;
+                            z.byteArray[o] = z.getter(r, B)
+                        }
+                    }
+                }
+            }
+            return {
+                header: D,
+                width: z.width,
+                height: z.height,
+                data: z.byteArray,
+                format: z.format,
+                [te ? "colorSpace" : "encoding"]: z[te ? "colorSpace" : "encoding"],
+                type: this.type
+            }
+        }
+        setDataType(e) {
+            return this.type = e,
+            this
+        }
+        load(e, t, r, n) {
+            return super.load(e, function(e, r) {
+                te ? e.colorSpace = r.colorSpace : e.encoding = r.encoding,
+                e.minFilter = m.LinearFilter,
+                e.magFilter = m.LinearFilter,
+                e.generateMipmaps = !1,
+                e.flipY = !1,
+                t && t(e, r)
+            }, r, n)
+        }
+    }
+    let tr = (e, t, r) => {
+        let n;
+        switch (e) {
+        case h.UnsignedByteType:
+            n = new Uint8ClampedArray(t * r * 4);
+            break;
+        case h.HalfFloatType:
+            n = new Uint16Array(t * r * 4);
+            break;
+        case h.UnsignedIntType:
+            n = new Uint32Array(t * r * 4);
+            break;
+        case h.ByteType:
+            n = new Int8Array(t * r * 4);
+            break;
+        case h.ShortType:
+            n = new Int16Array(t * r * 4);
+            break;
+        case h.IntType:
+            n = new Int32Array(t * r * 4);
+            break;
+        case h.FloatType:
+            n = new Float32Array(t * r * 4);
+            break;
+        default:
+            throw Error("Unsupported data type")
+        }
+        return n
+    }
+    ;
+    class tn {
+        _renderer;
+        _rendererIsDisposable = !1;
+        _material;
+        _scene;
+        _camera;
+        _quad;
+        _renderTarget;
+        _width;
+        _height;
+        _type;
+        _colorSpace;
+        _supportsReadPixels = !0;
+        constructor(e) {
+            this._width = e.width,
+            this._height = e.height,
+            this._type = e.type,
+            this._colorSpace = e.colorSpace;
+            const r = {
+                format: h.RGBAFormat,
+                depthBuffer: !1,
+                stencilBuffer: !1,
+                type: this._type,
+                colorSpace: this._colorSpace,
+                anisotropy: e.renderTargetOptions?.anisotropy !== void 0 ? e.renderTargetOptions?.anisotropy : 1,
+                generateMipmaps: e.renderTargetOptions?.generateMipmaps !== void 0 && e.renderTargetOptions?.generateMipmaps,
+                magFilter: e.renderTargetOptions?.magFilter !== void 0 ? e.renderTargetOptions?.magFilter : h.LinearFilter,
+                minFilter: e.renderTargetOptions?.minFilter !== void 0 ? e.renderTargetOptions?.minFilter : h.LinearFilter,
+                samples: e.renderTargetOptions?.samples !== void 0 ? e.renderTargetOptions?.samples : void 0,
+                wrapS: e.renderTargetOptions?.wrapS !== void 0 ? e.renderTargetOptions?.wrapS : h.ClampToEdgeWrapping,
+                wrapT: e.renderTargetOptions?.wrapT !== void 0 ? e.renderTargetOptions?.wrapT : h.ClampToEdgeWrapping
+            };
+            if (this._material = e.material,
+            e.renderer ? this._renderer = e.renderer : (this._renderer = tn.instantiateRenderer(),
+            this._rendererIsDisposable = !0),
+            this._scene = new h.Scene,
+            this._camera = new h.OrthographicCamera,
+            this._camera.position.set(0, 0, 10),
+            this._camera.left = -.5,
+            this._camera.right = .5,
+            this._camera.top = .5,
+            this._camera.bottom = -.5,
+            this._camera.updateProjectionMatrix(),
+            !( (e, r, n, a) => {
+                if (void 0 !== t)
+                    return t;
+                let i = new h.WebGLRenderTarget(1,1,a);
+                r.setRenderTarget(i);
+                let o = new h.Mesh(new h.PlaneGeometry,new h.MeshBasicMaterial({
+                    color: 0xffffff
+                }));
+                r.render(o, n),
+                r.setRenderTarget(null);
+                let s = tr(e, i.width, i.height);
+                return r.readRenderTargetPixels(i, 0, 0, i.width, i.height, s),
+                i.dispose(),
+                o.geometry.dispose(),
+                o.material.dispose(),
+                t = 0 !== s[0]
+            }
+            )(this._type, this._renderer, this._camera, r)) {
+                let e;
+                this._type === h.HalfFloatType && (e = this._renderer.extensions.has("EXT_color_buffer_float") ? h.FloatType : void 0),
+                void 0 !== e ? (console.warn(`This browser does not support reading pixels from ${this._type} RenderTargets, switching to ${h.FloatType}`),
+                this._type = e) : (this._supportsReadPixels = !1,
+                console.warn("This browser dos not support toArray or toDataTexture, calls to those methods will result in an error thrown"))
+            }
+            this._quad = new h.Mesh(new h.PlaneGeometry,this._material),
+            this._quad.geometry.computeBoundingBox(),
+            this._scene.add(this._quad),
+            this._renderTarget = new h.WebGLRenderTarget(this.width,this.height,r),
+            this._renderTarget.texture.mapping = e.renderTargetOptions?.mapping !== void 0 ? e.renderTargetOptions?.mapping : h.UVMapping
+        }
+        static instantiateRenderer() {
+            let e = new u.WebGLRenderer;
+            return e.setSize(128, 128),
+            e
+        }
+        render = () => {
+            this._renderer.setRenderTarget(this._renderTarget);
+            try {
+                this._renderer.render(this._scene, this._camera)
+            } catch (e) {
+                throw this._renderer.setRenderTarget(null),
+                e
+            }
+            this._renderer.setRenderTarget(null)
+        }
+        ;
+        toArray() {
+            if (!this._supportsReadPixels)
+                throw Error("Can't read pixels in this browser");
+            let e = tr(this._type, this._width, this._height);
+            return this._renderer.readRenderTargetPixels(this._renderTarget, 0, 0, this._width, this._height, e),
+            e
+        }
+        toDataTexture(e) {
+            let t = new h.DataTexture(this.toArray(),this.width,this.height,h.RGBAFormat,this._type,e?.mapping || h.UVMapping,e?.wrapS || h.ClampToEdgeWrapping,e?.wrapT || h.ClampToEdgeWrapping,e?.magFilter || h.LinearFilter,e?.minFilter || h.LinearFilter,e?.anisotropy || 1,h.LinearSRGBColorSpace);
+            return t.generateMipmaps = e?.generateMipmaps !== void 0 && e?.generateMipmaps,
+            t
+        }
+        disposeOnDemandRenderer() {
+            this._renderer.setRenderTarget(null),
+            this._rendererIsDisposable && (this._renderer.dispose(),
+            this._renderer.forceContextLoss())
+        }
+        dispose(e) {
+            this.disposeOnDemandRenderer(),
+            e && this.renderTarget.dispose(),
+            this.material instanceof h.ShaderMaterial && Object.values(this.material.uniforms).forEach(e => {
+                e.value instanceof h.Texture && e.value.dispose()
+            }
+            ),
+            Object.values(this.material).forEach(e => {
+                e instanceof h.Texture && e.dispose()
+            }
+            ),
+            this.material.dispose(),
+            this._quad.geometry.dispose()
+        }
+        get width() {
+            return this._width
+        }
+        set width(e) {
+            this._width = e,
+            this._renderTarget.setSize(this._width, this._height)
+        }
+        get height() {
+            return this._height
+        }
+        set height(e) {
+            this._height = e,
+            this._renderTarget.setSize(this._width, this._height)
+        }
+        get renderer() {
+            return this._renderer
+        }
+        get renderTarget() {
+            return this._renderTarget
+        }
+        set renderTarget(e) {
+            this._renderTarget = e,
+            this._width = e.width,
+            this._height = e.height
+        }
+        get material() {
+            return this._material
+        }
+        get type() {
+            return this._type
+        }
+        get colorSpace() {
+            return this._colorSpace
+        }
+    }
+    var ta = h;
+    class ti extends Error {
+    }
+    class to extends Error {
+    }
+    let ts = (e, t, r) => {
+        let n = RegExp(`${t}="([^"]*)"`, "i").exec(e);
+        if (n)
+            return n[1];
+        let a = RegExp(`<${t}[^>]*>([\\s\\S]*?)</${t}>`, "i").exec(e);
+        if (a) {
+            let e = a[1].match(/<rdf:li>([^<]*)<\/rdf:li>/g);
+            return e && 3 === e.length ? e.map(e => e.replace(/<\/?rdf:li>/g, "")) : a[1].trim()
+        }
+        if (void 0 !== r)
+            return r;
+        throw Error(`Can't find ${t} in gainmap metadata`)
+    }
+    ;
+    class tl {
+        options;
+        constructor(e) {
+            this.options = {
+                debug: !!e && void 0 !== e.debug && e.debug,
+                extractFII: !e || void 0 === e.extractFII || e.extractFII,
+                extractNonFII: !e || void 0 === e.extractNonFII || e.extractNonFII
+            }
+        }
+        extract(e) {
+            return new Promise( (t, r) => {
+                let n, a = this.options.debug, i = new DataView(e.buffer);
+                if (65496 !== i.getUint16(0))
+                    return void r(Error("Not a valid jpeg"));
+                let o = i.byteLength
+                  , s = 2
+                  , l = 0;
+                for (; s < o; ) {
+                    if (++l > 250)
+                        return void r(Error(`Found no marker after ${l} loops 😵`));
+                    if (255 !== i.getUint8(s))
+                        return void r(Error(`Not a valid marker at offset 0x${s.toString(16)}, found: 0x${i.getUint8(s).toString(16)}`));
+                    if (n = i.getUint8(s + 1),
+                    a && console.log(`Marker: ${n.toString(16)}`),
+                    226 === n) {
+                        a && console.log("Found APP2 marker (0xffe2)");
+                        let e = s + 4;
+                        if (0x4d504600 === i.getUint32(e)) {
+                            let n, a = e + 4;
+                            if (18761 === i.getUint16(a))
+                                n = !1;
+                            else {
+                                if (19789 !== i.getUint16(a))
+                                    return void r(Error("No valid endianness marker found in TIFF header"));
+                                n = !0
+                            }
+                            if (42 !== i.getUint16(a + 2, !n))
+                                return void r(Error("Not valid TIFF data! (no 0x002A marker)"));
+                            let o = i.getUint32(a + 4, !n);
+                            if (o < 8)
+                                return void r(Error("Not valid TIFF data! (First offset less than 8)"));
+                            let s = a + o
+                              , l = i.getUint16(s, !n)
+                              , h = s + 2
+                              , u = 0;
+                            for (let e = h; e < h + 12 * l; e += 12)
+                                45057 === i.getUint16(e, !n) && (u = i.getUint32(e + 8, !n));
+                            let f = s + 2 + 12 * l + 4
+                              , c = [];
+                            for (let e = f; e < f + 16 * u; e += 16) {
+                                let t = {
+                                    MPType: i.getUint32(e, !n),
+                                    size: i.getUint32(e + 4, !n),
+                                    dataOffset: i.getUint32(e + 8, !n),
+                                    dependantImages: i.getUint32(e + 12, !n),
+                                    start: -1,
+                                    end: -1,
+                                    isFII: !1
+                                };
+                                t.dataOffset ? (t.start = a + t.dataOffset,
+                                t.isFII = !1) : (t.start = 0,
+                                t.isFII = !0),
+                                t.end = t.start + t.size,
+                                c.push(t)
+                            }
+                            if (this.options.extractNonFII && c.length) {
+                                let e = new Blob([i])
+                                  , r = [];
+                                for (let t of c) {
+                                    if (t.isFII && !this.options.extractFII)
+                                        continue;
+                                    let n = e.slice(t.start, t.end + 1, "image/jpeg");
+                                    r.push(n)
+                                }
+                                t(r)
+                            }
+                        }
+                    }
+                    s += 2 + i.getUint16(s + 2)
+                }
+            }
+            )
+        }
+    }
+    let th = async e => {
+        let t = (e => {
+            let t, r = (t = "u" > typeof TextDecoder ? new TextDecoder().decode(e) : e.toString()).indexOf("<x:xmpmeta");
+            for (; -1 !== r; ) {
+                let e = t.indexOf("x:xmpmeta>", r)
+                  , n = t.slice(r, e + 10);
+                try {
+                    let e = ts(n, "hdrgm:GainMapMin", "0")
+                      , t = ts(n, "hdrgm:GainMapMax")
+                      , r = ts(n, "hdrgm:Gamma", "1")
+                      , a = ts(n, "hdrgm:OffsetSDR", "0.015625")
+                      , i = ts(n, "hdrgm:OffsetHDR", "0.015625")
+                      , o = /hdrgm:HDRCapacityMin="([^"]*)"/.exec(n)
+                      , s = o ? o[1] : "0"
+                      , l = /hdrgm:HDRCapacityMax="([^"]*)"/.exec(n);
+                    if (!l)
+                        throw Error("Incomplete gainmap metadata");
+                    let h = l[1];
+                    return {
+                        gainMapMin: Array.isArray(e) ? e.map(e => parseFloat(e)) : [parseFloat(e), parseFloat(e), parseFloat(e)],
+                        gainMapMax: Array.isArray(t) ? t.map(e => parseFloat(e)) : [parseFloat(t), parseFloat(t), parseFloat(t)],
+                        gamma: Array.isArray(r) ? r.map(e => parseFloat(e)) : [parseFloat(r), parseFloat(r), parseFloat(r)],
+                        offsetSdr: Array.isArray(a) ? a.map(e => parseFloat(e)) : [parseFloat(a), parseFloat(a), parseFloat(a)],
+                        offsetHdr: Array.isArray(i) ? i.map(e => parseFloat(e)) : [parseFloat(i), parseFloat(i), parseFloat(i)],
+                        hdrCapacityMin: parseFloat(s),
+                        hdrCapacityMax: parseFloat(h)
+                    }
+                } catch (e) {}
+                r = t.indexOf("<x:xmpmeta", e)
+            }
+        }
+        )(e);
+        if (!t)
+            throw new to("Gain map XMP metadata not found");
+        let r = new tl({
+            extractFII: !0,
+            extractNonFII: !0
+        })
+          , n = await r.extract(e);
+        if (2 !== n.length)
+            throw new ti("Gain map recovery image not found");
+        return {
+            sdr: new Uint8Array(await n[0].arrayBuffer()),
+            gainMap: new Uint8Array(await n[1].arrayBuffer()),
+            metadata: t
+        }
+    }
+      , tu = e => new Promise( (t, r) => {
+        let n = document.createElement("img");
+        n.onload = () => {
+            t(n)
+        }
+        ,
+        n.onerror = e => {
+            r(e)
+        }
+        ,
+        n.src = URL.createObjectURL(e)
+    }
     );
-    e.s(["NOTIFICATION_FILTERS", 0, ["all", "unread", "gifts"], "useNotifications", 0, p])
-}
-, 949636, (e, t, i) => {
-    t.exports = {
-        version: "shop-photos-v10",
-        fleetRevision: "division-fleet-5",
-        bucket: "shop-previews",
-        environment: [{
-            key: "wide",
-            width: 1440,
-            height: 810
-        }, {
-            key: "card",
-            width: 960,
-            height: 720
-        }, {
-            key: "portrait",
-            width: 720,
-            height: 900
-        }],
-        product: {
-            width: 960,
-            height: 640
-        },
-        campaign: {
-            width: 1400,
-            height: 560
-        },
-        drones: ["freestyle", "whoop", "cinewhoop", "long-range", "racer"]
+    class tf extends ta.Loader {
+        _renderer;
+        _renderTargetOptions;
+        _internalLoadingManager;
+        _config;
+        constructor(e, t) {
+            super(t),
+            this._config = e,
+            e.renderer && (this._renderer = e.renderer),
+            this._internalLoadingManager = new ta.LoadingManager
+        }
+        setRenderer(e) {
+            return this._renderer = e,
+            this
+        }
+        setRenderTargetOptions(e) {
+            return this._renderTargetOptions = e,
+            this
+        }
+        prepareQuadRenderer() {
+            this._renderer || console.warn("WARNING: A Renderer was not passed to this Loader constructor or in setRenderer, the result of this Loader will need to be converted to a Data Texture with toDataTexture() before you can use it in your renderer.");
+            let e = this._config.createMaterial({
+                gainMapMax: [1, 1, 1],
+                gainMapMin: [0, 0, 0],
+                gamma: [1, 1, 1],
+                offsetHdr: [1, 1, 1],
+                offsetSdr: [1, 1, 1],
+                hdrCapacityMax: 1,
+                hdrCapacityMin: 0,
+                maxDisplayBoost: 1,
+                gainMap: new ta.Texture,
+                sdr: new ta.Texture
+            });
+            return this._config.createQuadRenderer({
+                width: 16,
+                height: 16,
+                type: ta.HalfFloatType,
+                colorSpace: ta.LinearSRGBColorSpace,
+                material: e,
+                renderer: this._renderer,
+                renderTargetOptions: this._renderTargetOptions
+            })
+        }
+        async processImages(e, t, r) {
+            let n, a, i = t ? new Blob([t],{
+                type: "image/jpeg"
+            }) : void 0, o = new Blob([e],{
+                type: "image/jpeg"
+            }), s = !1;
+            if ("u" < typeof createImageBitmap) {
+                let e = await Promise.all([i ? tu(i) : Promise.resolve(void 0), tu(o)]);
+                a = e[0],
+                n = e[1],
+                s = "flipY" === r
+            } else {
+                let e = await Promise.all([i ? createImageBitmap(i, {
+                    imageOrientation: r || "flipY"
+                }) : Promise.resolve(void 0), createImageBitmap(o, {
+                    imageOrientation: r || "flipY"
+                })]);
+                a = e[0],
+                n = e[1]
+            }
+            return {
+                sdrImage: n,
+                gainMapImage: a,
+                needsFlip: s
+            }
+        }
+        createTextures(e, t, r) {
+            let n = new ta.Texture(t || new ImageData(2,2),ta.UVMapping,ta.ClampToEdgeWrapping,ta.ClampToEdgeWrapping,ta.LinearFilter,ta.LinearMipMapLinearFilter,ta.RGBAFormat,ta.UnsignedByteType,1,ta.LinearSRGBColorSpace);
+            n.flipY = r,
+            n.needsUpdate = !0;
+            let a = new ta.Texture(e,ta.UVMapping,ta.ClampToEdgeWrapping,ta.ClampToEdgeWrapping,ta.LinearFilter,ta.LinearMipMapLinearFilter,ta.RGBAFormat,ta.UnsignedByteType,1,ta.SRGBColorSpace);
+            return a.flipY = r,
+            a.needsUpdate = !0,
+            {
+                gainMap: n,
+                sdr: a
+            }
+        }
+        updateQuadRenderer(e, t, r, n, a) {
+            e.width = t.width,
+            e.height = t.height,
+            e.material.gainMap = r,
+            e.material.sdr = n,
+            e.material.gainMapMin = a.gainMapMin,
+            e.material.gainMapMax = a.gainMapMax,
+            e.material.offsetHdr = a.offsetHdr,
+            e.material.offsetSdr = a.offsetSdr,
+            e.material.gamma = a.gamma,
+            e.material.hdrCapacityMin = a.hdrCapacityMin,
+            e.material.hdrCapacityMax = a.hdrCapacityMax,
+            e.material.maxDisplayBoost = Math.pow(2, a.hdrCapacityMax),
+            e.material.needsUpdate = !0
+        }
     }
+    var tc = h;
+    let tp = `
+varying vec2 vUv;
+
+void main() {
+  vUv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }
-, 899257, e => {
+`
+      , td = `
+// min half float value
+#define HALF_FLOAT_MIN vec3( -65504, -65504, -65504 )
+// max half float value
+#define HALF_FLOAT_MAX vec3( 65504, 65504, 65504 )
+
+uniform sampler2D sdr;
+uniform sampler2D gainMap;
+uniform vec3 gamma;
+uniform vec3 offsetHdr;
+uniform vec3 offsetSdr;
+uniform vec3 gainMapMin;
+uniform vec3 gainMapMax;
+uniform float weightFactor;
+
+varying vec2 vUv;
+
+void main() {
+  vec3 rgb = texture2D( sdr, vUv ).rgb;
+  vec3 recovery = texture2D( gainMap, vUv ).rgb;
+  vec3 logRecovery = pow( recovery, gamma );
+  vec3 logBoost = gainMapMin * ( 1.0 - logRecovery ) + gainMapMax * logRecovery;
+  vec3 hdrColor = (rgb + offsetSdr) * exp2( logBoost * weightFactor ) - offsetHdr;
+  vec3 clampedHdrColor = max( HALF_FLOAT_MIN, min( HALF_FLOAT_MAX, hdrColor ));
+  gl_FragColor = vec4( clampedHdrColor , 1.0 );
+}
+`;
+    class tg extends tc.ShaderMaterial {
+        _maxDisplayBoost;
+        _hdrCapacityMin;
+        _hdrCapacityMax;
+        constructor({gamma: e, offsetHdr: t, offsetSdr: r, gainMapMin: n, gainMapMax: a, maxDisplayBoost: i, hdrCapacityMin: o, hdrCapacityMax: s, sdr: l, gainMap: h}) {
+            super({
+                name: "GainMapDecoderMaterial",
+                vertexShader: tp,
+                fragmentShader: td,
+                uniforms: {
+                    sdr: {
+                        value: l
+                    },
+                    gainMap: {
+                        value: h
+                    },
+                    gamma: {
+                        value: new tc.Vector3(1 / e[0],1 / e[1],1 / e[2])
+                    },
+                    offsetHdr: {
+                        value: new tc.Vector3().fromArray(t)
+                    },
+                    offsetSdr: {
+                        value: new tc.Vector3().fromArray(r)
+                    },
+                    gainMapMin: {
+                        value: new tc.Vector3().fromArray(n)
+                    },
+                    gainMapMax: {
+                        value: new tc.Vector3().fromArray(a)
+                    },
+                    weightFactor: {
+                        value: (Math.log2(i) - o) / (s - o)
+                    }
+                },
+                blending: tc.NoBlending,
+                depthTest: !1,
+                depthWrite: !1
+            }),
+            this._maxDisplayBoost = i,
+            this._hdrCapacityMin = o,
+            this._hdrCapacityMax = s,
+            this.needsUpdate = !0,
+            this.uniformsNeedUpdate = !0
+        }
+        get sdr() {
+            return this.uniforms.sdr.value
+        }
+        set sdr(e) {
+            this.uniforms.sdr.value = e
+        }
+        get gainMap() {
+            return this.uniforms.gainMap.value
+        }
+        set gainMap(e) {
+            this.uniforms.gainMap.value = e
+        }
+        get offsetHdr() {
+            return this.uniforms.offsetHdr.value.toArray()
+        }
+        set offsetHdr(e) {
+            this.uniforms.offsetHdr.value.fromArray(e)
+        }
+        get offsetSdr() {
+            return this.uniforms.offsetSdr.value.toArray()
+        }
+        set offsetSdr(e) {
+            this.uniforms.offsetSdr.value.fromArray(e)
+        }
+        get gainMapMin() {
+            return this.uniforms.gainMapMin.value.toArray()
+        }
+        set gainMapMin(e) {
+            this.uniforms.gainMapMin.value.fromArray(e)
+        }
+        get gainMapMax() {
+            return this.uniforms.gainMapMax.value.toArray()
+        }
+        set gainMapMax(e) {
+            this.uniforms.gainMapMax.value.fromArray(e)
+        }
+        get gamma() {
+            let e = this.uniforms.gamma.value;
+            return [1 / e.x, 1 / e.y, 1 / e.z]
+        }
+        set gamma(e) {
+            let t = this.uniforms.gamma.value;
+            t.x = 1 / e[0],
+            t.y = 1 / e[1],
+            t.z = 1 / e[2]
+        }
+        get hdrCapacityMin() {
+            return this._hdrCapacityMin
+        }
+        set hdrCapacityMin(e) {
+            this._hdrCapacityMin = e,
+            this.calculateWeight()
+        }
+        get hdrCapacityMax() {
+            return this._hdrCapacityMax
+        }
+        set hdrCapacityMax(e) {
+            this._hdrCapacityMax = e,
+            this.calculateWeight()
+        }
+        get maxDisplayBoost() {
+            return this._maxDisplayBoost
+        }
+        set maxDisplayBoost(e) {
+            this._maxDisplayBoost = Math.max(1, Math.min(65504, e)),
+            this.calculateWeight()
+        }
+        calculateWeight() {
+            let e = (Math.log2(this._maxDisplayBoost) - this._hdrCapacityMin) / (this._hdrCapacityMax - this._hdrCapacityMin);
+            this.uniforms.weightFactor.value = Math.max(0, Math.min(1, e))
+        }
+    }
+    u.WebGLRenderer;
+    class tv extends tf {
+        constructor(e, t) {
+            super({
+                renderer: e,
+                createMaterial: e => new tg(e),
+                createQuadRenderer: e => new tn(e)
+            }, t)
+        }
+        async render(e, t, r, n) {
+            let {sdrImage: a, gainMapImage: i, needsFlip: o} = await this.processImages(r, n, "flipY")
+              , {gainMap: s, sdr: l} = this.createTextures(a, i, o);
+            this.updateQuadRenderer(e, a, s, l, t),
+            e.render()
+        }
+    }
+    class tm extends tv {
+        load([e,t,r], n, a, i) {
+            let o, s, l, h = this.prepareQuadRenderer(), u = async () => {
+                if (o && s && l) {
+                    try {
+                        await this.render(h, l, o, s)
+                    } catch (n) {
+                        this.manager.itemError(e),
+                        this.manager.itemError(t),
+                        this.manager.itemError(r),
+                        "function" == typeof i && i(n),
+                        h.disposeOnDemandRenderer();
+                        return
+                    }
+                    "function" == typeof n && n(h),
+                    this.manager.itemEnd(e),
+                    this.manager.itemEnd(t),
+                    this.manager.itemEnd(r),
+                    h.disposeOnDemandRenderer()
+                }
+            }
+            , f = !0, c = 0, p = 0, d = !0, g = 0, v = 0, m = !0, w = 0, y = 0, b = () => {
+                "function" == typeof a && a(new ProgressEvent("progress",{
+                    lengthComputable: f && d && m,
+                    loaded: p + v + y,
+                    total: c + g + w
+                }))
+            }
+            ;
+            this.manager.itemStart(e),
+            this.manager.itemStart(t),
+            this.manager.itemStart(r);
+            let M = new tc.FileLoader(this._internalLoadingManager);
+            M.setResponseType("arraybuffer"),
+            M.setRequestHeader(this.requestHeader),
+            M.setPath(this.path),
+            M.setWithCredentials(this.withCredentials),
+            M.load(e, async e => {
+                if ("string" == typeof e)
+                    throw Error("Invalid sdr buffer");
+                o = e,
+                await u()
+            }
+            , e => {
+                f = e.lengthComputable,
+                p = e.loaded,
+                c = e.total,
+                b()
+            }
+            , t => {
+                this.manager.itemError(e),
+                "function" == typeof i && i(t)
+            }
+            );
+            let x = new tc.FileLoader(this._internalLoadingManager);
+            x.setResponseType("arraybuffer"),
+            x.setRequestHeader(this.requestHeader),
+            x.setPath(this.path),
+            x.setWithCredentials(this.withCredentials),
+            x.load(t, async e => {
+                if ("string" == typeof e)
+                    throw Error("Invalid gainmap buffer");
+                s = e,
+                await u()
+            }
+            , e => {
+                d = e.lengthComputable,
+                v = e.loaded,
+                g = e.total,
+                b()
+            }
+            , e => {
+                this.manager.itemError(t),
+                "function" == typeof i && i(e)
+            }
+            );
+            let _ = new tc.FileLoader(this._internalLoadingManager);
+            return _.setRequestHeader(this.requestHeader),
+            _.setPath(this.path),
+            _.setWithCredentials(this.withCredentials),
+            _.load(r, async e => {
+                if ("string" != typeof e)
+                    throw Error("Invalid metadata string");
+                l = JSON.parse(e),
+                await u()
+            }
+            , e => {
+                m = e.lengthComputable,
+                y = e.loaded,
+                w = e.total,
+                b()
+            }
+            , e => {
+                this.manager.itemError(r),
+                "function" == typeof i && i(e)
+            }
+            ),
+            h
+        }
+    }
+    class tw extends tv {
+        load(e, t, r, n) {
+            let a = this.prepareQuadRenderer()
+              , i = new tc.FileLoader(this._internalLoadingManager);
+            return i.setResponseType("arraybuffer"),
+            i.setRequestHeader(this.requestHeader),
+            i.setPath(this.path),
+            i.setWithCredentials(this.withCredentials),
+            this.manager.itemStart(e),
+            i.load(e, async r => {
+                let i, o, s;
+                if ("string" == typeof r)
+                    throw Error("Invalid buffer, received [string], was expecting [ArrayBuffer]");
+                let l = new Uint8Array(r);
+                try {
+                    let e = await th(l);
+                    i = e.sdr,
+                    o = e.gainMap,
+                    s = e.metadata
+                } catch (t) {
+                    if (t instanceof to || t instanceof ti)
+                        console.warn(`Failure to reconstruct an HDR image from ${e}: Gain map metadata not found in the file, HDRJPGLoader will render the SDR jpeg`),
+                        s = {
+                            gainMapMin: [0, 0, 0],
+                            gainMapMax: [1, 1, 1],
+                            gamma: [1, 1, 1],
+                            hdrCapacityMin: 0,
+                            hdrCapacityMax: 1,
+                            offsetHdr: [0, 0, 0],
+                            offsetSdr: [0, 0, 0]
+                        },
+                        i = l;
+                    else
+                        throw t
+                }
+                try {
+                    await this.render(a, s, i.buffer, o?.buffer)
+                } catch (t) {
+                    this.manager.itemError(e),
+                    "function" == typeof n && n(t),
+                    a.disposeOnDemandRenderer();
+                    return
+                }
+                "function" == typeof t && t(a),
+                this.manager.itemEnd(e),
+                a.disposeOnDemandRenderer()
+            }
+            , r, t => {
+                this.manager.itemError(e),
+                "function" == typeof n && n(t)
+            }
+            ),
+            a
+        }
+    }
+    let ty = {
+        apartment: "lebombo_1k.hdr",
+        city: "potsdamer_platz_1k.hdr",
+        dawn: "kiara_1_dawn_1k.hdr",
+        forest: "forest_slope_1k.hdr",
+        lobby: "st_fagans_interior_1k.hdr",
+        night: "dikhololo_night_1k.hdr",
+        park: "rooitou_park_1k.hdr",
+        studio: "studio_small_03_1k.hdr",
+        sunset: "venice_sunset_1k.hdr",
+        warehouse: "empty_warehouse_01_1k.hdr"
+    }
+      , tb = "https://raw.githack.com/pmndrs/drei-assets/456060a26bbeb8fdf79326f224b6d99b8bcce736/hdri/"
+      , tM = ["/px.png", "/nx.png", "/py.png", "/ny.png", "/pz.png", "/nz.png"];
+    function tx({files: e=tM, path: t="", preset: r, colorSpace: i, extensions: o}={}) {
+        r && (tT(r),
+        e = ty[r],
+        t = tb);
+        let s = Array.isArray(e)
+          , {extension: l, isCubemap: u} = tS(e)
+          , f = tC(l);
+        if (!f)
+            throw Error("useEnvironment: Unrecognized file extension: " + e);
+        let c = (0,
+        a.useThree)(e => e.gl);
+        (0,
+        n.useLayoutEffect)( () => {
+            ("webp" === l || "jpg" === l || "jpeg" === l) && c.domElement.addEventListener("webglcontextlost", function() {
+                d.G.clear(f, s ? [e] : e)
+            }, {
+                once: !0
+            })
+        }
+        , [e, c.domElement]);
+        let p = (0,
+        d.G)(f, s ? [e] : e, e => {
+            ("webp" === l || "jpg" === l || "jpeg" === l) && e.setRenderer(c),
+            null == e.setPath || e.setPath(t),
+            o && o(e)
+        }
+        )
+          , g = s ? p[0] : p;
+        if ("jpg" === l || "jpeg" === l || "webp" === l) {
+            var v;
+            g = null == (v = g.renderTarget) ? void 0 : v.texture
+        }
+        return g.mapping = u ? h.CubeReflectionMapping : h.EquirectangularReflectionMapping,
+        g.colorSpace = null != i ? i : u ? "srgb" : "srgb-linear",
+        g
+    }
+    let t_ = {
+        files: tM,
+        path: "",
+        preset: void 0,
+        extensions: void 0
+    };
+    tx.preload = e => {
+        let t = {
+            ...t_,
+            ...e
+        }
+          , {files: r, path: n=""} = t
+          , {preset: a, extensions: i} = t;
+        a && (tT(a),
+        r = ty[a],
+        n = tb);
+        let {extension: o} = tS(r);
+        if ("webp" === o || "jpg" === o || "jpeg" === o)
+            throw Error("useEnvironment: Preloading gainmaps is not supported");
+        let s = tC(o);
+        if (!s)
+            throw Error("useEnvironment: Unrecognized file extension: " + r);
+        d.G.preload(s, Array.isArray(r) ? [r] : r, e => {
+            null == e.setPath || e.setPath(n),
+            i && i(e)
+        }
+        )
+    }
+    ;
+    let tE = {
+        files: tM,
+        preset: void 0
+    };
+    function tT(e) {
+        if (!(e in ty))
+            throw Error("Preset must be one of: " + Object.keys(ty).join(", "))
+    }
+    function tS(e) {
+        var t;
+        let r = Array.isArray(e) && 6 === e.length
+          , n = Array.isArray(e) && 3 === e.length && e.some(e => e.endsWith("json"))
+          , a = Array.isArray(e) ? e[0] : e;
+        return {
+            extension: r ? "cube" : n ? "webp" : a.startsWith("data:application/exr") ? "exr" : a.startsWith("data:application/hdr") ? "hdr" : a.startsWith("data:image/jpeg") ? "jpg" : null == (t = a.split(".").pop()) || null == (t = t.split("?")) || null == (t = t.shift()) ? void 0 : t.toLowerCase(),
+            isCubemap: r,
+            isGainmap: n
+        }
+    }
+    function tC(e) {
+        return "cube" === e ? h.CubeTextureLoader : "hdr" === e ? v : "exr" === e ? tt : "jpg" === e || "jpeg" === e ? tw : "webp" === e ? tm : null
+    }
+    function tA(e, t, r, n, a={}) {
+        var i, o, l, h, u;
+        let f;
+        a = {
+            backgroundBlurriness: 0,
+            backgroundIntensity: 1,
+            backgroundRotation: [0, 0, 0],
+            environmentIntensity: 1,
+            environmentRotation: [0, 0, 0],
+            ...a
+        };
+        let c = (f = u = t || r).current && f.current.isScene ? u.current : u
+          , p = c.background
+          , d = c.environment
+          , g = {
+            backgroundBlurriness: c.backgroundBlurriness,
+            backgroundIntensity: c.backgroundIntensity,
+            backgroundRotation: null != (i = null == (o = c.backgroundRotation) || null == o.clone ? void 0 : o.clone()) ? i : [0, 0, 0],
+            environmentIntensity: c.environmentIntensity,
+            environmentRotation: null != (l = null == (h = c.environmentRotation) || null == h.clone ? void 0 : h.clone()) ? l : [0, 0, 0]
+        };
+        return "only" !== e && (c.environment = n),
+        e && (c.background = n),
+        (0,
+        s.s)(c, a),
+        () => {
+            "only" !== e && (c.environment = d),
+            e && (c.background = p),
+            (0,
+            s.s)(c, g)
+        }
+    }
+    function tF({scene: e, background: t=!1, map: r, ...i}) {
+        let o = (0,
+        a.useThree)(e => e.scene);
+        return n.useLayoutEffect( () => {
+            if (r)
+                return tA(t, e, o, r, i)
+        }
+        ),
+        null
+    }
+    function tU({background: e=!1, scene: t, blur: r, backgroundBlurriness: i, backgroundIntensity: o, backgroundRotation: s, environmentIntensity: l, environmentRotation: h, ...u}) {
+        let f = tx(u)
+          , c = (0,
+        a.useThree)(e => e.scene);
+        return n.useLayoutEffect( () => tA(e, t, c, f, {
+            backgroundBlurriness: null != r ? r : i,
+            backgroundIntensity: o,
+            backgroundRotation: s,
+            environmentIntensity: l,
+            environmentRotation: h
+        })),
+        n.useEffect( () => () => {
+            f.dispose()
+        }
+        , [f]),
+        null
+    }
+    function tR({children: e, near: t=.1, far: r=1e3, resolution: s=256, frames: l=1, map: f, background: c=!1, blur: p, backgroundBlurriness: d, backgroundIntensity: g, backgroundRotation: v, environmentIntensity: m, environmentRotation: w, scene: y, files: b, path: M, preset: x, extensions: _}) {
+        let E = (0,
+        a.useThree)(e => e.gl)
+          , T = (0,
+        a.useThree)(e => e.scene)
+          , S = n.useRef(null)
+          , [C] = n.useState( () => new h.Scene)
+          , A = n.useMemo( () => {
+            let e = new u.WebGLCubeRenderTarget(s);
+            return e.texture.type = h.HalfFloatType,
+            e
+        }
+        , [s]);
+        n.useEffect( () => () => {
+            A.dispose()
+        }
+        , [A]),
+        n.useLayoutEffect( () => {
+            if (1 === l) {
+                let e = E.autoClear;
+                E.autoClear = !0,
+                S.current.update(E, C),
+                E.autoClear = e
+            }
+            return tA(c, y, T, A.texture, {
+                backgroundBlurriness: null != p ? p : d,
+                backgroundIntensity: g,
+                backgroundRotation: v,
+                environmentIntensity: m,
+                environmentRotation: w
+            })
+        }
+        , [e, C, A.texture, y, T, c, l, E]);
+        let F = 1;
+        return (0,
+        i.useFrame)( () => {
+            if (l === 1 / 0 || F < l) {
+                let e = E.autoClear;
+                E.autoClear = !0,
+                S.current.update(E, C),
+                E.autoClear = e,
+                F++
+            }
+        }
+        ),
+        n.createElement(n.Fragment, null, (0,
+        o.createPortal)(n.createElement(n.Fragment, null, e, n.createElement("cubeCamera", {
+            ref: S,
+            args: [t, r, A]
+        }), b || x ? n.createElement(tU, {
+            background: !0,
+            files: b,
+            preset: x,
+            path: M,
+            extensions: _
+        }) : f ? n.createElement(tF, {
+            background: !0,
+            map: f,
+            extensions: _
+        }) : null), C))
+    }
+    function tI(e) {
+        var t, a, i, o;
+        let s = tx(e)
+          , h = e.map || s;
+        n.useMemo( () => (0,
+        l.e)({
+            GroundProjectedEnvImpl: p
+        }), []),
+        n.useEffect( () => () => {
+            s.dispose()
+        }
+        , [s]);
+        let u = n.useMemo( () => [h], [h])
+          , f = null == (t = e.ground) ? void 0 : t.height
+          , c = null == (a = e.ground) ? void 0 : a.radius
+          , d = null != (i = null == (o = e.ground) ? void 0 : o.scale) ? i : 1e3;
+        return n.createElement(n.Fragment, null, n.createElement(tF, (0,
+        r.default)({}, e, {
+            map: h
+        })), n.createElement("groundProjectedEnvImpl", {
+            args: u,
+            scale: d,
+            height: f,
+            radius: c
+        }))
+    }
+    tx.clear = e => {
+        let t = {
+            ...tE,
+            ...e
+        }
+          , {files: r} = t
+          , {preset: n} = t;
+        n && (tT(n),
+        r = ty[n]);
+        let {extension: a} = tS(r)
+          , i = tC(a);
+        if (!i)
+            throw Error("useEnvironment: Unrecognized file extension: " + r);
+        d.G.clear(i, Array.isArray(r) ? [r] : r)
+    }
+    ,
+    e.s(["Environment", 0, function(e) {
+        return e.ground ? n.createElement(tI, e) : e.map ? n.createElement(tF, e) : e.children ? n.createElement(tR, e) : n.createElement(tU, e)
+    }
+    ], 243257)
+}
+, 733088, e => {
     "use strict";
-    var t = e.i(949636);
-    e.s(["previewKey", 0, function(e, t, i=!1, a=!1, s="collection") {
-        return "colorways" === e.category && a ? "campaign" === s ? "fleet-campaign" : "fleet" : "environments" === e.category ? "wide" : `${"colorways" === e.category ? t ?? e.drone ?? "freestyle" : "product"}${i ? "-transparent" : ""}`
-    }
-    , "previewUrl", 0, function(e) {
-        return `https://flightdivision.com/storage/v1/object/public/${t.default.bucket}/${e.path}`
-    }
-    , "previewVariants", 0, function(e) {
-        var i = t.default;
-        if ("environments" === e.category)
-            return i.environment;
-        if ("colorways" === e.category)
-            return [{
-                key: "fleet",
-                fleet: !0,
-                ...i.product
-            }, {
-                key: "fleet-campaign",
-                fleet: !0,
-                fleetLayout: "campaign",
-                ...i.campaign
-            }, ...i.drones.flatMap(e => [{
-                key: e,
-                drone: e,
-                ...i.product
-            }, {
-                key: `${e}-transparent`,
-                drone: e,
-                transparent: !0,
-                ...i.product
-            }])];
-        if ("trails" === e.category)
-            return [{
-                key: "product",
-                ...i.product
-            }, {
-                key: "product-transparent",
-                transparent: !0,
-                ...i.product
-            }];
-        throw Error(`Unsupported photograph category: ${e.category}`)
-    }
-    ], 899257)
+    var t = e.i(270950);
+    e.s(["createPortal", () => t.o])
 }
 ]);

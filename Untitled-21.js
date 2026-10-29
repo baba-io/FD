@@ -1,3714 +1,7403 @@
-(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push(["object" == typeof document ? document.currentScript : void 0, 335943, e => {
-    e.v({
-        accessibleLabel: "card-price-module__-fBIda__accessibleLabel",
-        option: "card-price-module__-fBIda__option",
-        or: "card-price-module__-fBIda__or",
-        parts: "card-price-module__-fBIda__parts",
-        price: "card-price-module__-fBIda__price",
-        value: "card-price-module__-fBIda__value"
-    })
-}
-, 664384, 468136, e => {
+(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push(["object" == typeof document ? document.currentScript : void 0, 70399, 873724, 684680, 72606, 854693, 929618, 198132, 460470, 306605, 54893, 598558, 418879, 35230, e => {
     "use strict";
-    var a = e.i(843476)
-      , t = e.i(33156);
-    e.i(671112);
-    var s = e.i(910167);
-    e.s(["PaymentChoice", 0, function({name: e, options: n, value: r, onChange: i, disabled: l=!1}) {
+    var t = e.i(843476);
+    e.s(["DiscordMark", 0, function({className: e}) {
         return (0,
-        a.jsxs)("fieldset", {
-            className: s.default.choice,
-            disabled: l,
-            children: [(0,
-            a.jsx)("legend", {
-                children: "Choose payment method"
-            }), (0,
-            a.jsx)("div", {
-                className: s.default.options,
-                children: n.map(n => (0,
-                a.jsxs)("label", {
-                    className: s.default.option,
-                    "data-selected": r === n.currency || void 0,
-                    children: [(0,
-                    a.jsx)("input", {
-                        type: "radio",
-                        name: e,
-                        value: n.currency,
-                        checked: r === n.currency,
-                        onChange: () => i(n.currency)
-                    }), (0,
-                    a.jsx)("span", {
-                        className: s.default.radio,
-                        "aria-hidden": "true"
-                    }), "parts" === n.currency ? (0,
-                    a.jsx)(t.PartsGlyph, {
-                        size: 24
-                    }) : (0,
-                    a.jsx)(t.CreditsGlyph, {
-                        size: 24
-                    }), (0,
-                    a.jsx)("span", {
-                        className: s.default.amount,
-                        children: (0,
-                        a.jsxs)("strong", {
-                            children: [n.amount.toLocaleString("en-US"), " ", "parts" === n.currency ? "Parts" : "Credits"]
-                        })
-                    })]
-                }, n.currency))
-            })]
+        t.jsx)("svg", {
+            className: e,
+            viewBox: "0 0 127.14 96.36",
+            fill: "currentColor",
+            "aria-hidden": !0,
+            children: (0,
+            t.jsx)("path", {
+                d: "M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.06 72.06 0 0 0 45.64 0 105.19 105.19 0 0 0 19.39 8.09C2.79 32.65-1.71 56.6.54 80.21h0A105.73 105.73 0 0 0 32.71 96.36 77.7 77.7 0 0 0 39.6 85.25a68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1A105.25 105.25 0 0 0 126.6 80.22h0C129.24 52.84 122.09 29.11 107.7 8.07ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53 48.84 65.69 42.45 65.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53 91.08 65.69 84.69 65.69Z"
+            })
         })
     }
-    , "buyLabel", 0, function(e) {
-        return `Buy for ${e.amount.toLocaleString("en-US")} ${"parts" === e.currency ? "Parts" : "Credits"}`
-    }
-    ], 664384);
-    var n = e.i(335943);
-    e.s(["CardPrice", 0, function({options: e}) {
-        if (!e.length)
-            return null;
-        let s = e.map( ({amount: e, currency: a}) => `${e.toLocaleString("en-US")} ${"parts" === a ? "Parts" : "Credits"}`).join(" or ");
+    ], 70399),
+    e.s(["TikTokMark", 0, function({className: e}) {
         return (0,
-        a.jsxs)("span", {
-            className: n.default.price,
-            "data-dual": e.length > 1 || void 0,
-            children: [(0,
-            a.jsx)("span", {
-                className: n.default.accessibleLabel,
-                children: s
-            }), e.map( ({amount: e, currency: s}) => (0,
-            a.jsxs)("span", {
-                className: n.default.option,
-                "data-currency": s,
-                "aria-hidden": "true",
-                children: ["parts" === s ? (0,
-                a.jsx)(t.PartsGlyph, {
-                    size: 22,
-                    className: n.default.parts
-                }) : (0,
-                a.jsx)(t.CreditsGlyph, {}), (0,
-                a.jsxs)("span", {
-                    className: n.default.value,
-                    children: [(0,
-                    a.jsx)("strong", {
-                        children: e.toLocaleString("en-US")
-                    }), (0,
-                    a.jsx)("small", {
-                        children: "parts" === s ? "Parts" : "Credits"
-                    })]
-                })]
-            }, s)), e.length > 1 && (0,
-            a.jsx)("span", {
-                className: n.default.or,
-                "aria-hidden": "true",
-                children: "or"
-            })]
+        t.jsx)("svg", {
+            className: e,
+            viewBox: "0 0 24 24",
+            fill: "currentColor",
+            "aria-hidden": !0,
+            children: (0,
+            t.jsx)("path", {
+                d: "M16.6 2h-3.3v13.5a3.15 3.15 0 1 1-2.2-3V9.1a6.5 6.5 0 1 0 5.5 6.4V8.7a8.3 8.3 0 0 0 4.9 1.6V7a4.9 4.9 0 0 1-4.9-5Z"
+            })
         })
     }
-    ], 468136)
-}
-, 910167, e => {
-    e.v({
-        amount: "payment-choice-module__A_efoW__amount",
-        choice: "payment-choice-module__A_efoW__choice",
-        option: "payment-choice-module__A_efoW__option",
-        options: "payment-choice-module__A_efoW__options",
-        radio: "payment-choice-module__A_efoW__radio"
-    })
-}
-, 516727, e => {
-    "use strict";
-    var a = e.i(843476)
-      , t = e.i(271645)
-      , s = e.i(809102)
-      , n = e.i(894969)
-      , r = e.i(664384)
-      , i = e.i(468136)
-      , l = e.i(127923)
-      , o = e.i(619455)
-      , d = e.i(188548);
+    ], 873724),
+    e.s(["YouTubeMark", 0, function({className: e}) {
+        return (0,
+        t.jsx)("svg", {
+            className: e,
+            viewBox: "0 0 24 24",
+            fill: "currentColor",
+            "aria-hidden": !0,
+            children: (0,
+            t.jsx)("path", {
+                fillRule: "evenodd",
+                d: "M23.5 6.2a3 3 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3 3 0 0 0 .5 6.2C0 8.07 0 12 0 12s0 3.93.5 5.8a3 3 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3 3 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"
+            })
+        })
+    }
+    ], 684680);
+    var s = e.i(271645)
+      , a = e.i(321390)
+      , i = e.i(710534)
+      , n = e.i(28276)
+      , r = e.i(353198)
+      , l = e.i(106258)
+      , o = e.i(814022)
+      , d = e.i(105524);
     e.i(573798);
-    var c = e.i(568204)
-      , u = e.i(498475)
-      , m = e.i(624834)
-      , h = e.i(24168)
-      , p = e.i(509381)
-      , f = e.i(244144)
-      , b = e.i(4853)
-      , g = e.i(657688);
-    function x({id: e}) {
+    var c = e.i(498475)
+      , u = e.i(516560)
+      , h = e.i(509381)
+      , m = e.i(244144)
+      , p = e.i(523895);
+    let x = p.PALETTE.ink
+      , f = p.PALETTE.paper
+      , g = p.PALETTE.orange
+      , j = p.PALETTE.muted;
+    function b({x: e=120, y: s=120, angle: a=0, scale: i=1}) {
         return (0,
-        a.jsx)(g.default, {
-            className: "fd-booster-art",
-            src: `/images/shop/booster-${e}.webp`,
-            alt: "",
-            fill: !0,
-            sizes: "(max-width: 760px) 85vw, (max-width: 1400px) 38vw, 560px",
-            unoptimized: !0
-        })
-    }
-    function j() {
-        let[e,a] = (0,
-        t.useState)(n.inventoryNow)
-          , s = (0,
-        n.useInventory)(e => e.serverTime);
-        return (0,
-        t.useEffect)( () => {
-            let e = () => a((0,
-            n.inventoryNow)());
-            e();
-            let t = window.setInterval(e, 1e3);
-            return document.addEventListener("visibilitychange", e),
-            () => {
-                window.clearInterval(t),
-                document.removeEventListener("visibilitychange", e)
-            }
-        }
-        , [s]),
-        e
-    }
-    e.i(671112);
-    let v = {
-        "dummy-launch": "orange",
-        "double-xp": "acid"
-    };
-    function y({booster: e, remaining: n, onOpen: r, compact: i}) {
-        let[o,m] = (0,
-        t.useState)(!1)
-          , h = "dummy-launch" === e.id ? "rocket" : "zap"
-          , p = s.BOOSTERS[e.id];
-        return (0,
-        a.jsxs)(l.Popover.Root, {
-            open: o,
-            onOpenChange: m,
+        t.jsxs)("g", {
+            transform: `translate(${e} ${s}) rotate(${a}) scale(${i})`,
+            stroke: x,
+            fill: f,
+            strokeWidth: "3",
             children: [(0,
-            a.jsx)(l.Popover.Trigger, {
-                asChild: !0,
-                children: (0,
-                a.jsxs)(c.Chip, {
-                    size: "sm",
-                    edge: v[e.id],
-                    icon: (0,
-                    a.jsx)(f.Icon, {
-                        name: h,
-                        size: 24
-                    }),
-                    className: `fd-active-booster fd-active-booster--${e.id}`,
-                    "aria-label": `${p.label} active. View details`,
-                    children: [i && (0,
-                    a.jsxs)(a.Fragment, {
-                        children: [(0,
-                        a.jsx)("span", {
-                            className: "fd-active-booster-effect",
-                            "aria-hidden": "true",
-                            children: "double-xp" === e.id ? "2× XP" : "6×"
-                        }), (0,
-                        a.jsx)(c.Chip.Dot, {})]
-                    }), (0,
-                    a.jsx)("span", {
-                        role: "timer",
-                        "aria-label": `${p.label} time remaining`,
-                        children: (0,
-                        s.boosterTime)(n)
-                    })]
-                })
+            t.jsx)("path", {
+                d: "M-24-16 24 16M-24 16 24-16"
+            }), [-1, 1].flatMap(e => [-1, 1].map(s => (0,
+            t.jsx)("ellipse", {
+                cx: 27 * e,
+                cy: 18 * s,
+                rx: "15",
+                ry: "7"
+            }, `${e},${s}`))), (0,
+            t.jsx)("rect", {
+                x: "-10",
+                y: "-14",
+                width: "20",
+                height: "28",
+                rx: "6"
             }), (0,
-            a.jsx)(l.Popover.Portal, {
-                children: (0,
-                a.jsxs)(l.Popover.Content, {
-                    className: `fd-booster-popover fdk-on-chalk fd-booster-popover--${e.id}`,
-                    sideOffset: 10,
-                    align: "end",
-                    collisionPadding: 12,
-                    "aria-label": p.label,
-                    onEscapeKeyDown: e => e.stopPropagation(),
-                    onKeyDown: e => e.stopPropagation(),
-                    children: [(0,
-                    a.jsxs)("div", {
-                        className: "fd-booster-popover-heading",
-                        children: [(0,
-                        a.jsx)(c.Badge, {
-                            tone: v[e.id],
-                            icon: (0,
-                            a.jsx)(f.Icon, {
-                                name: h,
-                                size: 24
-                            }),
-                            children: "Booster active"
-                        }), (0,
-                        a.jsx)("span", {
-                            className: "fd-booster-popover-close",
-                            children: (0,
-                            a.jsx)(u.IconButton, {
-                                label: "Close booster details",
-                                icon: (0,
-                                a.jsx)(f.Icon, {
-                                    name: "close",
-                                    size: 24
-                                }),
-                                onClick: () => m(!1)
-                            })
-                        })]
-                    }), (0,
-                    a.jsx)("h2", {
-                        children: p.name
-                    }), (0,
-                    a.jsx)("strong", {
-                        className: "fd-booster-popover-effect",
-                        children: p.effect
-                    }), (0,
-                    a.jsx)("p", {
-                        children: p.description
-                    }), (0,
-                    a.jsxs)("dl", {
-                        className: "fd-booster-popover-stats",
-                        children: [(0,
-                        a.jsxs)("div", {
-                            children: [(0,
-                            a.jsx)("dt", {
-                                children: "Time remaining"
-                            }), (0,
-                            a.jsx)("dd", {
-                                role: "timer",
-                                children: (0,
-                                s.boosterTime)(n)
-                            })]
-                        }), (0,
-                        a.jsxs)("div", {
-                            children: [(0,
-                            a.jsx)("dt", {
-                                children: "In your kit"
-                            }), (0,
-                            a.jsx)("dd", {
-                                children: e.quantity
-                            })]
-                        })]
-                    }), (0,
-                    a.jsxs)("p", {
-                        className: "fd-booster-popover-rules",
-                        children: ["Time keeps running in menus, while paused and offline. Each use adds 15 minutes; the effect stays the same.", "double-xp" === e.id && " Credits are not multiplied."]
-                    }), r && (0,
-                    a.jsx)(u.Button, {
-                        tone: "secondary",
-                        size: "sm",
-                        block: !0,
-                        className: "fd-booster-popover-link",
-                        trailingIcon: (0,
-                        a.jsx)(f.Icon, {
-                            name: "arrow-right",
-                            size: 24
-                        }),
-                        onClick: () => {
-                            m(!1),
-                            (0,
-                            d.markMenuOpen)("gear", "booster_chip"),
-                            r()
-                        }
-                        ,
-                        children: "Open consumables"
-                    })]
-                })
+            t.jsx)("path", {
+                d: "m-4-3 4-5 4 5",
+                stroke: g,
+                fill: "none"
             })]
         })
     }
-    e.s(["ActiveBoosters", 0, function({onOpen: e, compact: t=!1}) {
-        let r = (0,
-        n.useInventory)(e => e.boosters)
-          , i = j()
-          , l = r.filter(e => (0,
-        s.boosterRemaining)(e, i) > 0);
-        return l.length ? (0,
-        a.jsx)("aside", {
-            className: "fd-active-boosters",
-            "aria-label": "Active boosters",
-            children: l.map(n => (0,
-            a.jsx)(y, {
-                booster: n,
-                remaining: (0,
-                s.boosterRemaining)(n, i),
-                onOpen: e,
-                compact: t
-            }, n.id))
-        }) : null
-    }
-    , "BoosterPanel", 0, function({mode: e, onGear: l, onShop: c, compact: g=!1, initialBooster: v}) {
-        let y, S, k, N, C, _, I, w, $, M, L, q = (0,
-        n.useInventory)(), P = j(), [E,R] = (0,
-        t.useState)({
-            "dummy-launch": 1,
-            "double-xp": 1
-        }), [O,A] = (0,
-        t.useState)(""), [B,T] = (0,
-        t.useState)(""), [z,D] = (0,
-        t.useState)(v ?? null), [F,U] = (0,
-        t.useState)(null), [G,Y] = (0,
-        t.useState)("parts"), V = "shop" === e;
-        async function H(e) {
-            T(""),
-            A("");
-            let a = await q.useBooster(e);
-            if (a)
-                T(a);
-            else {
-                if ("purchase" === e.kind && (D(null),
-                V && l)) {
-                    (0,
-                    d.markMenuOpen)("gear", "purchase"),
-                    l();
-                    return
-                }
-                A("purchase" === e.kind ? `${e.quantity} \xd7 ${s.BOOSTERS[e.booster].label} added to Consumables.` : `${s.BOOSTERS[e.booster].label}: 15 minutes added. Ready to fly!`)
-            }
-        }
-        let J = e => q.boosters.find(a => a.id === e)
-          , W = F ?? s.BOOSTER_IDS.find(e => (J(e)?.quantity ?? 0) > 0 || (0,
-        s.boosterRemaining)(J(e), P) > 0) ?? s.BOOSTER_IDS[0]
-          , K = J(W)
-          , Q = (0,
-        s.boosterRemaining)(K, P) > 0
-          , X = "ready" === q.status && K ? q.pendingBooster ? "Your last booster request needs checking" : void 0 : "loading" === q.status ? "Loading your consumables" : "Boosters are unavailable right now";
+    function v({d: e, head: s}) {
         return (0,
-        a.jsxs)("section", {
-            className: `fd-boosters fdk-screen fd-boosters--${e}${g ? " fd-boosters--shelf" : ""}`,
-            "aria-label": V ? "Booster shop" : "Your consumables",
-            children: [V ? (0,
-            a.jsxs)(a.Fragment, {
-                children: [(0,
-                a.jsxs)("header", {
-                    className: "fd-boosters-heading",
-                    children: [(0,
-                    a.jsx)("div", {
-                        children: (0,
-                        a.jsxs)("h2", {
-                            children: ["Boosters", (0,
-                            a.jsx)("span", {
-                                children: "."
-                            })]
-                        })
-                    }), l && (0,
-                    a.jsx)(p.TextLink, {
-                        onClick: () => {
-                            (0,
-                            d.markMenuOpen)("gear", "shop"),
-                            l()
-                        }
-                        ,
-                        trailingIcon: (0,
-                        a.jsx)(f.Icon, {
-                            name: "arrow-right",
-                            size: 24
-                        }),
-                        children: "My consumables"
-                    })]
-                }), (0,
-                a.jsx)(b.StoreGrid, {
-                    children: s.BOOSTER_IDS.map(e => {
-                        let t = s.BOOSTERS[e];
-                        return (0,
-                        a.jsx)(b.StoreCard, {
-                            name: t.name,
-                            label: t.effect,
-                            "aria-label": `View ${t.name}, from ${t.partsPrice} Parts or ${t.price} Credits`,
-                            onClick: () => {
-                                T(""),
-                                A(""),
-                                D(e)
-                            }
-                            ,
-                            art: (0,
-                            a.jsx)(x, {
-                                id: e
-                            }),
-                            badge: "15 MIN",
-                            price: (0,
-                            a.jsx)(i.CardPrice, {
-                                options: [{
-                                    currency: "parts",
-                                    amount: t.partsPrice
-                                }, {
-                                    currency: "credits",
-                                    amount: t.price
-                                }]
-                            })
-                        }, e)
-                    }
-                    )
-                })]
-            }) : (0,
-            a.jsxs)(a.Fragment, {
-                children: [(0,
-                a.jsx)("div", {
-                    className: "fd-gear-catalog fd-gear-catalog--rows",
-                    role: "group",
-                    "aria-label": "Boosters",
-                    children: s.BOOSTER_IDS.map(e => {
-                        let t = s.BOOSTERS[e]
-                          , n = J(e)
-                          , r = "ready" === q.status && !!n
-                          , i = (0,
-                        s.boosterRemaining)(n, P);
-                        return (0,
-                        a.jsx)(h.RowCard, {
-                            size: "wide",
-                            layout: "side",
-                            className: `fd-booster-card fd-booster-card--${e}`,
-                            name: t.name,
-                            art: (0,
-                            a.jsx)(x, {
-                                id: e
-                            }),
-                            selected: W === e,
-                            label: `${t.name}, ${t.effect}${r ? ", " + n.quantity + " in your kit" : ", inventory unavailable"}${i > 0 && r ? ", active" : ""}`,
-                            meta: (0,
-                            a.jsxs)(a.Fragment, {
-                                children: [(0,
-                                a.jsx)("span", {
-                                    children: t.effect
-                                }), r && (0,
-                                a.jsxs)("span", {
-                                    children: [n.quantity, " owned", i > 0 ? " · Active" : ""]
-                                })]
-                            }),
-                            onSelect: () => {
-                                U(e),
-                                T(""),
-                                A("")
-                            }
-                        }, e)
-                    }
-                    )
-                }), (0,
-                a.jsxs)("footer", {
-                    className: "fd-gear-footer",
-                    children: [(0,
-                    a.jsxs)("div", {
-                        className: "fd-gear-selected",
-                        children: [(0,
-                        a.jsxs)("div", {
-                            children: [(0,
-                            a.jsx)("h2", {
-                                children: s.BOOSTERS[W].name
-                            }), "ready" === q.status && K && (0,
-                            a.jsx)("small", {
-                                children: K.quantity ? Q ? "+15 min · uses 1" : "15 min · uses 1" : "Not owned"
-                            })]
-                        }), X ? (0,
-                        a.jsx)(u.PlayButton, {
-                            className: "fd-gear-action",
-                            label: "Unavailable",
-                            detail: X,
-                            disabledReason: X
-                        }) : K?.quantity ? (0,
-                        a.jsx)(u.PlayButton, {
-                            className: "fd-gear-action",
-                            label: q.purchasing ? "Working…" : "Activate",
-                            busy: q.purchasing,
-                            onClick: () => void H({
-                                kind: "activate",
-                                booster: W,
-                                quantity: 1,
-                                expectedPrice: 0,
-                                currency: "credits"
-                            })
-                        }) : (0,
-                        a.jsx)(u.PlayButton, {
-                            className: "fd-gear-action",
-                            label: "Buy",
-                            "aria-haspopup": "dialog",
-                            busy: q.purchasing,
-                            disabledReason: c ? void 0 : "Shop unavailable",
-                            onClick: () => c?.(W)
-                        })]
-                    }), c && (0,
-                    a.jsx)(p.TextLink, {
-                        className: "fd-gear-shop-link",
-                        onClick: () => c?.(),
-                        children: "Shop boosters"
-                    })]
-                })]
-            }), (0,
-            a.jsx)(m.DialogShell, {
-                open: null !== z,
-                size: "sm",
-                className: "fd-booster-modal",
-                closeLabel: "Close purchase",
-                title: z ? s.BOOSTERS[z].name : "",
-                description: z ? `${s.BOOSTERS[z].effect} \xb7 15 minutes each` : void 0,
-                onClose: () => D(null),
-                children: z && (0,
-                a.jsxs)(a.Fragment, {
-                    children: [(0,
-                    a.jsx)("div", {
-                        className: "fd-booster-modal-art",
-                        children: (0,
-                        a.jsx)(x, {
-                            id: z
-                        })
-                    }), (0,
-                    a.jsx)("p", {
-                        className: "fd-booster-modal-rules",
-                        children: "Starts when activated. Runs while offline. Additional boosters extend the timer."
-                    }), (0,
-                    a.jsxs)("p", {
-                        className: "fd-booster-modal-balance",
-                        children: ["Balance: ", q.parts?.toLocaleString("en-US") ?? "…", " Parts · ", q.balance?.toLocaleString("en-US") ?? "…", " Credits"]
-                    }), (y = s.BOOSTERS[z],
-                    S = q.boosters.find(e => e.id === z),
-                    k = E[z],
-                    C = (N = (e, a) => "parts" === e ? 3 === a ? y.partsPackPrice : y.partsPrice : 3 === a ? y.packPrice : y.price)(G, k),
-                    _ = "parts" === G ? "Parts" : "Credits",
-                    I = "ready" === q.status && !!S,
-                    $ = (w = "parts" === G ? q.parts ?? 0 : q.balance ?? 0) < C,
-                    M = "credits" === G && q.refund_debt > 0,
-                    L = !I || q.purchasing || !!q.pendingBooster,
-                    (0,
-                    a.jsxs)(a.Fragment, {
-                        children: [(0,
-                        a.jsx)(r.PaymentChoice, {
-                            name: `booster-currency-${z}`,
-                            value: G,
-                            onChange: Y,
-                            disabled: L,
-                            options: [{
-                                currency: "parts",
-                                amount: N("parts", k)
-                            }, {
-                                currency: "credits",
-                                amount: N("credits", k)
-                            }]
-                        }), (0,
-                        a.jsxs)("fieldset", {
-                            className: "fd-booster-options",
-                            children: [(0,
-                            a.jsx)("legend", {
-                                children: "Quantity"
-                            }), [1, 3].map(e => (0,
-                            a.jsxs)("label", {
-                                className: k === e ? "is-selected" : "",
-                                children: [(0,
-                                a.jsx)("input", {
-                                    type: "radio",
-                                    name: `pack-${z}`,
-                                    value: e,
-                                    checked: k === e,
-                                    onChange: () => R(a => ({
-                                        ...a,
-                                        [z]: e
-                                    }))
-                                }), (0,
-                                a.jsxs)("span", {
-                                    children: [(0,
-                                    a.jsx)("strong", {
-                                        children: 1 === e ? "1 booster" : "3 boosters"
-                                    }), 3 === e && (0,
-                                    a.jsxs)("small", {
-                                        className: "fd-booster-saving",
-                                        children: ["Save ", (3 * N(G, 1) - N(G, 3)).toLocaleString("en-US"), " ", _]
-                                    })]
-                                }), (0,
-                                a.jsxs)("span", {
-                                    className: "fd-booster-option-price",
-                                    children: [3 === e && (0,
-                                    a.jsx)("s", {
-                                        children: (3 * N(G, 1)).toLocaleString("en-US")
-                                    }), (0,
-                                    a.jsxs)("b", {
-                                        children: [N(G, e).toLocaleString("en-US"), " ", (0,
-                                        a.jsx)("small", {
-                                            children: _
-                                        })]
-                                    })]
-                                })]
-                            }, e))]
-                        }), (0,
-                        a.jsx)(u.Button, {
-                            tone: "primary",
-                            size: "md",
-                            block: !0,
-                            className: "fd-booster-confirm",
-                            trailingIcon: (0,
-                            a.jsx)(f.Icon, {
-                                name: "arrow-right",
-                                size: 24
-                            }),
-                            disabled: L || M || "parts" === G && $,
-                            onClick: () => {
-                                $ && "credits" === G ? (D(null),
-                                (0,
-                                d.markMenuOpen)("shop", "credits_prompt"),
-                                o.useCreditShop.getState().open({
-                                    required: C,
-                                    label: `${k} \xd7 ${y.label}`
-                                })) : H({
-                                    kind: "purchase",
-                                    booster: z,
-                                    quantity: k,
-                                    expectedPrice: C,
-                                    currency: G
-                                })
-                            }
-                            ,
-                            children: q.purchasing ? "Purchasing…" : $ && "credits" === G ? "Get Credits" : `Buy ${1 === k ? "booster" : "3 boosters"} \xb7 ${C.toLocaleString("en-US")} ${_}`
-                        }), $ && I && (0,
-                        a.jsxs)("small", {
-                            className: "fd-booster-footnote",
-                            children: [(C - w).toLocaleString("en-US"), " more ", _, " needed.", "parts" === G ? " Parts are earned by playing." : ""]
-                        }), M && (0,
-                        a.jsx)("p", {
-                            className: "fd-booster-notice fd-booster-notice--error",
-                            role: "alert",
-                            children: "Contact support about your refunded purchase before spending Credits."
-                        })]
-                    })), B && (0,
-                    a.jsx)("p", {
-                        className: "fd-booster-notice fd-booster-notice--error",
-                        role: "alert",
-                        children: B
-                    }), q.pendingBooster && !q.purchasing && (0,
-                    a.jsxs)("p", {
-                        className: "fd-booster-notice",
-                        role: "status",
-                        children: ["Your last request needs checking. ", (0,
-                        a.jsx)(p.TextLink, {
-                            onClick: () => void H(q.pendingBooster),
-                            children: "Retry safely"
-                        })]
-                    }), "ready" !== q.status && (0,
-                    a.jsx)("p", {
-                        className: "fd-booster-notice",
-                        role: "status",
-                        children: "loading" === q.status ? "Loading your balance…" : q.error
-                    }), "ready" === q.status && !q.boosters.some(e => e.id === z) && (0,
-                    a.jsx)("p", {
-                        className: "fd-booster-notice",
-                        role: "status",
-                        children: "This booster is temporarily unavailable."
-                    })]
-                })
-            }), O && (0,
-            a.jsx)(m.Toast, {
-                className: "fd-booster-toast",
-                tone: "success",
-                title: O,
-                action: V && l ? {
-                    label: "Open consumables",
-                    onClick: () => {
-                        (0,
-                        d.markMenuOpen)("gear", "purchase"),
-                        l()
-                    }
-                } : void 0
-            }), B && (0,
-            a.jsx)(m.Toast, {
-                className: "fd-booster-toast",
-                tone: "error",
-                title: B
-            }), q.pendingBooster && !q.purchasing && (0,
-            a.jsx)(m.Toast, {
-                className: "fd-booster-toast",
-                tone: "info",
-                title: "Your last booster request needs checking.",
-                action: {
-                    label: "Retry safely",
-                    onClick: () => void H(q.pendingBooster)
-                }
-            }), "loading" === q.status && (0,
-            a.jsx)(m.LoadingState, {
-                className: "fd-boosters-state",
-                title: "Loading your consumables…"
-            }), "error" === q.status && (0,
-            a.jsx)(m.Toast, {
-                className: "fd-booster-toast",
-                tone: "error",
-                title: q.error,
-                action: {
-                    label: "Try again",
-                    onClick: () => void q.refresh()
-                }
-            }), "ready" === q.status && !q.boosters.length && (0,
-            a.jsx)(m.Toast, {
-                className: "fd-booster-toast",
-                tone: "info",
-                title: "Boosters are temporarily unavailable.",
-                action: {
-                    label: "Refresh",
-                    onClick: () => void q.refresh()
-                }
-            }), V && q.refund_debt > 0 && (0,
-            a.jsx)(m.Toast, {
-                className: "fd-booster-toast",
-                tone: "error",
-                title: "Contact support about your refunded purchase before spending Credits."
-            })]
-        })
-    }
-    ], 516727)
-}
-, 854514, 647516, 743492, e => {
-    "use strict";
-    var a = e.i(843476)
-      , t = e.i(794850)
-      , s = e.i(271645)
-      , n = e.i(295692)
-      , r = e.i(127923);
-    e.i(573798);
-    var i = e.i(568204)
-      , l = e.i(244144)
-      , o = e.i(106258)
-      , d = e.i(814022)
-      , c = e.i(809886)
-      , u = e.i(37220)
-      , m = e.i(246176)
-      , h = e.i(686410)
-      , p = e.i(404961)
-      , f = e.i(353198)
-      , b = e.i(287405)
-      , g = e.i(771607)
-      , x = e.i(870895)
-      , j = e.i(118274)
-      , v = e.i(105524)
-      , y = e.i(514152)
-      , S = e.i(28276)
-      , k = e.i(609223)
-      , N = e.i(954646)
-      , C = e.i(498475)
-      , _ = e.i(509381)
-      , I = e.i(516560)
-      , w = e.i(883620)
-      , $ = e.i(451598)
-      , M = e.i(521201)
-      , L = e.i(710534)
-      , q = e.i(715793)
-      , P = e.i(838740)
-      , E = e.i(71901)
-      , R = e.i(768834)
-      , O = e.i(920755)
-      , A = e.i(613105);
-    let B = (0,
-    R.create)( (e, a) => ({
-        account: null,
-        cleared: !1,
-        load: async t => {
-            if (!t)
-                return void e({
-                    account: null,
-                    cleared: !1
-                });
-            if (a().account !== t && e({
-                account: t,
-                cleared: !1
-            }),
-            !a().cleared)
-                try {
-                    let {data: s, error: n} = await (0,
-                    O.createClient)().from("race_clears").select("time_attack_id").limit(1).abortSignal((0,
-                    A.withDeadline)(null, 8e3));
-                    n || a().account !== t || e({
-                        cleared: (s ?? []).length > 0
-                    })
-                } catch {}
-        }
-    }));
-    var T = e.i(734524)
-      , z = e.i(762815)
-      , D = e.i(243402)
-      , F = e.i(269778)
-      , U = e.i(673378)
-      , G = e.i(245433);
-    let Y = (0,
-    s.createContext)({
-        nearby: G.fetchRaceNearby,
-        solo: {
-            boards: G.fetchRaceBoards,
-            ghost: G.fetchRaceGhost
-        }
-    })
-      , V = () => (0,
-    s.useContext)(Y);
-    function H() {
-        (0,
-        l.preloadRaceIcons)();
-        let e = (0,
-        F.useRacePick)()
-          , [t,n] = (0,
-        s.useState)(!1);
-        (0,
-        o.useSimStore)(e => e.lessonAuthoringEpoch);
-        let r = (0,
-        o.useSimStore)(d.flownDrone)
-          , i = (0,
-        o.useSimStore)(e => e.playerAccountId)
-          , c = V()
-          , [u,m] = (0,
-        s.useState)({})
-          , h = (0,
-        S.listTimeAttacks)().filter(e => e.gates.length >= 2)
-          , b = "time-attack" === e.mode ? (0,
-        F.racePickCourse)(e, h) : null
-          , g = (0,
-        s.useRef)(null);
-        (0,
-        s.useLayoutEffect)( () => {
-            let e = g.current;
-            if (!t || !e)
-                return;
-            let a = e.querySelector('[aria-pressed="true"]')
-              , s = a?.closest("section")?.querySelector("h3");
-            if (!a || !s) {
-                e.scrollTop = 0;
-                return
-            }
-            e.scrollTop += s.getBoundingClientRect().top - e.getBoundingClientRect().top;
-            let n = a.getBoundingClientRect().bottom - e.getBoundingClientRect().bottom;
-            n > 0 && (e.scrollTop += n)
-        }
-        , [t, b?.id]);
-        let x = [...new Set(h.map(e => e.mapId))]
-          , j = JSON.stringify(x)
-          , [v,y] = (0,
-        s.useState)(new Map);
-        (0,
-        s.useEffect)( () => {
-            let e = !0;
-            return (0,
-            D.loadMapNames)(JSON.parse(j)).then(a => {
-                e && y(a)
-            }
-            ),
-            () => {
-                e = !1
-            }
-        }
-        , [j]);
-        let N = e => (0,
-        p.hasMap)(e) ? (0,
-        p.mapById)(e).name : v.get(e) ?? "Map unavailable"
-          , _ = JSON.stringify([i, r, h.map(e => [e.id, e.competitiveRevision ?? 1])])
-          , w = JSON.stringify((t ? h : b ? [b] : []).map(e => ({
-            id: e.id,
-            revision: e.competitiveRevision ?? 1
-        })));
-        (0,
-        s.useEffect)( () => {
-            let e = new AbortController;
-            for (let a of JSON.parse(w))
-                c.nearby({
-                    timeAttackId: a.id,
-                    courseRevision: a.revision,
-                    droneId: r,
-                    signal: e.signal
-                }).then(t => {
-                    e.signal.aborted || m(e => ({
-                        ...e,
-                        [`${_}:${a.id}`]: (t.around.find(e => e.you) ?? t.friends.find(e => e.you))?.timeMs ?? null
-                    }))
-                }
-                ).catch( () => {}
-                );
-            return () => e.abort()
-        }
-        , [_, w, r, c]);
-        let $ = e => {
-            let a = u[`${_}:${e}`];
-            return void 0 === a ? "Best unavailable" : null === a ? "No time yet" : (0,
-            U.formatCircuitTime)(a)
-        }
-        ;
-        return (0,
-        a.jsxs)("section", {
-            className: "fd-race-plate",
-            "aria-label": "Race options",
+        t.jsxs)("g", {
+            stroke: g,
+            strokeWidth: "4",
             children: [(0,
-            a.jsx)(I.Segmented, {
-                typography: "body",
-                label: "Race mode",
-                value: e.mode,
-                options: [{
-                    value: "online",
-                    label: "Online race"
-                }, {
-                    value: "time-attack",
-                    label: "Time attack"
-                }],
-                onChange: e => {
-                    F.useRacePick.setState({
-                        mode: e
-                    }),
-                    n(!1)
-                }
-            }), "online" === e.mode && (0,
-            a.jsx)("p", {
-                className: "fd-race-plate__queue",
-                children: k.ONLINE_RACE_QUEUE_LINE
-            }), "time-attack" === e.mode && (0,
-            a.jsx)(C.Button, {
-                className: "fd-race-plate__circuit",
-                tone: "ghost",
-                size: "sm",
-                block: !0,
-                trailingIcon: (0,
-                a.jsx)(l.Icon, {
-                    name: t ? "chevron-up" : "chevron-right"
-                }),
-                "aria-expanded": t,
-                onClick: () => n(!t),
-                children: b?.name ?? "No circuits available"
-            }), b && !t && (0,
-            a.jsxs)("p", {
-                children: [N(b.mapId), (0,
-                a.jsx)("br", {}), "Your best · ", f.DRONES[r].name, " · ", $(b.id)]
-            }), "time-attack" === e.mode && t && (0,
-            a.jsx)("div", {
-                ref: g,
-                className: "fd-race-plate__circuits",
-                "aria-label": "Circuits",
-                children: x.map(e => (0,
-                a.jsxs)("section", {
-                    children: [(0,
-                    a.jsx)("h3", {
-                        children: N(e)
-                    }), h.filter(a => a.mapId === e).map(e => (0,
-                    a.jsxs)(C.Button, {
-                        size: "sm",
-                        "aria-pressed": b?.id === e.id,
-                        tone: b?.id === e.id ? "secondary" : "ghost",
-                        block: !0,
-                        onClick: () => {
-                            F.useRacePick.setState({
-                                course: e.id
-                            }),
-                            n(!1)
-                        }
-                        ,
-                        children: [(0,
-                        a.jsx)("span", {
-                            children: e.name
-                        }), (0,
-                        a.jsx)("small", {
-                            "data-time": "number" == typeof u[`${_}:${e.id}`] || void 0,
-                            children: $(e.id)
-                        })]
-                    }, e.id))]
-                }, e))
+            t.jsx)("path", {
+                d: e
+            }), (0,
+            t.jsx)("path", {
+                d: s
             })]
         })
     }
-    function J(e) {
-        j.useModePanel.getState().open({
-            mode: e,
-            origin: "menu"
+    function S({d: e}) {
+        return (0,
+        t.jsx)("path", {
+            d: e,
+            stroke: j,
+            strokeOpacity: ".5",
+            strokeWidth: "2",
+            strokeDasharray: "3 7"
         })
     }
-    e.s(["RaceDataContext", 0, Y, "useRaceData", 0, V], 647516);
-    let W = "Fly while you wait";
-    function K(e, a) {
-        return a ? `4 pilots \xb7 ${f.DRONES[e].name} races` : k.NO_RACES_FOR_DRONE
+    function y({x: e, y: s}) {
+        return (0,
+        t.jsx)("rect", {
+            x: e - 13,
+            y: s - 23,
+            width: "26",
+            height: "46",
+            rx: "3",
+            stroke: j,
+            strokeWidth: "3",
+            fill: g
+        })
     }
-    let Q = "Getting ready…";
-    function X({race: e, races: a, online: t, busy: s}) {
-        let n = e && !a ? k.NO_RACES_FOR_DRONE : s ? Q : null;
-        return {
-            reason: n,
-            disabled: !n && !t
-        }
-    }
-    function Z({cards: e, selected: t, queued: n=null, onFlyFree: r, pick: i, member: o, onSelect: d, initialOpen: c=!1}) {
-        let[u,m] = (0,
-        s.useState)(c)
-          , h = (0,
-        s.useRef)(null)
-          , p = (0,
-        s.useRef)(null)
-          , f = (0,
-        s.useRef)(!1)
-          , b = (0,
-        s.useRef)(!1)
-          , g = (0,
-        s.useCallback)( (e, a=!1) => {
-            b.current = e,
-            m(e),
-            !e && a && requestAnimationFrame( () => p.current?.focus())
-        }
-        , [])
-          , [x,v] = (0,
-        s.useState)({
-            member: o,
-            queued: n
-        });
-        (x.member !== o || x.queued !== n) && (v({
-            member: o,
-            queued: n
+    let k = {
+        "take-off": (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)("ellipse", {
+                cx: "120",
+                cy: "191",
+                rx: "57",
+                ry: "15",
+                stroke: j,
+                strokeWidth: "2"
+            }), (0,
+            t.jsx)("path", {
+                d: "M108 191h24m-24-6v12m24-12v12",
+                stroke: j,
+                strokeWidth: "2"
+            }), (0,
+            t.jsx)(S, {
+                d: "M95 164v-20m50 20v-20"
+            }), (0,
+            t.jsx)(b, {
+                y: 120
+            }), (0,
+            t.jsx)(v, {
+                d: "M120 82V38",
+                head: "m108 50 12-12 12 12"
+            })]
         }),
-        u && m(!1));
-        let y = u && !o;
-        (0,
-        s.useEffect)( () => {
-            let e;
-            if (!y)
-                return;
-            let a = () => {
-                void 0 !== e && clearTimeout(e),
-                e = void 0
-            }
-              , t = e => {
-                f.current = !h.current?.contains(e.target)
-            }
-              , s = e => {
-                let t = f.current;
-                a(),
-                f.current = !1,
-                t && !h.current?.contains(e.target) && g(!1)
-            }
-              , n = () => {
-                f.current && (e = setTimeout( () => {
-                    f.current = !1,
-                    g(!1)
-                }
-                , 0))
-            }
-              , r = () => {
-                a(),
-                f.current && g(!1),
-                f.current = !1
-            }
-              , i = e => {
-                "Escape" === e.key && (e.stopPropagation(),
-                g(!1, !0))
-            }
-            ;
-            return document.addEventListener("pointerdown", t, !0),
-            document.addEventListener("pointerup", n, !0),
-            document.addEventListener("pointercancel", r, !0),
-            document.addEventListener("click", s),
-            document.addEventListener("keydown", i, !0),
-            b.current && h.current?.querySelector("[data-selected] .fdk-mode-plate-main")?.focus(),
-            () => {
-                a(),
-                f.current = !1,
-                document.removeEventListener("pointerdown", t, !0),
-                document.removeEventListener("pointerup", n, !0),
-                document.removeEventListener("pointercancel", r, !0),
-                document.removeEventListener("click", s),
-                document.removeEventListener("keydown", i, !0)
-            }
-        }
-        , [y, g]);
-        let S = n ?? (o ? i?.mode ?? t : t)
-          , k = e.find(e => e.mode === S) ?? e[0];
-        if (!y) {
-            let e = o && i ? (0,
-            a.jsxs)(a.Fragment, {
-                children: [i.leader, "’s pick"]
-            }) : "free" === S ? k.detail : void 0;
-            return o ? (0,
-            a.jsx)("div", {
-                className: "fd-mode-chooser",
-                ref: h,
-                children: (0,
-                a.jsx)(_.ModePlate, {
-                    size: "lg",
-                    title: j.PLAY_MODE_NAMES[S],
-                    meta: e,
-                    selected: !0,
-                    onSelect: "free" === S ? void 0 : () => J(S),
-                    label: `${j.PLAY_MODE_NAMES[S]}, ${i?.leader ?? "your leader"}'s pick`
-                })
-            }) : "race" !== S || n ? (0,
-            a.jsx)("div", {
-                className: "fd-mode-chooser",
-                ref: h,
-                children: (0,
-                a.jsx)(_.ModePlate, {
-                    size: "lg",
-                    buttonRef: p,
-                    title: j.PLAY_MODE_NAMES[S],
-                    meta: e,
-                    selected: !0,
-                    opens: !0,
-                    onSelect: () => g(!0),
-                    label: `Mode: ${j.PLAY_MODE_NAMES[S]}${"free" === S && "string" == typeof k.detail ? `, ${k.detail}` : ""}. Change mode`
-                })
-            }) : (0,
-            a.jsxs)("div", {
-                className: "fd-mode-chooser fd-race-picker",
-                ref: h,
-                children: [(0,
-                a.jsx)(C.Button, {
-                    ref: p,
-                    className: "fd-race-picker__heading",
-                    tone: "ghost",
-                    icon: (0,
-                    a.jsx)(l.Icon, {
-                        name: "mode-race",
-                        size: 30
-                    }),
-                    trailingIcon: (0,
-                    a.jsx)(l.Icon, {
-                        name: "chevron-down"
-                    }),
-                    onClick: () => g(!0),
-                    "aria-label": "Mode: Race. Change mode",
-                    children: "Race"
-                }), (0,
-                a.jsx)(H, {})]
-            })
-        }
-        return (0,
-        a.jsx)("div", {
-            className: "fd-mode-chooser",
-            ref: h,
-            "data-open": !0,
-            onBlur: e => {
-                f.current || !e.relatedTarget || e.currentTarget.contains(e.relatedTarget) || g(!1)
-            }
-            ,
-            children: (0,
-            a.jsx)(ee, {
-                cards: e,
-                current: S,
-                queued: n,
-                onFlyFree: r,
-                onClose: () => g(!1),
-                onSelect: e => {
-                    d(e),
-                    g(!1, !0)
-                }
-            })
-        })
-    }
-    function ee({cards: e, current: t, queued: s=null, onFlyFree: n, onSelect: r, onClose: o}) {
-        return (0,
-        a.jsx)("div", {
-            className: "fd-mode-picker",
-            role: "group",
-            "aria-label": "Modes",
-            children: e.map( ({mode: e, detail: d, availability: c}) => {
-                let u = "free" !== e
-                  , m = !c.open && "level" === c.reason
-                  , h = !c.open && "offline" === c.reason
-                  , p = "free" === e && !!s && !!n
-                  , f = !!s && e !== s && !p;
-                return (0,
-                a.jsx)(_.ModePlate, {
-                    icon: (0,
-                    a.jsx)(T.ModeIcon, {
-                        mode: e,
-                        size: 40
-                    }),
-                    title: j.PLAY_MODE_NAMES[e],
-                    meta: c.open && !f ? p ? W : d : void 0,
-                    end: c.open ? f ? (0,
-                    a.jsx)(l.Icon, {
-                        name: "lock",
-                        size: 20
-                    }) : void 0 : "level" === c.reason ? (0,
-                    a.jsxs)(a.Fragment, {
-                        children: [(0,
-                        a.jsx)(l.Icon, {
-                            name: "lock",
-                            size: 20
-                        }), "LVL ", c.level]
-                    }) : (0,
-                    a.jsx)(i.Badge, {
-                        icon: (0,
-                        a.jsx)(l.Icon, {
-                            name: "offline"
-                        }),
-                        children: "Offline"
-                    }),
-                    selected: t === e,
-                    locked: m || f,
-                    dim: h,
-                    onSelect: () => {
-                        if (!m && !f) {
-                            if (p) {
-                                o(),
-                                n?.();
-                                return
-                            }
-                            if (u && h) {
-                                o(),
-                                J(e);
-                                return
-                            }
-                            r(e)
-                        }
-                    }
-                    ,
-                    hint: f ? v.QUEUE_HELD : void 0,
-                    label: `${j.PLAY_MODE_NAMES[e]}${f ? `, ${v.QUEUE_HELD}` : p ? `, ${W}` : !c.open ? `, ${c.label}` : ""}`,
-                    more: u && c.open && !f ? {
-                        label: `${j.PLAY_MODE_NAMES[e]}: ${"race" === e ? "Time attack, circuits and boards" : "Online match details"}`,
-                        onClick: () => {
-                            o(),
-                            J(e)
-                        }
-                    } : void 0
-                }, e)
-            }
-            )
-        })
-    }
-    function ea({member: e}) {
-        return (0,
-        a.jsxs)("span", {
-            className: "fd-sit-out",
+        "first-flight-going-forward": (0,
+        t.jsxs)(t.Fragment, {
             children: [(0,
-            a.jsx)("span", {
-                "aria-hidden": !0,
-                children: "Sit out"
+            t.jsx)(S, {
+                d: "M37 178H203"
             }), (0,
-            a.jsx)(w.Switch, {
-                label: "Sit out",
-                checked: e.sittingOut,
-                disabled: e.busy,
-                onChange: e.onSitOut,
-                showState: !1
-            })]
-        })
-    }
-    function et({member: e, size: t, block: s}) {
-        let n, r = (0,
-        y.useQueueView)();
-        return r ? "found" === r.state ? (0,
-        a.jsx)(C.PlayStatus, {
-            state: "found",
-            size: t,
-            stacked: s,
-            title: s ? "Match found" : (0,
-            a.jsxs)(a.Fragment, {
-                children: ["Match found", (0,
-                a.jsx)(C.PlayStatus.Dot, {}), r.mode]
-            }),
-            detail: r.line,
-            actions: s ? (0,
-            a.jsx)(C.Button, {
-                onClick: () => v.useMatchmaking.getState().backOut(),
-                children: "Back out"
-            }) : (0,
-            a.jsx)("button", {
-                type: "button",
-                className: "fd-play-slot__line",
-                onClick: () => v.useMatchmaking.getState().backOut(),
-                children: "Back out"
-            })
-        }) : (0,
-        a.jsx)(C.PlayStatus, {
-            state: "searching",
-            size: t,
-            stacked: s && r.lead,
-            title: (n = (0,
-            a.jsxs)(a.Fragment, {
-                children: ["Searching ", (0,
-                a.jsx)("time", {
-                    children: r.time
-                })]
-            }),
-            s ? n : (0,
-            a.jsxs)(a.Fragment, {
-                children: [r.mode, (0,
-                a.jsx)(C.PlayStatus.Dot, {}), n]
-            })),
-            detail: (0,
-            a.jsx)("span", {
-                "aria-live": "polite",
-                children: r.lead ? r.fill : e?.sittingOut ? "You're sitting out" : `${e?.leader ?? r.leader} leads \xb7 ${r.fill}`
-            }),
-            actions: r.lead ? s ? (0,
-            a.jsxs)(a.Fragment, {
-                children: [(0,
-                a.jsx)(C.Button, {
-                    onClick: () => v.useMatchmaking.getState().startNow(),
-                    children: "Start now"
-                }), (0,
-                a.jsx)("span", {
-                    className: "fdk-on-ink",
-                    children: (0,
-                    a.jsx)(C.Button, {
-                        onClick: () => v.useMatchmaking.getState().cancel(),
-                        children: "Cancel"
-                    })
-                })]
-            }) : (0,
-            a.jsxs)(a.Fragment, {
-                children: [(0,
-                a.jsx)("button", {
-                    type: "button",
-                    className: "fd-play-slot__light",
-                    onClick: () => v.useMatchmaking.getState().startNow(),
-                    children: "Start now"
-                }), (0,
-                a.jsx)("button", {
-                    type: "button",
-                    className: "fd-play-slot__line",
-                    onClick: () => v.useMatchmaking.getState().cancel(),
-                    children: "Cancel"
-                })]
-            }) : e && (0,
-            a.jsx)(ea, {
-                member: e
-            })
-        }) : null
-    }
-    function es({notice: e, online: t}) {
-        return e ? (0,
-        a.jsxs)("p", {
-            role: "alert",
-            className: "fd-lobby-error",
-            "data-match-error": !0,
-            children: [e.line, e.retry && (0,
-            a.jsx)(_.TextLink, {
-                disabled: !t,
-                onClick: () => (0,
-                v.retryMatch)(),
-                children: "Try again"
-            })]
-        }) : null
-    }
-    function en(e) {
-        if ("member" === e.kind)
-            return (0,
-            a.jsx)(C.PlayStatus, {
-                state: "member",
-                live: !1,
-                title: (0,
-                a.jsxs)(a.Fragment, {
-                    children: [e.leader, " leads"]
-                }),
-                detail: (0,
-                a.jsx)("span", {
-                    className: "fdk-sr",
-                    "aria-live": "polite",
-                    children: e.sittingOut ? "You're sitting out" : e.detail
-                }),
-                actions: (0,
-                a.jsx)(ea, {
-                    member: e
-                })
-            });
-        let t = e.reason ?? void 0;
-        return (0,
-        a.jsx)(C.PlayButton, {
-            label: e.label,
-            launchIcon: !0,
-            detail: t,
-            disabledReason: t,
-            "data-mode-primary": !0,
-            disabled: !t && e.disabled,
-            onClick: e.onPlay
-        })
-    }
-    function er({onLessons: e, onReplays: t, onCommunity: s, onEditor: n}) {
-        let r = {
-            lessons: e,
-            replays: t,
-            community: s,
-            editor: n
-        };
-        return (0,
-        a.jsx)(I.SideRail, {
-            label: "More",
-            plain: !0,
-            className: "fd-lobby-list",
-            onChange: e => r[e](),
-            items: [{
-                value: "lessons",
-                label: "Lessons"
-            }, {
-                value: "replays",
-                label: "Replays"
-            }, {
-                value: "community",
-                label: "Community"
-            }, {
-                value: "editor",
-                label: "Editor"
-            }]
-        })
-    }
-    async function ei(e) {
-        let a = (0,
-        q.featuredMapId)(e);
-        if (e.current) {
-            if (await (0,
-            E.selectLobbyMap)(a).catch( () => !1) && (0,
-            p.resolveMap)(a).revision === e.version) {
-                if (m.useLobbySocial.getState().squad)
-                    return;
-                (0,
-                N.requestHomeExit)( () => {
-                    (0,
-                    v.queueBusy)(v.useMatchmaking.getState()) || m.useLobbySocial.getState().squad || (o.useSimStore.getState().playPersonalMap(a),
-                    o.useSimStore.setState({
-                        editorLibraryOpen: !1
-                    }),
-                    (0,
-                    q.markFeaturedFlown)(e))
-                }
-                );
-                return
-            }
-            if (m.useLobbySocial.getState().squad)
-                return
-        }
-        let t = await (0,
-        q.loadFeaturedSnapshot)().catch( () => null);
-        t && t.id === e.mapId && t.revision === e.version && (0,
-        N.requestHomeExit)( () => {
-            (0,
-            v.queueBusy)(v.useMatchmaking.getState()) || m.useLobbySocial.getState().squad || ((0,
-            p.registerPersonalMap)((0,
-            P.personalMapDefinition)(t)),
-            o.useSimStore.getState().playPersonalMap(a, {
-                offline: !0
-            }),
-            o.useSimStore.setState({
-                editorLibraryOpen: !1
-            }),
-            (0,
-            q.markFeaturedFlown)(e))
-        }
-        )
-    }
-    function el({kind: e, title: t, line: s, bar: n, action: r, label: l, disabled: o, hint: d, onClick: c}) {
-        return (0,
-        a.jsxs)("button", {
-            type: "button",
-            className: `fd-lobby-progress__card fd-lobby-progress__${"first-flight" === e ? "first" : e}`,
-            disabled: o,
-            title: d ?? void 0,
-            "aria-label": l,
-            "data-goal": e,
-            onClick: c,
-            children: [(0,
-            a.jsxs)("span", {
-                className: "fd-lobby-progress__head",
-                children: [(0,
-                a.jsx)("strong", {
-                    children: t
-                }), r && (0,
-                a.jsx)("span", {
-                    className: "fd-lobby-progress__go",
-                    "aria-hidden": !0,
-                    children: r
-                })]
-            }), s && (0,
-            a.jsx)("span", {
-                className: "fd-lobby-progress__line",
-                children: s
-            }), n && (0,
-            a.jsx)(i.ProgressBar, {
-                value: n.value,
-                max: n.max,
-                label: t,
-                valueText: n.text
-            }), d && (0,
-            a.jsx)("span", {
-                children: d
-            })]
-        })
-    }
-    function eo(e) {
-        return `Featured map \xb7 by ${e.creator}${e.current ? "" : " · Solo"}`
-    }
-    let ed = e => `Featured map: ${e.name} by ${e.creator}${e.current ? "" : ", the picked version, solo"}. Fly`;
-    function ec({map: e, hint: t}) {
-        return (0,
-        a.jsxs)("button", {
-            type: "button",
-            className: "fd-lobby-progress__card fd-lobby-featured",
-            disabled: !!t,
-            title: t ?? void 0,
-            "aria-label": ed(e),
-            "data-goal": "featured-plate",
-            onClick: () => void ei(e),
-            children: [(0,
-            a.jsxs)("span", {
-                className: "fd-lobby-progress__head",
-                children: [(0,
-                a.jsx)("strong", {
-                    children: e.name
-                }), (0,
-                a.jsxs)("span", {
-                    className: "fd-lobby-progress__go",
-                    "aria-hidden": !0,
-                    children: ["Fly", (0,
-                    a.jsx)(l.Icon, {
-                        name: "arrow-right",
-                        size: 20
-                    })]
-                })]
+            t.jsx)(y, {
+                x: 184,
+                y: 102
             }), (0,
-            a.jsx)("span", {
-                className: "fd-lobby-progress__line",
-                children: eo(e)
-            }), t && (0,
-            a.jsx)("span", {
-                children: t
+            t.jsx)(b, {
+                x: 92,
+                y: 127,
+                angle: 16
+            }), (0,
+            t.jsx)(v, {
+                d: "M112 70h68",
+                head: "m168 58 12 12-12 12"
+            }), (0,
+            t.jsx)("path", {
+                d: "M38 115h17m-25 15h20m-12 15h17",
+                stroke: j,
+                strokeWidth: "2"
+            })]
+        }),
+        "set-the-angle": (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)(S, {
+                d: "M37 130h166"
+            }), (0,
+            t.jsx)("path", {
+                d: "M55 108 185 150",
+                stroke: g,
+                strokeWidth: "2"
+            }), (0,
+            t.jsx)("path", {
+                d: "M181 130a61 61 0 0 1-3 19",
+                stroke: g,
+                strokeWidth: "4"
+            }), (0,
+            t.jsx)(b, {
+                y: 119,
+                angle: 18
+            }), (0,
+            t.jsx)(v, {
+                d: "M85 64q42-18 70 11",
+                head: "m155 59 0 16-16-1"
+            })]
+        }),
+        "hold-the-line": (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)(S, {
+                d: "M79 40v160M161 40v160"
+            }), (0,
+            t.jsx)(v, {
+                d: "M120 102V40",
+                head: "m108 52 12-12 12 12"
+            }), (0,
+            t.jsx)("path", {
+                d: "M120 168v30",
+                stroke: g,
+                strokeWidth: "4"
+            }), (0,
+            t.jsx)(b, {
+                y: 138
+            })]
+        }),
+        "keep-your-height": (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)(S, {
+                d: "M34 77h172M34 165h172"
+            }), (0,
+            t.jsx)("path", {
+                d: "M35 77v88m-7-88h14m-14 88h14",
+                stroke: j,
+                strokeWidth: "2"
+            }), (0,
+            t.jsx)(b, {
+                x: 104
+            }), (0,
+            t.jsx)(v, {
+                d: "M158 120h45",
+                head: "m191 108 12 12-12 12"
+            })]
+        }),
+        "change-your-height": (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)(S, {
+                d: "M35 180h170M35 62h170"
+            }), (0,
+            t.jsx)(b, {
+                x: 76,
+                y: 151,
+                scale: .8
+            }), (0,
+            t.jsx)(v, {
+                d: "M117 154h13q20 0 20-20V84q0-20 20-20h27",
+                head: "m185 52 12 12-12 12"
+            })]
+        }),
+        "first-flight-run": (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)("path", {
+                d: "M36 185h40",
+                stroke: j,
+                strokeWidth: "3"
+            }), (0,
+            t.jsx)(y, {
+                x: 167,
+                y: 73
+            }), (0,
+            t.jsx)(v, {
+                d: "M56 171v-66q0-32 32-32h105",
+                head: "m181 61 12 12-12 12"
+            }), (0,
+            t.jsx)(b, {
+                x: 123,
+                y: 151,
+                scale: .85
+            })]
+        }),
+        "banking-meet-roll": (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)(S, {
+                d: "M39 130h162"
+            }), (0,
+            t.jsx)(b, {
+                angle: -23
+            }), (0,
+            t.jsx)(v, {
+                d: "M65 70q55-44 110 0",
+                head: "m174 53 1 17-17-1"
+            }), (0,
+            t.jsx)(v, {
+                d: "M79 182H40",
+                head: "m52 170-12 12 12 12"
+            }), (0,
+            t.jsx)(v, {
+                d: "M161 182h39",
+                head: "m188 170 12 12-12 12"
+            })]
+        }),
+        "banking-bank-and-level": (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)(b, {
+                x: 68,
+                y: 93,
+                angle: -28,
+                scale: .8
+            }), (0,
+            t.jsx)(b, {
+                x: 169,
+                y: 158,
+                scale: .8
+            }), (0,
+            t.jsx)(S, {
+                d: "M125 188h83"
+            }), (0,
+            t.jsx)(v, {
+                d: "M62 148q10 40 52 26",
+                head: "m99 168 15 6-7 14"
+            })]
+        }),
+        "banking-bigger-banks": (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)(S, {
+                d: "M36 137h168"
+            }), (0,
+            t.jsx)(b, {
+                y: 135,
+                angle: -42
+            }), (0,
+            t.jsx)(v, {
+                d: "M50 106a76 76 0 0 1 142-5",
+                head: "m194 82-2 19-18-5"
+            }), (0,
+            t.jsx)("path", {
+                d: "m101 189 19 9 19-9",
+                stroke: j,
+                strokeWidth: "2"
+            })]
+        }),
+        "banking-change-your-line": (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)(S, {
+                d: "M64 37v168M176 37v168"
+            }), (0,
+            t.jsx)(v, {
+                d: "M64 166v-23c0-36 112-10 112-58V39",
+                head: "m164 51 12-12 12 12"
+            }), (0,
+            t.jsx)(b, {
+                x: 64,
+                y: 175,
+                scale: .7
+            })]
+        }),
+        "banking-add-some-height": (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)(S, {
+                d: "M30 183h180M30 57h180"
+            }), (0,
+            t.jsx)(b, {
+                x: 76,
+                y: 157,
+                angle: -25,
+                scale: .8
+            }), (0,
+            t.jsx)(v, {
+                d: "M104 136c65 0 9-68 82-68",
+                head: "m174 56 12 12-12 12"
+            }), (0,
+            t.jsx)("path", {
+                d: "M205 174V111m-7 8 7-8 7 8",
+                stroke: j,
+                strokeWidth: "2"
+            })]
+        }),
+        "banking-slalom": (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)("path", {
+                d: "M101 62h38m-38 57h38m-38 57h38",
+                stroke: j,
+                strokeWidth: "3"
+            }), (0,
+            t.jsx)(v, {
+                d: "M95 207c-88-39 135-61 43-103S75 55 144 30",
+                head: "m128 26 16 4-6 16"
+            }), (0,
+            t.jsx)(b, {
+                x: 158,
+                y: 161,
+                angle: 24,
+                scale: .65
+            })]
+        }),
+        "banking-run": (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsx)(y, {
+                x: 62,
+                y: 141
+            }), (0,
+            t.jsx)(y, {
+                x: 177,
+                y: 86
+            }), (0,
+            t.jsx)(v, {
+                d: "M41 194c92-19 141-33 78-72S88 49 175 40",
+                head: "m161 31 14 9-11 12"
+            }), (0,
+            t.jsx)(b, {
+                x: 166,
+                y: 176,
+                angle: -24,
+                scale: .65
+            }), (0,
+            t.jsx)("path", {
+                d: "M172 34V18h28v16h-28m0-8h28m-18-8v16m9-16v16",
+                stroke: j,
+                strokeWidth: "2"
             })]
         })
+    };
+    function w({lessonId: e, name: s, className: a, decorative: i=!1}) {
+        return (0,
+        t.jsx)("svg", {
+            viewBox: "0 0 240 240",
+            className: a,
+            fill: "none",
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            role: i ? void 0 : "img",
+            "aria-hidden": i || void 0,
+            "aria-label": i ? void 0 : `${s} lesson illustration`,
+            children: k[e] ?? (0,
+            t.jsxs)(t.Fragment, {
+                children: [(0,
+                t.jsx)(b, {}), (0,
+                t.jsx)(v, {
+                    d: "M120 73V35",
+                    head: "m108 47 12-12 12 12"
+                }), (0,
+                t.jsx)(S, {
+                    d: "M61 185h118"
+                })]
+            })
+        })
     }
-    function eu({onChallenges: e, onGear: t}) {
-        let n = (0,
-        o.useSimStore)(g.confirmedXp)
-          , r = (0,
-        o.useSimStore)(e => e.completedLessonIds)
-          , i = (0,
-        o.useSimStore)(e => e.timeAttackPrs)
-          , l = (0,
-        o.useSimStore)(e => e.droneGifts);
-        (0,
-        o.useSimStore)(e => e.lessonAuthoringEpoch);
-        let d = (0,
-        $.useCreditRecord)(e => e.record)
-          , c = (0,
-        q.useFeaturedMap)(e => e.featured)
-          , h = (0,
-        q.useFeaturedMap)(e => e.flown)
-          , p = (0,
-        u.useMenuScene)(e => e.selectedMap)
-          , b = (0,
-        o.useSimStore)(e => e.isAnonymous ? null : e.playerAccountId)
+    e.s(["LessonSelect", 0, function({onBack: e}={}) {
+        let p = (0,
+        l.useSimStore)(e => e.startLesson)
+          , x = (0,
+        l.useSimStore)(e => e.closeLessons)
+          , f = (0,
+        l.useSimStore)(e => e.completedLessonIds)
+          , g = (0,
+        l.useSimStore)(o.lentSquadDrone)
           , j = (0,
-        m.useLobbySocial)(e => e.squad)
-          , y = (0,
-        v.useMatchmaking)(v.queueLockLine)
-          , k = B(e => e.cleared && e.account === b);
+        l.useSimStore)(o.ownDrone)
+          , b = (0,
+        d.useMatchmaking)(d.queueLockLine);
         (0,
-        s.useEffect)( () => {
-            "idle" === q.useFeaturedMap.getState().status && q.useFeaturedMap.getState().load()
-        }
-        , []),
+        l.useSimStore)(e => e.isAdmin),
         (0,
-        s.useEffect)( () => {
-            B.getState().load(b)
-        }
-        , [b]);
-        let N = function(e) {
-            let a = (0,
-            x.levelProgress)(e.xp)
-              , t = e.firstCourse;
-            if (a.level <= 1 && t) {
-                let a = t.lessons.findIndex(a => !e.completedLessonIds.includes(a.id));
-                if (a >= 0)
-                    return {
-                        kind: "first-flight",
-                        course: t.course,
-                        lessons: t.lessons,
-                        index: a,
-                        next: t.lessons[a],
-                        done: t.lessons.filter(a => e.completedLessonIds.includes(a.id)).length
-                    }
-            }
-            if (a.level >= 2 && !e.raceFinished && e.race)
-                return {
-                    kind: "race",
-                    race: e.race
-                };
-            if (e.featured && !e.featured.flown)
-                return {
-                    kind: "featured",
-                    map: e.featured.map
-                };
-            if (e.challenge)
-                return {
-                    kind: "challenge",
-                    challenge: e.challenge
-                };
-            let s = e.gifts ?? []
-              , n = f.DRONE_IDS.filter(e => !s.includes(e) && f.DRONES[e].unlockLevel > a.level).sort( (e, a) => f.DRONES[e].unlockLevel - f.DRONES[a].unlockLevel)[0];
-            if (n) {
-                let t = f.DRONES[n].unlockLevel
-                  , s = (0,
-                x.xpRequiredForLevel)(a.level)
-                  , r = (0,
-                x.xpRequiredForLevel)(t) - s
-                  , i = Math.max(0, Math.min(r, e.xp - s));
-                return {
-                    kind: "drone",
-                    drone: n,
-                    level: t,
-                    xpToGo: r - i,
-                    value: i,
-                    target: r
-                }
-            }
-            return {
-                kind: "level",
-                level: a.level + 1,
-                xpToGo: Math.max(0, a.xpForNext - a.xpIntoLevel),
-                value: a.xpIntoLevel,
-                target: a.xpForNext
-            }
-        }({
-            xp: n,
-            gifts: l,
-            firstCourse: (0,
-            S.listCourses)().map(e => ({
-                course: e,
-                lessons: e.lessonIds.map(L.lessonById).filter(e => null !== e)
-            })).find(e => e.lessons.length > 0) ?? null,
-            completedLessonIds: r,
-            raceFinished: k || Object.keys(i).length > 0,
-            race: function(e, a=(0,
-            S.listTimeAttacks)()) {
-                let t = a.filter(e => e.gates.length >= 2);
-                return t.find(a => a.mapId === e) ?? t.find(e => !e.mapId.startsWith("user:")) ?? null
-            }(p),
-            featured: c ? {
-                map: c,
-                flown: h
-            } : null,
-            challenge: function(e) {
-                let a = e?.challenges_unlocked ? e.challenge : null
-                  , t = a && M.CHALLENGE_TIERS.find(e => !a.paid.includes(e.id));
-                if (!a || !t)
-                    return null;
-                let s = [{
-                    label: "Official races",
-                    value: a.counters.racing ?? 0,
-                    target: t.racing
-                }, {
-                    label: "First Flight and banking runs",
-                    value: a.counters.school ?? 0,
-                    target: t.school
-                }, {
-                    label: "1,000-point banks",
-                    value: a.counters.freestyle ?? 0,
-                    target: t.freestyle
-                }].reduce( (e, a) => a.value / a.target > e.value / e.target ? a : e);
-                return {
-                    name: t.name,
-                    label: s.label,
-                    value: Math.min(s.value, s.target),
-                    target: s.target
-                }
-            }(d)
-        })
-          , C = c ? function(e, {queueLock: a, squad: t, leader: s}) {
-            return a ?? (t && !s ? "Only the squad leader can change the map" : t && !e.current ? "The picked version flies solo" : null)
-        }(c, {
-            queueLock: y,
-            squad: !!j,
-            leader: !j || j.leaderId === b
-        }) : null;
+        l.useSimStore)(e => e.lessonAuthoringEpoch);
+        let v = new Set(f)
+          , S = (0,
+        n.listCourses)().filter(e => (0,
+        a.isVisibleToViewer)(e.isDraft)).map(e => ({
+            ...e,
+            lessons: e.lessonIds.map(i.lessonById).filter(e => null !== e)
+        })).filter(e => e.lessons.length > 0)
+          , y = S.flatMap(e => e.lessons).find(e => !v.has(e.id))
+          , [k,C] = (0,
+        s.useState)( () => y?.id ?? S[0]?.lessons[0]?.id)
+          , N = S.find(e => e.lessons.some(e => e.id === k)) ?? S[0]
+          , A = N?.lessons.find(e => e.id === k) ?? N?.lessons[0]
+          , E = (0,
+        s.useId)();
         return (0,
-        a.jsxs)("aside", {
-            className: "fd-lobby-progress",
-            "aria-label": "Progress",
+        t.jsxs)("section", {
+            className: "fd-page fd-lessons fdk-screen fdk-on-chalk",
+            "aria-labelledby": `${E}-title`,
             children: [(0,
-            a.jsx)(em, {
-                goal: N,
-                queueLock: y,
-                flyBlock: C,
-                onChallenges: e,
-                onGear: t
-            }), c && "featured" !== N.kind && (0,
-            a.jsx)(ec, {
-                map: c,
-                hint: C
-            })]
-        })
-    }
-    function em({goal: e, queueLock: t, flyBlock: s, onChallenges: n, onGear: r}) {
-        let i = (0,
-        a.jsx)(l.Icon, {
-            name: "arrow-right",
-            size: 20
-        })
-          , d = e => `${e.toLocaleString("en-US")} XP to go`;
-        switch (e.kind) {
-        case "first-flight":
-            return (0,
-            a.jsx)(el, {
-                kind: e.kind,
-                title: e.course.name,
-                disabled: !!t,
-                hint: t,
-                bar: {
-                    value: e.done,
-                    max: e.lessons.length,
-                    text: `${e.done}/${e.lessons.length}`
-                },
-                label: `${e.course.name}: ${e.done} of ${e.lessons.length} lessons. Start lesson ${e.index + 1}`,
-                onClick: () => (0,
-                N.requestHomeExit)( () => {
-                    (0,
-                    v.queueBusy)(v.useMatchmaking.getState()) || o.useSimStore.getState().startLesson(e.next.id)
-                }
-                )
-            });
-        case "race":
-            return (0,
-            a.jsx)(el, {
-                kind: e.kind,
-                title: "Races are open",
-                line: `${e.race.name} \xb7 ${(0,
-                p.resolveMap)(e.race.mapId).name}`,
-                action: i,
-                label: `Races are open. Open ${e.race.name}`,
-                onClick: () => j.useModePanel.getState().open({
-                    mode: "race",
-                    origin: "menu",
-                    courseId: e.race.id
-                })
-            });
-        case "featured":
-            return (0,
-            a.jsx)(el, {
-                kind: e.kind,
-                title: e.map.name,
-                line: eo(e.map),
-                action: (0,
-                a.jsxs)(a.Fragment, {
-                    children: ["Fly", i]
-                }),
-                disabled: !!s,
-                hint: s,
-                label: ed(e.map),
-                onClick: () => void ei(e.map)
-            });
-        case "challenge":
-            return (0,
-            a.jsx)(el, {
-                kind: e.kind,
-                title: e.challenge.name,
-                bar: {
-                    value: e.challenge.value,
-                    max: e.challenge.target,
-                    text: `${e.challenge.value}/${e.challenge.target}`
-                },
-                label: `Challenge ${e.challenge.name}: ${e.challenge.label}, ${e.challenge.value} of ${e.challenge.target}`,
-                onClick: n
-            });
-        case "drone":
-            return (0,
-            a.jsx)(el, {
-                kind: e.kind,
-                title: `Next: ${f.DRONES[e.drone].name}`,
-                line: `Opens at level ${e.level}`,
-                bar: {
-                    value: e.value,
-                    max: e.target,
-                    text: d(e.xpToGo)
-                },
-                label: `Next drone: ${f.DRONES[e.drone].name} at level ${e.level}, ${d(e.xpToGo)}`,
-                onClick: () => r?.()
-            });
-        case "level":
-            return (0,
-            a.jsx)(el, {
-                kind: e.kind,
-                title: `Level ${e.level}`,
-                bar: {
-                    value: e.value,
-                    max: e.target,
-                    text: d(e.xpToGo)
-                },
-                label: `Level ${e.level}: ${d(e.xpToGo)}`,
-                onClick: n
-            })
-        }
-    }
-    e.s(["GETTING_READY", 0, Q, "LobbyList", 0, er, "LobbyProgress", 0, eu, "MatchNoticeLine", 0, es, "MenuQueueDock", 0, function() {
-        let e = (0,
-        v.useMatchmaking)(v.queueBusy)
-          , t = (0,
-        o.useSimStore)(e => e.isAnonymous ? null : e.playerAccountId)
-          , s = (0,
-        m.useLobbySocial)(e => e.squad)
-          , n = (0,
-        m.useLobbySocial)(e => e.busy)
-          , r = (0,
-        z.useSitOut)();
-        if (!e)
-            return null;
-        let i = s?.members.find(e => e.id === s.leaderId)?.username ?? "Your leader"
-          , l = s && s.leaderId !== t ? {
-            leader: i,
-            sittingOut: (0,
-            z.sittingOutOf)(r, s),
-            busy: n,
-            onSitOut: e => r.set(s.id, e)
-        } : void 0;
-        return (0,
-        a.jsx)("div", {
-            className: "fd-menu-queue",
-            children: (0,
-            a.jsx)(et, {
-                member: l,
-                size: "sm"
-            })
-        })
-    }
-    , "ModeChooser", 0, Z, "PlaySlot", 0, en, "QueueSlot", 0, et, "playBlock", 0, X, "raceCardDetail", 0, K], 743492);
-    var eh = e.i(410484);
-    function ep({id: e, username: t, container: r}) {
-        let i = (0,
-        m.useLobbySocial)()
-          , o = (0,
-        s.useRef)(!1);
-        return (0,
-        a.jsxs)(n.DropdownMenu.Root, {
-            onOpenChange: e => {
-                e && (o.current = !1)
-            }
-            ,
-            children: [(0,
-            a.jsx)(n.DropdownMenu.Trigger, {
-                asChild: !0,
-                children: (0,
-                a.jsx)("button", {
-                    type: "button",
-                    disabled: i.busy,
-                    "aria-label": `Manage ${t}`,
-                    title: `Manage ${t}`,
-                    children: (0,
-                    a.jsx)(l.Icon, {
-                        name: "ellipsis",
-                        size: 19
-                    })
-                })
-            }), (0,
-            a.jsx)(n.DropdownMenu.Portal, {
-                container: r,
-                children: (0,
-                a.jsxs)(n.DropdownMenu.Content, {
-                    className: "fd-member-menu fdk-screen",
-                    align: "end",
-                    sideOffset: 5,
-                    onCloseAutoFocus: e => {
-                        o.current && (e.preventDefault(),
-                        r?.querySelector('[aria-label="Close friends"]')?.focus())
-                    }
-                    ,
-                    onKeyDown: e => e.stopPropagation(),
-                    children: [(0,
-                    a.jsxs)(n.DropdownMenu.Item, {
-                        onSelect: () => {
-                            o.current = !0,
-                            i.act("promote", e)
-                        }
-                        ,
-                        children: [(0,
-                        a.jsx)(l.Icon, {
-                            name: "crown",
-                            size: 16
-                        }), "Make leader"]
-                    }), (0,
-                    a.jsxs)(n.DropdownMenu.Item, {
-                        className: "fd-member-remove",
-                        onSelect: () => {
-                            o.current = !0,
-                            i.act("kick", e)
-                        }
-                        ,
-                        children: [(0,
-                        a.jsx)(l.Icon, {
-                            name: "user-minus",
-                            size: 16
-                        }), "Remove from squad"]
-                    })]
-                })
-            })]
-        })
-    }
-    function ef({account: e, container: t}) {
-        let s = (0,
-        m.useLobbySocial)().squad;
-        if (!s)
-            return null;
-        let n = s.leaderId === e;
-        return (0,
-        a.jsx)("div", {
-            className: "fd-social-squad-roster",
-            children: s.members.map(r => (0,
-            a.jsxs)("div", {
-                className: "fd-friend-row fd-squad-row",
-                "data-own": r.id === e || void 0,
+            t.jsxs)(h.TextLink, {
+                autoFocus: !0,
+                className: "fd-lessons-back",
+                onClick: e ?? x,
                 children: [(0,
-                a.jsx)("span", {
-                    className: "fd-social-level",
-                    "aria-label": `Level ${(0,
-                    x.xpToLevel)(r.xp)}`,
-                    children: (0,
-                    x.xpToLevel)(r.xp)
-                }), (0,
-                a.jsxs)("span", {
-                    children: [(0,
-                    a.jsxs)("strong", {
-                        children: [r.username, r.id === e && (0,
-                        a.jsx)("small", {
-                            className: "fd-social-you",
-                            children: "You"
-                        }), r.id === s.leaderId && (0,
-                        a.jsx)(l.Icon, {
-                            name: "crown",
-                            size: 14,
-                            label: "Squad leader"
-                        })]
-                    }), (0,
-                    a.jsx)("small", {
-                        className: "fd-social-state",
-                        "data-ready": r.online && (r.ready || r.id === s.leaderId) || void 0,
-                        children: "Ready" === (0,
-                        m.squadMemberStatus)(r, s.leaderId) ? (0,
-                        a.jsxs)(a.Fragment, {
-                            children: [(0,
-                            a.jsx)(l.Icon, {
-                                name: "check",
-                                size: 12
-                            }), "Ready"]
-                        }) : (0,
-                        m.squadMemberStatus)(r, s.leaderId)
-                    })]
-                }), n && r.id !== e && (0,
-                a.jsx)(ep, {
-                    id: r.id,
-                    username: r.username,
-                    container: t
-                })]
-            }, r.id))
-        })
-    }
-    function eb() {
-        let e = (0,
-        m.useLobbySocial)()
-          , t = new Set(e.squad?.members.map(e => e.id));
-        return (0,
-        a.jsxs)("div", {
-            className: "fd-friends-list",
-            children: [[...e.friends].sort( (e, a) => Number(a.online) - Number(e.online) || e.username.localeCompare(a.username)).map(s => {
-                let n = t.has(s.id)
-                  , r = e.sentInvitations?.includes(s.id)
-                  , i = (e.squad?.members.length ?? 1) >= 4;
-                return (0,
-                a.jsxs)("div", {
-                    className: "fd-friend-row",
-                    children: [(0,
-                    a.jsx)("i", {
-                        className: "fd-friend-avatar",
-                        "data-online": s.online,
-                        children: (0,
-                        a.jsx)(l.Icon, {
-                            name: "smile",
-                            size: 25
-                        })
-                    }), (0,
-                    a.jsxs)("span", {
-                        children: [(0,
-                        a.jsx)("strong", {
-                            children: s.username
-                        }), (0,
-                        a.jsx)("small", {
-                            children: n ? "In squad" : r ? "Invited" : "flying" === s.status ? "In flight" : s.online ? "Online" : "Offline"
-                        })]
-                    }), n ? (0,
-                    a.jsx)(l.Icon, {
-                        name: "check",
-                        className: "fd-in-squad",
-                        size: 20,
-                        label: "In squad"
-                    }) : r ? (0,
-                    a.jsx)(l.Icon, {
-                        name: "clock-3",
-                        size: 18,
-                        label: "Invitation sent"
-                    }) : s.online && (0,
-                    a.jsx)("button", {
-                        type: "button",
-                        disabled: e.busy || i,
-                        title: i ? "Squad full" : `Invite ${s.username}`,
-                        onClick: () => void e.act("invite", s.id),
-                        "aria-label": `Invite ${s.username} to squad`,
-                        children: (0,
-                        a.jsx)(l.Icon, {
-                            name: "plus",
-                            size: 18
-                        })
-                    })]
-                }, s.id)
-            }
-            ), "ready" === e.status && 0 === e.friends.length && (0,
-            a.jsx)("p", {
-                children: "No friends added."
-            }), ("idle" === e.status || "loading" === e.status) && (0,
-            a.jsx)("p", {
-                role: "status",
-                children: "Connecting to friends…"
-            })]
-        })
-    }
-    function eg({pick: e}) {
-        let t = f.DRONES[e.drone].name
-          , s = e.choices.indexOf(e.drone)
-          , n = e.away ? `Your drone here. ${e.leader}'s drone is lent in the squad's lobby` : e.spent ? `Back on your drone. ${e.leader}'s drone returns at the next launch` : `${e.leader}'s drone`;
-        return e.leader ? (0,
-        a.jsx)("span", {
-            className: "fd-squad-caption",
-            "data-spent": e.spent || e.away || void 0,
-            "aria-label": `${t}. ${n}`,
-            "aria-live": "polite",
-            children: e.spent || e.away ? (0,
-            a.jsxs)(a.Fragment, {
-                children: [(0,
-                a.jsx)("b", {
-                    children: t
-                }), (0,
-                a.jsx)("span", {
-                    children: n
-                })]
-            }) : (0,
-            a.jsx)("b", {
-                children: n
-            })
-        }) : (0,
-        a.jsx)("span", {
-            className: "fd-squad-caption",
-            "aria-label": s >= 0 ? `${t}, drone ${s + 1} of ${e.choices.length}` : t,
-            "aria-live": "polite",
-            children: (0,
-            a.jsx)("b", {
-                children: t
-            })
-        })
-    }
-    function ex(e) {
-        let a = e.appearance?.skinId === e.skin ? e.appearance.skin : (0,
-        f.droneSkin)(e.drone, e.skin);
-        b.useDroneInspect.getState().open({
-            pilot: e.username,
-            drone: e.drone,
-            skinId: e.skin,
-            skin: a
-        })
-    }
-    function ej({members: e, account: t, solo: n, leaderId: r, pick: o, onGear: d}) {
-        let c = (0,
-        u.useMenuScene)(e => e.slotAnchors)
-          , h = (0,
-        u.useMenuScene)(e => e.setHoveredSlot);
-        (0,
-        s.useEffect)( () => () => h(null), [h]);
-        let p = c?.[0]
-          , b = o.choices.length > 1 ? o.onRotate : void 0
-          , g = c && c.length > 1 ? Math.min(...c.slice(1).map(e => e.top)) : null
-          , j = e.findIndex(e => e.id === t || !t);
-        return (0,
-        a.jsxs)("div", {
-            className: "fd-squad-slots",
-            "data-anchored": c ? "" : void 0,
-            "aria-label": "Squad members",
-            onPointerLeave: () => h(null),
-            style: null !== g ? {
-                "--invite-top": `${100 * g}%`
-            } : void 0,
-            children: [Array.from({
-                length: 4
-            }, (s, o) => {
-                let p = e[o]
-                  , b = c?.[o]
-                  , g = b ? {
-                    "--slot-x": `${100 * b.x}%`,
-                    "--slot-y": `${100 * b.y}%`,
-                    "--slot-top": `${100 * b.top}%`,
-                    "--slot-w": `${100 * b.width}%`
-                } : void 0
-                  , j = {
-                    onPointerEnter: () => h(o),
-                    onPointerLeave: () => h(null),
-                    onFocus: () => h(o),
-                    onBlur: () => h(null)
-                };
-                if (!p)
-                    return (0,
-                    a.jsx)("div", {
-                        className: "fd-squad-slot fd-squad-slot--empty",
-                        style: g,
-                        children: (0,
-                        a.jsxs)("button", {
-                            type: "button",
-                            className: "fd-squad-invite",
-                            ...j,
-                            onClick: () => u.useMenuScene.getState().setSocialOpen(!0),
-                            "aria-label": `Invite friend to squad slot ${o + 1}`,
-                            children: [(0,
-                            a.jsx)(l.Icon, {
-                                name: "plus",
-                                size: 18
-                            }), "Invite"]
-                        })
-                    }, `empty-${o}`);
-                let v = p.id === t || !t
-                  , y = !n && p.id === r
-                  , S = n ? null : (0,
-                m.squadMemberStatus)(p, r ?? "")
-                  , k = (0,
-                x.xpToLevel)(p.xp);
-                return (0,
-                a.jsx)("div", {
-                    className: "fd-squad-slot",
-                    style: g,
-                    children: (0,
-                    a.jsx)(i.NameTag, {
-                        name: p.username,
-                        status: (!v && S && "Leader" !== S && "Ready" !== S ? S : null) ?? void 0,
-                        leader: y,
-                        ...j,
-                        onClick: v ? d : () => ex(p),
-                        label: v ? `${p.username}, level ${k}${y ? ", squad leader" : ""}. Customize ${f.DRONES[p.drone].category}` : `${p.username}, level ${k}${y ? ", squad leader" : ""}, ${S ?? "You"}. Inspect drone`
-                    })
-                }, p.id)
-            }
-            ), p && 0 === j && (0,
-            a.jsxs)("div", {
-                className: "fd-drone-pick",
-                role: "group",
-                "aria-label": "Your drone",
-                style: {
-                    "--slot-x": `${100 * p.x}%`,
-                    "--slot-y": `${100 * p.y}%`
-                },
-                children: [b && (0,
-                a.jsx)("button", {
-                    type: "button",
-                    className: "fd-drone-arrow",
-                    "data-side": "previous",
-                    disabled: o.busy,
-                    onClick: () => b(-1),
-                    "aria-label": "Previous drone",
-                    title: "Previous drone",
-                    children: (0,
-                    a.jsx)(l.Icon, {
-                        name: "chevron-left",
-                        size: 24
-                    })
-                }), (0,
-                a.jsx)(eg, {
-                    pick: o
-                }), b && (0,
-                a.jsx)("button", {
-                    type: "button",
-                    className: "fd-drone-arrow",
-                    "data-side": "next",
-                    disabled: o.busy,
-                    onClick: () => b(1),
-                    "aria-label": "Next drone",
-                    title: "Next drone",
-                    children: (0,
-                    a.jsx)(l.Icon, {
-                        name: "chevron-right",
-                        size: 24
-                    })
-                })]
-            })]
-        })
-    }
-    e.s(["FlightLobby", 0, function({onGear: e, onMaps: n, onLessons: r, onReplays: i, onCommunity: f, onEditor: b, onChallenges: x, pickerOpen: C=!1}) {
-        let I = (0,
-        o.useSimStore)(e => e.username);
-        (0,
-        l.preloadRaceIcons)();
-        let w = (0,
-        o.useSimStore)(e => e.isAnonymous ? null : e.playerAccountId)
-          , $ = (0,
-        o.useSimStore)(g.confirmedXp)
-          , M = (0,
-        o.useSimStore)(e => e.droneGifts)
-          , L = (0,
-        o.useSimStore)(d.flownDrone)
-          , q = (0,
-        F.useRacePick)()
-          , P = V()
-          , [E,R] = (0,
-        s.useState)(!1)
-          , [O,A] = (0,
-        s.useState)(null)
-          , B = (0,
-        s.useRef)(null)
-          , T = JSON.stringify([L, w, q.mode, q.course])
-          , [D,U] = (0,
-        s.useState)(T);
-        D !== T && (U(T),
-        R(!1),
-        A(null)),
-        (0,
-        s.useEffect)( () => () => B.current?.abort(), [T]);
-        let G = (0,
-        o.useSimStore)(d.lendSpent)
-          , Y = (0,
-        o.useSimStore)(d.lendAway)
-          , H = (0,
-        u.useMenuScene)(e => e.selectedMap)
-          , J = (0,
-        u.useMenuScene)(e => e.contentVersion)
-          , W = (0,
-        u.useMenuScene)(e => e.mapLoading)
-          , ee = (0,
-        u.useMenuScene)(e => e.mapError)
-          , ea = (0,
-        m.useLobbySocial)()
-          , ei = (0,
-        v.useMatchmaking)(e => e.online)
-          , el = (0,
-        v.useMatchmaking)(e => (0,
-        v.queueMode)(e))
-          , eo = (0,
-        v.useMatchmaking)(e => (0,
-        v.queueBusy)(e))
-          , ed = (0,
-        y.useMatchNotice)()
-          , ec = (0,
-        v.useMatchmaking)(e => !!e.search && !e.launch)
-          , em = (0,
-        j.useSelectedMode)(e => e.mode)
-          , ep = (0,
-        z.useSitOut)()
-          , ef = (0,
-        p.mapById)(H)
-          , eb = ea.squad?.mapId ?? H
-          , eg = ea.squad?.mapName ?? ef.name
-          , ex = !W && !ee && (!ea.squad || (0,
-        z.squadMapReady)(ea.squad, {
-            selectedMap: H,
-            mapLoading: W,
-            mapError: ee
-        }))
-          , ev = !!w && "ready" !== ea.status && !("error" === ea.status && !ea.squad)
-          , ey = ea.busy || ea.presenceSyncing || ev || !ex
-          , eS = (0,
-        t.lobbyMembers)(ea.squad?.members ?? [{
-            id: w ?? "local",
-            username: I ?? "Pilot",
-            xp: $,
-            ready: !0,
-            drone: L,
-            online: !0,
-            status: "lobby",
-            skin: "factory"
-        }], w ?? "local")
-          , ek = !ea.squad
-          , eN = ek || ea.squad?.leaderId === w
-          , eC = ea.squad?.members.find(e => e.id === ea.squad?.leaderId)?.username ?? "Your leader"
-          , e_ = eN ? eo ? (0,
-        v.queueLockLine)(v.useMatchmaking.getState()) ?? void 0 : void 0 : "Only the squad leader can change the map"
-          , eI = {
-            drone: L,
-            choices: (0,
-            h.droneChoices)(ea.squad, $, M),
-            busy: ea.busy,
-            leader: eN ? void 0 : eC,
-            spent: !eN && G,
-            away: !eN && Y,
-            onRotate: eN && !eo ? e => void (0,
-            h.rotateDrone)(e) : void 0
-        };
-        (0,
-        o.useSimStore)(e => e.lessonAuthoringEpoch);
-        let ew = (0,
-        k.matchRaces)(L, (0,
-        S.listTimeAttacks)()).length
-          , e$ = j.PLAY_MODES.map(e => ({
-            mode: e,
-            availability: (0,
-            j.modeAvailability)(e, $, "race" === e || ei),
-            detail: "free" === e ? eg : "race" === e ? K(L, ew) : "4v4"
-        }));
-        (0,
-        s.useEffect)( () => {
-            null === j.useSelectedMode.getState().mode && j.useSelectedMode.setState({
-                mode: (0,
-                j.readLastPlayMode)()
-            })
-        }
-        , []);
-        let eM = em ?? "free"
-          , eL = el ?? (e$.find(e => e.mode === eM)?.availability.open ? eM : "free")
-          , eq = (eN ? null : el) ?? ea.squad?.mode ?? "free";
-        async function eP() {
-            await ea.act("join_flight") && m.useLobbySocial.getState().retryLaunch()
-        }
-        function eE() {
-            if (!ey) {
-                if ((0,
-                j.writeLastPlayMode)("free"),
-                ea.squad)
-                    return void ea.act("launch", eb);
-                (0,
-                N.requestHomeExit)( () => {
-                    let e = o.useSimStore.getState()
-                      , a = u.useMenuScene.getState();
-                    !(0,
-                    c.isMenuReplayBackdrop)(e.phase) || (e.isAnonymous ? null : e.playerAccountId) !== w || m.useLobbySocial.getState().squad || a.selectedMap !== H || a.contentVersion !== J || a.mapLoading || a.mapError || (H.startsWith("user:") ? (o.useSimStore.getState().playPersonalMap(H),
-                    o.useSimStore.setState({
-                        editorLibraryOpen: !1
-                    })) : o.useSimStore.getState().startFlight(H))
-                }
-                )
-            }
-        }
-        let eR = ev ? "Connecting…" : W ? "Loading map…" : ea.busy || ea.presenceSyncing ? Q : null
-          , eO = eN ? void 0 : {
-            leader: eC,
-            sittingOut: (0,
-            z.sittingOutOf)(ep, ea.squad),
-            busy: ea.busy,
-            onSitOut: e => {
-                ea.squad && ep.set(ea.squad.id, e)
-            }
-        }
-          , eA = eo ? (0,
-        a.jsx)(et, {
-            member: eO,
-            block: !0
-        }) : ea.squad?.flightActive ? (0,
-        a.jsx)(en, {
-            kind: "play",
-            label: "Join flight",
-            reason: ea.busy ? "Joining…" : null,
-            disabled: ey,
-            onPlay: () => void eP()
-        }) : eO ? (0,
-        a.jsx)(en, {
-            kind: "member",
-            detail: "free" === eq ? "You'll join the flight" : "race" === eq ? "You'll join the race" : "You'll join the match",
-            ...eO
-        }) : (0,
-        a.jsx)(en, {
-            kind: "play",
-            label: "Play",
-            onPlay: function() {
-                if (!(0,
-                v.queueBusy)(v.useMatchmaking.getState())) {
-                    if ("free" === eL)
-                        return eE();
-                    if ("race" === eL) {
-                        let e = F.useRacePick.getState();
-                        if ("time-attack" === e.mode) {
-                            let a = (0,
-                            F.racePickCourse)(e, (0,
-                            S.listTimeAttacks)().filter(e => e.gates.length >= 2));
-                            if (!a || E)
-                                return;
-                            let t = new AbortController;
-                            B.current = t,
-                            R(!0),
-                            A(null);
-                            let s = () => {
-                                t.signal.aborted || A("Race unavailable. Choose another circuit.")
-                            }
-                            ;
-                            (0,
-                            eh.startSolo)({
-                                accountId: o.useSimStore.getState().playerAccountId,
-                                timeAttackId: a.id,
-                                courseRevision: a.competitiveRevision ?? 1,
-                                droneId: L
-                            }, P.solo, t.signal, s).then(e => {
-                                e || s()
-                            }
-                            ).catch(s).finally( () => {
-                                t.signal.aborted || R(!1)
-                            }
-                            );
-                            return
-                        }
-                        v.useMatchmaking.getState().requestMatch("race") && (0,
-                        j.writeLastPlayMode)("race");
-                        return
-                    }
-                    v.useMatchmaking.getState().requestMatch(eL) && (0,
-                    j.writeLastPlayMode)(eL)
-                }
-            },
-            ..."race" === eL && "time-attack" === q.mode ? {
-                reason: E ? "Starting" : (0,
-                S.listTimeAttacks)().some(e => e.gates.length >= 2) ? null : "No circuits available",
-                disabled: E
-            } : "free" === eL ? {
-                reason: eR,
-                disabled: ey
-            } : X({
-                race: "race" === eL,
-                races: ew,
-                online: ei,
-                busy: ea.busy
-            })
-        });
-        return (0,
-        a.jsxs)("section", {
-            className: "fd-flight-lobby fdk-screen",
-            "aria-label": "Squad lobby",
-            children: [(0,
-            a.jsx)(ej, {
-                members: eS,
-                account: w,
-                solo: ek,
-                leaderId: ea.squad?.leaderId,
-                pick: eI,
-                onGear: e
-            }), (0,
-            a.jsx)(er, {
-                onLessons: r,
-                onReplays: i,
-                onCommunity: f,
-                onEditor: b
-            }), (0,
-            a.jsx)(eu, {
-                onChallenges: x,
-                onGear: e
-            }), (0,
-            a.jsxs)("div", {
-                className: "fd-lobby-play",
-                children: [(0,
-                a.jsx)(_.MapPlate, {
-                    name: eg,
-                    onOpen: function() {
-                        let e = o.useSimStore.getState()
-                          , a = m.useLobbySocial.getState().squad;
-                        a && a.leaderId !== (e.isAnonymous ? null : e.playerAccountId) || (0,
-                        v.queueBusy)(v.useMatchmaking.getState()) || n()
-                    },
-                    disabledReason: e_,
-                    disabledLabel: eN ? ec ? "Searching" : "Match launching" : "Leader picks map"
-                }), (0,
-                a.jsx)(Z, {
-                    cards: e$,
-                    selected: eL,
-                    queued: el,
-                    onFlyFree: ec ? eN ? eE : ea.squad?.flightActive ? () => void eP() : void 0 : void 0,
-                    member: !eN,
-                    pick: eN ? void 0 : {
-                        mode: eq,
-                        leader: eC
-                    },
-                    onSelect: e => j.useSelectedMode.setState({
-                        mode: e
-                    }),
-                    initialOpen: C
-                }), eA, O && (0,
-                a.jsx)("p", {
-                    role: "alert",
-                    className: "fd-lobby-error",
-                    children: O
-                }), (0,
-                a.jsx)(es, {
-                    notice: ed,
-                    online: ei
-                }), ee && (0,
-                a.jsxs)("p", {
-                    role: "alert",
-                    className: "fd-lobby-error",
-                    children: [ee, (0,
-                    a.jsx)("button", {
-                        type: "button",
-                        onClick: u.useMenuScene.getState().retryMap,
-                        children: "Retry map"
-                    })]
-                }), ea.error && (0,
-                a.jsxs)("p", {
-                    role: "alert",
-                    className: "fd-lobby-error",
-                    children: [ea.error, ea.launchError && (0,
-                    a.jsx)("button", {
-                        type: "button",
-                        onClick: ea.retryLaunch,
-                        children: "Retry joining flight"
-                    })]
-                })]
-            })]
-        })
-    }
-    , "LobbyFriends", 0, function() {
-        let[e,t] = (0,
-        s.useState)()
-          , n = (0,
-        s.useCallback)(e => {
-            t(e?.closest(".sim-shell") ?? void 0)
-        }
-        , [])
-          , i = (0,
-        m.useLobbySocial)()
-          , d = (0,
-        o.useSimStore)(e => e.isAnonymous ? null : e.playerAccountId)
-          , c = (0,
-        u.useMenuScene)(e => e.socialOpen)
-          , h = (0,
-        u.useMenuScene)(e => e.setSocialOpen)
-          , [p,f] = (0,
-        s.useState)("")
-          , [b,g] = (0,
-        s.useState)("")
-          , x = i.friends.filter(e => e.online).length
-          , j = d ? i.requests.filter(e => "incoming" === e.direction) : []
-          , v = d ? i.requests.filter(e => "outgoing" === e.direction) : []
-          , y = d ? i.invitations : [];
-        async function S() {
-            g("");
-            let e = await (0,
-            m.squadLinkCode)();
-            if (!e)
-                return;
-            let a = new URL("/sim",window.location.origin);
-            a.searchParams.set("squad", e);
-            try {
-                await navigator.clipboard.writeText(a.href),
-                g("Invite link copied.")
-            } catch {
-                g(`Invite link: ${a.href}`)
-            }
-        }
-        return (0,
-        a.jsxs)(r.Popover.Root, {
-            open: c,
-            onOpenChange: h,
-            children: [(0,
-            a.jsx)(r.Popover.Trigger, {
-                asChild: !0,
-                children: (0,
-                a.jsxs)("button", {
-                    ref: n,
-                    type: "button",
-                    className: "fd-friends-trigger",
-                    "aria-label": `Friends and squad: ${x} online, squad ${i.squad?.members.length ?? 1} of 4${j.length ? `, ${j.length} pending friend ${1 === j.length ? "request" : "requests"}` : ""}${y.length ? `, ${y.length} squad invitations` : ""}`,
-                    title: "Friends and squad",
-                    children: [(0,
-                    a.jsxs)("span", {
-                        className: "fd-friends-trigger__icon",
-                        children: [(0,
-                        a.jsx)(l.Icon, {
-                            name: "users",
-                            size: 18
-                        }), (j.length > 0 || y.length > 0) && (0,
-                        a.jsx)("i", {
-                            className: "fd-friends-trigger__dot",
-                            "aria-hidden": !0
-                        })]
-                    }), (0,
-                    a.jsxs)("span", {
-                        children: [i.squad?.members.length ?? 1, "/4"]
-                    }), x > 0 && (0,
-                    a.jsxs)("small", {
-                        children: [(0,
-                        a.jsx)("i", {
-                            "aria-hidden": !0
-                        }), x]
-                    }), (0,
-                    a.jsx)(l.Icon, {
-                        name: "chevron-down",
-                        size: 13
-                    })]
-                })
-            }), (0,
-            a.jsx)(r.Popover.Portal, {
-                container: e,
-                children: (0,
-                a.jsxs)(r.Popover.Content, {
-                    className: "fd-friends-panel fdk-screen",
-                    align: "end",
-                    sideOffset: 10,
-                    collisionPadding: 16,
-                    onEscapeKeyDown: e => e.stopPropagation(),
-                    onKeyDown: e => e.stopPropagation(),
-                    children: [(0,
-                    a.jsxs)("header", {
-                        children: [(0,
-                        a.jsx)(l.Icon, {
-                            name: "users",
-                            size: 24
-                        }), (0,
-                        a.jsx)("h2", {
-                            children: "Friends"
-                        }), (0,
-                        a.jsxs)("small", {
-                            children: [x, " online"]
-                        }), (0,
-                        a.jsx)(r.Popover.Close, {
-                            "aria-label": "Close friends",
-                            children: (0,
-                            a.jsx)(l.Icon, {
-                                name: "close",
-                                size: 19
-                            })
-                        })]
-                    }), d ? (0,
-                    a.jsxs)(a.Fragment, {
-                        children: [(0,
-                        a.jsxs)("div", {
-                            className: "fd-social-scroll",
-                            children: [(0,
-                            a.jsxs)("div", {
-                                className: "fd-friends-squad",
-                                children: [(0,
-                                a.jsx)("strong", {
-                                    children: "Squad"
-                                }), (0,
-                                a.jsx)("span", {
-                                    "aria-label": `${i.squad?.members.length ?? 1} of 4 squad slots filled`,
-                                    children: Array.from({
-                                        length: 4
-                                    }, (e, t) => (0,
-                                    a.jsx)("i", {
-                                        "data-filled": t < (i.squad?.members.length ?? 1),
-                                        "aria-hidden": !0
-                                    }, t))
-                                }), (0,
-                                a.jsxs)("b", {
-                                    children: [i.squad?.members.length ?? 1, "/4"]
-                                })]
-                            }), (0,
-                            a.jsx)(ef, {
-                                account: d,
-                                container: e
-                            }), y.length > 0 && (0,
-                            a.jsxs)("section", {
-                                "aria-label": "Squad invitations",
-                                children: [(0,
-                                a.jsx)("h3", {
-                                    className: "fd-social-heading",
-                                    children: "Invitations"
-                                }), y.map(e => (0,
-                                a.jsxs)("div", {
-                                    className: "fd-friend-row",
-                                    children: [(0,
-                                    a.jsxs)("span", {
-                                        children: [(0,
-                                        a.jsx)("strong", {
-                                            children: e.username
-                                        }), (0,
-                                        a.jsx)("small", {
-                                            children: "Squad invite"
-                                        })]
-                                    }), (0,
-                                    a.jsx)("button", {
-                                        type: "button",
-                                        disabled: i.busy,
-                                        onClick: () => void i.act("join", e.inviteCode),
-                                        children: "Join"
-                                    }), (0,
-                                    a.jsx)("button", {
-                                        type: "button",
-                                        disabled: i.busy,
-                                        onClick: () => void i.act("decline", e.id),
-                                        "aria-label": `Decline invitation from ${e.username}`,
-                                        children: (0,
-                                        a.jsx)(l.Icon, {
-                                            name: "close",
-                                            size: 17
-                                        })
-                                    })]
-                                }, e.id))]
-                            }), j.length > 0 && (0,
-                            a.jsxs)("section", {
-                                "aria-label": "Friend requests",
-                                children: [(0,
-                                a.jsxs)("h3", {
-                                    className: "fd-social-heading",
-                                    children: ["Requests ", (0,
-                                    a.jsx)("span", {
-                                        children: j.length
-                                    })]
-                                }), j.map(e => (0,
-                                a.jsxs)("div", {
-                                    className: "fd-friend-row",
-                                    children: [(0,
-                                    a.jsx)("span", {
-                                        children: (0,
-                                        a.jsx)("strong", {
-                                            children: e.username
-                                        })
-                                    }), (0,
-                                    a.jsx)("button", {
-                                        type: "button",
-                                        disabled: i.busy,
-                                        onClick: () => void i.act("accept", e.id),
-                                        "aria-label": `Accept ${e.username}`,
-                                        title: "Accept",
-                                        children: (0,
-                                        a.jsx)(l.Icon, {
-                                            name: "check",
-                                            size: 18
-                                        })
-                                    }), (0,
-                                    a.jsx)("button", {
-                                        type: "button",
-                                        disabled: i.busy,
-                                        onClick: () => void i.act("reject", e.id),
-                                        "aria-label": `Decline ${e.username}`,
-                                        title: "Decline",
-                                        children: (0,
-                                        a.jsx)(l.Icon, {
-                                            name: "close",
-                                            size: 17
-                                        })
-                                    })]
-                                }, e.id))]
-                            }), (0,
-                            a.jsx)("h3", {
-                                className: "fd-social-heading",
-                                children: "Friends"
-                            }), (0,
-                            a.jsxs)("form", {
-                                onSubmit: async e => {
-                                    e.preventDefault(),
-                                    await i.act("request", p.trim()) && (f(""),
-                                    g("Friend request sent."))
-                                }
-                                ,
-                                children: [(0,
-                                a.jsx)("label", {
-                                    className: "sr-only",
-                                    htmlFor: "fd-add-friend",
-                                    children: "Pilot username"
-                                }), (0,
-                                a.jsx)("input", {
-                                    id: "fd-add-friend",
-                                    placeholder: "Add by username",
-                                    maxLength: 32,
-                                    value: p,
-                                    onChange: e => f(e.target.value)
-                                }), (0,
-                                a.jsx)("button", {
-                                    type: "submit",
-                                    disabled: !p.trim() || i.busy,
-                                    "aria-label": "Send friend request",
-                                    children: (0,
-                                    a.jsx)(l.Icon, {
-                                        name: "plus",
-                                        size: 20
-                                    })
-                                })]
-                            }), (0,
-                            a.jsx)(eb, {}), v.length > 0 && (0,
-                            a.jsxs)("details", {
-                                className: "fd-social-sent",
-                                children: [(0,
-                                a.jsxs)("summary", {
-                                    children: ["Sent requests (", v.length, ")"]
-                                }), v.map(e => (0,
-                                a.jsxs)("div", {
-                                    className: "fd-friend-row",
-                                    children: [(0,
-                                    a.jsxs)("span", {
-                                        children: [(0,
-                                        a.jsx)("strong", {
-                                            children: e.username
-                                        }), (0,
-                                        a.jsx)("small", {
-                                            children: "Pending"
-                                        })]
-                                    }), (0,
-                                    a.jsx)("button", {
-                                        type: "button",
-                                        disabled: i.busy,
-                                        onClick: () => void i.act("reject", e.id),
-                                        "aria-label": `Cancel request to ${e.username}`,
-                                        children: (0,
-                                        a.jsx)(l.Icon, {
-                                            name: "close",
-                                            size: 17
-                                        })
-                                    })]
-                                }, e.id))]
-                            })]
-                        }), (0,
-                        a.jsxs)("footer", {
-                            className: "fd-social-footer",
-                            children: [(0,
-                            a.jsxs)("button", {
-                                type: "button",
-                                className: "fd-invite-link",
-                                disabled: i.busy || (i.squad?.members.length ?? 1) >= 4,
-                                onClick: () => void S(),
-                                children: [(0,
-                                a.jsx)(l.Icon, {
-                                    name: "copy",
-                                    size: 15
-                                }), "Copy invite link"]
-                            }), i.squad && (0,
-                            a.jsxs)("button", {
-                                type: "button",
-                                className: "fd-leave-squad",
-                                disabled: i.busy,
-                                onClick: () => void i.act("leave"),
-                                children: [(0,
-                                a.jsx)(l.Icon, {
-                                    name: "log-out",
-                                    size: 15
-                                }), "Leave squad"]
-                            })]
-                        })]
-                    }) : (0,
-                    a.jsx)("p", {
-                        children: "Sign in to add friends and fly together."
-                    }), i.error && (0,
-                    a.jsx)("p", {
-                        role: "alert",
-                        children: i.error
-                    }), b && (0,
-                    a.jsx)("p", {
-                        role: "status",
-                        children: b
-                    })]
-                })
-            })]
-        })
-    }
-    , "inspectMember", 0, ex], 854514)
-}
-, 509415, e => {
-    "use strict";
-    var a = e.i(843476)
-      , t = e.i(613105)
-      , s = e.i(809102)
-      , n = e.i(33156);
-    e.i(573798);
-    var r = e.i(244144);
-    function i({reward: e}) {
-        let t = "dummy-launch" === e.booster ? "rocket" : "zap";
-        return (0,
-        a.jsxs)("span", {
-            className: "fd-booster-reward",
-            children: [e.credits > 0 && (0,
-            a.jsxs)("span", {
-                className: "fd-record-reward",
-                "aria-label": `${e.credits} Credits`,
-                children: [(0,
-                a.jsx)("span", {
-                    className: "fd-record-coin",
-                    "aria-hidden": "true",
-                    children: "C"
-                }), (0,
-                a.jsx)("span", {
-                    className: "fd-record-amount",
-                    children: e.credits
-                })]
-            }), (e.parts ?? 0) > 0 && (0,
-            a.jsxs)("span", {
-                className: "fd-record-reward fd-record-reward--parts",
-                "aria-label": `${e.parts} Parts`,
-                children: [(0,
-                a.jsx)(n.PartsGlyph, {
-                    className: "fd-record-parts"
-                }), (0,
-                a.jsx)("span", {
-                    className: "fd-record-amount",
-                    children: e.parts.toLocaleString("en-US")
-                })]
-            }), e.booster && (0,
-            a.jsxs)("span", {
-                className: `fd-booster-reward-item fd-booster-reward-item--${e.booster}`,
-                title: `${s.BOOSTERS[e.booster].label} \xb7 15 minutes each`,
-                children: [(0,
-                a.jsx)(r.Icon, {
-                    name: t,
-                    size: 16
-                }), (0,
-                a.jsxs)("span", {
-                    children: [e.quantity, " × ", "dummy-launch" === e.booster ? "Dummy boost" : "Double XP"]
-                })]
-            })]
-        })
-    }
-    e.i(671112);
-    var l = e.i(271645)
-      , o = e.i(920755)
-      , d = e.i(521201)
-      , c = e.i(451598)
-      , u = e.i(894969)
-      , m = e.i(498475)
-      , h = e.i(883620)
-      , p = e.i(624834)
-      , f = e.i(568204)
-      , b = e.i(516560)
-      , g = e.i(509381);
-    let x = [...new Set(d.ACHIEVEMENTS.map(e => e.collection))]
-      , j = {
-        "Flight School": "takeoff",
-        Racing: "flag",
-        Freestyle: "zap",
-        "Flight Log": "route",
-        Versatility: "sparkles",
-        "Pilot Record": "trophy"
-    }
-      , v = {
-        L15: "Complete all seven First Flight practices.",
-        L16: "Complete all seven Banking practices.",
-        P01: "Complete 10 lifetime achievements outside Pilot Record.",
-        P02: "Complete 25 lifetime achievements outside Pilot Record.",
-        P03: "Complete 40 lifetime achievements outside Pilot Record.",
-        P04: "Complete all 44 lifetime achievements outside Pilot Record."
-    }
-      , y = ["school", "racing", "freestyle", "distance"]
-      , S = {
-        school: "First Flight / Banking runs",
-        racing: "Official races finished",
-        freestyle: "1,000-point banks",
-        distance: "Distance (m)"
-    }
-      , k = e => e.toLocaleString(void 0, {
-        maximumFractionDigits: 0
-    })
-      , N = e => e.toLowerCase().replaceAll(" ", "-")
-      , C = [{
-        value: "challenges",
-        label: "Challenges"
-    }, {
-        value: "achievements",
-        label: "Achievements"
-    }];
-    e.s(["PilotRecord", 0, function({onBack: e, onShop: n}) {
-        let {record: _, error: I, refresh: w} = (0,
-        c.useCreditRecord)()
-          , $ = (0,
-        u.useInventory)()
-          , M = (0,
-        l.useRef)(null)
-          , [L,q] = (0,
-        l.useState)("challenges")
-          , [P,E] = (0,
-        l.useState)("Flight School")
-          , [R,O] = (0,
-        l.useState)("")
-          , [A,B] = (0,
-        l.useState)(null);
-        (0,
-        l.useEffect)( () => {
-            w();
-            let e = window.setInterval( () => void w(), 6e4);
-            return () => window.clearInterval(e)
-        }
-        , [w]),
-        (0,
-        l.useEffect)( () => {
-            if (!_?.pinned_item_id)
-                return;
-            let e = new AbortController;
-            return fetch("/api/shop", {
-                signal: (0,
-                t.withDeadline)(e.signal, 1e4)
-            }).then(e => e.json()).then(e => B((e.items ?? []).find(e => e.id === _.pinned_item_id) ?? null)).catch( () => {}
-            ),
-            () => e.abort()
-        }
-        , [_?.pinned_item_id]);
-        let T = new Set(_?.completed ?? [])
-          , z = d.ACHIEVEMENTS.filter(e => T.has(e.id)).length
-          , D = d.ACHIEVEMENTS.filter(e => e.collection === P)
-          , F = D.find(e => e.id === R) ?? D.find(e => !T.has(e.id)) ?? D[0]
-          , U = T.has(F.id)
-          , G = e => T.has(e.id) ? e.target : Math.max(0, Math.min(e.target, _?.stats[e.metric] ?? 0))
-          , Y = j[P] ?? "award"
-          , V = _?.challenge
-          , H = $.balance ?? _?.balance
-          , J = $.parts ?? _?.parts;
-        return (0,
-        a.jsxs)("section", {
-            className: "fd-record fdk-screen",
-            "aria-label": "Challenges",
-            children: [e && (0,
-            a.jsxs)(g.TextLink, {
-                className: "fd-record-back",
-                onClick: e,
-                children: [(0,
-                a.jsx)(r.Icon, {
+                t.jsx)(m.Icon, {
                     name: "arrow-left",
                     size: 24
                 }), " Back to Play"]
             }), (0,
-            a.jsx)("header", {
-                className: "fd-record-hero",
-                children: (0,
-                a.jsxs)("div", {
-                    className: "fd-record-hero-copy",
-                    children: [(0,
-                    a.jsxs)("h1", {
-                        children: ["Challenges", (0,
-                        a.jsx)("span", {
-                            children: "."
-                        })]
-                    }), (0,
-                    a.jsxs)("div", {
-                        className: "fd-record-hero-actions",
-                        children: [n && (0,
-                        a.jsx)(m.Button, {
-                            tone: "primary",
-                            trailingIcon: (0,
-                            a.jsx)(r.Icon, {
-                                name: "arrow-right",
-                                size: 24
-                            }),
-                            onClick: n,
-                            children: "Visit the shop"
-                        }), _ && (0,
-                        a.jsx)(f.ProgressBar, {
-                            className: "fd-record-total",
-                            size: "lg",
-                            max: d.ACHIEVEMENTS.length,
-                            value: z,
-                            valueText: `${z} / ${d.ACHIEVEMENTS.length}`,
-                            label: `${z} of ${d.ACHIEVEMENTS.length} lifetime achievements completed`
-                        })]
-                    })]
-                })
-            }), (0,
-            a.jsx)(b.Tabs, {
-                className: "fd-record-pages",
-                label: "Progression pages",
-                idBase: "record",
-                items: C,
-                value: L,
-                onChange: q
-            }), _ && I && (0,
-            a.jsx)("p", {
-                className: "fd-record-status",
-                role: "status",
-                children: I
-            }), !_ && (I ? (0,
-            a.jsx)("p", {
-                className: "fd-record-status",
-                role: "status",
-                children: "Your Challenges are temporarily unavailable. They’ll appear when the connection returns."
-            }) : (0,
-            a.jsx)(p.LoadingState, {
-                className: "fd-record-loading",
-                title: "Loading your record…"
-            })), _ && (0,
-            a.jsxs)(a.Fragment, {
-                children: [(0,
-                a.jsxs)("div", {
-                    id: "record-panel-challenges",
-                    role: "tabpanel",
-                    "aria-labelledby": "record-tab-challenges",
-                    hidden: "challenges" !== L,
-                    children: [!_.challenges_unlocked && (0,
-                    a.jsxs)("aside", {
-                        className: "fd-record-unlock",
-                        children: [(0,
-                        a.jsx)(r.Icon, {
-                            name: "lock",
-                            size: 24
-                        }), (0,
-                        a.jsxs)("p", {
-                            children: [(0,
-                            a.jsx)("strong", {
-                                children: "Unlock Challenges."
-                            }), " Finish all seven First Flight practices to unlock Challenges. Parts still to earn from First Flight:"]
-                        }), (0,
-                        a.jsx)(i, {
-                            reward: (0,
-                            d.firstFlightReward)(_.parts_ratio, _.completed)
-                        })]
-                    }), _.challenges_unlocked && V && (0,
-                    a.jsxs)("section", {
-                        className: "fd-record-challenge",
-                        "aria-labelledby": "fd-record-challenge-title",
-                        children: [(0,
-                        a.jsxs)("div", {
-                            className: "fd-record-section-heading",
-                            children: [(0,
-                            a.jsx)("h2", {
-                                id: "fd-record-challenge-title",
-                                children: "Challenges"
-                            }), (0,
-                            a.jsx)("p", {
-                                children: "Complete any one route per tier. Unfinished progress carries over."
-                            })]
-                        }), (0,
-                        a.jsx)("div", {
-                            className: "fd-record-tiers",
-                            children: d.CHALLENGE_TIERS.map(e => {
-                                let t = V.paid.includes(e.id);
-                                return (0,
-                                a.jsxs)("article", {
-                                    className: `fd-record-tier fd-record-tier--${e.id.toLowerCase()}${t ? " is-complete" : ""}`,
-                                    children: [(0,
-                                    a.jsxs)("div", {
-                                        className: "fd-record-tier-heading",
-                                        children: [(0,
-                                        a.jsx)("span", {
-                                            className: "fd-record-tier-medal",
-                                            "aria-hidden": "true",
-                                            children: t ? (0,
-                                            a.jsx)(r.Icon, {
-                                                name: "check",
-                                                size: 24
-                                            }) : (0,
-                                            a.jsx)(r.Icon, {
-                                                name: "medal",
-                                                size: 24
-                                            })
-                                        }), (0,
-                                        a.jsx)("h3", {
-                                            children: e.name
-                                        }), (0,
-                                        a.jsx)(i, {
-                                            reward: (0,
-                                            d.challengeReward)(e, V, _?.parts_ratio)
-                                        })]
-                                    }), t ? (0,
-                                    a.jsxs)("p", {
-                                        className: "fd-record-tier-done",
-                                        children: [(0,
-                                        a.jsx)(r.Icon, {
-                                            name: "medal",
-                                            size: 24
-                                        }), " Completed."]
-                                    }) : (0,
-                                    a.jsx)("ul", {
-                                        children: y.map(t => {
-                                            let s = Math.min(V.counters[t] ?? 0, e[t]);
-                                            return (0,
-                                            a.jsxs)("li", {
-                                                children: [(0,
-                                                a.jsx)("span", {
-                                                    children: S[t]
-                                                }), (0,
-                                                a.jsx)(f.ProgressBar, {
-                                                    label: `${e.name}: ${t} progress`,
-                                                    max: e[t],
-                                                    value: s,
-                                                    valueText: `${k(Math.floor(s))} / ${k(e[t])}`
-                                                })]
-                                            }, t)
-                                        }
-                                        )
-                                    })]
-                                }, e.id)
-                            }
-                            )
-                        }), V.next_available_at && (0,
-                        a.jsxs)("p", {
-                            className: "fd-record-reset",
-                            children: ["All done! New challenges arrive", " ", new Date(V.next_available_at).toLocaleString(), "."]
-                        })]
-                    })]
-                }), (0,
-                a.jsxs)("section", {
-                    className: "fd-record-collection",
-                    id: "record-panel-achievements",
-                    role: "tabpanel",
-                    "aria-labelledby": "record-tab-achievements",
-                    hidden: "achievements" !== L,
-                    children: [(0,
-                    a.jsx)("div", {
-                        className: "fd-record-section-heading",
-                        children: (0,
-                        a.jsx)("h2", {
-                            id: "fd-record-collection-title",
-                            children: "Achievements"
-                        })
-                    }), (0,
-                    a.jsx)(b.Tabs, {
-                        className: "fd-record-collections",
-                        label: "Achievement collections",
-                        idBase: "record-collection",
-                        value: N(P),
-                        onChange: e => {
-                            E(x.find(a => N(a) === e) ?? P),
-                            O("")
-                        }
-                        ,
-                        items: x.map(e => {
-                            let a = d.ACHIEVEMENTS.filter(a => a.collection === e);
-                            return {
-                                value: N(e),
-                                label: e,
-                                count: `${a.filter(e => T.has(e.id)).length}/${a.length}`
-                            }
-                        }
-                        )
-                    }), (0,
-                    a.jsxs)("div", {
-                        className: "fd-record-browser",
-                        role: "tabpanel",
-                        id: (0,
-                        b.panelId)("record-collection", N(P)),
-                        "aria-labelledby": (0,
-                        b.tabId)("record-collection", N(P)),
-                        children: [(0,
-                        a.jsxs)("aside", {
-                            ref: M,
-                            className: `fd-record-detail fdk-on-ink${U ? " is-complete" : ""}`,
-                            "aria-label": "Selected achievement",
-                            "aria-live": "polite",
-                            "aria-atomic": "true",
-                            children: [(0,
-                            a.jsxs)("div", {
-                                className: "fd-record-detail-heading",
-                                children: [(0,
-                                a.jsxs)("div", {
-                                    className: "fd-record-detail-emblem",
-                                    "aria-hidden": "true",
-                                    children: [(0,
-                                    a.jsx)(r.Icon, {
-                                        name: Y,
-                                        size: 24
-                                    }), (0,
-                                    a.jsx)("span", {
-                                        children: (0,
-                                        a.jsx)(r.Icon, {
-                                            name: "check",
-                                            size: 24
-                                        })
-                                    })]
-                                }), (0,
-                                a.jsx)("h3", {
-                                    children: F.name
-                                })]
-                            }), (0,
-                            a.jsx)("p", {
-                                children: v[F.id] ?? F.description
-                            }), (0,
-                            a.jsxs)("div", {
-                                className: "fd-record-detail-progress",
-                                children: [(0,
-                                a.jsx)("span", {
-                                    children: U ? "Completed" : "Progress"
-                                }), (0,
-                                a.jsx)(f.ProgressBar, {
-                                    size: "lg",
-                                    max: F.target,
-                                    value: G(F),
-                                    valueText: `${k(G(F))} / ${k(F.target)}`,
-                                    label: `${F.name} progress`
-                                })]
-                            }), (0,
-                            a.jsxs)("div", {
-                                className: "fd-record-detail-reward",
-                                children: [(0,
-                                a.jsx)(i, {
-                                    reward: (0,
-                                    d.achievementReward)(F, _)
-                                }), (0,
-                                a.jsx)("span", {
-                                    children: U && "Reward earned"
-                                })]
-                            })]
-                        }), (0,
-                        a.jsx)("div", {
-                            className: "fd-record-achievements",
-                            "aria-label": `${P} achievements`,
-                            children: D.map(e => {
-                                let t = T.has(e.id);
-                                return (0,
-                                a.jsx)(g.Tile, {
-                                    className: "fd-record-achievement",
-                                    selected: F.id === e.id,
-                                    done: t,
-                                    label: `${e.name}, ${t ? "completed, " : `${k(G(e))} of ${k(e.target)}, `}${(0,
-                                    s.rewardLabel)((0,
-                                    d.achievementReward)(e, _))}`,
-                                    onSelect: () => {
-                                        O(e.id),
-                                        (M.current?.closest(".fd-record")?.clientWidth ?? 0) <= 580 && M.current?.scrollIntoView({
-                                            block: "nearest"
-                                        })
-                                    }
-                                    ,
-                                    corner: (0,
-                                    a.jsx)(i, {
-                                        reward: (0,
-                                        d.achievementReward)(e, _)
-                                    }),
-                                    art: (0,
-                                    a.jsxs)("span", {
-                                        className: "fd-record-badge",
-                                        children: [(0,
-                                        a.jsx)(r.Icon, {
-                                            name: Y,
-                                            size: 24
-                                        }), t && (0,
-                                        a.jsx)("span", {
-                                            children: (0,
-                                            a.jsx)(r.Icon, {
-                                                name: "check",
-                                                size: 24
-                                            })
-                                        })]
-                                    }),
-                                    title: e.name,
-                                    progress: {
-                                        value: G(e),
-                                        max: e.target,
-                                        valueText: `${k(G(e))} / ${k(e.target)}`
-                                    }
-                                }, e.id)
-                            }
-                            )
-                        })]
-                    })]
-                }), _.pinned_item_id && (0,
-                a.jsxs)("aside", {
-                    className: "fd-record-goal",
-                    children: [(0,
-                    a.jsx)(r.Icon, {
-                        name: "trophy",
-                        size: 24
-                    }), (0,
-                    a.jsxs)("div", {
-                        children: [(0,
-                        a.jsx)("strong", {
-                            children: A?.id === _.pinned_item_id ? A.name : "Pinned cosmetic"
-                        }), (0,
-                        a.jsx)("p", {
-                            children: A?.id === _.pinned_item_id ? $.items.some(e => e.id === A.id) ? "Owned. Ready in Gear." : function(e, a) {
-                                if ("pack" === e.access_type)
-                                    return "Available through its pack.";
-                                if ("included" === e.access_type)
-                                    return "Included in your collection.";
-                                let t = (e.parts_price ?? 0) > 0 ? "Parts" : "Credits"
-                                  , s = "Parts" === t ? a.parts : a.credits;
-                                if (void 0 === s)
-                                    return `Loading your ${t} balance…`;
-                                let n = Math.max(0, ("Parts" === t ? e.parts_price : e.price) - s);
-                                return n > 0 ? `${n.toLocaleString("en-US")} ${t} to go.${"Credits" === t ? " Credits only." : ""}` : `${t} price covered. View the item in the shop.`
-                            }(A, {
-                                credits: H,
-                                parts: J
-                            }) : "This item is outside the active selection. It may return; no return date is guaranteed."
-                        })]
-                    }), n && (0,
-                    a.jsx)(m.Button, {
-                        size: "sm",
-                        trailingIcon: (0,
-                        a.jsx)(r.Icon, {
-                            name: "arrow-right",
-                            size: 24
-                        }),
-                        onClick: n,
-                        children: "View shop"
-                    })]
-                })]
-            }), $.packs.filter(e => e.badge_label).map(e => (0,
-            a.jsx)(h.Checkbox, {
-                className: "fd-record-pack-badge",
-                checked: e.badge_visible,
-                onChange: async a => {
-                    let {error: t} = await (0,
-                    o.createClient)().rpc("set_pack_badge", {
-                        p_checkout: e.checkout_id,
-                        p_visible: a
-                    });
-                    t || $.refresh()
+            t.jsx)("h1", {
+                id: `${E}-title`,
+                className: "fd-lessons-title",
+                children: "Lessons"
+            }), N && (0,
+            t.jsx)(u.Tabs, {
+                label: "Lesson chapters",
+                idBase: `${E}-chapter`,
+                className: "fd-lessons-chapters",
+                value: N.id,
+                onChange: e => {
+                    let t = S.find(t => t.id === e);
+                    t && C((t.lessons.find(e => !v.has(e.id)) ?? t.lessons[0]).id)
                 }
                 ,
-                label: (0,
-                a.jsxs)(a.Fragment, {
-                    children: ["Show ", e.badge_label, " badge"]
+                items: S.map(e => ({
+                    value: e.id,
+                    label: e.name,
+                    count: (0,
+                    t.jsxs)(t.Fragment, {
+                        children: [(0,
+                        t.jsx)("span", {
+                            className: "fdk-sr",
+                            children: "Completed "
+                        }), e.lessons.filter(e => v.has(e.id)).length, "/", e.lessons.length]
+                    })
+                }))
+            }), A && N ? (0,
+            t.jsx)(u.TabPanel, {
+                idBase: `${E}-chapter`,
+                value: N.id,
+                children: (0,
+                t.jsx)("ol", {
+                    className: "fd-lessons-list",
+                    children: N.lessons.map( (e, s) => {
+                        let a = e.id === A.id
+                          , i = v.has(e.id);
+                        return (0,
+                        t.jsxs)("li", {
+                            className: `fd-lessons-row${a ? " fdk-on-ink" : ""}`,
+                            "data-selected": a,
+                            children: [(0,
+                            t.jsxs)("button", {
+                                type: "button",
+                                className: "fd-lessons-select",
+                                "aria-expanded": a,
+                                "aria-controls": a ? `${E}-detail-${e.id}` : void 0,
+                                onClick: () => C(e.id),
+                                children: [(0,
+                                t.jsx)("span", {
+                                    className: "fd-lessons-number",
+                                    "aria-hidden": !0,
+                                    children: String(s + 1).padStart(2, "0")
+                                }), (0,
+                                t.jsx)("span", {
+                                    className: "fd-lessons-name",
+                                    children: e.name
+                                }), i && (0,
+                                t.jsxs)("span", {
+                                    className: "fd-lessons-check",
+                                    children: [(0,
+                                    t.jsx)(m.Icon, {
+                                        name: "check",
+                                        size: 24
+                                    }), (0,
+                                    t.jsx)("span", {
+                                        className: "sr-only",
+                                        children: "Completed"
+                                    })]
+                                }), (0,
+                                t.jsx)(m.Icon, {
+                                    name: "chevron-right",
+                                    className: "fd-lessons-chevron",
+                                    size: 24
+                                })]
+                            }), a && (0,
+                            t.jsxs)("div", {
+                                id: `${E}-detail-${e.id}`,
+                                className: "fd-lessons-detail",
+                                children: [(0,
+                                t.jsxs)("div", {
+                                    className: "fd-lessons-detail-copy",
+                                    children: [(0,
+                                    t.jsx)("p", {
+                                        children: e.practice.instruction
+                                    }), g && (0,
+                                    t.jsxs)("p", {
+                                        className: "fd-lessons-drone",
+                                        role: "note",
+                                        children: ["Lessons fly your own drone: the ", r.DRONES[j].name, ". The squad's ", r.DRONES[g].name, " is lent in its lobby."]
+                                    }), b && (0,
+                                    t.jsx)("p", {
+                                        className: "fd-lessons-drone",
+                                        role: "status",
+                                        children: b
+                                    }), (0,
+                                    t.jsxs)("div", {
+                                        className: "fd-lessons-actions",
+                                        children: [(0,
+                                        t.jsx)(c.Button, {
+                                            tone: "primary",
+                                            className: "fd-lessons-start",
+                                            disabled: !!b,
+                                            title: b ?? void 0,
+                                            trailingIcon: (0,
+                                            t.jsx)(m.Icon, {
+                                                name: "arrow-right",
+                                                size: 24
+                                            }),
+                                            onClick: () => p(e.id),
+                                            children: i ? "Replay lesson" : "Start lesson"
+                                        }), i && (0,
+                                        t.jsx)(h.TextLink, {
+                                            className: "fd-lessons-practice",
+                                            disabled: !!b,
+                                            title: b ?? void 0,
+                                            onClick: async () => {
+                                                await p(e.id) && l.useSimStore.getState().startLessonPractice()
+                                            }
+                                            ,
+                                            children: "Practice only"
+                                        })]
+                                    })]
+                                }), (0,
+                                t.jsx)(w, {
+                                    lessonId: e.id,
+                                    name: e.name,
+                                    decorative: !0,
+                                    className: "fd-lessons-art"
+                                })]
+                            })]
+                        }, e.id)
+                    }
+                    )
                 })
-            }, e.checkout_id)), $.refund_debt > 0 && (0,
-            a.jsx)("p", {
-                className: "fd-record-status",
-                role: "alert",
-                children: "Spending is paused while support resolves a refunded Credit purchase. Your balance remains available in your account."
+            }) : (0,
+            t.jsx)("p", {
+                className: "fd-page-status",
+                children: "No lessons available."
             })]
         })
     }
-    ], 509415)
-}
-, 55716, e => {
-    e.v({
-        grid: "store-card-module__7skIda__grid"
-    })
-}
-, 4853, e => {
-    "use strict";
-    var a = e.i(843476);
-    e.i(573798);
-    var t = e.i(568204)
-      , s = e.i(354059)
-      , n = e.i(55716);
-    e.s(["StoreCard", 0, function({name: e, label: n, art: r, artAspectRatio: i, price: l, badge: o, rarity: d, ...c}) {
+    ], 72606);
+    var C = e.i(849022);
+    e.s(["ProfilePanel", 0, function({embedded: e=!1, onBack: s, onChallenges: a}={}) {
+        let i = (0,
+        l.useSimStore)(e => e.playerAccountId)
+          , n = (0,
+        l.useSimStore)(e => e.closeProfile);
+        return e ? (0,
+        t.jsxs)("div", {
+            className: "fd-profile-page",
+            children: [(0,
+            t.jsx)(C.PilotProfileDialog, {
+                id: i,
+                ownProfile: !0,
+                embedded: !0,
+                onClose: s ?? n
+            }, i ?? "local"), (0,
+            t.jsxs)("footer", {
+                className: "fd-profile-page-footer",
+                children: [(0,
+                t.jsx)(c.Button, {
+                    size: "sm",
+                    tone: "ghost",
+                    icon: (0,
+                    t.jsx)(m.Icon, {
+                        name: "arrow-left",
+                        size: 18
+                    }),
+                    onClick: s ?? n,
+                    children: "Back to Play"
+                }), a && (0,
+                t.jsx)(c.Button, {
+                    size: "sm",
+                    tone: "ghost",
+                    icon: (0,
+                    t.jsx)(m.Icon, {
+                        name: "trophy",
+                        size: 18
+                    }),
+                    onClick: a,
+                    children: "Challenges"
+                })]
+            })]
+        }) : (0,
+        t.jsx)(C.PilotProfileDialog, {
+            id: i,
+            ownProfile: !0,
+            onClose: s ?? n
+        }, i ?? "local")
+    }
+    ], 854693);
+    var N = e.i(761321);
+    let A = {
+        shell: .3,
+        accent: .5,
+        props: .2
+    };
+    function E(e) {
+        return e && /^#[\da-f]{6}$/i.test(e) ? [1, 3, 5].map(t => parseInt(e.slice(t, t + 2), 16) / 255) : null
+    }
+    function L(e, t=4) {
+        let s = Math.max(0, Math.floor(t));
+        if (!s)
+            return [];
+        let a = new Set
+          , i = e.filter(e => !a.has(e.item.id) && (a.add(e.item.id),
+        !0))
+          , n = [...i.filter(e => e.item.featured), ...i.filter(e => !e.item.featured)]
+          , r = new Set;
+        for (let e of n) {
+            if (r.size >= s)
+                break;
+            [...r].some(t => (function(e, t) {
+                if (e.category !== t.category)
+                    return !1;
+                let s = "colorways" === e.category ? A : Object.fromEntries([...new Set([...Object.keys(e.colors), ...Object.keys(t.colors)])].filter(e => "background" !== e).map(e => [e, 1]))
+                  , a = 0
+                  , i = 0;
+                for (let[n,r] of Object.entries(s)) {
+                    let s = E(e.colors[n])
+                      , l = E(t.colors[n]);
+                    if (!s || !l)
+                        return !1;
+                    a += Math.hypot(...s.map( (e, t) => e - l[t])) / Math.sqrt(3) * r,
+                    i += r
+                }
+                return i > 0 && a / i < .18
+            }
+            )(e.item, t.item)) || r.add(e)
+        }
+        for (let e of n) {
+            if (r.size >= s)
+                break;
+            r.add(e)
+        }
+        return n.filter(e => r.has(e))
+    }
+    var M = e.i(282524)
+      , I = e.i(516727)
+      , R = e.i(619455)
+      , T = e.i(572349)
+      , B = e.i(468630)
+      , P = e.i(497590)
+      , $ = e.i(624834)
+      , D = e.i(4853);
+    function z({title: e="Storefront", featured: s=!1}) {
         return (0,
-        a.jsx)(s.RarityCard, {
-            "aria-haspopup": "dialog",
-            ...c,
-            name: e,
-            meta: n,
-            rarity: d,
-            art: r,
-            artRatio: i ?? 1.25,
-            flag: o ? (0,
-            a.jsx)(t.Badge, {
-                tone: "acid",
-                children: o
-            }) : void 0,
-            footer: l
+        t.jsxs)("div", {
+            className: "fd-shop-loading fdk-screen",
+            children: [!s && (0,
+            t.jsx)("header", {
+                className: "fd-store-collection-heading",
+                children: (0,
+                t.jsx)(h.SectionHeading, {
+                    size: "lg",
+                    children: e
+                })
+            }), (0,
+            t.jsx)($.LoadingState, {
+                title: (0,
+                t.jsxs)(t.Fragment, {
+                    children: ["Getting the shop ready", (0,
+                    t.jsx)("span", {
+                        "aria-hidden": "true",
+                        children: "…"
+                    })]
+                })
+            }), (0,
+            t.jsxs)("div", {
+                className: "fd-shop-skeleton",
+                "aria-hidden": "true",
+                children: [s && (0,
+                t.jsxs)("div", {
+                    className: "fd-shop-skeleton-feature",
+                    children: [(0,
+                    t.jsxs)("div", {
+                        className: "fd-shop-skeleton-copy",
+                        children: [(0,
+                        t.jsx)("i", {}), (0,
+                        t.jsx)("i", {})]
+                    }), (0,
+                    t.jsxs)("div", {
+                        className: "fd-shop-skeleton-orbit",
+                        children: [(0,
+                        t.jsx)("span", {}), (0,
+                        t.jsx)("span", {})]
+                    })]
+                }), (0,
+                t.jsx)("div", {
+                    className: "fd-shop-skeleton-heading"
+                }), (0,
+                t.jsx)(D.StoreGrid, {
+                    children: Array.from({
+                        length: 4
+                    }, (e, s) => (0,
+                    t.jsxs)("div", {
+                        className: "fd-shop-skeleton-card",
+                        children: [(0,
+                        t.jsx)("div", {
+                            className: "fd-shop-skeleton-art"
+                        }), (0,
+                        t.jsxs)("div", {
+                            className: "fd-shop-skeleton-label",
+                            children: [(0,
+                            t.jsx)("i", {}), (0,
+                            t.jsx)("i", {})]
+                        })]
+                    }, s))
+                })]
+            })]
         })
     }
-    , "StoreGrid", 0, function({children: e, columns: t=4, showcase: s=!1}) {
+    function F({onRetry: e}) {
         return (0,
-        a.jsx)("div", {
-            className: n.default.grid,
-            "data-columns": t,
-            "data-showcase": s || void 0,
+        t.jsxs)("div", {
+            className: "fd-shop-load-error fdk-screen",
+            children: [(0,
+            t.jsx)("span", {
+                className: "fd-shop-load-error-mark",
+                "aria-hidden": "true",
+                children: (0,
+                t.jsx)(m.Icon, {
+                    name: "rotate",
+                    size: 25
+                })
+            }), (0,
+            t.jsxs)("div", {
+                role: "alert",
+                children: [(0,
+                t.jsx)("h2", {
+                    children: "Shop unavailable"
+                }), (0,
+                t.jsx)("p", {
+                    children: "We couldn’t load the shop. Try again."
+                })]
+            }), (0,
+            t.jsx)(c.Button, {
+                tone: "primary",
+                size: "sm",
+                onClick: e,
+                trailingIcon: (0,
+                t.jsx)(m.Icon, {
+                    name: "arrow-right",
+                    size: 24
+                }),
+                children: "Try again"
+            })]
+        })
+    }
+    var _ = e.i(326999)
+      , O = e.i(71008)
+      , H = e.i(894969)
+      , G = e.i(468136)
+      , q = e.i(33156)
+      , U = e.i(664384)
+      , K = e.i(209003)
+      , W = e.i(995040)
+      , V = e.i(15221)
+      , Y = e.i(322543)
+      , Q = e.i(993287);
+    let Z = [{
+        id: "featured",
+        name: "Storefront",
+        icon: "sparkles"
+    }, {
+        id: "colorways",
+        name: "Drone skins",
+        icon: "paintbrush"
+    }, {
+        id: "environments",
+        name: "World themes",
+        icon: "mountain"
+    }, {
+        id: "boosters",
+        name: "Boosters",
+        icon: "zap"
+    }]
+      , X = {
+        colorways: {
+            title: "Drone skins"
+        },
+        environments: {
+            title: "World themes"
+        }
+    };
+    function J(e) {
+        return {
+            item: e,
+            id: e.id,
+            name: "colorways" === e.category ? `${e.name} Pack` : e.name,
+            category: e.category,
+            label: "colorways" === e.category ? `All ${r.DRONE_IDS.length} flight drones` : O.CATEGORY_LABELS[e.category],
+            price: e.price,
+            color: e.colors.accent ?? e.colors.glow ?? e.colors.body ?? p.PALETTE.orange,
+            description: e.description,
+            detail: e.description,
+            tag: e.featured ? "Featured" : void 0
+        }
+    }
+    function ee({amount: e}) {
+        return (0,
+        t.jsxs)("span", {
+            className: "fd-store-price",
+            "aria-label": `${e.toLocaleString("en-US")} credits`,
+            children: [(0,
+            t.jsx)(q.CreditsGlyph, {
+                size: 24
+            }), e.toLocaleString("en-US")]
+        })
+    }
+    function et(e) {
+        return [...e.parts_price ? [{
+            currency: "parts",
+            amount: e.parts_price
+        }] : [], ..."credits" === e.access_type ? [{
+            currency: "credits",
+            amount: e.price
+        }] : []]
+    }
+    function es({product: e, hero: a=!1, previewDrone: i}) {
+        let n = (0,
+        s.useRef)(null)
+          , [r,l] = (0,
+        s.useState)(!1);
+        return (0,
+        s.useEffect)( () => {
+            let e = new IntersectionObserver(t => {
+                t.some(e => e.isIntersecting) && (l(!0),
+                e.disconnect())
+            }
+            ,{
+                rootMargin: "100px"
+            });
+            return n.current && e.observe(n.current),
+            () => e.disconnect()
+        }
+        , []),
+        (0,
+        t.jsx)("div", {
+            ref: n,
+            style: {
+                position: "absolute",
+                inset: 0
+            },
+            children: r || a ? (0,
+            t.jsx)(Q.default, {
+                item: e.item,
+                subduedLighting: "colorways" === e.category && "og" === e.item.name.trim().toLowerCase(),
+                interactive: a,
+                cardArt: !a && "colorways" === e.category,
+                presentation: "studio",
+                previewDrone: i
+            }) : null
+        })
+    }
+    function ea({product: e, onSelect: s, heroDrone: a}) {
+        let i = (0,
+        H.useInventory)(t => t.items.some(t => t.id === e.id))
+          , n = et(e.item)
+          , r = (0,
+        N.editorialArtwork)(e.item, "environments" === e.category ? "world" : "fleet")
+          , l = r ? r.width / r.height : 1.5;
+        return (0,
+        t.jsx)(D.StoreCard, {
+            artAspectRatio: l,
+            className: "fd-store-product-card",
+            name: e.name,
+            label: e.label,
+            rarity: e.item.rarity ?? "uncommon",
+            "aria-label": `Preview ${e.name}, ${V.RARITY_LABELS[e.item.rarity ?? "uncommon"]}, ${e.label}, ${"included" === e.item.access_type ? "included" : i ? "owned" : n.map(e => `${e.amount} ${"parts" === e.currency ? "Parts" : "credits"}`).join(" or ")}`,
+            onClick: s,
+            art: (0,
+            t.jsx)(es, {
+                product: e,
+                previewDrone: a
+            }),
+            price: "included" === e.item.access_type ? "Included" : i ? null : (0,
+            t.jsx)(G.CardPrice, {
+                options: n
+            })
+        })
+    }
+    function ei({product: e, currency: s, onCurrency: a, owned: i, onError: n, onClose: r}) {
+        let l = (0,
+        H.useInventory)()
+          , o = e.item
+          , d = et(o)
+          , u = d.find(e => e.currency === s) ?? d[0]
+          , h = u?.currency === "parts" ? l.parts : l.balance
+          , p = u && null !== h ? Math.max(0, u.amount - h) : 0
+          , x = u?.currency === "parts" ? "Parts" : "credits"
+          , f = d.length > 1;
+        async function g() {
+            if (u) {
+                if (n(""),
+                (0,
+                T.trackShopEvent)("purchase_attempt", {
+                    kind: "item",
+                    key: e.id
+                }),
+                p > 0 && "credits" === u.currency) {
+                    (0,
+                    T.trackShopEvent)("insufficient_credits", {
+                        kind: "item",
+                        key: e.id
+                    }),
+                    R.useCreditShop.getState().open({
+                        item: o
+                    }),
+                    r();
+                    return
+                }
+                n(await l.purchase(o, u.currency) ?? "")
+            }
+        }
+        let j = i ? "Ready to equip in Gear." : "ready" !== l.status ? "Your balance is unavailable. Try again." : p > 0 ? `You need ${p.toLocaleString("en-US")} more ${x}.${u?.currency === "parts" ? " Parts are earned by playing." : ""}` : u?.currency === "parts" ? "Parts are earned by playing." : "";
+        return (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsxs)("div", {
+                className: `fd-store-modal-purchase${f ? " fd-store-modal-purchase--choice" : ""}`,
+                children: [(0,
+                t.jsxs)("div", {
+                    children: ["colorways" === e.category && (0,
+                    t.jsx)("span", {
+                        className: "fd-store-purchase-eyebrow",
+                        children: "Unlocks the colorway for every drone"
+                    }), "included" === o.access_type ? (0,
+                    t.jsx)("span", {
+                        className: "fd-store-price",
+                        children: "Included by default"
+                    }) : f && !i ? (0,
+                    t.jsx)(U.PaymentChoice, {
+                        name: `currency-${o.id}`,
+                        options: d,
+                        value: u.currency,
+                        onChange: a,
+                        disabled: l.purchasing
+                    }) : u && (0,
+                    t.jsx)(ee, {
+                        amount: u.amount
+                    })]
+                }), u && "included" !== o.access_type && (0,
+                t.jsx)(c.Button, {
+                    tone: "primary",
+                    size: f ? "lg" : "md",
+                    block: f,
+                    className: "fd-store-buy",
+                    onClick: () => void g(),
+                    disabled: i || "ready" !== l.status || l.purchasing || p > 0 && "parts" === u.currency,
+                    trailingIcon: (0,
+                    t.jsx)(m.Icon, {
+                        name: "arrow-right",
+                        size: 24
+                    }),
+                    children: i ? "Owned" : l.purchasing ? "Purchasing…" : "ready" !== l.status ? "Balance unavailable" : p > 0 && "credits" === u.currency ? "Get Credits" : 0 === u.amount ? "Claim free" : f ? (0,
+                    U.buyLabel)(u) : "Unlock"
+                })]
+            }), (0,
+            t.jsx)("small", {
+                role: "status",
+                children: j
+            }), "error" === l.status && (0,
+            t.jsx)(c.Button, {
+                size: "sm",
+                tone: "ghost",
+                onClick: () => void l.refresh(),
+                children: "Retry balance"
+            })]
+        })
+    }
+    e.s(["ShopPanel", 0, function({onGear: e, initialCategory: a="featured", initialItemId: i, initialBooster: n, initialPreviewDrone: l}) {
+        let o = (0,
+        H.useInventory)()
+          , [d,p] = (0,
+        s.useState)("")
+          , x = e => "included" === e.item.access_type || o.items.some(t => t.id === e.id)
+          , [f,g] = (0,
+        s.useState)([])
+          , [j,b] = (0,
+        s.useState)("loading")
+          , [v,S] = (0,
+        s.useState)()
+          , [y,k] = (0,
+        s.useState)(0)
+          , [w,C] = (0,
+        s.useState)(a)
+          , [N,A] = (0,
+        s.useState)(null)
+          , [E,G] = (0,
+        s.useState)(!1)
+          , [q,U] = (0,
+        s.useState)("freestyle")
+          , [Q,ee] = (0,
+        s.useState)("parts")
+          , et = (0,
+        Y.useSkinHeroVisit)();
+        (0,
+        s.useEffect)( () => {
+            let e = new AbortController
+              , t = AbortSignal.any([e.signal, AbortSignal.timeout(15e3)]);
+            async function s(e) {
+                let s = await fetch(e, {
+                    signal: t,
+                    cache: "no-store"
+                });
+                if (!s.ok)
+                    throw Error("Shop unavailable");
+                return s.json()
+            }
+            return Promise.all([s("/api/shop"), s("/api/shop/checkout")]).then( ([t,s]) => {
+                if (e.signal.aborted)
+                    return;
+                let a = t.items.filter(e => "credits" === e.access_type).map(J);
+                if (g(a),
+                S(s),
+                i) {
+                    let e = a.find(e => e.id === i);
+                    e && (eo(e, document.querySelector(".sim-shell"), !0),
+                    U(l ?? e.item.drone ?? "freestyle"))
+                }
+                b("ready")
+            }
+            ).catch( () => {
+                e.signal.aborted || (b("error"),
+                e.abort())
+            }
+            ),
+            () => e.abort()
+        }
+        , [y, i, l]);
+        let en = (0,
+        s.useRef)(null)
+          , [er,el] = (0,
+        s.useState)("Impact");
+        function eo(e, t, s=!1) {
+            x(e) || "credits" !== e.item.access_type || (0,
+            T.trackShopEvent)("offer_view", {
+                kind: "item",
+                key: e.id
+            }),
+            en.current = s ? null : t,
+            t && el(getComputedStyle(t).getPropertyValue("--font-sim-display") || "Impact"),
+            p(""),
+            U(e.item.drone ?? "freestyle"),
+            ee(e.item.parts_price ? "parts" : "credits"),
+            A(e)
+        }
+        function ed(e) {
+            eo(e, document.activeElement)
+        }
+        let ec = [...f].sort( (e, t) => {
+            let s = V.ALL_RARITIES.indexOf(e.item.rarity ?? "uncommon") - V.ALL_RARITIES.indexOf(t.item.rarity ?? "uncommon");
+            return (E ? -s : s) || (0,
+            O.compareGearOrder)(e.item, t.item)
+        }
+        )
+          , eu = ec.filter(e => e.category === w)
+          , eh = ec.filter(e => "colorways" === e.category)
+          , em = L(eh, 4)
+          , ep = ec.filter(e => "environments" === e.category)
+          , ex = (0,
+        t.jsx)(c.IconButton, {
+            label: E ? "Rarity: highest first. Switch to lowest first" : "Rarity: lowest first. Switch to highest first",
+            pressed: E,
+            tone: E ? "secondary" : "plain",
+            onClick: () => G(e => !e),
+            icon: E ? (0,
+            t.jsx)(m.Icon, {
+                name: "sort-down",
+                size: 20
+            }) : (0,
+            t.jsx)(m.Icon, {
+                name: "sort-up",
+                size: 20
+            })
+        });
+        function ef(e) {
+            C(e),
+            document.querySelector(".fd-menu-content")?.scrollTo({
+                top: 0
+            })
+        }
+        let eg = "history" !== w;
+        return (0,
+        t.jsxs)("section", {
+            className: "fd-store fdk-screen",
+            "aria-labelledby": "shop-heading",
+            children: [(0,
+            t.jsx)(W.Banner, {
+                className: "fd-store-banner",
+                children: "All purchases carry over to Steam and support the development of Flight Division."
+            }), (0,
+            t.jsxs)("aside", {
+                className: "fd-store-sidebar",
+                children: [(0,
+                t.jsx)(h.SectionHeading, {
+                    as: "h1",
+                    size: "lg",
+                    id: "shop-heading",
+                    className: "fd-store-title",
+                    children: "Shop"
+                }), (0,
+                t.jsx)(u.SideRail, {
+                    label: "Shop categories",
+                    plain: !0,
+                    idBase: "fd-store",
+                    activation: "manual",
+                    className: "fd-store-categories",
+                    value: w,
+                    onChange: ef,
+                    items: Z.map( ({id: e, name: s, icon: a}) => ({
+                        value: e,
+                        label: s,
+                        icon: (0,
+                        t.jsx)(m.Icon, {
+                            name: a,
+                            size: 20,
+                            strokeWidth: 1.7
+                        })
+                    }))
+                }), (0,
+                t.jsx)(c.Button, {
+                    size: "sm",
+                    tone: "secondary",
+                    className: "fd-store-credits",
+                    icon: (0,
+                    t.jsx)(m.Icon, {
+                        name: "plus",
+                        size: 15
+                    }),
+                    onClick: () => R.useCreditShop.getState().open(),
+                    children: "Get Credits"
+                }), (0,
+                t.jsxs)(h.TextLink, {
+                    className: "fd-store-orders",
+                    "aria-pressed": "history" === w,
+                    onClick: () => ef("history"),
+                    children: [(0,
+                    t.jsx)(m.Icon, {
+                        name: "receipt",
+                        size: 15
+                    }), " Your orders"]
+                })]
+            }), (0,
+            t.jsx)("div", {
+                className: "fd-store-content",
+                "aria-busy": "history" !== w && "loading" === j,
+                ...eg ? {
+                    id: (0,
+                    u.panelId)("fd-store", w),
+                    role: "tabpanel",
+                    "aria-labelledby": (0,
+                    u.tabId)("fd-store", w)
+                } : {},
+                children: "history" === w ? (0,
+                t.jsx)(P.PurchaseHistory, {}) : "loading" === j ? (0,
+                t.jsx)(z, {
+                    title: "boosters" === w ? "Boosters" : X[w]?.title.replace(/\.$/, "") ?? "Storefront",
+                    featured: "featured" === w
+                }) : "error" === j ? (0,
+                t.jsx)(F, {
+                    onRetry: () => {
+                        b("loading"),
+                        k(e => e + 1)
+                    }
+                }) : "boosters" === w ? (0,
+                t.jsx)(I.BoosterPanel, {
+                    mode: "shop",
+                    onGear: e,
+                    initialBooster: n
+                }) : (0,
+                t.jsxs)(t.Fragment, {
+                    children: ["featured" === w && (0,
+                    t.jsx)(B.CashCheckout, {
+                        heroPicker: et,
+                        packsOnly: !0,
+                        featured: !0,
+                        compactPacks: !0,
+                        initialConfig: v
+                    }), "featured" !== w && (0,
+                    t.jsx)("header", {
+                        className: "fd-store-collection-heading",
+                        children: (0,
+                        t.jsx)(h.SectionHeading, {
+                            size: "lg",
+                            action: ex,
+                            children: X[w]?.title.replace(/\.$/, "")
+                        })
+                    }), "ready" === j && "featured" !== w && !eu.length && (0,
+                    t.jsx)($.EmptyState, {
+                        title: "Nothing here yet.",
+                        children: "Check back for the next drop."
+                    }), "featured" !== w && (0,
+                    t.jsx)("section", {
+                        className: "fd-store-shelf",
+                        "aria-label": Z.find(e => e.id === w)?.name,
+                        children: (0,
+                        t.jsx)(D.StoreGrid, {
+                            children: eu.map(e => (0,
+                            t.jsx)(ea, {
+                                product: e,
+                                heroDrone: et(e.id, e.price),
+                                onSelect: () => ed(e)
+                            }, e.id))
+                        })
+                    }), "featured" === w && eh.length > 0 && (0,
+                    t.jsxs)("section", {
+                        className: "fd-store-shelf",
+                        "aria-labelledby": "store-skins-heading",
+                        children: [(0,
+                        t.jsxs)("header", {
+                            children: [(0,
+                            t.jsxs)("div", {
+                                className: "fd-store-shelf-title",
+                                children: [(0,
+                                t.jsx)(h.SectionHeading, {
+                                    id: "store-skins-heading",
+                                    children: "Drone skins"
+                                }), (0,
+                                t.jsx)("span", {
+                                    children: "One colourway. All 5 flight drones."
+                                })]
+                            }), (0,
+                            t.jsx)(h.TextLink, {
+                                trailingIcon: (0,
+                                t.jsx)(m.Icon, {
+                                    name: "arrow-right",
+                                    size: 24
+                                }),
+                                onClick: () => ef("colorways"),
+                                children: "All drone skins"
+                            })]
+                        }), (0,
+                        t.jsx)(D.StoreGrid, {
+                            showcase: !0,
+                            children: em.map(e => (0,
+                            t.jsx)(ea, {
+                                product: e,
+                                heroDrone: et(e.id, e.price),
+                                onSelect: () => ed(e)
+                            }, e.id))
+                        })]
+                    }), "featured" === w && ep.length > 0 && (0,
+                    t.jsxs)("section", {
+                        className: "fd-store-shelf fd-store-palette-shelf",
+                        "aria-labelledby": "store-palettes-heading",
+                        children: [(0,
+                        t.jsxs)("header", {
+                            children: [(0,
+                            t.jsxs)("div", {
+                                className: "fd-store-shelf-title",
+                                children: [(0,
+                                t.jsx)(h.SectionHeading, {
+                                    id: "store-palettes-heading",
+                                    children: "World themes"
+                                }), (0,
+                                t.jsx)("span", {
+                                    children: "Same world. A new atmosphere."
+                                })]
+                            }), (0,
+                            t.jsx)(h.TextLink, {
+                                trailingIcon: (0,
+                                t.jsx)(m.Icon, {
+                                    name: "arrow-right",
+                                    size: 24
+                                }),
+                                onClick: () => ef("environments"),
+                                children: "Explore themes"
+                            })]
+                        }), (0,
+                        t.jsx)(D.StoreGrid, {
+                            showcase: !0,
+                            children: L(ep, 4).map(e => (0,
+                            t.jsx)(ea, {
+                                product: e,
+                                heroDrone: et(e.id, e.price),
+                                onSelect: () => ed(e)
+                            }, e.id))
+                        })]
+                    }), "featured" === w && (0,
+                    t.jsx)(I.BoosterPanel, {
+                        mode: "shop",
+                        onGear: e,
+                        compact: !0
+                    })]
+                })
+            }), (0,
+            t.jsx)(_.Root, {
+                open: null !== N,
+                onOpenChange: e => {
+                    e || A(null)
+                }
+                ,
+                children: (0,
+                t.jsxs)(_.Portal, {
+                    children: [(0,
+                    t.jsx)(_.Overlay, {
+                        className: "fd-store-modal-overlay"
+                    }), (0,
+                    t.jsx)(_.Content, {
+                        className: "fd-store-modal-frame",
+                        onCloseAutoFocus: e => {
+                            e.preventDefault(),
+                            function() {
+                                if (en.current)
+                                    return en.current.focus();
+                                let e = document.getElementById("shop-heading");
+                                e?.setAttribute("tabindex", "-1"),
+                                e?.focus()
+                            }()
+                        }
+                        ,
+                        style: N ? {
+                            "--product-color": N.color,
+                            "--font-sim-display": er
+                        } : void 0,
+                        children: (0,
+                        t.jsx)(h.Panel, {
+                            flush: !0,
+                            className: `fd-store-modal${N?.category === "environments" ? " fd-store-modal--world" : ""}`,
+                            children: N && (0,
+                            t.jsxs)(t.Fragment, {
+                                children: [(0,
+                                t.jsxs)("div", {
+                                    className: `fd-store-modal-art fd-store-modal-art--${N.category} fdk-on-ink`,
+                                    children: [(0,
+                                    t.jsx)(es, {
+                                        product: N,
+                                        hero: !0,
+                                        previewDrone: q
+                                    }), "environments" !== N.category && (0,
+                                    t.jsx)(M.OrbitHint, {
+                                        placement: "bottom-right-above-overlay"
+                                    }), "colorways" === N.category && (0,
+                                    t.jsx)(u.Segmented, {
+                                        label: "Preview on a drone",
+                                        size: "sm",
+                                        className: "fd-store-airframes",
+                                        value: q,
+                                        onChange: U,
+                                        options: r.DRONE_IDS.map(e => ({
+                                            value: e,
+                                            label: r.DRONES[e].name
+                                        }))
+                                    })]
+                                }), (0,
+                                t.jsxs)("div", {
+                                    className: "fd-store-modal-copy",
+                                    children: [(0,
+                                    t.jsx)("div", {
+                                        className: "fd-store-modal-rarity",
+                                        children: (0,
+                                        t.jsx)(K.RarityBadge, {
+                                            rarity: N.item.rarity
+                                        })
+                                    }), (0,
+                                    t.jsx)(_.Title, {
+                                        children: N.name
+                                    }), (0,
+                                    t.jsx)(_.Description, {
+                                        className: N.detail ? void 0 : "sr-only",
+                                        children: N.detail || N.label
+                                    }), "environments" === N.category && (0,
+                                    t.jsx)("div", {
+                                        className: "fd-world-palette",
+                                        "aria-label": "Theme palette",
+                                        children: Object.entries(O.COLOR_FIELDS.environments).filter( ([e]) => "sky" !== e).map( ([e,s]) => (0,
+                                        t.jsxs)("span", {
+                                            children: [(0,
+                                            t.jsx)("i", {
+                                                style: {
+                                                    background: N.item.colors[e]
+                                                }
+                                            }), (0,
+                                            t.jsx)("small", {
+                                                children: s
+                                            })]
+                                        }, e))
+                                    }), (0,
+                                    t.jsx)(ei, {
+                                        product: N,
+                                        currency: Q,
+                                        onCurrency: ee,
+                                        owned: x(N),
+                                        onError: p,
+                                        onClose: () => A(null)
+                                    }), d && (0,
+                                    t.jsx)("p", {
+                                        role: "alert",
+                                        children: d
+                                    })]
+                                }), (0,
+                                t.jsx)("span", {
+                                    className: "fd-store-modal-close",
+                                    children: (0,
+                                    t.jsx)(c.IconButton, {
+                                        label: "Close item",
+                                        icon: (0,
+                                        t.jsx)(m.Icon, {
+                                            name: "close",
+                                            size: 20
+                                        }),
+                                        onClick: () => A(null)
+                                    })
+                                })]
+                            })
+                        })
+                    })]
+                })
+            })]
+        })
+    }
+    ], 929618);
+    var en = e.i(920755);
+    e.s(["LivePlayerCount", 0, function() {
+        let[e,a] = (0,
+        s.useState)(null)
+          , [i,n] = (0,
+        s.useState)(!1);
+        return (0,
+        s.useEffect)( () => {
+            let e = (0,
+            en.createClient)()
+              , t = !1
+              , s = !1
+              , i = async () => {
+                if (!s && "visible" === document.visibilityState) {
+                    s = !0;
+                    try {
+                        let {data: s, error: i} = await e.rpc("sim_live_player_count")
+                          , r = !i && "number" == typeof s && Number.isSafeInteger(s) && s >= 0;
+                        t || (n(!r),
+                        a(r ? s : null))
+                    } catch {
+                        t || (n(!0),
+                        a(null))
+                    } finally {
+                        s = !1
+                    }
+                }
+            }
+            ;
+            i();
+            let r = window.setInterval(i, 3e4);
+            return document.addEventListener("visibilitychange", i),
+            () => {
+                t = !0,
+                window.clearInterval(r),
+                document.removeEventListener("visibilitychange", i)
+            }
+        }
+        , []),
+        (0,
+        t.jsxs)("span", {
+            className: `fd-live-players${null !== e && e > 0 ? " is-live" : ""}`,
+            role: "status",
+            title: "Players in the simulator, including menus, seen in the last 90 seconds. Refreshes every 30 seconds.",
+            children: [(0,
+            t.jsx)("span", {
+                className: "fd-live-players-dot",
+                "aria-hidden": "true"
+            }), (0,
+            t.jsx)("span", {
+                children: i ? "Live count unavailable" : null === e ? "Checking live players…" : `${e.toLocaleString()} ${1 === e ? "player" : "players"} flying now`
+            })]
+        })
+    }
+    ], 198132);
+    var er = e.i(720996)
+      , el = e.i(953528)
+      , eo = e.i(883620)
+      , ed = e.i(346944)
+      , ec = e.i(532116)
+      , eu = e.i(811113);
+    let eh = [{
+        id: "controls",
+        label: "Controls"
+    }, {
+        id: "rates",
+        label: "Rates"
+    }, {
+        id: "camera",
+        label: "Camera & HUD"
+    }, {
+        id: "video",
+        label: "Video"
+    }, {
+        id: "audio",
+        label: "Audio"
+    }, {
+        id: "accessibility",
+        label: "Accessibility"
+    }];
+    function em(e) {
+        return eh.find(t => t.id === e)?.label ?? "Settings"
+    }
+    let ep = [{
+        tab: "controls",
+        label: "Input device",
+        description: "Choose the controller or keyboard you fly with.",
+        target: "set-device",
+        terms: ["controller", "gamepad", "radio", "transmitter", "joystick", "keyboard", "xbox", "playstation", "usb"]
+    }, {
+        tab: "controls",
+        label: "Calibrate",
+        description: "Teach the sim your sticks and their range.",
+        target: "set-calibrate",
+        action: "calibrate",
+        terms: ["calibration", "endpoints", "center", "range", "setup"]
+    }, {
+        tab: "controls",
+        label: "Stick layout",
+        description: "Which stick controls each movement.",
+        target: "set-stick-layout",
+        terms: ["mode", "mode 1", "mode 2", "mode 3", "mode 4", "gimbal", "layout", "throttle left", "throttle right"]
+    }, {
+        tab: "controls",
+        label: "Live input",
+        description: "Test your sticks without flying.",
+        target: "set-live-input",
+        terms: ["test", "meter", "channels", "input"]
+    }, {
+        tab: "controls",
+        label: "Arm / disarm button",
+        description: "Bind and choose toggle or switch arming.",
+        target: "set-bind-arm",
+        terms: ["arm", "disarm", "rt", "r2", "trigger", "switch", "toggle", "bind", "keyboard", "key", "space"]
+    }, {
+        tab: "controls",
+        label: "Respawn button",
+        description: "Reset your drone at the last checkpoint.",
+        target: "set-bind-respawn",
+        terms: ["respawn", "reset", "restart", "r", "bind", "keyboard", "key"]
+    }, {
+        tab: "controls",
+        label: "Drone wheel button",
+        description: "Open drone selection.",
+        target: "set-bind-droneWheel",
+        terms: ["drone wheel", "wheel", "lb", "tab", "swap drone", "keyboard", "key"]
+    }, {
+        tab: "controls",
+        label: "Interact button",
+        description: "Fire the gun in Team Deathmatch.",
+        target: "set-bind-interact",
+        terms: ["interact", "fire", "shoot", "gun", "trigger", "team deathmatch", "e", "switch", "keyboard", "key"]
+    }, {
+        tab: "controls",
+        label: "Controller rumble",
+        description: "Feedback for shots, hits and KOs.",
+        target: "set-rumble-switch",
+        terms: ["rumble", "haptics", "vibration", "feedback"]
+    }, {
+        tab: "controls",
+        label: "Auto-arm at flight start",
+        description: "Arm when a new flight starts.",
+        target: "set-auto-arm",
+        terms: ["arm", "auto arm", "armed", "start", "flight"]
+    }, {
+        tab: "controls",
+        label: "Invert axes",
+        description: "Reverse an axis that moves the wrong way.",
+        target: "set-invert",
+        terms: ["invert", "reverse", "swap", "direction", "inverted"]
+    }, {
+        tab: "controls",
+        label: "Dead zone",
+        description: "Ignore small movements around center.",
+        target: "set-deadzone",
+        terms: ["deadband", "dead zone", "deadzone", "drift"]
+    }, {
+        tab: "controls",
+        label: "Throttle travel",
+        description: "Full stick or center to top.",
+        target: "set-throttle-travel",
+        terms: ["throttle", "half throttle", "center to top", "travel"]
+    }, {
+        tab: "controls",
+        label: "Physical throttle stick",
+        description: "Stays where released or springs to center.",
+        target: "set-throttle-stick",
+        terms: ["springs", "self centering", "spring", "ratchet"]
+    }, {
+        tab: "controls",
+        label: "Movement keys",
+        description: "The fixed keyboard flight keys.",
+        target: "set-keyboard",
+        terms: ["keyboard", "keys", "wasd", "arrows", "movement"]
+    }, {
+        tab: "rates",
+        label: "Axis rates",
+        description: "Center sensitivity, max rate and expo per axis.",
+        target: "set-axis-rates",
+        terms: ["rates", "center", "sensitivity", "max rate", "expo", "deg/s", "actual", "betaflight", "roll", "pitch", "yaw"]
+    }, {
+        tab: "rates",
+        label: "Link roll and pitch",
+        description: "Edit both axes together.",
+        target: "set-link-rates",
+        terms: ["link", "same", "roll pitch"]
+    }, {
+        tab: "rates",
+        label: "Stick response",
+        description: "The curve your rates make.",
+        target: "set-rate-curve",
+        terms: ["curve", "graph", "response"]
+    }, {
+        tab: "rates",
+        label: "Throttle response",
+        description: "Throttle midpoint and expo.",
+        target: "set-throttle-response",
+        terms: ["throttle mid", "midpoint", "throttle expo", "hover"]
+    }, {
+        tab: "rates",
+        subview: "presets",
+        label: "Rate presets",
+        description: "Built-in and saved rates, import and export.",
+        target: "set-presets",
+        terms: ["preset", "presets", "cinematic", "freestyle", "racing", "import", "export", "library", "save rates"]
+    }, {
+        tab: "camera",
+        label: "Field of view",
+        description: "Wider view shows more of the world.",
+        target: "set-fov",
+        terms: ["fov", "field of view", "zoom", "wide"]
+    }, {
+        tab: "camera",
+        label: "Camera uptilt",
+        description: "Tilt the camera up.",
+        target: "set-tilt",
+        terms: ["tilt", "uptilt", "angle", "camera angle"]
+    }, {
+        tab: "camera",
+        label: "Lens",
+        description: "How fisheye the FPV camera is.",
+        target: "set-lens",
+        terms: ["fisheye", "lens", "distortion"]
+    }, {
+        tab: "camera",
+        label: "Stick overlay",
+        description: "Show stick positions while flying.",
+        target: "set-hud-sticks",
+        terms: ["sticks", "overlay", "hud", "osd"]
+    }, {
+        tab: "camera",
+        label: "Racing line",
+        description: "The route through race gates.",
+        target: "set-hud-racing-line",
+        terms: ["racing line", "route", "path", "gates"]
+    }, {
+        tab: "camera",
+        label: "Player markers",
+        description: "Names, distances and direction.",
+        target: "set-hud-players",
+        terms: ["players", "names", "markers", "overlay"]
+    }, {
+        tab: "camera",
+        label: "Activity markers",
+        description: "Races and Team Deathmatch arenas.",
+        target: "set-hud-activities",
+        terms: ["activities", "races", "markers", "arenas", "team deathmatch"]
+    }, {
+        tab: "camera",
+        label: "Global chat",
+        description: "Show the chat panel.",
+        target: "set-hud-chat",
+        terms: ["chat", "messages"]
+    }, {
+        tab: "camera",
+        label: "Skill-chain feedback",
+        description: "Scores, tricks and multipliers.",
+        target: "set-hud-chain",
+        terms: ["combo", "score", "chain", "tricks", "multiplier"]
+    }, {
+        tab: "video",
+        label: "Quality preset",
+        description: "Adjust many settings at once.",
+        target: "set-quality",
+        terms: ["graphics", "quality", "low", "medium", "high", "ultra", "preset"]
+    }, {
+        tab: "video",
+        label: "Render scale",
+        description: "Internal rendering scale.",
+        target: "set-render-scale",
+        terms: ["render scale", "resolution", "scale", "pixels", "sharpness", "fps", "performance"]
+    }, {
+        tab: "video",
+        label: "Draw distance",
+        description: "How far the world is drawn.",
+        target: "set-draw-distance",
+        terms: ["draw distance", "fog", "view distance", "far"]
+    }, {
+        tab: "video",
+        label: "Shadows",
+        description: "Dynamic shadows.",
+        target: "set-shadows",
+        terms: ["shadows", "performance"]
+    }, {
+        tab: "video",
+        label: "Post-processing",
+        description: "Smooth edges and color grading.",
+        target: "set-post",
+        terms: ["post processing", "post", "fxaa", "color grading"]
+    }, {
+        tab: "video",
+        label: "Bloom",
+        description: "Light glow on gates and the sun.",
+        target: "set-bloom",
+        terms: ["bloom", "glow"]
+    }, {
+        tab: "video",
+        label: "Anti-aliasing",
+        description: "Multisampled edges.",
+        target: "set-msaa",
+        terms: ["msaa", "anti aliasing", "aa", "jaggies", "edges"]
+    }, {
+        tab: "video",
+        label: "Traffic detail",
+        description: "Reduce car effects to improve performance.",
+        target: "set-traffic",
+        terms: ["cars", "traffic", "vehicles", "performance", "smoke"]
+    }, {
+        tab: "audio",
+        label: "Master volume",
+        description: "Overall game volume.",
+        target: "set-master-volume",
+        terms: ["volume", "sound", "master", "loud", "quiet", "mute"]
+    }, {
+        tab: "audio",
+        label: "Sound mix",
+        description: "Motors, wind, world and alerts.",
+        target: "set-sound-mix",
+        terms: ["mix", "volume", "sound", "balance"]
+    }, {
+        tab: "audio",
+        label: "Drone motors",
+        description: "Motor tones and rotor noise.",
+        target: "set-audio-motors",
+        terms: ["motors", "props", "drone sound", "whine"]
+    }, {
+        tab: "audio",
+        label: "Wind",
+        description: "Airspeed and turbulence.",
+        target: "set-audio-wind",
+        terms: ["wind", "air"]
+    }, {
+        tab: "audio",
+        label: "World & impacts",
+        description: "Traffic, rides and collisions.",
+        target: "set-audio-world",
+        terms: ["cars", "traffic", "crash", "impacts", "coaster"]
+    }, {
+        tab: "audio",
+        label: "Interface & rewards",
+        description: "Menu and reward cues.",
+        target: "set-audio-interface",
+        terms: ["ui", "xp", "rewards", "menu", "combo"]
+    }, {
+        tab: "audio",
+        label: "Race alerts",
+        description: "Race warnings and countdowns.",
+        target: "set-audio-race",
+        terms: ["race", "countdown", "warning", "alerts"]
+    }, {
+        tab: "audio",
+        label: "Mute when in background",
+        description: "Quiet when you switch away.",
+        target: "set-background-mute",
+        terms: ["background", "tab", "mute", "focus"]
+    }, {
+        tab: "accessibility",
+        label: "Motion preference",
+        description: "System, reduced or full motion.",
+        target: "set-motion",
+        terms: ["reduce motion", "reduced motion", "motion", "comfort", "motion sickness", "nausea"]
+    }, {
+        tab: "accessibility",
+        label: "Camera motion",
+        description: "How much the camera moves with the drone.",
+        target: "set-shake",
+        terms: ["shake", "camera shake", "vibration", "motion"]
+    }, {
+        tab: "accessibility",
+        label: "Speed lines",
+        description: "Speed lines at high speed.",
+        target: "set-speed-lines",
+        terms: ["speed lines", "wind strokes", "lines"]
+    }, {
+        tab: "accessibility",
+        label: "Motion blur",
+        description: "Subtle blur at high speed.",
+        target: "set-motion-blur",
+        terms: ["blur", "motion blur"]
+    }];
+    var ex = e.i(294641)
+      , ef = e.i(324280);
+    let eg = {
+        sky: p.PALETTE.skyEdge,
+        orange: p.PALETTE.orange,
+        acid: p.PALETTE.acid,
+        ink: p.PALETTE.ink
+    }
+      , ej = {
+        throttle: p.PALETTE.chalk,
+        roll: p.PALETTE.orange,
+        pitch: p.PALETTE.sky,
+        yaw: p.PALETTE.acid
+    };
+    function eb({title: e, info: s, actions: a, children: i, className: n, id: r, tone: l}) {
+        return (0,
+        t.jsxs)(h.Panel, {
+            id: r,
+            tone: "dark" === l ? "ink" : "chalk",
+            cut: "md",
+            className: (0,
+            ex.cx)("fd-set-card", n),
+            children: [(e || a) && (0,
+            t.jsxs)("header", {
+                className: "fd-set-card-head",
+                children: [(0,
+                t.jsxs)("div", {
+                    className: "fd-set-card-title",
+                    children: [e && (0,
+                    t.jsx)(h.SectionHeading, {
+                        as: "h3",
+                        children: e
+                    }), s && "string" == typeof e && (0,
+                    t.jsx)(ef.InfoTip, {
+                        topic: e,
+                        children: s
+                    })]
+                }), a && (0,
+                t.jsx)("div", {
+                    className: "fd-set-card-actions",
+                    children: a
+                })]
+            }), i]
+        })
+    }
+    function ev({label: e, info: a, value: i, min: n, max: r, step: l, onChange: o, format: d, id: c, disabled: u}) {
+        let h = (0,
+        s.useId)()
+          , m = c ?? h;
+        return (0,
+        t.jsx)(eo.SettingRow, {
+            label: e,
+            info: a,
+            htmlFor: m,
+            disabled: u,
+            className: "fd-set-slider-row",
+            children: (0,
+            t.jsxs)("span", {
+                className: "fd-set-slider-control",
+                children: [(0,
+                t.jsx)(eo.Slider, {
+                    id: m,
+                    value: i,
+                    min: n,
+                    max: r,
+                    step: l,
+                    onChange: o,
+                    label: e,
+                    disabled: u,
+                    valueText: d(i)
+                }), (0,
+                t.jsx)("output", {
+                    htmlFor: m,
+                    className: "fd-set-slider-value",
+                    children: d(i)
+                })]
+            })
+        })
+    }
+    function eS(e, t) {
+        let s = URL.createObjectURL(new Blob([t],{
+            type: "application/json"
+        }))
+          , a = document.createElement("a");
+        a.href = s,
+        a.download = e,
+        document.body.append(a),
+        a.click(),
+        a.remove(),
+        setTimeout( () => URL.revokeObjectURL(s), 1e3)
+    }
+    e.s(["CHANNEL_COLOR", 0, {
+        throttle: "ink",
+        roll: "orange",
+        pitch: "sky",
+        yaw: "acid"
+    }, "CHANNEL_LABEL", 0, {
+        throttle: "Throttle",
+        roll: "Roll",
+        pitch: "Pitch",
+        yaw: "Yaw"
+    }, "CHANNEL_PALETTE", 0, eg, "DARK_CHANNEL_COLOR", 0, ej], 460470),
+    e.s(["Card", 0, eb, "Gimbal", 0, function({vertical: e, horizontal: s, x: a=0, y: i=0, label: n}) {
+        let r = 60 + 26 * Math.max(-1, Math.min(1, a))
+          , l = 60 - 26 * Math.max(-1, Math.min(1, i));
+        return (0,
+        t.jsxs)("figure", {
+            className: "fd-set-gimbal",
+            "aria-label": n ?? `${e} up and down, ${s} left and right`,
+            children: [(0,
+            t.jsx)("figcaption", {
+                className: "fd-set-gimbal-top",
+                children: e
+            }), (0,
+            t.jsxs)("svg", {
+                viewBox: "0 0 120 120",
+                "aria-hidden": !0,
+                children: [(0,
+                t.jsx)("circle", {
+                    cx: "60",
+                    cy: "60",
+                    r: "52",
+                    className: "fd-set-gimbal-ring"
+                }), (0,
+                t.jsx)("circle", {
+                    cx: "60",
+                    cy: "60",
+                    r: "30",
+                    className: "fd-set-gimbal-inner"
+                }), (0,
+                t.jsx)("path", {
+                    d: "M60 18v22M60 80v22M52 26l8-9 8 9M52 94l8 9 8-9",
+                    className: "fd-set-gimbal-arrow"
+                }), (0,
+                t.jsx)("path", {
+                    d: "M18 60h22M80 60h22M26 52l-9 8 9 8M94 52l9 8-9 8",
+                    className: "fd-set-gimbal-arrow fd-set-gimbal-arrow--h"
+                }), (0,
+                t.jsx)("circle", {
+                    cx: r,
+                    cy: l,
+                    r: "12",
+                    className: "fd-set-gimbal-stick"
+                })]
+            }), (0,
+            t.jsx)("span", {
+                className: "fd-set-gimbal-bottom",
+                children: s
+            })]
+        })
+    }
+    , "Meter", 0, function({label: e, value: s, unipolar: a, color: i="sky", bound: n=!0, readout: r}) {
+        let l = Math.max(a ? 0 : -1, Math.min(1, Number.isFinite(s) ? s : 0))
+          , o = a ? 100 * l : 50 * Math.abs(l)
+          , d = r ?? (n ? `${Math.round(100 * l)}%` : "Unbound");
+        return (0,
+        t.jsxs)("div", {
+            className: "fd-set-meter",
+            role: "meter",
+            "aria-label": e,
+            "aria-valuemin": a ? 0 : -100,
+            "aria-valuemax": 100,
+            "aria-valuenow": Math.round(100 * l),
+            "aria-valuetext": d,
+            children: [(0,
+            t.jsx)("span", {
+                className: "fd-set-meter-label",
+                children: e
+            }), (0,
+            t.jsxs)("span", {
+                className: "fd-set-meter-track",
+                children: [!a && (0,
+                t.jsx)("span", {
+                    className: "fd-set-meter-zero"
+                }), (0,
+                t.jsx)("span", {
+                    className: "fd-set-meter-fill",
+                    style: {
+                        left: `${a ? 0 : l >= 0 ? 50 : 50 - o}%`,
+                        width: `${o}%`,
+                        background: eg[i]
+                    }
+                }), (0,
+                t.jsx)("span", {
+                    className: "fd-set-meter-tick",
+                    style: {
+                        left: `${a ? 100 * l : 50 + 50 * l}%`
+                    }
+                })]
+            }), (0,
+            t.jsx)("span", {
+                className: (0,
+                ex.cx)("fd-set-meter-value", !n && "is-unbound"),
+                children: d
+            })]
+        })
+    }
+    , "SliderField", 0, ev, "downloadText", 0, eS], 306605);
+    var ey = e.i(174080)
+      , ek = e.i(522016)
+      , ew = e.i(618566);
+    function eC({menu: e=!1}) {
+        let s = (0,
+        ew.useRouter)()
+          , a = (0,
+        l.useSimStore)(e => e.isAnonymous);
+        return (0,
+        t.jsxs)("details", {
+            className: "fd-set-support",
+            children: [(0,
+            t.jsxs)("summary", {
+                children: ["Account & support ", (0,
+                t.jsx)(m.Icon, {
+                    name: "chevron-down",
+                    size: 24
+                })]
+            }), (0,
+            t.jsxs)(ek.default, {
+                href: "/purchases",
+                onNavigate: e => {
+                    e.preventDefault();
+                    let t = l.useSimStore.getState();
+                    t.guardSettings( () => {
+                        t.closeSettings(),
+                        s.push("/purchases")
+                    }
+                    )
+                }
+                ,
+                children: ["Purchases & refunds ", (0,
+                t.jsx)(m.Icon, {
+                    name: "arrow-up-right",
+                    size: 24
+                })]
+            }), e && !a ? (0,
+            t.jsx)(eN, {}) : null]
+        })
+    }
+    function eN() {
+        let e = (0,
+        s.useRef)(null)
+          , [a,i] = (0,
+        s.useState)(!1)
+          , [n,r] = (0,
+        s.useState)(null)
+          , [o,d] = (0,
+        s.useState)(!1)
+          , [u,p] = (0,
+        s.useState)(!1)
+          , x = () => {
+            o || (i(!1),
+            p(!1))
+        }
+          , f = async () => {
+            d(!0),
+            p(!1);
+            let {error: e} = await (0,
+            en.createClient)().auth.signOut({
+                scope: "local"
+            });
+            e && (console.error("[sim] sign-out failed", e),
+            d(!1),
+            p(!0))
+        }
+        ;
+        return (0,
+        t.jsxs)(t.Fragment, {
+            children: [(0,
+            t.jsxs)(h.TextLink, {
+                ref: e,
+                className: "fd-set-support-action",
+                onClick: () => {
+                    l.useSimStore.getState().guardSettings( () => {
+                        r(e.current?.closest(".fd-set") ?? null),
+                        i(!0)
+                    }
+                    )
+                }
+                ,
+                children: ["Sign out ", (0,
+                t.jsx)(m.Icon, {
+                    name: "log-out",
+                    size: 24
+                })]
+            }), eA((0,
+            t.jsx)($.DialogShell, {
+                open: a,
+                title: "Sign out?",
+                size: "sm",
+                busy: o,
+                onClose: x,
+                description: "This only signs out this device. You'll stay signed in everywhere else.",
+                actions: (0,
+                t.jsxs)(t.Fragment, {
+                    children: [(0,
+                    t.jsx)(c.Button, {
+                        tone: "ghost",
+                        size: "sm",
+                        onClick: x,
+                        disabled: o,
+                        children: "Cancel"
+                    }), (0,
+                    t.jsx)(c.Button, {
+                        tone: "primary",
+                        size: "sm",
+                        "data-autofocus": !0,
+                        onClick: f,
+                        disabled: o,
+                        children: "Sign out"
+                    })]
+                }),
+                children: u ? (0,
+                t.jsx)("p", {
+                    className: "fd-set-field-error",
+                    role: "alert",
+                    children: "Couldn't sign out. Check your connection and try again."
+                }) : null
+            }), n)]
+        })
+    }
+    let eA = (e, t) => t ? (0,
+    ey.createPortal)(e, t) : e
+      , eE = {
+        controls: "gamepad",
+        rates: "chart",
+        camera: "camera",
+        video: "monitor",
+        audio: "volume",
+        accessibility: "accessibility"
+    }
+      , eL = "fd-set";
+    function eM() {
+        let[e,a] = (0,
+        s.useState)("")
+          , [i,n] = (0,
+        s.useState)(0)
+          , r = (0,
+        s.useId)()
+          , o = (0,
+        l.useSimStore)(e => e.setSettingsTab)
+          , d = function(e, t=6) {
+            let s = e.toLowerCase().trim().split(/\s+/).filter(Boolean);
+            if (!s.length)
+                return [];
+            let a = [];
+            for (let e of ep) {
+                let t = e.label.toLowerCase()
+                  , i = [t, e.description.toLowerCase(), ...e.terms, em(e.tab).toLowerCase()]
+                  , n = 0
+                  , r = !0;
+                for (let a of s) {
+                    if (!i.some(e => e.includes(a))) {
+                        r = !1;
+                        break
+                    }
+                    n += t.startsWith(a) ? 4 : t.includes(a) ? 3 : e.terms.some(e => e === a) ? 2 : 1
+                }
+                r && a.push({
+                    entry: e,
+                    score: n
+                })
+            }
+            return a.sort( (e, t) => t.score - e.score).slice(0, t).map( ({entry: e}) => e)
+        }(e)
+          , u = e.trim().length > 0
+          , p = e => {
+            let t = l.useSimStore.getState()
+              , s = "calibrate" === e.action && !t.calibrating && !(0,
+            el.editedSettings)(t).bindings.keyboardOnly && (0,
+            ec.listGamepads)().length > 0;
+            o(e.tab, e.subview ?? null, s ? null : e.target),
+            s && l.useSimStore.getState().settingsTab === e.tab && l.useSimStore.getState().setCalibrating(!0),
+            a("")
+        }
+        ;
+        return (0,
+        t.jsxs)("div", {
+            className: "fd-set-search",
+            children: [(0,
+            t.jsxs)("span", {
+                className: "fd-set-search-field",
+                children: [(0,
+                t.jsx)(m.Icon, {
+                    name: "search",
+                    className: "fd-set-search-icon",
+                    size: 24
+                }), (0,
+                t.jsx)(eo.TextInput, {
+                    type: "search",
+                    placeholder: "Find a setting",
+                    label: "Find a setting",
+                    role: "combobox",
+                    "aria-expanded": u,
+                    "aria-controls": r,
+                    "aria-autocomplete": "list",
+                    "aria-activedescendant": u && d[i] ? `${r}-${i}` : void 0,
+                    value: e,
+                    onChange: e => {
+                        a(e.target.value),
+                        n(0)
+                    }
+                    ,
+                    onKeyDown: t => {
+                        "ArrowDown" === t.key ? (t.preventDefault(),
+                        n(e => Math.min(d.length - 1, e + 1))) : "ArrowUp" === t.key ? (t.preventDefault(),
+                        n(e => Math.max(0, e - 1))) : "Enter" === t.key && d[i] ? (t.preventDefault(),
+                        p(d[i])) : "Escape" === t.key && e && (t.preventDefault(),
+                        t.stopPropagation(),
+                        a(""))
+                    }
+                }), e && (0,
+                t.jsx)("span", {
+                    className: "fd-set-search-clear",
+                    children: (0,
+                    t.jsx)(c.IconButton, {
+                        label: "Clear search",
+                        icon: (0,
+                        t.jsx)(m.Icon, {
+                            name: "close",
+                            size: 24
+                        }),
+                        onClick: () => a("")
+                    })
+                })]
+            }), u && (0,
+            t.jsx)("div", {
+                className: "fd-set-search-results",
+                children: d.length ? (0,
+                t.jsx)("ul", {
+                    id: r,
+                    role: "listbox",
+                    "aria-label": "Settings found",
+                    children: d.map( (e, s) => (0,
+                    t.jsxs)("li", {
+                        id: `${r}-${s}`,
+                        role: "option",
+                        "aria-selected": s === i,
+                        onMouseDown: e => e.preventDefault(),
+                        onMouseEnter: () => n(s),
+                        onClick: () => p(e),
+                        children: [(0,
+                        t.jsx)(m.Icon, {
+                            name: eE[e.tab],
+                            size: 24
+                        }), (0,
+                        t.jsxs)("span", {
+                            children: [em(e.tab), " / ", (0,
+                            t.jsx)("strong", {
+                                children: e.label
+                            })]
+                        }), (0,
+                        t.jsx)(m.Icon, {
+                            name: "arrow-right",
+                            size: 24
+                        })]
+                    }, `${e.tab}-${e.target}`))
+                }) : (0,
+                t.jsxs)("div", {
+                    id: r,
+                    className: "fd-set-search-empty",
+                    role: "status",
+                    children: [(0,
+                    t.jsx)("span", {
+                        children: "No matches."
+                    }), (0,
+                    t.jsx)(h.TextLink, {
+                        onClick: () => a(""),
+                        children: "Clear"
+                    })]
+                })
+            })]
+        })
+    }
+    function eI() {
+        let e = (0,
+        l.useSimStore)(e => e.settingsTab)
+          , s = (0,
+        l.useSimStore)(e => e.setSettingsTab)
+          , a = (0,
+        l.useSimStore)((0,
+        ed.useShallow)(el.dirtyCategories));
+        return (0,
+        t.jsx)(u.SideRail, {
+            label: "Settings categories",
+            idBase: eL,
+            activation: "manual",
+            plain: !0,
+            className: "fd-set-tabs",
+            value: e,
+            onChange: s,
+            items: eh.map(e => ({
+                value: e.id,
+                label: e.label,
+                icon: (0,
+                t.jsx)(m.Icon, {
+                    name: eE[e.id],
+                    size: 24
+                }),
+                note: a.includes(e.id) ? "Unsaved" : void 0
+            }))
+        })
+    }
+    function eR({title: e, back: s, badge: a, children: i}) {
+        return (0,
+        t.jsxs)("header", {
+            className: "fd-set-page-head",
+            children: [(0,
+            t.jsxs)("div", {
+                className: "fd-set-page-title",
+                children: [s && (0,
+                t.jsx)(c.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    icon: (0,
+                    t.jsx)(m.Icon, {
+                        name: "arrow-left",
+                        size: 24
+                    }),
+                    onClick: s.onClick,
+                    "aria-label": `Back to ${s.label}`,
+                    children: s.label
+                }), (0,
+                t.jsx)(h.SectionHeading, {
+                    size: "lg",
+                    children: e
+                }), a]
+            }), i && (0,
+            t.jsx)("div", {
+                className: "fd-set-page-tools",
+                children: i
+            })]
+        })
+    }
+    let eT = {
+        controls: "Reset controls?",
+        rates: "Reset rates?",
+        camera: "Reset camera & HUD?",
+        video: "Reset video?",
+        audio: "Reset audio?",
+        accessibility: "Reset accessibility?"
+    };
+    function eB({tab: e, open: a, onClose: i}) {
+        let n = (0,
+        l.useSimStore)(e => e.resetSettingsCategory)
+          , [r,o] = (0,
+        s.useState)(!1)
+          , [d,u] = (0,
+        s.useState)(!1);
+        return (0,
+        t.jsx)($.DialogShell, {
+            open: a,
+            title: eT[e],
+            description: "Back to defaults. Nothing changes until you save.",
+            onClose: i,
+            size: "sm",
+            actions: (0,
+            t.jsxs)(t.Fragment, {
+                children: [(0,
+                t.jsx)(c.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    onClick: i,
+                    "data-autofocus": !0,
+                    children: "Cancel"
+                }), (0,
+                t.jsx)(c.Button, {
+                    tone: "primary",
+                    size: "sm",
+                    onClick: () => {
+                        n(e, {
+                            calibration: r,
+                            binds: d
+                        }),
+                        i()
+                    }
+                    ,
+                    children: "Reset"
+                })]
+            }),
+            children: "controls" === e && (0,
+            t.jsxs)("div", {
+                className: "fd-set-checks",
+                children: [(0,
+                t.jsx)(eo.Checkbox, {
+                    label: "Also reset calibration",
+                    checked: r,
+                    onChange: o
+                }), (0,
+                t.jsx)(eo.Checkbox, {
+                    label: "Also reset button and key binds",
+                    checked: d,
+                    onChange: u
+                })]
+            })
+        })
+    }
+    e.s(["PageHeader", 0, eR, "SettingsFooter", 0, function() {
+        let e = (0,
+        l.useSimStore)(e => e.settingsTab)
+          , a = (0,
+        l.useSimStore)(el.settingsDirty)
+          , i = (0,
+        l.useSimStore)((0,
+        ed.useShallow)(el.dirtyCategories))
+          , n = (0,
+        l.useSimStore)(e => e.settingsSave)
+          , r = (0,
+        l.useSimStore)(e => e.ratePresetsSave)
+          , o = (0,
+        l.useSimStore)(e => e.saveSettingsDraft)
+          , d = (0,
+        l.useSimStore)(e => e.discardSettingsDraft)
+          , [u,p] = (0,
+        s.useState)(!1);
+        return (0,
+        t.jsxs)("footer", {
+            className: "fd-set-footer",
+            children: [(0,
+            t.jsxs)(h.TextLink, {
+                className: "fd-set-reset",
+                onClick: () => p(!0),
+                children: [(0,
+                t.jsx)(m.Icon, {
+                    name: "rotate",
+                    size: 24
+                }), " Reset to defaults"]
+            }), (0,
+            t.jsxs)("span", {
+                className: "fd-set-footer-end",
+                children: ["error" === n || "error" === r ? (0,
+                t.jsxs)("span", {
+                    className: "fd-set-save is-error",
+                    role: "alert",
+                    children: [(0,
+                    t.jsx)(m.Icon, {
+                        name: "circle-alert",
+                        size: 24
+                    }), " Couldn’t save on this device.", (0,
+                    t.jsx)(h.TextLink, {
+                        onClick: () => {
+                            let e = l.useSimStore.getState();
+                            "error" === n && e.retrySettingsSave(),
+                            "error" === r && e.retryRatePresetsSave()
+                        }
+                        ,
+                        children: "Retry"
+                    }), (0,
+                    t.jsx)(h.TextLink, {
+                        onClick: () => {
+                            let e = l.useSimStore.getState();
+                            eS("flight-division-settings.json", (0,
+                            eu.settingsBackup)(e.settingsDraft?.settings ?? e.settings))
+                        }
+                        ,
+                        children: "Export backup"
+                    })]
+                }) : a ? (0,
+                t.jsxs)("span", {
+                    className: "fd-set-save is-dirty",
+                    role: "status",
+                    children: [(0,
+                    t.jsx)("span", {
+                        "aria-hidden": !0
+                    }), " ", i.length ? `Unsaved: ${i.map(em).join(", ")}` : "Unsaved changes"]
+                }) : (0,
+                t.jsxs)("span", {
+                    className: "fd-set-save",
+                    role: "status",
+                    children: [(0,
+                    t.jsx)(m.Icon, {
+                        name: "check-circle",
+                        size: 24
+                    }), " Saved"]
+                }), (0,
+                t.jsx)(c.Button, {
+                    tone: "ghost",
+                    disabled: !a,
+                    onClick: d,
+                    children: "Cancel"
+                }), (0,
+                t.jsx)(c.Button, {
+                    tone: "primary",
+                    disabled: !a,
+                    onClick: () => {
+                        o()
+                    }
+                    ,
+                    children: "Save"
+                })]
+            }), (0,
+            t.jsx)(eB, {
+                tab: e,
+                open: u,
+                onClose: () => p(!1)
+            }, e)]
+        })
+    }
+    , "SettingsRail", 0, function({menu: e=!1}) {
+        return (0,
+        t.jsxs)("nav", {
+            className: "fd-set-rail",
+            "aria-label": "Settings",
+            children: [(0,
+            t.jsx)(h.SectionHeading, {
+                as: "h1",
+                size: "lg",
+                className: "fd-set-rail-title",
+                children: "Settings"
+            }), (0,
+            t.jsx)(eM, {}), (0,
+            t.jsx)(eI, {}), (0,
+            t.jsx)(eC, {
+                menu: e
+            })]
+        })
+    }
+    , "UnsavedPrompt", 0, function() {
+        let e, s = (0,
+        l.useSimStore)(e => e.settingsPrompt), a = (0,
+        l.useSimStore)((0,
+        ed.useShallow)(el.dirtyCategories)), i = (0,
+        l.useSimStore)(e => e.resolveSettingsPrompt);
+        return s?.kind === "calibration" ? (0,
+        t.jsx)($.DialogShell, {
+            open: !0,
+            title: "Discard calibration?",
+            description: "Your current calibration stays as it is.",
+            size: "sm",
+            onClose: () => i("cancel"),
+            actions: (0,
+            t.jsxs)(t.Fragment, {
+                children: [(0,
+                t.jsx)(c.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    onClick: () => i("cancel"),
+                    "data-autofocus": !0,
+                    children: "Keep calibrating"
+                }), (0,
+                t.jsx)(c.Button, {
+                    tone: "primary",
+                    size: "sm",
+                    onClick: () => i("discard"),
+                    children: "Discard"
+                })]
+            })
+        }) : (0,
+        t.jsx)($.DialogShell, {
+            open: !!s,
+            title: "Unsaved changes",
+            size: "sm",
+            onClose: () => i("cancel"),
+            description: a.length ? `Save changes to ${(e = a.map(em)).length < 2 ? e.join("") : `${e.slice(0, -1).join(", ")} and ${e.at(-1)}`}?` : "Save your changes?",
+            actions: (0,
+            t.jsxs)(t.Fragment, {
+                children: [(0,
+                t.jsx)(c.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    onClick: () => i("cancel"),
+                    children: "Keep editing"
+                }), (0,
+                t.jsx)(c.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    onClick: () => i("discard"),
+                    children: "Discard"
+                }), (0,
+                t.jsx)(c.Button, {
+                    tone: "primary",
+                    size: "sm",
+                    "data-autofocus": !0,
+                    onClick: () => i("save"),
+                    children: "Save"
+                })]
+            })
+        })
+    }
+    , "panelId", 0, e => (0,
+    u.panelId)(eL, e), "tabId", 0, e => (0,
+    u.tabId)(eL, e), "useSettingsFocus", 0, function(e) {
+        let t = (0,
+        l.useSimStore)(e => e.settingsFocus)
+          , a = (0,
+        l.useSimStore)(e => e.clearSettingsFocus);
+        (0,
+        s.useEffect)( () => {
+            if (!t)
+                return;
+            let e = requestAnimationFrame( () => {
+                e = requestAnimationFrame(s)
+            }
+            )
+              , s = () => {
+                let e = document.getElementById(t);
+                if (e) {
+                    e.scrollIntoView({
+                        block: "center"
+                    });
+                    let t = e.matches("input,button,select,textarea") ? e : e.querySelector("[data-focus-first]:not([disabled])") ?? e.querySelector("input:not([disabled]),button:not([disabled]),select:not([disabled])");
+                    t?.focus({
+                        preventScroll: !0
+                    }),
+                    e.classList.add("is-found"),
+                    setTimeout( () => e.classList.remove("is-found"), 1600)
+                }
+                a()
+            }
+            ;
+            return () => cancelAnimationFrame(e)
+        }
+        , [t, a, e])
+    }
+    ], 54893),
+    e.s(["AccessibilityPage", 0, function() {
+        let e = (0,
+        l.useSimStore)(e => (0,
+        el.editedSettings)(e).accessibility.motion)
+          , s = (0,
+        l.useSimStore)(e => (0,
+        el.editedSettings)(e).camera)
+          , a = (0,
+        l.useSimStore)(e => (0,
+        el.editedSettings)(e).graphics)
+          , i = (0,
+        l.useSimStore)(e => e.updateAccessibility)
+          , n = (0,
+        l.useSimStore)(e => e.updateCamera)
+          , r = (0,
+        l.useSimStore)(e => e.updateGraphics)
+          , o = (0,
+        er.useSystemReducesMotion)()
+          , d = (0,
+        er.resolveReducedMotion)(e, o)
+          , c = a.postProcessing ?? "low" !== a.quality;
+        return (0,
+        t.jsxs)("div", {
+            className: "fd-set-page fd-set-page--accessibility",
+            children: [(0,
+            t.jsx)(eR, {
+                title: "Accessibility"
+            }), (0,
+            t.jsxs)(eb, {
+                id: "set-motion",
+                children: [(0,
+                t.jsx)(eo.SettingRow, {
+                    label: "Motion",
+                    info: "Reduce turns off camera shake, speed lines, motion blur and big menu animations. Flying stays exactly the same.",
+                    children: (0,
+                    t.jsx)(u.Segmented, {
+                        label: "Motion",
+                        value: e,
+                        onChange: e => i({
+                            motion: e
+                        }),
+                        options: [{
+                            value: "system",
+                            label: "Use system setting"
+                        }, {
+                            value: "reduce",
+                            label: "Reduce"
+                        }, {
+                            value: "full",
+                            label: "Full"
+                        }]
+                    })
+                }), "system" === e && (0,
+                t.jsxs)("p", {
+                    className: "fd-set-muted",
+                    children: ["Your system is set to ", o ? "reduce motion" : "full motion", "."]
+                })]
+            }), (0,
+            t.jsxs)(eb, {
+                title: "Camera effects",
+                children: [d && (0,
+                t.jsx)("p", {
+                    className: "fd-set-muted",
+                    children: "Off while motion is reduced. Your values are kept."
+                }), (0,
+                t.jsx)("div", {
+                    id: "set-shake",
+                    children: (0,
+                    t.jsx)(ev, {
+                        label: "Camera motion",
+                        info: "Shake from the motors, throttle and impacts.",
+                        value: s.shake,
+                        min: 0,
+                        max: 1,
+                        step: .05,
+                        format: e => `${Math.round(100 * e)}%`,
+                        disabled: d,
+                        onChange: e => n({
+                            shake: e
+                        })
+                    })
+                }), (0,
+                t.jsx)("div", {
+                    id: "set-speed-lines",
+                    children: (0,
+                    t.jsx)(ev, {
+                        label: "Speed lines",
+                        value: s.speedLines,
+                        min: 0,
+                        max: 1,
+                        step: .05,
+                        format: e => `${Math.round(100 * e)}%`,
+                        disabled: d,
+                        onChange: e => n({
+                            speedLines: e
+                        })
+                    })
+                }), (0,
+                t.jsx)("div", {
+                    id: "set-motion-blur",
+                    children: (0,
+                    t.jsx)(eo.SettingRow, {
+                        label: "Motion blur",
+                        info: c ? void 0 : "Needs post-processing, in Video.",
+                        htmlFor: "set-motion-blur-switch",
+                        children: (0,
+                        t.jsx)(eo.Switch, {
+                            id: "set-motion-blur-switch",
+                            label: "Motion blur",
+                            disabled: d || !c,
+                            checked: a.motionBlur,
+                            onChange: e => r({
+                                motionBlur: e
+                            })
+                        })
+                    })
+                })]
+            })]
+        })
+    }
+    ], 598558);
+    var eP = e.i(778534);
+    function e$(e) {
+        return e > 0 ? e >= 1 ? 1 : Math.pow(10, (-60 + 60 * e) / 20) : 0
+    }
+    function eD(e) {
+        return e > .001 ? e >= 1 ? 1 : 1 + 20 * Math.log10(e) / 60 : 0
+    }
+    function ez(e) {
+        if (!(e > 0))
+            return "0%";
+        let t = Math.round(100 * eD(e));
+        return 0 === t ? "<1%" : `${t}%`
+    }
+    var eF = e.i(647163);
+    let e_ = {
+        motors: {
+            label: "Drone motors"
+        },
+        wind: {
+            label: "Wind"
+        },
+        world: {
+            label: "World & impacts",
+            info: "Traffic, rides and crashes."
+        },
+        interface: {
+            label: "Interface & rewards",
+            info: "Menu sounds, XP and combos."
+        },
+        race: {
+            label: "Race alerts",
+            info: "Race countdowns and warnings."
+        }
+    };
+    function eO({id: e, label: s, channel: a, onChange: i}) {
+        let n = eD(a.gain)
+          , r = a.gain > 0 && a.gain <= .001;
+        return (0,
+        t.jsxs)("span", {
+            className: (0,
+            eF.cn)("fd-set-fader", a.muted && "is-muted"),
+            children: [(0,
+            t.jsx)(eo.Slider, {
+                id: e,
+                label: s,
+                value: n,
+                min: 0,
+                max: 1,
+                step: .01,
+                valueText: a.muted ? `Muted (${ez(a.gain)})` : ez(a.gain),
+                onChange: e => i({
+                    gain: e$(e),
+                    muted: !1
+                })
+            }), (0,
+            t.jsx)(eo.NumberStepper, {
+                label: `${s} percent`,
+                value: Math.round(100 * n),
+                min: 0,
+                max: 100,
+                step: 1,
+                unit: "%",
+                className: "fd-set-fader-number",
+                onCommit: e => e < 0 || e > 100 ? "Use 0 to 100%." : (i({
+                    gain: e$(e / 100),
+                    muted: !1
+                }),
+                null)
+            }), r && (0,
+            t.jsx)("span", {
+                className: "fd-set-floor",
+                children: "<1%"
+            }), (0,
+            t.jsx)(c.IconButton, {
+                tone: a.muted ? "secondary" : "plain",
+                size: "sm",
+                className: "fd-set-mute",
+                pressed: a.muted,
+                label: a.muted ? `Unmute ${s}` : `Mute ${s}`,
+                icon: a.muted ? (0,
+                t.jsx)(m.Icon, {
+                    name: "volume-off",
+                    size: 24
+                }) : (0,
+                t.jsx)(m.Icon, {
+                    name: "volume",
+                    size: 24
+                }),
+                onClick: () => i({
+                    muted: !a.muted
+                })
+            })]
+        })
+    }
+    e.s(["AudioPage", 0, function() {
+        let e = (0,
+        l.useSimStore)(e => (0,
+        el.editedSettings)(e).audio)
+          , s = (0,
+        l.useSimStore)(e => e.setAudioChannel)
+          , a = (0,
+        l.useSimStore)(e => e.updateAudio);
+        return (0,
+        t.jsxs)("div", {
+            className: "fd-set-page fd-set-page--audio",
+            children: [(0,
+            t.jsx)(eR, {
+                title: "Audio"
+            }), (0,
+            t.jsxs)(eb, {
+                className: "fd-set-master",
+                id: "set-master-volume",
+                children: [(0,
+                t.jsx)(m.Icon, {
+                    name: "volume",
+                    className: "fd-set-master-icon",
+                    size: 24
+                }), (0,
+                t.jsx)(h.SectionHeading, {
+                    as: "h3",
+                    className: "fd-set-master-title",
+                    children: (0,
+                    t.jsx)("label", {
+                        htmlFor: "set-master-fader",
+                        children: "Master volume"
+                    })
+                }), (0,
+                t.jsx)(eO, {
+                    id: "set-master-fader",
+                    label: "Master volume",
+                    channel: e.master,
+                    onChange: e => s("master", e)
+                })]
+            }), (0,
+            t.jsx)(eb, {
+                title: "Sound mix",
+                id: "set-sound-mix",
+                children: (0,
+                t.jsx)("div", {
+                    className: "fd-set-mix",
+                    children: eP.AUDIO_CATEGORIES.map(a => (0,
+                    t.jsxs)("div", {
+                        id: `set-audio-${a}`,
+                        className: "fd-set-mix-row",
+                        children: [(0,
+                        t.jsxs)("span", {
+                            className: "fd-set-mix-label",
+                            children: [(0,
+                            t.jsx)("label", {
+                                htmlFor: `set-fader-${a}`,
+                                children: e_[a].label
+                            }), e_[a].info && (0,
+                            t.jsx)(ef.InfoTip, {
+                                topic: e_[a].label,
+                                children: e_[a].info
+                            })]
+                        }), (0,
+                        t.jsx)(eO, {
+                            id: `set-fader-${a}`,
+                            label: e_[a].label,
+                            channel: e.categories[a],
+                            onChange: e => s(a, e)
+                        })]
+                    }, a))
+                })
+            }), (0,
+            t.jsx)(eb, {
+                className: "fd-set-background",
+                id: "set-background-mute",
+                children: (0,
+                t.jsx)(eo.SettingRow, {
+                    label: "Mute when in background",
+                    htmlFor: "set-background-switch",
+                    children: (0,
+                    t.jsx)(eo.Switch, {
+                        id: "set-background-switch",
+                        label: "Mute when in background",
+                        checked: e.muteInBackground,
+                        onChange: e => a({
+                            muteInBackground: e
+                        })
+                    })
+                })
+            })]
+        })
+    }
+    ], 418879);
+    var eH = e.i(235199)
+      , eG = e.i(514236);
+    let eq = ["A", "B", "X", "Y", "LB", "RB", "LT", "RT", "View", "Menu", "LS", "RS", "D-pad up", "D-pad down", "D-pad left", "D-pad right", "Guide"]
+      , eU = ["Cross", "Circle", "Square", "Triangle", "L1", "R1", "L2", "R2", "Create", "Options", "L3", "R3", "D-pad up", "D-pad down", "D-pad left", "D-pad right", "PS"];
+    e.s(["bindingLabel", 0, function(e, t, s, a) {
+        if ("none" === e.kind)
+            return "Unbound";
+        if ("button" === e.kind && "radio" !== t && a)
+            return (s && eG.PLAYSTATION_PATTERN.test(s) ? eU : eq)[e.buttonIndex] ?? (0,
+            eH.describeSwitchBinding)(e);
+        return "axis" === e.kind && "radio" === t ? `Switch ${e.axisIndex + 1} ${e.invert ? "low" : "high"}` : (0,
+        eH.describeSwitchBinding)(e)
+    }
+    ], 35230)
+}
+, 783558, 698542, 681770, e => {
+    "use strict";
+    var t = e.i(843476)
+      , s = e.i(271645)
+      , a = e.i(70399)
+      , i = e.i(873724)
+      , n = e.i(684680)
+      , r = e.i(801583)
+      , l = e.i(106258)
+      , o = e.i(72606)
+      , d = e.i(911017)
+      , c = e.i(854693)
+      , u = e.i(509415)
+      , h = e.i(929618)
+      , m = e.i(468630)
+      , p = e.i(894969)
+      , x = e.i(619455)
+      , f = e.i(188548);
+    e.i(573798);
+    var g = e.i(244144);
+    e.i(671112);
+    var j = e.i(770703)
+      , b = e.i(198132)
+      , v = e.i(123573)
+      , S = e.i(294641)
+      , y = e.i(498475)
+      , k = e.i(509381)
+      , w = e.i(598558)
+      , C = e.i(418879)
+      , N = e.i(568204)
+      , A = e.i(883620)
+      , E = e.i(516560)
+      , L = e.i(624834)
+      , M = e.i(778534)
+      , I = e.i(632997)
+      , R = e.i(35230)
+      , T = e.i(41595)
+      , B = e.i(745010)
+      , P = e.i(514236)
+      , $ = e.i(532116)
+      , D = e.i(953528)
+      , z = e.i(647163)
+      , F = e.i(383807)
+      , _ = e.i(460470)
+      , O = e.i(657688)
+      , H = e.i(327168);
+    let {width: G, height: q, outerRadius: U, innerRadius: K} = H.POCKET_GEOMETRY
+      , W = U + 9
+      , V = [4, 66, 201, 90]
+      , Y = U + 3.2
+      , Q = 2 * Math.PI * Y
+      , Z = (U + K) / 2
+      , X = e => Math.max(-1, Math.min(1, Number.isFinite(e) ? e : 0));
+    function J({radio: e, wells: s, guides: a, label: i, className: n}) {
+        let[r,l,o,d] = e ? [0, 0, G, q] : V
+          , c = (e, t) => ({
+            left: `${(e - r) / o * 100}%`,
+            top: `${(t - l) / d * 100}%`
+        });
+        return (0,
+        t.jsxs)("figure", {
+            className: (0,
+            z.cn)("fd-set-radio", !e && "fd-set-radio--wells", n),
+            style: {
+                aspectRatio: `${o} / ${d}`
+            },
+            role: "img",
+            "aria-label": i,
+            children: [e && (0,
+            t.jsx)(O.default, {
+                src: "/sim/radio/pocket.svg",
+                alt: "",
+                width: 2 * G,
+                height: 2 * q,
+                unoptimized: !0,
+                draggable: !1,
+                className: "fd-set-radio-body"
+            }), (0,
+            t.jsx)("svg", {
+                viewBox: `${r} ${l} ${o} ${d}`,
+                className: "fd-set-radio-overlay",
+                "aria-hidden": !0,
+                children: ["left", "right"].map(i => (0,
+                t.jsx)(et, {
+                    center: H.POCKET_GEOMETRY[i],
+                    view: s[i],
+                    guide: a?.[i],
+                    bare: !e
+                }, i))
+            }), ["left", "right"].flatMap(e => {
+                let {x: a, y: i} = H.POCKET_GEOMETRY[e]
+                  , n = s[e];
+                return [(0,
+                t.jsx)(ee, {
+                    channel: n.vertical,
+                    style: c(a, i - W)
+                }, `${e}-v`), (0,
+                t.jsx)(ee, {
+                    channel: n.horizontal,
+                    style: c(a, i + W)
+                }, `${e}-h`)]
+            }
+            )]
+        })
+    }
+    function ee({channel: e, style: s}) {
+        return (0,
+        t.jsxs)("span", {
+            className: (0,
+            z.cn)("fd-set-radio-caption", !e && "is-unused"),
+            style: s,
+            "aria-hidden": !0,
+            children: [e && (0,
+            t.jsx)("i", {
+                style: {
+                    background: _.DARK_CHANNEL_COLOR[e]
+                }
+            }), e ? _.CHANNEL_LABEL[e] : "Unused"]
+        })
+    }
+    function et({center: e, view: s, guide: a, bare: i}) {
+        let {x: n, y: r} = e
+          , l = (e, t) => [n + 14 * X(e), r - 14 * X(t)]
+          , [o,d] = l(s.x, s.y)
+          , c = a?.target
+          , u = Math.max(0, Math.min(1, a?.hold ?? 0))
+          , h = a?.edges
+          , m = "up" === c ? {
+            x: 0,
+            y: -14
+        } : "right" === c ? {
+            x: 14,
+            y: 0
+        } : null;
+        return (0,
+        t.jsxs)("g", {
+            className: (0,
+            z.cn)("fd-set-radio-well", c && "is-target"),
+            children: [i && (0,
+            t.jsxs)(t.Fragment, {
+                children: [(0,
+                t.jsx)("circle", {
+                    cx: n,
+                    cy: r,
+                    r: U,
+                    className: "fd-set-radio-rim"
+                }), (0,
+                t.jsx)("circle", {
+                    cx: n,
+                    cy: r,
+                    r: K,
+                    className: "fd-set-radio-rim fd-set-radio-rim--inner"
+                })]
+            }), c && (0,
+            t.jsxs)(t.Fragment, {
+                children: [(0,
+                t.jsx)("circle", {
+                    cx: n,
+                    cy: r,
+                    r: U,
+                    className: "fd-set-radio-focus"
+                }), (0,
+                t.jsx)("circle", {
+                    cx: n,
+                    cy: r,
+                    r: Y,
+                    className: "fd-set-radio-hold-track"
+                }), (0,
+                t.jsx)("circle", {
+                    cx: n,
+                    cy: r,
+                    r: Y,
+                    className: "fd-set-radio-hold",
+                    transform: `rotate(-90 ${n} ${r})`,
+                    strokeDasharray: Q,
+                    strokeDashoffset: Q * (1 - u)
+                })]
+            }), a?.pulse ? (0,
+            t.jsx)("circle", {
+                cx: n,
+                cy: r,
+                r: U,
+                className: "fd-set-radio-pulse"
+            }, a.pulse) : null, h && (0,
+            t.jsxs)(t.Fragment, {
+                children: [(0,
+                t.jsx)("rect", {
+                    x: n - 4,
+                    y: r - Z - 1.3,
+                    width: 8,
+                    height: 2.6,
+                    rx: 1.3,
+                    className: (0,
+                    z.cn)("fd-set-radio-edge", h.up && "is-lit")
+                }), (0,
+                t.jsx)("rect", {
+                    x: n - 4,
+                    y: r + Z - 1.3,
+                    width: 8,
+                    height: 2.6,
+                    rx: 1.3,
+                    className: (0,
+                    z.cn)("fd-set-radio-edge", h.down && "is-lit")
+                }), (0,
+                t.jsx)("rect", {
+                    x: n - Z - 1.3,
+                    y: r - 4,
+                    width: 2.6,
+                    height: 8,
+                    rx: 1.3,
+                    className: (0,
+                    z.cn)("fd-set-radio-edge", h.left && "is-lit")
+                }), (0,
+                t.jsx)("rect", {
+                    x: n + Z - 1.3,
+                    y: r - 4,
+                    width: 2.6,
+                    height: 8,
+                    rx: 1.3,
+                    className: (0,
+                    z.cn)("fd-set-radio-edge", h.right && "is-lit")
+                })]
+            }), a?.trail && a.trail.length > 1 && (0,
+            t.jsx)("polyline", {
+                className: "fd-set-radio-trail",
+                points: a.trail.map( ([e,t]) => l(e, t).map(e => e.toFixed(2)).join(",")).join(" ")
+            }), m && (0,
+            t.jsxs)(t.Fragment, {
+                children: [(0,
+                t.jsx)("path", {
+                    className: "fd-set-radio-arrow",
+                    d: "up" === c ? `M${n - 3.2} ${r - 14 - 5.4} L${n} ${r - 14 - 8.6} L${n + 3.2} ${r - 14 - 5.4}` : `M${n + 14 + 5.4} ${r - 3.2} L${n + 14 + 8.6} ${r} L${n + 14 + 5.4} ${r + 3.2}`
+                }), (0,
+                t.jsx)("circle", {
+                    cx: n,
+                    cy: r,
+                    r: 4.6,
+                    className: "fd-set-radio-ghost",
+                    style: {
+                        "--ghost-x": `${m.x}px`,
+                        "--ghost-y": `${m.y}px`
+                    }
+                })]
+            }), (0,
+            t.jsx)("circle", {
+                cx: o,
+                cy: d,
+                r: 4.6,
+                className: (0,
+                z.cn)("fd-set-radio-dot", s.idle && "is-idle")
+            })]
+        })
+    }
+    function es(e, t, s) {
+        let a = (0,
+        I.stickAssignment)(e, s)
+          , i = a => a ? "keyboard" === s ? "throttle" === a ? -1 : 0 : (0,
+        I.stickPosition)(a, e, t) : 0
+          , n = e => {
+            let[t,s] = a[e];
+            return {
+                vertical: t,
+                horizontal: s,
+                x: i(s),
+                y: i(t)
+            }
+        }
+        ;
+        return {
+            left: n("left"),
+            right: n("right")
+        }
+    }
+    function ea(e) {
+        let t = e => e ? _.CHANNEL_LABEL[e] : "Unused"
+          , s = s => `${"left" === s ? "Left" : "Right"} stick: ${t(e[s].vertical)} up and down, ${t(e[s].horizontal)} left and right`;
+        return `${s("left")}. ${s("right")}.`
+    }
+    function ei({bindings: e, axes: s, source: a, radio: i, className: n}) {
+        let r = es(e, s, a);
+        return (0,
+        t.jsx)(J, {
+            radio: i,
+            wells: r,
+            label: ea(r),
+            className: n
+        })
+    }
+    var en = e.i(324280)
+      , er = e.i(235199)
+      , el = e.i(54893)
+      , eo = e.i(306605);
+    let ed = ["mode2", "mode1", "mode4", "mode3"]
+      , ec = [{
+        value: "gamepad",
+        label: "Gamepad"
+    }, {
+        value: "radio",
+        label: "Radio"
+    }];
+    function eu() {
+        return (0,
+        l.useSimStore)(e => (0,
+        D.editedSettings)(e).bindings)
+    }
+    let eh = (0,
+    s.createContext)(null);
+    function em({children: e}) {
+        let a, i, n, r;
+        return (0,
+        t.jsx)(eh.Provider, {
+            value: (a = eu(),
+            i = (0,
+            l.useSimStore)(D.editedPadIndex),
+            n = (0,
+            F.useGamepadList)(!0),
+            r = (0,
+            F.useGamepadReading)(a.deviceId, !a.keyboardOnly, i),
+            (0,
+            s.useMemo)( () => {
+                let e = null !== r.id
+                  , t = a.keyboardOnly || !a.deviceId && !e;
+                return {
+                    bindings: a,
+                    padIndex: i,
+                    pads: n,
+                    reading: r,
+                    connected: e,
+                    keyboard: t,
+                    axes: e ? r.axes : null,
+                    standard: "standard" === r.mapping,
+                    kind: t ? null : a.deviceKind ?? (0,
+                    P.classifyDevice)(r.id ?? a.deviceId)
+                }
+            }
+            , [a, i, n, r])),
             children: e
         })
     }
-    ])
-}
-, 619455, e => {
-    "use strict";
-    let a = (0,
-    e.i(768834).create)(e => ({
-        context: null,
-        destination: null,
-        returnToShop: a => e({
-            context: null,
-            destination: a
-        }),
-        open: (a={}) => e({
-            context: a
-        }),
-        close: () => e({
-            context: null,
-            destination: null
+    function ep() {
+        let e = (0,
+        s.useContext)(eh);
+        if (!e)
+            throw Error("useActiveDevice needs an ActiveDeviceProvider");
+        return e
+    }
+    function ex() {
+        let {bindings: e, pads: s, connected: a, keyboard: i, reading: n, kind: r} = ep()
+          , o = (0,
+        l.useSimStore)(e => e.selectInputDevice)
+          , d = (0,
+        l.useSimStore)(e => e.updateBindings)
+          , c = (0,
+        l.useSimStore)(e => e.setDeviceKind)
+          , u = (0,
+        l.useSimStore)(e => e.setCalibrating)
+          , h = e => s.filter(t => t.id === e).length > 1
+          , m = [...s.map(e => ({
+            value: `pad:${e.index}`,
+            label: `${(0,
+            $.friendlyGamepadName)(e.id)}${h(e.id) ? ` (${e.index + 1})` : ""}`
+        })), ...e.deviceId && !s.some(t => t.id === e.deviceId) ? [{
+            value: "remembered",
+            label: `${(0,
+            $.friendlyGamepadName)(e.deviceId)} (not connected)`
+        }] : [], {
+            value: "keyboard",
+            label: "Keyboard"
+        }]
+          , p = e.keyboardOnly ? "keyboard" : a ? `pad:${n.index}` : e.deviceId ? "remembered" : s[0] ? `pad:${s[0].index}` : "keyboard"
+          , x = e.keyboardOnly ? null : a ? "Connected" : e.deviceId ? "Not connected" : s.length ? null : "No controller found"
+          , f = a && (0,
+        B.needsCalibration)(e, r);
+        return (0,
+        t.jsxs)(eo.Card, {
+            className: "fd-set-device",
+            id: "set-device",
+            children: [(0,
+            t.jsx)(g.Icon, {
+                name: i ? "keyboard" : "radio" === r ? "radio" : "gamepad",
+                size: 24,
+                className: "fd-set-device-icon"
+            }), (0,
+            t.jsxs)("div", {
+                className: "fd-set-device-name",
+                children: [(0,
+                t.jsx)(A.Select, {
+                    label: "Input device",
+                    value: p,
+                    options: m,
+                    onChange: e => {
+                        if ("keyboard" === e)
+                            return void d({
+                                keyboardOnly: !0
+                            });
+                        if ("remembered" === e)
+                            return;
+                        let t = s.find(t => `pad:${t.index}` === e);
+                        t && o(t.id, h(t.id) ? t.index : null)
+                    }
+                }), x && (0,
+                t.jsxs)("span", {
+                    className: (0,
+                    z.cn)("fd-set-status", a ? "is-ok" : "is-warn"),
+                    children: [(0,
+                    t.jsx)("span", {
+                        "aria-hidden": !0
+                    }), x]
+                }), f && (0,
+                t.jsx)(N.Badge, {
+                    tone: "orange",
+                    children: "Not calibrated"
+                })]
+            }), (0,
+            t.jsxs)("div", {
+                className: "fd-set-device-tools",
+                children: [!i && (r ? (0,
+                t.jsx)(A.Select, {
+                    label: "Device type",
+                    value: r,
+                    options: ec,
+                    onChange: c
+                }) : (0,
+                t.jsx)(E.Segmented, {
+                    label: "Device type",
+                    size: "sm",
+                    value: null,
+                    options: ec,
+                    onChange: c
+                })), (0,
+                t.jsx)(y.Button, {
+                    id: "set-calibrate",
+                    tone: f ? "primary" : "ghost",
+                    disabled: i || !a,
+                    onClick: () => u(!0),
+                    children: "Calibrate"
+                })]
+            })]
         })
-    }));
-    e.s(["useCreditShop", 0, a])
-}
-, 715793, e => {
-    "use strict";
-    var a = e.i(50270)
-      , t = e.i(768834)
-      , s = e.i(920755)
-      , n = e.i(613105)
-      , r = e.i(838740);
-    let i = a.z.object({
-        mapId: a.z.string().uuid(),
-        version: a.z.number().int().positive(),
-        name: a.z.string(),
-        creator: a.z.string(),
-        creatorId: a.z.string().uuid(),
-        featuredAt: a.z.string(),
-        current: a.z.boolean().default(!0)
-    })
-      , l = a.z.object({
-        featured: i.nullable(),
-        flown: a.z.boolean()
-    })
-      , o = (0,
-    t.create)( (e, a) => ({
-        status: "idle",
-        featured: null,
-        flown: !1,
-        load: async () => {
-            if ("loading" !== a().status) {
-                e({
-                    status: "loading"
-                });
-                try {
-                    let {data: a, error: t} = await (0,
-                    s.createClient)().rpc("get_featured_community_map").abortSignal((0,
-                    n.withDeadline)(null, 8e3));
-                    if (t)
-                        throw t;
-                    let r = l.parse(a);
-                    e({
-                        status: "ready",
-                        featured: r.featured,
-                        flown: r.flown || !!r.featured && function(e) {
-                            try {
-                                return window.localStorage.getItem(c) === d(e)
-                            } catch {
-                                return !1
-                            }
-                        }(r.featured)
-                    })
-                } catch {
-                    e({
-                        status: "error",
-                        featured: null,
-                        flown: !1
-                    })
-                }
-            }
-        }
-    }))
-      , d = e => `${e.mapId}:${e.version}:${e.featuredAt}`
-      , c = "fd-featured-flown";
-    async function u() {
-        let {data: e, error: a} = await (0,
-        s.createClient)().rpc("get_featured_community_map_document").abortSignal((0,
-        n.withDeadline)(null, 15e3));
-        if (a)
-            throw Error(a.message);
-        return e ? (0,
-        r.parseMap)(e) : null
     }
-    async function m(e, a=!1) {
-        if (a) {
-            let a = {
-                mapId: e.id,
-                version: 1,
-                name: e.name,
-                creator: e.creator,
-                creatorId: e.ownerId,
-                featuredAt: new Date().toISOString(),
-                current: !0
-            };
-            return o.setState({
-                status: "ready",
-                featured: a,
-                flown: !1
+    function ef() {
+        let {bindings: e, axes: a, keyboard: i, standard: n, kind: r} = ep()
+          , o = (0,
+        l.useSimStore)(e => e.applyStickMode)
+          , d = (0,
+        l.useSimStore)(e => e.updateBindings)
+          , c = (0,
+        l.useSimStore)(e => e.setDeviceKind)
+          , [u,h] = (0,
+        s.useState)(!1)
+          , m = !i && "radio" === r
+          , p = i ? "mode2" : m ? e.stickMode ?? "mode2" : (0,
+        I.detectStickMode)(e)
+          , x = M.CHANNEL_NAMES.some(t => {
+            let s = e.channels[t];
+            return !!s && (-1 !== s.min || 1 !== s.max || 0 !== s.center)
+        }
+        )
+          , f = t => {
+            m ? ("radio" !== e.deviceKind && c("radio"),
+            d({
+                stickMode: t
+            })) : o(t)
+        }
+          , j = m && "radio" !== e.deviceKind ? {
+            ...e,
+            deviceKind: "radio"
+        } : e;
+        return (0,
+        t.jsxs)(eo.Card, {
+            title: "Sticks",
+            tone: "dark",
+            id: "set-stick-layout",
+            className: "fd-set-sticks-card",
+            info: m ? "Which stick does what. Pick the mode your radio is set to. Calibrate maps its channels." : "Which stick does what. Mode 2, throttle on the left, is the most common.",
+            actions: (0,
+            t.jsx)(A.Select, {
+                label: "Stick layout",
+                value: p ?? "custom",
+                options: [...p ? [] : [{
+                    value: "custom",
+                    label: x ? "Custom (calibrated)" : "Custom"
+                }], ...ed.map(e => ({
+                    value: e,
+                    label: I.STICK_MODE_LABELS[e]
+                }))],
+                disabled: i,
+                onChange: e => {
+                    "custom" !== e && f(e)
+                }
             }),
-            a
-        }
-        let {data: t, error: r} = await (0,
-        s.createClient)().rpc("admin_feature_community_map", {
-            p_map_id: e.id
-        }).abortSignal((0,
-        n.withDeadline)(null, 1e4));
-        if (r)
-            throw Error(r.message);
-        let l = i.parse(t);
-        return o.setState({
-            status: "ready",
-            featured: l,
-            flown: !1
-        }),
-        l
+            children: [(0,
+            t.jsx)(ei, {
+                bindings: j,
+                axes: a,
+                source: i ? "keyboard" : n ? "standard" : "other",
+                radio: m
+            }), (0,
+            t.jsx)(k.TextLink, {
+                className: "fd-set-all-layouts",
+                trailingIcon: (0,
+                t.jsx)(g.Icon, {
+                    name: "arrow-right",
+                    size: 24
+                }),
+                onClick: () => h(!0),
+                children: "All layouts"
+            }), (0,
+            t.jsx)(L.DialogShell, {
+                open: u,
+                title: "Stick layouts",
+                onClose: () => h(!1),
+                size: "lg",
+                actions: (0,
+                t.jsx)(y.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    onClick: () => h(!1),
+                    "data-autofocus": !0,
+                    children: "Close"
+                }),
+                children: (0,
+                t.jsx)("div", {
+                    className: "fd-set-layout-grid",
+                    children: ["mode1", "mode2", "mode3", "mode4"].map(e => {
+                        let s = I.STICK_MODE_ASSIGNMENTS[e];
+                        return (0,
+                        t.jsxs)("div", {
+                            className: (0,
+                            z.cn)("fd-set-layout-option", e === p && "is-current"),
+                            children: [(0,
+                            t.jsx)("strong", {
+                                children: I.STICK_MODE_LABELS[e]
+                            }), (0,
+                            t.jsxs)("div", {
+                                className: "fd-set-gimbals fd-set-gimbals--small",
+                                children: [(0,
+                                t.jsx)(eo.Gimbal, {
+                                    vertical: _.CHANNEL_LABEL[s.left[0]],
+                                    horizontal: _.CHANNEL_LABEL[s.left[1]]
+                                }), (0,
+                                t.jsx)(eo.Gimbal, {
+                                    vertical: _.CHANNEL_LABEL[s.right[0]],
+                                    horizontal: _.CHANNEL_LABEL[s.right[1]]
+                                })]
+                            }), !i && e !== p && (0,
+                            t.jsx)(y.Button, {
+                                tone: "ghost",
+                                size: "sm",
+                                onClick: () => {
+                                    f(e),
+                                    h(!1)
+                                }
+                                ,
+                                children: "Use this layout"
+                            })]
+                        }, e)
+                    }
+                    )
+                })
+            })]
+        })
     }
-    e.s(["featureCommunityMap", 0, m, "featuredMapId", 0, function(e) {
-        return `user:${e.mapId}`
+    function eg() {
+        let e = (0,
+        l.useSimStore)(e => e.updateBindings)
+          , s = eu();
+        return (0,
+        t.jsx)("div", {
+            className: "fd-set-empty",
+            role: "status",
+            children: (0,
+            t.jsx)(L.EmptyState, {
+                icon: "gamepad",
+                title: s.deviceId ? `${(0,
+                $.friendlyGamepadName)(s.deviceId)} isn't connected` : "No controller connected",
+                action: s.keyboardOnly ? void 0 : (0,
+                t.jsx)(y.Button, {
+                    tone: "primary",
+                    size: "sm",
+                    onClick: () => e({
+                        keyboardOnly: !0
+                    }),
+                    children: "Use keyboard"
+                }),
+                children: "Plug in a gamepad or radio and move a stick."
+            })
+        })
     }
-    , "loadFeaturedSnapshot", 0, u, "markFeaturedFlown", 0, function(e) {
-        let a = o.getState().featured;
-        a && d(a) === d(e) && o.setState({
-            flown: !0
-        });
-        try {
-            window.localStorage.setItem(c, d(e))
-        } catch {}
+    function ej({compact: e}) {
+        return (0,
+        t.jsxs)("div", {
+            className: (0,
+            z.cn)("fd-set-keys", e && "fd-set-keys--compact"),
+            "aria-label": "Keyboard flight keys",
+            children: [(0,
+            t.jsxs)("span", {
+                children: [(0,
+                t.jsx)("kbd", {
+                    children: "W"
+                }), (0,
+                t.jsx)("kbd", {
+                    children: "S"
+                }), " Throttle"]
+            }), (0,
+            t.jsxs)("span", {
+                children: [(0,
+                t.jsx)("kbd", {
+                    children: "↑"
+                }), (0,
+                t.jsx)("kbd", {
+                    children: "↓"
+                }), " Pitch"]
+            }), (0,
+            t.jsxs)("span", {
+                children: [(0,
+                t.jsx)("kbd", {
+                    children: "A"
+                }), (0,
+                t.jsx)("kbd", {
+                    children: "D"
+                }), " Yaw"]
+            }), (0,
+            t.jsxs)("span", {
+                children: [(0,
+                t.jsx)("kbd", {
+                    children: "←"
+                }), (0,
+                t.jsx)("kbd", {
+                    children: "→"
+                }), " Roll"]
+            })]
+        })
     }
-    , "useFeaturedMap", 0, o])
-}
-, 243402, e => {
-    "use strict";
-    var a = e.i(920755)
-      , t = e.i(58849)
-      , s = e.i(404961)
-      , n = e.i(998494);
-    let r = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-    async function i(e) {
-        let a = new Map
-          , t = []
-          , i = [];
-        for (let l of new Set(e))
-            (0,
-            s.hasMap)(l) ? a.set(l, (0,
-            s.resolveMap)(l).name) : (0,
-            n.isOfficialMapId)(l) ? t.push(l) : (0,
-            n.isPersonalMapId)(l) && r.test(l.slice(5)) && i.push(l);
-        return await Promise.all([l(t, a), o(i, a)]),
-        a
+    function eb() {
+        let {bindings: e, axes: s, connected: a, keyboard: i} = ep()
+          , n = (0,
+        l.useSimStore)(e => e.updateBindings);
+        return (0,
+        t.jsx)(eo.Card, {
+            title: "Live input",
+            id: "set-live-input",
+            children: i ? e.keyboardOnly ? (0,
+            t.jsx)(ej, {
+                compact: !0
+            }) : (0,
+            t.jsx)(eg, {}) : (0,
+            t.jsxs)(t.Fragment, {
+                children: [!a && (0,
+                t.jsx)(eg, {}), (0,
+                t.jsxs)("div", {
+                    className: "fd-set-direction",
+                    role: "table",
+                    "aria-label": "Live input",
+                    id: "set-invert",
+                    children: [(0,
+                    t.jsxs)("div", {
+                        role: "row",
+                        className: "fd-set-direction-head",
+                        children: [(0,
+                        t.jsx)("span", {
+                            role: "columnheader",
+                            children: (0,
+                            t.jsx)("span", {
+                                className: "fdk-sr",
+                                children: "Input"
+                            })
+                        }), (0,
+                        t.jsx)("span", {
+                            role: "columnheader",
+                            children: (0,
+                            t.jsx)("span", {
+                                className: "fdk-sr",
+                                children: "Live"
+                            })
+                        }), (0,
+                        t.jsx)("span", {
+                            role: "columnheader",
+                            children: "Invert"
+                        })]
+                    }), M.CHANNEL_NAMES.map(i => (0,
+                    t.jsxs)("div", {
+                        role: "row",
+                        className: "fd-set-direction-row",
+                        children: [(0,
+                        t.jsx)("span", {
+                            role: "rowheader",
+                            children: _.CHANNEL_LABEL[i]
+                        }), (0,
+                        t.jsx)("span", {
+                            role: "cell",
+                            children: (0,
+                            t.jsx)(eo.Meter, {
+                                label: `${_.CHANNEL_LABEL[i]} signal`,
+                                value: (0,
+                                I.radioSense)(i, (0,
+                                I.channelValue)(i, e, s)),
+                                unipolar: "throttle" === i,
+                                color: _.CHANNEL_COLOR[i],
+                                bound: !a || !!e.channels[i],
+                                readout: a ? void 0 : "–"
+                            })
+                        }), (0,
+                        t.jsx)("span", {
+                            role: "cell",
+                            children: (0,
+                            t.jsx)(A.Checkbox, {
+                                label: (0,
+                                t.jsxs)("span", {
+                                    className: "fdk-sr",
+                                    children: ["Invert ", _.CHANNEL_LABEL[i]]
+                                }),
+                                checked: e.swappedAxes[i],
+                                onChange: t => n({
+                                    swappedAxes: {
+                                        ...e.swappedAxes,
+                                        [i]: t
+                                    }
+                                })
+                            })
+                        })]
+                    }, i))]
+                }), (0,
+                t.jsxs)("div", {
+                    className: "fd-set-deadzone",
+                    id: "set-deadzone",
+                    children: [(0,
+                    t.jsxs)("span", {
+                        className: "fd-set-deadzone-label",
+                        children: [(0,
+                        t.jsx)("label", {
+                            htmlFor: "set-deadzone-slider",
+                            children: "Dead zone"
+                        }), (0,
+                        t.jsx)(en.InfoTip, {
+                            topic: "Dead zone",
+                            children: "Stick movement near center that's ignored. Raise it if the drone drifts with the sticks centered."
+                        })]
+                    }), (0,
+                    t.jsx)(A.Slider, {
+                        id: "set-deadzone-slider",
+                        label: "Dead zone",
+                        value: e.deadband,
+                        min: 0,
+                        max: .4,
+                        step: .005,
+                        valueText: `${(100 * e.deadband).toFixed(1)}%`,
+                        onChange: e => n({
+                            deadband: e
+                        })
+                    }), (0,
+                    t.jsxs)("output", {
+                        htmlFor: "set-deadzone-slider",
+                        children: [(100 * e.deadband).toFixed(1), "%"]
+                    })]
+                })]
+            })
+        })
     }
-    async function l(e, a) {
-        if (e.length) {
-            try {
-                for (let s of (await (0,
-                t.listPublishedOfficialMaps)()))
-                    e.includes(s.id) && a.set(s.id, s.name)
-            } catch (e) {
-                console.warn("[sim] official map names unavailable", e)
-            }
-            await Promise.all(e.filter(e => !a.has(e)).map(async e => {
-                try {
-                    a.set(e, (await (0,
-                    t.loadOfficialMap)(e)).map.name)
-                } catch (t) {
-                    t instanceof s.MapUnavailableError && a.set(e, null)
+    function ev() {
+        let {bindings: e, axes: s} = ep()
+          , a = (0,
+        l.useSimStore)(e => e.updateBindings);
+        return (0,
+        t.jsx)(eo.Card, {
+            title: "Throttle",
+            id: "set-throttle-travel",
+            className: "fd-set-throttle-card",
+            children: (0,
+            t.jsxs)("div", {
+                className: "fd-set-throttle",
+                children: [(0,
+                t.jsxs)("div", {
+                    className: "fd-set-throttle-diagram",
+                    "aria-hidden": !0,
+                    children: [(0,
+                    t.jsxs)("div", {
+                        className: "fd-set-throttle-track",
+                        children: [(0,
+                        t.jsx)("span", {
+                            className: "fd-set-throttle-zero",
+                            style: {
+                                height: e.halfThrottle ? "50%" : "0%"
+                            }
+                        }), (0,
+                        t.jsx)("span", {
+                            className: "fd-set-throttle-knob",
+                            style: {
+                                bottom: `${((0,
+                                I.stickPosition)("throttle", e, s) + 1) * 50}%`
+                            }
+                        })]
+                    }), (0,
+                    t.jsxs)("ul", {
+                        children: [(0,
+                        t.jsx)("li", {
+                            children: "100%"
+                        }), (0,
+                        t.jsx)("li", {
+                            children: e.halfThrottle ? "0%" : "50%"
+                        }), (0,
+                        t.jsx)("li", {
+                            children: "0%"
+                        })]
+                    })]
+                }), (0,
+                t.jsxs)("div", {
+                    className: "fd-set-throttle-rows",
+                    children: [(0,
+                    t.jsx)(A.SettingRow, {
+                        label: "Travel",
+                        info: "Center to top is for sticks that spring back to the middle. The lower half stays at zero.",
+                        children: (0,
+                        t.jsx)(E.Segmented, {
+                            label: "Throttle travel",
+                            size: "sm",
+                            value: e.halfThrottle ? "center" : "full",
+                            onChange: e => a({
+                                halfThrottle: "center" === e
+                            }),
+                            options: [{
+                                value: "full",
+                                label: "Full stick"
+                            }, {
+                                value: "center",
+                                label: "Center to top"
+                            }]
+                        })
+                    }), (0,
+                    t.jsx)("div", {
+                        id: "set-throttle-stick",
+                        children: (0,
+                        t.jsx)(A.SettingRow, {
+                            label: "Physical stick",
+                            htmlFor: "set-throttle-stick-select",
+                            info: "Tells calibration where the throttle rests. Calibrate again after changing it.",
+                            children: (0,
+                            t.jsx)(A.Select, {
+                                id: "set-throttle-stick-select",
+                                label: "Physical throttle stick",
+                                value: e.throttleSelfCentering ? "springs" : "stays",
+                                onChange: e => a({
+                                    throttleSelfCentering: "springs" === e
+                                }),
+                                options: [{
+                                    value: "stays",
+                                    label: "Stays where released"
+                                }, {
+                                    value: "springs",
+                                    label: "Springs to center"
+                                }]
+                            })
+                        })
+                    })]
+                })]
+            })
+        })
+    }
+    let eS = [{
+        action: "arm",
+        label: "Arm / disarm"
+    }, {
+        action: "respawn",
+        label: "Respawn"
+    }, {
+        action: "droneWheel",
+        label: "Drone wheel"
+    }, {
+        action: "interact",
+        label: "Interact"
+    }];
+    function ey({label: e, listening: s, prompt: a, disabled: i, empty: n, live: r, onClick: l, name: o, focusFirst: d}) {
+        return (0,
+        t.jsx)(y.Button, {
+            tone: s ? "primary" : r ? "secondary" : "ghost",
+            size: "sm",
+            block: !0,
+            className: (0,
+            z.cn)("fd-set-bindbox", n && "is-empty"),
+            disabled: i,
+            "aria-pressed": s,
+            "aria-label": s ? `${o}: ${a}` : `${o}: ${e}. Click to change.`,
+            onClick: l,
+            "data-focus-first": d || void 0,
+            children: s ? a : e
+        })
+    }
+    function ek(e, t, a, i, n) {
+        (0,
+        s.useEffect)( () => {
+            if (e?.device !== "controller")
+                return;
+            let s = e.action
+              , r = 0
+              , l = null
+              , o = null
+              , d = (0,
+            er.occupiedStickAxes)(t)
+              , c = () => {
+                r = requestAnimationFrame(c);
+                let e = (0,
+                $.getRawGamepad)(t.deviceId, !1, a);
+                if (!e)
+                    return;
+                if (!l || !o) {
+                    l = Array.from(e.axes),
+                    o = e.buttons.map(e => e.value || +!!e.pressed);
+                    return
                 }
+                let u = e => {
+                    let a = (0,
+                    er.validateRadioBind)(e, s, t);
+                    a ? n((0,
+                    er.bindRejectMessage)(a)) : (cancelAnimationFrame(r),
+                    i(s, e))
+                }
+                ;
+                for (let t = 0; t < e.buttons.length; t++) {
+                    let s = e.buttons[t].value || +!!e.buttons[t].pressed;
+                    if (s >= T.TRIGGER_PRESS && o[t] < T.TRIGGER_RELEASE) {
+                        o[t] = 1,
+                        u({
+                            kind: "button",
+                            buttonIndex: t
+                        });
+                        return
+                    }
+                    s < T.TRIGGER_RELEASE && (o[t] = 0)
+                }
+                for (let t = 0; t < e.axes.length; t++) {
+                    if (d.has(t))
+                        continue;
+                    let s = e.axes[t] - l[t];
+                    if (.6 > Math.abs(s))
+                        continue;
+                    let a = {
+                        kind: "axis",
+                        axisIndex: t,
+                        threshold: (e.axes[t] + l[t]) / 2,
+                        invert: s < 0
+                    };
+                    l[t] = e.axes[t],
+                    u(a);
+                    return
+                }
+            }
+            ;
+            return r = requestAnimationFrame(c),
+            () => cancelAnimationFrame(r)
+        }
+        , [e, t, a, i, n])
+    }
+    function ew() {
+        var e;
+        let {bindings: a, padIndex: i, connected: n, standard: r, reading: o} = ep()
+          , d = (0,
+        l.useSimStore)(e => !1 !== (0,
+        D.editedSettings)(e).flight.rumble)
+          , c = (0,
+        l.useSimStore)(e => (0,
+        D.editedSettings)(e).flight.autoArm)
+          , u = (0,
+        l.useSimStore)(e => e.updateBindings)
+          , h = (0,
+        l.useSimStore)(e => e.updateFlight)
+          , [m,p] = (0,
+        s.useState)(null)
+          , [x,f] = (0,
+        s.useState)(null)
+          , j = n && !a.keyboardOnly
+          , b = m?.device !== "controller" || j ? m : null
+          , v = (0,
+        s.useCallback)( () => p(null), [])
+          , S = (0,
+        s.useCallback)(e => f(e), [])
+          , k = (0,
+        s.useCallback)( (e, t) => {
+            u({
+                keyboard: {
+                    ...a.keyboard,
+                    [e]: t
+                }
+            }),
+            f(null),
+            p(null)
+        }
+        , [a.keyboard, u])
+          , w = (0,
+        s.useCallback)( (e, t) => {
+            u({
+                [e]: t
+            }),
+            f(null),
+            p(null)
+        }
+        , [u]);
+        e = a.keyboard,
+        (0,
+        s.useEffect)( () => {
+            if (!b)
+                return;
+            let t = t => {
+                if ("Escape" === t.code) {
+                    t.preventDefault(),
+                    t.stopImmediatePropagation(),
+                    v();
+                    return
+                }
+                if ("keyboard" !== b.device || (t.preventDefault(),
+                t.stopImmediatePropagation(),
+                t.repeat))
+                    return;
+                let s = (0,
+                er.validateKeyboardBind)(t.code, b.action, e);
+                s ? S((0,
+                er.bindRejectMessage)(s)) : k(b.action, t.code)
+            }
+            ;
+            return window.addEventListener("keydown", t, !0),
+            () => window.removeEventListener("keydown", t, !0)
+        }
+        , [b, e, k, S, v]),
+        ek(b, a, i, w, S);
+        let C = e => {
+            f(null),
+            p(t => t?.device === e.device && t.action === e.action ? null : e)
+        }
+          , N = (0,
+        s.useMemo)( () => {
+            let e = {
+                axes: o.axes,
+                buttons: o.values.map( (e, t) => ({
+                    value: e,
+                    pressed: o.buttons[t]
+                }))
+            }
+              , t = t => "none" !== t.kind && null !== o.id && !0 === (0,
+            T.readArmPressed)(e, t, !1);
+            return {
+                arm: t(a.arm),
+                interact: t(a.interact)
+            }
+        }
+        , [a.arm, a.interact, o]);
+        return (0,
+        t.jsxs)(eo.Card, {
+            title: "Buttons & switches",
+            className: "fd-set-binds-card",
+            children: [(0,
+            t.jsxs)("div", {
+                className: "fd-set-binds",
+                role: "table",
+                "aria-label": "Bindings",
+                children: [(0,
+                t.jsxs)("div", {
+                    role: "row",
+                    className: "fd-set-bind fd-set-bind--head",
+                    children: [(0,
+                    t.jsx)("span", {
+                        role: "columnheader",
+                        children: (0,
+                        t.jsx)("span", {
+                            className: "fdk-sr",
+                            children: "Action"
+                        })
+                    }), (0,
+                    t.jsx)("span", {
+                        role: "columnheader",
+                        children: "Keyboard"
+                    }), (0,
+                    t.jsx)("span", {
+                        role: "columnheader",
+                        children: "radio" === a.deviceKind ? "Radio" : "Controller"
+                    }), (0,
+                    t.jsx)("span", {
+                        role: "columnheader",
+                        children: (0,
+                        t.jsx)("span", {
+                            className: "fdk-sr",
+                            children: "Behavior"
+                        })
+                    })]
+                }), eS.map( ({action: e, label: s}) => {
+                    let i = a[e]
+                      , n = b?.device === "keyboard" && b.action === e
+                      , l = b?.device === "controller" && b.action === e;
+                    return (0,
+                    t.jsxs)("div", {
+                        role: "row",
+                        className: "fd-set-bind",
+                        id: `set-bind-${e}`,
+                        children: [(0,
+                        t.jsx)("span", {
+                            role: "rowheader",
+                            className: "fd-set-bind-name",
+                            children: s
+                        }), (0,
+                        t.jsx)("span", {
+                            role: "cell",
+                            children: (0,
+                            t.jsx)(ey, {
+                                name: `${s} key`,
+                                label: (0,
+                                er.formatKeyCode)(a.keyboard[e]),
+                                prompt: "Press a key",
+                                listening: n,
+                                onClick: () => C({
+                                    device: "keyboard",
+                                    action: e
+                                })
+                            })
+                        }), (0,
+                        t.jsxs)("span", {
+                            role: "cell",
+                            className: "fd-set-bind-control",
+                            children: [(0,
+                            t.jsx)(ey, {
+                                name: `${s} control`,
+                                prompt: "Press or flip",
+                                label: "none" === i.kind ? j ? "Unbound" : "No controller" : (0,
+                                R.bindingLabel)(i, a.deviceKind, a.deviceId, r),
+                                empty: "none" === i.kind,
+                                live: ("arm" === e || "interact" === e) && N[e],
+                                disabled: !j,
+                                focusFirst: j,
+                                listening: l,
+                                onClick: () => C({
+                                    device: "controller",
+                                    action: e
+                                })
+                            }), "none" !== i.kind && !l && (0,
+                            t.jsx)("span", {
+                                className: "fd-set-bind-clear",
+                                children: (0,
+                                t.jsx)(y.IconButton, {
+                                    label: `Clear ${s} control`,
+                                    icon: (0,
+                                    t.jsx)(g.Icon, {
+                                        name: "close",
+                                        size: 24
+                                    }),
+                                    onClick: () => {
+                                        f(null),
+                                        u({
+                                            [e]: er.UNBOUND_SWITCH
+                                        })
+                                    }
+                                })
+                            })]
+                        }), (0,
+                        t.jsx)("span", {
+                            role: "cell",
+                            className: "fd-set-bind-mode",
+                            children: "arm" === e && (0,
+                            t.jsxs)(t.Fragment, {
+                                children: [(0,
+                                t.jsx)(A.Select, {
+                                    label: "Arm behavior",
+                                    value: a.armBehavior,
+                                    onChange: e => u({
+                                        armBehavior: e
+                                    }),
+                                    options: [{
+                                        value: "toggle",
+                                        label: "Toggle on press"
+                                    }, {
+                                        value: "follow",
+                                        label: "Follow switch"
+                                    }]
+                                }), (0,
+                                t.jsx)(en.InfoTip, {
+                                    topic: "Arm behavior",
+                                    children: "Toggle: each press arms or disarms. Follow switch: armed while the switch is on, and the keyboard arm key is ignored."
+                                })]
+                            })
+                        })]
+                    }, e)
+                }
+                )]
+            }), x && (0,
+            t.jsx)("p", {
+                className: "fd-set-field-error",
+                role: "alert",
+                children: x
+            }), (0,
+            t.jsx)(A.SettingRow, {
+                label: "Controller rumble",
+                htmlFor: "set-rumble-switch",
+                info: "Feedback for shots, hits and KOs. Off while motion is reduced.",
+                children: (0,
+                t.jsx)(A.Switch, {
+                    id: "set-rumble-switch",
+                    label: "Controller rumble",
+                    checked: d,
+                    onChange: e => h({
+                        rumble: e
+                    })
+                })
+            }), (0,
+            t.jsx)("div", {
+                id: "set-auto-arm",
+                className: "fd-set-auto-arm",
+                children: (0,
+                t.jsx)(A.SettingRow, {
+                    label: "Auto-arm at flight start",
+                    htmlFor: "set-auto-arm-switch",
+                    info: "Arms when a new flight starts with the throttle low. Respawns keep whatever you chose. A radio arm switch always decides.",
+                    children: (0,
+                    t.jsx)(A.Switch, {
+                        id: "set-auto-arm-switch",
+                        label: "Auto-arm at flight start",
+                        checked: c,
+                        onChange: e => h({
+                            autoArm: e
+                        })
+                    })
+                })
+            })]
+        })
+    }
+    function eC() {
+        return (0,
+        t.jsx)(eo.Card, {
+            title: "Movement keys",
+            id: "set-keyboard",
+            children: (0,
+            t.jsx)(ej, {})
+        })
+    }
+    let eN = ["mode2", "mode1", "mode4", "mode3"]
+      , eA = {
+        throttle: "Throttle all the way up",
+        yaw: "Yaw all the way right",
+        pitch: "Pitch all the way forward",
+        roll: "Roll all the way right"
+    }
+      , eE = {
+        throttle: !1,
+        roll: !1,
+        pitch: !1,
+        yaw: !1
+    }
+      , eL = {
+        device: "controller",
+        action: "arm"
+    };
+    function eM(e, t, s) {
+        if (e === t.deviceId || null === t.deviceId && !t.keyboardOnly)
+            return t;
+        let a = s[e];
+        if (a)
+            return {
+                ...a,
+                deviceId: e,
+                keyboard: t.keyboard,
+                keyboardOnly: !1
+            };
+        let i = (0,
+        P.classifyDevice)(e);
+        return {
+            ...(0,
+            I.bindingsForMode)("mode2", e),
+            deviceKind: i,
+            armBehavior: (0,
+            P.defaultArmBehavior)(i),
+            keyboard: t.keyboard
+        }
+    }
+    function eI(e, t, s=null) {
+        let a = t.deviceKind ?? (0,
+        P.classifyDevice)(e) ?? s
+          , i = (0,
+        B.onTemplate)(t.channels);
+        return {
+            kind: a,
+            mode: ("radio" === a ? t.stickMode : (0,
+            I.detectStickMode)(t) ?? t.stickMode) ?? "mode2",
+            springs: i ? "gamepad" === a : t.throttleSelfCentering,
+            halfThrottle: t.halfThrottle
+        }
+    }
+    function eR() {
+        let e = (0,
+        l.useSimStore)(e => (0,
+        D.editedSettings)(e).bindings)
+          , a = (0,
+        l.useSimStore)(e => (0,
+        D.editedSettings)(e).deviceProfiles)
+          , i = (0,
+        l.useSimStore)(e => e.commitCalibration)
+          , n = (0,
+        l.useSimStore)(e => e.setCalibrating)
+          , r = (0,
+        l.useSimStore)(e => e.setCalibrationDraft)
+          , o = (0,
+        l.useSimStore)(e => e.requestLeaveCalibration)
+          , d = (0,
+        l.useSimStore)(e => e.calibrationKindHint)
+          , c = (0,
+        F.useGamepadList)(!0)
+          , [u] = (0,
+        s.useState)( () => {
+            let t = (0,
+            $.listGamepads)()
+              , s = (!e.keyboardOnly && e.deviceId && t.some(t => t.id === e.deviceId) ? e.deviceId : null) ?? (1 === t.length ? t[0].id : null);
+            return {
+                deviceId: s,
+                choices: s ? eI(s, eM(s, e, a), d) : null
+            }
+        }
+        )
+          , [h,m] = (0,
+        s.useState)(u.deviceId)
+          , [p,x] = (0,
+        s.useState)(u.deviceId ? "sticks" : "device")
+          , [f,j] = (0,
+        s.useState)(u.choices?.kind ?? d)
+          , [b,v] = (0,
+        s.useState)(u.choices?.mode ?? "mode2")
+          , [S,w] = (0,
+        s.useState)(u.choices?.springs ?? !1)
+          , [C,O] = (0,
+        s.useState)(u.choices?.halfThrottle ?? !1)
+          , [H,G] = (0,
+        s.useState)({})
+          , [q,U] = (0,
+        s.useState)(null)
+          , [K,W] = (0,
+        s.useState)(0)
+          , [V,Y] = (0,
+        s.useState)({
+            left: 0,
+            right: 0
+        })
+          , [Q,Z] = (0,
+        s.useState)({
+            ranges: [],
+            trails: {
+                left: [],
+                right: []
+            }
+        })
+          , [X,ee] = (0,
+        s.useState)(!1)
+          , [et,ei] = (0,
+        s.useState)(!1)
+          , [en,er] = (0,
+        s.useState)([])
+          , [ed,ec] = (0,
+        s.useState)(null)
+          , [eu,eh] = (0,
+        s.useState)(eE)
+          , [em,ep] = (0,
+        s.useState)(null)
+          , [ex,ef] = (0,
+        s.useState)(!1)
+          , [eg,ej] = (0,
+        s.useState)(null)
+          , eb = (0,
+        s.useRef)([])
+          , ev = (0,
+        s.useMemo)( () => h ? eM(h, e, a) : e, [h, e, a])
+          , eS = null !== h && c.some(e => e.id === h)
+          , ey = "device" !== p && null !== h && !eS
+          , ew = (0,
+        F.useGamepadReading)(h, "device" !== p && null !== h)
+          , eC = null !== ew.id && ew.id === h ? ew.axes : null
+          , eR = "radio" === f
+          , eT = q?.channel ?? B.GESTURE_ORDER.find(e => !H[e]) ?? null
+          , eB = M.CHANNEL_NAMES.filter(e => H[e]).length
+          , eP = eB > 0 || "range" === p || "check" === p;
+        (0,
+        s.useEffect)( () => {
+            r(eP)
+        }
+        , [eP, r]);
+        let e$ = t => {
+            let s = eI(t, eM(t, e, a), d);
+            m(t),
+            j(s.kind),
+            v(s.mode),
+            w(s.springs),
+            O(s.halfThrottle),
+            x("sticks")
+        }
+        ;
+        "device" !== p || h || 1 !== c.length || e$(c[0].id);
+        let eD = (0,
+        s.useCallback)( (e, t) => {
+            G(s => ({
+                ...s,
+                [e]: t
+            })),
+            Y(t => {
+                let s = (0,
+                B.wellOf)(e, b).side;
+                return {
+                    ...t,
+                    [s]: t[s] + 1
+                }
+            }
+            ),
+            W(0),
+            q ? (U(null),
+            x("check")) : B.GESTURE_ORDER.every(t => t === e || H[t]) && x("range")
+        }
+        , [H, b, q]);
+        (0,
+        s.useEffect)( () => {
+            if ("sticks" !== p || !h || !eT)
+                return;
+            let e = (0,
+            B.startGesture)()
+              , t = (0,
+            B.switchAxes)(ev);
+            for (let e of M.CHANNEL_NAMES) {
+                let s = H[e];
+                s && e !== eT && t.add(s.axisIndex)
+            }
+            let s = 0
+              , a = 0
+              , i = n => {
+                s = requestAnimationFrame(i);
+                let r = (0,
+                $.getRawGamepad)(h, !0);
+                if (!r)
+                    return;
+                let l = (0,
+                B.stepGesture)(e, r.axes, n, eT, t);
+                if (l.learned) {
+                    cancelAnimationFrame(s),
+                    eD(eT, l.learned);
+                    return
+                }
+                (Math.abs(l.progress - a) >= .05 || 0 === l.progress && 0 !== a) && (a = l.progress,
+                W(l.progress))
+            }
+            ;
+            return s = requestAnimationFrame(i),
+            () => cancelAnimationFrame(s)
+        }
+        , [p, h, eT, H, ev, eD]);
+        let ez = (0,
+        s.useCallback)(e => ({
+            ...ev,
+            channels: e,
+            swappedAxes: eE,
+            deviceKind: "radio",
+            stickMode: b,
+            throttleSelfCentering: S,
+            halfThrottle: C
+        }), [ev, b, S, C]);
+        (0,
+        s.useEffect)( () => {
+            if ("range" !== p || !h)
+                return;
+            let e = [];
+            eb.current = e;
+            let t = {
+                left: [],
+                right: []
+            }
+              , s = []
+              , a = ez((0,
+            B.provisionalChannels)(H))
+              , i = 0
+              , n = 0
+              , r = 0
+              , l = 0
+              , o = d => {
+                i = requestAnimationFrame(o);
+                let c = (0,
+                $.getRawGamepad)(h, !0);
+                if (!c)
+                    return;
+                n ||= d;
+                let u = Array.from(c.axes);
+                for ((0,
+                B.widenRanges)(e, u),
+                s.push({
+                    time: d,
+                    axes: u
+                }); s.length && d - s[0].time > 700; )
+                    s.shift();
+                let m = es(a, u, "other");
+                for (let e of ["left", "right"])
+                    t[e].push([m[e].x, m[e].y]),
+                    t[e].length > 45 && t[e].shift();
+                if (!r && d - n >= B.SWEEP_MIN_MS && (0,
+                B.rangeComplete)(H, e) && (r = d,
+                ee(!0)),
+                r) {
+                    let t = (0,
+                    B.restingAxes)(s, H, e, S, d);
+                    if (t)
+                        return void (cancelAnimationFrame(i),
+                        er(e.map(e => e && {
+                            ...e
+                        })),
+                        ec(t),
+                        ee(!1),
+                        ei(!1),
+                        x("check"));
+                    d - r >= B.REST_FALLBACK_MS && ei(!0)
+                }
+                d - l >= 33 && (l = d,
+                Z({
+                    ranges: e.map(e => e && {
+                        ...e
+                    }),
+                    trails: {
+                        left: [...t.left],
+                        right: [...t.right]
+                    }
+                }))
+            }
+            ;
+            return i = requestAnimationFrame(o),
+            () => cancelAnimationFrame(i)
+        }
+        , [p, h, H, S, ez]);
+        let eF = (0,
+        s.useMemo)( () => ed ? (0,
+        B.buildChannels)(H, en, ed, {
+            springs: S,
+            flips: eu
+        }) : (0,
+        B.provisionalChannels)(H), [H, en, ed, S, eu])
+          , e_ = em ?? ev.arm
+          , eO = (0,
+        s.useMemo)( () => ({
+            ...ev,
+            deviceId: h,
+            deviceKind: f,
+            channels: eF,
+            swappedAxes: eE,
+            halfThrottle: C,
+            throttleSelfCentering: S,
+            arm: e_
+        }), [ev, h, f, eF, C, S, e_])
+          , eH = "check" === p && eR && eS && ("none" === e_.kind || ex);
+        ek(eH ? eL : null, eO, null, (0,
+        s.useCallback)( (e, t) => {
+            ep(t),
+            ef(!1),
+            ej(null)
+        }
+        , []), (0,
+        s.useCallback)(e => ej(e), []));
+        let eG = (0,
+        s.useMemo)( () => {
+            if ("none" === e_.kind || !eC)
+                return !1;
+            let e = {
+                axes: ew.axes,
+                buttons: ew.values.map( (e, t) => ({
+                    value: e,
+                    pressed: ew.buttons[t]
+                }))
+            };
+            return !0 === (0,
+            T.readArmPressed)(e, e_, !1)
+        }
+        , [e_, eC, ew])
+          , eq = (0,
+        s.useCallback)( () => {
+            h && ed && (i(h, {
+                channels: eF,
+                swappedAxes: eE,
+                halfThrottle: C,
+                throttleSelfCentering: S,
+                deviceKind: f,
+                ...eR ? {
+                    stickMode: b
+                } : {},
+                ...em ? {
+                    arm: em,
+                    ..."none" !== em.kind ? {
+                        armBehavior: (0,
+                        P.defaultArmBehavior)(f)
+                    } : {}
+                } : {}
+            }),
+            n(!1))
+        }
+        , [h, ed, i, eF, C, S, f, eR, b, em, n])
+          , eU = (0,
+        s.useRef)({
+            phase: p,
+            save: eq,
+            leave: o
+        });
+        (0,
+        s.useEffect)( () => {
+            eU.current = {
+                phase: p,
+                save: eq,
+                leave: o
+            }
+        }
+        ),
+        (0,
+        s.useEffect)( () => {
+            let e = e => {
+                !l.useSimStore.getState().settingsPrompt && ("Escape" === e.key ? (e.preventDefault(),
+                e.stopPropagation(),
+                eU.current.leave()) : "Enter" !== e.key || "check" !== eU.current.phase || e.target instanceof HTMLElement && e.target.closest("button, input, select, textarea, a") || (e.preventDefault(),
+                eU.current.save()))
+            }
+            ;
+            return window.addEventListener("keydown", e, !0),
+            () => window.removeEventListener("keydown", e, !0)
+        }
+        , []);
+        let eK = es(ez(eF), eC, "other");
+        if ("sticks" === p)
+            for (let e of ["left", "right"]) {
+                let t = [eK[e].vertical, eK[e].horizontal].some(e => e && H[e]);
+                eK[e] = {
+                    ...eK[e],
+                    idle: !t
+                }
+            }
+        let eW = {
+            left: {
+                pulse: V.left
+            },
+            right: {
+                pulse: V.right
+            }
+        };
+        if ("sticks" === p && eT) {
+            let {side: e, axis: t} = (0,
+            B.wellOf)(eT, b);
+            eW[e] = {
+                ...eW[e],
+                target: "vertical" === t ? "up" : "right",
+                hold: K
+            }
+        }
+        let eV = 0;
+        if ("range" === p)
+            for (let e of ["left", "right"]) {
+                let t = e => {
+                    let t = e ? H[e] : void 0;
+                    return e && t ? (0,
+                    B.edgesReached)(e, t, Q.ranges[t.axisIndex]) : {
+                        high: !1,
+                        low: !1
+                    }
+                }
+                  , s = t(eK[e].vertical)
+                  , a = t(eK[e].horizontal)
+                  , i = {
+                    up: s.high,
+                    down: s.low,
+                    right: a.high,
+                    left: a.low
+                };
+                eV += Object.values(i).filter(Boolean).length,
+                eW[e] = {
+                    ...eW[e],
+                    trail: Q.trails[e],
+                    edges: i
+                }
+            }
+        let eY = "gamepad" === f ? "Calibrate gamepad" : "radio" === f ? "Calibrate radio" : "Calibrate controller"
+          , eQ = {
+            sticks: "sticks" === p ? eB / 4 : +("device" !== p),
+            range: "range" === p ? X ? 1 : eV / 8 : +("check" === p),
+            check: +("check" === p)
+        };
+        return (0,
+        t.jsxs)("div", {
+            className: "fd-set-page fd-set-page--calibration",
+            children: [(0,
+            t.jsx)(el.PageHeader, {
+                title: eY,
+                back: {
+                    label: "Controls",
+                    onClick: o
+                },
+                children: h && (0,
+                t.jsxs)("span", {
+                    className: "fd-set-device-pill",
+                    children: [(0,
+                    t.jsx)(g.Icon, {
+                        name: eR ? "radio" : "gamepad",
+                        size: 24
+                    }), " ", (0,
+                    $.friendlyGamepadName)(h), (0,
+                    t.jsxs)("span", {
+                        className: (0,
+                        z.cn)("fd-set-status", eS ? "is-ok" : "is-warn"),
+                        children: [(0,
+                        t.jsx)("span", {
+                            "aria-hidden": !0
+                        }), eS ? "Connected" : "Not connected"]
+                    })]
+                })
+            }), ey && (0,
+            t.jsx)(L.Toast, {
+                className: "fd-set-banner",
+                tone: "error",
+                icon: "circle-alert",
+                title: "Controller disconnected. Reconnect it to continue."
+            }), "device" === p ? (0,
+            t.jsxs)(eo.Card, {
+                title: "Choose your controller",
+                children: [0 === c.length ? (0,
+                t.jsxs)("p", {
+                    className: "fd-set-instruction",
+                    children: [(0,
+                    t.jsx)(g.Icon, {
+                        name: "gamepad",
+                        className: "fd-set-inline-icon",
+                        size: 24
+                    }), " Plug in your controller and move a stick."]
+                }) : (0,
+                t.jsx)(k.List, {
+                    label: "Controllers",
+                    className: "fd-set-device-list",
+                    children: c.map(e => (0,
+                    t.jsx)(k.ListRow, {
+                        lead: (0,
+                        t.jsx)(g.Icon, {
+                            name: "gamepad",
+                            size: 24
+                        }),
+                        title: (0,
+                        $.friendlyGamepadName)(e.id),
+                        meta: `${e.axes.length} axes \xb7 ${e.buttonValues.length} buttons`,
+                        onClick: () => e$(e.id)
+                    }, `${e.id}-${e.index}`))
+                }), (0,
+                t.jsx)("div", {
+                    className: "fd-set-cal-actions",
+                    children: (0,
+                    t.jsx)(y.Button, {
+                        tone: "ghost",
+                        onClick: o,
+                        children: "Cancel"
+                    })
+                })]
+            }) : (0,
+            t.jsxs)("div", {
+                className: "fd-set-cal",
+                children: [(0,
+                t.jsxs)(eo.Card, {
+                    tone: "dark",
+                    className: "fd-set-cal-stage",
+                    children: ["range" !== p && (0,
+                    t.jsxs)("label", {
+                        className: "fd-set-cal-layout",
+                        children: [(0,
+                        t.jsx)("span", {
+                            children: "Stick layout"
+                        }), (0,
+                        t.jsx)(A.Select, {
+                            label: "Stick layout",
+                            value: b,
+                            onChange: v,
+                            options: eN.map(e => ({
+                                value: e,
+                                label: I.STICK_MODE_LABELS[e]
+                            }))
+                        })]
+                    }), (0,
+                    t.jsx)(J, {
+                        radio: eR,
+                        wells: eK,
+                        guides: eW,
+                        label: ea(eK)
+                    })]
+                }), (0,
+                t.jsxs)(eo.Card, {
+                    className: "fd-set-cal-panel",
+                    children: [(0,
+                    t.jsx)("ol", {
+                        className: "fd-set-cal-progress",
+                        "aria-label": "Calibration progress",
+                        children: ["sticks", "range", "check"].map(e => (0,
+                        t.jsxs)("li", {
+                            className: (0,
+                            z.cn)(p === e && "is-current"),
+                            "aria-current": p === e ? "step" : void 0,
+                            children: [(0,
+                            t.jsx)("span", {
+                                className: "fd-set-cal-progress-bar",
+                                children: (0,
+                                t.jsx)("span", {
+                                    style: {
+                                        width: `${100 * eQ[e]}%`
+                                    }
+                                })
+                            }), "sticks" === e ? "Sticks" : "range" === e ? "Range" : "Check"]
+                        }, e))
+                    }), "sticks" === p && eT && (0,
+                    t.jsxs)(t.Fragment, {
+                        children: [(0,
+                        t.jsxs)("div", {
+                            className: "fd-set-cal-say",
+                            "aria-live": "polite",
+                            children: [(0,
+                            t.jsx)("h3", {
+                                children: eA[eT]
+                            }), (0,
+                            t.jsx)("p", {
+                                className: (0,
+                                z.cn)("fd-set-cal-hint", K > 0 && "is-on"),
+                                children: "Hold it"
+                            })]
+                        }), (0,
+                        t.jsx)("div", {
+                            className: "fd-set-chips",
+                            role: "group",
+                            "aria-label": "Sticks learned",
+                            children: B.GESTURE_ORDER.map(e => {
+                                let s = !!H[e];
+                                return (0,
+                                t.jsx)(N.Chip, {
+                                    size: "sm",
+                                    edge: s ? "acid" : e === eT ? "orange" : "none",
+                                    icon: s ? (0,
+                                    t.jsx)(g.Icon, {
+                                        name: "check",
+                                        size: 24
+                                    }) : void 0,
+                                    className: "fd-set-chip",
+                                    disabled: !s || !!q,
+                                    onClick: () => G(t => {
+                                        let s = {
+                                            ...t
+                                        };
+                                        return delete s[e],
+                                        s
+                                    }
+                                    ),
+                                    "aria-current": e === eT ? "step" : void 0,
+                                    "aria-label": s ? `${_.CHANNEL_LABEL[e]} learned. Learn it again.` : _.CHANNEL_LABEL[e],
+                                    children: _.CHANNEL_LABEL[e]
+                                }, e)
+                            }
+                            )
+                        })]
+                    }), "range" === p && (0,
+                    t.jsxs)("div", {
+                        className: "fd-set-cal-say",
+                        "aria-live": "polite",
+                        children: [(0,
+                        t.jsx)("h3", {
+                            children: X ? "Let go of the sticks" : "Circle both sticks around the edges"
+                        }), (0,
+                        t.jsxs)("p", {
+                            className: "fdk-sr",
+                            children: [eV, " of 8 edges reached"]
+                        }), et && (0,
+                        t.jsx)(y.Button, {
+                            tone: "ghost",
+                            size: "sm",
+                            onClick: () => {
+                                let e = h ? (0,
+                                $.getRawGamepad)(h, !0) : null;
+                                e && (er(eb.current.map(e => e && {
+                                    ...e
+                                })),
+                                ec(Array.from(e.axes)),
+                                ee(!1),
+                                ei(!1),
+                                x("check"))
+                            }
+                            ,
+                            children: "Use current position"
+                        })]
+                    }), "check" === p && (0,
+                    t.jsxs)(t.Fragment, {
+                        children: [(0,
+                        t.jsx)("h3", {
+                            className: "fd-set-cal-heading",
+                            children: "Check your sticks"
+                        }), (0,
+                        t.jsxs)("div", {
+                            className: "fd-set-cal-rows",
+                            role: "table",
+                            "aria-label": "Channel check",
+                            children: [(0,
+                            t.jsxs)("div", {
+                                role: "row",
+                                className: "fd-set-cal-row fd-set-cal-row--head",
+                                children: [(0,
+                                t.jsx)("span", {
+                                    role: "columnheader",
+                                    children: (0,
+                                    t.jsx)("span", {
+                                        className: "fdk-sr",
+                                        children: "Channel"
+                                    })
+                                }), (0,
+                                t.jsx)("span", {
+                                    role: "columnheader",
+                                    children: (0,
+                                    t.jsx)("span", {
+                                        className: "fdk-sr",
+                                        children: "Live"
+                                    })
+                                }), (0,
+                                t.jsx)("span", {
+                                    role: "columnheader",
+                                    children: "Invert"
+                                }), (0,
+                                t.jsx)("span", {
+                                    role: "columnheader",
+                                    children: (0,
+                                    t.jsx)("span", {
+                                        className: "fdk-sr",
+                                        children: "Learn again"
+                                    })
+                                })]
+                            }), M.CHANNEL_NAMES.map(e => (0,
+                            t.jsxs)("div", {
+                                role: "row",
+                                className: "fd-set-cal-row",
+                                children: [(0,
+                                t.jsx)("span", {
+                                    role: "rowheader",
+                                    children: _.CHANNEL_LABEL[e]
+                                }), (0,
+                                t.jsx)("span", {
+                                    role: "cell",
+                                    children: (0,
+                                    t.jsx)(eo.Meter, {
+                                        label: `${_.CHANNEL_LABEL[e]} check`,
+                                        value: (0,
+                                        I.radioSense)(e, (0,
+                                        I.channelValue)(e, eO, eC)),
+                                        unipolar: "throttle" === e,
+                                        color: _.CHANNEL_COLOR[e]
+                                    })
+                                }), (0,
+                                t.jsx)("span", {
+                                    role: "cell",
+                                    children: (0,
+                                    t.jsx)(A.Checkbox, {
+                                        label: (0,
+                                        t.jsxs)("span", {
+                                            className: "fdk-sr",
+                                            children: ["Invert ", _.CHANNEL_LABEL[e]]
+                                        }),
+                                        checked: eu[e],
+                                        onChange: t => eh(s => ({
+                                            ...s,
+                                            [e]: t
+                                        }))
+                                    })
+                                }), (0,
+                                t.jsx)("span", {
+                                    role: "cell",
+                                    children: (0,
+                                    t.jsx)(y.Button, {
+                                        size: "sm",
+                                        tone: "ghost",
+                                        className: "fd-set-cal-redo",
+                                        icon: (0,
+                                        t.jsx)(g.Icon, {
+                                            name: "rotate",
+                                            size: 24
+                                        }),
+                                        onClick: () => {
+                                            U({
+                                                channel: e,
+                                                previous: H[e]
+                                            }),
+                                            G(t => {
+                                                let s = {
+                                                    ...t
+                                                };
+                                                return delete s[e],
+                                                s
+                                            }
+                                            ),
+                                            W(0),
+                                            x("sticks")
+                                        }
+                                        ,
+                                        "aria-label": `Learn ${_.CHANNEL_LABEL[e]} again`,
+                                        children: "Redo"
+                                    })
+                                })]
+                            }, e))]
+                        }), (0,
+                        t.jsxs)("div", {
+                            className: "fd-set-cal-throttle",
+                            children: [(0,
+                            t.jsx)("span", {
+                                className: "fd-set-row-label",
+                                children: "Throttle"
+                            }), (0,
+                            t.jsx)(E.Segmented, {
+                                label: "Throttle travel",
+                                size: "sm",
+                                value: C ? "center" : "full",
+                                onChange: e => O("center" === e),
+                                options: [{
+                                    value: "full",
+                                    label: "Full stick"
+                                }, {
+                                    value: "center",
+                                    label: "Center to top"
+                                }]
+                            }), (0,
+                            t.jsx)(E.Segmented, {
+                                label: "Physical throttle stick",
+                                size: "sm",
+                                value: S ? "springs" : "stays",
+                                onChange: e => w("springs" === e),
+                                options: [{
+                                    value: "stays",
+                                    label: "Stays where released"
+                                }, {
+                                    value: "springs",
+                                    label: "Springs to center"
+                                }]
+                            })]
+                        }), eR && (0,
+                        t.jsxs)("div", {
+                            className: "fd-set-cal-arm",
+                            children: [(0,
+                            t.jsx)("span", {
+                                className: "fd-set-row-label",
+                                children: "Arm switch"
+                            }), (0,
+                            t.jsxs)("span", {
+                                className: "fd-set-bind-control",
+                                children: [(0,
+                                t.jsx)(y.Button, {
+                                    tone: eH ? "primary" : eG ? "secondary" : "ghost",
+                                    size: "sm",
+                                    block: !0,
+                                    className: (0,
+                                    z.cn)("fd-set-bindbox", "none" === e_.kind && "is-empty"),
+                                    disabled: !eS,
+                                    "aria-pressed": eH,
+                                    onClick: () => {
+                                        ej(null),
+                                        ef(!ex)
+                                    }
+                                    ,
+                                    "aria-label": eH ? "Arm switch: flip the switch you arm with" : `Arm switch: ${(0,
+                                    R.bindingLabel)(e_, "radio", h, !1)}. Click to change.`,
+                                    children: eH ? "Flip to bind" : (0,
+                                    R.bindingLabel)(e_, "radio", h, !1)
+                                }), "none" !== e_.kind && !eH && (0,
+                                t.jsx)("span", {
+                                    className: "fd-set-bind-clear",
+                                    children: (0,
+                                    t.jsx)(y.IconButton, {
+                                        label: "Clear arm switch",
+                                        icon: (0,
+                                        t.jsx)(g.Icon, {
+                                            name: "close",
+                                            size: 24
+                                        }),
+                                        onClick: () => {
+                                            ej(null),
+                                            ef(!1),
+                                            ep({
+                                                kind: "none"
+                                            })
+                                        }
+                                    })
+                                })]
+                            }), "none" !== e_.kind && !eH && (0,
+                            t.jsx)(N.Badge, {
+                                tone: eG ? "acid" : "chalk",
+                                children: eG ? "Armed position" : "Disarmed position"
+                            }), eg && (0,
+                            t.jsx)("p", {
+                                className: "fd-set-field-error",
+                                role: "alert",
+                                children: eg
+                            })]
+                        })]
+                    }), (0,
+                    t.jsxs)("div", {
+                        className: "fd-set-cal-actions",
+                        children: [("sticks" === p || "range" === p) && eB > 0 && !q && (0,
+                        t.jsx)(y.Button, {
+                            tone: "ghost",
+                            size: "sm",
+                            icon: (0,
+                            t.jsx)(g.Icon, {
+                                name: "rotate",
+                                size: 24
+                            }),
+                            onClick: () => {
+                                G({}),
+                                U(null),
+                                eh(eE),
+                                W(0),
+                                ee(!1),
+                                ei(!1),
+                                Z({
+                                    ranges: [],
+                                    trails: {
+                                        left: [],
+                                        right: []
+                                    }
+                                }),
+                                x("sticks")
+                            }
+                            ,
+                            children: "Start over"
+                        }), q && (0,
+                        t.jsx)(y.Button, {
+                            tone: "ghost",
+                            onClick: () => {
+                                if (!q)
+                                    return;
+                                let {channel: e, previous: t} = q;
+                                t && G(s => ({
+                                    ...s,
+                                    [e]: t
+                                })),
+                                U(null),
+                                x("check")
+                            }
+                            ,
+                            children: "Back"
+                        }), (0,
+                        t.jsx)(y.Button, {
+                            tone: "ghost",
+                            onClick: o,
+                            children: "Cancel"
+                        }), "check" === p && (0,
+                        t.jsx)(y.Button, {
+                            tone: "primary",
+                            onClick: eq,
+                            disabled: !ed,
+                            children: "Save calibration"
+                        })]
+                    })]
+                })]
+            })]
+        })
+    }
+    var eT = e.i(811113);
+    let eB = [{
+        key: "showSticks",
+        label: "Stick overlay",
+        target: "set-hud-sticks"
+    }, {
+        key: "showActivityOverlays",
+        label: "Activity markers",
+        info: "Markers for races and Team Deathmatch arenas.",
+        target: "set-hud-activities"
+    }, {
+        key: "showRacingLine",
+        label: "Racing line",
+        target: "set-hud-racing-line"
+    }, {
+        key: "showChat",
+        label: "Global chat",
+        target: "set-hud-chat"
+    }, {
+        key: "showPlayerOverlays",
+        label: "Player markers",
+        info: "Names and distances for other pilots.",
+        target: "set-hud-players"
+    }, {
+        key: "showSkillChainHud",
+        label: "Skill-chain feedback",
+        info: "Trick scores and combo multipliers.",
+        target: "set-hud-chain"
+    }];
+    var eP = e.i(12746)
+      , e$ = e.i(55807)
+      , eD = e.i(117532);
+    let ez = ["roll", "pitch", "yaw"]
+      , eF = _.CHANNEL_LABEL
+      , e_ = e => _.DARK_CHANNEL_COLOR[e]
+      , eO = {
+        "builtin:cinematic": "video",
+        "builtin:freestyle": "wind",
+        "builtin:racing": "flag"
+    }
+      , eH = eD.BUILT_IN_RATE_PRESETS.find(e => "builtin:freestyle" === e.id);
+    function eG(e) {
+        (0,
+        eo.downloadText)(`${e.name.replace(/[^\w-]+/g, "-").toLowerCase()}.json`, (0,
+        eD.exportPreset)(e))
+    }
+    function eq() {
+        let e = (0,
+        l.useSimStore)(D.editedSettings)
+          , t = (0,
+        l.useSimStore)(e => e.ratePresets)
+          , s = (0,
+        l.useSimStore)(D.editedPresetId)
+          , a = (0,
+        eD.findPreset)(t, s)
+          , i = a ?? (0,
+        eD.allPresets)(t).find(t => (0,
+        eD.snapshotsEqual)(t, e)) ?? null;
+        return {
+            library: t,
+            selected: i,
+            modified: !!a && !(0,
+            eD.snapshotsEqual)(a, e)
+        }
+    }
+    function eU({rates: e}) {
+        var s;
+        let a = (s = Math.max(...ez.flatMap(t => [e[t].maxRate, e[t].centerSensitivity])),
+        [250, 500, 750, 1e3, 1250, 1500, 2e3].find(e => e >= s) ?? 2e3)
+          , i = e => 46 + (e + 1) / 2 * 264
+          , n = e => 12 + (1 - (e + a) / (2 * a)) * 178
+          , r = ez.map(t => `${eF[t]} ${Math.round((0,
+        eP.applyActualRates)(1, e[t]))} \xb0/s at full stick`).join(", ");
+        return (0,
+        t.jsx)("figure", {
+            className: "fd-set-curve",
+            children: (0,
+            t.jsxs)("svg", {
+                viewBox: "0 0 320 220",
+                role: "img",
+                "aria-label": `Stick response: ${r}.`,
+                children: [[a, a / 2, 0, -a / 2, -a].map(e => (0,
+                t.jsxs)("g", {
+                    children: [(0,
+                    t.jsx)("line", {
+                        x1: 46,
+                        x2: 310,
+                        y1: n(e),
+                        y2: n(e),
+                        className: 0 === e ? "fd-set-curve-axis" : "fd-set-curve-grid"
+                    }), (0,
+                    t.jsx)("text", {
+                        x: 40,
+                        y: n(e) + 3.5,
+                        textAnchor: "end",
+                        children: Math.round(e)
+                    })]
+                }, e)), [-100, -50, 0, 50, 100].map(e => (0,
+                t.jsxs)("g", {
+                    children: [(0,
+                    t.jsx)("line", {
+                        y1: 12,
+                        y2: 190,
+                        x1: i(e / 100),
+                        x2: i(e / 100),
+                        className: 0 === e ? "fd-set-curve-axis" : "fd-set-curve-grid"
+                    }), (0,
+                    t.jsx)("text", {
+                        x: i(e / 100),
+                        y: 204,
+                        textAnchor: "middle",
+                        children: e
+                    })]
+                }, e)), ez.slice().reverse().map(s => (0,
+                t.jsx)("polyline", {
+                    points: Array.from({
+                        length: 101
+                    }, (t, a) => {
+                        let r = a / 50 - 1;
+                        return `${i(r).toFixed(1)},${n((0,
+                        eP.applyActualRates)(r, e[s])).toFixed(1)}`
+                    }
+                    ).join(" "),
+                    fill: "none",
+                    stroke: e_(s),
+                    strokeWidth: 2.4,
+                    strokeLinejoin: "round"
+                }, s)), ez.map(s => (0,
+                t.jsx)("circle", {
+                    cx: i(1),
+                    cy: n((0,
+                    eP.applyActualRates)(1, e[s])),
+                    r: 3.2,
+                    fill: e_(s)
+                }, s)), (0,
+                t.jsx)("text", {
+                    x: i(0),
+                    y: 218,
+                    textAnchor: "middle",
+                    className: "fd-set-curve-label",
+                    children: "Stick (%)"
+                }), (0,
+                t.jsx)("text", {
+                    transform: "translate(10 107) rotate(-90)",
+                    textAnchor: "middle",
+                    className: "fd-set-curve-label",
+                    children: "°/s"
+                })]
+            })
+        })
+    }
+    function eK({open: e, onClose: a}) {
+        let {selected: i, modified: n} = eq()
+          , r = (0,
+        l.useSimStore)(e => e.savePresetAsNew)
+          , o = (0,
+        l.useSimStore)(e => e.updatePresetFromWorking)
+          , d = i && !(0,
+        eD.isBuiltIn)(i) ? i : null
+          , [c,u] = (0,
+        s.useState)(d ? `${d.name} 2` : "My rates")
+          , [h,m] = (0,
+        s.useState)(null)
+          , p = (0,
+        s.useId)()
+          , x = () => {
+            let e = r(c);
+            m(e),
+            e || a()
+        }
+        ;
+        return (0,
+        t.jsxs)(L.DialogShell, {
+            open: e,
+            title: "Save preset",
+            onClose: a,
+            actions: (0,
+            t.jsxs)(t.Fragment, {
+                children: [(0,
+                t.jsx)(y.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    onClick: a,
+                    children: "Cancel"
+                }), d && n && (0,
+                t.jsxs)(y.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    onClick: () => {
+                        o(d.id),
+                        a()
+                    }
+                    ,
+                    children: ["Update “", d.name, "”"]
+                }), (0,
+                t.jsx)(y.Button, {
+                    tone: "primary",
+                    size: "sm",
+                    onClick: x,
+                    children: "Save preset"
+                })]
+            }),
+            children: [(0,
+            t.jsx)("label", {
+                htmlFor: p,
+                className: "fd-set-field-label",
+                children: "Name"
+            }), (0,
+            t.jsx)(A.TextInput, {
+                id: p,
+                "data-autofocus": !0,
+                error: h,
+                value: c,
+                maxLength: eD.PRESET_NAME_MAX,
+                onChange: e => {
+                    u(e.target.value),
+                    m(null)
+                }
+                ,
+                onKeyDown: e => {
+                    "Enter" === e.key && (e.preventDefault(),
+                    x())
+                }
+            })]
+        })
+    }
+    function eW() {
+        let {library: e, selected: s, modified: a} = eq()
+          , i = (0,
+        l.useSimStore)(e => e.applyPreset)
+          , n = (e, t) => `${t}${e === s?.id && a ? " (edited)" : ""}`;
+        return (0,
+        t.jsx)(A.Select, {
+            label: "Rate preset",
+            className: "fd-set-preset-select",
+            value: s?.id ?? "custom",
+            options: [...s ? [] : [{
+                value: "custom",
+                label: "Custom"
+            }], ...eD.BUILT_IN_RATE_PRESETS.map(e => ({
+                value: e.id,
+                label: n(e.id, e.name)
+            })), ...e.presets.map(e => ({
+                value: e.id,
+                label: n(e.id, e.name)
+            }))],
+            onChange: e => {
+                "custom" !== e && i(e)
+            }
+        })
+    }
+    function eV() {
+        let e = (0,
+        l.useSimStore)(e => (0,
+        D.editedSettings)(e).rates)
+          , a = (0,
+        l.useSimStore)(e => e.ratesLinked)
+          , i = (0,
+        l.useSimStore)(e => e.setRatesLinked)
+          , n = (0,
+        l.useSimStore)(e => e.updateRates)
+          , [r,o] = (0,
+        s.useState)(!1)
+          , d = e => a && "yaw" !== e ? ["roll", "pitch"] : e;
+        return (0,
+        t.jsxs)(eo.Card, {
+            title: "Axis rates",
+            id: "set-axis-rates",
+            className: "fd-set-rates-card",
+            children: [(0,
+            t.jsxs)("div", {
+                className: "fd-set-rates",
+                role: "table",
+                "aria-label": "Actual rates",
+                children: [(0,
+                t.jsxs)("div", {
+                    role: "row",
+                    className: "fd-set-rates-head",
+                    children: [(0,
+                    t.jsx)("span", {
+                        role: "columnheader",
+                        children: "Axis"
+                    }), (0,
+                    t.jsxs)("span", {
+                        role: "columnheader",
+                        children: ["Center °/s ", (0,
+                        t.jsx)(en.InfoTip, {
+                            topic: "Center",
+                            children: "Turn rate near center stick. Higher feels twitchier around center. 10 to 2000."
+                        })]
+                    }), (0,
+                    t.jsxs)("span", {
+                        role: "columnheader",
+                        children: ["Max °/s ", (0,
+                        t.jsx)(en.InfoTip, {
+                            topic: "Max",
+                            children: "Turn rate at full stick. Can't be lower than Center. 50 to 2000."
+                        })]
+                    }), (0,
+                    t.jsxs)("span", {
+                        role: "columnheader",
+                        children: ["Expo ", (0,
+                        t.jsx)(en.InfoTip, {
+                            topic: "Expo",
+                            children: "Softens the middle of the stick without changing Center or Max. 0 to 1."
+                        })]
+                    })]
+                }), ez.map(s => (0,
+                t.jsxs)("div", {
+                    role: "row",
+                    className: (0,
+                    z.cn)("fd-set-rates-row", a && "yaw" !== s && "is-linked"),
+                    children: [(0,
+                    t.jsxs)("span", {
+                        role: "rowheader",
+                        className: "fd-set-rates-axis",
+                        children: [(0,
+                        t.jsx)("i", {
+                            style: {
+                                background: _.CHANNEL_PALETTE[_.CHANNEL_COLOR[s]]
+                            },
+                            "aria-hidden": !0
+                        }), eF[s]]
+                    }), (0,
+                    t.jsx)("span", {
+                        role: "cell",
+                        "data-label": "Center °/s",
+                        children: (0,
+                        t.jsx)(A.NumberStepper, {
+                            label: `${eF[s]} center`,
+                            value: e[s].centerSensitivity,
+                            min: e$.RATE_LIMITS.centerSensitivity.min,
+                            max: e$.RATE_LIMITS.centerSensitivity.max,
+                            step: 5,
+                            decimals: 0,
+                            onCommit: e => n(d(s), {
+                                centerSensitivity: e
+                            })
+                        })
+                    }), (0,
+                    t.jsx)("span", {
+                        role: "cell",
+                        "data-label": "Max °/s",
+                        children: (0,
+                        t.jsx)(A.NumberStepper, {
+                            label: `${eF[s]} max`,
+                            value: e[s].maxRate,
+                            min: e$.RATE_LIMITS.maxRate.min,
+                            max: e$.RATE_LIMITS.maxRate.max,
+                            step: 10,
+                            decimals: 0,
+                            onCommit: e => n(d(s), {
+                                maxRate: e
+                            })
+                        })
+                    }), (0,
+                    t.jsx)("span", {
+                        role: "cell",
+                        "data-label": "Expo",
+                        children: (0,
+                        t.jsx)(A.NumberStepper, {
+                            label: `${eF[s]} expo`,
+                            value: e[s].expo,
+                            min: e$.RATE_LIMITS.expo.min,
+                            max: e$.RATE_LIMITS.expo.max,
+                            step: .01,
+                            decimals: 2,
+                            onCommit: e => n(d(s), {
+                                expo: e
+                            })
+                        })
+                    })]
+                }, s))]
+            }), (0,
+            t.jsx)("span", {
+                className: "fd-set-link-rates",
+                id: "set-link-rates",
+                children: (0,
+                t.jsx)(A.Checkbox, {
+                    label: "Link Roll & Pitch",
+                    checked: a,
+                    onChange: t => {
+                        if (t) {
+                            let t, s;
+                            (t = e.roll,
+                            s = e.pitch,
+                            t.centerSensitivity === s.centerSensitivity && t.maxRate === s.maxRate && t.expo === s.expo) ? i(!0) : o(!0)
+                        } else
+                            i(!1)
+                    }
+                })
+            }), (0,
+            t.jsx)(L.DialogShell, {
+                open: r,
+                title: "Link Roll & Pitch",
+                description: "Roll and Pitch are different. Which values should both use?",
+                size: "sm",
+                onClose: () => o(!1),
+                actions: (0,
+                t.jsxs)(t.Fragment, {
+                    children: [(0,
+                    t.jsx)(y.Button, {
+                        tone: "ghost",
+                        size: "sm",
+                        onClick: () => o(!1),
+                        children: "Cancel"
+                    }), (0,
+                    t.jsx)(y.Button, {
+                        tone: "ghost",
+                        size: "sm",
+                        onClick: () => {
+                            i(!0, "pitch"),
+                            o(!1)
+                        }
+                        ,
+                        children: "Use Pitch"
+                    }), (0,
+                    t.jsx)(y.Button, {
+                        tone: "primary",
+                        size: "sm",
+                        onClick: () => {
+                            i(!0, "roll"),
+                            o(!1)
+                        }
+                        ,
+                        children: "Use Roll"
+                    })]
+                })
+            })]
+        })
+    }
+    function eY() {
+        let e = (0,
+        l.useSimStore)(e => (0,
+        D.editedSettings)(e).throttle)
+          , s = (0,
+        l.useSimStore)(e => e.updateThrottle);
+        return (0,
+        t.jsx)(eo.Card, {
+            title: "Throttle response",
+            id: "set-throttle-response",
+            className: "fd-set-throttle-card",
+            children: (0,
+            t.jsxs)("div", {
+                className: "fd-set-grid fd-set-grid--2 fd-set-grid--tight",
+                children: [(0,
+                t.jsx)(eo.SliderField, {
+                    label: "Midpoint",
+                    info: "The stick position where expo gives the finest control. Try your hover throttle.",
+                    value: e.mid,
+                    min: 0,
+                    max: 1,
+                    step: .01,
+                    format: e => `${Math.round(100 * e)}%`,
+                    onChange: e => s({
+                        mid: e
+                    })
+                }), (0,
+                t.jsx)(eo.SliderField, {
+                    label: "Expo",
+                    info: "Softens throttle around the midpoint. Full throttle is still there.",
+                    value: e.expo,
+                    min: 0,
+                    max: 1,
+                    step: .01,
+                    format: e => `${Math.round(100 * e)}%`,
+                    onChange: e => s({
+                        expo: e
+                    })
+                })]
+            })
+        })
+    }
+    function eQ({preset: e, onRename: a, onDelete: i}) {
+        let[n,r] = (0,
+        s.useState)(!1)
+          , [o,d] = (0,
+        s.useState)(null)
+          , c = (0,
+        l.useSimStore)(e => e.duplicatePreset)
+          , u = (0,
+        s.useRef)(null)
+          , h = (0,
+        s.useRef)(null);
+        (0,
+        s.useEffect)( () => {
+            let e = h.current;
+            if (n && e)
+                return e.showPopover?.(),
+                e.querySelector('[role="menuitem"]')?.focus(),
+                () => {
+                    e.isConnected && e.matches(":popover-open") && e.hidePopover()
+                }
+        }
+        , [n]);
+        let m = [...(0,
+        eD.isBuiltIn)(e) ? [] : [{
+            label: "Rename",
+            icon: "pencil",
+            run: a
+        }], {
+            label: "Duplicate",
+            icon: "copy",
+            run: () => c(e.id)
+        }, {
+            label: "Export",
+            icon: "upload",
+            run: () => eG(e)
+        }, ...(0,
+        eD.isBuiltIn)(e) ? [] : [{
+            label: "Delete",
+            icon: "trash",
+            run: i
+        }]];
+        return (0,
+        t.jsxs)("span", {
+            className: "fd-set-menu",
+            onKeyDown: e => {
+                "Escape" === e.key && n && (e.stopPropagation(),
+                r(!1),
+                u.current?.focus())
+            }
+            ,
+            children: [(0,
+            t.jsx)(y.IconButton, {
+                ref: u,
+                label: `${e.name} actions`,
+                icon: (0,
+                t.jsx)(g.Icon, {
+                    name: "ellipsis",
+                    size: 24
+                }),
+                "aria-haspopup": "menu",
+                "aria-expanded": n,
+                onClick: e => {
+                    let t;
+                    e.stopPropagation(),
+                    t = u.current?.getBoundingClientRect(),
+                    !n && t && d({
+                        top: t.bottom + 4,
+                        right: window.innerWidth - t.right
+                    }),
+                    r(!n)
+                }
+            }), n && (0,
+            t.jsxs)("span", {
+                ref: h,
+                popover: "manual",
+                className: "fd-set-menu-layer",
+                children: [(0,
+                t.jsx)("span", {
+                    className: "fd-set-menu-scrim",
+                    onClick: e => {
+                        e.stopPropagation(),
+                        r(!1)
+                    }
+                }), (0,
+                t.jsx)("span", {
+                    role: "menu",
+                    className: "fd-set-menu-list",
+                    style: o ?? void 0,
+                    children: m.map(e => (0,
+                    t.jsx)(y.Button, {
+                        tone: "ghost",
+                        size: "sm",
+                        block: !0,
+                        role: "menuitem",
+                        icon: (0,
+                        t.jsx)(g.Icon, {
+                            name: e.icon,
+                            size: 24
+                        }),
+                        onClick: t => {
+                            t.stopPropagation(),
+                            r(!1),
+                            e.run()
+                        }
+                        ,
+                        children: e.label
+                    }, e.label))
+                })]
+            })]
+        })
+    }
+    function eZ({title: e, presets: s, inspected: a, onInspect: i, onRename: n, onDelete: r, empty: o}) {
+        let d = (0,
+        l.useSimStore)(D.editedPresetId);
+        return (0,
+        t.jsxs)(eo.Card, {
+            title: e,
+            className: "fd-set-preset-list",
+            children: [0 === s.length && o && (0,
+            t.jsx)("p", {
+                className: "fd-set-muted",
+                children: o
+            }), (0,
+            t.jsx)("ul", {
+                children: s.map(e => {
+                    let s = (0,
+                    eD.isBuiltIn)(e) ? eO[e.id] ?? "star" : "star";
+                    return (0,
+                    t.jsxs)("li", {
+                        className: (0,
+                        z.cn)("fd-set-preset", a === e.id && "is-inspected"),
+                        children: [(0,
+                        t.jsxs)(y.Button, {
+                            tone: a === e.id ? "secondary" : "ghost",
+                            size: "sm",
+                            block: !0,
+                            className: "fd-set-preset-main",
+                            icon: (0,
+                            t.jsx)(g.Icon, {
+                                name: s,
+                                size: 24
+                            }),
+                            "aria-pressed": a === e.id,
+                            onClick: () => i(e.id),
+                            children: [e.name, d === e.id && (0,
+                            t.jsx)(N.Badge, {
+                                tone: "acid",
+                                children: "In use"
+                            })]
+                        }), (0,
+                        eD.isBuiltIn)(e) && (0,
+                        t.jsx)(g.Icon, {
+                            name: "padlock",
+                            label: "Built-in",
+                            className: "fd-set-lock",
+                            size: 24
+                        }), (0,
+                        t.jsx)(eQ, {
+                            preset: e,
+                            onRename: () => n(e.id),
+                            onDelete: () => r(e.id)
+                        })]
+                    }, e.id)
+                }
+                )
+            })]
+        })
+    }
+    function eX({id: e, onClose: a}) {
+        let i = (0,
+        l.useSimStore)(e => e.ratePresets)
+          , n = (0,
+        l.useSimStore)(e => e.renamePreset)
+          , r = (0,
+        eD.findPreset)(i, e)
+          , [o,d] = (0,
+        s.useState)(r?.name ?? "")
+          , [c,u] = (0,
+        s.useState)(null)
+          , h = (0,
+        s.useId)()
+          , m = () => {
+            if (!e)
+                return;
+            let t = n(e, o);
+            u(t),
+            t || a()
+        }
+        ;
+        return (0,
+        t.jsxs)(L.DialogShell, {
+            open: !!r,
+            title: "Rename preset",
+            onClose: a,
+            actions: (0,
+            t.jsxs)(t.Fragment, {
+                children: [(0,
+                t.jsx)(y.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    onClick: a,
+                    children: "Cancel"
+                }), (0,
+                t.jsx)(y.Button, {
+                    tone: "primary",
+                    size: "sm",
+                    onClick: m,
+                    children: "Rename"
+                })]
+            }),
+            children: [(0,
+            t.jsx)("label", {
+                htmlFor: h,
+                className: "fd-set-field-label",
+                children: "Name"
+            }), (0,
+            t.jsx)(A.TextInput, {
+                id: h,
+                "data-autofocus": !0,
+                error: c,
+                value: o,
+                maxLength: eD.PRESET_NAME_MAX,
+                onChange: e => {
+                    d(e.target.value),
+                    u(null)
+                }
+                ,
+                onKeyDown: e => {
+                    "Enter" === e.key && (e.preventDefault(),
+                    m())
+                }
+            })]
+        })
+    }
+    function eJ({preset: e, onRename: s, onDelete: a, onUse: i}) {
+        let n = (0,
+        l.useSimStore)(e => e.duplicatePreset)
+          , r = (0,
+        eD.isBuiltIn)(e);
+        return (0,
+        t.jsxs)(eo.Card, {
+            className: "fd-set-preset-detail",
+            children: [(0,
+            t.jsxs)("div", {
+                className: "fd-set-preset-detail-head",
+                children: [(0,
+                t.jsx)(k.SectionHeading, {
+                    as: "h3",
+                    size: "lg",
+                    children: e.name
+                }), r ? (0,
+                t.jsx)(g.Icon, {
+                    name: "padlock",
+                    label: "Built-in",
+                    className: "fd-set-lock",
+                    size: 24
+                }) : (0,
+                t.jsx)(y.IconButton, {
+                    label: `Rename ${e.name}`,
+                    icon: (0,
+                    t.jsx)(g.Icon, {
+                        name: "pencil",
+                        size: 24
+                    }),
+                    onClick: s
+                })]
+            }), (0,
+            t.jsxs)("table", {
+                className: "fd-set-preset-table",
+                children: [(0,
+                t.jsx)("thead", {
+                    children: (0,
+                    t.jsxs)("tr", {
+                        children: [(0,
+                        t.jsx)("th", {
+                            scope: "col",
+                            children: "Axis"
+                        }), (0,
+                        t.jsx)("th", {
+                            scope: "col",
+                            children: "Center °/s"
+                        }), (0,
+                        t.jsx)("th", {
+                            scope: "col",
+                            children: "Max °/s"
+                        }), (0,
+                        t.jsx)("th", {
+                            scope: "col",
+                            children: "Expo"
+                        })]
+                    })
+                }), (0,
+                t.jsx)("tbody", {
+                    children: ez.map(s => (0,
+                    t.jsxs)("tr", {
+                        children: [(0,
+                        t.jsx)("th", {
+                            scope: "row",
+                            children: eF[s]
+                        }), (0,
+                        t.jsx)("td", {
+                            children: Math.round(e.rates[s].centerSensitivity)
+                        }), (0,
+                        t.jsx)("td", {
+                            children: Math.round(e.rates[s].maxRate)
+                        }), (0,
+                        t.jsx)("td", {
+                            children: e.rates[s].expo.toFixed(2)
+                        })]
+                    }, s))
+                }), (0,
+                t.jsx)("tfoot", {
+                    children: (0,
+                    t.jsxs)("tr", {
+                        children: [(0,
+                        t.jsx)("th", {
+                            scope: "row",
+                            children: "Throttle"
+                        }), (0,
+                        t.jsxs)("td", {
+                            colSpan: 3,
+                            children: ["Midpoint ", Math.round(100 * e.throttle.mid), "% · Expo ", Math.round(100 * e.throttle.expo), "%"]
+                        })]
+                    })
+                })]
+            }), (0,
+            t.jsxs)("div", {
+                className: "fd-set-preset-actions",
+                children: [!r && (0,
+                t.jsx)(y.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    icon: (0,
+                    t.jsx)(g.Icon, {
+                        name: "pencil",
+                        size: 24
+                    }),
+                    onClick: s,
+                    children: "Rename"
+                }), (0,
+                t.jsx)(y.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    icon: (0,
+                    t.jsx)(g.Icon, {
+                        name: "copy",
+                        size: 24
+                    }),
+                    onClick: () => n(e.id),
+                    children: "Duplicate"
+                }), (0,
+                t.jsx)(y.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    icon: (0,
+                    t.jsx)(g.Icon, {
+                        name: "upload",
+                        size: 24
+                    }),
+                    onClick: () => eG(e),
+                    children: "Export"
+                }), !r && (0,
+                t.jsx)(y.Button, {
+                    tone: "destructive",
+                    size: "sm",
+                    icon: (0,
+                    t.jsx)(g.Icon, {
+                        name: "trash",
+                        size: 24
+                    }),
+                    onClick: a,
+                    children: "Delete"
+                })]
+            }), (0,
+            t.jsx)(y.Button, {
+                tone: "primary",
+                size: "lg",
+                block: !0,
+                icon: (0,
+                t.jsx)(g.Icon, {
+                    name: "play",
+                    size: 24
+                }),
+                onClick: i,
+                children: "Use preset"
+            })]
+        })
+    }
+    function e0() {
+        let e = (0,
+        l.useSimStore)(e => e.setSettingsSubview)
+          , a = (0,
+        l.useSimStore)(e => e.applyPreset)
+          , i = (0,
+        l.useSimStore)(e => e.deletePreset)
+          , n = (0,
+        l.useSimStore)(e => e.restorePreset)
+          , r = (0,
+        l.useSimStore)(e => e.importRatePresets)
+          , {library: o, selected: d} = eq()
+          , [c,u] = (0,
+        s.useState)(d?.id ?? eH.id)
+          , [h,m] = (0,
+        s.useState)(!1)
+          , [p,x] = (0,
+        s.useState)(null)
+          , [f,j] = (0,
+        s.useState)(null)
+          , [b,v] = (0,
+        s.useState)(null)
+          , [S,k] = (0,
+        s.useState)(null)
+          , w = (0,
+        s.useRef)(null)
+          , C = (0,
+        eD.findPreset)(o, c) ?? eH
+          , N = (0,
+        eD.findPreset)(o, f)
+          , A = async e => {
+            if (!e)
+                return;
+            let t = r(await e.text());
+            k(t.added ? {
+                ok: !t.errors.length,
+                text: `Imported ${t.added} preset${t.added > 1 ? "s" : ""}.${t.errors.length ? ` ${t.errors.join(" ")}` : ""}`
+            } : {
+                ok: !1,
+                text: t.errors.join(" ") || "Nothing to import."
+            }),
+            w.current && (w.current.value = "")
+        }
+        ;
+        return (0,
+        t.jsxs)("div", {
+            className: "fd-set-page fd-set-page--presets",
+            id: "set-presets",
+            children: [(0,
+            t.jsxs)(el.PageHeader, {
+                title: "Presets",
+                back: {
+                    label: "Rates",
+                    onClick: () => e(null)
+                },
+                children: [(0,
+                t.jsx)(y.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    onClick: () => m(!0),
+                    children: "Save as preset"
+                }), (0,
+                t.jsx)(y.Button, {
+                    tone: "ghost",
+                    size: "sm",
+                    icon: (0,
+                    t.jsx)(g.Icon, {
+                        name: "download",
+                        size: 24
+                    }),
+                    onClick: () => w.current?.click(),
+                    children: "Import"
+                }), (0,
+                t.jsx)("input", {
+                    ref: w,
+                    type: "file",
+                    accept: ".json,application/json",
+                    hidden: !0,
+                    onChange: e => void A(e.target.files?.[0])
+                })]
+            }), S && (0,
+            t.jsx)(L.Toast, {
+                className: "fd-set-banner",
+                tone: S.ok ? "success" : "error",
+                title: S.text,
+                action: {
+                    label: "Dismiss",
+                    onClick: () => k(null)
+                }
+            }), b && (0,
+            t.jsx)(L.Toast, {
+                className: "fd-set-banner",
+                title: (0,
+                t.jsxs)(t.Fragment, {
+                    children: ["Deleted “", b.preset.name, "”."]
+                }),
+                action: {
+                    label: "Undo",
+                    onClick: () => {
+                        n(b),
+                        u(b.preset.id),
+                        v(null)
+                    }
+                }
+            }), (0,
+            t.jsxs)("div", {
+                className: "fd-set-grid fd-set-grid--presets",
+                children: [(0,
+                t.jsxs)("div", {
+                    className: "fd-set-stack",
+                    children: [(0,
+                    t.jsx)(eZ, {
+                        title: "Built-in",
+                        presets: eD.BUILT_IN_RATE_PRESETS,
+                        inspected: C.id,
+                        onInspect: u,
+                        onRename: x,
+                        onDelete: j
+                    }), (0,
+                    t.jsx)(eZ, {
+                        title: "My presets",
+                        presets: o.presets,
+                        empty: "No saved presets yet.",
+                        inspected: C.id,
+                        onInspect: u,
+                        onRename: x,
+                        onDelete: j
+                    })]
+                }), (0,
+                t.jsx)(eJ, {
+                    preset: C,
+                    onRename: () => x(C.id),
+                    onDelete: () => j(C.id),
+                    onUse: () => {
+                        a(C.id),
+                        e(null)
+                    }
+                })]
+            }), (0,
+            t.jsx)(eK, {
+                open: h,
+                onClose: () => m(!1)
+            }, String(h)), (0,
+            t.jsx)(eX, {
+                id: p,
+                onClose: () => x(null)
+            }, p ?? "none"), (0,
+            t.jsx)(L.ConfirmDialog, {
+                open: !!N,
+                title: "Delete preset?",
+                destructive: !0,
+                confirmLabel: "Delete",
+                description: (0,
+                t.jsxs)(t.Fragment, {
+                    children: ["“", N?.name, "” is removed from this device. Your current rates don’t change."]
+                }),
+                onCancel: () => j(null),
+                onConfirm: () => {
+                    if (!f)
+                        return;
+                    let e = i(f);
+                    v(e),
+                    e && c === f && u(eH.id),
+                    j(null)
+                }
+            })]
+        })
+    }
+    var e1 = e.i(166636)
+      , e2 = e.i(133968);
+    let e4 = {
+        controls: function() {
+            return (0,
+            t.jsx)(em, {
+                children: (0,
+                t.jsxs)("div", {
+                    className: "fd-set-page fd-set-page--controls",
+                    children: [(0,
+                    t.jsx)(el.PageHeader, {
+                        title: "Controls"
+                    }), (0,
+                    t.jsx)(ex, {}), (0,
+                    t.jsxs)("div", {
+                        className: "fd-set-grid fd-set-grid--2 fd-set-grid--sticks",
+                        children: [(0,
+                        t.jsx)(ef, {}), (0,
+                        t.jsx)(eb, {})]
+                    }), (0,
+                    t.jsx)(ev, {}), (0,
+                    t.jsx)(ew, {}), (0,
+                    t.jsx)(eC, {})]
+                })
+            })
+        },
+        rates: function() {
+            let e = (0,
+            l.useSimStore)(e => (0,
+            D.editedSettings)(e).rates)
+              , a = (0,
+            l.useSimStore)(e => e.setSettingsSubview)
+              , [i,n] = (0,
+            s.useState)(!1);
+            return (0,
+            t.jsxs)("div", {
+                className: "fd-set-page fd-set-page--rates",
+                children: [(0,
+                t.jsxs)(el.PageHeader, {
+                    title: "Rates",
+                    badge: (0,
+                    t.jsxs)("span", {
+                        className: "fd-set-badge",
+                        children: [(0,
+                        t.jsx)(N.Badge, {
+                            children: "Actual"
+                        }), (0,
+                        t.jsx)(en.InfoTip, {
+                            topic: "Actual rates",
+                            children: "Betaflight Actual rates in degrees per second. Copy the numbers from your quad and it flies the same."
+                        })]
+                    }),
+                    children: [(0,
+                    t.jsx)(eW, {}), (0,
+                    t.jsx)(y.Button, {
+                        tone: "ghost",
+                        size: "sm",
+                        onClick: () => a("presets"),
+                        children: "Presets"
+                    }), (0,
+                    t.jsx)(y.Button, {
+                        tone: "ghost",
+                        size: "sm",
+                        onClick: () => n(!0),
+                        children: "Save as preset"
+                    })]
+                }), (0,
+                t.jsxs)("div", {
+                    className: "fd-set-grid fd-set-grid--rates",
+                    children: [(0,
+                    t.jsx)(eV, {}), (0,
+                    t.jsx)(eo.Card, {
+                        title: "Stick response",
+                        tone: "dark",
+                        id: "set-rate-curve",
+                        className: "fd-set-curve-card",
+                        actions: (0,
+                        t.jsx)("ul", {
+                            className: "fd-set-legend",
+                            children: ez.map(e => (0,
+                            t.jsxs)("li", {
+                                children: [(0,
+                                t.jsx)("i", {
+                                    style: {
+                                        background: e_(e)
+                                    }
+                                }), eF[e]]
+                            }, e))
+                        }),
+                        children: (0,
+                        t.jsx)(eU, {
+                            rates: e
+                        })
+                    })]
+                }), (0,
+                t.jsx)(eY, {}), (0,
+                t.jsx)(eK, {
+                    open: i,
+                    onClose: () => n(!1)
+                }, String(i))]
+            })
+        },
+        camera: function() {
+            let e = (0,
+            l.useSimStore)(e => (0,
+            D.editedSettings)(e).camera)
+              , s = (0,
+            l.useSimStore)(e => (0,
+            D.editedSettings)(e).graphics)
+              , a = (0,
+            l.useSimStore)(e => (0,
+            eT.lensStrength)((0,
+            D.editedSettings)(e)))
+              , i = (0,
+            l.useSimStore)(e => e.updateCamera)
+              , n = (0,
+            l.useSimStore)(e => e.updateGraphics);
+            return (0,
+            t.jsxs)("div", {
+                className: "fd-set-page fd-set-page--camera",
+                children: [(0,
+                t.jsx)(el.PageHeader, {
+                    title: "Camera & HUD"
+                }), (0,
+                t.jsxs)(eo.Card, {
+                    title: "Camera",
+                    children: [(0,
+                    t.jsx)("div", {
+                        id: "set-fov",
+                        children: (0,
+                        t.jsx)(eo.SliderField, {
+                            label: "Field of view",
+                            value: e.fov,
+                            min: 50,
+                            max: 150,
+                            step: 1,
+                            format: e => `${Math.round(e)}\xb0`,
+                            onChange: e => i({
+                                fov: e
+                            })
+                        })
+                    }), (0,
+                    t.jsx)("div", {
+                        id: "set-tilt",
+                        children: (0,
+                        t.jsx)(eo.SliderField, {
+                            label: "Camera uptilt",
+                            info: "How far the camera points up. Flying fast usually needs more.",
+                            value: e.tiltDeg,
+                            min: 0,
+                            max: 60,
+                            step: 1,
+                            format: e => `${Math.round(e)}\xb0`,
+                            onChange: e => i({
+                                tiltDeg: e
+                            })
+                        })
+                    }), (0,
+                    t.jsx)("div", {
+                        id: "set-lens",
+                        children: (0,
+                        t.jsx)(eo.SliderField, {
+                            label: "Lens",
+                            info: "FPV cameras use a fisheye lens. Flat is no fisheye.",
+                            value: a,
+                            min: 0,
+                            max: 1,
+                            step: .05,
+                            format: e => 0 === e ? "Flat" : `${Math.round(100 * e)}%`,
+                            onChange: e => i({
+                                fisheye: e
+                            })
+                        })
+                    })]
+                }), (0,
+                t.jsx)(eo.Card, {
+                    title: "On-screen information",
+                    children: (0,
+                    t.jsx)("div", {
+                        className: "fd-set-toggle-grid",
+                        children: eB.map(e => (0,
+                        t.jsx)("div", {
+                            id: e.target,
+                            className: "fd-set-toggle-tile",
+                            children: (0,
+                            t.jsx)(A.SettingRow, {
+                                label: e.label,
+                                info: e.info,
+                                htmlFor: `${e.target}-switch`,
+                                children: (0,
+                                t.jsx)(A.Switch, {
+                                    id: `${e.target}-switch`,
+                                    label: e.label,
+                                    checked: s[e.key],
+                                    onChange: t => n({
+                                        [e.key]: t
+                                    })
+                                })
+                            })
+                        }, e.key))
+                    })
+                })]
+            })
+        },
+        video: function() {
+            let e = (0,
+            l.useSimStore)(e => (0,
+            D.editedSettings)(e).graphics)
+              , s = (0,
+            l.useSimStore)(e => e.updateGraphics)
+              , a = (0,
+            l.useSimStore)(e => e.applyGraphicsQuality)
+              , i = e.postProcessing ?? "low" !== e.quality
+              , n = (0,
+            e1.isCustomGraphics)(e)
+              , r = (0,
+            e2.ultraAvailable)();
+            return (0,
+            t.jsxs)("div", {
+                className: "fd-set-page fd-set-page--video",
+                children: [(0,
+                t.jsx)(el.PageHeader, {
+                    title: "Video"
+                }), (0,
+                t.jsx)(eo.Card, {
+                    className: "fd-set-quality",
+                    id: "set-quality",
+                    children: (0,
+                    t.jsx)(A.SettingRow, {
+                        label: "Quality",
+                        info: "Sets everything below at once. Change any option and it shows Custom.",
+                        hint: r ? void 0 : "Ultra needs a dedicated graphics card.",
+                        children: (0,
+                        t.jsx)(E.Segmented, {
+                            label: "Quality",
+                            value: n ? "custom" : e.quality,
+                            onChange: e => {
+                                "custom" !== e && a(e)
+                            }
+                            ,
+                            options: [{
+                                value: "low",
+                                label: "Low"
+                            }, {
+                                value: "medium",
+                                label: "Medium"
+                            }, {
+                                value: "high",
+                                label: "High"
+                            }, {
+                                value: "ultra",
+                                label: "Ultra",
+                                disabled: !r
+                            }, {
+                                value: "custom",
+                                label: "Custom",
+                                disabled: !n
+                            }]
+                        })
+                    })
+                }), (0,
+                t.jsxs)("div", {
+                    className: "fd-set-grid fd-set-grid--2",
+                    children: [(0,
+                    t.jsxs)(eo.Card, {
+                        title: "Performance",
+                        children: [(0,
+                        t.jsx)("div", {
+                            id: "set-draw-distance",
+                            children: (0,
+                            t.jsx)(eo.SliderField, {
+                                label: "Draw distance",
+                                value: e.drawDistance,
+                                min: 100,
+                                max: 1200,
+                                step: 25,
+                                format: e => `${Math.round(e)} m`,
+                                onChange: e => s({
+                                    drawDistance: e
+                                })
+                            })
+                        }), (0,
+                        t.jsx)(A.SettingRow, {
+                            label: "Shadows",
+                            info: "The most expensive effect. Turn it off first if the frame rate drops.",
+                            id: "set-shadows",
+                            htmlFor: "set-shadows-switch",
+                            children: (0,
+                            t.jsx)(A.Switch, {
+                                id: "set-shadows-switch",
+                                label: "Shadows",
+                                checked: e.shadows,
+                                onChange: e => s({
+                                    shadows: e
+                                })
+                            })
+                        })]
+                    }), (0,
+                    t.jsxs)(eo.Card, {
+                        title: "Effects",
+                        children: [(0,
+                        t.jsx)(A.SettingRow, {
+                            label: "Post-processing",
+                            info: "Smooths edges and finishes the world's colours. Bloom and MSAA need it.",
+                            id: "set-post",
+                            htmlFor: "set-post-switch",
+                            children: (0,
+                            t.jsx)(A.Switch, {
+                                id: "set-post-switch",
+                                label: "Post-processing",
+                                checked: i,
+                                onChange: e => s({
+                                    postProcessing: e
+                                })
+                            })
+                        }), (0,
+                        t.jsx)(A.SettingRow, {
+                            label: "Bloom",
+                            info: "Glow around lights, gates and the sun.",
+                            id: "set-bloom",
+                            htmlFor: "set-bloom-switch",
+                            children: (0,
+                            t.jsx)(A.Switch, {
+                                id: "set-bloom-switch",
+                                label: "Bloom",
+                                disabled: !i,
+                                checked: e.bloom ?? !1,
+                                onChange: e => s({
+                                    bloom: e
+                                })
+                            })
+                        }), (0,
+                        t.jsx)(A.SettingRow, {
+                            label: "Anti-aliasing (MSAA)",
+                            info: "Smoother edges. Uses more graphics memory.",
+                            id: "set-msaa",
+                            htmlFor: "set-msaa-switch",
+                            children: (0,
+                            t.jsx)(A.Switch, {
+                                id: "set-msaa-switch",
+                                label: "Anti-aliasing (MSAA)",
+                                disabled: !i,
+                                checked: e.msaa ?? !1,
+                                onChange: e => s({
+                                    msaa: e
+                                })
+                            })
+                        })]
+                    })]
+                }), (0,
+                t.jsx)(eo.Card, {
+                    className: "fd-set-traffic",
+                    id: "set-traffic",
+                    children: (0,
+                    t.jsx)(A.SettingRow, {
+                        label: "Traffic detail",
+                        info: "Reduced keeps every car where it is, but drops smoke, skid marks and close-up detail.",
+                        children: (0,
+                        t.jsx)(E.Segmented, {
+                            label: "Traffic detail",
+                            value: e.trafficDetail,
+                            onChange: e => s({
+                                trafficDetail: e
+                            }),
+                            options: [{
+                                value: "full",
+                                label: "Full"
+                            }, {
+                                value: "reduced",
+                                label: "Reduced"
+                            }]
+                        })
+                    })
+                }), (0,
+                t.jsx)(eo.Card, {
+                    title: "Advanced",
+                    children: (0,
+                    t.jsx)("div", {
+                        id: "set-render-scale",
+                        children: (0,
+                        t.jsx)(eo.SliderField, {
+                            label: "Render scale",
+                            info: "Share of the quality's resolution to render. Lower is faster but softer. The HUD stays sharp.",
+                            value: e.renderScale ?? 1,
+                            min: .5,
+                            max: 1,
+                            step: .05,
+                            format: e => `${Math.round(100 * e)}%`,
+                            onChange: e => s({
+                                renderScale: e
+                            })
+                        })
+                    })
+                })]
+            })
+        },
+        audio: C.AudioPage,
+        accessibility: w.AccessibilityPage
+    };
+    function e5() {
+        let e = (0,
+        l.useSimStore)(e => e.settingsTab)
+          , a = (0,
+        l.useSimStore)(e => e.settingsSubview)
+          , i = (0,
+        l.useSimStore)(e => e.calibrating)
+          , n = (0,
+        l.useSimStore)(e => e.setSettingsSubview)
+          , r = (0,
+        s.useRef)(null)
+          , o = e4[e]
+          , d = i ? "calibration" : a ?? e;
+        return (0,
+        el.useSettingsFocus)(d),
+        (0,
+        s.useEffect)( () => {
+            r.current?.scrollTo({
+                top: 0
+            })
+        }
+        , [d]),
+        (0,
+        t.jsx)("div", {
+            ref: r,
+            className: "fd-set-body",
+            id: (0,
+            el.panelId)(e),
+            role: "tabpanel",
+            "aria-labelledby": (0,
+            el.tabId)(e),
+            tabIndex: -1,
+            onKeyDown: e => {
+                "Escape" !== e.key || !a || i || e.defaultPrevented || (e.preventDefault(),
+                e.stopPropagation(),
+                n(null))
+            }
+            ,
+            children: i ? (0,
+            t.jsx)(eR, {}) : "presets" === a ? (0,
+            t.jsx)(e0, {}) : (0,
+            t.jsx)(o, {})
+        })
+    }
+    function e6({embedded: e=!1}) {
+        let a = (0,
+        l.useSimStore)(e => e.requestCloseSettings)
+          , i = (0,
+        l.useSimStore)(e => e.calibrating)
+          , n = (0,
+        s.useRef)(null);
+        (0,
+        s.useEffect)( () => {
+            if (e)
+                return;
+            let t = document.activeElement;
+            return n.current?.focus(),
+            () => t?.focus?.()
+        }
+        , [e]);
+        let r = (0,
+        t.jsxs)("div", {
+            className: (0,
+            S.cx)("fd-set", "fdk-screen", "fdk", e ? "fd-set--menu" : "fd-set--flight", i && "is-calibrating"),
+            children: [(0,
+            t.jsx)(el.SettingsRail, {
+                menu: e
+            }), (0,
+            t.jsxs)("section", {
+                className: "fd-set-main",
+                "aria-label": "Settings page",
+                children: [(0,
+                t.jsx)(e5, {}), !i && (0,
+                t.jsx)(el.SettingsFooter, {})]
+            }), (0,
+            t.jsx)(el.UnsavedPrompt, {})]
+        });
+        return e ? (0,
+        t.jsx)("div", {
+            className: "fd-menu-settings fdk-on-chalk",
+            children: r
+        }) : (0,
+        t.jsx)("div", {
+            className: "fd-set-wash pointer-events-auto absolute inset-0 z-40 flex items-center justify-center p-8",
+            children: (0,
+            t.jsxs)(k.Panel, {
+                ref: n,
+                className: "fd-set-dialog-frame",
+                role: "dialog",
+                "aria-modal": "true",
+                "aria-label": "Settings",
+                tabIndex: -1,
+                children: [(0,
+                t.jsxs)("header", {
+                    className: "fd-set-flight-head",
+                    children: [(0,
+                    t.jsx)(k.SectionHeading, {
+                        children: "Settings"
+                    }), (0,
+                    t.jsx)(y.IconButton, {
+                        tone: "secondary",
+                        size: "md",
+                        label: "Close settings",
+                        icon: (0,
+                        t.jsx)(g.Icon, {
+                            name: "close",
+                            size: 24
+                        }),
+                        onClick: a
+                    })]
+                }), r]
+            })
+        })
+    }
+    e.s(["SettingsPanel", 0, e6], 698542);
+    var e8 = e.i(854514)
+      , e3 = e.i(743492)
+      , e7 = e.i(410484)
+      , e9 = e.i(105524)
+      , te = e.i(37220)
+      , tt = e.i(954646)
+      , ts = e.i(793273)
+      , ta = e.i(439225)
+      , ti = e.i(768834)
+      , tn = e.i(920755);
+    let tr = (0,
+    ti.create)( (e, t) => ({
+        account: null,
+        status: "idle",
+        saving: null,
+        error: null,
+        load: async s => {
+            if (t().account === s && "idle" !== t().status)
+                return;
+            e({
+                account: s,
+                status: "loading",
+                saving: null,
+                error: null
+            });
+            let {data: a, error: i} = await (0,
+            tn.createClient)().rpc("email_updates_menu_ask");
+            t().account === s && e({
+                status: i || !0 !== a ? "done" : "ask"
+            })
+        }
+        ,
+        answer: async s => {
+            let {account: a, saving: i} = t();
+            if (!a || i)
+                return;
+            e({
+                saving: s ? "yes" : "no",
+                error: null
+            });
+            let {error: n} = await (0,
+            tn.createClient)().rpc("email_updates_menu_answer", {
+                p_yes: s
+            });
+            t().account === a && (n && s ? e({
+                saving: null,
+                error: "Couldn’t save that. Try again."
+            }) : e({
+                saving: null,
+                status: "done"
+            }))
+        }
+    }));
+    function tl() {
+        let e = (0,
+        l.useSimStore)(e => e.playerAccountId)
+          , a = (0,
+        l.useSimStore)(e => e.isAnonymous)
+          , i = (0,
+        l.useSimStore)(e => "menu" === e.phase)
+          , n = tr(e => e.status)
+          , r = tr(e => e.account)
+          , o = tr(e => e.saving)
+          , d = tr(e => e.error);
+        if ((0,
+        s.useEffect)( () => {
+            e && !a && tr.getState().load(e)
+        }
+        , [e, a]),
+        !i || !e || a || r !== e || "ask" !== n)
+            return null;
+        let c = tr.getState().answer;
+        return (0,
+        t.jsxs)("section", {
+            className: "fd-email-ask fdk-screen",
+            "aria-labelledby": "fd-email-ask-title",
+            children: [(0,
+            t.jsx)("h2", {
+                id: "fd-email-ask-title",
+                className: "fd-email-ask__title",
+                children: ta.EMAIL_ASK_TITLE
+            }), (0,
+            t.jsx)("p", {
+                className: "fd-email-ask__body",
+                children: ta.EMAIL_ASK_BODY
+            }), (0,
+            t.jsxs)("div", {
+                className: "fd-email-ask__actions",
+                children: [(0,
+                t.jsx)(y.Button, {
+                    tone: "secondary",
+                    busy: "yes" === o,
+                    disabled: "no" === o,
+                    onClick: () => void c(!0),
+                    children: "yes" === o ? "Saving…" : "Email me"
+                }), (0,
+                t.jsx)(y.Button, {
+                    tone: "ghost",
+                    disabled: null !== o,
+                    onClick: () => void c(!1),
+                    children: "No thanks"
+                }), d && (0,
+                t.jsx)("p", {
+                    className: "fd-email-ask__error",
+                    role: "alert",
+                    children: d
+                })]
+            })]
+        })
+    }
+    e.s(["useEmailAsk", 0, tr], 681770);
+    var to = e.i(389110);
+    let td = (0,
+    j.default)( () => e.A(526398).then(e => e.MapBrowser), {
+        loadableGenerated: {
+            modules: [527210]
+        },
+        loading: () => (0,
+        t.jsxs)("div", {
+            className: "fd-community-loading",
+            role: "status",
+            children: [(0,
+            t.jsx)("span", {
+                children: "Loading maps…"
+            }), (0,
+            t.jsxs)("div", {
+                "aria-hidden": "true",
+                children: [(0,
+                t.jsx)("i", {}), (0,
+                t.jsx)("i", {}), (0,
+                t.jsx)("i", {})]
+            })]
+        })
+    })
+      , tc = (0,
+    j.default)( () => e.A(23892).then(e => e.EditorLibrary), {
+        loadableGenerated: {
+            modules: [232571]
+        },
+        loading: () => (0,
+        t.jsx)("div", {
+            role: "status",
+            className: "sim-ui-surface p-6",
+            children: "Loading your maps…"
+        })
+    })
+      , tu = (0,
+    j.default)( () => e.A(251746).then(e => e.ReplaySelect), {
+        loadableGenerated: {
+            modules: [42227]
+        },
+        loading: () => (0,
+        t.jsx)("p", {
+            role: "status",
+            children: "Loading your replays…"
+        })
+    });
+    e.s(["MainMenu", 0, function({initialDestination: e="play", editorPreviewMaps: j, communityPreview: S, hushed: y=!1, modePickerOpen: k=!1, initialGearCategory: w="drone"}) {
+        let C = (0,
+        s.useRef)(null)
+          , N = (0,
+        s.useContext)(to.MenuVisibility)
+          , A = (0,
+        p.useInventory)(e => e.shop_enabled)
+          , E = (0,
+        x.useCreditShop)(e => e.context)
+          , L = (0,
+        x.useCreditShop)(e => e.destination)
+          , M = (0,
+        x.useCreditShop)(e => e.close)
+          , [I,R] = (0,
+        s.useState)( () => {
+            let e = new URLSearchParams(window.location.search)
+              , t = e.get("checkout");
+            return t && (0,
+            f.markMenuOpen)("shop", "checkout"),
+            t ? {
+                orderId: t,
+                cancelled: e.has("cancelled")
+            } : null
+        }
+        )
+          , T = (0,
+        l.useSimStore)(e => e.phase)
+          , B = (0,
+        e9.useMatchmaking)(e => e.online)
+          , P = (0,
+        te.useMenuScene)(e => e.pendingMapId)
+          , [$,D] = (0,
+        s.useState)(!1)
+          , z = (0,
+        l.useSimStore)(e => e.editorLibraryOpen)
+          , F = (0,
+        l.useSimStore)(e => e.openEditorLibrary)
+          , _ = (0,
+        l.useSimStore)(e => e.openLessons)
+          , O = (0,
+        l.useSimStore)(e => e.openReplays)
+          , H = (0,
+        l.useSimStore)(e => e.openSettings)
+          , G = (0,
+        l.useSimStore)(e => e.settingsOpen)
+          , q = (0,
+        l.useSimStore)(e => e.calibrating)
+          , U = (0,
+        l.useSimStore)(e => e.closeSettings)
+          , [K,W] = (0,
+        s.useState)(I ? "shop" : e)
+          , [V,Y] = (0,
+        s.useState)(!1)
+          , [Q,Z] = (0,
+        s.useState)(!1)
+          , [X,J] = (0,
+        s.useState)()
+          , [ee,et] = (0,
+        s.useState)()
+          , [es,ea] = (0,
+        s.useState)()
+          , [ei,en] = (0,
+        s.useState)("featured")
+          , er = () => {
+            let e = l.useSimStore.getState();
+            "lessonSelect" === e.phase && e.closeLessons(),
+            "replaySelect" === e.phase && e.closeReplays(),
+            e.editorLibraryOpen && l.useSimStore.setState({
+                editorLibraryOpen: !1
+            })
+        }
+          , el = e => l.useSimStore.getState().guardSettings(e)
+          , eo = () => {
+            el( () => (0,
+            tt.requestHomeExit)( () => {
+                er(),
+                M(),
+                U(),
+                Y(!0),
+                W("gear")
             }
             ))
         }
-    }
-    async function o(e, t) {
-        if (!e.length)
-            return;
-        let {data: s, error: n} = await (0,
-        a.createClient)().from("sim_personal_maps").select("id,name").in("id", e.map(e => e.slice(5)));
-        if (n)
-            return void console.warn("[sim] personal map names unavailable", n);
-        for (let a of e) {
-            let e = s?.find(e => `user:${e.id}` === a);
-            t.set(a, "string" == typeof e?.name ? e.name : null)
-        }
-    }
-    e.s(["loadMapNames", 0, i])
-}
-, 188548, e => {
-    "use strict";
-    var a = e.i(271645)
-      , t = e.i(920755);
-    let s = null;
-    e.s(["markMenuOpen", 0, function(e, a) {
-        s = {
-            screen: e,
-            source: a,
-            at: Date.now()
-        }
-    }
-    , "useMenuOpens", 0, function(e) {
-        let n = "shop" === e || "gear" === e ? e : null
-          , r = (0,
-        a.useRef)(null);
+          , ed = G || q ? "settings" : (E || L) && A ? "shop" : "lessonSelect" === T ? "lessons" : "replaySelect" === T ? "replays" : z ? "editor" : P ? "maps" : "shop" !== K || A ? K : "play";
         (0,
-        a.useEffect)( () => {
-            n && r.current !== n && function(e) {
-                let a = function(e, a=Date.now()) {
-                    let t = s;
-                    return s = null,
-                    t && t.screen === e && a - t.at <= 1e4 ? t.source : "other"
-                }(e);
-                try {
-                    (0,
-                    t.createClient)().rpc("record_menu_open", {
-                        p_screen: e,
-                        p_source: a
-                    }).then( () => {}
-                    , () => {}
-                    )
-                } catch {}
-            }(n),
-            r.current = n
+        s.useEffect)( () => (te.useMenuScene.getState().setDestination(ed),
+        () => te.useMenuScene.getState().setDestination(null)), [ed]),
+        (0,
+        f.useMenuOpens)(ed),
+        (0,
+        s.useEffect)( () => {
+            C.current?.scrollTo({
+                top: 0
+            })
         }
-        , [n])
+        , [ed, E]);
+        let ec = e => {
+            ("shop" !== e || A) && ("play" !== e || "play" !== ed) && ("settings" !== e || "settings" !== ed) && el( () => (0,
+            tt.requestHomeExit)( () => {
+                (te.useMenuScene.getState().stageMapSelection(null),
+                er(),
+                M(),
+                "settings" === e) ? H() : (U(),
+                "gear" === e && Y(!1),
+                "shop" === e && (Z(!1),
+                en("featured"),
+                et(void 0),
+                J(void 0)),
+                W(e))
+            }
+            ))
+        }
+        ;
+        return (0,
+        t.jsx)(to.MenuVisibility, {
+            value: N && !y,
+            children: (0,
+            t.jsx)(ts.DroneHeroHost, {
+                children: (0,
+                t.jsxs)("main", {
+                    className: `fd-menu fd-deck fd-menu--${ed} sim-ui-surface${y ? " is-hushed" : ""}`,
+                    "aria-label": "Flight Division main menu",
+                    "aria-hidden": y || void 0,
+                    inert: y,
+                    children: [(0,
+                    t.jsx)("div", {
+                        className: "fd-menu-header-slot",
+                        inert: $,
+                        children: (0,
+                        t.jsx)(v.MenuHeader, {
+                            active: "lessons" === ed || "replays" === ed || "maps" === ed ? "play" : ed,
+                            onNavigate: ec,
+                            social: (0,
+                            t.jsx)(e8.LobbyFriends, {}),
+                            offline: !B,
+                            onConsumables: eo,
+                            onCredits: A ? () => {
+                                (0,
+                                f.markMenuOpen)("shop", "wallet"),
+                                el( () => (0,
+                                tt.requestHomeExit)( () => {
+                                    er(),
+                                    U(),
+                                    x.useCreditShop.getState().open()
+                                }
+                                ))
+                            }
+                            : void 0
+                        })
+                    }), (0,
+                    t.jsxs)("div", {
+                        ref: C,
+                        className: "fd-menu-content",
+                        children: [I && (0,
+                        t.jsx)(m.CheckoutReturn, {
+                            ...I,
+                            onDismiss: () => R(null)
+                        }), "settings" === ed ? (0,
+                        t.jsx)(e6, {
+                            embedded: !0
+                        }) : E && A ? (0,
+                        t.jsx)(m.CreditShopPage, {}) : L && A ? (0,
+                        t.jsx)(h.ShopPanel, {
+                            initialCategory: L.boosters ? "boosters" : "featured",
+                            initialItemId: L.itemId,
+                            onGear: eo
+                        }, L.itemId ?? "boosters") : "lessons" === ed ? (0,
+                        t.jsx)(o.LessonSelect, {
+                            onBack: () => ec("play")
+                        }) : "replays" === ed ? (0,
+                        t.jsx)(tu, {
+                            onBack: () => ec("play")
+                        }) : "community" === ed || "maps" === ed ? (0,
+                        t.jsx)(td, {
+                            initialCategory: "community" === ed ? "community" : "official",
+                            initialMapId: P,
+                            communityPreview: S,
+                            onBack: () => ec("play"),
+                            onMyMaps: F,
+                            onDialogOpenChange: D
+                        }, `${ed}:${P ?? "browse"}`) : "editor" === ed ? (0,
+                        t.jsx)(tc, {
+                            backLabel: "Back to Community",
+                            previewMaps: j,
+                            previewAnalytics: j ? S?.analytics : void 0,
+                            onDialogOpenChange: D,
+                            onClose: () => {
+                                ec("community"),
+                                requestAnimationFrame( () => C.current?.querySelector(".cm-my-map")?.focus())
+                            }
+                        }) : "gear" === K ? (0,
+                        t.jsx)(d.GearPanel, {
+                            embedded: !0,
+                            initialCategory: V ? "consumables" : w,
+                            onShop: A ? e => (0,
+                            tt.requestHomeExit)( () => {
+                                (0,
+                                f.markMenuOpen)("shop", "gear"),
+                                J(e),
+                                Z(!0),
+                                et(void 0),
+                                W("shop")
+                            }
+                            ) : void 0,
+                            onBuy: (e, t) => (0,
+                            tt.requestHomeExit)( () => {
+                                (0,
+                                f.markMenuOpen)("shop", "gear"),
+                                ea(t),
+                                R(null),
+                                M(),
+                                Z(!1),
+                                J(void 0),
+                                en("environments" === e.category ? "environments" : "colorways"),
+                                et(e.id),
+                                W("shop")
+                            }
+                            ),
+                            onShopHome: A ? (e="featured") => (0,
+                            tt.requestHomeExit)( () => {
+                                (0,
+                                f.markMenuOpen)("shop", "gear"),
+                                R(null),
+                                M(),
+                                Z(!1),
+                                en(e),
+                                et(void 0),
+                                J(void 0),
+                                W("shop")
+                            }
+                            ) : void 0
+                        }, String(V)) : "shop" === ed ? (0,
+                        t.jsx)(h.ShopPanel, {
+                            initialCategory: Q ? "boosters" : ei,
+                            initialItemId: ee,
+                            initialPreviewDrone: es,
+                            initialBooster: X,
+                            onGear: eo
+                        }, String(Q)) : "profile" === K ? (0,
+                        t.jsx)(c.ProfilePanel, {
+                            embedded: !0,
+                            onBack: () => ec("play"),
+                            onChallenges: () => ec("record")
+                        }) : "record" === K ? (0,
+                        t.jsx)(u.PilotRecord, {
+                            onBack: () => ec("play"),
+                            onShop: A ? () => {
+                                (0,
+                                f.markMenuOpen)("shop", "challenges"),
+                                ec("shop")
+                            }
+                            : void 0
+                        }) : (0,
+                        t.jsxs)(t.Fragment, {
+                            children: [(0,
+                            t.jsx)(e8.FlightLobby, {
+                                onGear: () => {
+                                    (0,
+                                    f.markMenuOpen)("gear", "lobby"),
+                                    ec("gear")
+                                }
+                                ,
+                                onMaps: () => W("maps"),
+                                onLessons: () => (0,
+                                tt.requestHomeExit)(_),
+                                onReplays: () => (0,
+                                tt.requestHomeExit)(O),
+                                onCommunity: () => ec("community"),
+                                onEditor: () => (0,
+                                tt.requestHomeExit)(F),
+                                onChallenges: () => ec("record"),
+                                pickerOpen: k
+                            }), (0,
+                            t.jsx)(e7.ModePanelHost, {
+                                inFlight: !1
+                            }), !y && (0,
+                            t.jsx)(tl, {}), (0,
+                            t.jsxs)("footer", {
+                                className: "fd-menu-footer",
+                                children: [(0,
+                                t.jsx)("div", {
+                                    className: "fd-menu-footer-center",
+                                    children: (0,
+                                    t.jsx)(b.LivePlayerCount, {})
+                                }), (0,
+                                t.jsxs)("div", {
+                                    className: "fd-menu-socials",
+                                    children: [(0,
+                                    t.jsx)("a", {
+                                        href: r.DISCORD_INVITE_URL,
+                                        target: "_blank",
+                                        rel: "noreferrer",
+                                        "aria-label": "Join Flight Division on Discord",
+                                        title: "Discord",
+                                        children: (0,
+                                        t.jsx)(a.DiscordMark, {})
+                                    }), (0,
+                                    t.jsx)("a", {
+                                        href: "https://www.instagram.com/flightdivision.fpv/",
+                                        target: "_blank",
+                                        rel: "noreferrer",
+                                        "aria-label": "Flight Division on Instagram (@flightdivision.fpv)",
+                                        title: "Instagram · @flightdivision.fpv",
+                                        children: (0,
+                                        t.jsx)(g.Icon, {
+                                            name: "instagram",
+                                            size: 24
+                                        })
+                                    }), (0,
+                                    t.jsx)("a", {
+                                        href: "https://www.tiktok.com/@flightdivision",
+                                        target: "_blank",
+                                        rel: "noreferrer",
+                                        "aria-label": "Flight Division on TikTok (@flightdivision)",
+                                        title: "TikTok · @flightdivision",
+                                        children: (0,
+                                        t.jsx)(i.TikTokMark, {})
+                                    }), (0,
+                                    t.jsx)("a", {
+                                        href: "https://www.youtube.com/@flightdivision_fpv",
+                                        target: "_blank",
+                                        rel: "noreferrer",
+                                        "aria-label": "Flight Division on YouTube (@flightdivision_fpv)",
+                                        title: "YouTube · @flightdivision_fpv",
+                                        children: (0,
+                                        t.jsx)(n.YouTubeMark, {})
+                                    })]
+                                })]
+                            })]
+                        })]
+                    }), "play" !== ed && (0,
+                    t.jsx)(e3.MenuQueueDock, {})]
+                })
+            })
+        })
+    }
+    ], 783558)
+}
+, 383807, e => {
+    "use strict";
+    var t = e.i(271645)
+      , s = e.i(532116);
+    let a = {
+        id: null,
+        index: -1,
+        mapping: "",
+        axes: [],
+        buttons: [],
+        values: []
+    };
+    function i(e, t) {
+        return e.length === t.length && e.every( (e, s) => e === t[s])
+    }
+    e.s(["useGamepadList", 0, function(e) {
+        let[a,i] = (0,
+        t.useState)([]);
+        return (0,
+        t.useEffect)( () => {
+            if (!e)
+                return;
+            let t = () => {
+                let e = (0,
+                s.listGamepads)();
+                i(t => t.length === e.length && t.every( (t, s) => t.id === e[s].id && t.index === e[s].index && t.axes.length === e[s].axes.length && t.buttonValues.length === e[s].buttonValues.length) ? t : e)
+            }
+            ;
+            t();
+            let a = (0,
+            s.onGamepadChange)(t)
+              , n = window.setInterval(t, 700);
+            return () => {
+                a(),
+                window.clearInterval(n)
+            }
+        }
+        , [e]),
+        a
+    }
+    , "useGamepadReading", 0, function(e, n, r) {
+        let[l,o] = (0,
+        t.useState)(a);
+        return (0,
+        t.useEffect)( () => {
+            if (!n)
+                return;
+            let t = 0
+              , l = 0
+              , d = n => {
+                if (t = requestAnimationFrame(d),
+                n - l < 33)
+                    return;
+                l = n;
+                let c = void 0 === r ? (0,
+                s.getRawGamepad)(e) : (0,
+                s.getRawGamepad)(e, !1, r)
+                  , u = c ? {
+                    id: c.id,
+                    index: c.index,
+                    mapping: c.mapping,
+                    axes: Array.from(c.axes),
+                    buttons: c.buttons.map(e => e.pressed),
+                    values: c.buttons.map(e => e.value)
+                } : a;
+                o(e => e.id === u.id && e.index === u.index && e.mapping === u.mapping && i(e.axes, u.axes) && i(e.values, u.values) && i(e.buttons, u.buttons) ? e : u)
+            }
+            ;
+            return t = requestAnimationFrame(d),
+            () => cancelAnimationFrame(t)
+        }
+        , [e, n, r]),
+        n ? l : a
     }
     ])
 }
-, 686410, e => {
+, 327168, e => {
     "use strict";
-    var a = e.i(353198)
-      , t = e.i(353937)
-      , s = e.i(246176)
-      , n = e.i(106258)
-      , r = e.i(814022);
-    function i(e, t, n) {
-        return e ? (0,
-        s.squadDroneChoices)(e) : a.DRONE_LADDER.filter(e => (0,
-        a.isDroneUnlocked)(e, t, n))
+    var t = e.i(843476)
+      , s = e.i(657688)
+      , a = e.i(271645)
+      , i = e.i(247638)
+      , n = e.i(580114);
+    let r = {
+        x: 49.68,
+        y: 110.49
     }
-    async function l(e) {
-        var a, l;
-        let o, d, c = n.useSimStore.getState(), u = s.useLobbySocial.getState().squad, m = c.isAnonymous ? null : c.playerAccountId;
-        if (u && u.leaderId !== m)
-            return !1;
-        let h = (a = i(u, c.xp, c.droneGifts),
-        l = (0,
-        r.flownDrone)(c),
-        o = a.indexOf(l),
-        (d = a[o < 0 ? e > 0 ? 0 : a.length - 1 : (o + e + a.length) % a.length]) && d !== l ? d : null);
-        if (!h || u && !await s.useLobbySocial.getState().act("drone", h))
-            return !1;
-        let p = n.useSimStore.getState();
-        return p.equipDrone(h, (0,
-        t.equippedDroneSkin)(p.settings.drone.skins, h))
+      , l = {
+        x: 158.71,
+        y: 110.49
+    };
+    function o({dotRef: e, cx: s, cy: a, size: i, dot: r, travel: l, restBottom: d=!1}) {
+        return (0,
+        t.jsx)("div", {
+            className: "absolute",
+            style: {
+                left: s,
+                top: a,
+                width: i,
+                height: i,
+                translate: "-50% -50%"
+            },
+            children: (0,
+            t.jsx)("div", {
+                ref: e,
+                className: "sim-stick-dot sim-stick-dot--round absolute top-1/2 left-1/2 bg-(--fdk-orange)",
+                style: {
+                    width: r,
+                    height: r,
+                    translate: (0,
+                    n.stickDotTranslate)(0, +!!d, l)
+                }
+            })
+        })
     }
-    e.s(["droneChoices", 0, i, "lentDrones", 0, function(e, a) {
-        return e && a && e.leaderId !== a ? (0,
-        s.squadDroneChoices)(e) : []
+    e.s(["LessonRadioSticks", 0, function() {
+        let e = (0,
+        a.useRef)(null)
+          , d = (0,
+        a.useRef)(null)
+          , c = Math.max(12, Math.round(12.934524707275889))
+          , u = 33.62976423891731 - c / 2 - 1;
+        return (0,
+        a.useEffect)( () => {
+            let t = 0
+              , s = () => {
+                t = requestAnimationFrame(s),
+                (0,
+                n.writeStickDots)(e.current, d.current, i.live.input, u)
+            }
+            ;
+            return t = requestAnimationFrame(s),
+            () => cancelAnimationFrame(t)
+        }
+        , [u]),
+        (0,
+        t.jsxs)("div", {
+            className: "pointer-events-none relative shrink-0 select-none",
+            style: {
+                width: 268,
+                height: 271.24250394529196
+            },
+            children: [(0,
+            t.jsx)(s.default, {
+                src: "/sim/radio/pocket.svg",
+                alt: "",
+                width: 268,
+                height: Math.round(271.24250394529196),
+                draggable: !1,
+                unoptimized: !0,
+                className: "h-full w-full opacity-80"
+            }), (0,
+            t.jsx)(o, {
+                dotRef: e,
+                cx: 1.2816221127636171 * r.x,
+                cy: 1.2816221127636171 * r.y,
+                size: 67.25952847783462,
+                dot: c,
+                travel: u,
+                restBottom: !0
+            }), (0,
+            t.jsx)(o, {
+                dotRef: d,
+                cx: 1.2816221127636171 * l.x,
+                cy: 1.2816221127636171 * l.y,
+                size: 67.25952847783462,
+                dot: c,
+                travel: u
+            })]
+        })
     }
-    , "rotateDrone", 0, l])
+    , "POCKET_GEOMETRY", 0, {
+        width: 209.11,
+        height: 211.64,
+        left: r,
+        right: l,
+        outerRadius: 26.24,
+        innerRadius: 22.15
+    }])
 }
 ]);
