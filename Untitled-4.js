@@ -1,2323 +1,2626 @@
-(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push(["object" == typeof document ? document.currentScript : void 0, 579612, e => {
-    "use strict";
-    class i extends Error {
-        status;
-        payload;
-        constructor(e, i, t) {
-            super(e),
-            this.status = i,
-            this.payload = t,
-            this.name = "ApiError"
-        }
-        text(e) {
-            let i = this.payload[e];
-            return "string" == typeof i ? i : null
-        }
-    }
-    async function t(e, a, n, s=2e4) {
-        let r;
-        try {
-            r = await fetch(e, {
-                method: "POST",
-                credentials: "same-origin",
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify(a),
-                signal: AbortSignal.timeout(s)
-            })
-        } catch {
-            throw new i(n,0,{})
-        }
-        let o = await r.json().catch( () => null);
-        if (!r.ok)
-            throw new i("string" == typeof o?.error ? o.error : n,r.status,o ?? {});
-        return o
-    }
-    e.s(["ApiError", 0, i, "postJson", 0, t])
+/* constants */
+let _EngineFormat = {
+    "RGBAFormat": 1023,
+    "RGBA_ASTC_4x4_Format": 37808,
+    "RGB_BPTC_UNSIGNED_Format": 36495,
+    "RGBA_BPTC_Format": 36492,
+    "RGBA_ETC2_EAC_Format": 37496,
+    "RGBA_PVRTC_4BPPV1_Format": 35842,
+    "RGBA_S3TC_DXT5_Format": 33779,
+    "RGB_ETC1_Format": 36196,
+    "RGB_ETC2_Format": 37492,
+    "RGB_PVRTC_4BPPV1_Format": 35840,
+    "RGBA_S3TC_DXT1_Format": 33777
 }
-, 552696, e => {
-    "use strict";
-    e.s(["BLOCKED_CHAT_HOLD_MS", 0, 3e3, "BLOCKED_CHAT_LINE", 0, "Easy. That kind of word doesn't fly here.", "CHAT_LENGTH_MESSAGE", 0, "Use 1–400 characters.", "CHAT_LINE_MESSAGE", 0, "Use a single line of text.", "CHAT_LINKS_MESSAGE", 0, "Links are not allowed in player chat.", "CHAT_MAX_LENGTH", 0, 400, "MAP_NAME_LENGTH_MESSAGE", 0, "Map names must be between 1 and 80 characters.", "MAP_NAME_MAX_LENGTH", 0, 80, "NAME_REFUSED", 0, "That name isn't allowed. Try another."])
+let _EngineType = {
+    "UnsignedByteType": 1009,
+    "HalfFloatType": 1016,
+    "FloatType": 1015
 }
-, 698072, e => {
-    "use strict";
-    var i = e.i(353198)
-      , t = e.i(593922)
-      , a = e.i(937769)
-      , n = e.i(629601)
-      , s = e.i(483242);
-    let r = "id,name,map_id,bounds,pits,drones,sort_order,competitive_revision"
-      , o = `${r},entrance`;
-    async function l(e) {
-        let i = await e(o);
-        return (0,
-        a.missingColumn)(i.error) ? await e(r) : i
-    }
-    let d = e => Array.isArray(e) && 3 === e.length && e.every(Number.isFinite)
-      , p = e => !!e && "object" == typeof e && !Array.isArray(e);
-    e.s(["parseArenaRow", 0, function(e) {
-        var a;
-        if (!p(e) || "string" != typeof e.id || "string" != typeof e.name || "string" != typeof e.map_id || !e.map_id.startsWith("official:") || null != e.entrance && !(0,
-        t.isRaceMarker)(e.entrance))
-            return null;
-        let r = p(a = e.bounds) && d(a.position) && Number.isFinite(a.yaw) && d(a.size) ? {
-            position: a.position,
-            yaw: a.yaw,
-            size: a.size
-        } : null
-          , o = Array.isArray(e.pits) && e.pits.length === s.ARENA_TEAMS.length ? s.ARENA_TEAMS.map( (i, t) => {
-            var a;
-            return a = e.pits[t],
-            p(a) && a.team === i && d(a.position) && Number.isFinite(a.yaw) ? {
-                team: i,
-                position: a.position,
-                yaw: a.yaw
-            } : null
-        }
-        ) : []
-          , l = Array.isArray(e.drones) ? e.drones : [];
-        if (!r || 2 !== o.length || o.some(e => !e) || !l.every(e => i.DRONE_IDS.includes(e)) || new Set(l).size !== l.length)
-            return null;
-        let m = {
-            id: e.id,
-            name: e.name,
-            mapId: e.map_id,
-            bounds: r,
-            pits: o,
-            drones: l,
-            competitiveRevision: Math.max(1, e.competitive_revision ?? 1),
-            ...e.entrance ? {
-                entrance: e.entrance
-            } : {}
-        };
-        return (0,
-        n.storedArenaIssues)(m).length ? null : m
-    }
-    , "selectArenas", 0, l])
+let _TranscoderFormat = {
+    "ETC1": 0,
+    "ETC2": 1,
+    "BC1": 2,
+    "BC3": 3,
+    "BC4": 4,
+    "BC5": 5,
+    "BC7_M6_OPAQUE_ONLY": 6,
+    "BC7_M5": 7,
+    "PVRTC1_4_RGB": 8,
+    "PVRTC1_4_RGBA": 9,
+    "ASTC_4x4": 10,
+    "ATC_RGB": 11,
+    "ATC_RGBA_INTERPOLATED_ALPHA": 12,
+    "RGBA32": 13,
+    "RGB565": 14,
+    "BGR565": 15,
+    "RGBA4444": 16,
+    "BC6H": 22,
+    "RGB_HALF": 24,
+    "RGBA_HALF": 25
 }
-, 28276, e => {
-    "use strict";
-    var i = e.i(269176)
-      , t = e.i(760974)
-      , a = e.i(404961)
-      , n = e.i(998494)
-      , s = e.i(424028)
-      , r = e.i(321390);
-    let o = {
-        mapId: "gridworks",
-        frames: [{
-            t: 0,
-            position: [48, .2, 60],
-            rotation: [0, 0, 0, 1]
-        }, {
-            t: 1,
-            position: [48, .2, 60],
-            rotation: [0, 0, 0, 1]
-        }],
-        duration: 1,
-        camera: i.DEFAULT_CHASE_CAMERA
-    }
-      , l = []
-      , d = []
-      , p = []
-      , m = []
-      , c = new Map
-      , f = null
-      , u = new Map;
-    function g(e) {
-        return e.map(e => (0,
-        t.cloneSpawn)(e))
-    }
-    function h(e) {
-        return e ? d.find(i => i.id === e) ?? null : null
-    }
-    e.s(["getArenaDoc", 0, function(e) {
-        return e ? m.find(i => i.id === e) ?? null : null
-    }
-    , "getCatalog", 0, function() {
-        return {
-            courseOrder: l.map(e => e.id),
-            lessonOrder: d.map(e => e.id),
-            timeAttackOrder: p.filter(e => !(0,
-            n.isPersonalMapId)(e.mapId)).map(e => e.id)
-        }
-    }
-    , "getCourseDoc", 0, function(e) {
-        return e ? l.find(i => i.id === e) ?? null : null
-    }
-    , "getLessonDoc", 0, h, "getMenuReplayId", 0, function() {
-        return f
-    }
-    , "getMenuShowcase", 0, function() {
-        let e = f ? c.get(f) : null;
-        return e ? {
-            mapId: e.mapId,
-            frames: e.frames,
-            duration: e.duration,
-            camera: e.camera
-        } : o
-    }
-    , "getReplayById", 0, function(e) {
-        return e ? c.get(e) ?? null : null
-    }
-    , "getTimeAttackDoc", 0, function(e) {
-        return e ? p.find(i => i.id === e) ?? null : null
-    }
-    , "hydrateCurriculum", 0, function(e) {
-        l = e.courses.slice(),
-        d = e.lessons.slice(),
-        p = (e.timeAttacks ?? []).slice(),
-        c = new Map(e.replays.map(e => [e.id, e])),
-        f = e.menuReplayId,
-        (0,
-        s.invalidateLessonWorldCache)()
-    }
-    , "hydrateMapSpawns", 0, function(e) {
-        for (let i of (u = new Map,
-        e))
-            u.set(i.mapId, g(i.spawns))
-    }
-    , "knownMapSpawns", 0, function(e) {
-        let i = u.get(e);
-        return i ? g(i) : (0,
-        a.hasMap)(e) ? g((0,
-        a.mapById)(e).spawns) : null
-    }
-    , "listArenas", 0, function() {
-        return m
-    }
-    , "listCourses", 0, function() {
-        return l
-    }
-    , "listLessons", 0, function() {
-        return d
-    }
-    , "listMapSpawns", 0, function(e) {
-        let i = u.get(e);
-        return i ? g(i) : g((0,
-        a.mapById)(e).spawns)
-    }
-    , "listTimeAttacks", 0, function() {
-        return p
-    }
-    , "patchArenaDoc", 0, function(e) {
-        let i = m.findIndex(i => i.id === e.id);
-        m = i >= 0 ? m.map( (t, a) => a === i ? e : t) : [...m, e]
-    }
-    , "patchCourseDoc", 0, function(e) {
-        let i = l.findIndex(i => i.id === e.id);
-        l = i >= 0 ? l.map( (t, a) => a === i ? e : t) : [...l, e]
-    }
-    , "patchLessonDoc", 0, function(e) {
-        let i = d.findIndex(i => i.id === e.id);
-        d = i >= 0 ? d.map( (t, a) => a === i ? e : t) : [...d, e],
-        (0,
-        s.invalidateLessonWorldCache)(e.id)
-    }
-    , "patchMapSpawns", 0, function(e, i) {
-        (u = new Map(u)).set(e, g(i))
-    }
-    , "patchReplay", 0, function(e) {
-        (c = new Map(c)).set(e.id, e)
-    }
-    , "patchTimeAttackDoc", 0, function(e) {
-        let i = p.findIndex(i => i.id === e.id);
-        p = i >= 0 ? p.map( (t, a) => a === i ? e : t) : [...p, e]
-    }
-    , "removeArenaDoc", 0, function(e) {
-        m = m.filter(i => i.id !== e)
-    }
-    , "removeCourseDoc", 0, function(e) {
-        l = l.filter(i => i.id !== e)
-    }
-    , "removeLessonDoc", 0, function(e) {
-        d = d.filter(i => i.id !== e),
-        l = l.map(i => ({
-            ...i,
-            lessonIds: i.lessonIds.filter(i => i !== e)
-        })),
-        (0,
-        s.invalidateLessonWorldCache)(e)
-    }
-    , "removeReplay", 0, function(e) {
-        c.has(e) && ((c = new Map(c)).delete(e),
-        f === e && (f = null))
-    }
-    , "removeTimeAttackDoc", 0, function(e) {
-        p = p.filter(i => i.id !== e)
-    }
-    , "resetCurriculum", 0, function() {
-        l = [],
-        d = [],
-        p = [],
-        m = [],
-        c = new Map,
-        f = null,
-        u = new Map,
-        (0,
-        r.setCurriculumViewerIsAdmin)(!1)
-    }
-    , "setCatalogOrder", 0, function(e) {
-        let i = new Map(l.map(e => [e.id, e]))
-          , t = new Map(d.map(e => [e.id, e]))
-          , a = []
-          , n = new Set;
-        for (let t of e.courseOrder) {
-            let e = i.get(t);
-            !e || n.has(t) || (n.add(t),
-            a.push(e))
-        }
-        for (let e of l)
-            n.has(e.id) || a.push(e);
-        let s = []
-          , r = new Set;
-        for (let i of e.lessonOrder) {
-            let e = t.get(i);
-            !e || r.has(i) || (r.add(i),
-            s.push(e))
-        }
-        for (let e of d)
-            r.has(e.id) || s.push(e);
-        let o = new Map(p.map(e => [e.id, e]))
-          , m = []
-          , c = new Set;
-        for (let i of e.timeAttackOrder ?? []) {
-            let e = o.get(i);
-            !e || c.has(i) || (c.add(i),
-            m.push(e))
-        }
-        for (let e of p)
-            c.has(e.id) || m.push(e);
-        l = a,
-        d = s,
-        p = m
-    }
-    , "setMenuReplayId", 0, function(e) {
-        f = e
-    }
-    , "stepRecordingFor", 0, function(e, i) {
-        let t = h(e)
-          , a = t?.steps.find(e => e.id === i)
-          , n = a?.replayId ? c.get(a.replayId) : null;
-        return n ? {
-            frames: n.frames,
-            duration: n.duration
-        } : null
-    }
-    ])
+let _BasisFormat = {
+    "ETC1S": 0,
+    "UASTC": 1,
+    "UASTC_HDR": 2
 }
-, 760974, e => {
-    "use strict";
-    var i = e.i(483359);
-    let t = ["#ff4f45", "#37c8dd", "#ffb52e", "#74d94f"]
-      , a = [5, 3.4];
-    function n(e) {
-        return t[e % t.length]
-    }
-    function s(e, i) {
-        let t = i.filter(i => i.id.startsWith(e)).length + 1
-          , a = `${e}${t}`
-          , n = new Set(i.map(e => e.id));
-        for (; n.has(a); )
-            t += 1,
-            a = `${e}${t}`;
-        return a
-    }
-    e.s(["DEFAULT_GATE_SIZE", 0, a, "DEFAULT_LAND_RADIUS", 0, 4, "DUPLICATE_OFFSET_M", 0, 2, "EDITOR_SPAWN_ID", 0, "spawn", "PRACTICE_OBJECTIVE_COLORS", 0, t, "clonePractice", 0, function(e) {
-        return {
-            instruction: e.instruction,
-            objectives: e.objectives.map(e => "gate" === e.kind ? {
-                ...e,
-                position: [...e.position],
-                rotation: [...e.rotation],
-                size: [...e.size]
-            } : {
-                ...e,
-                position: [...e.position]
-            })
+/* basis_transcoder.js */
+
+var BASIS = ( () => {
+    var _scriptName = typeof document != 'undefined' ? document.currentScript?.src : undefined;
+    if (typeof __filename != 'undefined')
+        _scriptName ||= __filename;
+    return (function(moduleArg={}) {
+        var moduleRtn;
+
+        var Module = moduleArg;
+        var readyPromiseResolve, readyPromiseReject;
+        var readyPromise = new Promise( (resolve, reject) => {
+            readyPromiseResolve = resolve;
+            readyPromiseReject = reject
         }
-    }
-    , "cloneSpawn", 0, function(e) {
-        return {
-            ...e,
-            position: [...e.position]
+        );
+        var ENVIRONMENT_IS_WEB = typeof window == "object";
+        var ENVIRONMENT_IS_WORKER = typeof importScripts == "function";
+        var ENVIRONMENT_IS_NODE = typeof process == "object" && typeof process.versions == "object" && typeof process.versions.node == "string";
+        if (ENVIRONMENT_IS_NODE) {}
+        var moduleOverrides = Object.assign({}, Module);
+        var arguments_ = [];
+        var thisProgram = "./this.program";
+        var quit_ = (status, toThrow) => {
+            throw toThrow
         }
-    }
-    , "duplicatePracticeObjective", 0, function(e) {
-        let t = function(e) {
-            if ("gate" !== e.kind)
-                return [2, 0, 0];
-            let {normal: t} = (0,
-            i.gateBasis)(e);
-            return [-(2 * t[0]), -(2 * t[1]), -(2 * t[2])]
-        }(e.source)
-          , a = [e.source.position[0] + t[0], e.source.position[1] + t[1], e.source.position[2] + t[2]];
-        return "gate" === e.source.kind ? {
-            ...e.source,
-            id: s("gate-", e.objectives),
-            position: a,
-            rotation: [...e.source.rotation],
-            size: [...e.source.size]
-        } : {
-            ...e.source,
-            id: s("land-", e.objectives),
-            position: a
-        }
-    }
-    , "makeGateObjective", 0, function(e) {
-        return {
-            kind: "gate",
-            id: s("gate-", e.objectives),
-            color: n(e.objectives.length),
-            position: [...e.position],
-            rotation: e.rotation ? [...e.rotation] : [0, 0, 0],
-            size: [...a]
-        }
-    }
-    , "makeLandObjective", 0, function(e) {
-        return {
-            kind: "land",
-            id: s("land-", e.objectives),
-            color: n(e.objectives.length),
-            position: [...e.position],
-            radius: 4
-        }
-    }
-    , "objectiveTitle", 0, function(e) {
-        return "land" === e.kind ? "Landing" : "Gate"
-    }
-    ])
-}
-, 424028, e => {
-    "use strict";
-    var i = e.i(632526)
-      , t = e.i(404961);
-    let a = new Map;
-    e.s(["invalidateLessonWorldCache", 0, function(e) {
-        e ? a.delete(e) : a.clear()
-    }
-    , "lessonFlightWorld", 0, function(e) {
-        return {
-            ...e,
-            boxes: [],
-            prisms: [],
-            gates: [],
-            props: [],
-            editorDocument: void 0
-        }
-    }
-    , "worldForLesson", 0, function(e) {
-        let n = a.get(e.id);
-        if (n)
-            return n;
-        let s = (0,
-        i.worldForMap)((0,
-        t.resolveMap)(e.mapId))
-          , r = e.hideMapGates ?? !0
-          , o = r ? s.boxes.filter(e => "gate" !== e.kind) : [...s.boxes]
-          , l = r ? [] : [...s.gates]
-          , d = {
-            ...s,
-            boxes: o,
-            gates: l,
-            spawns: [e.spawn, ...s.spawns]
-        };
-        return a.set(e.id, d),
-        d
-    }
-    ])
-}
-, 49925, e => {
-    "use strict";
-    var i = e.i(920755)
-      , t = e.i(424028)
-      , a = e.i(622803)
-      , n = e.i(373636)
-      , s = e.i(35680)
-      , r = e.i(391775)
-      , o = e.i(937769)
-      , l = e.i(28276)
-      , d = e.i(284853);
-    let p = null
-      , m = 0
-      , c = null
-      , f = null;
-    function u(e) {
-        (0,
-        l.patchMapSpawns)("gridworks", e.spawns);
-        let i = new Set(e.attacks.map(e => e.id));
-        for (let e of (0,
-        l.listTimeAttacks)())
-            "gridworks" !== e.mapId || i.has(e.id) || (0,
-            l.removeTimeAttackDoc)(e.id);
-        e.attacks.forEach(l.patchTimeAttackDoc)
-    }
-    function g() {
-        f && u(f),
-        f = null,
-        n.usePublishedGridworks.setState({
-            draftRevision: null
-        }),
-        w(c)
-    }
-    async function h(e) {
-        if ("gridworks" !== e.mapId)
-            throw Error("Only the canonical map supports admin drafts.");
-        let t = a.documentSchema.parse(e)
-          , o = (0,
-        s.personalMapLimitError)(t);
-        if (o)
-            throw Error(o);
-        let {data: d, error: m} = await (0,
-        i.createClient)().rpc("save_gridworks_draft", {
-            p_document: t,
-            p_revision: n.usePublishedGridworks.getState().draftRevision,
-            p_base_revision: p
-        });
-        if (m)
-            throw Error("23505" === m.code ? "Another admin saved a draft. Reload before saving; your local work is preserved." : m.message);
-        if ("number" != typeof d)
-            throw Error("Draft could not be saved.");
-        f ??= {
-            spawns: (0,
-            l.listMapSpawns)("gridworks"),
-            attacks: (0,
-            l.listTimeAttacks)().filter(e => "gridworks" === e.mapId),
-            arenas: []
-        },
-        t.nodes.some(e => e.entity?.kind === "folder") && u((0,
-        r.gameplayPayload)(t)),
-        n.usePublishedGridworks.setState({
-            draftRevision: d
-        }),
-        w(t)
-    }
-    async function v() {
-        let {data: e, error: t} = await (0,
-        i.createClient)().rpc("discard_gridworks_draft", {
-            p_revision: n.usePublishedGridworks.getState().draftRevision
-        });
-        if (t)
-            throw Error(t.message);
-        if (!0 !== e)
-            throw Error("Draft could not be discarded.");
-        g();
-        try {
-            localStorage.removeItem("fd.gridworks-editor.draft.v1")
-        } catch {}
-        await b(),
-        c?.nodes.some(e => e.entity?.kind === "folder") && u((0,
-        r.gameplayPayload)(c))
-    }
-    function w(e) {
-        (0,
-        t.invalidateLessonWorldCache)(),
-        n.usePublishedGridworks.setState(i => ({
-            document: e,
-            revision: i.revision + 1
-        }))
-    }
-    function y(e, i) {
-        m++,
-        p = i,
-        c = e,
-        f = null,
-        n.usePublishedGridworks.setState({
-            draftRevision: null
-        }),
-        w(c)
-    }
-    async function b(e= () => !0) {
-        let t = ++m
-          , {data: n, error: s} = await (0,
-        i.createClient)().from("sim_map_layouts").select("document, revision").eq("map_id", "gridworks").abortSignal(AbortSignal.timeout(15e3)).maybeSingle();
-        if (e() && t === m) {
-            if (s) {
-                if ("PGRST205" === s.code || "42P01" === s.code)
-                    return;
-                throw Error(`Gridworks could not load: ${s.message}`)
+        ;
+        var scriptDirectory = "";
+        function locateFile(path) {
+            if (Module["locateFile"]) {
+                return Module["locateFile"](path, scriptDirectory)
             }
-            y(n ? a.documentSchema.parse(n.document) : null, n?.revision ?? null)
+            return scriptDirectory + path
         }
-    }
-    async function M(e) {
-        if ("gridworks" !== e.mapId)
-            throw Error("Only Gridworks can be saved here.");
-        let t = a.documentSchema.parse(null === n.usePublishedGridworks.getState().draftRevision ? e : (0,
-        r.withGameplay)(e, (0,
-        l.listMapSpawns)("gridworks"), (0,
-        l.listTimeAttacks)()))
-          , m = (0,
-        i.createClient)()
-          , g = (0,
-        s.personalMapLimitError)(t);
-        if (g)
-            throw Error(g);
-        if (t.nodes.some(e => e.entity?.kind === "folder")) {
-            let e = (0,
-            r.gameplayPayload)(t)
-              , i = n.usePublishedGridworks.getState().draftRevision
-              , {data: a, error: s} = await m.rpc(null === i ? "save_gridworks_editor" : "publish_gridworks_draft", {
-                p_document: t,
-                ...null === i ? {
-                    p_revision: p
-                } : {
-                    p_draft_revision: i
-                },
-                p_spawns: e.spawns.map(e => (0,
-                d.transformMapSpawn)("gridworks", e, "to-storage")),
-                p_attacks: e.attacks.map(e => {
-                    let i = (0,
-                    d.transformMapTimeAttack)(e, "to-storage");
-                    return t.nodes.some(i => i.entity?.kind === "attack" && i.entity.sourceId === e.id && 1 === i.entity.raceMetadataVersion) ? {
-                        ...i,
-                        raceMarker: i.raceMarker ?? null,
-                        raceExitSpawn: i.raceExitSpawn ?? null
-                    } : i
+        var readAsync, readBinary;
+        if (ENVIRONMENT_IS_NODE) {
+            var fs = require("fs");
+            var nodePath = require("path");
+            scriptDirectory = __dirname + "/";
+            readBinary = filename => {
+                filename = isFileURI(filename) ? new URL(filename) : nodePath.normalize(filename);
+                var ret = fs.readFileSync(filename);
+                return ret
+            }
+            ;
+            readAsync = (filename, binary=true) => {
+                filename = isFileURI(filename) ? new URL(filename) : nodePath.normalize(filename);
+                return new Promise( (resolve, reject) => {
+                    fs.readFile(filename, binary ? undefined : "utf8", (err, data) => {
+                        if (err)
+                            reject(err);
+                        else
+                            resolve(binary ? data.buffer : data)
+                    }
+                    )
                 }
                 )
-            });
-            if (s)
-                throw Error("23505" === s.code ? "Another admin saved a layout. Your draft is preserved locally. Reload and recover it to review the newer saved layout before replacing it." : s.message);
-            if ("number" != typeof a)
-                throw Error("Save failed. Your draft is still here.");
-            p = a,
-            c = t,
-            f = null,
-            n.usePublishedGridworks.setState({
-                draftRevision: null
-            }),
-            u(e),
-            w(t),
-            await Promise.all(e.attacks.map(async e => {
-                let {data: i, error: t} = await (0,
-                o.selectRaces)(i => m.from("sim_time_attacks").select(i).eq("id", e.id).maybeSingle());
-                if (t)
-                    return void console.warn("[sim] Reload the course before racing after publication.");
-                let a = i && (0,
-                o.parseTimeAttackRow)(i);
-                a && (0,
-                l.patchTimeAttackDoc)(a)
             }
-            ));
-            return
-        }
-        let h = null === p ? await m.from("sim_map_layouts").insert({
-            map_id: "gridworks",
-            document: t,
-            revision: 1
-        }).select("revision").maybeSingle() : await m.from("sim_map_layouts").update({
-            document: t,
-            revision: p + 1
-        }).eq("map_id", "gridworks").eq("revision", p).select("revision").maybeSingle();
-        if (h.error)
-            throw Error("23505" === h.error.code ? "Another admin saved a layout. Your draft is preserved locally. Reload and recover it to review the newer saved layout before replacing it." : h.error.message);
-        if (!h.data)
-            throw Error("Layout changed on the server or write access was denied. Your draft is preserved locally. Reload and recover it to review the newer saved layout before replacing it.");
-        p = h.data.revision,
-        c = t,
-        w(t)
-    }
-    e.s(["discardGridworksDraft", 0, v, "gridworksLayoutRevision", 0, () => {
-        let e = n.usePublishedGridworks.getState().draftRevision;
-        return null === e ? p : -e
-    }
-    , "installPublishedGridworks", 0, y, "loadGridworksLayout", 0, b, "publishedGridworksSnapshot", 0, () => ({
-        document: c,
-        revision: p
-    }), "resetGridworksDraft", 0, g, "saveGridworksDraft", 0, h, "saveGridworksLayout", 0, M])
-}
-, 905387, (e, i, t) => {
-    i.exports = JSON.parse('{"prefabs":{"foundry-bando:default":{"points":1577,"moving":false,"meshes":1397,"triangles":17940},"wind-turbine:default":{"points":40,"moving":true,"meshes":14,"triangles":564},"chimney-tall:default":{"points":90,"moving":false,"meshes":80,"triangles":960},"warehouse-sawtooth:default":{"points":278,"moving":false,"meshes":248,"triangles":2952},"road-straight:default":{"points":23,"moving":false,"meshes":20,"triangles":240},"road-90:default":{"points":22,"moving":false,"meshes":19,"triangles":228},"road-t:default":{"points":28,"moving":false,"meshes":25,"triangles":300},"road-cross:default":{"points":35,"moving":false,"meshes":31,"triangles":372},"house-1:default":{"points":9,"moving":false,"meshes":8,"triangles":92},"house-1:terrace":{"points":21,"moving":false,"meshes":18,"triangles":216},"house-1:porch":{"points":13,"moving":false,"meshes":11,"triangles":128},"house-2:default":{"points":14,"moving":false,"meshes":12,"triangles":140},"house-2:terrace":{"points":25,"moving":false,"meshes":22,"triangles":264},"house-2:porch":{"points":17,"moving":false,"meshes":15,"triangles":176},"skyscraper-10:default":{"points":21,"moving":false,"meshes":18,"triangles":216},"skyscraper-10:arcade":{"points":22,"moving":false,"meshes":19,"triangles":228},"skyscraper-10:skydeck":{"points":21,"moving":false,"meshes":18,"triangles":216},"skyscraper-20:default":{"points":32,"moving":false,"meshes":28,"triangles":336},"skyscraper-20:arcade":{"points":33,"moving":false,"meshes":29,"triangles":348},"skyscraper-20:skydeck":{"points":32,"moving":false,"meshes":28,"triangles":336},"street-light:default":{"points":6,"moving":false,"meshes":5,"triangles":60},"street-light:double":{"points":9,"moving":false,"meshes":8,"triangles":96},"bus-stop:default":{"points":11,"moving":false,"meshes":9,"triangles":108},"bus-stop:open":{"points":9,"moving":false,"meshes":8,"triangles":96},"bus-stop:double":{"points":18,"moving":false,"meshes":16,"triangles":192},"bike-rack:default":{"points":11,"moving":false,"meshes":9,"triangles":108},"bike-rack:five":{"points":17,"moving":false,"meshes":15,"triangles":180},"city-grandstand:covered":{"points":114,"moving":false,"meshes":101,"triangles":1212},"city-grandstand:open":{"points":108,"moving":false,"meshes":96,"triangles":1152},"city-plaza:default":{"points":5,"moving":false,"meshes":4,"triangles":48},"city-crane:hammerhead":{"points":149,"moving":false,"meshes":133,"triangles":1596},"city-crane:luffing":{"points":149,"moving":false,"meshes":133,"triangles":1596},"city-bando:shell":{"points":324,"moving":false,"meshes":289,"triangles":3468},"city-bando:ruin":{"points":322,"moving":false,"meshes":287,"triangles":3444},"city-bando-bridges:single":{"points":576,"moving":false,"meshes":514,"triangles":6168},"city-bando-bridges:double":{"points":587,"moving":false,"meshes":524,"triangles":6288},"ferris-wheel:canopied":{"points":353,"moving":true,"meshes":154,"triangles":1848},"ferris-wheel:open":{"points":270,"moving":true,"meshes":116,"triangles":1392},"city-garage:two":{"points":39,"moving":false,"meshes":34,"triangles":408},"city-garage:four":{"points":70,"moving":false,"meshes":62,"triangles":744},"city-market:skylight":{"points":21,"moving":false,"meshes":18,"triangles":216},"city-market:covered":{"points":17,"moving":false,"meshes":15,"triangles":180},"city-courtyard:arcade":{"points":41,"moving":false,"meshes":36,"triangles":432},"city-courtyard:skywalk":{"points":42,"moving":false,"meshes":37,"triangles":444},"tree-broadleaf:oak":{"points":11,"moving":false,"meshes":7,"triangles":400},"tree-broadleaf:birch":{"points":13,"moving":false,"meshes":8,"triangles":404},"tree-broadleaf:autumn":{"points":11,"moving":false,"meshes":7,"triangles":400,"shape":"oak"},"tree-conifer:fir":{"points":6,"moving":false,"meshes":2,"triangles":369},"tree-conifer:pine":{"points":11,"moving":false,"meshes":7,"triangles":377},"tree-conifer:cypress":{"points":6,"moving":false,"meshes":2,"triangles":328},"tree-palm:single":{"points":5,"moving":false,"meshes":2,"triangles":280},"tree-palm:twin":{"points":10,"moving":false,"meshes":4,"triangles":560},"tree-dead:bare":{"points":10,"moving":false,"meshes":7,"triangles":295},"tree-dead:snapped":{"points":5,"moving":false,"meshes":4,"triangles":99},"street-bench:back":{"points":5,"moving":false,"meshes":4,"triangles":48},"street-bench:flat":{"points":4,"moving":false,"meshes":3,"triangles":36},"street-bollards:posts":{"points":6,"moving":false,"meshes":3,"triangles":288},"street-bollards:rail":{"points":7,"moving":false,"meshes":4,"triangles":300},"street-signal:post":{"points":28,"moving":false,"meshes":6,"triangles":2196},"street-signal:mast":{"points":30,"moving":false,"meshes":7,"triangles":2208},"street-utility:cabinet":{"points":4,"moving":false,"meshes":3,"triangles":36},"street-utility:transformer":{"points":18,"moving":false,"meshes":13,"triangles":408},"street-planter:square":{"points":9,"moving":false,"meshes":7,"triangles":136},"street-planter:long":{"points":12,"moving":false,"meshes":9,"triangles":264},"whoop-park:default":{"points":463,"moving":false,"meshes":389,"triangles":7378},"whoop-supermarket:default":{"points":1054,"moving":false,"meshes":929,"triangles":12444},"box:white":{"points":2,"moving":false,"meshes":1,"triangles":12},"box:grey":{"points":2,"moving":false,"meshes":1,"triangles":12,"shape":"white"},"box:orange":{"points":2,"moving":false,"meshes":1,"triangles":12,"shape":"white"},"sphere:white":{"points":9,"moving":false,"meshes":1,"triangles":720},"sphere:grey":{"points":9,"moving":false,"meshes":1,"triangles":720,"shape":"white"},"sphere:orange":{"points":9,"moving":false,"meshes":1,"triangles":720,"shape":"white"},"cylinder:white":{"points":2,"moving":false,"meshes":1,"triangles":96},"cylinder:grey":{"points":2,"moving":false,"meshes":1,"triangles":96,"shape":"white"},"cylinder:orange":{"points":2,"moving":false,"meshes":1,"triangles":96,"shape":"white"},"cone:white":{"points":2,"moving":false,"meshes":1,"triangles":48},"cone:grey":{"points":2,"moving":false,"meshes":1,"triangles":48,"shape":"white"},"cone:orange":{"points":2,"moving":false,"meshes":1,"triangles":48,"shape":"white"},"pyramid:white":{"points":2,"moving":false,"meshes":1,"triangles":8},"pyramid:grey":{"points":2,"moving":false,"meshes":1,"triangles":8,"shape":"white"},"pyramid:orange":{"points":2,"moving":false,"meshes":1,"triangles":8,"shape":"white"},"torus:white":{"points":9,"moving":false,"meshes":1,"triangles":768},"torus:grey":{"points":9,"moving":false,"meshes":1,"triangles":768,"shape":"white"},"torus:orange":{"points":9,"moving":false,"meshes":1,"triangles":768,"shape":"white"},"slab:white":{"points":2,"moving":false,"meshes":1,"triangles":12},"slab:grey":{"points":2,"moving":false,"meshes":1,"triangles":12,"shape":"white"},"slab:orange":{"points":2,"moving":false,"meshes":1,"triangles":12,"shape":"white"},"wall:white":{"points":2,"moving":false,"meshes":1,"triangles":12},"wall:grey":{"points":2,"moving":false,"meshes":1,"triangles":12,"shape":"white"},"wall:orange":{"points":2,"moving":false,"meshes":1,"triangles":12,"shape":"white"},"wedge:white":{"points":2,"moving":false,"meshes":1,"triangles":8},"wedge:grey":{"points":2,"moving":false,"meshes":1,"triangles":8,"shape":"white"},"wedge:orange":{"points":2,"moving":false,"meshes":1,"triangles":8,"shape":"white"},"chimney:default":{"points":27,"moving":false,"meshes":24,"triangles":288},"tower:default":{"points":23,"moving":false,"meshes":20,"triangles":240},"arch:default":{"points":16,"moving":false,"meshes":14,"triangles":168},"gate:default":{"points":4,"moving":false,"meshes":3,"triangles":36},"loop:default":{"points":4,"moving":false,"meshes":3,"triangles":36},"tunnel:default":{"points":4,"moving":false,"meshes":3,"triangles":36},"slalom:default":{"points":10,"moving":false,"meshes":5,"triangles":480},"container:default":{"points":26,"moving":false,"meshes":23,"triangles":276},"container:open":{"points":30,"moving":false,"meshes":26,"triangles":312},"silo:default":{"points":4,"moving":false,"meshes":2,"triangles":144},"gantry:default":{"points":5,"moving":false,"meshes":4,"triangles":48},"gantry:double":{"points":12,"moving":false,"meshes":10,"triangles":120},"bridge:default":{"points":6,"moving":false,"meshes":5,"triangles":60},"bridge:covered":{"points":14,"moving":false,"meshes":12,"triangles":144},"tower-1:default":{"points":9,"moving":false,"meshes":8,"triangles":96},"tower-2:default":{"points":14,"moving":false,"meshes":12,"triangles":144},"tower-3:default":{"points":18,"moving":false,"meshes":16,"triangles":192},"tower-6:default":{"points":32,"moving":false,"meshes":28,"triangles":336},"tower-8:default":{"points":41,"moving":false,"meshes":36,"triangles":432},"tower-wide:default":{"points":23,"moving":false,"meshes":20,"triangles":240},"gate-micro:default":{"points":4,"moving":false,"meshes":3,"triangles":36},"gate-small:default":{"points":4,"moving":false,"meshes":3,"triangles":36},"gate-wide:default":{"points":4,"moving":false,"meshes":3,"triangles":36},"gate-mega:default":{"points":4,"moving":false,"meshes":3,"triangles":36},"gate-stack-2:default":{"points":5,"moving":false,"meshes":4,"triangles":48},"gate-stack-3:default":{"points":6,"moving":false,"meshes":5,"triangles":60},"gate-stack-4:default":{"points":7,"moving":false,"meshes":6,"triangles":72},"gate-stack-6:default":{"points":9,"moving":false,"meshes":8,"triangles":96},"gate-stack-wide:default":{"points":6,"moving":false,"meshes":5,"triangles":60},"pipe-small:default":{"points":18,"moving":false,"meshes":16,"triangles":192},"pipe-large:default":{"points":18,"moving":false,"meshes":16,"triangles":192},"pipe-long:default":{"points":18,"moving":false,"meshes":16,"triangles":192},"pipe-ring:default":{"points":18,"moving":false,"meshes":16,"triangles":192},"pipe-dive-short:default":{"points":18,"moving":false,"meshes":16,"triangles":192},"pipe-dive-tall:default":{"points":18,"moving":false,"meshes":16,"triangles":192},"pipe-stack:default":{"points":54,"moving":false,"meshes":48,"triangles":576},"bando-small:default":{"points":23,"moving":false,"meshes":20,"triangles":240},"bando-small:city-lot":{"points":23,"moving":false,"meshes":20,"triangles":240},"bando-small:skeleton":{"points":18,"moving":false,"meshes":16,"triangles":192},"bando-small:broken":{"points":22,"moving":false,"meshes":19,"triangles":228},"bando-medium:default":{"points":30,"moving":false,"meshes":26,"triangles":312},"bando-medium:city-lot":{"points":30,"moving":false,"meshes":26,"triangles":312},"bando-medium:skeleton":{"points":23,"moving":false,"meshes":20,"triangles":240},"bando-medium:broken":{"points":26,"moving":false,"meshes":23,"triangles":276},"bando-large:default":{"points":43,"moving":false,"meshes":38,"triangles":456},"bando-large:city-lot":{"points":43,"moving":false,"meshes":38,"triangles":456},"bando-large:skeleton":{"points":32,"moving":false,"meshes":28,"triangles":336},"bando-large:broken":{"points":39,"moving":false,"meshes":34,"triangles":408},"bando-twins:default":{"points":76,"moving":false,"meshes":67,"triangles":804},"bando-twins:city-lot":{"points":76,"moving":false,"meshes":67,"triangles":804},"bando-twins:skeleton":{"points":58,"moving":false,"meshes":51,"triangles":612},"bando-twins:broken":{"points":67,"moving":false,"meshes":59,"triangles":708},"ring-run:default":{"points":90,"moving":false,"meshes":80,"triangles":960},"offset-gates:default":{"points":17,"moving":false,"meshes":15,"triangles":180},"triple-window:default":{"points":11,"moving":false,"meshes":9,"triangles":108},"split-s-deck:default":{"points":6,"moving":false,"meshes":5,"triangles":60},"ladder-bars:default":{"points":14,"moving":false,"meshes":12,"triangles":144}},"primitives":{"box":2,"sphere":9,"cylinder":2,"cone":2,"torus":9,"pyramid":2}}')
-}
-, 391775, e => {
-    "use strict";
-    var i = e.i(792558)
-      , t = e.i(483359)
-      , a = e.i(190072)
-      , n = e.i(622803)
-      , s = e.i(773915)
-      , r = e.i(475127)
-      , o = e.i(353198)
-      , l = e.i(629601)
-      , d = e.i(483242);
-    function p(e) {
-        return {
-            position: new a.Vector3().setFromMatrixPosition(e).toArray(),
-            yaw: r.atan2(e.elements[8], e.elements[10])
-        }
-    }
-    function m(e, i=new a.Matrix4) {
-        return {
-            ...void 0 !== e.competitiveRevision ? {
-                competitiveRevision: e.competitiveRevision
-            } : {},
-            ...e.raceMarker ? {
-                raceMarker: {
-                    ...e.raceMarker,
-                    position: new a.Vector3(...e.raceMarker.position).applyMatrix4(i).toArray()
-                }
-            } : {},
-            ...e.raceExitSpawn ? {
-                raceExitSpawn: {
-                    ...e.raceExitSpawn,
-                    ...p(i.clone().multiply(new a.Matrix4().fromArray((0,
-                    s.compose)(e.raceExitSpawn.position, [0, e.raceExitSpawn.yaw, 0]))))
-                }
-            } : {}
-        }
-    }
-    function c(e, i, t, a=[0, 0, 0], n=[0, 0, 0]) {
-        return {
-            id: crypto.randomUUID(),
-            name: e,
-            parentId: i,
-            entity: t,
-            matrix: (0,
-            s.compose)(a, n),
-            color: "#56d5ed",
-            surface: "flat",
-            ghost: !0
-        }
-    }
-    function f(e, i) {
-        return c(e.label, i, {
-            kind: "spawn",
-            sourceId: e.id,
-            pad: e.pad
-        }, e.position, [0, e.yaw, 0])
-    }
-    function u(e, t) {
-        let a = c(e.name, t, {
-            kind: "attack",
-            sourceId: e.id,
-            raceMetadataVersion: 1,
-            ...m(e)
-        });
-        return [a, f(e.spawn, a.id), ...e.gates.map( (t, n) => ({
-            ...c(`Gate ${n + 1}`, a.id, {
-                kind: "gate",
-                sourceId: t.id,
-                size: t.size
-            }, t.position, t.rotation),
-            color: (0,
-            i.timeAttackGateColor)(n, e.gates.length)
-        }))]
-    }
-    let g = {
-        spawns: "Spawn points",
-        attacks: "Time attacks",
-        arenas: "Arenas"
-    }
-      , h = e => c(g[e], null, {
-        kind: "folder",
-        folder: e
-    })
-      , v = {
-        blue: "Blue pit",
-        red: "Red pit"
-    };
-    function w(e, i) {
-        let t = {
-            ...c(e.name, i, {
-                kind: "arena",
-                sourceId: e.id,
-                size: [...e.bounds.size],
-                drones: [...e.drones],
-                entranceMetadataVersion: 1,
-                ...e.entrance ? {
-                    entrance: {
-                        ...e.entrance,
-                        position: new a.Vector3(...e.entrance.position).applyMatrix4(new a.Matrix4().fromArray((0,
-                        s.compose)(e.bounds.position, [0, e.bounds.yaw, 0])).invert()).toArray()
+            ;
+            if (!Module["thisProgram"] && process.argv.length > 1) {
+                thisProgram = process.argv[1].replace(/\\/g, "/")
+            }
+            arguments_ = process.argv.slice(2);
+            quit_ = (status, toThrow) => {
+                process.exitCode = status;
+                throw toThrow
+            }
+        } else if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {
+            if (ENVIRONMENT_IS_WORKER) {
+                scriptDirectory = self.location.href
+            } else if (typeof document != "undefined" && document.currentScript) {
+                scriptDirectory = document.currentScript.src
+            }
+            if (_scriptName) {
+                scriptDirectory = _scriptName
+            }
+            if (scriptDirectory.startsWith("blob:")) {
+                scriptDirectory = ""
+            } else {
+                scriptDirectory = scriptDirectory.substr(0, scriptDirectory.replace(/[?#].*/, "").lastIndexOf("/") + 1)
+            }
+            {
+                if (ENVIRONMENT_IS_WORKER) {
+                    readBinary = url => {
+                        var xhr = new XMLHttpRequest;
+                        xhr.open("GET", url, false);
+                        xhr.responseType = "arraybuffer";
+                        xhr.send(null);
+                        return new Uint8Array(xhr.response)
                     }
-                } : {}
-            }, e.bounds.position, [0, e.bounds.yaw, 0]),
-            color: "#f2c84b"
+                }
+                readAsync = url => {
+                    if (isFileURI(url)) {
+                        return new Promise( (reject, resolve) => {
+                            var xhr = new XMLHttpRequest;
+                            xhr.open("GET", url, true);
+                            xhr.responseType = "arraybuffer";
+                            xhr.onload = () => {
+                                if (xhr.status == 200 || xhr.status == 0 && xhr.response) {
+                                    resolve(xhr.response)
+                                }
+                                reject(xhr.status)
+                            }
+                            ;
+                            xhr.onerror = reject;
+                            xhr.send(null)
+                        }
+                        )
+                    }
+                    return fetch(url, {
+                        credentials: "same-origin"
+                    }).then(response => {
+                        if (response.ok) {
+                            return response.arrayBuffer()
+                        }
+                        return Promise.reject(new Error(response.status + " : " + response.url))
+                    }
+                    )
+                }
+            }
+        } else {}
+        var out = Module["print"] || console.log.bind(console);
+        var err = Module["printErr"] || console.error.bind(console);
+        Object.assign(Module, moduleOverrides);
+        moduleOverrides = null;
+        if (Module["arguments"])
+            arguments_ = Module["arguments"];
+        if (Module["thisProgram"])
+            thisProgram = Module["thisProgram"];
+        if (Module["quit"])
+            quit_ = Module["quit"];
+        var wasmBinary;
+        if (Module["wasmBinary"])
+            wasmBinary = Module["wasmBinary"];
+        var wasmMemory;
+        var ABORT = false;
+        var EXITSTATUS;
+        var HEAP8, HEAPU8, HEAP16, HEAPU16, HEAP32, HEAPU32, HEAPF32, HEAPF64;
+        function updateMemoryViews() {
+            var b = wasmMemory.buffer;
+            Module["HEAP8"] = HEAP8 = new Int8Array(b);
+            Module["HEAP16"] = HEAP16 = new Int16Array(b);
+            Module["HEAPU8"] = HEAPU8 = new Uint8Array(b);
+            Module["HEAPU16"] = HEAPU16 = new Uint16Array(b);
+            Module["HEAP32"] = HEAP32 = new Int32Array(b);
+            Module["HEAPU32"] = HEAPU32 = new Uint32Array(b);
+            Module["HEAPF32"] = HEAPF32 = new Float32Array(b);
+            Module["HEAPF64"] = HEAPF64 = new Float64Array(b)
         }
-          , n = new a.Matrix4().fromArray(t.matrix).invert();
-        return [t, ...e.pits.map(e => {
-            let i = p(n.clone().multiply(new a.Matrix4().fromArray((0,
-            s.compose)(e.position, [0, e.yaw, 0]))));
-            return {
-                ...c(v[e.team], t.id, {
-                    kind: "pit",
-                    sourceId: e.team,
-                    team: e.team
-                }, i.position, [0, i.yaw, 0]),
-                color: d.TEAM_COLORS[e.team]
+        var __ATPRERUN__ = [];
+        var __ATINIT__ = [];
+        var __ATPOSTRUN__ = [];
+        var runtimeInitialized = false;
+        function preRun() {
+            if (Module["preRun"]) {
+                if (typeof Module["preRun"] == "function")
+                    Module["preRun"] = [Module["preRun"]];
+                while (Module["preRun"].length) {
+                    addOnPreRun(Module["preRun"].shift())
+                }
+            }
+            callRuntimeCallbacks(__ATPRERUN__)
+        }
+        function initRuntime() {
+            runtimeInitialized = true;
+            callRuntimeCallbacks(__ATINIT__)
+        }
+        function postRun() {
+            if (Module["postRun"]) {
+                if (typeof Module["postRun"] == "function")
+                    Module["postRun"] = [Module["postRun"]];
+                while (Module["postRun"].length) {
+                    addOnPostRun(Module["postRun"].shift())
+                }
+            }
+            callRuntimeCallbacks(__ATPOSTRUN__)
+        }
+        function addOnPreRun(cb) {
+            __ATPRERUN__.unshift(cb)
+        }
+        function addOnInit(cb) {
+            __ATINIT__.unshift(cb)
+        }
+        function addOnPostRun(cb) {
+            __ATPOSTRUN__.unshift(cb)
+        }
+        var runDependencies = 0;
+        var runDependencyWatcher = null;
+        var dependenciesFulfilled = null;
+        function addRunDependency(id) {
+            runDependencies++;
+            Module["monitorRunDependencies"]?.(runDependencies)
+        }
+        function removeRunDependency(id) {
+            runDependencies--;
+            Module["monitorRunDependencies"]?.(runDependencies);
+            if (runDependencies == 0) {
+                if (runDependencyWatcher !== null) {
+                    clearInterval(runDependencyWatcher);
+                    runDependencyWatcher = null
+                }
+                if (dependenciesFulfilled) {
+                    var callback = dependenciesFulfilled;
+                    dependenciesFulfilled = null;
+                    callback()
+                }
             }
         }
-        )]
-    }
-    function y(e) {
-        return !e.mapId.startsWith("official:") || e.nodes.some(e => e.entity?.kind === "folder" && "arenas" === e.entity.folder) ? e : {
-            ...e,
-            nodes: [...e.nodes, h("arenas")]
+        function abort(what) {
+            Module["onAbort"]?.(what);
+            what = "Aborted(" + what + ")";
+            err(what);
+            ABORT = true;
+            EXITSTATUS = 1;
+            what += ". Build with -sASSERTIONS for more info.";
+            var e = new WebAssembly.RuntimeError(what);
+            readyPromiseReject(e);
+            throw e
         }
-    }
-    e.s(["arenaNodes", 0, w, "attackNodes", 0, u, "editorGateColor", 0, function(e, t) {
-        let a = e.nodes.filter(e => e.parentId === t.parentId && e.entity?.kind === "gate");
-        return (0,
-        i.timeAttackGateColor)(a.findIndex(e => e.id === t.id), a.length)
-    }
-    , "flipGateMatrix", 0, function(e) {
-        return e.map( (e, i) => i < 3 || i >= 8 && i < 11 ? -e : e)
-    }
-    , "gameplayNode", 0, c, "gameplayPayload", 0, function(e) {
-        let s = (0,
-        n.worldMatrices)(e);
-        function r(e) {
-            return p(s.get(e.id))
+        var dataURIPrefix = "data:application/octet-stream;base64,";
+        var isDataURI = filename => filename.startsWith(dataURIPrefix);
+        var isFileURI = filename => filename.startsWith("file://");
+        function findWasmBinary() {
+            var f = "basis_transcoder.wasm";
+            if (!isDataURI(f)) {
+                return locateFile(f)
+            }
+            return f
         }
-        function o(e) {
-            if (e.entity?.kind !== "spawn")
-                throw Error("Expected a spawn");
+        var wasmBinaryFile;
+        function getBinarySync(file) {
+            if (file == wasmBinaryFile && wasmBinary) {
+                return new Uint8Array(wasmBinary)
+            }
+            if (readBinary) {
+                return readBinary(file)
+            }
+            throw "both async and sync fetching of the wasm failed"
+        }
+        function getBinaryPromise(binaryFile) {
+            if (!wasmBinary) {
+                return readAsync(binaryFile).then(response => new Uint8Array(response), () => getBinarySync(binaryFile))
+            }
+            return Promise.resolve().then( () => getBinarySync(binaryFile))
+        }
+        function instantiateArrayBuffer(binaryFile, imports, receiver) {
+            return getBinaryPromise(binaryFile).then(binary => WebAssembly.instantiate(binary, imports)).then(receiver, reason => {
+                err(`failed to asynchronously prepare wasm: ${reason}`);
+                abort(reason)
+            }
+            )
+        }
+        function instantiateAsync(binary, binaryFile, imports, callback) {
+            if (!binary && typeof WebAssembly.instantiateStreaming == "function" && !isDataURI(binaryFile) && !isFileURI(binaryFile) && !ENVIRONMENT_IS_NODE && typeof fetch == "function") {
+                return fetch(binaryFile, {
+                    credentials: "same-origin"
+                }).then(response => {
+                    var result = WebAssembly.instantiateStreaming(response, imports);
+                    return result.then(callback, function(reason) {
+                        err(`wasm streaming compile failed: ${reason}`);
+                        err("falling back to ArrayBuffer instantiation");
+                        return instantiateArrayBuffer(binaryFile, imports, callback)
+                    })
+                }
+                )
+            }
+            return instantiateArrayBuffer(binaryFile, imports, callback)
+        }
+        function getWasmImports() {
             return {
-                id: e.entity.sourceId,
-                label: e.name,
-                ...r(e),
-                pad: e.entity.pad
+                a: wasmImports
             }
         }
-        return {
-            spawns: e.nodes.filter(i => i.entity?.kind === "spawn" && e.nodes.find(e => e.id === i.parentId)?.entity?.kind === "folder").map(o),
-            attacks: e.nodes.filter(e => e.entity?.kind === "attack").map(a => {
-                let n = a.entity;
-                if (n?.kind !== "attack")
-                    throw Error("Expected a time attack");
-                let r = s.get(a.id);
-                return {
-                    id: n.sourceId,
-                    name: a.name,
-                    mapId: e.mapId,
-                    ...m(n, r),
-                    spawn: o(e.nodes.find(e => e.parentId === a.id && e.entity?.kind === "spawn")),
-                    gates: e.nodes.filter(e => e.parentId === a.id && e.entity?.kind === "gate").map( (e, a, n) => {
-                        if (e.entity?.kind !== "gate")
-                            throw Error("Expected a gate");
-                        let r = s.get(e.id).elements;
-                        return {
-                            id: e.entity.sourceId,
-                            kind: "gate",
-                            position: [r[12], r[13], r[14]],
-                            rotation: (0,
-                            t.gateRotationFromBasis)([r[0], r[1], r[2]], [r[4], r[5], r[6]], [r[8], r[9], r[10]]),
-                            color: (0,
-                            i.timeAttackGateColor)(a, n.length),
-                            size: e.entity.size
+        function createWasm() {
+            var info = getWasmImports();
+            function receiveInstance(instance, module) {
+                wasmExports = instance.exports;
+                wasmMemory = wasmExports["L"];
+                updateMemoryViews();
+                wasmTable = wasmExports["P"];
+                addOnInit(wasmExports["M"]);
+                removeRunDependency("wasm-instantiate");
+                return wasmExports
+            }
+            addRunDependency("wasm-instantiate");
+            function receiveInstantiationResult(result) {
+                receiveInstance(result["instance"])
+            }
+            if (Module["instantiateWasm"]) {
+                try {
+                    return Module["instantiateWasm"](info, receiveInstance)
+                } catch (e) {
+                    err(`Module.instantiateWasm callback failed with error: ${e}`);
+                    readyPromiseReject(e)
+                }
+            }
+            if (!wasmBinaryFile)
+                wasmBinaryFile = findWasmBinary();
+            instantiateAsync(wasmBinary, wasmBinaryFile, info, receiveInstantiationResult).catch(readyPromiseReject);
+            return {}
+        }
+        var callRuntimeCallbacks = callbacks => {
+            while (callbacks.length > 0) {
+                callbacks.shift()(Module)
+            }
+        }
+        ;
+        var noExitRuntime = Module["noExitRuntime"] || true;
+        class ExceptionInfo {
+            constructor(excPtr) {
+                this.excPtr = excPtr;
+                this.ptr = excPtr - 24
+            }
+            set_type(type) {
+                HEAPU32[this.ptr + 4 >> 2] = type
+            }
+            get_type() {
+                return HEAPU32[this.ptr + 4 >> 2]
+            }
+            set_destructor(destructor) {
+                HEAPU32[this.ptr + 8 >> 2] = destructor
+            }
+            get_destructor() {
+                return HEAPU32[this.ptr + 8 >> 2]
+            }
+            set_caught(caught) {
+                caught = caught ? 1 : 0;
+                HEAP8[this.ptr + 12] = caught
+            }
+            get_caught() {
+                return HEAP8[this.ptr + 12] != 0
+            }
+            set_rethrown(rethrown) {
+                rethrown = rethrown ? 1 : 0;
+                HEAP8[this.ptr + 13] = rethrown
+            }
+            get_rethrown() {
+                return HEAP8[this.ptr + 13] != 0
+            }
+            init(type, destructor) {
+                this.set_adjusted_ptr(0);
+                this.set_type(type);
+                this.set_destructor(destructor)
+            }
+            set_adjusted_ptr(adjustedPtr) {
+                HEAPU32[this.ptr + 16 >> 2] = adjustedPtr
+            }
+            get_adjusted_ptr() {
+                return HEAPU32[this.ptr + 16 >> 2]
+            }
+            get_exception_ptr() {
+                var isPointer = ___cxa_is_pointer_type(this.get_type());
+                if (isPointer) {
+                    return HEAPU32[this.excPtr >> 2]
+                }
+                var adjusted = this.get_adjusted_ptr();
+                if (adjusted !== 0)
+                    return adjusted;
+                return this.excPtr
+            }
+        }
+        var exceptionLast = 0;
+        var uncaughtExceptionCount = 0;
+        var ___cxa_throw = (ptr, type, destructor) => {
+            var info = new ExceptionInfo(ptr);
+            info.init(type, destructor);
+            exceptionLast = ptr;
+            uncaughtExceptionCount++;
+            throw exceptionLast
+        }
+        ;
+        var __abort_js = () => {
+            abort("")
+        }
+        ;
+        var structRegistrations = {};
+        var runDestructors = destructors => {
+            while (destructors.length) {
+                var ptr = destructors.pop();
+                var del = destructors.pop();
+                del(ptr)
+            }
+        }
+        ;
+        function readPointer(pointer) {
+            return this["fromWireType"](HEAPU32[pointer >> 2])
+        }
+        var awaitingDependencies = {};
+        var registeredTypes = {};
+        var typeDependencies = {};
+        var InternalError;
+        var throwInternalError = message => {
+            throw new InternalError(message)
+        }
+        ;
+        var whenDependentTypesAreResolved = (myTypes, dependentTypes, getTypeConverters) => {
+            myTypes.forEach(function(type) {
+                typeDependencies[type] = dependentTypes
+            });
+            function onComplete(typeConverters) {
+                var myTypeConverters = getTypeConverters(typeConverters);
+                if (myTypeConverters.length !== myTypes.length) {
+                    throwInternalError("Mismatched type converter count")
+                }
+                for (var i = 0; i < myTypes.length; ++i) {
+                    registerType(myTypes[i], myTypeConverters[i])
+                }
+            }
+            var typeConverters = new Array(dependentTypes.length);
+            var unregisteredTypes = [];
+            var registered = 0;
+            dependentTypes.forEach( (dt, i) => {
+                if (registeredTypes.hasOwnProperty(dt)) {
+                    typeConverters[i] = registeredTypes[dt]
+                } else {
+                    unregisteredTypes.push(dt);
+                    if (!awaitingDependencies.hasOwnProperty(dt)) {
+                        awaitingDependencies[dt] = []
+                    }
+                    awaitingDependencies[dt].push( () => {
+                        typeConverters[i] = registeredTypes[dt];
+                        ++registered;
+                        if (registered === unregisteredTypes.length) {
+                            onComplete(typeConverters)
                         }
                     }
                     )
                 }
             }
-            ),
-            arenas: e.mapId.startsWith("official:") ? e.nodes.flatMap(i => {
-                let t = i.entity;
-                if (t?.kind !== "arena")
-                    return [];
-                let n = d.ARENA_TEAMS.map(t => {
-                    let a = e.nodes.find(e => e.parentId === i.id && e.entity?.kind === "pit" && e.entity.team === t);
-                    return {
-                        team: t,
-                        ...r(a)
+            );
+            if (0 === unregisteredTypes.length) {
+                onComplete(typeConverters)
+            }
+        }
+        ;
+        var __embind_finalize_value_object = structType => {
+            var reg = structRegistrations[structType];
+            delete structRegistrations[structType];
+            var rawConstructor = reg.rawConstructor;
+            var rawDestructor = reg.rawDestructor;
+            var fieldRecords = reg.fields;
+            var fieldTypes = fieldRecords.map(field => field.getterReturnType).concat(fieldRecords.map(field => field.setterArgumentType));
+            whenDependentTypesAreResolved([structType], fieldTypes, fieldTypes => {
+                var fields = {};
+                fieldRecords.forEach( (field, i) => {
+                    var fieldName = field.fieldName;
+                    var getterReturnType = fieldTypes[i];
+                    var getter = field.getter;
+                    var getterContext = field.getterContext;
+                    var setterArgumentType = fieldTypes[i + fieldRecords.length];
+                    var setter = field.setter;
+                    var setterContext = field.setterContext;
+                    fields[fieldName] = {
+                        read: ptr => getterReturnType["fromWireType"](getter(getterContext, ptr)),
+                        write: (ptr, o) => {
+                            var destructors = [];
+                            setter(setterContext, ptr, setterArgumentType["toWireType"](destructors, o));
+                            runDestructors(destructors)
+                        }
                     }
                 }
                 );
                 return [{
-                    id: t.sourceId,
-                    name: i.name,
-                    mapId: e.mapId,
-                    bounds: {
-                        ...r(i),
-                        size: [...t.size]
-                    },
-                    pits: n,
-                    drones: [...t.drones],
-                    ...t.entrance ? {
-                        entrance: {
-                            ...t.entrance,
-                            position: new a.Vector3(...t.entrance.position).applyMatrix4(s.get(i.id)).toArray()
+                    name: reg.name,
+                    fromWireType: ptr => {
+                        var rv = {};
+                        for (var i in fields) {
+                            rv[i] = fields[i].read(ptr)
                         }
-                    } : {}
+                        rawDestructor(ptr);
+                        return rv
+                    }
+                    ,
+                    toWireType: (destructors, o) => {
+                        for (var fieldName in fields) {
+                            if (!(fieldName in o)) {
+                                throw new TypeError(`Missing field: "${fieldName}"`)
+                            }
+                        }
+                        var ptr = rawConstructor();
+                        for (fieldName in fields) {
+                            fields[fieldName].write(ptr, o[fieldName])
+                        }
+                        if (destructors !== null) {
+                            destructors.push(rawDestructor, ptr)
+                        }
+                        return ptr
+                    }
+                    ,
+                    argPackAdvance: GenericWireTypeSize,
+                    readValueFromPointer: readPointer,
+                    destructorFunction: rawDestructor
                 }]
             }
-            ) : []
+            )
         }
-    }
-    , "newArena", 0, function(e) {
-        let[,,i] = l.DEFAULT_ARENA_SIZE
-          , t = i / 2 - 5;
-        return w({
-            id: crypto.randomUUID(),
-            name: "New arena",
-            bounds: {
-                position: [0, 0, 0],
-                yaw: 0,
-                size: l.DEFAULT_ARENA_SIZE
-            },
-            pits: [{
-                team: "blue",
-                position: [0, .2, t],
-                yaw: 0
-            }, {
-                team: "red",
-                position: [0, .2, -t],
-                yaw: Math.PI
-            }],
-            drones: [...o.DRONE_LADDER]
-        }, e)
-    }
-    , "newAttack", 0, function(e, i="gridworks") {
-        return u({
-            id: crypto.randomUUID(),
-            name: "New time attack",
-            mapId: i,
-            spawn: {
-                id: "restart",
-                label: "Restart spawn",
-                position: [0, .2, 5],
-                yaw: 0,
-                pad: !0
-            },
-            gates: [0, 1].map(e => ({
-                id: `gate-${e + 1}`,
-                kind: "gate",
-                position: [0, 3, -(10 * e)],
-                rotation: [0, 0, 0],
-                size: [4, 4],
-                color: "#56d5ed"
-            }))
-        }, e)
-    }
-    , "renumberGates", 0, function(e) {
-        let i = new Map
-          , t = !1
-          , a = e.nodes.map(e => {
-            if (e.entity?.kind !== "gate")
-                return e;
-            let a = (i.get(e.parentId) ?? 0) + 1;
-            i.set(e.parentId, a);
-            let n = `Gate ${a}`;
-            return e.name === n ? e : (t = !0,
-            {
-                ...e,
-                name: n
-            })
+        ;
+        var __embind_register_bigint = (primitiveType, name, size, minRange, maxRange) => {}
+        ;
+        var embind_init_charCodes = () => {
+            var codes = new Array(256);
+            for (var i = 0; i < 256; ++i) {
+                codes[i] = String.fromCharCode(i)
+            }
+            embind_charCodes = codes
         }
-        );
-        return t ? {
-            ...e,
-            nodes: a
-        } : e
-    }
-    , "spawnNode", 0, f, "withGameplay", 0, function(e, i, t, s=[]) {
-        if (e.nodes.some(e => e.entity)) {
-            var r, o, l, d;
-            let i, p, c, f, u, g;
-            return y((l = (r = e,
-            o = t,
-            i = (0,
-            n.worldMatrices)(r),
-            p = !1,
-            c = r.nodes.map(e => {
-                let t = e.entity;
-                if (t?.kind !== "attack" || 1 === t.raceMetadataVersion)
-                    return e;
-                let a = o.find(e => e.id === t.sourceId && e.mapId === r.mapId);
-                if (!a)
-                    return e;
-                let n = m(a, i.get(e.id).clone().invert());
-                if (void 0 === n.competitiveRevision && !n.raceMarker && !n.raceExitSpawn)
-                    return e;
-                let s = {
-                    raceMetadataVersion: 1,
-                    ...void 0 === t.competitiveRevision && void 0 !== n.competitiveRevision ? {
-                        competitiveRevision: n.competitiveRevision
-                    } : {},
-                    ...!t.raceMarker && n.raceMarker ? {
-                        raceMarker: n.raceMarker
-                    } : {},
-                    ...!t.raceExitSpawn && n.raceExitSpawn ? {
-                        raceExitSpawn: n.raceExitSpawn
-                    } : {}
-                };
-                return p = !0,
-                {
-                    ...e,
-                    entity: {
-                        ...t,
-                        ...s
-                    }
+        ;
+        var embind_charCodes;
+        var readLatin1String = ptr => {
+            var ret = "";
+            var c = ptr;
+            while (HEAPU8[c]) {
+                ret += embind_charCodes[HEAPU8[c++]]
+            }
+            return ret
+        }
+        ;
+        var BindingError;
+        var throwBindingError = message => {
+            throw new BindingError(message)
+        }
+        ;
+        function sharedRegisterType(rawType, registeredInstance, options={}) {
+            var name = registeredInstance.name;
+            if (!rawType) {
+                throwBindingError(`type "${name}" must have a positive integer typeid pointer`)
+            }
+            if (registeredTypes.hasOwnProperty(rawType)) {
+                if (options.ignoreDuplicateRegistrations) {
+                    return
+                } else {
+                    throwBindingError(`Cannot register type '${name}' twice`)
                 }
             }
-            ),
-            p ? {
-                ...r,
-                nodes: c
-            } : r),
-            d = s,
-            f = (0,
-            n.worldMatrices)(l),
-            u = !1,
-            g = l.nodes.map(e => {
-                let i = e.entity;
-                if (i?.kind !== "arena" || 1 === i.entranceMetadataVersion || i.entrance)
-                    return e;
-                let t = d.find(e => e.id === i.sourceId && e.mapId === l.mapId);
-                return t?.entrance ? (u = !0,
-                {
-                    ...e,
-                    entity: {
-                        ...i,
-                        entranceMetadataVersion: 1,
-                        entrance: {
-                            ...t.entrance,
-                            position: new a.Vector3(...t.entrance.position).applyMatrix4(f.get(e.id).clone().invert()).toArray()
+            registeredTypes[rawType] = registeredInstance;
+            delete typeDependencies[rawType];
+            if (awaitingDependencies.hasOwnProperty(rawType)) {
+                var callbacks = awaitingDependencies[rawType];
+                delete awaitingDependencies[rawType];
+                callbacks.forEach(cb => cb())
+            }
+        }
+        function registerType(rawType, registeredInstance, options={}) {
+            if (!("argPackAdvance" in registeredInstance)) {
+                throw new TypeError("registerType registeredInstance requires argPackAdvance")
+            }
+            return sharedRegisterType(rawType, registeredInstance, options)
+        }
+        var GenericWireTypeSize = 8;
+        var __embind_register_bool = (rawType, name, trueValue, falseValue) => {
+            name = readLatin1String(name);
+            registerType(rawType, {
+                name: name,
+                fromWireType: function(wt) {
+                    return !!wt
+                },
+                toWireType: function(destructors, o) {
+                    return o ? trueValue : falseValue
+                },
+                argPackAdvance: GenericWireTypeSize,
+                readValueFromPointer: function(pointer) {
+                    return this["fromWireType"](HEAPU8[pointer])
+                },
+                destructorFunction: null
+            })
+        }
+        ;
+        var shallowCopyInternalPointer = o => ({
+            count: o.count,
+            deleteScheduled: o.deleteScheduled,
+            preservePointerOnDelete: o.preservePointerOnDelete,
+            ptr: o.ptr,
+            ptrType: o.ptrType,
+            smartPtr: o.smartPtr,
+            smartPtrType: o.smartPtrType
+        });
+        var throwInstanceAlreadyDeleted = obj => {
+            function getInstanceTypeName(handle) {
+                return handle.$$.ptrType.registeredClass.name
+            }
+            throwBindingError(getInstanceTypeName(obj) + " instance already deleted")
+        }
+        ;
+        var finalizationRegistry = false;
+        var detachFinalizer = handle => {}
+        ;
+        var runDestructor = $$ => {
+            if ($$.smartPtr) {
+                $$.smartPtrType.rawDestructor($$.smartPtr)
+            } else {
+                $$.ptrType.registeredClass.rawDestructor($$.ptr)
+            }
+        }
+        ;
+        var releaseClassHandle = $$ => {
+            $$.count.value -= 1;
+            var toDelete = 0 === $$.count.value;
+            if (toDelete) {
+                runDestructor($$)
+            }
+        }
+        ;
+        var downcastPointer = (ptr, ptrClass, desiredClass) => {
+            if (ptrClass === desiredClass) {
+                return ptr
+            }
+            if (undefined === desiredClass.baseClass) {
+                return null
+            }
+            var rv = downcastPointer(ptr, ptrClass, desiredClass.baseClass);
+            if (rv === null) {
+                return null
+            }
+            return desiredClass.downcast(rv)
+        }
+        ;
+        var registeredPointers = {};
+        var getInheritedInstanceCount = () => Object.keys(registeredInstances).length;
+        var getLiveInheritedInstances = () => {
+            var rv = [];
+            for (var k in registeredInstances) {
+                if (registeredInstances.hasOwnProperty(k)) {
+                    rv.push(registeredInstances[k])
+                }
+            }
+            return rv
+        }
+        ;
+        var deletionQueue = [];
+        var flushPendingDeletes = () => {
+            while (deletionQueue.length) {
+                var obj = deletionQueue.pop();
+                obj.$$.deleteScheduled = false;
+                obj["delete"]()
+            }
+        }
+        ;
+        var delayFunction;
+        var setDelayFunction = fn => {
+            delayFunction = fn;
+            if (deletionQueue.length && delayFunction) {
+                delayFunction(flushPendingDeletes)
+            }
+        }
+        ;
+        var init_embind = () => {
+            Module["getInheritedInstanceCount"] = getInheritedInstanceCount;
+            Module["getLiveInheritedInstances"] = getLiveInheritedInstances;
+            Module["flushPendingDeletes"] = flushPendingDeletes;
+            Module["setDelayFunction"] = setDelayFunction
+        }
+        ;
+        var registeredInstances = {};
+        var getBasestPointer = (class_, ptr) => {
+            if (ptr === undefined) {
+                throwBindingError("ptr should not be undefined")
+            }
+            while (class_.baseClass) {
+                ptr = class_.upcast(ptr);
+                class_ = class_.baseClass
+            }
+            return ptr
+        }
+        ;
+        var getInheritedInstance = (class_, ptr) => {
+            ptr = getBasestPointer(class_, ptr);
+            return registeredInstances[ptr]
+        }
+        ;
+        var makeClassHandle = (prototype, record) => {
+            if (!record.ptrType || !record.ptr) {
+                throwInternalError("makeClassHandle requires ptr and ptrType")
+            }
+            var hasSmartPtrType = !!record.smartPtrType;
+            var hasSmartPtr = !!record.smartPtr;
+            if (hasSmartPtrType !== hasSmartPtr) {
+                throwInternalError("Both smartPtrType and smartPtr must be specified")
+            }
+            record.count = {
+                value: 1
+            };
+            return attachFinalizer(Object.create(prototype, {
+                $$: {
+                    value: record,
+                    writable: true
+                }
+            }))
+        }
+        ;
+        function RegisteredPointer_fromWireType(ptr) {
+            var rawPointer = this.getPointee(ptr);
+            if (!rawPointer) {
+                this.destructor(ptr);
+                return null
+            }
+            var registeredInstance = getInheritedInstance(this.registeredClass, rawPointer);
+            if (undefined !== registeredInstance) {
+                if (0 === registeredInstance.$$.count.value) {
+                    registeredInstance.$$.ptr = rawPointer;
+                    registeredInstance.$$.smartPtr = ptr;
+                    return registeredInstance["clone"]()
+                } else {
+                    var rv = registeredInstance["clone"]();
+                    this.destructor(ptr);
+                    return rv
+                }
+            }
+            function makeDefaultHandle() {
+                if (this.isSmartPointer) {
+                    return makeClassHandle(this.registeredClass.instancePrototype, {
+                        ptrType: this.pointeeType,
+                        ptr: rawPointer,
+                        smartPtrType: this,
+                        smartPtr: ptr
+                    })
+                } else {
+                    return makeClassHandle(this.registeredClass.instancePrototype, {
+                        ptrType: this,
+                        ptr: ptr
+                    })
+                }
+            }
+            var actualType = this.registeredClass.getActualType(rawPointer);
+            var registeredPointerRecord = registeredPointers[actualType];
+            if (!registeredPointerRecord) {
+                return makeDefaultHandle.call(this)
+            }
+            var toType;
+            if (this.isConst) {
+                toType = registeredPointerRecord.constPointerType
+            } else {
+                toType = registeredPointerRecord.pointerType
+            }
+            var dp = downcastPointer(rawPointer, this.registeredClass, toType.registeredClass);
+            if (dp === null) {
+                return makeDefaultHandle.call(this)
+            }
+            if (this.isSmartPointer) {
+                return makeClassHandle(toType.registeredClass.instancePrototype, {
+                    ptrType: toType,
+                    ptr: dp,
+                    smartPtrType: this,
+                    smartPtr: ptr
+                })
+            } else {
+                return makeClassHandle(toType.registeredClass.instancePrototype, {
+                    ptrType: toType,
+                    ptr: dp
+                })
+            }
+        }
+        var attachFinalizer = handle => {
+            if ("undefined" === typeof FinalizationRegistry) {
+                attachFinalizer = handle => handle;
+                return handle
+            }
+            finalizationRegistry = new FinalizationRegistry(info => {
+                releaseClassHandle(info.$$)
+            }
+            );
+            attachFinalizer = handle => {
+                var $$ = handle.$$;
+                var hasSmartPtr = !!$$.smartPtr;
+                if (hasSmartPtr) {
+                    var info = {
+                        $$: $$
+                    };
+                    finalizationRegistry.register(handle, info, handle)
+                }
+                return handle
+            }
+            ;
+            detachFinalizer = handle => finalizationRegistry.unregister(handle);
+            return attachFinalizer(handle)
+        }
+        ;
+        var init_ClassHandle = () => {
+            Object.assign(ClassHandle.prototype, {
+                isAliasOf(other) {
+                    if (!(this instanceof ClassHandle)) {
+                        return false
+                    }
+                    if (!(other instanceof ClassHandle)) {
+                        return false
+                    }
+                    var leftClass = this.$$.ptrType.registeredClass;
+                    var left = this.$$.ptr;
+                    other.$$ = other.$$;
+                    var rightClass = other.$$.ptrType.registeredClass;
+                    var right = other.$$.ptr;
+                    while (leftClass.baseClass) {
+                        left = leftClass.upcast(left);
+                        leftClass = leftClass.baseClass
+                    }
+                    while (rightClass.baseClass) {
+                        right = rightClass.upcast(right);
+                        rightClass = rightClass.baseClass
+                    }
+                    return leftClass === rightClass && left === right
+                },
+                clone() {
+                    if (!this.$$.ptr) {
+                        throwInstanceAlreadyDeleted(this)
+                    }
+                    if (this.$$.preservePointerOnDelete) {
+                        this.$$.count.value += 1;
+                        return this
+                    } else {
+                        var clone = attachFinalizer(Object.create(Object.getPrototypeOf(this), {
+                            $$: {
+                                value: shallowCopyInternalPointer(this.$$)
+                            }
+                        }));
+                        clone.$$.count.value += 1;
+                        clone.$$.deleteScheduled = false;
+                        return clone
+                    }
+                },
+                delete() {
+                    if (!this.$$.ptr) {
+                        throwInstanceAlreadyDeleted(this)
+                    }
+                    if (this.$$.deleteScheduled && !this.$$.preservePointerOnDelete) {
+                        throwBindingError("Object already scheduled for deletion")
+                    }
+                    detachFinalizer(this);
+                    releaseClassHandle(this.$$);
+                    if (!this.$$.preservePointerOnDelete) {
+                        this.$$.smartPtr = undefined;
+                        this.$$.ptr = undefined
+                    }
+                },
+                isDeleted() {
+                    return !this.$$.ptr
+                },
+                deleteLater() {
+                    if (!this.$$.ptr) {
+                        throwInstanceAlreadyDeleted(this)
+                    }
+                    if (this.$$.deleteScheduled && !this.$$.preservePointerOnDelete) {
+                        throwBindingError("Object already scheduled for deletion")
+                    }
+                    deletionQueue.push(this);
+                    if (deletionQueue.length === 1 && delayFunction) {
+                        delayFunction(flushPendingDeletes)
+                    }
+                    this.$$.deleteScheduled = true;
+                    return this
+                }
+            })
+        }
+        ;
+        function ClassHandle() {}
+        var createNamedFunction = (name, body) => Object.defineProperty(body, "name", {
+            value: name
+        });
+        var ensureOverloadTable = (proto, methodName, humanName) => {
+            if (undefined === proto[methodName].overloadTable) {
+                var prevFunc = proto[methodName];
+                proto[methodName] = function(...args) {
+                    if (!proto[methodName].overloadTable.hasOwnProperty(args.length)) {
+                        throwBindingError(`Function '${humanName}' called with an invalid number of arguments (${args.length}) - expects one of (${proto[methodName].overloadTable})!`)
+                    }
+                    return proto[methodName].overloadTable[args.length].apply(this, args)
+                }
+                ;
+                proto[methodName].overloadTable = [];
+                proto[methodName].overloadTable[prevFunc.argCount] = prevFunc
+            }
+        }
+        ;
+        var exposePublicSymbol = (name, value, numArguments) => {
+            if (Module.hasOwnProperty(name)) {
+                if (undefined === numArguments || undefined !== Module[name].overloadTable && undefined !== Module[name].overloadTable[numArguments]) {
+                    throwBindingError(`Cannot register public name '${name}' twice`)
+                }
+                ensureOverloadTable(Module, name, name);
+                if (Module.hasOwnProperty(numArguments)) {
+                    throwBindingError(`Cannot register multiple overloads of a function with the same number of arguments (${numArguments})!`)
+                }
+                Module[name].overloadTable[numArguments] = value
+            } else {
+                Module[name] = value;
+                if (undefined !== numArguments) {
+                    Module[name].numArguments = numArguments
+                }
+            }
+        }
+        ;
+        var char_0 = 48;
+        var char_9 = 57;
+        var makeLegalFunctionName = name => {
+            if (undefined === name) {
+                return "_unknown"
+            }
+            name = name.replace(/[^a-zA-Z0-9_]/g, "$");
+            var f = name.charCodeAt(0);
+            if (f >= char_0 && f <= char_9) {
+                return `_${name}`
+            }
+            return name
+        }
+        ;
+        function RegisteredClass(name, constructor, instancePrototype, rawDestructor, baseClass, getActualType, upcast, downcast) {
+            this.name = name;
+            this.constructor = constructor;
+            this.instancePrototype = instancePrototype;
+            this.rawDestructor = rawDestructor;
+            this.baseClass = baseClass;
+            this.getActualType = getActualType;
+            this.upcast = upcast;
+            this.downcast = downcast;
+            this.pureVirtualFunctions = []
+        }
+        var upcastPointer = (ptr, ptrClass, desiredClass) => {
+            while (ptrClass !== desiredClass) {
+                if (!ptrClass.upcast) {
+                    throwBindingError(`Expected null or instance of ${desiredClass.name}, got an instance of ${ptrClass.name}`)
+                }
+                ptr = ptrClass.upcast(ptr);
+                ptrClass = ptrClass.baseClass
+            }
+            return ptr
+        }
+        ;
+        function constNoSmartPtrRawPointerToWireType(destructors, handle) {
+            if (handle === null) {
+                if (this.isReference) {
+                    throwBindingError(`null is not a valid ${this.name}`)
+                }
+                return 0
+            }
+            if (!handle.$$) {
+                throwBindingError(`Cannot pass "${embindRepr(handle)}" as a ${this.name}`)
+            }
+            if (!handle.$$.ptr) {
+                throwBindingError(`Cannot pass deleted object as a pointer of type ${this.name}`)
+            }
+            var handleClass = handle.$$.ptrType.registeredClass;
+            var ptr = upcastPointer(handle.$$.ptr, handleClass, this.registeredClass);
+            return ptr
+        }
+        function genericPointerToWireType(destructors, handle) {
+            var ptr;
+            if (handle === null) {
+                if (this.isReference) {
+                    throwBindingError(`null is not a valid ${this.name}`)
+                }
+                if (this.isSmartPointer) {
+                    ptr = this.rawConstructor();
+                    if (destructors !== null) {
+                        destructors.push(this.rawDestructor, ptr)
+                    }
+                    return ptr
+                } else {
+                    return 0
+                }
+            }
+            if (!handle || !handle.$$) {
+                throwBindingError(`Cannot pass "${embindRepr(handle)}" as a ${this.name}`)
+            }
+            if (!handle.$$.ptr) {
+                throwBindingError(`Cannot pass deleted object as a pointer of type ${this.name}`)
+            }
+            if (!this.isConst && handle.$$.ptrType.isConst) {
+                throwBindingError(`Cannot convert argument of type ${handle.$$.smartPtrType ? handle.$$.smartPtrType.name : handle.$$.ptrType.name} to parameter type ${this.name}`)
+            }
+            var handleClass = handle.$$.ptrType.registeredClass;
+            ptr = upcastPointer(handle.$$.ptr, handleClass, this.registeredClass);
+            if (this.isSmartPointer) {
+                if (undefined === handle.$$.smartPtr) {
+                    throwBindingError("Passing raw pointer to smart pointer is illegal")
+                }
+                switch (this.sharingPolicy) {
+                case 0:
+                    if (handle.$$.smartPtrType === this) {
+                        ptr = handle.$$.smartPtr
+                    } else {
+                        throwBindingError(`Cannot convert argument of type ${handle.$$.smartPtrType ? handle.$$.smartPtrType.name : handle.$$.ptrType.name} to parameter type ${this.name}`)
+                    }
+                    break;
+                case 1:
+                    ptr = handle.$$.smartPtr;
+                    break;
+                case 2:
+                    if (handle.$$.smartPtrType === this) {
+                        ptr = handle.$$.smartPtr
+                    } else {
+                        var clonedHandle = handle["clone"]();
+                        ptr = this.rawShare(ptr, Emval.toHandle( () => clonedHandle["delete"]()));
+                        if (destructors !== null) {
+                            destructors.push(this.rawDestructor, ptr)
                         }
                     }
-                }) : e
-            }
-            ),
-            u ? {
-                ...l,
-                nodes: g
-            } : l))
-        }
-        let p = h("spawns")
-          , c = h("attacks");
-        return y({
-            ...e,
-            nodes: [...e.nodes, p, ...i.map(e => f(e, p.id)), c, ...t.filter(i => i.mapId === e.mapId).flatMap(e => u(e, c.id))]
-        })
-    }
-    ])
-}
-, 29921, e => {
-    "use strict";
-    class i extends Error {
-        raceIds;
-        constructor(e) {
-            super("Saving these changes would wipe a published race's leaderboards. Confirm to continue."),
-            this.raceIds = e,
-            this.name = "LeaderboardWipeRequiredError"
-        }
-    }
-    e.s(["LeaderboardWipeRequiredError", 0, i, "wipeRequired", 0, function(e) {
-        return e.message.includes("LEADERBOARD_WIPE_REQUIRED") ? new i((e.details ?? "").split(",").filter(Boolean)) : null
-    }
-    ])
-}
-, 35680, 772671, e => {
-    "use strict";
-    var i = e.i(190072)
-      , t = e.i(998494)
-      , a = e.i(905387)
-      , n = e.i(622803)
-      , s = e.i(379494);
-    function r(e) {
-        let i = JSON.stringify(e)
-          , t = new TextEncoder().encode(i).length;
-        for (let e of i.matchAll(/"(?:[^"\\]|\\.)*"|(-?\d+(?:\.\d+)?[eE][+-]?\d+)|[:,]/g))
-            if (e[1]) {
-                let[i,a] = e[1].toLowerCase().split("e")
-                  , n = +!!i.startsWith("-")
-                  , s = i.slice(n)
-                  , r = (s.includes(".") ? s.indexOf(".") : s.length) + Number(a)
-                  , o = s.replace(".", "").length;
-                t += n + (r <= 0 ? 2 - r + o : r >= o ? r : o + 1) - e[1].length
-            } else
-                (":" === e[0] || "," === e[0]) && t++;
-        return t
-    }
-    e.s(["jsonbBytes", 0, r], 772671);
-    let o = new Set(["roller-coaster", "drift-track", "drift-park", "whoop-world", "billboard-standing", "billboard-floating"])
-      , l = "Remove roller coasters, drift tracks, and billboards from this map to save, play, or share it.";
-    function d(e) {
-        return !(0,
-        t.isOfficialMapId)(e.mapId) && e.nodes.some(e => e.prefab && o.has(e.prefab.id) || e.geometry?.kind === "coaster" || e.geometry?.kind === "drift-track" || e.geometry?.kind === "lathe" || e.geometry?.kind === "plant")
-    }
-    let p = "Player maps allow at most 2 time attacks."
-      , m = "A time attack can have at most 20 gates.";
-    function c(e) {
-        let i = new Map
-          , t = 0;
-        for (let a of e.nodes)
-            a.entity?.kind === "attack" ? t++ : a.entity?.kind === "gate" && a.parentId && i.set(a.parentId, (i.get(a.parentId) ?? 0) + 1);
-        return {
-            races: t,
-            gates: Math.max(0, ...i.values())
-        }
-    }
-    function f(e, i) {
-        let t = e => r((0,
-        n.withoutEntryHandles)(e));
-        return t(e) > g && (!i || t(e) > t(i)) ? `Map document exceeds ${g / 1024} KB. Remove unnecessary groups or objects.` : null
-    }
-    let u = s.default.points
-      , g = s.default.bytes;
-    function h(e) {
-        let t = 0
-          , n = 0
-          , s = 0
-          , r = new Map(e.nodes.map(e => [e.id, e]));
-        for (let o of e.nodes)
-            if (o.prefab) {
-                let e = a.default.prefabs[`${o.prefab.id}:${o.prefab.variant}`];
-                if (t += e?.points ?? u + 1,
-                v(o)) {
-                    n++;
-                    let e = o
-                      , t = 0
-                      , a = !1;
-                    for (; e && t++ <= 32; ) {
-                        let t = new i.Matrix4().fromArray(e.matrix).elements
-                          , n = [new i.Vector3(t[0],t[1],t[2]), new i.Vector3(t[4],t[5],t[6]), new i.Vector3(t[8],t[9],t[10])]
-                          , s = n[0].lengthSq()
-                          , o = Math.max(1e-10, 1e-6 * s);
-                        (!Number.isFinite(s) || s < 1e-10 || n.some(e => Math.abs(e.lengthSq() - s) > o) || Math.abs(n[0].dot(n[1])) > o || Math.abs(n[0].dot(n[2])) > o || Math.abs(n[1].dot(n[2])) > o) && (a = !0),
-                        e = e.parentId ? r.get(e.parentId) : void 0
-                    }
-                    a && s++
+                    break;
+                default:
+                    throwBindingError("Unsupporting sharing policy")
                 }
-            } else
-                o.geometry ? t += "prism" === o.geometry.kind ? 1 + Math.ceil((4 * o.geometry.points.length - 4) / 100) : a.default.primitives[o.geometry.kind] ?? u + 1 : o.entity && "folder" !== o.entity.kind && (t += 1);
-        return {
-            points: t,
-            animated: n,
-            invalidAnimatedTransforms: s
-        }
-    }
-    function v(e) {
-        return e.prefab?.id === "roller-coaster" || !!(e.prefab && a.default.prefabs[`${e.prefab.id}:${e.prefab.variant}`]?.moving)
-    }
-    e.s(["GATE_LIMIT_MESSAGE", 0, m, "MAIN_SIM_ONLY_PRESETS", 0, o, "PERSONAL_MAP_ANIMATION_LIMIT", 0, 2, "PERSONAL_MAP_BYTE_LIMIT", 0, g, "PERSONAL_MAP_COMPLEXITY_LIMIT", 0, u, "PERSONAL_MAP_RACE_LIMIT", 0, 2, "PERSONAL_RACE_GATE_LIMIT", 0, 20, "RACE_LIMIT_MESSAGE", 0, p, "RESTRICTED_MAP_MESSAGE", 0, l, "assertPersonalMapObjects", 0, function(e) {
-        if (d(e))
-            throw Error(l)
-    }
-    , "canUseMapPreset", 0, function(e, i) {
-        return (0,
-        t.isOfficialMapId)(e) || !o.has(i)
-    }
-    , "clampPersonalMapBounds", 0, function(e, i=!1) {
-        if ((0,
-        t.isOfficialMapId)(e.mapId) || i)
-            return e;
-        let a = e.bounds ?? {
-            size: 200,
-            ceiling: 100
-        };
-        return {
-            ...e,
-            bounds: {
-                ...a,
-                size: Math.min(a.size, 200),
-                ceiling: Math.min(a.ceiling, 100),
-                ...a.walls ? {
-                    walls: {
-                        negativeX: Math.min(a.walls.negativeX, 100),
-                        positiveX: Math.min(a.walls.positiveX, 100),
-                        negativeZ: Math.min(a.walls.negativeZ, 100),
-                        positiveZ: Math.min(a.walls.positiveZ, 100)
-                    }
-                } : {}
             }
+            return ptr
         }
-    }
-    , "hasRestrictedMapObjects", 0, d, "isAnimatedNode", 0, v, "mapComplexity", 0, h, "personalMapLimitError", 0, function(e, i, a=!1) {
-        var n, s;
-        let r, o, l = h(e), d = i ? h(i) : null;
-        if (l.invalidAnimatedTransforms && (!d || l.invalidAnimatedTransforms > d.invalidAnimatedTransforms))
-            return "Animated objects require uniform scale and no shear, including their parent groups.";
-        if ((0,
-        t.isOfficialMapId)(e.mapId))
-            return null;
-        if (a)
-            return f(e, i);
-        if (l.points > u && (!d || l.points > d.points))
-            return "Map capacity exceeded. Remove objects before saving or playing.";
-        if (l.animated > 2 && (!d || l.animated > d.animated))
-            return "Player maps allow at most 2 animated objects.";
-        let g = (n = e,
-        s = i,
-        r = c(n),
-        o = s ? c(s) : null,
-        r.races > 2 && (!o || r.races > o.races) ? p : r.gates > 20 && (!o || r.gates > o.gates) ? m : null);
-        if (g)
-            return g;
-        let v = f(e, i);
-        if (v)
-            return v;
-        let w = e.bounds;
-        return (w?.walls ? Object.values(w.walls) : [(w?.size ?? 200) / 2]).some(e => e > 100) || (w?.ceiling ?? 100) > 100 ? "Player map boundaries cannot exceed 100 m." : null
-    }
-    , "raceCounts", 0, c], 35680)
-}
-, 412864, 838740, e => {
-    "use strict";
-    var i = e.i(35680)
-      , t = e.i(920755)
-      , a = e.i(579612)
-      , n = e.i(552696)
-      , s = e.i(613105)
-      , r = e.i(404961)
-      , o = e.i(622803)
-      , l = e.i(29921)
-      , d = e.i(635877)
-      , p = e.i(28276)
-      , m = e.i(971057)
-      , c = e.i(391775)
-      , f = e.i(937769);
-    function u(e) {
-        if (e.aliasOf)
-            throw Error("This map flies as an official map.");
-        (0,
-        i.assertPersonalMapObjects)(e.document);
-        let t = (0,
-        i.personalMapLimitError)(e.document, void 0, e.unlimited);
-        if (t)
-            throw Error(t);
-        let a = (0,
-        c.gameplayPayload)(e.document).spawns;
-        return {
-            id: e.document.mapId,
-            name: e.name,
-            tagline: "Your playground",
-            description: "A personal map.",
-            accent: "#e5ff54",
-            bounds: e.document.bounds ?? {
-                size: 200,
-                ceiling: 100
-            },
-            environment: {
-                ...m.GRIDWORKS.environment,
-                ground: {
-                    ...m.GRIDWORKS.environment.ground,
-                    gridAxes: void 0
+        function nonConstNoSmartPtrRawPointerToWireType(destructors, handle) {
+            if (handle === null) {
+                if (this.isReference) {
+                    throwBindingError(`null is not a valid ${this.name}`)
                 }
-            },
-            views: {
-                ...m.GRIDWORKS.views,
-                lobby: void 0
-            },
-            spawns: a.length ? a : [{
-                id: "origin",
-                label: "Origin",
-                position: [0, .2, 0],
-                yaw: 0,
-                pad: !1
-            }],
-            layout: {},
-            editorDocument: e.document,
-            revision: e.revision
-        }
-    }
-    function g(e) {
-        let i = o.documentSchema.parse(e.document);
-        if (i.mapId !== `user:${e.id}`)
-            throw Error("Map identity does not match its layout.");
-        return {
-            id: e.id,
-            ownerId: e.owner_id,
-            name: e.name,
-            document: i,
-            revision: e.revision,
-            updatedAt: e.updated_at,
-            unlimited: !0 === e.owner_unlimited,
-            ...e.alias_of ? {
-                aliasOf: e.alias_of
-            } : {}
-        }
-    }
-    function h(e) {
-        return (Array.isArray(e) ? e : []).flatMap(e => (0,
-        f.parseTimeAttackRow)(e) ?? [])
-    }
-    function v(e) {
-        return "23505" === e.code || e.message.includes("one personal map") ? Error("You can create one map. Edit or delete your existing map first.") : Error(["PGRST202", "PGRST205", "42P01", "42883"].includes(e.code ?? "") ? "Maps are temporarily unavailable. Try again later." : e.message)
-    }
-    function w(e) {
-        let i = e.trim();
-        if (!i || [...i].length > n.MAP_NAME_MAX_LENGTH)
-            throw Error(n.MAP_NAME_LENGTH_MESSAGE);
-        return i
-    }
-    async function y(e) {
-        let i = crypto.randomUUID();
-        return g(await (0,
-        a.postJson)("/api/maps", {
-            id: i,
-            name: w(e)
-        }, "Maps are temporarily unavailable. Try again later."))
-    }
-    e.s(["emptyMapDocument", 0, function(e) {
-        return {
-            version: 2,
-            mapId: `user:${e}`,
-            nodes: [],
-            bounds: {
-                size: 200,
-                ceiling: 100
+                return 0
             }
+            if (!handle.$$) {
+                throwBindingError(`Cannot pass "${embindRepr(handle)}" as a ${this.name}`)
+            }
+            if (!handle.$$.ptr) {
+                throwBindingError(`Cannot pass deleted object as a pointer of type ${this.name}`)
+            }
+            if (handle.$$.ptrType.isConst) {
+                throwBindingError(`Cannot convert argument of type ${handle.$$.ptrType.name} to parameter type ${this.name}`)
+            }
+            var handleClass = handle.$$.ptrType.registeredClass;
+            var ptr = upcastPointer(handle.$$.ptr, handleClass, this.registeredClass);
+            return ptr
         }
-    }
-    , "parseMap", 0, g, "parseRaces", 0, h, "personalMapDefinition", 0, u], 838740);
-    class b extends Error {
-        constructor() {
-            super("This map changed in another session or is no longer available. Keep this editor open to preserve your draft."),
-            this.name = "MapRevisionConflictError"
-        }
-    }
-    async function M(e, t, n={}) {
-        let s, r = o.documentSchema.parse(t);
-        (0,
-        i.assertPersonalMapObjects)(r);
-        let p = (0,
-        i.personalMapLimitError)(r, void 0, e.unlimited);
-        if (p)
-            throw Error(p);
-        if (r.mapId !== `user:${e.id}`)
-            throw Error("Cannot save a different map into this one.");
-        let m = (0,
-        d.racesToPublish)(r, n.published ?? {}, n.publish).map(e => (0,
-        d.racePublicationMetadata)(r, e));
-        try {
-            s = await (0,
-            a.postJson)(`/api/maps/${encodeURIComponent(e.id)}/save`, {
-                revision: e.revision,
-                document: r,
-                races: m,
-                wipe: [...n.wipe ?? []]
-            }, "Save failed. Your draft is still here.")
-        } catch (i) {
-            if (!(i instanceof a.ApiError))
-                throw i;
-            let e = (0,
-            l.wipeRequired)({
-                message: i.message,
-                details: i.text("details")
-            });
-            if (e)
-                throw e;
-            if (i.message.includes("MAP_REVISION_CONFLICT"))
-                throw new b;
-            throw v({
-                message: i.message
+        var init_RegisteredPointer = () => {
+            Object.assign(RegisteredPointer.prototype, {
+                getPointee(ptr) {
+                    if (this.rawGetPointee) {
+                        ptr = this.rawGetPointee(ptr)
+                    }
+                    return ptr
+                },
+                destructor(ptr) {
+                    this.rawDestructor?.(ptr)
+                },
+                argPackAdvance: GenericWireTypeSize,
+                readValueFromPointer: readPointer,
+                fromWireType: RegisteredPointer_fromWireType
             })
         }
-        let c = s;
-        if (!c?.map)
-            throw Error("Save failed. Your draft is still here.");
-        return {
-            map: g(c.map),
-            races: h(c.races)
-        }
-    }
-    async function k(e) {
-        let i = (0,
-        s.withDeadline)(null, r.MAP_READ_MS)
-          , {data: a, error: n} = await (0,
-        f.selectRaces)(a => (0,
-        t.createClient)().from("sim_time_attacks").select(a).eq("personal_map_id", e).abortSignal(i).order("sort_order"));
-        if (n)
-            throw i.aborted ? Error(r.MAP_READ_TIMEOUT) : v(n);
-        return h(a)
-    }
-    function _(e, i) {
-        let t = new Set(i.map(e => e.id));
-        for (let i of (0,
-        p.listTimeAttacks)())
-            i.mapId !== e || t.has(i.id) || (0,
-            p.removeTimeAttackDoc)(i.id);
-        i.forEach(p.patchTimeAttackDoc)
-    }
-    async function A(e) {
-        let {data: i, error: a} = await (0,
-        t.createClient)().from("sim_personal_maps").delete().eq("id", e.id).eq("owner_id", e.ownerId).eq("revision", e.revision).select("id").maybeSingle();
-        if (a)
-            throw v(a);
-        if (!i)
-            throw Error("This map changed in another session. Refresh your library before deleting it.")
-    }
-    async function E(e, i) {
-        let t = w(i);
-        return (0,
-        a.postJson)(`/api/maps/${encodeURIComponent(e.id)}/name`, {
-            revision: e.revision,
-            name: t
-        }, "Maps are temporarily unavailable. Try again later.")
-    }
-    function I(e) {
-        let i = (0,
-        r.resolveMap)(e.document.mapId);
-        return i.id === e.document.mapId && (i.revision ?? 0) > e.revision
-    }
-    async function S(e, i=0) {
-        let t = u(e)
-          , a = t.id;
-        if (I(e))
-            return a;
-        let n = await k(e.id);
-        if (I(e))
-            return a;
-        let s = await R(e.id);
-        if (s.revision !== e.revision) {
-            if (i < 2)
-                return S(s, i + 1);
-            throw new r.MapUnavailableError("This map was updated while loading. Try again.")
-        }
-        return I(e) || ((0,
-        r.registerPersonalMap)(t),
-        _(a, n)),
-        a
-    }
-    async function R(e) {
-        if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(e))
-            throw new r.MapUnavailableError("This map link is invalid.");
-        let a = (0,
-        s.withDeadline)(null, r.MAP_READ_MS)
-          , {data: n, error: o} = await (0,
-        t.createClient)().from("sim_personal_maps").select("*").eq("id", e).abortSignal(a).maybeSingle();
-        if (o)
-            throw a.aborted ? Error(r.MAP_READ_TIMEOUT) : v(o);
-        if (!n)
-            throw new r.MapDeletedError;
-        let l = g(n);
-        if ((0,
-        i.hasRestrictedMapObjects)(l.document) || (0,
-        i.personalMapLimitError)(l.document, void 0, l.unlimited))
-            throw new r.MapUnavailableError("This map needs an update from its owner before it can be played.");
-        return l
-    }
-    async function O(e, i) {
-        let {data: a, error: n} = await (0,
-        t.createClient)().from("sim_personal_maps").select("*").eq("id", e).eq("owner_id", i).maybeSingle();
-        if (n)
-            throw v(n);
-        if (!a)
-            throw Error("This map is no longer available.");
-        return g(a)
-    }
-    e.s(["MapRevisionConflictError", 0, b, "createPersonalMap", 0, y, "deletePersonalMap", 0, A, "loadPersonalMap", 0, O, "loadPersonalMapRaces", 0, k, "loadSharedMap", 0, R, "personalMapPath", 0, function(e) {
-        return `/sim?map=${encodeURIComponent(e)}`
-    }
-    , "preparePersonalMapForPlay", 0, S, "registerMapForPlay", 0, function(e) {
-        let i = u(e);
-        return I(e) || (0,
-        r.registerPersonalMap)(i),
-        i.id
-    }
-    , "renamePersonalMap", 0, E, "savePersonalMap", 0, M, "syncPersonalMapRaces", 0, _], 412864)
-}
-, 635877, e => {
-    "use strict";
-    var i = e.i(483359)
-      , t = e.i(391775);
-    let a = (e, i, t) => Math.abs(e - i) <= t;
-    e.s(["publishedRaceChanges", 0, function(e, n) {
-        let s, r = Object.values(n);
-        if (!r.length)
-            return [];
-        try {
-            s = (0,
-            t.gameplayPayload)(e).attacks
-        } catch {
-            return []
-        }
-        let o = new Map(s.map(e => [e.id, e]));
-        return r.flatMap(e => {
-            var t, n, s, r;
-            let l = o.get(e.id);
-            return l ? (t = e.gates,
-            n = l.gates,
-            t.length === n.length && t.every( (e, t) => {
-                let s = n[t];
-                if (e.id !== s.id || e.kind !== s.kind || !e.position.every( (e, i) => a(e, s.position[i], 1e-6)) || !e.size.every( (e, i) => a(e, s.size[i], 1e-6)))
-                    return !1;
-                let r = (0,
-                i.eulerMatrix)(e.rotation)
-                  , o = (0,
-                i.eulerMatrix)(s.rotation);
-                return r.every( (e, i) => a(e, o[i], 1e-9))
+        ;
+        function RegisteredPointer(name, registeredClass, isReference, isConst, isSmartPointer, pointeeType, sharingPolicy, rawGetPointee, rawConstructor, rawShare, rawDestructor) {
+            this.name = name;
+            this.registeredClass = registeredClass;
+            this.isReference = isReference;
+            this.isConst = isConst;
+            this.isSmartPointer = isSmartPointer;
+            this.pointeeType = pointeeType;
+            this.sharingPolicy = sharingPolicy;
+            this.rawGetPointee = rawGetPointee;
+            this.rawConstructor = rawConstructor;
+            this.rawShare = rawShare;
+            this.rawDestructor = rawDestructor;
+            if (!isSmartPointer && registeredClass.baseClass === undefined) {
+                if (isConst) {
+                    this["toWireType"] = constNoSmartPtrRawPointerToWireType;
+                    this.destructorFunction = null
+                } else {
+                    this["toWireType"] = nonConstNoSmartPtrRawPointerToWireType;
+                    this.destructorFunction = null
+                }
+            } else {
+                this["toWireType"] = genericPointerToWireType
             }
-            ) && (s = e.spawn,
-            r = l.spawn,
-            s.position.every( (e, i) => a(e, r.position[i], 1e-6)) && a(s.yaw, r.yaw, 1e-6) && !!s.pad == !!r.pad)) ? [] : [{
-                id: e.id,
-                name: l.name,
-                deleted: !1
-            }] : [{
-                id: e.id,
-                name: e.name,
-                deleted: !0
-            }]
+        }
+        var replacePublicSymbol = (name, value, numArguments) => {
+            if (!Module.hasOwnProperty(name)) {
+                throwInternalError("Replacing nonexistent public symbol")
+            }
+            if (undefined !== Module[name].overloadTable && undefined !== numArguments) {
+                Module[name].overloadTable[numArguments] = value
+            } else {
+                Module[name] = value;
+                Module[name].argCount = numArguments
+            }
+        }
+        ;
+        var dynCallLegacy = (sig, ptr, args) => {
+            sig = sig.replace(/p/g, "i");
+            var f = Module["dynCall_" + sig];
+            return f(ptr, ...args)
+        }
+        ;
+        var wasmTableMirror = [];
+        var wasmTable;
+        var getWasmTableEntry = funcPtr => {
+            var func = wasmTableMirror[funcPtr];
+            if (!func) {
+                if (funcPtr >= wasmTableMirror.length)
+                    wasmTableMirror.length = funcPtr + 1;
+                wasmTableMirror[funcPtr] = func = wasmTable.get(funcPtr)
+            }
+            return func
+        }
+        ;
+        var dynCall = (sig, ptr, args=[]) => {
+            if (sig.includes("j")) {
+                return dynCallLegacy(sig, ptr, args)
+            }
+            var rtn = getWasmTableEntry(ptr)(...args);
+            return rtn
+        }
+        ;
+        var getDynCaller = (sig, ptr) => (...args) => dynCall(sig, ptr, args);
+        var embind__requireFunction = (signature, rawFunction) => {
+            signature = readLatin1String(signature);
+            function makeDynCaller() {
+                if (signature.includes("j")) {
+                    return getDynCaller(signature, rawFunction)
+                }
+                return getWasmTableEntry(rawFunction)
+            }
+            var fp = makeDynCaller();
+            if (typeof fp != "function") {
+                throwBindingError(`unknown function pointer with signature ${signature}: ${rawFunction}`)
+            }
+            return fp
+        }
+        ;
+        var extendError = (baseErrorType, errorName) => {
+            var errorClass = createNamedFunction(errorName, function(message) {
+                this.name = errorName;
+                this.message = message;
+                var stack = new Error(message).stack;
+                if (stack !== undefined) {
+                    this.stack = this.toString() + "\n" + stack.replace(/^Error(:[^\n]*)?\n/, "")
+                }
+            });
+            errorClass.prototype = Object.create(baseErrorType.prototype);
+            errorClass.prototype.constructor = errorClass;
+            errorClass.prototype.toString = function() {
+                if (this.message === undefined) {
+                    return this.name
+                } else {
+                    return `${this.name}: ${this.message}`
+                }
+            }
+            ;
+            return errorClass
+        }
+        ;
+        var UnboundTypeError;
+        var getTypeName = type => {
+            var ptr = ___getTypeName(type);
+            var rv = readLatin1String(ptr);
+            _free(ptr);
+            return rv
+        }
+        ;
+        var throwUnboundTypeError = (message, types) => {
+            var unboundTypes = [];
+            var seen = {};
+            function visit(type) {
+                if (seen[type]) {
+                    return
+                }
+                if (registeredTypes[type]) {
+                    return
+                }
+                if (typeDependencies[type]) {
+                    typeDependencies[type].forEach(visit);
+                    return
+                }
+                unboundTypes.push(type);
+                seen[type] = true
+            }
+            types.forEach(visit);
+            throw new UnboundTypeError(`${message}: ` + unboundTypes.map(getTypeName).join([", "]))
+        }
+        ;
+        var __embind_register_class = (rawType, rawPointerType, rawConstPointerType, baseClassRawType, getActualTypeSignature, getActualType, upcastSignature, upcast, downcastSignature, downcast, name, destructorSignature, rawDestructor) => {
+            name = readLatin1String(name);
+            getActualType = embind__requireFunction(getActualTypeSignature, getActualType);
+            upcast &&= embind__requireFunction(upcastSignature, upcast);
+            downcast &&= embind__requireFunction(downcastSignature, downcast);
+            rawDestructor = embind__requireFunction(destructorSignature, rawDestructor);
+            var legalFunctionName = makeLegalFunctionName(name);
+            exposePublicSymbol(legalFunctionName, function() {
+                throwUnboundTypeError(`Cannot construct ${name} due to unbound types`, [baseClassRawType])
+            });
+            whenDependentTypesAreResolved([rawType, rawPointerType, rawConstPointerType], baseClassRawType ? [baseClassRawType] : [], base => {
+                base = base[0];
+                var baseClass;
+                var basePrototype;
+                if (baseClassRawType) {
+                    baseClass = base.registeredClass;
+                    basePrototype = baseClass.instancePrototype
+                } else {
+                    basePrototype = ClassHandle.prototype
+                }
+                var constructor = createNamedFunction(name, function(...args) {
+                    if (Object.getPrototypeOf(this) !== instancePrototype) {
+                        throw new BindingError("Use 'new' to construct " + name)
+                    }
+                    if (undefined === registeredClass.constructor_body) {
+                        throw new BindingError(name + " has no accessible constructor")
+                    }
+                    var body = registeredClass.constructor_body[args.length];
+                    if (undefined === body) {
+                        throw new BindingError(`Tried to invoke ctor of ${name} with invalid number of parameters (${args.length}) - expected (${Object.keys(registeredClass.constructor_body).toString()}) parameters instead!`)
+                    }
+                    return body.apply(this, args)
+                });
+                var instancePrototype = Object.create(basePrototype, {
+                    constructor: {
+                        value: constructor
+                    }
+                });
+                constructor.prototype = instancePrototype;
+                var registeredClass = new RegisteredClass(name,constructor,instancePrototype,rawDestructor,baseClass,getActualType,upcast,downcast);
+                if (registeredClass.baseClass) {
+                    registeredClass.baseClass.__derivedClasses ??= [];
+                    registeredClass.baseClass.__derivedClasses.push(registeredClass)
+                }
+                var referenceConverter = new RegisteredPointer(name,registeredClass,true,false,false);
+                var pointerConverter = new RegisteredPointer(name + "*",registeredClass,false,false,false);
+                var constPointerConverter = new RegisteredPointer(name + " const*",registeredClass,false,true,false);
+                registeredPointers[rawType] = {
+                    pointerType: pointerConverter,
+                    constPointerType: constPointerConverter
+                };
+                replacePublicSymbol(legalFunctionName, constructor);
+                return [referenceConverter, pointerConverter, constPointerConverter]
+            }
+            )
+        }
+        ;
+        var heap32VectorToArray = (count, firstElement) => {
+            var array = [];
+            for (var i = 0; i < count; i++) {
+                array.push(HEAPU32[firstElement + i * 4 >> 2])
+            }
+            return array
+        }
+        ;
+        function usesDestructorStack(argTypes) {
+            for (var i = 1; i < argTypes.length; ++i) {
+                if (argTypes[i] !== null && argTypes[i].destructorFunction === undefined) {
+                    return true
+                }
+            }
+            return false
+        }
+        function newFunc(constructor, argumentList) {
+            if (!(constructor instanceof Function)) {
+                throw new TypeError(`new_ called with constructor type ${typeof constructor} which is not a function`)
+            }
+            var dummy = createNamedFunction(constructor.name || "unknownFunctionName", function() {});
+            dummy.prototype = constructor.prototype;
+            var obj = new dummy;
+            var r = constructor.apply(obj, argumentList);
+            return r instanceof Object ? r : obj
+        }
+        function createJsInvoker(argTypes, isClassMethodFunc, returns, isAsync) {
+            var needsDestructorStack = usesDestructorStack(argTypes);
+            var argCount = argTypes.length;
+            var argsList = "";
+            var argsListWired = "";
+            for (var i = 0; i < argCount - 2; ++i) {
+                argsList += (i !== 0 ? ", " : "") + "arg" + i;
+                argsListWired += (i !== 0 ? ", " : "") + "arg" + i + "Wired"
+            }
+            var invokerFnBody = `\n        return function (${argsList}) {\n        if (arguments.length !== ${argCount - 2}) {\n          throwBindingError('function ' + humanName + ' called with ' + arguments.length + ' arguments, expected ${argCount - 2}');\n        }`;
+            if (needsDestructorStack) {
+                invokerFnBody += "var destructors = [];\n"
+            }
+            var dtorStack = needsDestructorStack ? "destructors" : "null";
+            var args1 = ["humanName", "throwBindingError", "invoker", "fn", "runDestructors", "retType", "classParam"];
+            if (isClassMethodFunc) {
+                invokerFnBody += "var thisWired = classParam['toWireType'](" + dtorStack + ", this);\n"
+            }
+            for (var i = 0; i < argCount - 2; ++i) {
+                invokerFnBody += "var arg" + i + "Wired = argType" + i + "['toWireType'](" + dtorStack + ", arg" + i + ");\n";
+                args1.push("argType" + i)
+            }
+            if (isClassMethodFunc) {
+                argsListWired = "thisWired" + (argsListWired.length > 0 ? ", " : "") + argsListWired
+            }
+            invokerFnBody += (returns || isAsync ? "var rv = " : "") + "invoker(fn" + (argsListWired.length > 0 ? ", " : "") + argsListWired + ");\n";
+            if (needsDestructorStack) {
+                invokerFnBody += "runDestructors(destructors);\n"
+            } else {
+                for (var i = isClassMethodFunc ? 1 : 2; i < argTypes.length; ++i) {
+                    var paramName = i === 1 ? "thisWired" : "arg" + (i - 2) + "Wired";
+                    if (argTypes[i].destructorFunction !== null) {
+                        invokerFnBody += `${paramName}_dtor(${paramName});\n`;
+                        args1.push(`${paramName}_dtor`)
+                    }
+                }
+            }
+            if (returns) {
+                invokerFnBody += "var ret = retType['fromWireType'](rv);\n" + "return ret;\n"
+            } else {}
+            invokerFnBody += "}\n";
+            return [args1, invokerFnBody]
+        }
+        function craftInvokerFunction(humanName, argTypes, classType, cppInvokerFunc, cppTargetFunc, isAsync) {
+            var argCount = argTypes.length;
+            if (argCount < 2) {
+                throwBindingError("argTypes array size mismatch! Must at least get return value and 'this' types!")
+            }
+            var isClassMethodFunc = argTypes[1] !== null && classType !== null;
+            var needsDestructorStack = usesDestructorStack(argTypes);
+            var returns = argTypes[0].name !== "void";
+            var closureArgs = [humanName, throwBindingError, cppInvokerFunc, cppTargetFunc, runDestructors, argTypes[0], argTypes[1]];
+            for (var i = 0; i < argCount - 2; ++i) {
+                closureArgs.push(argTypes[i + 2])
+            }
+            if (!needsDestructorStack) {
+                for (var i = isClassMethodFunc ? 1 : 2; i < argTypes.length; ++i) {
+                    if (argTypes[i].destructorFunction !== null) {
+                        closureArgs.push(argTypes[i].destructorFunction)
+                    }
+                }
+            }
+            let[args,invokerFnBody] = createJsInvoker(argTypes, isClassMethodFunc, returns, isAsync);
+            args.push(invokerFnBody);
+            var invokerFn = newFunc(Function, args)(...closureArgs);
+            return createNamedFunction(humanName, invokerFn)
+        }
+        var __embind_register_class_constructor = (rawClassType, argCount, rawArgTypesAddr, invokerSignature, invoker, rawConstructor) => {
+            var rawArgTypes = heap32VectorToArray(argCount, rawArgTypesAddr);
+            invoker = embind__requireFunction(invokerSignature, invoker);
+            whenDependentTypesAreResolved([], [rawClassType], classType => {
+                classType = classType[0];
+                var humanName = `constructor ${classType.name}`;
+                if (undefined === classType.registeredClass.constructor_body) {
+                    classType.registeredClass.constructor_body = []
+                }
+                if (undefined !== classType.registeredClass.constructor_body[argCount - 1]) {
+                    throw new BindingError(`Cannot register multiple constructors with identical number of parameters (${argCount - 1}) for class '${classType.name}'! Overload resolution is currently only performed using the parameter count, not actual type info!`)
+                }
+                classType.registeredClass.constructor_body[argCount - 1] = () => {
+                    throwUnboundTypeError(`Cannot construct ${classType.name} due to unbound types`, rawArgTypes)
+                }
+                ;
+                whenDependentTypesAreResolved([], rawArgTypes, argTypes => {
+                    argTypes.splice(1, 0, null);
+                    classType.registeredClass.constructor_body[argCount - 1] = craftInvokerFunction(humanName, argTypes, null, invoker, rawConstructor);
+                    return []
+                }
+                );
+                return []
+            }
+            )
+        }
+        ;
+        var getFunctionName = signature => {
+            signature = signature.trim();
+            const argsIndex = signature.indexOf("(");
+            if (argsIndex !== -1) {
+                return signature.substr(0, argsIndex)
+            } else {
+                return signature
+            }
+        }
+        ;
+        var __embind_register_class_function = (rawClassType, methodName, argCount, rawArgTypesAddr, invokerSignature, rawInvoker, context, isPureVirtual, isAsync) => {
+            var rawArgTypes = heap32VectorToArray(argCount, rawArgTypesAddr);
+            methodName = readLatin1String(methodName);
+            methodName = getFunctionName(methodName);
+            rawInvoker = embind__requireFunction(invokerSignature, rawInvoker);
+            whenDependentTypesAreResolved([], [rawClassType], classType => {
+                classType = classType[0];
+                var humanName = `${classType.name}.${methodName}`;
+                if (methodName.startsWith("@@")) {
+                    methodName = Symbol[methodName.substring(2)]
+                }
+                if (isPureVirtual) {
+                    classType.registeredClass.pureVirtualFunctions.push(methodName)
+                }
+                function unboundTypesHandler() {
+                    throwUnboundTypeError(`Cannot call ${humanName} due to unbound types`, rawArgTypes)
+                }
+                var proto = classType.registeredClass.instancePrototype;
+                var method = proto[methodName];
+                if (undefined === method || undefined === method.overloadTable && method.className !== classType.name && method.argCount === argCount - 2) {
+                    unboundTypesHandler.argCount = argCount - 2;
+                    unboundTypesHandler.className = classType.name;
+                    proto[methodName] = unboundTypesHandler
+                } else {
+                    ensureOverloadTable(proto, methodName, humanName);
+                    proto[methodName].overloadTable[argCount - 2] = unboundTypesHandler
+                }
+                whenDependentTypesAreResolved([], rawArgTypes, argTypes => {
+                    var memberFunction = craftInvokerFunction(humanName, argTypes, classType, rawInvoker, context, isAsync);
+                    if (undefined === proto[methodName].overloadTable) {
+                        memberFunction.argCount = argCount - 2;
+                        proto[methodName] = memberFunction
+                    } else {
+                        proto[methodName].overloadTable[argCount - 2] = memberFunction
+                    }
+                    return []
+                }
+                );
+                return []
+            }
+            )
+        }
+        ;
+        var __embind_register_constant = (name, type, value) => {
+            name = readLatin1String(name);
+            whenDependentTypesAreResolved([], [type], type => {
+                type = type[0];
+                Module[name] = type["fromWireType"](value);
+                return []
+            }
+            )
+        }
+        ;
+        var emval_freelist = [];
+        var emval_handles = [];
+        var __emval_decref = handle => {
+            if (handle > 9 && 0 === --emval_handles[handle + 1]) {
+                emval_handles[handle] = undefined;
+                emval_freelist.push(handle)
+            }
+        }
+        ;
+        var count_emval_handles = () => emval_handles.length / 2 - 5 - emval_freelist.length;
+        var init_emval = () => {
+            emval_handles.push(0, 1, undefined, 1, null, 1, true, 1, false, 1);
+            Module["count_emval_handles"] = count_emval_handles
+        }
+        ;
+        var Emval = {
+            toValue: handle => {
+                if (!handle) {
+                    throwBindingError("Cannot use deleted val. handle = " + handle)
+                }
+                return emval_handles[handle]
+            }
+            ,
+            toHandle: value => {
+                switch (value) {
+                case undefined:
+                    return 2;
+                case null:
+                    return 4;
+                case true:
+                    return 6;
+                case false:
+                    return 8;
+                default:
+                    {
+                        const handle = emval_freelist.pop() || emval_handles.length;
+                        emval_handles[handle] = value;
+                        emval_handles[handle + 1] = 1;
+                        return handle
+                    }
+                }
+            }
+        };
+        var EmValType = {
+            name: "emscripten::val",
+            fromWireType: handle => {
+                var rv = Emval.toValue(handle);
+                __emval_decref(handle);
+                return rv
+            }
+            ,
+            toWireType: (destructors, value) => Emval.toHandle(value),
+            argPackAdvance: GenericWireTypeSize,
+            readValueFromPointer: readPointer,
+            destructorFunction: null
+        };
+        var __embind_register_emval = rawType => registerType(rawType, EmValType);
+        var enumReadValueFromPointer = (name, width, signed) => {
+            switch (width) {
+            case 1:
+                return signed ? function(pointer) {
+                    return this["fromWireType"](HEAP8[pointer])
+                }
+                : function(pointer) {
+                    return this["fromWireType"](HEAPU8[pointer])
+                }
+                ;
+            case 2:
+                return signed ? function(pointer) {
+                    return this["fromWireType"](HEAP16[pointer >> 1])
+                }
+                : function(pointer) {
+                    return this["fromWireType"](HEAPU16[pointer >> 1])
+                }
+                ;
+            case 4:
+                return signed ? function(pointer) {
+                    return this["fromWireType"](HEAP32[pointer >> 2])
+                }
+                : function(pointer) {
+                    return this["fromWireType"](HEAPU32[pointer >> 2])
+                }
+                ;
+            default:
+                throw new TypeError(`invalid integer width (${width}): ${name}`)
+            }
+        }
+        ;
+        var __embind_register_enum = (rawType, name, size, isSigned) => {
+            name = readLatin1String(name);
+            function ctor() {}
+            ctor.values = {};
+            registerType(rawType, {
+                name: name,
+                constructor: ctor,
+                fromWireType: function(c) {
+                    return this.constructor.values[c]
+                },
+                toWireType: (destructors, c) => c.value,
+                argPackAdvance: GenericWireTypeSize,
+                readValueFromPointer: enumReadValueFromPointer(name, size, isSigned),
+                destructorFunction: null
+            });
+            exposePublicSymbol(name, ctor)
+        }
+        ;
+        var requireRegisteredType = (rawType, humanName) => {
+            var impl = registeredTypes[rawType];
+            if (undefined === impl) {
+                throwBindingError(`${humanName} has unknown type ${getTypeName(rawType)}`)
+            }
+            return impl
+        }
+        ;
+        var __embind_register_enum_value = (rawEnumType, name, enumValue) => {
+            var enumType = requireRegisteredType(rawEnumType, "enum");
+            name = readLatin1String(name);
+            var Enum = enumType.constructor;
+            var Value = Object.create(enumType.constructor.prototype, {
+                value: {
+                    value: enumValue
+                },
+                constructor: {
+                    value: createNamedFunction(`${enumType.name}_${name}`, function() {})
+                }
+            });
+            Enum.values[enumValue] = Value;
+            Enum[name] = Value
+        }
+        ;
+        var embindRepr = v => {
+            if (v === null) {
+                return "null"
+            }
+            var t = typeof v;
+            if (t === "object" || t === "array" || t === "function") {
+                return v.toString()
+            } else {
+                return "" + v
+            }
+        }
+        ;
+        var floatReadValueFromPointer = (name, width) => {
+            switch (width) {
+            case 4:
+                return function(pointer) {
+                    return this["fromWireType"](HEAPF32[pointer >> 2])
+                }
+                ;
+            case 8:
+                return function(pointer) {
+                    return this["fromWireType"](HEAPF64[pointer >> 3])
+                }
+                ;
+            default:
+                throw new TypeError(`invalid float width (${width}): ${name}`)
+            }
+        }
+        ;
+        var __embind_register_float = (rawType, name, size) => {
+            name = readLatin1String(name);
+            registerType(rawType, {
+                name: name,
+                fromWireType: value => value,
+                toWireType: (destructors, value) => value,
+                argPackAdvance: GenericWireTypeSize,
+                readValueFromPointer: floatReadValueFromPointer(name, size),
+                destructorFunction: null
+            })
+        }
+        ;
+        var __embind_register_function = (name, argCount, rawArgTypesAddr, signature, rawInvoker, fn, isAsync) => {
+            var argTypes = heap32VectorToArray(argCount, rawArgTypesAddr);
+            name = readLatin1String(name);
+            name = getFunctionName(name);
+            rawInvoker = embind__requireFunction(signature, rawInvoker);
+            exposePublicSymbol(name, function() {
+                throwUnboundTypeError(`Cannot call ${name} due to unbound types`, argTypes)
+            }, argCount - 1);
+            whenDependentTypesAreResolved([], argTypes, argTypes => {
+                var invokerArgsArray = [argTypes[0], null].concat(argTypes.slice(1));
+                replacePublicSymbol(name, craftInvokerFunction(name, invokerArgsArray, null, rawInvoker, fn, isAsync), argCount - 1);
+                return []
+            }
+            )
+        }
+        ;
+        var integerReadValueFromPointer = (name, width, signed) => {
+            switch (width) {
+            case 1:
+                return signed ? pointer => HEAP8[pointer] : pointer => HEAPU8[pointer];
+            case 2:
+                return signed ? pointer => HEAP16[pointer >> 1] : pointer => HEAPU16[pointer >> 1];
+            case 4:
+                return signed ? pointer => HEAP32[pointer >> 2] : pointer => HEAPU32[pointer >> 2];
+            default:
+                throw new TypeError(`invalid integer width (${width}): ${name}`)
+            }
+        }
+        ;
+        var __embind_register_integer = (primitiveType, name, size, minRange, maxRange) => {
+            name = readLatin1String(name);
+            if (maxRange === -1) {
+                maxRange = 4294967295
+            }
+            var fromWireType = value => value;
+            if (minRange === 0) {
+                var bitshift = 32 - 8 * size;
+                fromWireType = value => value << bitshift >>> bitshift
+            }
+            var isUnsignedType = name.includes("unsigned");
+            var checkAssertions = (value, toTypeName) => {}
+            ;
+            var toWireType;
+            if (isUnsignedType) {
+                toWireType = function(destructors, value) {
+                    checkAssertions(value, this.name);
+                    return value >>> 0
+                }
+            } else {
+                toWireType = function(destructors, value) {
+                    checkAssertions(value, this.name);
+                    return value
+                }
+            }
+            registerType(primitiveType, {
+                name: name,
+                fromWireType: fromWireType,
+                toWireType: toWireType,
+                argPackAdvance: GenericWireTypeSize,
+                readValueFromPointer: integerReadValueFromPointer(name, size, minRange !== 0),
+                destructorFunction: null
+            })
+        }
+        ;
+        var __embind_register_memory_view = (rawType, dataTypeIndex, name) => {
+            var typeMapping = [Int8Array, Uint8Array, Int16Array, Uint16Array, Int32Array, Uint32Array, Float32Array, Float64Array];
+            var TA = typeMapping[dataTypeIndex];
+            function decodeMemoryView(handle) {
+                var size = HEAPU32[handle >> 2];
+                var data = HEAPU32[handle + 4 >> 2];
+                return new TA(HEAP8.buffer,data,size)
+            }
+            name = readLatin1String(name);
+            registerType(rawType, {
+                name: name,
+                fromWireType: decodeMemoryView,
+                argPackAdvance: GenericWireTypeSize,
+                readValueFromPointer: decodeMemoryView
+            }, {
+                ignoreDuplicateRegistrations: true
+            })
+        }
+        ;
+        var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
+            if (!(maxBytesToWrite > 0))
+                return 0;
+            var startIdx = outIdx;
+            var endIdx = outIdx + maxBytesToWrite - 1;
+            for (var i = 0; i < str.length; ++i) {
+                var u = str.charCodeAt(i);
+                if (u >= 55296 && u <= 57343) {
+                    var u1 = str.charCodeAt(++i);
+                    u = 65536 + ((u & 1023) << 10) | u1 & 1023
+                }
+                if (u <= 127) {
+                    if (outIdx >= endIdx)
+                        break;
+                    heap[outIdx++] = u
+                } else if (u <= 2047) {
+                    if (outIdx + 1 >= endIdx)
+                        break;
+                    heap[outIdx++] = 192 | u >> 6;
+                    heap[outIdx++] = 128 | u & 63
+                } else if (u <= 65535) {
+                    if (outIdx + 2 >= endIdx)
+                        break;
+                    heap[outIdx++] = 224 | u >> 12;
+                    heap[outIdx++] = 128 | u >> 6 & 63;
+                    heap[outIdx++] = 128 | u & 63
+                } else {
+                    if (outIdx + 3 >= endIdx)
+                        break;
+                    heap[outIdx++] = 240 | u >> 18;
+                    heap[outIdx++] = 128 | u >> 12 & 63;
+                    heap[outIdx++] = 128 | u >> 6 & 63;
+                    heap[outIdx++] = 128 | u & 63
+                }
+            }
+            heap[outIdx] = 0;
+            return outIdx - startIdx
+        }
+        ;
+        var stringToUTF8 = (str, outPtr, maxBytesToWrite) => stringToUTF8Array(str, HEAPU8, outPtr, maxBytesToWrite);
+        var lengthBytesUTF8 = str => {
+            var len = 0;
+            for (var i = 0; i < str.length; ++i) {
+                var c = str.charCodeAt(i);
+                if (c <= 127) {
+                    len++
+                } else if (c <= 2047) {
+                    len += 2
+                } else if (c >= 55296 && c <= 57343) {
+                    len += 4;
+                    ++i
+                } else {
+                    len += 3
+                }
+            }
+            return len
+        }
+        ;
+        var UTF8Decoder = typeof TextDecoder != "undefined" ? new TextDecoder : undefined;
+        var UTF8ArrayToString = (heapOrArray, idx, maxBytesToRead) => {
+            var endIdx = idx + maxBytesToRead;
+            var endPtr = idx;
+            while (heapOrArray[endPtr] && !(endPtr >= endIdx))
+                ++endPtr;
+            if (endPtr - idx > 16 && heapOrArray.buffer && UTF8Decoder) {
+                return UTF8Decoder.decode(heapOrArray.subarray(idx, endPtr))
+            }
+            var str = "";
+            while (idx < endPtr) {
+                var u0 = heapOrArray[idx++];
+                if (!(u0 & 128)) {
+                    str += String.fromCharCode(u0);
+                    continue
+                }
+                var u1 = heapOrArray[idx++] & 63;
+                if ((u0 & 224) == 192) {
+                    str += String.fromCharCode((u0 & 31) << 6 | u1);
+                    continue
+                }
+                var u2 = heapOrArray[idx++] & 63;
+                if ((u0 & 240) == 224) {
+                    u0 = (u0 & 15) << 12 | u1 << 6 | u2
+                } else {
+                    u0 = (u0 & 7) << 18 | u1 << 12 | u2 << 6 | heapOrArray[idx++] & 63
+                }
+                if (u0 < 65536) {
+                    str += String.fromCharCode(u0)
+                } else {
+                    var ch = u0 - 65536;
+                    str += String.fromCharCode(55296 | ch >> 10, 56320 | ch & 1023)
+                }
+            }
+            return str
+        }
+        ;
+        var UTF8ToString = (ptr, maxBytesToRead) => ptr ? UTF8ArrayToString(HEAPU8, ptr, maxBytesToRead) : "";
+        var __embind_register_std_string = (rawType, name) => {
+            name = readLatin1String(name);
+            var stdStringIsUTF8 = name === "std::string";
+            registerType(rawType, {
+                name: name,
+                fromWireType(value) {
+                    var length = HEAPU32[value >> 2];
+                    var payload = value + 4;
+                    var str;
+                    if (stdStringIsUTF8) {
+                        var decodeStartPtr = payload;
+                        for (var i = 0; i <= length; ++i) {
+                            var currentBytePtr = payload + i;
+                            if (i == length || HEAPU8[currentBytePtr] == 0) {
+                                var maxRead = currentBytePtr - decodeStartPtr;
+                                var stringSegment = UTF8ToString(decodeStartPtr, maxRead);
+                                if (str === undefined) {
+                                    str = stringSegment
+                                } else {
+                                    str += String.fromCharCode(0);
+                                    str += stringSegment
+                                }
+                                decodeStartPtr = currentBytePtr + 1
+                            }
+                        }
+                    } else {
+                        var a = new Array(length);
+                        for (var i = 0; i < length; ++i) {
+                            a[i] = String.fromCharCode(HEAPU8[payload + i])
+                        }
+                        str = a.join("")
+                    }
+                    _free(value);
+                    return str
+                },
+                toWireType(destructors, value) {
+                    if (value instanceof ArrayBuffer) {
+                        value = new Uint8Array(value)
+                    }
+                    var length;
+                    var valueIsOfTypeString = typeof value == "string";
+                    if (!(valueIsOfTypeString || value instanceof Uint8Array || value instanceof Uint8ClampedArray || value instanceof Int8Array)) {
+                        throwBindingError("Cannot pass non-string to std::string")
+                    }
+                    if (stdStringIsUTF8 && valueIsOfTypeString) {
+                        length = lengthBytesUTF8(value)
+                    } else {
+                        length = value.length
+                    }
+                    var base = _malloc(4 + length + 1);
+                    var ptr = base + 4;
+                    HEAPU32[base >> 2] = length;
+                    if (stdStringIsUTF8 && valueIsOfTypeString) {
+                        stringToUTF8(value, ptr, length + 1)
+                    } else {
+                        if (valueIsOfTypeString) {
+                            for (var i = 0; i < length; ++i) {
+                                var charCode = value.charCodeAt(i);
+                                if (charCode > 255) {
+                                    _free(ptr);
+                                    throwBindingError("String has UTF-16 code units that do not fit in 8 bits")
+                                }
+                                HEAPU8[ptr + i] = charCode
+                            }
+                        } else {
+                            for (var i = 0; i < length; ++i) {
+                                HEAPU8[ptr + i] = value[i]
+                            }
+                        }
+                    }
+                    if (destructors !== null) {
+                        destructors.push(_free, base)
+                    }
+                    return base
+                },
+                argPackAdvance: GenericWireTypeSize,
+                readValueFromPointer: readPointer,
+                destructorFunction(ptr) {
+                    _free(ptr)
+                }
+            })
+        }
+        ;
+        var UTF16Decoder = typeof TextDecoder != "undefined" ? new TextDecoder("utf-16le") : undefined;
+        var UTF16ToString = (ptr, maxBytesToRead) => {
+            var endPtr = ptr;
+            var idx = endPtr >> 1;
+            var maxIdx = idx + maxBytesToRead / 2;
+            while (!(idx >= maxIdx) && HEAPU16[idx])
+                ++idx;
+            endPtr = idx << 1;
+            if (endPtr - ptr > 32 && UTF16Decoder)
+                return UTF16Decoder.decode(HEAPU8.subarray(ptr, endPtr));
+            var str = "";
+            for (var i = 0; !(i >= maxBytesToRead / 2); ++i) {
+                var codeUnit = HEAP16[ptr + i * 2 >> 1];
+                if (codeUnit == 0)
+                    break;
+                str += String.fromCharCode(codeUnit)
+            }
+            return str
+        }
+        ;
+        var stringToUTF16 = (str, outPtr, maxBytesToWrite) => {
+            maxBytesToWrite ??= 2147483647;
+            if (maxBytesToWrite < 2)
+                return 0;
+            maxBytesToWrite -= 2;
+            var startPtr = outPtr;
+            var numCharsToWrite = maxBytesToWrite < str.length * 2 ? maxBytesToWrite / 2 : str.length;
+            for (var i = 0; i < numCharsToWrite; ++i) {
+                var codeUnit = str.charCodeAt(i);
+                HEAP16[outPtr >> 1] = codeUnit;
+                outPtr += 2
+            }
+            HEAP16[outPtr >> 1] = 0;
+            return outPtr - startPtr
+        }
+        ;
+        var lengthBytesUTF16 = str => str.length * 2;
+        var UTF32ToString = (ptr, maxBytesToRead) => {
+            var i = 0;
+            var str = "";
+            while (!(i >= maxBytesToRead / 4)) {
+                var utf32 = HEAP32[ptr + i * 4 >> 2];
+                if (utf32 == 0)
+                    break;
+                ++i;
+                if (utf32 >= 65536) {
+                    var ch = utf32 - 65536;
+                    str += String.fromCharCode(55296 | ch >> 10, 56320 | ch & 1023)
+                } else {
+                    str += String.fromCharCode(utf32)
+                }
+            }
+            return str
+        }
+        ;
+        var stringToUTF32 = (str, outPtr, maxBytesToWrite) => {
+            maxBytesToWrite ??= 2147483647;
+            if (maxBytesToWrite < 4)
+                return 0;
+            var startPtr = outPtr;
+            var endPtr = startPtr + maxBytesToWrite - 4;
+            for (var i = 0; i < str.length; ++i) {
+                var codeUnit = str.charCodeAt(i);
+                if (codeUnit >= 55296 && codeUnit <= 57343) {
+                    var trailSurrogate = str.charCodeAt(++i);
+                    codeUnit = 65536 + ((codeUnit & 1023) << 10) | trailSurrogate & 1023
+                }
+                HEAP32[outPtr >> 2] = codeUnit;
+                outPtr += 4;
+                if (outPtr + 4 > endPtr)
+                    break
+            }
+            HEAP32[outPtr >> 2] = 0;
+            return outPtr - startPtr
+        }
+        ;
+        var lengthBytesUTF32 = str => {
+            var len = 0;
+            for (var i = 0; i < str.length; ++i) {
+                var codeUnit = str.charCodeAt(i);
+                if (codeUnit >= 55296 && codeUnit <= 57343)
+                    ++i;
+                len += 4
+            }
+            return len
+        }
+        ;
+        var __embind_register_std_wstring = (rawType, charSize, name) => {
+            name = readLatin1String(name);
+            var decodeString, encodeString, readCharAt, lengthBytesUTF;
+            if (charSize === 2) {
+                decodeString = UTF16ToString;
+                encodeString = stringToUTF16;
+                lengthBytesUTF = lengthBytesUTF16;
+                readCharAt = pointer => HEAPU16[pointer >> 1]
+            } else if (charSize === 4) {
+                decodeString = UTF32ToString;
+                encodeString = stringToUTF32;
+                lengthBytesUTF = lengthBytesUTF32;
+                readCharAt = pointer => HEAPU32[pointer >> 2]
+            }
+            registerType(rawType, {
+                name: name,
+                fromWireType: value => {
+                    var length = HEAPU32[value >> 2];
+                    var str;
+                    var decodeStartPtr = value + 4;
+                    for (var i = 0; i <= length; ++i) {
+                        var currentBytePtr = value + 4 + i * charSize;
+                        if (i == length || readCharAt(currentBytePtr) == 0) {
+                            var maxReadBytes = currentBytePtr - decodeStartPtr;
+                            var stringSegment = decodeString(decodeStartPtr, maxReadBytes);
+                            if (str === undefined) {
+                                str = stringSegment
+                            } else {
+                                str += String.fromCharCode(0);
+                                str += stringSegment
+                            }
+                            decodeStartPtr = currentBytePtr + charSize
+                        }
+                    }
+                    _free(value);
+                    return str
+                }
+                ,
+                toWireType: (destructors, value) => {
+                    if (!(typeof value == "string")) {
+                        throwBindingError(`Cannot pass non-string to C++ string type ${name}`)
+                    }
+                    var length = lengthBytesUTF(value);
+                    var ptr = _malloc(4 + length + charSize);
+                    HEAPU32[ptr >> 2] = length / charSize;
+                    encodeString(value, ptr + 4, length + charSize);
+                    if (destructors !== null) {
+                        destructors.push(_free, ptr)
+                    }
+                    return ptr
+                }
+                ,
+                argPackAdvance: GenericWireTypeSize,
+                readValueFromPointer: readPointer,
+                destructorFunction(ptr) {
+                    _free(ptr)
+                }
+            })
+        }
+        ;
+        var __embind_register_value_object = (rawType, name, constructorSignature, rawConstructor, destructorSignature, rawDestructor) => {
+            structRegistrations[rawType] = {
+                name: readLatin1String(name),
+                rawConstructor: embind__requireFunction(constructorSignature, rawConstructor),
+                rawDestructor: embind__requireFunction(destructorSignature, rawDestructor),
+                fields: []
+            }
+        }
+        ;
+        var __embind_register_value_object_field = (structType, fieldName, getterReturnType, getterSignature, getter, getterContext, setterArgumentType, setterSignature, setter, setterContext) => {
+            structRegistrations[structType].fields.push({
+                fieldName: readLatin1String(fieldName),
+                getterReturnType: getterReturnType,
+                getter: embind__requireFunction(getterSignature, getter),
+                getterContext: getterContext,
+                setterArgumentType: setterArgumentType,
+                setter: embind__requireFunction(setterSignature, setter),
+                setterContext: setterContext
+            })
+        }
+        ;
+        var __embind_register_void = (rawType, name) => {
+            name = readLatin1String(name);
+            registerType(rawType, {
+                isVoid: true,
+                name: name,
+                argPackAdvance: 0,
+                fromWireType: () => undefined,
+                toWireType: (destructors, o) => undefined
+            })
+        }
+        ;
+        var __emscripten_memcpy_js = (dest, src, num) => HEAPU8.copyWithin(dest, src, src + num);
+        var emval_returnValue = (returnType, destructorsRef, handle) => {
+            var destructors = [];
+            var result = returnType["toWireType"](destructors, handle);
+            if (destructors.length) {
+                HEAPU32[destructorsRef >> 2] = Emval.toHandle(destructors)
+            }
+            return result
+        }
+        ;
+        var __emval_as = (handle, returnType, destructorsRef) => {
+            handle = Emval.toValue(handle);
+            returnType = requireRegisteredType(returnType, "emval::as");
+            return emval_returnValue(returnType, destructorsRef, handle)
+        }
+        ;
+        var emval_methodCallers = [];
+        var __emval_call = (caller, handle, destructorsRef, args) => {
+            caller = emval_methodCallers[caller];
+            handle = Emval.toValue(handle);
+            return caller(null, handle, destructorsRef, args)
+        }
+        ;
+        var emval_symbols = {};
+        var getStringOrSymbol = address => {
+            var symbol = emval_symbols[address];
+            if (symbol === undefined) {
+                return readLatin1String(address)
+            }
+            return symbol
+        }
+        ;
+        var __emval_call_method = (caller, objHandle, methodName, destructorsRef, args) => {
+            caller = emval_methodCallers[caller];
+            objHandle = Emval.toValue(objHandle);
+            methodName = getStringOrSymbol(methodName);
+            return caller(objHandle, objHandle[methodName], destructorsRef, args)
+        }
+        ;
+        var emval_get_global = () => {
+            if (typeof globalThis == "object") {
+                return globalThis
+            }
+            return function() {
+                return Function
+            }()("return this")()
+        }
+        ;
+        var __emval_get_global = name => {
+            if (name === 0) {
+                return Emval.toHandle(emval_get_global())
+            } else {
+                name = getStringOrSymbol(name);
+                return Emval.toHandle(emval_get_global()[name])
+            }
+        }
+        ;
+        var emval_addMethodCaller = caller => {
+            var id = emval_methodCallers.length;
+            emval_methodCallers.push(caller);
+            return id
+        }
+        ;
+        var emval_lookupTypes = (argCount, argTypes) => {
+            var a = new Array(argCount);
+            for (var i = 0; i < argCount; ++i) {
+                a[i] = requireRegisteredType(HEAPU32[argTypes + i * 4 >> 2], "parameter " + i)
+            }
+            return a
+        }
+        ;
+        var reflectConstruct = Reflect.construct;
+        var __emval_get_method_caller = (argCount, argTypes, kind) => {
+            var types = emval_lookupTypes(argCount, argTypes);
+            var retType = types.shift();
+            argCount--;
+            var functionBody = `return function (obj, func, destructorsRef, args) {\n`;
+            var offset = 0;
+            var argsList = [];
+            if (kind === 0) {
+                argsList.push("obj")
+            }
+            var params = ["retType"];
+            var args = [retType];
+            for (var i = 0; i < argCount; ++i) {
+                argsList.push("arg" + i);
+                params.push("argType" + i);
+                args.push(types[i]);
+                functionBody += `  var arg${i} = argType${i}.readValueFromPointer(args${offset ? "+" + offset : ""});\n`;
+                offset += types[i]["argPackAdvance"]
+            }
+            var invoker = kind === 1 ? "new func" : "func.call";
+            functionBody += `  var rv = ${invoker}(${argsList.join(", ")});\n`;
+            if (!retType.isVoid) {
+                params.push("emval_returnValue");
+                args.push(emval_returnValue);
+                functionBody += "  return emval_returnValue(retType, destructorsRef, rv);\n"
+            }
+            functionBody += "};\n";
+            params.push(functionBody);
+            var invokerFunction = newFunc(Function, params)(...args);
+            var functionName = `methodCaller<(${types.map(t => t.name).join(", ")}) => ${retType.name}>`;
+            return emval_addMethodCaller(createNamedFunction(functionName, invokerFunction))
+        }
+        ;
+        var __emval_get_module_property = name => {
+            name = getStringOrSymbol(name);
+            return Emval.toHandle(Module[name])
+        }
+        ;
+        var __emval_get_property = (handle, key) => {
+            handle = Emval.toValue(handle);
+            key = Emval.toValue(key);
+            return Emval.toHandle(handle[key])
+        }
+        ;
+        var __emval_incref = handle => {
+            if (handle > 9) {
+                emval_handles[handle + 1] += 1
+            }
+        }
+        ;
+        var __emval_new_cstring = v => Emval.toHandle(getStringOrSymbol(v));
+        var __emval_run_destructors = handle => {
+            var destructors = Emval.toValue(handle);
+            runDestructors(destructors);
+            __emval_decref(handle)
+        }
+        ;
+        var getHeapMax = () => 2147483648;
+        var growMemory = size => {
+            var b = wasmMemory.buffer;
+            var pages = (size - b.byteLength + 65535) / 65536;
+            try {
+                wasmMemory.grow(pages);
+                updateMemoryViews();
+                return 1
+            } catch (e) {}
+        }
+        ;
+        var _emscripten_resize_heap = requestedSize => {
+            var oldSize = HEAPU8.length;
+            requestedSize >>>= 0;
+            var maxHeapSize = getHeapMax();
+            if (requestedSize > maxHeapSize) {
+                return false
+            }
+            var alignUp = (x, multiple) => x + (multiple - x % multiple) % multiple;
+            for (var cutDown = 1; cutDown <= 4; cutDown *= 2) {
+                var overGrownHeapSize = oldSize * (1 + .2 / cutDown);
+                overGrownHeapSize = Math.min(overGrownHeapSize, requestedSize + 100663296);
+                var newSize = Math.min(maxHeapSize, alignUp(Math.max(requestedSize, overGrownHeapSize), 65536));
+                var replacement = growMemory(newSize);
+                if (replacement) {
+                    return true
+                }
+            }
+            return false
+        }
+        ;
+        var _fd_close = fd => 52;
+        var convertI32PairToI53Checked = (lo, hi) => hi + 2097152 >>> 0 < 4194305 - !!lo ? (lo >>> 0) + hi * 4294967296 : NaN;
+        function _fd_seek(fd, offset_low, offset_high, whence, newOffset) {
+            var offset = convertI32PairToI53Checked(offset_low, offset_high);
+            return 70
+        }
+        var printCharBuffers = [null, [], []];
+        var printChar = (stream, curr) => {
+            var buffer = printCharBuffers[stream];
+            if (curr === 0 || curr === 10) {
+                (stream === 1 ? out : err)(UTF8ArrayToString(buffer, 0));
+                buffer.length = 0
+            } else {
+                buffer.push(curr)
+            }
+        }
+        ;
+        var _fd_write = (fd, iov, iovcnt, pnum) => {
+            var num = 0;
+            for (var i = 0; i < iovcnt; i++) {
+                var ptr = HEAPU32[iov >> 2];
+                var len = HEAPU32[iov + 4 >> 2];
+                iov += 8;
+                for (var j = 0; j < len; j++) {
+                    printChar(fd, HEAPU8[ptr + j])
+                }
+                num += len
+            }
+            HEAPU32[pnum >> 2] = num;
+            return 0
+        }
+        ;
+        InternalError = Module["InternalError"] = class InternalError extends Error {
+            constructor(message) {
+                super(message);
+                this.name = "InternalError"
+            }
+        }
+        ;
+        embind_init_charCodes();
+        BindingError = Module["BindingError"] = class BindingError extends Error {
+            constructor(message) {
+                super(message);
+                this.name = "BindingError"
+            }
+        }
+        ;
+        init_ClassHandle();
+        init_embind();
+        init_RegisteredPointer();
+        UnboundTypeError = Module["UnboundTypeError"] = extendError(Error, "UnboundTypeError");
+        init_emval();
+        var wasmImports = {
+            K: ___cxa_throw,
+            G: __abort_js,
+            s: __embind_finalize_value_object,
+            C: __embind_register_bigint,
+            I: __embind_register_bool,
+            w: __embind_register_class,
+            v: __embind_register_class_constructor,
+            d: __embind_register_class_function,
+            m: __embind_register_constant,
+            H: __embind_register_emval,
+            o: __embind_register_enum,
+            a: __embind_register_enum_value,
+            A: __embind_register_float,
+            i: __embind_register_function,
+            l: __embind_register_integer,
+            f: __embind_register_memory_view,
+            z: __embind_register_std_string,
+            u: __embind_register_std_wstring,
+            t: __embind_register_value_object,
+            c: __embind_register_value_object_field,
+            J: __embind_register_void,
+            F: __emscripten_memcpy_js,
+            n: __emval_as,
+            q: __emval_call,
+            p: __emval_call_method,
+            b: __emval_decref,
+            x: __emval_get_global,
+            j: __emval_get_method_caller,
+            r: __emval_get_module_property,
+            g: __emval_get_property,
+            k: __emval_incref,
+            h: __emval_new_cstring,
+            e: __emval_run_destructors,
+            D: _emscripten_resize_heap,
+            E: _fd_close,
+            B: _fd_seek,
+            y: _fd_write
+        };
+        var wasmExports = createWasm();
+        var ___wasm_call_ctors = () => (___wasm_call_ctors = wasmExports["M"])();
+        var ___getTypeName = a0 => (___getTypeName = wasmExports["N"])(a0);
+        var _malloc = a0 => (_malloc = wasmExports["O"])(a0);
+        var _free = a0 => (_free = wasmExports["Q"])(a0);
+        var ___cxa_is_pointer_type = a0 => (___cxa_is_pointer_type = wasmExports["R"])(a0);
+        var dynCall_jiji = Module["dynCall_jiji"] = (a0, a1, a2, a3, a4) => (dynCall_jiji = Module["dynCall_jiji"] = wasmExports["S"])(a0, a1, a2, a3, a4);
+        var calledRun;
+        dependenciesFulfilled = function runCaller() {
+            if (!calledRun)
+                run();
+            if (!calledRun)
+                dependenciesFulfilled = runCaller
+        }
+        ;
+        function run() {
+            if (runDependencies > 0) {
+                return
+            }
+            preRun();
+            if (runDependencies > 0) {
+                return
+            }
+            function doRun() {
+                if (calledRun)
+                    return;
+                calledRun = true;
+                Module["calledRun"] = true;
+                if (ABORT)
+                    return;
+                initRuntime();
+                readyPromiseResolve(Module);
+                Module["onRuntimeInitialized"]?.();
+                postRun()
+            }
+            if (Module["setStatus"]) {
+                Module["setStatus"]("Running...");
+                setTimeout(function() {
+                    setTimeout(function() {
+                        Module["setStatus"]("")
+                    }, 1);
+                    doRun()
+                }, 1)
+            } else {
+                doRun()
+            }
+        }
+        if (Module["preInit"]) {
+            if (typeof Module["preInit"] == "function")
+                Module["preInit"] = [Module["preInit"]];
+            while (Module["preInit"].length > 0) {
+                Module["preInit"].pop()()
+            }
+        }
+        run();
+        moduleRtn = readyPromise;
+
+        return moduleRtn;
+    }
+    );
+}
+)();
+if (typeof exports === 'object' && typeof module === 'object')
+    module.exports = BASIS;
+else if (typeof define === 'function' && define['amd'])
+    define([], () => BASIS);
+
+/* worker */
+let A, e, a, i = _EngineFormat, t = _EngineType, s = _TranscoderFormat, g = _BasisFormat;
+self.addEventListener("message", function(i) {
+    let s = i.data;
+    switch (s.type) {
+    case "init":
+        var r;
+        A = s.config,
+        r = s.transcoderBinary,
+        e = new Promise(A => {
+            BASIS(a = {
+                wasmBinary: r,
+                onRuntimeInitialized: A
+            })
+        }
+        ).then( () => {
+            a.initializeBasis(),
+            void 0 === a.KTX2File && console.warn("THREE.KTX2Loader: Please update Basis Universal transcoder.")
+        }
+        );
+        break;
+    case "transcode":
+        e.then( () => {
+            try {
+                let {faces: e, buffers: i, width: r, height: I, hasAlpha: c, format: B, type: C, dfdFlags: E} = function(e) {
+                    let i, s = new a.KTX2File(new Uint8Array(e));
+                    function r() {
+                        s.close(),
+                        s.delete()
+                    }
+                    if (!s.isValid())
+                        throw r(),
+                        Error("THREE.KTX2Loader:	Invalid or unsupported .ktx2 file");
+                    if (s.isUASTC())
+                        i = g.UASTC;
+                    else if (s.isETC1S())
+                        i = g.ETC1S;
+                    else if (s.isHDR())
+                        i = g.UASTC_HDR;
+                    else
+                        throw Error("THREE.KTX2Loader: Unknown Basis encoding");
+                    let I = s.getWidth()
+                      , c = s.getHeight()
+                      , B = s.getLayers() || 1
+                      , C = s.getLevels()
+                      , E = s.getFaces()
+                      , b = s.getHasAlpha()
+                      , Q = s.getDFDFlags()
+                      , {transcoderFormat: h, engineFormat: l, engineType: d} = function(e, a, i, t) {
+                        let s = o[e];
+                        for (let g = 0; g < s.length; g++) {
+                            let r = s[g];
+                            if (r.if && !A[r.if] || !r.basisFormat.includes(e) || t && r.transcoderFormat.length < 2 || r.needsPowerOfTwo && !(n(a) && n(i)))
+                                continue;
+                            let o = r.transcoderFormat[+!!t]
+                              , I = r.engineFormat[+!!t];
+                            return {
+                                transcoderFormat: o,
+                                engineFormat: I,
+                                engineType: r.engineType[0]
+                            }
+                        }
+                        throw Error("THREE.KTX2Loader: Failed to identify transcoding target.")
+                    }(i, I, c, b);
+                    if (!I || !c || !C)
+                        throw r(),
+                        Error("THREE.KTX2Loader:	Invalid texture");
+                    if (!s.startTranscoding())
+                        throw r(),
+                        Error("THREE.KTX2Loader: .startTranscoding failed");
+                    let p = []
+                      , f = [];
+                    for (let A = 0; A < E; A++) {
+                        let e = [];
+                        for (let a = 0; a < C; a++) {
+                            let i, g, o = [];
+                            for (let e = 0; e < B; e++) {
+                                let n = s.getImageLevelInfo(a, e, A);
+                                0 === A && 0 === a && 0 === e && (n.origWidth % 4 != 0 || n.origHeight % 4 != 0) && console.warn("THREE.KTX2Loader: ETC1S and UASTC textures should use multiple-of-four dimensions."),
+                                C > 1 ? (i = n.origWidth,
+                                g = n.origHeight) : (i = n.width,
+                                g = n.height);
+                                let I = new Uint8Array(s.getImageTranscodedSizeInBytes(a, e, 0, h))
+                                  , c = s.transcodeImage(I, a, e, A, h, 0, -1, -1);
+                                if (d === t.HalfFloatType && (I = new Uint16Array(I.buffer,I.byteOffset,I.byteLength / Uint16Array.BYTES_PER_ELEMENT)),
+                                !c)
+                                    throw r(),
+                                    Error("THREE.KTX2Loader: .transcodeImage failed.");
+                                o.push(I)
+                            }
+                            let n = function(A) {
+                                if (1 === A.length)
+                                    return A[0];
+                                let e = 0;
+                                for (let a = 0; a < A.length; a++)
+                                    e += A[a].byteLength;
+                                let a = new Uint8Array(e)
+                                  , i = 0;
+                                for (let e = 0; e < A.length; e++) {
+                                    let t = A[e];
+                                    a.set(t, i),
+                                    i += t.byteLength
+                                }
+                                return a
+                            }(o);
+                            e.push({
+                                data: n,
+                                width: i,
+                                height: g
+                            }),
+                            f.push(n.buffer)
+                        }
+                        p.push({
+                            mipmaps: e,
+                            width: I,
+                            height: c,
+                            format: l,
+                            type: d
+                        })
+                    }
+                    return r(),
+                    {
+                        faces: p,
+                        buffers: f,
+                        width: I,
+                        height: c,
+                        hasAlpha: b,
+                        dfdFlags: Q,
+                        format: l,
+                        type: d
+                    }
+                }(s.buffer);
+                self.postMessage({
+                    type: "transcode",
+                    id: s.id,
+                    data: {
+                        faces: e,
+                        width: r,
+                        height: I,
+                        hasAlpha: c,
+                        format: B,
+                        type: C,
+                        dfdFlags: E
+                    }
+                }, i)
+            } catch (A) {
+                console.error(A),
+                self.postMessage({
+                    type: "error",
+                    id: s.id,
+                    error: A.message
+                })
+            }
         }
         )
     }
-    , "racePublicationMetadata", 0, function(e, i) {
-        return e.nodes.some(e => e.entity?.kind === "attack" && e.entity.sourceId === i.id && 1 === e.entity.raceMetadataVersion) ? {
-            ...i,
-            raceMarker: i.raceMarker ?? null,
-            raceExitSpawn: i.raceExitSpawn ?? null
-        } : i
-    }
-    , "racesToPublish", 0, function(e, i, a=[]) {
-        let n = new Set([...Object.keys(i), ...a]);
-        return (0,
-        t.gameplayPayload)(e).attacks.filter(e => n.has(e.id))
-    }
-    ])
+});
+let r = [{
+    if: "astcSupported",
+    basisFormat: [g.UASTC],
+    transcoderFormat: [s.ASTC_4x4, s.ASTC_4x4],
+    engineFormat: [i.RGBA_ASTC_4x4_Format, i.RGBA_ASTC_4x4_Format],
+    engineType: [t.UnsignedByteType],
+    priorityETC1S: 1 / 0,
+    priorityUASTC: 1,
+    needsPowerOfTwo: !1
+}, {
+    if: "bptcSupported",
+    basisFormat: [g.ETC1S, g.UASTC],
+    transcoderFormat: [s.BC7_M5, s.BC7_M5],
+    engineFormat: [i.RGBA_BPTC_Format, i.RGBA_BPTC_Format],
+    engineType: [t.UnsignedByteType],
+    priorityETC1S: 3,
+    priorityUASTC: 2,
+    needsPowerOfTwo: !1
+}, {
+    if: "dxtSupported",
+    basisFormat: [g.ETC1S, g.UASTC],
+    transcoderFormat: [s.BC1, s.BC3],
+    engineFormat: [i.RGBA_S3TC_DXT1_Format, i.RGBA_S3TC_DXT5_Format],
+    engineType: [t.UnsignedByteType],
+    priorityETC1S: 4,
+    priorityUASTC: 5,
+    needsPowerOfTwo: !1
+}, {
+    if: "etc2Supported",
+    basisFormat: [g.ETC1S, g.UASTC],
+    transcoderFormat: [s.ETC1, s.ETC2],
+    engineFormat: [i.RGB_ETC2_Format, i.RGBA_ETC2_EAC_Format],
+    engineType: [t.UnsignedByteType],
+    priorityETC1S: 1,
+    priorityUASTC: 3,
+    needsPowerOfTwo: !1
+}, {
+    if: "etc1Supported",
+    basisFormat: [g.ETC1S, g.UASTC],
+    transcoderFormat: [s.ETC1],
+    engineFormat: [i.RGB_ETC1_Format],
+    engineType: [t.UnsignedByteType],
+    priorityETC1S: 2,
+    priorityUASTC: 4,
+    needsPowerOfTwo: !1
+}, {
+    if: "pvrtcSupported",
+    basisFormat: [g.ETC1S, g.UASTC],
+    transcoderFormat: [s.PVRTC1_4_RGB, s.PVRTC1_4_RGBA],
+    engineFormat: [i.RGB_PVRTC_4BPPV1_Format, i.RGBA_PVRTC_4BPPV1_Format],
+    engineType: [t.UnsignedByteType],
+    priorityETC1S: 5,
+    priorityUASTC: 6,
+    needsPowerOfTwo: !0
+}, {
+    if: "bptcSupported",
+    basisFormat: [g.UASTC_HDR],
+    transcoderFormat: [s.BC6H],
+    engineFormat: [i.RGB_BPTC_UNSIGNED_Format],
+    engineType: [t.HalfFloatType],
+    priorityHDR: 1,
+    needsPowerOfTwo: !1
+}, {
+    basisFormat: [g.ETC1S, g.UASTC],
+    transcoderFormat: [s.RGBA32, s.RGBA32],
+    engineFormat: [i.RGBAFormat, i.RGBAFormat],
+    engineType: [t.UnsignedByteType, t.UnsignedByteType],
+    priorityETC1S: 100,
+    priorityUASTC: 100,
+    needsPowerOfTwo: !1
+}, {
+    basisFormat: [g.UASTC_HDR],
+    transcoderFormat: [s.RGBA_HALF],
+    engineFormat: [i.RGBAFormat],
+    engineType: [t.HalfFloatType],
+    priorityHDR: 100,
+    needsPowerOfTwo: !1
+}]
+  , o = {
+    [g.ETC1S]: r.filter(A => A.basisFormat.includes(g.ETC1S)).sort( (A, e) => A.priorityETC1S - e.priorityETC1S),
+    [g.UASTC]: r.filter(A => A.basisFormat.includes(g.UASTC)).sort( (A, e) => A.priorityUASTC - e.priorityUASTC),
+    [g.UASTC_HDR]: r.filter(A => A.basisFormat.includes(g.UASTC_HDR)).sort( (A, e) => A.priorityHDR - e.priorityHDR)
+};
+function n(A) {
+    return A <= 2 || (A & A - 1) == 0 && 0 !== A
 }
-, 927268, 74663, e => {
-    "use strict";
-    var i = e.i(773915)
-      , t = e.i(214658)
-      , a = e.i(971057);
-    let n = {
-        id: "drift-park",
-        name: "Drift Park",
-        tagline: "Chase the pack. Dive the Spire. Thread the skyline.",
-        description: "Eight drift cars on a 1.2 km circuit at the heart of a harbor festival. Dive the 90-metre Spire's open shaft, thread the Skyline Yard's floors and skybridges, run the container maze, chase the freight train along the west viaduct and drop through the cooling tower, with the stage and the turbines turning over the quay.",
-        accent: "#c65c13",
-        bounds: {
-            size: 360,
-            ceiling: 100,
-            walls: {
-                negativeX: 160,
-                positiveX: 160,
-                negativeZ: 212,
-                positiveZ: 180
-            }
-        },
-        environment: {
-            ...a.GRIDWORKS.environment,
-            fog: {
-                ...a.GRIDWORKS.environment.fog,
-                densityScale: .16
-            },
-            ground: {
-                ...a.GRIDWORKS.environment.ground,
-                gridAxes: void 0
-            },
-            indoorLight: {
-                color: "#ffffff",
-                intensity: 1.2
-            }
-        },
-        horizon: "forest",
-        views: {
-            menu: {
-                center: [50, 0, -17],
-                radius: 78,
-                height: 36,
-                fov: 58,
-                speed: .035,
-                startAngle: 2.4,
-                lookAtHeight: 26
-            },
-            overview: {
-                center: [0, 0, 0],
-                radius: 300,
-                height: 190,
-                fov: 53,
-                speed: .025,
-                startAngle: .9,
-                lookAtHeight: 8
-            },
-            lobby: {
-                position: [114, 0, 149],
-                yaw: .36
-            }
-        },
-        spawns: (0,
-        t.driftParkSpawns)(),
-        pedestrians: {
-            count: 14,
-            zones: [{
-                minX: 92,
-                maxX: 121,
-                minZ: 140,
-                maxZ: 162
-            }, {
-                minX: 64,
-                maxX: 92,
-                minZ: 141,
-                maxZ: 163
-            }, {
-                minX: -20,
-                maxX: 44,
-                minZ: 155,
-                maxZ: 168
-            }, {
-                minX: -20,
-                maxX: 10,
-                minZ: -140.8,
-                maxZ: -137
-            }, {
-                minX: 25,
-                maxX: 44,
-                minZ: -142,
-                maxZ: -137
-            }, {
-                minX: 97.5,
-                maxX: 99.6,
-                minZ: 58,
-                maxZ: 95
-            }, {
-                minX: 81.5,
-                maxX: 87.5,
-                minZ: 53,
-                maxZ: 95
-            }, {
-                minX: -88,
-                maxX: -48,
-                minZ: 155,
-                maxZ: 168
-            }, {
-                minX: -129,
-                maxX: -122.5,
-                minZ: -54,
-                maxZ: 2
-            }, {
-                minX: -140.6,
-                maxX: -139.4,
-                minZ: -55,
-                maxZ: 12
-            }]
-        },
-        layout: {},
-        editorDocument: {
-            version: 2,
-            mapId: "drift-park",
-            bounds: {
-                size: 360,
-                ceiling: 100,
-                walls: {
-                    negativeX: 160,
-                    positiveX: 160,
-                    negativeZ: 212,
-                    positiveZ: 180
-                }
-            },
-            nodes: [{
-                id: "drift-park",
-                name: "Drift Park",
-                parentId: null,
-                matrix: (0,
-                i.compose)([0, 0, 0]),
-                prefab: {
-                    id: "drift-park",
-                    variant: "default"
-                },
-                color: "#c65c13",
-                surface: "grid",
-                ghost: !1
-            }]
-        }
-    };
-    e.s(["DRIFT_PARK", 0, n], 927268);
-    var s = e.i(261930);
-    let r = {
-        size: 400,
-        ceiling: 100,
-        walls: {
-            negativeX: 155,
-            positiveX: 205,
-            negativeZ: 100,
-            positiveZ: 170
-        }
-    }
-      , o = {
-        id: "whoop-world",
-        name: "Whoop World",
-        tagline: "Dive the atrium. Chase the karts. Ride the roof.",
-        description: "A four-level shopping centre built for flying. Dive the Grand Atrium from the dome's oculus through the turning Whoop Orb, weave the galleria's escalators and bridges, chase dummy-driven karts round the Speedway, thread the Funplex and climb out to the Sky Park rides on the roof.",
-        accent: "#c65c13",
-        bounds: r,
-        environment: {
-            ...a.GRIDWORKS.environment,
-            fog: {
-                ...a.GRIDWORKS.environment.fog,
-                densityScale: .16
-            },
-            ground: {
-                ...a.GRIDWORKS.environment.ground,
-                gridAxes: void 0
-            },
-            indoorLight: {
-                color: "#ffffff",
-                intensity: 1.2
-            }
-        },
-        horizon: "sea",
-        views: {
-            menu: {
-                center: [0, 0, 40],
-                radius: 92,
-                height: 38,
-                fov: 58,
-                speed: .035,
-                startAngle: 1.2,
-                lookAtHeight: 22
-            },
-            overview: {
-                center: [20, 0, 20],
-                radius: 300,
-                height: 190,
-                fov: 53,
-                speed: .025,
-                startAngle: .9,
-                lookAtHeight: 8
-            },
-            lobby: {
-                position: [0, 0, 130.6],
-                yaw: 0,
-                lens: {
-                    back: 2.4,
-                    height: .33,
-                    aim: .14,
-                    fov: 72
-                }
-            }
-        },
-        spawns: (0,
-        s.whoopWorldSpawns)(),
-        pedestrians: {
-            count: 14,
-            indoor: !0,
-            zones: (0,
-            s.whoopWorldWalkways)()
-        },
-        layout: {},
-        editorDocument: {
-            version: 2,
-            mapId: "whoop-world",
-            bounds: r,
-            nodes: [{
-                id: "whoop-world",
-                name: "Whoop World",
-                parentId: null,
-                matrix: (0,
-                i.compose)([0, 0, 0]),
-                prefab: {
-                    id: "whoop-world",
-                    variant: "default"
-                },
-                color: "#c65c13",
-                surface: "grid",
-                ghost: !1
-            }]
-        }
-    };
-    e.s(["WHOOP_WORLD", 0, o], 74663)
-}
-, 425798, e => {
-    "use strict";
-    let i = {
-        id: e.i(998494).LESSON_MAP_ID,
-        name: "Flight School",
-        tagline: "An open grid for lessons.",
-        description: "The flat, open grid where flight school lessons and their practice courses are flown.",
-        accent: "#c65c13",
-        bounds: {
-            size: 210,
-            walls: {
-                negativeX: 210,
-                positiveX: 145,
-                negativeZ: 200,
-                positiveZ: 120
-            },
-            ceiling: 100
-        },
-        environment: {
-            sky: {
-                sunDirection: [-.6, .8, .5],
-                turbidity: 1.8,
-                rayleigh: 2.2,
-                mieCoefficient: .002,
-                mieDirectionalG: .8,
-                palette: {
-                    zenith: "#268fed",
-                    horizon: "#addfff"
-                }
-            },
-            sun: {
-                color: "#ffefdc",
-                intensity: 3.4,
-                direction: [-.6, .85, .5],
-                shadows: {
-                    depth: 210
-                }
-            },
-            ambient: {
-                skyColor: "#c8d4e0",
-                groundColor: "#c2b9ab",
-                intensity: 1.1
-            },
-            environmentIntensity: .45,
-            fog: {
-                color: "#a7d4f0",
-                densityScale: .24,
-                skirt: {
-                    opacity: .3,
-                    fadeMeters: 7.2,
-                    color: "#ba3534"
-                }
-            },
-            clouds: {
-                color: "#ffffff",
-                opacity: .94,
-                spread: 800,
-                height: 240,
-                count: 8
-            },
-            ground: {
-                surface: "grid",
-                baseColor: "#86888d",
-                patchColor: "#86888d",
-                jointColor: "#79818b",
-                markings: !1,
-                tileSize: 5
-            },
-            exposure: 1.44,
-            windowGlow: 0,
-            grade: {
-                vignette: .1
-            }
-        },
-        views: {
-            menu: {
-                center: [48, 0, 0],
-                radius: 40,
-                height: 14,
-                fov: 58,
-                speed: .035,
-                startAngle: .75,
-                lookAtHeight: 5
-            },
-            overview: {
-                center: [0, 0, 0],
-                radius: 177,
-                height: 120,
-                fov: 53,
-                speed: .025,
-                startAngle: .9,
-                lookAtHeight: 6
-            }
-        },
-        spawns: [{
-            id: "lesson-court",
-            label: "Lesson court",
-            position: [48, .2, 60],
-            yaw: 0,
-            pad: !1
-        }],
-        layout: {}
-    };
-    e.s(["FLIGHT_SCHOOL", 0, i])
-}
-, 552627, e => {
-    "use strict";
-    var i = e.i(50270)
-      , t = e.i(622803)
-      , a = e.i(391775)
-      , n = e.i(35680)
-      , s = e.i(971057)
-      , r = e.i(927268)
-      , o = e.i(74663)
-      , l = e.i(399900);
-    let d = i.z.object({
-        id: i.z.union([i.z.literal("gridworks"), i.z.string().regex(/^official:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/).transform(e => e)]),
-        name: i.z.string().min(1).max(80),
-        published: i.z.boolean(),
-        revision: i.z.number().int().positive().nullable(),
-        updatedAt: i.z.string(),
-        hasDraft: i.z.boolean().optional(),
-        unlockLevel: i.z.number().int().min(1).max(100).optional(),
-        listed: i.z.boolean().optional(),
-        archived: i.z.boolean().optional(),
-        aliasId: i.z.string().uuid().nullable().optional()
-    })
-      , p = {
-        "drift-park": r.DRIFT_PARK,
-        "whoop-world": o.WHOOP_WORLD
-    };
-    function m(e) {
-        let i = e.nodes.filter(e => !e.entity)
-          , t = i[0]
-          , a = t?.prefab && Object.hasOwn(p, t.prefab.id) ? p[t.prefab.id] : null;
-        return 1 !== i.length || !a || "default" !== t.prefab.variant || null !== t.parentId || t.ghost || t.geometry || !t.matrix.every( (e, i) => e === +(i % 5 == 0)) ? null : a
-    }
-    function c(e) {
-        let i = (0,
-        a.gameplayPayload)(e)
-          , t = m(e);
-        return {
-            ...i,
-            spawns: i.spawns.length || !t ? i.spawns : t.spawns
-        }
-    }
-    function f(e, i, r=e.revision ?? 0) {
-        let o = null === i ? null : t.documentSchema.parse(i);
-        if (o && o.mapId !== e.id)
-            throw Error("Official map identity does not match its layout.");
-        let l = e.unlockLevel ?? 1;
-        if ("gridworks" === e.id) {
-            let i = o ? (0,
-            a.gameplayPayload)(o).spawns : [];
-            return {
-                ...s.GRIDWORKS,
-                name: e.name,
-                unlockLevel: l,
-                spawns: i.length ? i : s.GRIDWORKS.spawns,
-                editorDocument: o ?? void 0,
-                revision: r
-            }
-        }
-        if (!o)
-            throw Error("Official map has no published layout.");
-        let d = (0,
-        n.personalMapLimitError)(o);
-        if (d)
-            throw Error(d);
-        let p = c(o).spawns
-          , u = m(o);
-        return u ? {
-            ...u,
-            id: e.id,
-            name: e.name,
-            revision: r,
-            unlockLevel: l,
-            bounds: o.bounds ?? u.bounds,
-            spawns: p,
-            editorDocument: o
-        } : {
-            id: e.id,
-            name: e.name,
-            tagline: "",
-            description: "",
-            accent: "#ff7a00",
-            revision: r,
-            unlockLevel: l,
-            bounds: o.bounds ?? {
-                size: 200,
-                ceiling: 100
-            },
-            environment: {
-                ...s.GRIDWORKS.environment,
-                ground: {
-                    ...s.GRIDWORKS.environment.ground,
-                    gridAxes: void 0
-                }
-            },
-            views: {
-                ...s.GRIDWORKS.views,
-                lobby: void 0
-            },
-            spawns: p.length ? p : [{
-                id: "origin",
-                label: "Origin",
-                position: [0, .2, 0],
-                yaw: 0,
-                pad: !1
-            }],
-            layout: {},
-            editorDocument: o
-        }
-    }
-    e.s(["officialMapDefinition", 0, f, "officialMapGameplay", 0, c, "officialMapHorizon", 0, function(e) {
-        return e.horizon ?? m(e)?.horizon ?? l.DEFAULT_HORIZON
-    }
-    , "officialMapSchema", 0, d, "parseOfficialMap", 0, function(e) {
-        let a = i.z.object({
-            map: d,
-            document: i.z.unknown().nullable()
-        }).parse(e);
-        if (!a.map.published)
-            throw Error("This official map is not published.");
-        let n = null == a.document ? null : t.documentSchema.parse(a.document);
-        return {
-            map: a.map,
-            document: n,
-            definition: f(a.map, n)
-        }
-    }
-    ])
-}
-, 58849, e => {
-    "use strict";
-    var i = e.i(50270)
-      , t = e.i(613105)
-      , a = e.i(920755)
-      , n = e.i(622803)
-      , s = e.i(391775)
-      , r = e.i(29921)
-      , o = e.i(49925)
-      , l = e.i(28276)
-      , d = e.i(937769)
-      , p = e.i(698072)
-      , m = e.i(635877)
-      , c = e.i(284853)
-      , f = e.i(404961)
-      , u = e.i(552627);
-    async function g(e, i, t) {
-        let n = (0,
-        a.createClient)().rpc(e, i)
-          , {data: s, error: o} = await (t ? n.abortSignal(t) : n);
-        if (o && t?.aborted)
-            throw Error(f.MAP_READ_TIMEOUT);
-        let l = o && (0,
-        r.wipeRequired)(o);
-        if (l)
-            throw l;
-        if (o)
-            throw Error(["PGRST202", "PGRST205", "42P01", "42883"].includes(o.code) ? "Official maps are temporarily unavailable. Try again." : "23505" === o.code ? "Another admin saved a draft. Reload before saving; your work is preserved." : o.message);
-        return s
-    }
-    async function h() {
-        return i.z.array(u.officialMapSchema).parse(await g("official_maps_catalog_v2", {
-            p_admin: !1
-        }))
-    }
-    async function v() {
-        return i.z.array(u.officialMapSchema).parse(await g("official_maps_catalog_v2", {
-            p_admin: !0
-        }))
-    }
-    async function w(e, i) {
-        let t = await g("get_official_map", {
-            p_id: e
-        }, i);
-        if (!t)
-            throw new f.MapUnavailableError("This official map is no longer available.");
-        return (0,
-        u.parseOfficialMap)(t)
-    }
-    let y = new Map;
-    async function b(e) {
-        let i = y.get(e);
-        if (i)
-            return i;
-        let t = M(e);
-        y.set(e, t);
-        try {
-            return await t
-        } finally {
-            y.get(e) === t && y.delete(e)
-        }
-    }
-    async function M(e, i=0) {
-        let n = (0,
-        t.withDeadline)(null, f.MAP_READ_MS)
-          , s = await w(e, n)
-          , r = (0,
-        a.createClient)()
-          , [m,c,u] = await Promise.all([r.from("sim_map_spawns").select("map_id,spawns").eq("map_id", e).abortSignal(n).maybeSingle(), (0,
-        d.selectRaces)(i => r.from("sim_time_attacks").select(i).eq("map_id", e).abortSignal(n)), (0,
-        p.selectArenas)(i => r.from("sim_arenas").select(i).eq("map_id", e).order("sort_order").order("id").abortSignal(n))]);
-        for (let e of [m, c, u])
-            if (e.error)
-                throw Error(n.aborted ? f.MAP_READ_TIMEOUT : e.error.message);
-        if ((await w(e, n)).map.revision !== s.map.revision) {
-            if (i < 2)
-                return M(e, i + 1);
-            throw Error("This map was updated while loading. Try again.")
-        }
-        let g = m.data && (0,
-        d.parseMapSpawnRow)(m.data);
-        g && (0,
-        l.patchMapSpawns)(e, g.spawns);
-        let h = (c.data ?? []).flatMap(e => (0,
-        d.parseTimeAttackRow)(e) ?? [])
-          , v = (u.data ?? []).flatMap(e => (0,
-        p.parseArenaRow)(e) ?? []);
-        for (let i of (0,
-        l.listTimeAttacks)())
-            i.mapId !== e || h.some(e => e.id === i.id) || (0,
-            l.removeTimeAttackDoc)(i.id);
-        for (let i of (0,
-        l.listArenas)())
-            i.mapId !== e || v.some(e => e.id === i.id) || (0,
-            l.removeArenaDoc)(i.id);
-        return h.forEach(l.patchTimeAttackDoc),
-        v.forEach(l.patchArenaDoc),
-        (0,
-        f.registerOfficialMap)(s.definition),
-        "gridworks" === e && (0,
-        o.installPublishedGridworks)(s.document, s.map.revision),
-        e
-    }
-    function k(e) {
-        let t = i.z.object({
-            map: u.officialMapSchema,
-            name: i.z.string().min(1).max(80),
-            document: i.z.unknown().nullable(),
-            revision: i.z.number().int().positive().nullable(),
-            baseRevision: i.z.number().int().positive().nullable()
-        }).parse(e)
-          , a = null == t.document ? "gridworks" === t.map.id ? (0,
-        s.withGameplay)((0,
-        n.seedDocument)(), (0,
-        l.listMapSpawns)("gridworks"), (0,
-        l.listTimeAttacks)()) : {
-            version: 2,
-            mapId: t.map.id,
-            nodes: [],
-            bounds: {
-                size: 200,
-                ceiling: 100
-            }
-        } : n.documentSchema.parse(t.document);
-        if (a.mapId !== t.map.id)
-            throw Error("Draft identity does not match its map.");
-        return {
-            ...t,
-            document: a
-        }
-    }
-    async function _(e) {
-        return k(await g("create_official_map", {
-            p_name: e.trim()
-        }))
-    }
-    async function A(e) {
-        let i = await g("official_map_draft", {
-            p_id: e
-        });
-        if (!i)
-            throw Error("Official map not found.");
-        return k(i)
-    }
-    async function E(e, t, a=e.name) {
-        let s = n.documentSchema.parse(t);
-        if (s.mapId !== e.map.id)
-            throw Error("Cannot save a different map into this draft.");
-        let r = i.z.number().int().positive().parse(await g("save_official_map_draft", {
-            p_id: e.map.id,
-            p_document: s,
-            p_revision: e.revision,
-            p_base_revision: e.baseRevision,
-            p_name: a.trim()
-        }));
-        return {
-            ...e,
-            name: a.trim(),
-            document: s,
-            revision: r
-        }
-    }
-    async function I(e, t=e.document, a=[]) {
-        let s = null === e.revision ? await E(e, t) : e
-          , r = n.documentSchema.parse(t)
-          , o = (0,
-        u.officialMapGameplay)(r)
-          , l = i.z.number().int().positive().parse(await g("publish_official_map_draft", {
-            p_id: s.map.id,
-            p_document: r,
-            p_draft_revision: s.revision,
-            p_name: s.name,
-            p_wipe: [...a],
-            p_spawns: o.spawns.map(e => (0,
-            c.transformMapSpawn)(s.map.id, e, "to-storage")),
-            p_attacks: o.attacks.map(e => (0,
-            m.racePublicationMetadata)(r, (0,
-            c.transformMapTimeAttack)(e, "to-storage"))),
-            p_arenas: o.arenas.map(e => r.nodes.some(i => i.entity?.kind === "arena" && i.entity.sourceId === e.id && 1 === i.entity.entranceMetadataVersion) ? {
-                ...e,
-                entrance: e.entrance ?? null
-            } : e)
-        }));
-        return {
-            ...s.map,
-            name: s.name,
-            published: !0,
-            revision: l,
-            updatedAt: new Date().toISOString(),
-            hasDraft: !1
-        }
-    }
-    async function S(e) {
-        if (null !== e.revision && await g("discard_official_map_draft", {
-            p_id: e.map.id,
-            p_revision: e.revision
-        }) !== !0)
-            throw Error("Draft could not be discarded.")
-    }
-    e.s(["createOfficialMap", 0, _, "discardOfficialMapDraft", 0, S, "listAdminOfficialMaps", 0, v, "listPublishedOfficialMaps", 0, h, "loadOfficialMap", 0, w, "loadOfficialMapDraft", 0, A, "prepareOfficialMapForPlay", 0, b, "publishOfficialMapDraft", 0, I, "saveOfficialMapDraft", 0, E])
-}
-, 333794, e => {
-    "use strict";
-    var i = e.i(412864)
-      , t = e.i(58849)
-      , a = e.i(404961)
-      , n = e.i(998494);
-    async function s(e) {
-        if ((0,
-        n.isPersonalMapId)(e)) {
-            let s = await (0,
-            i.loadSharedMap)(e.slice(5));
-            if (s.aliasOf) {
-                if (!(0,
-                n.isOfficialMapId)(s.aliasOf))
-                    throw new a.MapUnavailableError("This map is not available.");
-                return (0,
-                t.prepareOfficialMapForPlay)(s.aliasOf)
-            }
-            return (0,
-            i.preparePersonalMapForPlay)(s)
-        }
-        if ((0,
-        n.isOfficialMapId)(e))
-            return (0,
-            t.prepareOfficialMapForPlay)(e);
-        throw new a.MapUnavailableError("This map is not available.")
-    }
-    async function r(e) {
-        if ((0,
-        n.isPersonalMapId)(e) || (0,
-        n.isOfficialMapId)(e)) {
-            if (await s(e) !== e)
-                throw new a.MapUnavailableError("This map is not available.");
-            return e
-        }
-        if (n.MAP_IDS.includes(e))
-            return e;
-        throw new a.MapUnavailableError("This map is not available.")
-    }
-    async function o(e) {
-        return (0,
-        a.hasMap)(e) ? e : r(e)
-    }
-    e.s(["ensureReplayMap", 0, o, "prepareLobbyMap", 0, s, "prepareReplayMap", 0, r, "replayMapErrorMessage", 0, function(e) {
-        return e instanceof a.MapDeletedError ? "This replay can't play because its map has been deleted." : e instanceof a.MapUnavailableError ? `This replay can't play. ${e.message}` : "Could not load this replay's map. Check your connection and try again."
-    }
-    ])
-}
-, 29394, 321390, e => {
-    "use strict";
-    let i = !1;
-    function t() {
-        return !!i
-    }
-    e.s(["canSeeDrafts", 0, t, "isVisibleToViewer", 0, function(e) {
-        return !e || t()
-    }
-    , "setCurriculumViewerIsAdmin", 0, function(e) {
-        i = e
-    }
-    ], 321390);
-    var a = e.i(998494)
-      , n = e.i(304661);
-    let s = new Set;
-    function r(e) {
-        return (0,
-        a.isOfficialMapId)(e) && "gridworks" !== e ? s.has(e) : !n.UNPUBLISHED_MAP_IDS.has(e)
-    }
-    e.s(["canAccessMap", 0, function(e) {
-        return (0,
-        a.isOfficialMapId)(e) ? r(e) : !!r(e) || t()
-    }
-    , "isLessonMap", 0, function(e) {
-        return n.LESSON_MAP_IDS.has(e ?? "")
-    }
-    , "markOfficialMapPublished", 0, function(e) {
-        s.add(e)
-    }
-    ], 29394)
-}
-, 404961, e => {
-    "use strict";
-    var i = e.i(971057)
-      , t = e.i(927268)
-      , a = e.i(74663)
-      , n = e.i(425798)
-      , s = e.i(29394)
-      , r = e.i(998494);
-    let o = [i.GRIDWORKS, t.DRIFT_PARK, a.WHOOP_WORLD, n.FLIGHT_SCHOOL];
-    o.filter(e => (0,
-    s.canAccessMap)(e.id) && !(0,
-    s.isLessonMap)(e.id));
-    let l = new Map(o.map(e => [e.id, e]));
-    function d(e) {
-        let i = l.get(e);
-        if (!i)
-            throw Error(`Unknown map "${e}"`);
-        return i
-    }
-    l.set(r.WHOOP_WORLD_MAP_ID, {
-        ...a.WHOOP_WORLD,
-        id: r.WHOOP_WORLD_MAP_ID,
-        revision: 0,
-        unlockLevel: 1,
-        ...a.WHOOP_WORLD.editorDocument ? {
-            editorDocument: {
-                ...a.WHOOP_WORLD.editorDocument,
-                mapId: r.WHOOP_WORLD_MAP_ID
-            }
-        } : {}
-    });
-    class p extends Error {
-        constructor(e) {
-            super(e),
-            this.name = "MapUnavailableError"
-        }
-    }
-    function m(e) {
-        let i = l.get(e);
-        if (!i)
-            throw new p("This map is not available.");
-        return i
-    }
-    e.s(["ALL_MAPS", 0, o, "MAP_READ_MS", 0, 15e3, "MAP_READ_TIMEOUT", 0, "The map took too long to load. Try again.", "MapDeletedError", 0, class extends p {
-        constructor(e="This map is no longer available.") {
-            super(e),
-            this.name = "MapDeletedError"
-        }
-    }
-    , "MapUnavailableError", 0, p, "accessibleMapId", 0, function(e) {
-        return (0,
-        s.canAccessMap)(e) && !(0,
-        s.isLessonMap)(e) ? e : r.DEFAULT_MAP_ID
-    }
-    , "hasMap", 0, function(e) {
-        return l.has(e)
-    }
-    , "listOfficialPlaces", 0, function() {
-        return [...l.values()].filter(e => ("gridworks" === e.id || (0,
-        r.isOfficialMapId)(e.id)) && !(0,
-        s.isLessonMap)(e.id))
-    }
-    , "mapById", 0, d, "recordingMapRevision", 0, function(e) {
-        let i = l.get(e)?.revision;
-        return i && i > 0 ? i : null
-    }
-    , "registerOfficialMap", 0, function(e) {
-        if (!(0,
-        r.isOfficialMapId)(e.id))
-            throw Error("Invalid official map identity.");
-        l.set(e.id, e),
-        (0,
-        s.markOfficialMapPublished)(e.id)
-    }
-    , "registerPersonalMap", 0, function(e) {
-        if ("gridworks" === e.id)
-            throw Error("Cannot replace the canonical map.");
-        l.set(e.id, e)
-    }
-    , "replayMap", 0, m, "replayMapChanged", 0, function(e, i) {
-        return null !== i && m(e).revision !== i
-    }
-    , "resolveMap", 0, function(e) {
-        return l.has(e) ? d(e) : d(r.DEFAULT_MAP_ID)
-    }
-    ])
-}
-, 792558, e => {
-    "use strict";
-    e.s(["timeAttackGateColor", 0, function(e, i) {
-        return 0 === e ? "#37c8dd" : e === i - 1 ? "#74d94f" : "#ffb52e"
-    }
-    ])
-}
-]);
